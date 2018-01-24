@@ -1,0 +1,23 @@
+%% There are some packages we need to prevent loading
+%% as they don't make any sense in the web format
+%% https://tex.stackexchange.com/questions/39415/unload-a-latex-package
+\@namedef{ver@titlesec.sty}{}
+
+\@ifpackageloaded{cleveref}{
+ \renewcommand{\cref}[1]{\ref{#1}}
+ \renewcommand{\Cref}[1]{\ref{#1}}
+}{}
+
+\@ifpackageloaded{tikz}{
+ \usetikzlibrary{external}
+ \tikzexternalize[mode=only graphics]
+ \tikzset{
+  pdf export/.style={
+   /pgf/images/external info,
+   /pgf/images/include external/.code={%
+    \includegraphics{##1.pdf}%
+   }
+  }
+ }
+ \tikzset{pdf export}
+}{}

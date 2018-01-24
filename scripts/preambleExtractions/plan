@@ -1,0 +1,9 @@
+
+* Run the configuration:
+
+* Read the document class of the input file and place the pointsize etc. in a file to be used by make
+* Put the contents of master.tex in a file followed by the rest of the document
+* Ask the author if frontmatter and contents are appropriate 
+* Put the graphics files in the appropriate places
+* Check the file for | and \| and fix these
+* Ask the author about mathjax choices, find all macros that need copying and copy these to write the mathjax file

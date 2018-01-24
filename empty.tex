@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage{verbatim}
+\begin{document}
+If you can see this text then you have forgotten to give an argument to make the file of your choice. For instance, if your \LaTeX~file is called \verb=file.tex= you can make all document formats using:
+\begin{verbatim}
+> make name=file
+\end{verbatim}
+You can make individual formats as follows:
+\begin{verbatim}
+> make standard name=file
+> make clear name=file
+> make large name=file
+> make web name=file
+> make word name=file
+\end{verbatim}
+Please note that the large print format does not reflow the mathematics and so anything in mathematics mode may go off the right hand side of the page. 
+\end{document}

@@ -1,0 +1,17 @@
+  \@ifpackageloaded{tikz}{
+    %https://tex.stackexchange.com/questions/40135/htlatex-and-tikz-creates-sometimes-incorrect-svgs
+    \usetikzlibrary{external}
+    \tikzexternalize[prefix=./figures/pdf/]
+    \tikzexternalize[mode=only graphics]
+    \tikzset{
+     pdf export/.style={
+      /pgf/images/external info,
+      /pgf/images/include external/.code={%
+       \includegraphics
+       [width=\pgfexternalwidth,height=\pgfexternalheight]
+       {##1.pdf}%
+      }
+     }
+    }
+    \tikzset{pdf export}
+   }{}

@@ -1,0 +1,7 @@
+Write a series of lex files that each extract different things that we need:
+* The documentclass is needed to create the makefile and the master
+* The package list is needed
+* The theorem list (amsthm or ntheorem)
+* The frontmatter
+* The list of commands
+* The list of tables required
