@@ -17,6 +17,10 @@ figures:
 $(name)-cont.tex:
 	./scripts/preambleExtractions/extract < $(name).tex > $@
 
+$(name)-lp-cont.tex:
+	./scripts/flowfix/flowfix.sh ./
+	./scripts/preambleExtractions/extract < $(name)-lp.tex > $@
+
 #Note that we make clean as a prerequisite in each case as the toggles cause different setups. 
 #Leaving the job output in the directory can cause issues in some cases. 
 standard: clean pdffigures $(name)-cont.tex
@@ -54,17 +58,17 @@ clear: clean pdffigures $(name)-cont.tex
 	rm *.sty *.4ht
 
 #This will be the same except for the toggles and name.
-large: clean pdffigures $(name)-cont.tex
+large: clean pdffigures $(name)-lp-cont.tex
 	cp ./styles/* . 
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}" > toggle.tex
 	[ ! -f $(name)-large.tex ] || rm -f $(name)-large.tex
-	echo "\\\\def\pointsize{17pt}\\\\def\\\\class{extarticle}\\\\input{./master/master}\\\\input{$(name)-cont}" > $(name)-large.tex
+	echo "\\\\def\pointsize{20pt}\\\\def\\\\class{extarticle}\\\\input{./master/master}\\\\input{$(name)-lp-cont}" > $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	mv $(name)-large.pdf built/
-	rm $(name)-large.tex
+	rm $(name)-large.tex *-lp1.tex *-lp.tex
 	rm toggle.tex
 	rm *.sty *.4ht
 
@@ -142,7 +146,7 @@ word: clean figures $(name)-cont.tex
 	rm *.sty *.4ht
 
 clean:
-	rm -f  *-cont.tex *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot $(name)*x.png toggle.tex 
+	rm -f  *-cont.tex *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot $(name)*x.png toggle.tex *.sty *.4ht *-lp.tex *-lp1.tex 
 
 cleanfigures: 
 	rm -f ./figures/svg/*.pdf
