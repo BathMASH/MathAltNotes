@@ -1,0 +1,15 @@
+\ConfigureEnv{shaded}
+{\ifvmode\IgnorePar\fi\EndP\HCode{<div class="shaded">}\par}{\ifvmode\IgnorePar\fi\EndP\HCode{</div>}\par}{}{}
+
+\Css{div.shaded {
+ background-color: AliceBlue;
+ } 
+}
+
+\ConfigureEnv{framed}
+{\ifvmode\IgnorePar\fi\EndP\HCode{<div class="framed">}\par}{\ifvmode\IgnorePar\fi\EndP\HCode{</div>}\par}{}{}
+
+\Css{div.framed {
+ background-color: Gainsboro;
+ } 
+}

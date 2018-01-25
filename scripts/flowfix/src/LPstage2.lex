@@ -56,6 +56,7 @@ tabuend "\\end"{lb}("tabular"|"longtable"){rb}
 
 "\\verb" printf("\\spverb"); matchverbchar(); 
 
+("\\input"{lb})(.*)/("_tex") ECHO;
 ("\\input"{lb}) ECHO; yy_push_state(INPUT);
 <INPUT>{rb} printf("-lp"); ECHO; yy_pop_state();
 

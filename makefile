@@ -3,16 +3,18 @@
 name=empty
 LATEX=pdflatex
 
-all: pdffigures standard clear figures large web word
+all: standard clear figures large web word
 
-pdffigures: 
-#These produces figures required for the pdf
-	cd figures/svg/; ../../scripts/graphicx/svgtopdf.sh ./; cd ../..
-
-figures: 
-#This requires that pdflatex has been run at least once
-	cd figures/eps/; ../../scripts/graphicx/eps-converted2svg.sh ./; cd ../..
-	cd figures/pdf/; ../../scripts/graphicx/pdftosvg.sh ./; cd ../..
+pdflatexfigures:
+	[ ! -f $(name)-figures.tex ] || rm -f $(name)-figures.tex
+	echo "\\\\def\pointsize{12pt}\\\\def\\\\class{article}\\\\input{./master/master}\\\\usepackage{color}\\\\thispagestyle{empty}\\\\togglefalse{frontmatter}\\\\togglefalse{contents}\\\\begin{document}\\\\input{$(name)}\\\\end{document}" > $(name)-figures.tex
+	[ ! -f toggle.tex ] || rm -f toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}" > toggle.tex
+	$(LATEX) $(name)-figures.tex 
+	$(LATEX) $(name)-figures.tex
+	$(LATEX) $(name)-figures.tex
+	mv $(name)-figures.pdf built/
+	rm $(name)-figures.tex
 
 $(name)-cont.tex:
 	./scripts/preambleExtractions/extract < $(name).tex > $@
@@ -23,12 +25,13 @@ $(name)-lp-cont.tex:
 
 #Note that we make clean as a prerequisite in each case as the toggles cause different setups. 
 #Leaving the job output in the directory can cause issues in some cases. 
-standard: clean pdffigures $(name)-cont.tex
+standard: clean $(name)-cont.tex
 	cp ./styles/* . 
+	cd figures/svg/; ../../scripts/graphicx/svgtopdf.sh ./; cd ../..
 #Setting the LaTeX toggles to control how the document is created. 
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 #In this example we have a SVG but need a PDF for the LaTeX to work with.
-	echo "\\\\togglefalse{clearprint}\\\\togglefalse{web}" > toggle.tex
+	echo "\\\\togglefalse{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-standard.tex ] || rm -f $(name)-standard.tex
 	echo "\\\\input{./master/master}\\\\input{$(name)-cont}" > $(name)-standard.tex
 #https://tex.stackexchange.com/questions/611/setting-class-options-after-documentclass/617
@@ -43,10 +46,11 @@ standard: clean pdffigures $(name)-cont.tex
 	rm *.sty *.4ht
 
 #This will be the same except for the toggles and name.
-clear: clean pdffigures $(name)-cont.tex
+clear: clean $(name)-cont.tex
 	cp ./styles/* . 
+	cd figures/svg/; ../../scripts/graphicx/svgtopdf.sh ./; cd ../..
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}" > toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-clear.tex ] || rm -f $(name)-clear.tex
 	echo "\\\\def\pointsize{12pt}\\\\def\\\\class{article}\\\\input{./master/master}\\\\input{$(name)-cont}" > $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
@@ -58,12 +62,13 @@ clear: clean pdffigures $(name)-cont.tex
 	rm *.sty *.4ht
 
 #This will be the same except for the toggles and name.
-large: clean pdffigures $(name)-lp-cont.tex
+large: clean $(name)-lp-cont.tex
 	cp ./styles/* . 
+	cd figures/svg/; ../../scripts/graphicx/svgtopdf.sh ./; cd ../..
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}" > toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{large}" > toggle.tex
 	[ ! -f $(name)-large.tex ] || rm -f $(name)-large.tex
-	echo "\\\\def\pointsize{20pt}\\\\def\\\\class{extarticle}\\\\input{./master/master}\\\\input{$(name)-lp-cont}" > $(name)-large.tex
+	echo "\\\\def\pointsize{17pt}\\\\def\\\\class{extarticle}\\\\input{./master/master}\\\\input{$(name)-lp-cont}" > $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
@@ -73,13 +78,27 @@ large: clean pdffigures $(name)-lp-cont.tex
 	rm *.sty *.4ht
 
 #We require some additional files for everything to work. 
-web: clean figures $(name)-cont.tex 
+web: clean $(name)-cont.tex 
+#Copy required files to where they are needed
 	cp ./styles/* . 
 	cp ./assets/mathml.4ht .
 	cp ./assets/unicode.4hf .
 	cp ./assets/mathjaxMMLWord.cfg .
+#Make any pdf_tex figures
+	./scripts/graphicx/buildfigure.sh ./
+#Make any tikz figures etc.
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}" > toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}" > toggle.tex
+	[ ! -f $(name)-web.tex ] || rm -f $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\input{./master/master}\\\\input{$(name)-cont}" > $(name)-web.tex
+	$(LATEX) -shell-escape $(name)-web.tex
+#Convert the rest of the figures
+	cd figures/eps/; ../../scripts/graphicx/eps-converted2svg.sh ./; cd ../..
+	cd figures/pdf/; ../../scripts/graphicx/pdftosvg.sh ./; cd ../..
+	rm $(name)-web.*
+#Set up for the web version
+	[ ! -f toggle.tex ] || rm -f toggle.tex
+	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}" > toggle.tex
 #htlatex needs to run twice to prevent disruption to the sectioning tree caused by e.g. footnotes
 #Note, yes this does run latex 6 times! It is a reported bug: https://puszcza.gnu.org.ua/bugs/index.php?197
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
@@ -96,15 +115,20 @@ web: clean figures $(name)-cont.tex
 	mkdir built/$(name)-web/
 	mkdir built/$(name)-web/figures/
 	mkdir built/$(name)-web/figures/eps/
+	mkdir built/$(name)-web/figures/latexpdfsvg/
 	mkdir built/$(name)-web/figures/pdf/
+	mkdir built/$(name)-web/figures/png/
 	mkdir built/$(name)-web/figures/svg/
 	mv *.html built/$(name)-web/
 	cp ./assets/additional.css built/$(name)-web/
 	mv *.css built/$(name)-web/
 	if ls ./figures/eps/*.svg 1> /dev/null 2>&1; then cp ./figures/eps/*.svg built/$(name)-web/figures/eps/; fi
+	if ls ./figures/latexpdfsvg/*.svg 1> /dev/null 2>&1; then cp ./figures/latexpdfsvg/*.svg built/$(name)-web/figures/latexpdfsvg/; fi
 	if ls ./figures/pdf/*.svg 1> /dev/null 2>&1; then cp ./figures/pdf/*.svg built/$(name)-web/figures/pdf/; fi
+	if ls ./figures/png/*.png 1> /dev/null 2>&1; then cp ./figures/png/*.svg built/$(name)-web/figures/png/; fi
 	if ls ./figures/svg/*.svg 1> /dev/null 2>&1; then cp ./figures/svg/*.svg built/$(name)-web/figures/svg/; fi
 	cd built; [ ! -f $(name)-web.zip ] || rm -f $(name)-web.zip; zip -r $(name)-web.zip $(name)-web; cd ..
+#Tidy up a bit
 	rm mathml.4ht
 	rm unicode.4hf
 	rm mathjaxMMLWord.cfg
@@ -113,16 +137,29 @@ web: clean figures $(name)-cont.tex
 	rm *.sty *.4ht
 
 #To transform to Word we need to use the web transform but without breaking into sections and then use Pandoc 19+
-word: clean figures $(name)-cont.tex 
+word: clean $(name)-cont.tex 
+#Copy some files to where we need them
 	cp ./styles/* . 
 	cp ./assets/mathml.4ht .
 	cp ./assets/unicode.4hf .
 	cp ./assets/mathjaxMMLWord.cfg .
 	cp ./assets/additional.css .
+#Make any pdf_tex figures
+	./scripts/graphicx/buildfigure.sh ./
+#Make any tikz figures etc.
+	[ ! -f toggle.tex ] || rm -f toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}" > toggle.tex
+	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\input{./master/master}\\\\input{$(name)-cont}" > $(name)-word.tex
+	$(LATEX) -shell-escape $(name)-word.tex
+	cd figures/eps/; ../../scripts/graphicx/eps-converted2svg.sh ./; cd ../..
+	cd figures/pdf/; ../../scripts/graphicx/pdftosvg.sh ./; cd ../..
+	rm $(name)-word.*
+#Set up for the word version
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
-	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{extarticle}\\\\input{./master/master}\\\\input{$(name)-cont}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\input{./master/master}\\\\input{$(name)-cont}" > $(name)-word.tex
 #htlatex needs to run twice to prevent disruption to the sectioning tree caused by e.g. footnotes
 #Note, yes this does run latex 6 times! It is a reported bug: https://puszcza.gnu.org.ua/bugs/index.php?197
 #Note that we are not breaking into sections for the Word transform
@@ -137,6 +174,7 @@ word: clean figures $(name)-cont.tex
 #To get styled theorems we are going to need to do something like http://pandoc.org/MANUAL.html#custom-styles-in-docx-output but this will require us to do some nasty poking.
 	pandoc -s -f html -t docx $(name)-word.html -o $(name)-word.docx --reference-doc=./assets/reference.docx
 	mv $(name)-word.docx built/
+#Tidy up a bit
 	rm mathml.4ht
 	rm unicode.4hf
 	rm mathjaxMMLWord.cfg

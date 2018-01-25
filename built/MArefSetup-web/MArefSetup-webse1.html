@@ -19,7 +19,8 @@
  rel="stylesheet" type="text/css" href="additional.css"></link> 
 <script
  type="text/x-mathjax-config"> 
-MathJax.Hub.Config({ explorer:{ subtitle: true }, 
+MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
+explorer:{ subtitle: true }, 
 MatchWebFonts: { 
 matchFor: { "HTML-CSS": true, NativeMML: false, SVG: false }, 
 fontCheckDelay: 2000, 
@@ -29,12 +30,14 @@ fontCheckTimeout: 30 * 1000
 preferredFont: "STIX",  
 availableFonts: ["STIX","TeX"],  
 webFont: "STIX-Web",  
-linebreaks: { automatic: true, width: "60% container" } 
+linebreaks: { automatic: false, width: "90% container" } 
 }, 
 SVG: {  
 font: "STIX-Web", 
-linebreaks: { automatic: true, width: "60% container" } 
-}}); 
+linebreaks: { automatic: false, width: "90% container" } 
+}, 
+menuSettings: { collapsible: true, autocollapse: true, explorer: false } 
+}); 
 </script> 
 <script
  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script> 
@@ -44,7 +47,7 @@ linebreaks: { automatic: true, width: "60% container" }
 </style> 
 </head><body
 >
-<!--l. 43
+<!--l. 52
 --><div
  class="crosslinks"><p
  class="noindent">[<a
@@ -57,10 +60,10 @@ linebreaks: { automatic: true, width: "60% container" }
  class="sectionHead"><span
  class="titlemark">1    </span> <a
  href="MArefSetup-web.html#QQ2-6-5" id="x6-50001">Quadratic equations</a></h3>
-<!--l. 45
+<!--l. 54
 --><p
  class="noindent">A quadratic equation is an equation with the form
-<!--l. 45
+<!--l. 54
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mi
@@ -75,33 +78,33 @@ linebreaks: { automatic: true, width: "60% container" }
  class="MathClass-bin">+</mo> <mi
 >c</mi> <mo
  class="MathClass-rel">=</mo> <mn>0</mn> </mrow></math> where
-<!--l. 45
+<!--l. 54
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mi
 >x</mi> </mrow></math> represents an
-unknown and <!--l. 45
+unknown and <!--l. 54
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mi
 >a</mi> </mrow></math>,
-<!--l. 45
+<!--l. 54
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mi
 >b</mi> </mrow></math> and
-<!--l. 45
+<!--l. 54
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mi
 >c</mi> </mrow></math> are known
-numbers with <!--l. 45
+numbers with <!--l. 54
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mi
 >a</mi><mo
  class="MathClass-rel">&#x2260;</mo><mn>0</mn> </mrow></math>.
-</p><!--l. 47
+</p><!--l. 56
 --><p
  class="noindent">
 </p>
@@ -109,10 +112,10 @@ numbers with <!--l. 45
  class="subsectionHead"><span
  class="titlemark">1.1    </span> <a
  href="MArefSetup-web.html#QQ2-6-6" id="x6-60001.1">Solutions to a quadratic equation</a></h4>
-<!--l. 49
+<!--l. 58
 --><p
  class="noindent">A  solution  to  a  quadratic  equation  is  a  value  of
-<!--l. 49
+<!--l. 58
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mi
@@ -125,7 +128,7 @@ quadratic formula: </p><table
  id="x6-6001r1"></a>
                                                                                        
                                                                                        
-<!--l. 50
+<!--l. 59
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
                                  <mi
@@ -152,13 +155,13 @@ quadratic formula: </p><table
  class="eq-no">(1)</td></tr></table>
 <div
  class="newtheorem">
-<!--l. 55
+<!--l. 64
 --><p
  class="noindent"><span
  class="head" custom-style="Theorem">
 <span
  class="phvb8t-x-x-120">Example.</span><br
- class="newline"></br>   </span>For instance, the solutions to <!--l. 56
+ class="newline"></br>   </span>For instance, the solutions to <!--l. 65
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <msup
@@ -172,7 +175,7 @@ quadratic formula: </p><table
  class="MathClass-rel">=</mo> <mn>0</mn> </mrow></math>
 are:
 </p><!--tex4ht:inline
---><!--l. 65
+--><!--l. 74
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable
  displaystyle="true" columnalign="left" class="align-star">
@@ -256,15 +259,15 @@ are:
  class="align-label">
 <mspace
  width="2em"></mspace></mtd></mtr></mtable></math>
-<!--l. 66
+<!--l. 75
 --><p
- class="noindent">Hence, <!--l. 66
+ class="noindent">Hence, <!--l. 75
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mi
 >x</mi> <mo
  class="MathClass-rel">=</mo> <mn>1</mn> </mrow></math> or
-<!--l. 66
+<!--l. 75
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mi
@@ -275,7 +278,7 @@ are:
 </div>
                                                                                        
                                                                                        
-<!--l. 69
+<!--l. 78
 --><p
  class="noindent">
 </p>
@@ -285,7 +288,7 @@ are:
  href="MArefSetup-web.html#QQ2-6-7" id="x6-70001.2">The discriminant</a></h4>
 <div
  class="newtheorem">
-<!--l. 71
+<!--l. 80
 --><p
  class="noindent"><span
  class="head" custom-style="Theorem">
@@ -298,7 +301,7 @@ are:
 ><span
  class="phvb8t-x-x-120">discriminant</span></b>   of   a   quadratic   equation   with
 coefficients
-<!--l. 72
+<!--l. 81
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mi
@@ -310,7 +313,7 @@ coefficients
 is:
 </p>
 <div
- class="math-display"><!--l. 73
+ class="math-display"><!--l. 82
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -325,14 +328,14 @@ is:
 >a</mi><mi
 >c</mi><mo class="MathClass-punc">.</mo>
 </mrow></math></div>
-<!--l. 75
+<!--l. 84
 --><p
  class="nopar">
 </p>
 </div>
 <div
  class="newtheorem">
-<!--l. 78
+<!--l. 87
 --><p
  class="noindent"><span
  class="head" custom-style="Theorem">
@@ -349,11 +352,11 @@ quadratic formula (<a
 --></a>).
 </p>
 </div>
-<!--l. 82
+<!--l. 91
 --><p
  class="noindent">We can use the discriminant to determine the number of real roots
 of a quadratic equation. The number depends on the value of
-<!--l. 82
+<!--l. 91
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mi
@@ -364,7 +367,7 @@ table <a
  class="table">
                                                                                        
                                                                                        
-<!--l. 83
+<!--l. 92
 --><p
  class="noindent"><a
  id="x6-70031"></a></p><hr
@@ -374,7 +377,7 @@ table <a
                                                                                        
 <div
  class="center">
-<!--l. 84
+<!--l. 93
 --><p
  class="noindent">
 </p>
@@ -391,7 +394,7 @@ table <a
 ><hr
 ></hr></td></tr><tr
  style="vertical-align:baseline;" id="TBL-2-1-"><td
- style="text-align:left; white-space:nowrap;" id="TBL-2-1-1" class="td11">Value of <!--l. 87
+ style="text-align:left; white-space:nowrap;" id="TBL-2-1-1" class="td11">Value of <!--l. 96
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 ><mi
@@ -403,7 +406,7 @@ table <a
 ><hr
 ></hr></td></tr><tr
  style="vertical-align:baseline;" id="TBL-2-2-"><td
- style="text-align:left; white-space:nowrap;" id="TBL-2-2-1" class="td11"><!--l. 89
+ style="text-align:left; white-space:nowrap;" id="TBL-2-2-1" class="td11"><!--l. 98
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 ><mi
@@ -412,7 +415,7 @@ table <a
  style="text-align:left; white-space:nowrap;" id="TBL-2-2-2" class="td11">Two, distinct</td>
 </tr><tr
  style="vertical-align:baseline;" id="TBL-2-3-"><td
- style="text-align:left; white-space:nowrap;" id="TBL-2-3-1" class="td11"><!--l. 90
+ style="text-align:left; white-space:nowrap;" id="TBL-2-3-1" class="td11"><!--l. 99
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 ><mi
@@ -421,7 +424,7 @@ table <a
  style="text-align:left; white-space:nowrap;" id="TBL-2-3-2" class="td11">One, repeated</td>
 </tr><tr
  style="vertical-align:baseline;" id="TBL-2-4-"><td
- style="text-align:left; white-space:nowrap;" id="TBL-2-4-1" class="td11"><!--l. 91
+ style="text-align:left; white-space:nowrap;" id="TBL-2-4-1" class="td11"><!--l. 100
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 ><mi
@@ -447,7 +450,7 @@ table <a
 </div><hr
  class="endfloat"></hr>
 </div>
-<!--l. 100
+<!--l. 109
 --><p
  class="noindent">Figure  <a
  href="#x6-70051">1<!--tex4ht:ref: DisFig 
@@ -468,10 +471,10 @@ possibility<span
                                                                                        
 <div
  class="center">
-<!--l. 102
+<!--l. 111
 --><p
  class="noindent">
-</p><!--l. 103
+</p><!--l. 112
 --><p
  class="noindent"><img
  src="./figures/pdf/Quadratic_eq_discriminant.svg" alt="No alt text was set."></img> </p></div>
@@ -485,7 +488,7 @@ possibility<span
                                                                                        
 </div><hr
  class="endfigure"></hr>
-<!--l. 110
+<!--l. 119
 --><p
  class="noindent">
                                                                                        
@@ -493,7 +496,7 @@ possibility<span
                                                                                        
                                                                                        
 </p>
-<!--l. 111
+<!--l. 120
 --><div
  class="crosslinks"><p
  class="noindent">[<a
@@ -502,7 +505,7 @@ possibility<span
  href="MArefSetup-webli4.html#tailMArefSetup-webli4.html">prev-tail</a>] [<a
  href="MArefSetup-webse1.html">front</a>] [<a
  href="MArefSetup-web.html#MArefSetup-webse1.html">up</a>] </p></div>
-<!--l. 111
+<!--l. 120
 --><p
  class="noindent"><a
  id="tailMArefSetup-webse1.html"></a> </p> 

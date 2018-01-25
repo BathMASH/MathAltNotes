@@ -19,7 +19,8 @@
  rel="stylesheet" type="text/css" href="additional.css"></link> 
 <script
  type="text/x-mathjax-config"> 
-MathJax.Hub.Config({ explorer:{ subtitle: true }, 
+MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
+explorer:{ subtitle: true }, 
 MatchWebFonts: { 
 matchFor: { "HTML-CSS": true, NativeMML: false, SVG: false }, 
 fontCheckDelay: 2000, 
@@ -29,12 +30,14 @@ fontCheckTimeout: 30 * 1000
 preferredFont: "STIX",  
 availableFonts: ["STIX","TeX"],  
 webFont: "STIX-Web",  
-linebreaks: { automatic: true, width: "60% container" } 
+linebreaks: { automatic: false, width: "90% container" } 
 }, 
 SVG: {  
 font: "STIX-Web", 
-linebreaks: { automatic: true, width: "60% container" } 
-}}); 
+linebreaks: { automatic: false, width: "90% container" } 
+}, 
+menuSettings: { collapsible: true, autocollapse: true, explorer: false } 
+}); 
 </script> 
 <script
  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script> 
@@ -44,7 +47,7 @@ linebreaks: { automatic: true, width: "60% container" }
 </style> 
 </head><body
 >
-<!--l. 111
+<!--l. 120
 --><div
  class="crosslinks"><p
  class="noindent">[<a
@@ -57,16 +60,16 @@ linebreaks: { automatic: true, width: "60% container" }
  class="sectionHead"><span
  class="titlemark">2    </span> <a
  href="MArefSetup-web.html#QQ2-8-10" id="x8-80002">The scalar product</a></h3>
-<!--l. 113
+<!--l. 122
 --><p
- class="noindent">Consider two vectors <!--l. 113
+ class="noindent">Consider two vectors <!--l. 122
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mstyle
  mathvariant="normal"><mstyle
  mathvariant="bold"><mi
 >a</mi></mstyle></mstyle> </mrow></math>
-and <!--l. 113
+and <!--l. 122
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mstyle
@@ -84,10 +87,10 @@ drawn so their tails are at the same point. </p><hr
                                                                                        
 <div
  class="center">
-<!--l. 115
+<!--l. 124
 --><p
  class="noindent">
-</p><!--l. 116
+</p><!--l. 125
 --><p
  class="noindent"><img
  src="./figures/eps/vectors.svg" alt="No alt text was set."></img> </p></div>
@@ -101,16 +104,16 @@ drawn so their tails are at the same point. </p><hr
                                                                                        
 </div><hr
  class="endfigure"></hr>
-<!--l. 122
+<!--l. 131
 --><p
- class="noindent">We define the scalar product of <!--l. 122
+ class="noindent">We define the scalar product of <!--l. 131
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mstyle
  mathvariant="normal"><mstyle
  mathvariant="bold"><mi
 >a</mi></mstyle></mstyle> </mrow></math>
-and <!--l. 122
+and <!--l. 131
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mstyle
@@ -121,7 +124,7 @@ as follows.
 </p>
 <div
  class="newtheorem">
-<!--l. 124
+<!--l. 133
 --><p
  class="noindent"><span
  class="head" custom-style="Theorem">
@@ -133,7 +136,7 @@ as follows.
  class="newline"></br>   </span>The                 <b
 ><span
  class="phvb8t-x-x-120">scalar                 product</span></b>                 of
-<!--l. 125
+<!--l. 134
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mstyle
@@ -141,7 +144,7 @@ as follows.
  mathvariant="bold"><mi
 >a</mi></mstyle></mstyle> </mrow></math>
 and
-<!--l. 125
+<!--l. 134
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mstyle
@@ -151,7 +154,7 @@ and
 is
 </p>
 <div
- class="math-display"><!--l. 129
+ class="math-display"><!--l. 138
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -178,13 +181,13 @@ is
 --> <mi
 >&#x3B8;</mi>
 </mrow></math></div>
-<!--l. 131
+<!--l. 140
 --><p
  class="nopar"> where </p>
       <ul
  class="itemize1">
       <li
- class="itemize"><!--l. 134
+ class="itemize"><!--l. 143
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mo
@@ -193,7 +196,7 @@ is
  mathvariant="bold"><mi
 >a</mi></mstyle></mstyle><mo
  class="MathClass-rel">|</mo></mrow></math>
-      is the modulus of <!--l. 134
+      is the modulus of <!--l. 143
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mstyle
@@ -202,7 +205,7 @@ is
 >a</mi></mstyle></mstyle> </mrow></math>,
       </li>
       <li
- class="itemize"><!--l. 135
+ class="itemize"><!--l. 144
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mo
@@ -211,7 +214,7 @@ is
  mathvariant="bold"><mi
 >b</mi></mstyle></mstyle><mo
  class="MathClass-rel">|</mo></mrow></math>
-      is the modulus of <!--l. 135
+      is the modulus of <!--l. 144
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mstyle
@@ -223,19 +226,19 @@ is
       and
       </li>
       <li
- class="itemize"><!--l. 136
+ class="itemize"><!--l. 145
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mi
 >&#x3B8;</mi> </mrow></math>
-      is the angle between <!--l. 136
+      is the angle between <!--l. 145
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mstyle
  mathvariant="normal"><mstyle
  mathvariant="bold"><mi
 >a</mi></mstyle></mstyle> </mrow></math>
-      and <!--l. 136
+      and <!--l. 145
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mstyle
@@ -245,7 +248,7 @@ is
 </div>
 <div
  class="newtheorem">
-<!--l. 140
+<!--l. 149
 --><p
  class="noindent"><span
  class="head" custom-style="Theorem">
@@ -255,7 +258,7 @@ is
  class="phvb8t-x-x-120">Remark 2.2.</span><br
  class="newline"></br>   </span>It                     is                     important                     to                     use
 the dot symbol for the scalar product (also called the dot product). You must not use a
-<!--l. 141
+<!--l. 150
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mo
@@ -265,7 +268,7 @@ symbol as this denotes the vector product which is defined differently.
 </div>
 <div
  class="newtheorem">
-<!--l. 144
+<!--l. 153
 --><p
  class="noindent"><span
  class="head" custom-style="Theorem">
@@ -278,7 +281,7 @@ symbol as this denotes the vector product which is defined differently.
                                                                                        
                                                                                        
 <div
- class="math-display"><!--l. 146
+ class="math-display"><!--l. 155
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -314,9 +317,9 @@ symbol as this denotes the vector product which is defined differently.
 <!--*\c@MaxMatrixCols c
 --></mtable>                                                                                                             </mrow></mfenced> <mo class="MathClass-punc">.</mo>
 </mrow></math></div>
-<!--l. 148
+<!--l. 157
 --><p
- class="nopar"> The angle between these vectors is <!--l. 149
+ class="nopar"> The angle between these vectors is <!--l. 158
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mi
@@ -326,7 +329,7 @@ symbol as this denotes the vector product which is defined differently.
 > <mn>45</mn></mrow><mrow
 ><mo
  class="MathClass-bin">&#x2218;</mo></mrow></msup></mrow></math>.
-Then <!--l. 149
+Then <!--l. 158
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mo
@@ -338,7 +341,7 @@ Then <!--l. 149
  class="MathClass-rel">=</mo> <msqrt
 ><mrow
 ><mn>8</mn></mrow></msqrt> </mrow></math>
-and <!--l. 149
+and <!--l. 158
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mo
@@ -350,7 +353,7 @@ and <!--l. 149
  class="MathClass-rel">=</mo> <mn>4</mn> </mrow></math>.
 So,
 </p><!--tex4ht:inline
---><!--l. 154
+--><!--l. 163
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable
  displaystyle="true" columnalign="left" class="align-star">
@@ -458,7 +461,7 @@ So,
  class="align-label">
 <mspace
  width="2em"></mspace></mtd></mtr></mtable></math>
-<!--l. 155
+<!--l. 164
 --><p
  class="noindent">Note that the result is a scalar, not a vector.
 </p>
@@ -469,14 +472,14 @@ So,
  class="subsectionHead"><span
  class="titlemark">2.1    </span> <a
  href="MArefSetup-web.html#QQ2-8-12" id="x8-90002.1">Vectors in cartesian form</a></h4>
-<!--l. 160
+<!--l. 169
 --><p
  class="noindent">When vectors are given in cartesian form there is an alternative formula for calculating the
 scalar product.
 </p>
 <div
  class="newtheorem">
-<!--l. 161
+<!--l. 170
 --><p
  class="noindent"><span
  class="head" custom-style="Theorem">
@@ -485,7 +488,7 @@ scalar product.
 <span
  class="phvb8t-x-x-120">Proposition 2.4.</span><br
  class="newline"></br>   </span>If
-<!--l. 162
+<!--l. 171
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mstyle
@@ -509,7 +512,7 @@ scalar product.
  mathvariant="bold"><mi
 >j</mi></mstyle></mstyle> </mrow></math>
 and
-<!--l. 162
+<!--l. 171
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mstyle
@@ -535,7 +538,7 @@ and
 then
 </p>
 <div
- class="math-display"><!--l. 163
+ class="math-display"><!--l. 172
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -566,12 +569,12 @@ then
 >b</mi></mrow><mrow
 ><mn>2</mn></mrow></msub><mo class="MathClass-punc">.</mo>
 </mrow></math></div>
-<!--l. 165
+<!--l. 174
 --><p
  class="nopar">
 </p>
 </div>
-<!--l. 168
+<!--l. 177
 --><p
  class="noindent">
 </p>
@@ -579,11 +582,11 @@ then
                                                                                        
 <div
  class="proof">
-<!--l. 169
+<!--l. 178
 --><p
  class="noindent"><span
  class="head"><span
- class="phvb8t-x-x-120">Proof.</span>&#xA0;    </span>Consider the vector <!--l. 169
+ class="phvb8t-x-x-120">Proof.</span>&#xA0;    </span>Consider the vector <!--l. 178
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mstyle
@@ -626,7 +629,7 @@ then
 The modulus of this is
 </p>
 <div
- class="math-display"><!--l. 170
+ class="math-display"><!--l. 179
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -677,25 +680,25 @@ The modulus of this is
  class="MathClass-close">)</mo></mrow></mrow><mrow
 ><mn>2</mn></mrow></msup></mrow></msqrt><mo class="MathClass-punc">.</mo>
 </mrow></math></div>
-<!--l. 172
+<!--l. 181
 --><p
  class="nopar"> Note from figure <a
  href="#x8-90023">3<!--tex4ht:ref: triangle 
---></a> that the vectors <!--l. 173
+--></a> that the vectors <!--l. 182
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mstyle
  mathvariant="normal"><mstyle
  mathvariant="bold"><mi
 >a</mi></mstyle></mstyle> </mrow></math>,
-<!--l. 173
+<!--l. 182
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mstyle
  mathvariant="normal"><mstyle
  mathvariant="bold"><mi
 >b</mi></mstyle></mstyle> </mrow></math> and
-<!--l. 173
+<!--l. 182
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mstyle
@@ -717,10 +720,10 @@ triangle: </p><hr
                                                                                        
 <div
  class="center">
-<!--l. 175
+<!--l. 184
 --><p
  class="noindent">
-</p><!--l. 176
+</p><!--l. 185
 --><p
  class="noindent"><img
  src="./figures/eps/triangle.svg" alt="No alt text was set."></img> </p></div>
@@ -734,21 +737,21 @@ triangle: </p><hr
                                                                                        
 </div><hr
  class="endfigure"></hr>
-<!--l. 182
+<!--l. 191
 --><p
- class="noindent">Let <!--l. 182
+ class="noindent">Let <!--l. 191
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mi
 >&#x3B8;</mi> </mrow></math> denote the
-angle between <!--l. 182
+angle between <!--l. 191
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mstyle
  mathvariant="normal"><mstyle
  mathvariant="bold"><mi
 >a</mi></mstyle></mstyle> </mrow></math>
-and <!--l. 182
+and <!--l. 191
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mstyle
@@ -760,7 +763,7 @@ Then, the cosine rule yields: </p><table
 ><td
 > <a
  id="x8-9003r2"></a>
-<!--l. 186
+<!--l. 195
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation"><msup
 ><mrow
@@ -810,17 +813,17 @@ Then, the cosine rule yields: </p><table
 >&#x3B8;</mi><mo class="MathClass-punc">.</mo>
 </math></td><td
  class="eq-no">(2)</td></tr></table>
-<!--l. 190
+<!--l. 199
 --><p
  class="noindent">Substituting the definition of the scalar product of
-<!--l. 190
+<!--l. 199
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mstyle
  mathvariant="normal"><mstyle
  mathvariant="bold"><mi
 >a</mi></mstyle></mstyle> </mrow></math> and
-<!--l. 190
+<!--l. 199
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mstyle
@@ -832,7 +835,7 @@ equation <a
 --></a> gives:
 </p>
 <div
- class="math-display"><!--l. 191
+ class="math-display"><!--l. 200
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 ><msup
@@ -878,14 +881,14 @@ equation <a
  mathvariant="bold"><mi
 >b</mi></mstyle></mstyle></mrow></mfenced><mo class="MathClass-punc">.</mo>
 </mrow></math></div>
-<!--l. 193
+<!--l. 202
 --><p
  class="nopar"> Rearranging:
 </p>
                                                                                        
                                                                                        
 <div
- class="math-display"><!--l. 195
+ class="math-display"><!--l. 204
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -937,11 +940,11 @@ equation <a
  class="MathClass-rel">|</mo></mrow><mrow
 ><mn>2</mn></mrow></msup></mrow></mfenced> <mo class="MathClass-punc">.</mo>
 </mrow></math></div>
-<!--l. 197
+<!--l. 206
 --><p
  class="nopar"> Writing this in terms of components produces:
 </p><!--tex4ht:inline
---><!--l. 204
+--><!--l. 213
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable
  displaystyle="true" columnalign="left" class="align-star">
@@ -1180,14 +1183,14 @@ equation <a
  class="align-label">
 <mspace
  width="2em"></mspace></mtd></mtr></mtable></math>
-<!--l. 205
+<!--l. 214
 --><p
  class="noindent">as required.                                                                                                                    &#x25A1;
 </p>
 </div>
 <div
  class="newtheorem">
-<!--l. 208
+<!--l. 217
 --><p
  class="noindent"><span
  class="head" custom-style="Theorem">
@@ -1200,7 +1203,7 @@ equation <a
  class="newline"></br>   </span>Consider again the vectors
 </p>
 <div
- class="math-display"><!--l. 210
+ class="math-display"><!--l. 219
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -1236,12 +1239,12 @@ equation <a
 <!--*\c@MaxMatrixCols c
 --></mtable>                                                                                                             </mrow></mfenced> <mo class="MathClass-punc">.</mo>
 </mrow></math></div>
-<!--l. 212
+<!--l. 221
 --><p
  class="nopar"> Calculating the scalar product using the components:
 </p>
 <div
- class="math-display"><!--l. 214
+ class="math-display"><!--l. 223
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -1277,13 +1280,13 @@ equation <a
  class="MathClass-bin">&#xD7;</mo> <mn>0</mn> <mo
  class="MathClass-rel">=</mo> <mn>8.</mn>
 </mrow></math></div>
-<!--l. 216
+<!--l. 225
 --><p
  class="nopar">
-</p><!--l. 218
+</p><!--l. 227
 --><p
  class="noindent">Note that if we are given vectors in this form, the scalar product may be used to calculate the angle between
-them. Since <!--l. 218
+them. Since <!--l. 227
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mstyle
@@ -1299,7 +1302,7 @@ and we have:
                                                                                        
                                                                                        
 </p><!--tex4ht:inline
---><!--l. 222
+--><!--l. 231
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable
  displaystyle="true" columnalign="left" class="align-star">
@@ -1334,11 +1337,11 @@ and we have:
  class="align-label">
 <mspace
  width="2em"></mspace></mtd></mtr></mtable></math>
-<!--l. 223
+<!--l. 232
 --><p
  class="noindent">Hence,
 </p><!--tex4ht:inline
---><!--l. 227
+--><!--l. 236
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable
  displaystyle="true" columnalign="left" class="align-star">
@@ -1388,12 +1391,12 @@ and we have:
  class="align-label">
 <mspace
  width="2em"></mspace></mtd></mtr></mtable></math>
-<!--l. 228
+<!--l. 237
 --><p
  class="noindent">Rearranging:
 </p>
 <div
- class="math-display"><!--l. 229
+ class="math-display"><!--l. 238
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -1422,14 +1425,14 @@ and we have:
 </mrow></math></div>
                                                                                        
                                                                                        
-<!--l. 231
+<!--l. 240
 --><p
  class="nopar">
 </p>
 </div>
                                                                                        
                                                                                        
-<!--l. 234
+<!--l. 243
 --><div
  class="crosslinks"><p
  class="noindent">[<a
@@ -1438,7 +1441,7 @@ and we have:
  href="MArefSetup-webse1.html#tailMArefSetup-webse1.html">prev-tail</a>] [<a
  href="MArefSetup-webse2.html">front</a>] [<a
  href="MArefSetup-web.html#MArefSetup-webse2.html">up</a>] </p></div>
-<!--l. 234
+<!--l. 243
 --><p
  class="noindent"><a
  id="tailMArefSetup-webse2.html"></a> </p> 

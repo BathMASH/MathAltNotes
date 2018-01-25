@@ -57,6 +57,7 @@
 %% screens. 
 \usepackage{etoolbox}
 \newtoggle{clearprint}
+\newtoggle{large}
 \newtoggle{web}
 \newtoggle{figures}
 \newtoggle{frontmatter}
@@ -103,7 +104,7 @@
  %% TeX4ht compilation expects it.
  %% This is incompatible with some ways of making diagrams
  \usepackage{graphicx}
- \graphicspath{{./figures/svg/}{./figures/eps/}{./figures/pdf/}{./figures/png/}{./figures/latexpdf/}} 
+ \graphicspath{{./figures/latexpdfsvg/}{./figures/svg/}{./figures/eps/}{./figures/pdf/}{./figures/png/}{./figures/latexpdf/}} 
  %% This is our fix for displayoperators in web format
  \usepackage{displayoperators}
 
@@ -177,10 +178,12 @@
     \renewcommand{\binom}[2]{\left(\begin{array}{c}{#1} \\ {#2}\end{array}\right)}
     \renewcommand{\displaylimits}{}
   }{}
+  \iftoggle{figures}{\usepackage{figurefix}}{}
+  \iftoggle{web}{\usepackage{webfix}}{}
  }
-}{}  
-\iftoggle{figures}{\usepackage{figurefix}}{}
-\iftoggle{web}{\usepackage{webfix}}{}
+ \iftoggle{web}{\usepackage{webprevent}}{}
+ \iftoggle{large}{\usepackage{largeprevent}}{} 
+}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Leave a blank line after this

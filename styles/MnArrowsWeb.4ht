@@ -1,0 +1,6 @@
+\NewConfigure{neswarrow}{1}
+\NewConfigure{nwsearrow}{1}
+\MathSymbol\mathop{neswarrow}
+\MathSymbol\mathop{nwsearrow}
+\Configure{neswarrow}{\x:unicode{02922}}
+\Configure{nwsearrow}{\x:unicode{02921}}

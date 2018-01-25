@@ -168,6 +168,8 @@ mtd.align-even{margin-right:2em; text-align:left;}
 mo.qopname + mi{margin-left:0.3em}
 mi + mo.qopname{margin-left:0.3em}
 .figure img.graphics {margin-left:10%;}
+div.shaded { background-color: AliceBlue; } 
+div.framed { background-color: Gainsboro; } 
 span.head { font-weight:bold; }
 /* end css.sty */
 

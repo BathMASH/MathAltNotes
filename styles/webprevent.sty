@@ -1,0 +1,12 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{webprevent}[2018/01/25]
+%% There are some packages we need to prevent loading
+%% as they don't make any sense in the web format
+%% https://tex.stackexchange.com/questions/39415/unload-a-latex-package
+\@namedef{ver@titlesec.sty}{}
+\@namedef{ver@cleveref.sty}{}
+\usepackage{notsoclever}
+\@namedef{ver@MnSymbol.sty}{}
+\usepackage{MnArrowsWeb}
+\@namedef{ver@framed.sty}{}
+\usepackage{fakeframed}
