@@ -18,6 +18,8 @@ cd $1
 
 for file in `find . -maxdepth 1 -name "*_tex" -type f`; do
 output=$(basename $file .pdf_tex).svg
+cp $file $file-lp
+sed -i 's/width=\\unitlength/width=\\textwidth,height=\\textheight,keepaspectratio/g' $file-lp
 
 make pdflatexfigures name=$file
 mv built/$file-figures.pdf figures/latexpdfsvg/

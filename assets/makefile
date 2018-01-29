@@ -18,7 +18,7 @@ pdflatexfigures:
 	mv $(name)-figures.pdf built/
 
 $(name)-cont.tex:
-	cp $(HOME)../../assets/macros.tex .
+	cp $(HOME)/../../assets/macros.tex .
 	$(HOME)/../preambleExtractions/extract < $(name).tex > $@
 
 $(name)-lp-cont.tex:
@@ -181,10 +181,10 @@ word: clean $(name)-cont.tex
 	rm fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.*
 
 clean:
-	rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot $(name)*x.png *.4ht *-lp1.tex fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.*
+	rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot $(name)*x.png *.4ht *-lp1.tex fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* 
 
 cleanlatex:
-	rm *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp.tex
+	rm *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp.tex *-figures.tex *_tex-lp
 
 cleanfigures: 
 	rm -f ./figures/svg/*.pdf

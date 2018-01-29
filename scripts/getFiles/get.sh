@@ -32,36 +32,43 @@ dir=$(dirname "$1")
 cd $dir
 mkjobtexmf --jobname $name --destdir=files --copy --exclude-ext aux,log,toc
 mv $name.fls $home/../../$tmpname/
-cd files
-rm -r texmf
-for i in `find . -name "*.tex" -type f`; do
-mv $i $home/../../$tmpname/
-done
-for i in `find . -name "*.sty" -type f`; do
-mv $i $home/../../$tmpname/
-echo "Your project includes a style file $i. It is possible that the transformations will fail. Please ask ma-largeprintnotes@bath.ac.uk for help.";
-done
-for i in `find . -name "*_tex" -type f`; do
-mv $i $home/../../$tmpname/
-mv $(basename "$i" .pdf_tex).pdf $home/../../$tmpname/figures/latexpdf/
-done
-for i in `find . -name "*.eps" -type f`; do
-mv $i $home/../../$tmpname/figures/eps/
-done
-for i in `find . -name "*-eps-converted-to.pdf" -type f`; do
-rm $i
-done
-for i in `find . -name "*.pdf" -type f`; do
-mv $i $home/../../$tmpname/figures/pdf/
-done
-for i in `find . -name "*.png" -type f`; do
-mv $i $home/../../$tmpname/figures/png/
-done
-for i in `find . -name "*.svg" -type f`; do
-mv $i $home/../../$tmpname/figures/svg/
-done
-for i in `find . -type f`; do
-echo "I don't know what to do with $i. Please ask ma-largeprintnotes@bath.ac.uk for help.";
-done
-cd ..
-rm -r files
+if [ -d files ]; then
+    cd files
+    rm -r texmf
+    for i in `find . -name "*.tex" -type f`; do
+	mv $i $home/../../$tmpname/
+    done
+    for i in `find . -name "*.sty" -type f`; do
+	mv $i $home/../../$tmpname/
+	echo "Your project includes a style file $i. It is possible that the transformations will fail. Please ask ma-largeprintnotes@bath.ac.uk for help.";
+    done
+    for i in `find . -name "*_tex" -type f`; do
+	mv $i $home/../../$tmpname/
+	mv $(basename "$i" .pdf_tex).pdf $home/../../$tmpname/figures/latexpdf/
+    done
+    for i in `find . -name "*.eps" -type f`; do
+	mv $i $home/../../$tmpname/figures/eps/
+    done
+    for i in `find . -name "*-eps-converted-to.pdf" -type f`; do
+	rm $i
+    done
+    for i in `find . -name "*.pdf" -type f`; do
+	mv $i $home/../../$tmpname/figures/pdf/
+    done
+    for i in `find . -name "*.png" -type f`; do
+	mv $i $home/../../$tmpname/figures/png/
+    done
+    for i in `find . -name "*.svg" -type f`; do
+	mv $i $home/../../$tmpname/figures/svg/
+    done
+    for i in `find . -type f`; do
+	echo "I don't know what to do with $i. Please ask ma-largeprintnotes@bath.ac.uk for help.";
+    done
+    cd ..
+    rm -r files
+else
+    echo "I was unable to extract the files used by $name.tex."
+    echo "Make sure that this is the LaTeX file which contains the documentclass command."
+    echo "Make sure that you can compile the document using pdflatex $name.tex"
+    echo "If you don't know what is wrong contact ma-largeprintnotes@bath.ac.uk for help."
+fi

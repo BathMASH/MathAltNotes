@@ -56,7 +56,7 @@ tabuend "\\end"{lb}("tabular"|"longtable"){rb}
 
 "\\verb" printf("\\spverb"); matchverbchar(); 
 
-("\\input"{lb})(.*)/("_tex") ECHO;
+ /*("\\input"{lb})(.*)/("_tex") ECHO;*/
 ("\\input"{lb}) ECHO; yy_push_state(INPUT);
 <INPUT>{rb} printf("-lp"); ECHO; yy_pop_state();
 
@@ -146,9 +146,11 @@ tabuend "\\end"{lb}("tabular"|"longtable"){rb}
  /* graphics */
 "\\setlength{\\unitlength}{"(.*)"}" ECHO; if (normalsize > 14) printf("\\setlength{\\unitlength}{%lfpt}",factor); else ECHO;
 "\\includegraphics" if(normalsize > 14) {printf("\\centering"); ECHO; yy_push_state(GRAPHICS);} else ECHO;
-<GRAPHICS>"angle"[[:blank:]]*"="[[:blank:]]*"0" if(normalsize > 14) printf("angle=90"); else ECHO;
-<GRAPHICS>"\\textwidth" if(normalsize > 14) printf("\\textheight * \\real{0.9},"); else ECHO;
+ /*<GRAPHICS>"angle"[[:blank:]]*"="[[:blank:]]*"0" if(normalsize > 14) printf("angle=90"); else ECHO; */
+ /*<GRAPHICS>"\\textwidth" if(normalsize > 14) printf("\\textheight * \\real{0.9},height=\\textwidth * \\real{0.9},angle=90,keepaspectratio,"); else ECHO;*/
+<GRAPHICS>"\\textwidth" if(normalsize > 14) printf("\\textwidth,height=\\textheigth,keepaspectratio,"); else ECHO;
 <GRAPHICS>"]" ECHO; yy_pop_state();
+<GRAPHICS>{lb} if(normalsize > 14) printf("[width=\\textwidth,height=\\textheight,keepaspectratio,]"); ECHO; yy_pop_state();
 "\\begin"{lb}"picture"{rb} if(normalsize > 14) {printf("\\begin{center}\\rotatebox{90}{"); ECHO;} else ECHO;
 "\\end"{lb}"picture"{rb} if(normalsize > 14) {ECHO; printf("}\\end{center}");} else ECHO; 
 
