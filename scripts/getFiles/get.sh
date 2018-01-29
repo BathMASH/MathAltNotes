@@ -23,6 +23,7 @@ mkdir $home/../../$tmpname/figures/latexpdfsvg
 mkdir $home/../../$tmpname/figures/eps/
 mkdir $home/../../$tmpname/figures/pdf/
 mkdir $home/../../$tmpname/figures/png/
+mkdir $home/../../$tmpname/figures/jpg/
 mkdir $home/../../$tmpname/figures/svg/
 cp $home/../../assets/makefile $home/../../$tmpname/
 cp $home/../../assets/empty.tex $home/../../$tmpname/
@@ -58,11 +59,15 @@ if [ -d files ]; then
     for i in `find . -name "*.png" -type f`; do
 	mv $i $home/../../$tmpname/figures/png/
     done
+    for i in `find . -name "*.jpg" -type f`; do
+	mv $i $home/../../$tmpname/figures/jpg/
+    done
     for i in `find . -name "*.svg" -type f`; do
 	mv $i $home/../../$tmpname/figures/svg/
     done
     for i in `find . -type f`; do
-	echo "I don't know what to do with $i. Please ask ma-largeprintnotes@bath.ac.uk for help.";
+	echo "I don't know what to do with $i. Please ask ma-largeprintnotes@bath.ac.uk";
+	echo "for help if this seems to prevent the alternative formats compiling.";
     done
     cd ..
     rm -r files

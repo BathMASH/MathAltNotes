@@ -118,6 +118,7 @@ web: clean $(name)-cont.tex
 	mkdir built/$(name)-web/figures/latexpdfsvg/
 	mkdir built/$(name)-web/figures/pdf/
 	mkdir built/$(name)-web/figures/png/
+	mkdir built/$(name)-web/figures/jpg/
 	mkdir built/$(name)-web/figures/svg/
 	mv *.html built/$(name)-web/
 	cp $(HOME)/../../assets/additional.css built/$(name)-web/
@@ -126,6 +127,7 @@ web: clean $(name)-cont.tex
 	if ls ./figures/latexpdfsvg/*.svg 1> /dev/null 2>&1; then cp ./figures/latexpdfsvg/*.svg built/$(name)-web/figures/latexpdfsvg/; fi
 	if ls ./figures/pdf/*.svg 1> /dev/null 2>&1; then cp ./figures/pdf/*.svg built/$(name)-web/figures/pdf/; fi
 	if ls ./figures/png/*.png 1> /dev/null 2>&1; then cp ./figures/png/*.svg built/$(name)-web/figures/png/; fi
+	if ls ./figures/jpg/*.jpg 1> /dev/null 2>&1; then cp ./figures/jpg/*.svg built/$(name)-web/figures/jpg/; fi
 	if ls ./figures/svg/*.svg 1> /dev/null 2>&1; then cp ./figures/svg/*.svg built/$(name)-web/figures/svg/; fi
 	cd built; [ ! -f $(name)-web.zip ] || rm -f $(name)-web.zip; zip -r $(name)-web.zip $(name)-web; cd ..
 #Tidy up a bit
