@@ -70,7 +70,7 @@
 %% method as this will produce a single zip containing
 %% the web format for you. 
 \input{toggle.tex}
-\input{./master/choices.tex}
+\input{choices.tex}
 %% If you are NOT using the make file you may 
 %% uncomment one of the below:
 %%
@@ -84,6 +84,14 @@
 %% make file for commands to run: 
 %\togglefalse{clearprint}\toggletrue{web}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Graphicx must be loaded whether used or not as 
+%% TeX4ht compilation expects it.
+%% This is incompatible with some ways of making diagrams
+\usepackage{graphicx}
+%% Due to the processing requirements of graphics we have
+%% set up a directory structure that must be used
+\graphicspath{{./figures/latexpdfsvg/}{./figures/svg/}{./figures/eps/}{./figures/pdf/}{./figures/png/}{./figures/latexpdf/}} 
 
 \ifboolexpr{togl {clearprint} or togl {web}}{
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -100,11 +108,6 @@
   }
  \usepackage{amsmath,amssymb,amsfonts,amsthm}
  \usepackage{hyperref}
- %% Graphicx must be loaded whether used or not as 
- %% TeX4ht compilation expects it.
- %% This is incompatible with some ways of making diagrams
- \usepackage{graphicx}
- \graphicspath{{./figures/latexpdfsvg/}{./figures/svg/}{./figures/eps/}{./figures/pdf/}{./figures/png/}{./figures/latexpdf/}} 
  %% This is our fix for displayoperators in web format
  \usepackage{displayoperators}
 

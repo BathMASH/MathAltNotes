@@ -8,6 +8,8 @@ int sections = 0;
 whitespace (" "|\t|(\r?\n))
 lb ([[:blank:]])*"{"([[:blank:]])*
 rb ([[:blank:]])*"}"
+ls ([[:blank:]])*"["([[:blank:]])*
+rs ([[:blank:]])*"]"
 docclass "\\documentclass"
 title "\\title"
 author "\\author"
@@ -17,7 +19,7 @@ subsection "\\subsection"
 subsubsection "\\subsubsection"
 end "\\end{document}"
 
-%x CLASS SECTIONS
+%x INPUT INCLUDE CLASS SECTIONS
 %%
 
 {docclass} printf("%%"); ECHO; yy_push_state(CLASS);
@@ -26,6 +28,17 @@ end "\\end{document}"
 {title} ECHO; title = 1;
 {author} ECHO; author = 1;
 ({chapter}|{section}|{subsection}|{subsubsection}) ECHO; sections = 1;
+
+("\\input") ECHO; yy_push_state(INPUT);
+<INPUT>{lb}(.*)/("/") printf("{");
+<INPUT>"/"
+<INPUT>{rb} ECHO; yy_pop_state();
+
+("\\includegraphics") ECHO; yy_push_state(INCLUDE);
+<INCLUDE>{ls}(.*){rs} ECHO; 
+<INCLUDE>{lb}(.*)/("/") printf("{");
+<INCLUDE>"/"
+<INCLUDE>{rb} ECHO; yy_pop_state();
 
 {end} ECHO; choices();
 
@@ -36,7 +49,7 @@ end "\\end{document}"
 
 int choices(){
   FILE *output;
-  output = fopen("./master/choices.tex","w");
+  output = fopen("choices.tex","w");
   if(output == NULL){
     fprintf(stderr, "Can't open choices file\n");
     exit(1);
