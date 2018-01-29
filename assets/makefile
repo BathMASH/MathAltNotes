@@ -18,6 +18,7 @@ pdflatexfigures:
 	mv $(name)-figures.pdf built/
 
 $(name)-cont.tex:
+	cp $(HOME)../../assets/macros.tex .
 	$(HOME)/../preambleExtractions/extract < $(name).tex > $@
 
 $(name)-lp-cont.tex:
@@ -73,7 +74,6 @@ large: clean $(name)-lp-cont.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	mv $(name)-large.pdf built/
-	rm *-lp1.tex 
 	rm fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.*
 
 #We require some additional files for everything to work. 
