@@ -27,13 +27,8 @@
 %% searched, copied and pasted in the PDF output. Also 
 %% enables hyphenation of words containing letters 
 %% with accents.
-%%
-%% Note, you should have cm-super installed otherwise
-%% computer modern fonts will be bitmaps. 
-%% Or, load lmodern.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% This is the master for 3 document formats.
@@ -85,6 +80,16 @@
 %\togglefalse{clearprint}\toggletrue{web}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\iftoggle{large}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Note, you should have cm-super installed otherwise
+%% computer modern fonts will be bitmaps. 
+%% Or, load lmodern.
+%% We cannot use lmodern with 14pt, 17pt or 20pt
+%% as large symbols are incorrectly sized
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}{\usepackage{lmodern}}
+
 %% Graphicx must be loaded whether used or not as 
 %% TeX4ht compilation expects it.
 %% This is incompatible with some ways of making diagrams
@@ -110,6 +115,7 @@
  \usepackage{hyperref}
  %% This is our fix for displayoperators in web format
  \usepackage{displayoperators}
+ \iftoggle{large}{\usepackage{lscape}}
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %% Clear print set up
@@ -125,6 +131,7 @@
  \renewcommand{\textit}{\textbf}
  \renewcommand{\emph}{\textbf}
  \renewcommand{\it}{\bf }
+ \renewcommand{\itshape}{}
 
  %% Additional spacing - may not be honoured in 
  %% web version
@@ -137,17 +144,20 @@
  \renewcommand{\;}{\,}
  \sloppy
  \allowdisplaybreaks
- \newtheoremstyle{plain}{20pt}{3pt}{}{}{\bfseries}{.\newline}{1.0em}{}
- \newtheoremstyle{definition}{20pt}{3pt}{}{}{\bfseries}{.\newline}{1.0em}{}
- \newtheoremstyle{remark}{20pt}{3pt}{}{}{\bfseries}{.\newline}{1.0em}{}
+ \newtheoremstyle{plain}{20pt}{3pt}{}{}{\bfseries}{.\newline\nobreak}{1.0em\nobreak}{}
+ \newtheoremstyle{definition}{20pt}{3pt}{}{}{\bfseries}{.\newline\nobreak}{1.0em\nobreak}{}
+ \newtheoremstyle{remark}{20pt}{3pt}{}{}{\bfseries}{.\newline\nobreak}{1.0em\nobreak}{}
  \newenvironment{Proof}
   {\noindent{\bf Proof.}\hspace*{1em}}% Begin
   {\qed\par}% End
  %% When redefining an environment it is vital that it has 
  %% the same number of arguments as the original
  \renewenvironment{proof}[1][\proofname]
-  {\noindent{\bf {#1}.}\hspace*{1em}}% Begin
-  {\qed\par}% End
+  {\trivlist\item\relax\noindent{\bf {#1}.}\hspace*{1em}}% Begin
+  {\qed\endtrivlist}% End
+ %% Do the least you can, this should preserve more of proof
+ %%\let\oldproofname=\proofname
+ %%\renewcommand{\proofname}{\rm\bf{\oldproofname}}
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %% Commands used to provide alternative text for 
@@ -183,6 +193,9 @@
   }{}
   \iftoggle{figures}{\usepackage{figurefix}}{}
   \iftoggle{web}{\usepackage{webfix}}{}
+  \iftoggle{clearprint}{\newcommand{\scalefactor}{1.1}}{}
+  \iftoggle{large}{\renewcommand{\scalefactor}{1.4}}{}
+  \ifboolexpr{togl {clearprint} or togl {large}}{\usepackage{fontfix}}{}
  }
  \iftoggle{web}{\usepackage{webprevent}}{}
  \iftoggle{large}{\usepackage{largeprevent}}{} 

@@ -3,13 +3,15 @@
 name=empty
 LATEX=pdflatex
 HOME=$(shell cat .home)
+TYPE=$(shell cat .documentclass)
+SIZE=$(shell cat .fontsize)
 
 all: standard clear figures large web word
 
 pdflatexfigures:
 	mkdir -p built
 	[ ! -f $(name)-figures.tex ] || rm -f $(name)-figures.tex
-	echo "\\\\def\pointsize{12pt}\\\\def\\\\class{article}\\\\input{master}\\\\usepackage{color}\\\\thispagestyle{empty}\\\\togglefalse{frontmatter}\\\\togglefalse{contents}\\\\begin{document}\\\\input{$(name)}\\\\end{document}" > $(name)-figures.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\usepackage{color}\\\\thispagestyle{empty}\\\\togglefalse{frontmatter}\\\\togglefalse{contents}\\\\begin{document}\\\\input{$(name)}\\\\end{document}" > $(name)-figures.tex
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}" > toggle.tex
 	$(LATEX) $(name)-figures.tex 
@@ -36,7 +38,7 @@ standard: clean $(name)-cont.tex
 #In this example we have a SVG but need a PDF for the LaTeX to work with.
 	echo "\\\\togglefalse{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-standard.tex ] || rm -f $(name)-standard.tex
-	echo "\\\\input{master}\\\\input{$(name)-cont}" > $(name)-standard.tex
+	echo "\\\\def\\\\pointsize{$(SIZE)}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-standard.tex
 #https://tex.stackexchange.com/questions/611/setting-class-options-after-documentclass/617
 	$(LATEX) $(name)-standard.tex
 	$(LATEX) $(name)-standard.tex
@@ -44,7 +46,7 @@ standard: clean $(name)-cont.tex
 #We can't change the jobname to get different filenames that way as this does not work with some packages
 #we will need to use for graphics in this set up. 
 	mv $(name)-standard.pdf built/
-	rm fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.*
+	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.*
 
 #This will be the same except for the toggles and name.
 clear: clean $(name)-cont.tex
@@ -54,12 +56,12 @@ clear: clean $(name)-cont.tex
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-clear.tex ] || rm -f $(name)-clear.tex
-	echo "\\\\def\pointsize{12pt}\\\\def\\\\class{article}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-clear.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	mv $(name)-clear.pdf built/
-	rm fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.*
+	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.*
 
 #This will be the same except for the toggles and name.
 large: clean $(name)-lp-cont.tex
@@ -69,18 +71,19 @@ large: clean $(name)-lp-cont.tex
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{large}" > toggle.tex
 	[ ! -f $(name)-large.tex ] || rm -f $(name)-large.tex
-	echo "\\\\def\pointsize{17pt}\\\\def\\\\class{extarticle}\\\\input{master}\\\\input{$(name)-lp-cont}" > $(name)-large.tex
+	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{ext$(TYPE)}\\\\input{master}\\\\input{$(name)-lp-cont}" > $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	mv $(name)-large.pdf built/
-	rm fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.*
+	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.*
 
 #We require some additional files for everything to work. 
 web: clean $(name)-cont.tex 
 	mkdir -p built
 #Copy required files to where they are needed
 	cp $(HOME)/../../styles/* . 
+	cp $(HOME)/../../fonts/* .
 	cp $(HOME)/../../assets/mathml.4ht .
 	cp $(HOME)/../../assets/unicode.4hf .
 	cp $(HOME)/../../assets/mathjaxMMLWord.cfg .
@@ -90,7 +93,7 @@ web: clean $(name)-cont.tex
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-web.tex ] || rm -f $(name)-web.tex
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-web.tex
 	$(LATEX) -shell-escape $(name)-web.tex
 #Convert the rest of the figures
 	cd figures/eps/; $(HOME)/../graphicx/eps-converted2svg.sh ./; cd ../..
@@ -103,7 +106,7 @@ web: clean $(name)-cont.tex
 #Note, yes this does run latex 6 times! It is a reported bug: https://puszcza.gnu.org.ua/bugs/index.php?197
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
 	[ ! -f $(name)-web.tex ] || rm -f $(name)-web.tex
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-web.tex
 	htlatex  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 	htlatex  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
@@ -126,21 +129,23 @@ web: clean $(name)-cont.tex
 	if ls ./figures/eps/*.svg 1> /dev/null 2>&1; then cp ./figures/eps/*.svg built/$(name)-web/figures/eps/; fi
 	if ls ./figures/latexpdfsvg/*.svg 1> /dev/null 2>&1; then cp ./figures/latexpdfsvg/*.svg built/$(name)-web/figures/latexpdfsvg/; fi
 	if ls ./figures/pdf/*.svg 1> /dev/null 2>&1; then cp ./figures/pdf/*.svg built/$(name)-web/figures/pdf/; fi
-	if ls ./figures/png/*.png 1> /dev/null 2>&1; then cp ./figures/png/*.svg built/$(name)-web/figures/png/; fi
-	if ls ./figures/jpg/*.jpg 1> /dev/null 2>&1; then cp ./figures/jpg/*.svg built/$(name)-web/figures/jpg/; fi
+	if ls ./figures/png/*.png 1> /dev/null 2>&1; then cp ./figures/png/*.png built/$(name)-web/figures/png/; fi
+	if ls ./figures/jpg/*.jpg 1> /dev/null 2>&1; then cp ./figures/jpg/*.jpg built/$(name)-web/figures/jpg/; fi
 	if ls ./figures/svg/*.svg 1> /dev/null 2>&1; then cp ./figures/svg/*.svg built/$(name)-web/figures/svg/; fi
 	cd built; [ ! -f $(name)-web.zip ] || rm -f $(name)-web.zip; zip -r $(name)-web.zip $(name)-web; cd ..
 #Tidy up a bit
 	rm mathml.4ht
 	rm unicode.4hf
 	rm mathjaxMMLWord.cfg
-	rm fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.*
+	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.* stmaryrd.4ht
+	rm *.htf
 
 #To transform to Word we need to use the web transform but without breaking into sections and then use Pandoc 19+
 word: clean $(name)-cont.tex
 	mkdir -p built 
 #Copy some files to where we need them
 	cp $(HOME)/../../styles/* . 
+	cp $(HOME)/../../fonts/* .
 	cp $(HOME)/../../assets/mathml.4ht .
 	cp $(HOME)/../../assets/unicode.4hf .
 	cp $(HOME)/../../assets/mathjaxMMLWord.cfg .
@@ -151,7 +156,7 @@ word: clean $(name)-cont.tex
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-word.tex
 	$(LATEX) -shell-escape $(name)-word.tex
 	cd figures/eps/; $(HOME)/../graphicx/eps-converted2svg.sh ./; cd ../..
 	cd figures/pdf/; $(HOME)/../graphicx/pdftosvg.sh ./; cd ../..
@@ -160,7 +165,7 @@ word: clean $(name)-cont.tex
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-word.tex
 #htlatex needs to run twice to prevent disruption to the sectioning tree caused by e.g. footnotes
 #Note, yes this does run latex 6 times! It is a reported bug: https://puszcza.gnu.org.ua/bugs/index.php?197
 #Note that we are not breaking into sections for the Word transform
@@ -180,13 +185,14 @@ word: clean $(name)-cont.tex
 	rm unicode.4hf
 	rm mathjaxMMLWord.cfg
 	rm additional.css
-	rm fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.*
+	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.* stmaryrd.4ht
+	rm *.htf
 
 clean:
-	rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot $(name)*x.png *.4ht *-lp1.tex fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* 
+	rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot $(name)*x.png *.4ht *-lp1.tex fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* *.tmp2
 
 cleanlatex:
-	rm *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp.tex *-figures.tex *_tex-lp
+	rm *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp.tex *-figures.tex *_tex-lp macros.tex
 
 cleanfigures: 
 	rm -f ./figures/svg/*.pdf

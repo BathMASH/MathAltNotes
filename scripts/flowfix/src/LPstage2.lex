@@ -1,7 +1,7 @@
 %option stack
 %{
-int normalsize = 20;
-double factor = 1.6;
+int normalsize = 17;
+double factor = 1.4;
 double cols = 0.8;
 double margins = 2.5;
 double lines = 1.25;
@@ -9,6 +9,7 @@ double mathlines = 1.25;
 char pagesize[7];
 int breqn = 1;
 int font = 0;
+int bracketmatch = 0;
 %}
 whitespace (" "|\t|(\r?\n))
 alpha ([A-Za-z])
@@ -32,16 +33,29 @@ dgroupstart "\\begin"{lb}(("eqnarray"|"align"|"flalign"){rb}|("alignat"{rb}{lb}(
 dgroupend "\\end"{lb}("eqnarray"|"align"|"flalign"|"alignat"|"gather"){rb}
 arraystart ("\\begin"{lb}("array"){rb}{lb}|"\\begin"{lb}("matrix"|"pmatrix"|"bmatrix"|"Bmatrix"|"vmatrix"|"Vmatrix"|"smallmatrix"){rb}) 
 arrayend "\\end"{lb}("array"|"matrix"|"pmatrix"|"bmatrix"|"Bmatrix"|"vmatrix"|"Vmatrix"|"smallmatrix"){rb}
-tablestart "\\begin"{lb}("table"){rb}
+tablestart "\\begin"{lb}("table"){rb}("["*)(.*)("]"*)
 tableend "\\end"{lb}("table"){rb}
 tabustart "\\begin"{lb}("tabular"|"longtable"){rb}
 tabuend "\\end"{lb}("tabular"|"longtable"){rb}
+tabularxstart "\\begin"{lb}("tabularx"|"tabu"|"largetabular"){rb}
+tabularxend "\\end"{lb}("tabularx"|"tabu"|"largetabular"){rb}
+newenvironment "\\newenvironment"
 
-%x INPUT CLASS DMATH DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS
-%s REMOVE KEEP TABLE 
+%x COMMENT INPUT CLASS DMATH DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS TABULARX CAPTION NEWENVIR
+%s REMOVE KEEP TABLE
 %%
 
 ("$"|"\\$") ECHO; /* protect */
+
+ /*We need to ensure that comments are not processed */
+("%")* ECHO; yy_push_state(COMMENT);
+<COMMENT>("%") ECHO;
+<COMMENT>(\r?\n) ECHO; yy_pop_state();
+
+ /* Protect newenvironments until we know otherwise */
+{newenvironment} ECHO; yy_push_state(NEWENVIR); yy_push_state(NEWENVIR);
+<NEWENVIR>{lb} ECHO; bracketmatch++; 
+<NEWENVIR>{rb} ECHO; bracketmatch--; if(bracketmatch==0) yy_pop_state();
 
 {packages} ECHO; yy_push_state(PACKAGES);
 <PACKAGES>("spverbatim") ECHO;
@@ -129,19 +143,27 @@ tabuend "\\end"{lb}("tabular"|"longtable"){rb}
 <LABEL>(([^"}"]*)) printf(",label="); ECHO; 
 
  /* tables - we need to use longtabu and this ASSUMES there is a newline at the end of the tabular argument */
-{tablestart} ECHO; yy_push_state(TABLE);
+ /* Working on the assumption that if you used tabularx it was because you have a hideous wide table */
+ /* We can't allow the table construct as longtabu doesn't do its job then */
+{tablestart} yy_push_state(TABLE);
+{tabularxstart} printf("\\newpage\\begin{landscape}\n\\begin{longtabu} to \\linewidth"); yy_push_state(TABULARX); yy_push_state(TABU);
 {tabustart} printf("\\begin{longtabu} to \\textwidth"); yy_push_state(TABU);
+<TABU>(("to")(([^"}"]*)))/("{") 
+<TABU>("{\\linewidth}"|"{\\textwidth}")
 <TABU>("@{"([^"}""{"]*)) ECHO; yy_push_state(KEEP); 
-<TABU>("p{"([^"}""{"]*)) printf("X"); yy_push_state(REMOVE);
-<TABU>("c"|"l"|"r") printf("X");
-<TABU>("}"(\r?\n)) printf("}\n"); yy_pop_state();
+<TABU>("p{"([^"}""{"]*)) printf("X[p]"); yy_push_state(REMOVE);
+<TABU>("c"|"l"|"r") printf("X["); ECHO; printf("]");
+<TABU>("X") printf("X");
+<TABU>("}"({whitespace}*)(\r?\n)) printf("}\n"); yy_pop_state();
   /* Only use to keep/remove a single brace that is immediately after the current matched text that does not contain a brace */
 <KEEP>"}" ECHO; yy_pop_state();
 <REMOVE>"}" yy_pop_state();
 
 {tabuend} printf("\\end{longtabu}\n"); /*if (YY_START != TABLE) printf("\\end{longtabu}\n");*/
-<TABLE>"\\caption"{lb}(.*){rb} ECHO; /*printf("\\end{longtabu}\n");*/ 
-<TABLE>{tableend} ECHO; yy_pop_state();
+<TABLE>"\\caption" printf("Table caption: "); yy_push_state(CAPTION);/*<TABLE>"\\caption"{lb}(.*){rb} ECHO;*/ 
+<CAPTION>("{"(.*))/"}" ECHO; printf("}\\addcontentsline{lot}{table}"); ECHO; printf("\\protect"); yy_pop_state();
+<TABLE>{tableend} yy_pop_state();
+<TABULARX>{tabularxend} printf("\\end{longtabu}\\end{landscape}\n"); yy_pop_state();
 
  /* graphics */
 "\\setlength{\\unitlength}{"(.*)"}" ECHO; if (normalsize > 14) printf("\\setlength{\\unitlength}{%lfpt}",factor); else ECHO;

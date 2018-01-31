@@ -1,0 +1,3 @@
+\Configure{endpar}
+{\ifvmode\IgnorePar\fi\EndP}{\EndP\IgnorePar\ShowPar\par}
+

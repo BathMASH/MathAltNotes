@@ -30,7 +30,7 @@ mathsend "\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|
 <MATHS>"\\\\"/(({whitespace})*"\\intertext")
 <MATHS>("\\intertext"){lb} ECHO; yy_push_state(INTER);
 <MATHS>("\\\\")/({whitespace})*(\r?\n) ECHO; printf("\n");
-<MATHS>(\r?\n) printf(" ");
+<MATHS,INTER,KEEP>(\r?\n) printf(" ");
 <MATHS>{mathsend} ECHO; yy_pop_state();
 
  /* Have newline, intertext, no new line; need no newline, intertext, endmarker */
