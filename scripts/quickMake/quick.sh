@@ -22,12 +22,16 @@ name=$(basename "$file" .fls)
 echo "The name of the main LaTeX file found is: $name"
 make standard name=$name
 make clean
+make cleanlatex
 make clear name=$name
 make clean
+make cleanlatex
 make large name=$name
 make clean
+make cleanlatex
 make web name=$name
 make clean
+make cleanlatex
 make word name=$name
 make clean
 make cleanlatex

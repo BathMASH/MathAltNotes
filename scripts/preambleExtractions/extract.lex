@@ -49,7 +49,7 @@ pictureend "\\end"{lb}"picture"{rb}
  /*We need to ensure that comments are not processed */
 ("%")* ECHO; yy_push_state(COMMENT);
 <COMMENT>("%") ECHO;
-<COMMENT>(\r?\n) ECHO; yy_pop_state();
+<COMMENT>(\r?\n) printf("\n"); yy_pop_state();
 
 {standardonly} printf("\\ifboolexpr{togl {clearprint} or togl {large}}{}{"); ECHO; printf("}\n");
 
@@ -151,6 +151,7 @@ int getcolor(){
 }
 
 int choices(){
+  int size = 0;
   FILE *output;
   FILE *typeout;
   FILE *sizeout;
@@ -183,6 +184,7 @@ int choices(){
     fprintf(output,"\\toggletrue{contents}");
   else
     fprintf(output,"\\togglefalse{contents}");
+  
   if(article == 1 || extarticle == 1)
     fprintf(typeout,"article");
   if(report == 1 || extreport == 1)

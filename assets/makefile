@@ -23,6 +23,7 @@ $(name)-cont.tex:
 	$(HOME)/../preambleExtractions/extract.sh ./
 
 $(name)-lp-cont.tex:
+	cp $(HOME)/../../assets/macros.tex .
 	$(HOME)/../flowfix/flowfix.sh ./
 	$(HOME)/../preambleExtractions/extract.sh ./
 
@@ -67,7 +68,7 @@ endif
 	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.*
 
 #This will be the same except for the toggles and name.
-large: clean $(name)-cont.tex $(name)-lp-cont.tex
+large: clean $(name)-lp-cont.tex
 	mkdir -p built
 	cp $(HOME)/../../styles/* . 
 	cd figures/svg/; $(HOME)/../graphicx/svgtopdf.sh ./; cd ../..
@@ -213,10 +214,10 @@ endif
 	rm *.htf
 
 clean:
-	rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot $(name)*x.png *.4ht *-lp1.tex fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* *.tmp2 *.nav *.snm
+	rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot $(name)*x.png *.4ht *-lp1 fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* *.tmp2 *.nav *.snm 
 
 cleanlatex:
-	rm *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp.tex *-figures.tex *_tex-lp macros.tex
+	rm *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp.tex *-figures.tex *_tex-lp macros.tex 
 
 cleanfigures: 
 	rm -f ./figures/svg/*.pdf
