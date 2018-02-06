@@ -1,0 +1,18 @@
+%http://tug.org/pipermail/tex4ht/2010q4/000245.html
+
+%% \makeatletter
+%%  \let\savecolor\color
+%%  \NewConfigure{color}[2]{\def\a at color{#1}\def\b at color{#2}}
+%%  \def\@@tmp#1{\a at color#1\b at color\savecolor{#1}\aftergroup\endspan}
+%%  \let\color\@@tmp
+%%  \def\endspan{\Tg</span>}
+%%  \Configure{color}{\HCode{<span style="color:}}{\HCode{;">}}
+%% \makeatother
+
+\makeatletter
+ \let\savecolor\textcolor
+ \NewConfigure{textcolor}[2]{\def\a at textcolor{#1}\def\b at textcolor{#2}}
+ \def\@@tmp#1#2{\a at textcolor\HCode{#1}\b at textcolor{#2}\HCode{</\ifmathml mstyle\else span\fi>}}
+ \let\textcolor\@@tmp
+ \Configure{textcolor}{\HCode{<\ifmathml mstyle\else span\fi\space style="color:}}{\HCode{;">}}
+\makeatother

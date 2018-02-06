@@ -9,7 +9,9 @@
 \providecommand{\pointsize}{12pt}
 \providecommand{\papersize}{a4paper}
 \providecommand{\class}{article}
-\documentclass[\pointsize,\papersize]{\class}
+\providecommand{\beamerslides}{}
+\providecommand{\beamerhandout}{}
+\documentclass[\pointsize,\papersize,\beamerhandout]{\class}
 %% https://tex.stackexchange.com/questions/95701/syntax-error-when-using-tex4ht-on-latex-file-that-uses-the-standalone-package
 %% http://tug.org/pipermail/tex4ht/2016q1/001343.html
 %\usepackage[subpreambles=true,obeyclassoptions=false]{standalone}
@@ -79,6 +81,19 @@
 %% make file for commands to run: 
 %\togglefalse{clearprint}\toggletrue{web}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Are these a web or word version of beamer slides?
+\ifdefstring{\beamerslides}{true}{\usepackage[notheorems,hyperref]{beamerarticle}}{}
+
+%% Beamer with below settings already meets requirements
+%% for clear and large print
+\ifdefstring{\class}{beamer}{
+\togglefalse{clearprint}
+\togglefalse{large}
+\usefonttheme{default}
+\usefonttheme[onlymath]{serif}
+\usepackage{beamerfix}
+}{}
 
 \iftoggle{large}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -159,6 +174,15 @@
  %%\let\oldproofname=\proofname
  %%\renewcommand{\proofname}{\rm\bf{\oldproofname}}
 
+ \ifdefstring{\beamerslides}{true}{
+  \newtheorem*{example}{Example}
+  \newtheorem*{definition}{Definition}
+  \newtheorem*{corollary}{Corollary}
+  \newtheorem*{lemma}{Lemma}
+  \newtheorem*{theorem}{Theorem}
+  \newtheorem*{notes}{Note}
+ }{}
+
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %% Commands used to provide alternative text for 
  %% diagrams for a screenreader user.
@@ -178,6 +202,7 @@
  \title{Please set a title for these notes or toggle frontmatter off if a title is inappropriate}
  \author{Please set an author for these notes or toggle frontmatter off if a title is inappropriate}
  \date{Please set a date for these notes or toggle frontmatter off if a title is inappropriate}
+ \ifdefstring{\beamerslides}{true}{\date{}}{}
  \AfterEndPreamble{
   \iftoggle{frontmatter}{\maketitle\newpage}{}
   \iftoggle{contents}{\tableofcontents\listoffigures\listoftables\renewcommand{\tableofcontents}{}\renewcommand{\listoffigures}{}\renewcommand{\listoftables}{}\newpage}{}
@@ -185,6 +210,9 @@
   \setcounter{page}{1}
  }
  \AtEndPreamble{
+  \ifboolexpr{togl {clearprint} or togl {large}}{
+   \pretocmd{\section}{\ifnum\value{section}=0 \else\clearpage\fi}{}{}
+  }{}
   \iftoggle{web}{
     %% A mathjax bug is causing problems with \binom so we have to redefine it for now:
     \renewcommand{\dbinom}[2]{\textstyle\left(\begin{array}{c}{#1} \\ {#2}\end{array}\right)}
@@ -193,12 +221,25 @@
   }{}
   \iftoggle{figures}{\usepackage{figurefix}}{}
   \iftoggle{web}{\usepackage{webfix}}{}
+  \iftoggle{web}{\usepackage{colorfix}}{}
   \iftoggle{clearprint}{\newcommand{\scalefactor}{1.1}}{}
   \iftoggle{large}{\renewcommand{\scalefactor}{1.4}}{}
   \ifboolexpr{togl {clearprint} or togl {large}}{\usepackage{fontfix}}{}
+  \ifdefstring{\class}{beamer}{\usepackage{beamerfix}}{}
+  \ifdefstring{\beamerslides}{true}{\usepackage{beamerfix}}{}
  }
  \iftoggle{web}{\usepackage{webprevent}}{}
  \iftoggle{large}{\usepackage{largeprevent}}{} 
+
+ \ifdefstring{\beamerslides}{true}{
+  \mode<article>{\setbeamertemplate{frametitle}{%
+   \rule{\textwidth}{1pt}
+   \par
+   \section{\insertframetitle}
+   }
+  }
+ }{}
+
 }{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

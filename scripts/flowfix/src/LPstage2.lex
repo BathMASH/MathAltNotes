@@ -17,7 +17,9 @@ lb ([[:blank:]])*"{"([[:blank:]])*
 rb ([[:blank:]])*"}"
 packages ("\\usepackage")("["*)(.*)("]"*){lb}
 verbstart "\\begin"{lb}("verbatim"){rb}
-verbend "\\end"{lb}("verbatim"){rb}
+verbend "\\end"{lb}("tabbing"){rb}
+tabbingstart "\\begin"{lb}("tabbing"){rb}
+tabbingend "\\end"{lb}("verbatim"){rb}
 dmathstart "\\begin"{lb}("equation"){rb}
 dmathend "\\end"{lb}("equation"){rb}
 dmathstarstart ("$$"|"\\["|"\\begin"{lb}("equation*"|"displaymath"){rb})
@@ -41,7 +43,7 @@ tabularxstart "\\begin"{lb}("tabularx"|"tabu"|"largetabular"){rb}
 tabularxend "\\end"{lb}("tabularx"|"tabu"|"largetabular"){rb}
 newenvironment "\\newenvironment"
 
-%x COMMENT INPUT CLASS DMATH DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS TABULARX CAPTION NEWENVIR
+%x COMMENT INPUT CLASS DMATH DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS TABULARX CAPTION NEWENVIR TABBING
 %s REMOVE KEEP TABLE
 %%
 
@@ -69,6 +71,10 @@ newenvironment "\\newenvironment"
 <VERBATIM>{verbend} printf("\\end{spverbatim}"); yy_pop_state();
 
 "\\verb" printf("\\spverb"); matchverbchar(); 
+
+{tabbingstart} ECHO; yy_push_state(TABBING);
+<TABBING>(\r?\n) printf("\n"); /*Just in case*/
+<TABBING>{tabbingend} ECHO; yy_pop_state();
 
  /*("\\input"{lb})(.*)/("_tex") ECHO;*/
 ("\\input"{lb}) ECHO; yy_push_state(INPUT);
@@ -165,16 +171,16 @@ newenvironment "\\newenvironment"
 <TABLE>{tableend} yy_pop_state();
 <TABULARX>{tabularxend} printf("\\end{longtabu}\\end{landscape}\n"); yy_pop_state();
 
- /* graphics */
-"\\setlength{\\unitlength}{"(.*)"}" ECHO; if (normalsize > 14) printf("\\setlength{\\unitlength}{%lfpt}",factor); else ECHO;
+ /* graphics removed ECHO before if on the next line - is this right?*/
+"\\setlength{\\unitlength}{"(.*)"}" ECHO; /*if (normalsize > 14) printf("\\setlength{\\unitlength}{%lfpt}",factor); else ECHO;*/
 "\\includegraphics" if(normalsize > 14) {printf("\\centering"); ECHO; yy_push_state(GRAPHICS);} else ECHO;
  /*<GRAPHICS>"angle"[[:blank:]]*"="[[:blank:]]*"0" if(normalsize > 14) printf("angle=90"); else ECHO; */
  /*<GRAPHICS>"\\textwidth" if(normalsize > 14) printf("\\textheight * \\real{0.9},height=\\textwidth * \\real{0.9},angle=90,keepaspectratio,"); else ECHO;*/
-<GRAPHICS>"\\textwidth" if(normalsize > 14) printf("\\textwidth,height=\\textheigth,keepaspectratio,"); else ECHO;
+<GRAPHICS>"\\textwidth" if(normalsize > 14) printf("\\textwidth,height=\\textheight,keepaspectratio,"); else ECHO;
 <GRAPHICS>"]" ECHO; yy_pop_state();
 <GRAPHICS>{lb} if(normalsize > 14) printf("[width=\\textwidth,height=\\textheight,keepaspectratio,]"); ECHO; yy_pop_state();
-"\\begin"{lb}"picture"{rb} if(normalsize > 14) {printf("\\begin{center}\\rotatebox{90}{"); ECHO;} else ECHO;
-"\\end"{lb}"picture"{rb} if(normalsize > 14) {ECHO; printf("}\\end{center}");} else ECHO; 
+ /*"\\begin"{lb}"picture"{rb} if(normalsize > 14) {printf("\\begin{center}\\rotatebox{90}{"); ECHO;} else ECHO;*/
+ /*"\\end"{lb}"picture"{rb} if(normalsize > 14) {ECHO; printf("}\\end{center}");} else ECHO; */
 
 
 %%

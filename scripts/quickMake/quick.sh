@@ -20,8 +20,20 @@ cd $1
 file=`find . -name "*.fls" -type f`
 name=$(basename "$file" .fls)
 echo "The name of the main LaTeX file found is: $name"
-make all name=$name
+make standard name=$name
 make clean
+make clear name=$name
+make clean
+make large name=$name
+make clean
+make web name=$name
+make clean
+make word name=$name
+make clean
+make cleanlatex
 echo "Assuming no errors the completed outputs can be found in $1built."
 echo "You should find standard, clear, large, web and word formats."
+echo "If you are compiling beamer slides then the clear and large print"
+echo "will be identical (print slides on A4). You may also find that"
+echo "your standard slides are the same depending on your font settings."
 echo "If a format is missing or broken then contact ma-largeprintnotes@bath.ac.uk for help."

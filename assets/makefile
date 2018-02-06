@@ -5,8 +5,7 @@ LATEX=pdflatex
 HOME=$(shell cat .home)
 TYPE=$(shell cat .documentclass)
 SIZE=$(shell cat .fontsize)
-
-all: standard clear figures large web word
+PAPER=$(shell cat .papersize)
 
 pdflatexfigures:
 	mkdir -p built
@@ -21,11 +20,11 @@ pdflatexfigures:
 
 $(name)-cont.tex:
 	cp $(HOME)/../../assets/macros.tex .
-	$(HOME)/../preambleExtractions/extract < $(name).tex > $@
+	$(HOME)/../preambleExtractions/extract.sh ./
 
 $(name)-lp-cont.tex:
 	$(HOME)/../flowfix/flowfix.sh ./
-	$(HOME)/../preambleExtractions/extract < $(name)-lp.tex > $@
+	$(HOME)/../preambleExtractions/extract.sh ./
 
 #Note that we make clean as a prerequisite in each case as the toggles cause different setups. 
 #Leaving the job output in the directory can cause issues in some cases. 
@@ -38,7 +37,7 @@ standard: clean $(name)-cont.tex
 #In this example we have a SVG but need a PDF for the LaTeX to work with.
 	echo "\\\\togglefalse{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-standard.tex ] || rm -f $(name)-standard.tex
-	echo "\\\\def\\\\pointsize{$(SIZE)}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-standard.tex
+	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\papersize{$(PAPER)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-standard.tex
 #https://tex.stackexchange.com/questions/611/setting-class-options-after-documentclass/617
 	$(LATEX) $(name)-standard.tex
 	$(LATEX) $(name)-standard.tex
@@ -56,7 +55,11 @@ clear: clean $(name)-cont.tex
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-clear.tex ] || rm -f $(name)-clear.tex
+ifeq ($(TYPE),beamer)	
+	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerhandout{handout}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-clear.tex
+else
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-clear.tex
+endif
 	$(LATEX) $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
@@ -64,14 +67,18 @@ clear: clean $(name)-cont.tex
 	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.*
 
 #This will be the same except for the toggles and name.
-large: clean $(name)-lp-cont.tex
+large: clean $(name)-cont.tex $(name)-lp-cont.tex
 	mkdir -p built
 	cp $(HOME)/../../styles/* . 
 	cd figures/svg/; $(HOME)/../graphicx/svgtopdf.sh ./; cd ../..
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{large}" > toggle.tex
 	[ ! -f $(name)-large.tex ] || rm -f $(name)-large.tex
+ifeq ($(TYPE),beamer)
+	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerhandout{handout}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-large.tex
+else
 	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{ext$(TYPE)}\\\\input{master}\\\\input{$(name)-lp-cont}" > $(name)-large.tex
+endif
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
@@ -93,7 +100,11 @@ web: clean $(name)-cont.tex
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-web.tex ] || rm -f $(name)-web.tex
+ifeq ($(TYPE),beamer)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-web.tex
+else
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-web.tex
+endif
 	$(LATEX) -shell-escape $(name)-web.tex
 #Convert the rest of the figures
 	cd figures/eps/; $(HOME)/../graphicx/eps-converted2svg.sh ./; cd ../..
@@ -106,7 +117,11 @@ web: clean $(name)-cont.tex
 #Note, yes this does run latex 6 times! It is a reported bug: https://puszcza.gnu.org.ua/bugs/index.php?197
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
 	[ ! -f $(name)-web.tex ] || rm -f $(name)-web.tex
+ifeq ($(TYPE),beamer)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-web.tex
+else
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-web.tex
+endif
 	htlatex  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 	htlatex  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
@@ -132,12 +147,13 @@ web: clean $(name)-cont.tex
 	if ls ./figures/png/*.png 1> /dev/null 2>&1; then cp ./figures/png/*.png built/$(name)-web/figures/png/; fi
 	if ls ./figures/jpg/*.jpg 1> /dev/null 2>&1; then cp ./figures/jpg/*.jpg built/$(name)-web/figures/jpg/; fi
 	if ls ./figures/svg/*.svg 1> /dev/null 2>&1; then cp ./figures/svg/*.svg built/$(name)-web/figures/svg/; fi
+	[ ! -e ./$(name)-web0x.png ] || cp $(name)-web*.png built/$(name)-web/
 	cd built; [ ! -f $(name)-web.zip ] || rm -f $(name)-web.zip; zip -r $(name)-web.zip $(name)-web; cd ..
 #Tidy up a bit
 	rm mathml.4ht
 	rm unicode.4hf
 	rm mathjaxMMLWord.cfg
-	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.* stmaryrd.4ht
+	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.*
 	rm *.htf
 
 #To transform to Word we need to use the web transform but without breaking into sections and then use Pandoc 19+
@@ -156,7 +172,11 @@ word: clean $(name)-cont.tex
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
+ifeq ($(TYPE),beamer)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-word.tex
+else
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-word.tex
+endif
 	$(LATEX) -shell-escape $(name)-word.tex
 	cd figures/eps/; $(HOME)/../graphicx/eps-converted2svg.sh ./; cd ../..
 	cd figures/pdf/; $(HOME)/../graphicx/pdftosvg.sh ./; cd ../..
@@ -165,7 +185,11 @@ word: clean $(name)-cont.tex
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
+ifeq ($(TYPE),beamer)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-word.tex
+else
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-word.tex
+endif
 #htlatex needs to run twice to prevent disruption to the sectioning tree caused by e.g. footnotes
 #Note, yes this does run latex 6 times! It is a reported bug: https://puszcza.gnu.org.ua/bugs/index.php?197
 #Note that we are not breaking into sections for the Word transform
@@ -185,11 +209,11 @@ word: clean $(name)-cont.tex
 	rm unicode.4hf
 	rm mathjaxMMLWord.cfg
 	rm additional.css
-	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.* stmaryrd.4ht
+	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.*
 	rm *.htf
 
 clean:
-	rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot $(name)*x.png *.4ht *-lp1.tex fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* *.tmp2
+	rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot $(name)*x.png *.4ht *-lp1.tex fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* *.tmp2 *.nav *.snm
 
 cleanlatex:
 	rm *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp.tex *-figures.tex *_tex-lp macros.tex

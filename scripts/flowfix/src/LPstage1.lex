@@ -18,15 +18,23 @@ mathsend "\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|
 <VERBATIM>(\r?\n) printf("\n"); /*Just in case*/
 <VERBATIM>{verbend} ECHO; yy_pop_state();
 
+ /*We need to ensure that comments are not processed */
+("%")* ECHO; yy_push_state(COMMENT);
+<COMMENT>("%") ECHO;
+<COMMENT>(\r?\n) ECHO; yy_pop_state();
+
  /* We need to alter some ordering so that we can process the below elements on the next run */
   /* http://flex.sourceforge.net/manual/Actions.html#Actions */ 
 
   /* We need this to work on maths lines not between newlines */
 {mathstart} ECHO; yy_push_state(MATHS);
+<MATHS>("%")* ECHO; yy_push_state(COMMENT);
 <MATHS>(.*)({whitespace})*("\\label"{lb}(.*){rb})/({whitespace})*("\\\\"|"\\end") switchtag(); 
 <MATHS>(.*)("\\tag"{lb}(.*){rb})/({whitespace})*("\\\\"|"\\end") switchtag();
 <MATHS>(.*)("\\notag")/({whitespace})*("\\\\"|"\\end") switchtag();
 <MATHS>(.*)("\\nonumber")/({whitespace})*("\\\\"|"\\end") switchtag();
+<MATHS>"\\\\\\\\" printf("\\\\");
+<MATHS>"\\\\["(.*)"]" printf("\\\\");
 <MATHS>"\\\\"/(({whitespace})*"\\intertext")
 <MATHS>("\\intertext"){lb} ECHO; yy_push_state(INTER);
 <MATHS>("\\\\")/({whitespace})*(\r?\n) ECHO; printf("\n");

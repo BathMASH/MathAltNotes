@@ -1,0 +1,14 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerfix}[2018/01/25]
+\RequirePackage{etoolbox}
+%\RequirePackage{color}
+%\RequirePackage{xcolor}
+%\PassOptionsToPackage{usenames,dvipsnames,svgnames}{xcolor}
+\newcommand{\fixincludegraphics}[2][]{\includegraphics[#1]{#2}}
+\makeatletter
+\newcommand{\actualfile}[1]{
+\filename@parse{#1}
+./figures/\filename@ext/\filename@base\ifdefstring{\filename@ext}{pdf}{.svg}{.png}
+}
+\makeatother
+
