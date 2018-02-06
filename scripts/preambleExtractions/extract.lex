@@ -35,9 +35,9 @@ danger ("babel"|"fontenc"|"lmodern"|"graphicx"|"geometry"|"spverbatim"|"listings
 standardonly ("\\newpage"|"\\clearpage")
 bracedcolor "{"(([^"}""{"])*)"\\color{"(([^"}""{"])*)"}"
 picturestart "\\begin"{lb}"picture"{rb}
-pictureend "\\begin"{lb}"picture"{rb}
+pictureend "\\end"{lb}"picture"{rb}
 
-%x INPUT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE
+%x COMMENT INPUT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE
 %%
 
  /* {doubledollar} ECHO; yy_push_state(DOUBLEDOLLAR); */
@@ -45,6 +45,11 @@ pictureend "\\begin"{lb}"picture"{rb}
 
  /* {singledollar} ECHO; yy_push_state(SINGLEDOLLAR); */
  /* <SINGLEDOLLAR>{singledollar} ECHO; yy_pop_state(); */
+
+ /*We need to ensure that comments are not processed */
+("%")* ECHO; yy_push_state(COMMENT);
+<COMMENT>("%") ECHO;
+<COMMENT>(\r?\n) ECHO; yy_pop_state();
 
 {standardonly} printf("\\ifboolexpr{togl {clearprint} or togl {large}}{}{"); ECHO; printf("}\n");
 
@@ -93,7 +98,7 @@ pictureend "\\begin"{lb}"picture"{rb}
 <INPUT>"/"
 <INPUT>{rb} printf("-cont"); ECHO; yy_pop_state();
 
-("\\includegraphics") if(beamer==1) printf("\\fixincludegraphics"); else ECHO; yy_push_state(INCLUDE);
+("\\includegraphics") if(beamer==0) checkbeamer(); if(beamer==1) printf("\\fixincludegraphics"); else ECHO; yy_push_state(INCLUDE);
 <INCLUDE>{ls}(.*){rs} ECHO; 
 <INCLUDE>{lb}(.*)/("/") printf("{");
 <INCLUDE>"/"
@@ -192,6 +197,25 @@ int choices(){
   if(papersize == 4)
     fprintf(paperout,"a4paper");
   
+  fclose(output);
+  fclose(typeout);
+  fclose(sizeout);
+  fclose(paperout);
+  return 0;
+}
+
+int checkbeamer(){
+  FILE *docinput;
+  char class[1024];
+  docinput = fopen(".documentclass","r");
+  if(docinput == NULL){
+    fprintf(stderr,"Can't open documentclass input file\n");
+    exit(1);
+  }
+  fscanf(docinput,"%s",class);
+  if(strcmp(class,"beamer")==0)
+    beamer = 1;
+  fclose(docinput);
   return 0;
 }
 
@@ -234,5 +258,6 @@ int macrosoutput(){
 
   for(i=0; i<length;i++)
     fprintf(output,"%c",macros[i]);
+  fclose(output);
   return 0;
 }
