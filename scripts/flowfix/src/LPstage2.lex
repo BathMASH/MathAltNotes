@@ -10,6 +10,7 @@ char pagesize[7];
 int breqn = 1;
 int font = 0;
 int bracketmatch = 0;
+int bettergraphics = 0;
 %}
 whitespace (" "|\t|(\r?\n))
 alpha ([A-Za-z])
@@ -33,8 +34,8 @@ dgroupstarstart "\\begin"{lb}(("eqnarray*"|"align*"|"flalign*"){rb}|("alignat*"{
 dgroupstarend "\\end"{lb}("eqnarray*"|"align*"|"flalign*"|"alignat*"){rb}
 dgroupstart "\\begin"{lb}(("eqnarray"|"align"|"flalign"){rb}|("alignat"{rb}{lb}(.*){rb}))
 dgroupend "\\end"{lb}("eqnarray"|"align"|"flalign"|"alignat"|"gather"){rb}
-arraystart ("\\begin"{lb}("array"){rb}{lb}|"\\begin"{lb}("matrix"|"pmatrix"|"bmatrix"|"Bmatrix"|"vmatrix"|"Vmatrix"|"smallmatrix"){rb}) 
-arrayend "\\end"{lb}("array"|"matrix"|"pmatrix"|"bmatrix"|"Bmatrix"|"vmatrix"|"Vmatrix"|"smallmatrix"){rb}
+arraystart ("\\begin"{lb}("array"){rb}{lb}|"\\begin"{lb}("matrix"|"pmatrix"|"bmatrix"|"Bmatrix"|"vmatrix"|"Vmatrix"|"smallmatrix"|"cases"){rb}) 
+arrayend "\\end"{lb}("array"|"matrix"|"pmatrix"|"bmatrix"|"Bmatrix"|"vmatrix"|"Vmatrix"|"smallmatrix"|"cases"){rb}
 tablestart "\\begin"{lb}("table"){rb}("["*)(.*)("]"*)
 tableend "\\end"{lb}("table"){rb}
 tabustart "\\begin"{lb}("tabular"|"longtable"){rb}
@@ -43,7 +44,7 @@ tabularxstart "\\begin"{lb}("tabularx"|"tabu"|"largetabular"){rb}
 tabularxend "\\end"{lb}("tabularx"|"tabu"|"largetabular"){rb}
 newenvironment "\\newenvironment"
 
-%x COMMENT INPUT CLASS DMATH DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS TABULARX CAPTION NEWENVIR TABBING
+%x COMMENT INPUT CLASS DMATH DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS TABULARX CAPTION NEWENVIR TABBING CASES
 %s REMOVE KEEP TABLE
 %%
 
@@ -173,12 +174,13 @@ newenvironment "\\newenvironment"
 
  /* graphics removed ECHO before if on the next line - is this right?*/
 "\\setlength{\\unitlength}{"(.*)"}" ECHO; /*if (normalsize > 14) printf("\\setlength{\\unitlength}{%lfpt}",factor); else ECHO;*/
-"\\includegraphics" if(normalsize > 14) {printf("\\centering"); ECHO; yy_push_state(GRAPHICS);} else ECHO;
+"\\includegraphics" if(normalsize > 14) {printf("{\\centering"); ECHO; yy_push_state(GRAPHICS);} else ECHO;
  /*<GRAPHICS>"angle"[[:blank:]]*"="[[:blank:]]*"0" if(normalsize > 14) printf("angle=90"); else ECHO; */
  /*<GRAPHICS>"\\textwidth" if(normalsize > 14) printf("\\textheight * \\real{0.9},height=\\textwidth * \\real{0.9},angle=90,keepaspectratio,"); else ECHO;*/
-<GRAPHICS>"\\textwidth" if(normalsize > 14) printf("\\textwidth,height=\\textheight,keepaspectratio,"); else ECHO;
-<GRAPHICS>"]" ECHO; yy_pop_state();
-<GRAPHICS>{lb} if(normalsize > 14) printf("[width=\\textwidth,height=\\textheight,keepaspectratio,]"); ECHO; yy_pop_state();
+<GRAPHICS>{rb} if(normalsize > 14) printf("}}"); else ECHO; yy_pop_state();
+<GRAPHICS>"\\textwidth" if(normalsize > 14) {bettergraphics=1; printf("\\textwidth,height=\\textheight,keepaspectratio,");} else ECHO;
+ /*<GRAPHICS>"]" ECHO; yy_pop_state();*/
+<GRAPHICS>{lb} if(normalsize > 14 && bettergraphics==0) printf("[width=\\textwidth,height=\\textheight,keepaspectratio,]"); bettergraphics=0; ECHO; /*yy_pop_state();*/
  /*"\\begin"{lb}"picture"{rb} if(normalsize > 14) {printf("\\begin{center}\\rotatebox{90}{"); ECHO;} else ECHO;*/
  /*"\\end"{lb}"picture"{rb} if(normalsize > 14) {ECHO; printf("}\\end{center}");} else ECHO; */
 

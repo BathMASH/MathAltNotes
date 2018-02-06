@@ -68,6 +68,26 @@ endif
 	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.*
 
 #This will be the same except for the toggles and name.
+clearbart: clean $(name)-cont.tex
+	mkdir -p built
+	cp $(HOME)/../../styles/* . 
+	cd figures/svg/; $(HOME)/../graphicx/svgtopdf.sh ./; cd ../..
+	[ ! -f toggle.tex ] || rm -f toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}" > toggle.tex
+	[ ! -f $(name)-clear.tex ] || rm -f $(name)-clear.tex
+ifeq ($(TYPE),beamer)	
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-clear.tex
+	$(LATEX) $(name)-clear.tex
+	$(LATEX) $(name)-clear.tex
+	$(LATEX) $(name)-clear.tex
+	mv $(name)-clear.pdf built/
+else
+	echo "You cannot make this format for documents which are not beamer slides."
+endif
+	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.*
+
+
+#This will be the same except for the toggles and name.
 large: clean $(name)-lp-cont.tex
 	mkdir -p built
 	cp $(HOME)/../../styles/* . 
@@ -85,6 +105,26 @@ endif
 	$(LATEX) $(name)-large.tex
 	mv $(name)-large.pdf built/
 	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.*
+
+#This will be the same except for the toggles and name.
+largebart: clean $(name)-lp-cont.tex
+	mkdir -p built
+	cp $(HOME)/../../styles/* . 
+	cd figures/svg/; $(HOME)/../graphicx/svgtopdf.sh ./; cd ../..
+	[ ! -f toggle.tex ] || rm -f toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{large}" > toggle.tex
+	[ ! -f $(name)-large.tex ] || rm -f $(name)-large.tex
+ifeq ($(TYPE),beamer)
+	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{extarticle}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-large.tex
+	$(LATEX) $(name)-large.tex
+	$(LATEX) $(name)-large.tex
+	$(LATEX) $(name)-large.tex
+	mv $(name)-large.pdf built/
+else
+	echo "You cannot make this format for documents which are not beamer slides."
+endif
+	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.*
+
 
 #We require some additional files for everything to work. 
 web: clean $(name)-cont.tex 
@@ -217,7 +257,7 @@ clean:
 	rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot $(name)*x.png *.4ht *-lp1 fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* *.tmp2 *.nav *.snm 
 
 cleanlatex:
-	rm *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp.tex *-figures.tex *_tex-lp macros.tex 
+	rm -f *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp.tex *-figures.tex *_tex-lp macros.tex 
 
 cleanfigures: 
 	rm -f ./figures/svg/*.pdf

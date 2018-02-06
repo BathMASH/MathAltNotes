@@ -162,9 +162,9 @@
  \newtheoremstyle{plain}{20pt}{3pt}{}{}{\bfseries}{.\newline\nobreak}{1.0em\nobreak}{}
  \newtheoremstyle{definition}{20pt}{3pt}{}{}{\bfseries}{.\newline\nobreak}{1.0em\nobreak}{}
  \newtheoremstyle{remark}{20pt}{3pt}{}{}{\bfseries}{.\newline\nobreak}{1.0em\nobreak}{}
- \newenvironment{Proof}
-  {\noindent{\bf Proof.}\hspace*{1em}}% Begin
-  {\qed\par}% End
+ %% \newenvironment{Proof}
+ %%  {\noindent{\bf Proof.}\hspace*{1em}}% Begin
+ %%  {\qed\par}% End
  %% When redefining an environment it is vital that it has 
  %% the same number of arguments as the original
  \renewenvironment{proof}[1][\proofname]
@@ -221,7 +221,7 @@
   }{}
   \iftoggle{figures}{\usepackage{figurefix}}{}
   \iftoggle{web}{\usepackage{webfix}}{}
-  \iftoggle{web}{\usepackage{colorfix}}{}
+  \iftoggle{web}{\usepackage{xcolor}\usepackage{colorfix}}{}
   \iftoggle{clearprint}{\newcommand{\scalefactor}{1.1}}{}
   \iftoggle{large}{\renewcommand{\scalefactor}{1.4}}{}
   \ifboolexpr{togl {clearprint} or togl {large}}{\usepackage{fontfix}}{}
