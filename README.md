@@ -129,3 +129,74 @@ attach a zip of your time-stamped directory if possible.
 Every problem reported will help make the system more stable.
 We will delete time-stamped directories after we have used
 them to understand and fix the issue. 
+
+# Providing files to students
+
+We recommend providing the alternative formats to all students.
+Whether you provide these prior to class depends on the 
+resource and your teaching practice. 
+
+## Putting the files on Moodle
+
+Most of the formats can be uploaded to Moodle in the usual way.
+The only resource which needs special attention is the web format.
+You will see that this is provided as a folder and a zipped 
+archive in the built directory. To upload this to Moodle you need
+to upload the zipped archive as a file and then set it up:
+* Select Add a resource -> File. Give the resource a name (e.g. MA10230 web notes).
+* Add the zip file. Right click on the zip file, a window appears, click on unzip and wait until complete. 
+* Right click on the zip again and click on delete. You will have a folder remaining. 
+* Left click on the folder to open it. 
+* Find the main file e.g. MA10230-web.html and right click on this, 
+a window appears, click on Set main file. 
+* Change any other settings you wish in the resource and then save. 
+
+### Providing files to only some students
+
+You will likely have some disabled students with a 
+Disability Access Plan (DAP) in your class. DAPs can be viewed 
+on SAMIS. If a student's DAP recommends that learning resources 
+are provided prior to class and you don't wish to provide them
+to all students then you may need to set up Moodle so that only 
+these students can see certain resources. 
+
+The easiest way to do this is to create a separate topic which
+can only be seen by certain students. To do this:
+* Make an empty topic
+* Click on Edit -> Edit topic
+* Unclick Use default section name and give the topic an appropriate title
+* At the base of the page click on the arrow next to Restrict access
+* Click on Add restriction...
+* A window appears, select Restriction set but leave it as it is for now
+* Click on Add restriction... at the very base of the page again and 
+again select Restriction set. 
+* At the top of the section change "Student must (drop down) match all (drop down)" 
+to "Student must (drop down) match any (drop down)". Then BEFORE YOU DO ANYTHING 
+ELSE click on the eye next to this line so it is crossed through. This
+is necessary to ensure you do not break confidentuality and will completely
+hide the section from all other students.
+
+Now you can add students in to the restriction sets. We suggest you add
+yourself first so you can test it by viewing the page as a student:
+* Inside one of the grey boxes click on the Add restriction... button and 
+then select User profile
+* Set it so a student "must" (first drop down) match the following 
+** Under User profile field select "First name"
+** Leave middle drop down as "is equal to" 
+** Add your first name into the box
+* Now click on the Add restriction... button within the grey box again and again
+select User profile. This time add a restriction on your Surname.
+* Now add the student to the second grey box in the same way. 
+* Further students can be added by adding new restriction sets. 
+
+You should end up with a series of restrictions in grouped pairs of first name 
+and surname linked by "and" and the pairs linked by "or".  
+
+Save the page and test it works. To test it change your view to student view 
+(Administration -> Switch role to...) and check that you can see the topic. 
+Now edit the restrictions and change your surname, for instance. Then, in
+student view you should no longer be able to see the topic at all. If in student
+view you can still see the topic but greyed out then you MUST change this
+otherwise students can see who has access to the topic. 
+
+ 
