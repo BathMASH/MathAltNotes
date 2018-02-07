@@ -23,10 +23,7 @@ $(name)-cont-clean.tex:
 	$(HOME)/../preambleExtractions/extract.sh ./
 	de-macro $(name)-cont.tex
 
-$(name)-cont-clean-lp.tex:
-	cp $(HOME)/../../assets/macros.tex .
-	$(HOME)/../preambleExtractions/extract.sh ./
-	de-macro $(name)-cont.tex
+$(name)-cont-clean-lp.tex: $(name)-cont-clean.tex
 	$(HOME)/../flowfix/flowfix.sh ./
 #Problem : I can de-macro -cont but I only need to de-macro -lp and I need to run extract first then
 #Are flow and extract order sensitive?

@@ -32,6 +32,8 @@ make clearbart name=$name
 make largebart name=$name
 make web name=$name
 make word name=$name
+make clean
+make cleaner
 echo "-----------------------------------------------------------------"
 echo "-----------------------------------------------------------------"
 echo "Assuming no errors the completed outputs can be found in $1built."
