@@ -18,9 +18,12 @@ if [ -z $1 ] || [ $1 == "-help" ] || [ $1 == "--help" ] || [ $1 == "-h" ]; then
 usage
 fi
 
-make scripts/flowfix/
-make scripts/preambleExtractions
-cd $1
+cd scripts/flowfix/
+make
+cd ..
+cd preambleExtractions
+make
+cd ../../$1
 file=`find . -name "*.fls" -type f`
 name=$(basename "$file" .fls)
 echo "The name of the main LaTeX file found is: $name"
