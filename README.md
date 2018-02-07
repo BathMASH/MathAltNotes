@@ -6,6 +6,12 @@ formats for disabled students. You may find that other students
 prefer or make use of some of the formats so please consider making
 all formats available to all students.
 
+This is a work in progress and is likely to be unstable. It is not
+intended for use with complex LaTeX documents such as books or 
+articles for publication. Help and support is available from 
+ma-largeprintnotes@bath.ac.uk but only if you are trying to 
+create alternative formats for student use. 
+
 ## The alternative formats
 
 The method will compile a standard format which should be basically
