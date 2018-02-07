@@ -33,25 +33,9 @@
 \usepackage[T1]{fontenc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% This is the master for 3 document formats.
+%% This is the master for 5 document formats.
 %% We DO NOT support compiling via latex-dvips-ps2pdf. 
-%% If you wish to use diagrams which rely on this 
-%% then these should be produced as standalone figures 
-%% in PDF and svg formats and included in the LaTeX
-%% via the graphicx package.
-%%
-%% Standard print: Compiled via pdflatex. You can 
-%% style how you provided you can compile the other
-%% formats.
-%% 
-%% Clearprint: Compiled via pdflatex. 
-%%
-%% Accessible web pages via TeX4ht with MathJax
-%% as the renderer: for zoom, magnification, text to 
-%% speech (TextHelp Read & Write), screenreaders 
-%% (NVDA, JAWS 16+, ChromeVox, other Aria aware), 
-%% electronic braille (NVDA), also good on small 
-%% screens. 
+%% You must compile using the makefile
 \usepackage{etoolbox}
 \newtoggle{clearprint}
 \newtoggle{large}
@@ -59,27 +43,12 @@
 \newtoggle{figures}
 \newtoggle{frontmatter}
 \newtoggle{contents}
-%% The below uses the make file to determine which 
-%% format to compile. Please note that compilation 
-%% requires a post-2009 version of etoolbox and, for 
-%% the web format, a working copy of TeX4ht. 
-%% Using the makefile is the recommended compilation 
-%% method as this will produce a single zip containing
-%% the web format for you. 
+%% Please note that compilation requires a post-2009 version 
+%% of etoolbox and a variety of pieces of software.  
+%% You should use linux.bath.ac.uk to compile and you
+%% must use the makefile.
 \input{toggle.tex}
 \input{choices.tex}
-%% If you are NOT using the make file you may 
-%% uncomment one of the below:
-%%
-%% Standard print PDF. Compiled via pdflatex:
-%\togglefalse{clearprint}\togglefalse{web}
-%%
-%% Clear print PDF. Compiled via pdflatex: 
-%\toggletrue{clearprint}\togglefalse{web}
-%%
-%%Accessible web format. Requires TeX4ht - see 
-%% make file for commands to run: 
-%\togglefalse{clearprint}\toggletrue{web}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Are these a web or word version of beamer slides?
