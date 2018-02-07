@@ -75,5 +75,6 @@ int switchtag(){
   for(i=0; i < pivot; i++)
     printf("%c", yycopy[i] );
   free( yycopy );
-  return 1;
+  return 0;
 }
+

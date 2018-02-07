@@ -49,6 +49,7 @@ newenvironment "\\newenvironment"
 %%
 
 ("$"|"\\$") ECHO; /* protect */
+("\\\\[") ECHO; /* protect */
 
  /*We need to ensure that comments are not processed */
 ("%")* ECHO; yy_push_state(COMMENT);
@@ -86,7 +87,7 @@ newenvironment "\\newenvironment"
  /* Rules possibly used in several multi-line situations */
 <CHECKSTAR>("\\notag"|"\\nonumber"|"\\intertextend")
 <DGROUPSTAR,DGROUP,CHECKSTAR,SPLIT>("&") printf(" "); /*printf("\\ ");*/
-<DMATHSTAR,DSERIESSTAR,DGROUPSTAR,DMATH,DSERIES,DGROUP,CHECKSTAR,SPLIT>{arraystart} ECHO; yy_push_state(ARRAY); /* protect */
+<DMATHSTAR,DSERIESSTAR,DGROUPSTAR,DMATH,DSERIES,DGROUP,CHECKSTAR,SPLIT,ARRAY>{arraystart} ECHO; yy_push_state(ARRAY); /* protect */
 <DSERIESSTAR,DSERIES>("\\\\") printf("\\end{math}\\\\\\begin{math}");
 <DGROUPSTAR>("\\\\") printf("\\end{dmath*}\\begin{dmath*}");
 <DGROUP,CHECKSTAR>("\\\\")/({whitespace}*("\\tag"|"\\label")) if (YY_START == CHECKSTAR) {printf("\\end{dmath*}"); yy_pop_state();} else printf("\\end{dmath}"); printf("\\begin{dmath}[");

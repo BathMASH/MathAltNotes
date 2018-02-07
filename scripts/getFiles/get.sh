@@ -1,11 +1,15 @@
 #!/bin/bash
 
 usage() {
+echo "-----------------------------------------------------------------"
+echo "-----------------------------------------------------------------"
 echo "Call $0 giving the main file of your LaTeX project as input."
 echo "That is, if I would compile using pdflatex file.tex"
 echo "you would call $0 file.tex"
 echo "This will produce a timestamped directory on which you can"
 echo "call quickMake"
+echo "-----------------------------------------------------------------"
+echo "-----------------------------------------------------------------"
 exit
 }
 
@@ -66,14 +70,33 @@ if [ -d files ]; then
 	mv $i $home/../../$tmpname/figures/svg/
     done
     for i in `find . -type f`; do
+	echo "-----------------------------------------------------------------"
 	echo "I don't know what to do with $i. Please ask ma-largeprintnotes@bath.ac.uk";
 	echo "for help if this seems to prevent the alternative formats compiling.";
+	echo "-----------------------------------------------------------------"
     done
     cd ..
     rm -r files
+    echo "-----------------------------------------------------------------"
+    echo "-----------------------------------------------------------------"
+    echo "This now have a timestamped directory. You can call: "
+    echo "> quickMake directoryname"
+    echo "or"
+    echo "> quickBeamerMake directoryname"
+    echo "You can also enter the directory and use make commands directly."
+    echo "You can edit files in your directory and make again"
+    echo "However, we would recommend that unless debugging you edit your"
+    echo "originals and then call getFiles again to get a new version."
+    echo "-----------------------------------------------------------------"
+    echo "-----------------------------------------------------------------"
+
 else
+    echo "-----------------------------------------------------------------"
+    echo "-----------------------------------------------------------------"
     echo "I was unable to extract the files used by $name.tex."
     echo "Make sure that this is the LaTeX file which contains the documentclass command."
     echo "Make sure that you can compile the document using pdflatex $name.tex"
     echo "If you don't know what is wrong contact ma-largeprintnotes@bath.ac.uk for help."
+    echo "-----------------------------------------------------------------"
+    echo "-----------------------------------------------------------------"
 fi

@@ -25,8 +25,8 @@ file=`find . -name "*.fls" -type f`
 name=$(basename "$file" .fls)
 echo "The name of the main LaTeX file found is: $name"
 make standard name=$name
-make clear name=$name
-make large name=$name
+make clearbart name=$name
+make largebart name=$name
 make web name=$name
 make word name=$name
 echo "-----------------------------------------------------------------"

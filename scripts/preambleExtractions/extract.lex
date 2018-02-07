@@ -8,11 +8,14 @@ int report = 0;
 int extarticle = 0;
 int extreport = 0;
 int beamer = 0;
-int length = 0;
+int macrolength = 0;
+int beginendlength = 0;
 int fontsize = 10;
 int papersize = 0;
 char *macros;
+char *beginend;
 int macrosstoresize = 1024;
+int beginendsize = 1024;
 %}
 
 whitespace (" "|\t|(\r?\n))
@@ -36,8 +39,9 @@ standardonly ("\\newpage"|"\\clearpage")
 bracedcolor "{"(([^"}""{"])*)"\\color{"(([^"}""{"])*)"}"
 picturestart "\\begin"{lb}"picture"{rb}
 pictureend "\\end"{lb}"picture"{rb}
+begindocument "\\begin"{lb}"document"{rb}
 
-%x COMMENT INPUT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE
+%x COMMENT INPUT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND
 %%
 
  /* {doubledollar} ECHO; yy_push_state(DOUBLEDOLLAR); */
@@ -53,7 +57,7 @@ pictureend "\\end"{lb}"picture"{rb}
 
 {standardonly} printf("\\ifboolexpr{togl {clearprint} or togl {large}}{}{"); ECHO; printf("}\n");
 
-{docclass} printf("%%"); ECHO; macrossetup(); yy_push_state(CLASS);
+{docclass} printf("%%"); ECHO; macrossetup(0); macrossetup(1); yy_push_state(CLASS);
 <CLASS>"8pt" fontsize=8; ECHO;
 <CLASS>"9pt" fontsize=9; ECHO;
 <CLASS>"10pt" fontsize=10; ECHO;
@@ -80,6 +84,8 @@ pictureend "\\end"{lb}"picture"{rb}
 "\\newtoggle{web}"
 "\\newtoggle{large}"
 
+{begindocument} printf("\\usepackage{demacro-private}\n"); ECHO; 
+
 {title} ECHO; title = 1;
 {author}{lb} ECHO; author = 1; printf("\\parbox{\\textwidth}{"); yy_push_state(AUTHOR);
 <AUTHOR>"\\\\" printf(", ");
@@ -104,9 +110,13 @@ pictureend "\\end"{lb}"picture"{rb}
 <INCLUDE>"/"
 <INCLUDE>{rb} ECHO; yy_pop_state();
 
-{newcommand}/("{"(.*)"}{"(.*)"_") macrosstore("\\renewcommand",13); ECHO; yy_push_state(COMMAND);
-{newcommand}/("{"(.*)"}{"(.*)"^") macrosstore("\\renewcommand",13); ECHO; yy_push_state(COMMAND);
-<COMMAND>(.*){rb} macrosstore(yytext,yyleng); macrosstore("\n",1); ECHO; yy_pop_state();
+{newcommand}/("{"(.*)"}{"(.*)"_") macrosstore("\\renewcommand",13,0); ECHO; yy_push_state(COMMAND);
+{newcommand}/("{"(.*)"}{"(.*)"^") macrosstore("\\renewcommand",13,0); ECHO; yy_push_state(COMMAND);
+<COMMAND>(.*){rb} macrosstore(yytext,yyleng,0); macrosstore("\n",1,0); ECHO; yy_pop_state();
+
+{newcommand}/("{"(.*)"}{"(.*)"\\begin") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND);
+{newcommand}/("{"(.*)"}{"(.*)"\\end") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND);
+<BEGINEND>(.*){rb} macrosstore(yytext,yyleng,1); macrosstore("\n",1,1); yy_pop_state();
 
  /* This assumes that the end document is in the same file as the preamble */
 {end} ECHO; choices(); macrosoutput();
@@ -211,55 +221,86 @@ int checkbeamer(){
   char class[1024];
   docinput = fopen(".documentclass","r");
   if(docinput == NULL){
-    fprintf(stderr,"Can't open documentclass input file\n");
-    exit(1);
+    fprintf(stderr,"Warning: Can't open documentclass input file but this is okay if it doesn't exist yet\n");
+    //exit(1);
+  }else{
+    fscanf(docinput,"%s",class);
+    if(strcmp(class,"beamer")==0)
+      beamer = 1;
+    fclose(docinput);
   }
-  fscanf(docinput,"%s",class);
-  if(strcmp(class,"beamer")==0)
-    beamer = 1;
-  fclose(docinput);
   return 0;
 }
 
-int macrossetup(){
+int macrossetup(int type){
   //fprintf(stderr,"Setup\n");
-  macros = (char *) calloc (macrosstoresize, sizeof(char)); 
+  if(type == 0)
+    macros = (char *) calloc (macrosstoresize, sizeof(char)); 
+  if(type == 1)
+    beginend = (char *) calloc (beginendsize, sizeof(char)); 
   return 0;
 }
 
-int macrosstore(char *tostore, int tolength){
+int macrosstore(char *tostore, int tolength, int type){
   int i;
   char *tmp;
-  //fprintf(stderr,"Stored\n");
-  if(length + tolength > macrosstoresize){
-    tmp = (char *) calloc (macrosstoresize, sizeof(char));
-    macrosstoresize = 2*macrosstoresize;
-    for(i=0; i < length; i++)
-      tmp[i] = macros[i];
-    macrossetup();
-    for(i=0; i < length; i++)
-      macros[i] = tmp[i];
-    free(tmp);
+  if(type == 0){
+    if(macrolength + tolength > macrosstoresize){
+      tmp = (char *) calloc (macrosstoresize, sizeof(char));
+      macrosstoresize = 2*macrosstoresize;
+      for(i=0; i < macrolength; i++)
+	tmp[i] = macros[i];
+      macrossetup(type);
+      for(i=0; i < macrolength; i++)
+	macros[i] = tmp[i];
+      free(tmp);
+    }
+    for(i=0; i < tolength; i++){
+      macros[macrolength+i] = tostore[i]; 
+    }
+    macrolength=macrolength+tolength;
   }
-  for(i=0; i < tolength; i++){
-    macros[length+i] = tostore[i]; 
+  if(type == 1){
+    if(beginendlength + tolength > beginendsize){
+      tmp = (char *) calloc (beginendsize, sizeof(char));
+      beginendsize = 2*beginendsize;
+      for(i=0; i < beginendlength; i++)
+	tmp[i] = beginend[i];
+      macrossetup(type);
+      for(i=0; i < beginendlength; i++)
+	beginend[i] = tmp[i];
+      free(tmp);
+    }
+    for(i=0; i < tolength; i++){
+      beginend[beginendlength+i] = tostore[i]; 
+    }
+    beginendlength=beginendlength+tolength;
   }
-  length=length+tolength;
   return 0;
 }
 
 int macrosoutput(){
   FILE *output;
+  FILE *demacro;
   int i;
   //fprintf(stderr,"Output\n");
   output = fopen("macros.tex","w");
+  demacro = fopen("demacro-private.sty","w");
   if(output == NULL){
     fprintf(stderr,"Can't open macros file\n");
     exit(1);
   }
-
-  for(i=0; i<length;i++)
+  if(demacro == NULL){
+    fprintf(stderr,"Can't open demacro file\n");
+    exit(1);
+  }
+  for(i=0; i<macrolength;i++)
     fprintf(output,"%c",macros[i]);
   fclose(output);
+
+  for(i=0; i<beginendlength;i++)
+    fprintf(demacro,"%c",beginend[i]);
+  fclose(demacro);
+
   return 0;
 }

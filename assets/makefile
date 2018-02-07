@@ -18,18 +18,22 @@ pdflatexfigures:
 	$(LATEX) $(name)-figures.tex
 	mv $(name)-figures.pdf built/
 
-$(name)-cont.tex:
+$(name)-cont-clean.tex:
 	cp $(HOME)/../../assets/macros.tex .
 	$(HOME)/../preambleExtractions/extract.sh ./
+	de-macro $(name)-cont.tex
 
-$(name)-lp-cont.tex:
+$(name)-cont-clean-lp.tex:
 	cp $(HOME)/../../assets/macros.tex .
-	$(HOME)/../flowfix/flowfix.sh ./
 	$(HOME)/../preambleExtractions/extract.sh ./
+	de-macro $(name)-cont.tex
+	$(HOME)/../flowfix/flowfix.sh ./
+#Problem : I can de-macro -cont but I only need to de-macro -lp and I need to run extract first then
+#Are flow and extract order sensitive?
 
 #Note that we make clean as a prerequisite in each case as the toggles cause different setups. 
 #Leaving the job output in the directory can cause issues in some cases. 
-standard: clean $(name)-cont.tex
+standard: clean $(name)-cont-clean.tex
 	mkdir -p built
 	cp $(HOME)/../../styles/* . 
 	cd figures/svg/; $(HOME)/../graphicx/svgtopdf.sh ./; cd ../..
@@ -38,7 +42,7 @@ standard: clean $(name)-cont.tex
 #In this example we have a SVG but need a PDF for the LaTeX to work with.
 	echo "\\\\togglefalse{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-standard.tex ] || rm -f $(name)-standard.tex
-	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\papersize{$(PAPER)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-standard.tex
+	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\papersize{$(PAPER)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-standard.tex
 #https://tex.stackexchange.com/questions/611/setting-class-options-after-documentclass/617
 	$(LATEX) $(name)-standard.tex
 	$(LATEX) $(name)-standard.tex
@@ -46,10 +50,10 @@ standard: clean $(name)-cont.tex
 #We can't change the jobname to get different filenames that way as this does not work with some packages
 #we will need to use for graphics in this set up. 
 	mv $(name)-standard.pdf built/
-	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.*
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* 
 
 #This will be the same except for the toggles and name.
-clear: clean $(name)-cont.tex
+clear: clean $(name)-cont-clean.tex
 	mkdir -p built
 	cp $(HOME)/../../styles/* . 
 	cd figures/svg/; $(HOME)/../graphicx/svgtopdf.sh ./; cd ../..
@@ -57,38 +61,41 @@ clear: clean $(name)-cont.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-clear.tex ] || rm -f $(name)-clear.tex
 ifeq ($(TYPE),beamer)	
-	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerhandout{handout}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-clear.tex
+	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerhandout{handout}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-clear.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
 endif
 	$(LATEX) $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	mv $(name)-clear.pdf built/
-	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.*
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.*
 
 #This will be the same except for the toggles and name.
-clearbart: clean $(name)-cont.tex
+clearbart: clean $(name)-cont-clean.tex
+ifeq ($(TYPE),beamer)	
 	mkdir -p built
 	cp $(HOME)/../../styles/* . 
 	cd figures/svg/; $(HOME)/../graphicx/svgtopdf.sh ./; cd ../..
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-clear.tex ] || rm -f $(name)-clear.tex
-ifeq ($(TYPE),beamer)	
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-clear.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	mv $(name)-clear.pdf built/
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.*
 else
-	echo "You cannot make this format for documents which are not beamer slides."
+	@echo "---------------------------------------------------";
+	@echo "You cannot make clear beamer article format for documents which are not beamer slides.";
+	@echo "---------------------------------------------------";
 endif
-	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.*
+
 
 
 #This will be the same except for the toggles and name.
-large: clean $(name)-lp-cont.tex
+large: clean $(name)-cont-clean-lp.tex
 	mkdir -p built
 	cp $(HOME)/../../styles/* . 
 	cd figures/svg/; $(HOME)/../graphicx/svgtopdf.sh ./; cd ../..
@@ -96,38 +103,39 @@ large: clean $(name)-lp-cont.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{large}" > toggle.tex
 	[ ! -f $(name)-large.tex ] || rm -f $(name)-large.tex
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerhandout{handout}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-large.tex
+	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerhandout{handout}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-large.tex
 else
-	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{ext$(TYPE)}\\\\input{master}\\\\input{$(name)-lp-cont}" > $(name)-large.tex
+	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{ext$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean-lp}" > $(name)-large.tex
 endif
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	mv $(name)-large.pdf built/
-	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.*
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.*
 
 #This will be the same except for the toggles and name.
-largebart: clean $(name)-lp-cont.tex
+largebart: clean $(name)-cont-clean-lp.tex
+ifeq ($(TYPE),beamer)
 	mkdir -p built
 	cp $(HOME)/../../styles/* . 
 	cd figures/svg/; $(HOME)/../graphicx/svgtopdf.sh ./; cd ../..
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{large}" > toggle.tex
 	[ ! -f $(name)-large.tex ] || rm -f $(name)-large.tex
-ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{extarticle}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-large.tex
+	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{extarticle}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	mv $(name)-large.pdf built/
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.*
 else
-	echo "You cannot make this format for documents which are not beamer slides."
+	@echo "---------------------------------------------------";
+	@echo "You cannot make large beamer article format for documents which are not beamer slides.";
+	@echo "---------------------------------------------------";
 endif
-	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.*
-
 
 #We require some additional files for everything to work. 
-web: clean $(name)-cont.tex 
+web: clean $(name)-cont-clean.tex 
 	mkdir -p built
 #Copy required files to where they are needed
 	cp $(HOME)/../../styles/* . 
@@ -142,9 +150,9 @@ web: clean $(name)-cont.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-web.tex ] || rm -f $(name)-web.tex
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
 endif
 	$(LATEX) -shell-escape $(name)-web.tex
 #Convert the rest of the figures
@@ -159,9 +167,9 @@ endif
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
 	[ ! -f $(name)-web.tex ] || rm -f $(name)-web.tex
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
 endif
 	htlatex  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 	htlatex  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
@@ -191,14 +199,14 @@ endif
 	[ ! -e ./$(name)-web0x.png ] || cp $(name)-web*.png built/$(name)-web/
 	cd built; [ ! -f $(name)-web.zip ] || rm -f $(name)-web.zip; zip -r $(name)-web.zip $(name)-web; cd ..
 #Tidy up a bit
-	rm mathml.4ht
-	rm unicode.4hf
-	rm mathjaxMMLWord.cfg
-	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.*
-	rm *.htf
+	@rm mathml.4ht
+	@rm unicode.4hf
+	@rm mathjaxMMLWord.cfg
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.*
+	@rm *.htf
 
 #To transform to Word we need to use the web transform but without breaking into sections and then use Pandoc 19+
-word: clean $(name)-cont.tex
+word: clean $(name)-cont-clean.tex
 	mkdir -p built 
 #Copy some files to where we need them
 	cp $(HOME)/../../styles/* . 
@@ -214,9 +222,9 @@ word: clean $(name)-cont.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
 endif
 	$(LATEX) -shell-escape $(name)-word.tex
 	cd figures/eps/; $(HOME)/../graphicx/eps-converted2svg.sh ./; cd ../..
@@ -224,12 +232,12 @@ endif
 	rm $(name)-word.*
 #Set up for the word version
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}" > toggle.tex
+	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
 endif
 #htlatex needs to run twice to prevent disruption to the sectioning tree caused by e.g. footnotes
 #Note, yes this does run latex 6 times! It is a reported bug: https://puszcza.gnu.org.ua/bugs/index.php?197
@@ -246,20 +254,20 @@ endif
 	pandoc -s -f html -t docx $(name)-word.html -o $(name)-word.docx --reference-doc=$(HOME)/../../assets/reference.docx
 	mv $(name)-word.docx built/
 #Tidy up a bit
-	rm mathml.4ht
-	rm unicode.4hf
-	rm mathjaxMMLWord.cfg
-	rm additional.css
-	rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.*
-	rm *.htf
+	@rm mathml.4ht
+	@rm unicode.4hf
+	@rm mathjaxMMLWord.cfg
+	@rm additional.css
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.*
+	@rm *.htf
 
 clean:
-	rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot $(name)*x.png *.4ht *-lp1 fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.sty webprevent.sty displayoperators.* *.tmp2 *.nav *.snm 
+	@rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot $(name)*x.png *.4ht *-lp1 fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* *.tmp2 *.nav *.snm colorfix.sty fontfix.sty parfix.sty beamerfix.sty 
 
-cleanlatex:
-	rm -f *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp.tex *-figures.tex *_tex-lp macros.tex 
+cleaner:
+	@rm -f *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp*.tex *-figures.tex *_tex-lp macros.tex demacro-private.sty *-cont* 
 
 cleanfigures: 
-	rm -f ./figures/svg/*.pdf
-	rm -f ./figures/eps/*.svg
-	rm -f ./figures/pdf/*.svg
+	@rm -f ./figures/svg/*.pdf
+	@rm -f ./figures/eps/*.svg
+	@rm -f ./figures/pdf/*.svg

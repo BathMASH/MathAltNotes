@@ -1,0 +1,7 @@
+%% We need this because \det causes some fatal errors in the web/word format when e.g. in sections 
+%% but only in a non-broken down document. Have been unable to work out what is going on. It does
+%% not affect math operators made using below. I have to UNDEFINE \det first - renewcommand is not enough
+\let\det\undefined
+\newcommand{\det}{\mathop{\mathrm{det}}}
+
+\renewcommand{\:}{\>}
