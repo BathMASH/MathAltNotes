@@ -4,7 +4,8 @@ The purpose of this method is to attempt to automatically
 transform LaTeX learning materials into a variety of more accessible
 formats for disabled students. You may find that other students
 prefer or make use of some of the formats so please consider making
-all formats available to all students.
+all formats available to all students. For instance, some formats
+may be useful to students using devices with small screens. 
 
 This is a work in progress and is likely to be unstable. It is not
 intended for use with complex LaTeX documents such as books or 
@@ -29,21 +30,39 @@ Depending on the requirements of the student and the assistive
 technology they have they may require one or the other. These formats
 are not interchangeable. 
 
+If you would like to know more about how these formats can be
+used please email ma-largeprintnotes@bath.ac.uk
+
 # Instructions
+
+## Setup
+
+This method has many dependencies and currently only works on the
+command line, in Linux and with the correct setup. We do not have
+the resources to help staff set up their own machines to run
+the method. 
+
+Computing Services has agreed to ensure that 
+> linux.bath.ac.uk 
+
+has the requisite setup. Hence, all staff should be able to use
+this. For help using linux.bath.ac.uk see http://www.bath.ac.uk/guides/connecting-to-linux-bath/
 
 ## Collect a copy of your files
 
 This method of creating alternative formats rewrites the LaTeX.
-It works on a copy of your files to protect your original. 
+It works on a copy of your files to protect your original. Even so
+we still recommend that you have your originals backed up elsewhere.
 To collect your files run the script ./getMyLaTeX 
 on the main LaTeX file in your project. 
 
 E.g. if to make your output from this directory you would run
 > pdflatex ../notes/filename.tex
+
 then run
 > ./getMyLaTeX ../notes/filename.tex
 
-### Output
+### Outcome
 
 This will find all the files needed and put them in a timestamped
 directory. That is, if I ran the above command at 11:51 on 29th 
@@ -78,6 +97,7 @@ If this fails it is because one or more of the formats failed.
 You can compile formats individually. Move into your time-stamped
 directory:
 > cd filename-180129-1151
+
 then try any of these:
 > make standard name=filename
 
@@ -103,5 +123,9 @@ For Beamer slides:
 ## Reporting issues and getting help
 
 This is a work in progress and is likely to be unstable. 
-If you have problems email ma-largeprintnotes@bath.ac.uk 
-every problem reported will help make the system more stable.
+If you have problems email ma-largeprintnotes@bath.ac.uk and 
+attach a zip of your time-stamped directory if possible. 
+
+Every problem reported will help make the system more stable.
+We will delete time-stamped directories after we have used
+them to understand and fix the issue. 
