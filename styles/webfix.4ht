@@ -2,6 +2,6 @@
 %% but only in a non-broken down document. Have been unable to work out what is going on. It does
 %% not affect math operators made using below. I have to UNDEFINE \det first - renewcommand is not enough
 \let\det\undefined
-\newcommand{\det}{\mathop{\mathrm{det}}}
+\newcommand{\det}{\mathop{\operatorname{det}}}
 
 \renewcommand{\:}{\>}
