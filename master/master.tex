@@ -21,7 +21,7 @@
 %% Babel package to specify English typographical 
 %% rules, and hyphenation patterns
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[english]{babel}
+\usepackage[english,shorthands=off]{babel}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% T1 font encoding to ensure characters with accents 
@@ -82,6 +82,10 @@
 %% set up a directory structure that must be used
 \graphicspath{{./figures/latexpdfsvg/}{./figures/svg/}{./figures/eps/}{./figures/pdf/}{./figures/png/}{./figures/jpg/}{./figures/latexpdf/}} 
 
+%% Level of reliance on amsmath means we require this
+%% syntax and fix things that it will not accept
+\usepackage{amsmath}
+
 \ifboolexpr{togl {clearprint} or togl {web}}{
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %% Packages we rely on loaded
@@ -95,8 +99,10 @@
    breaklines=true, 
    columns=fixed 
   }
- \usepackage{amsmath,amssymb,amsfonts,amsthm}
- \usepackage{hyperref}
+ \usepackage{amssymb,amsfonts,amsthm}
+ \ifpdf
+  \usepackage{hyperref}
+ \fi
  %% This is our fix for displayoperators in web format
  \usepackage{displayoperators}
  \iftoggle{large}{\usepackage{lscape}}

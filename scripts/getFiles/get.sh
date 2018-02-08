@@ -35,7 +35,7 @@ cp $home/../../master/master.tex $home/../../$tmpname/
 echo $home > $home/../../$tmpname/.home
 dir=$(dirname "$1")
 cd $dir
-mkjobtexmf --jobname $name --destdir=files --copy --exclude-ext aux,log,toc
+mkjobtexmf --jobname $name --destdir=files --copy --exclude-ext aux,log,toc --texopt="--shell-escape"
 mv $name.fls $home/../../$tmpname/
 if [ -d files ]; then
     cd files

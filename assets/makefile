@@ -13,15 +13,16 @@ pdflatexfigures:
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\usepackage{color}\\\\thispagestyle{empty}\\\\togglefalse{frontmatter}\\\\togglefalse{contents}\\\\begin{document}\\\\input{$(name)}\\\\end{document}" > $(name)-figures.tex
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}" > toggle.tex
-	$(LATEX) $(name)-figures.tex 
-	$(LATEX) $(name)-figures.tex
-	$(LATEX) $(name)-figures.tex
+	$(LATEX) --shell-escape $(name)-figures.tex 
+	$(LATEX) --shell-escape $(name)-figures.tex
+	$(LATEX) --shell-escape $(name)-figures.tex
 	mv $(name)-figures.pdf built/
 
 $(name)-cont-clean.tex:
 	cp $(HOME)/../../assets/macros.tex .
 	$(HOME)/../preambleExtractions/extract.sh ./
-	de-macro $(name)-cont.tex
+	cp $(name)-cont.tex $(name)-cont-clean.tex
+	[ ! -f demacro-private.sty ] || de-macro $(name)-cont.tex
 
 $(name)-cont-clean-lp.tex: $(name)-cont-clean.tex
 	$(HOME)/../flowfix/flowfix.sh ./
@@ -41,9 +42,9 @@ standard: clean $(name)-cont-clean.tex
 	[ ! -f $(name)-standard.tex ] || rm -f $(name)-standard.tex
 	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\papersize{$(PAPER)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-standard.tex
 #https://tex.stackexchange.com/questions/611/setting-class-options-after-documentclass/617
-	$(LATEX) $(name)-standard.tex
-	$(LATEX) $(name)-standard.tex
-	$(LATEX) $(name)-standard.tex
+	$(LATEX) --shell-escape $(name)-standard.tex
+	$(LATEX) --shell-escape $(name)-standard.tex
+	$(LATEX) --shell-escape $(name)-standard.tex
 #We can't change the jobname to get different filenames that way as this does not work with some packages
 #we will need to use for graphics in this set up. 
 	mv $(name)-standard.pdf built/
@@ -62,9 +63,9 @@ ifeq ($(TYPE),beamer)
 else
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
 endif
-	$(LATEX) $(name)-clear.tex
-	$(LATEX) $(name)-clear.tex
-	$(LATEX) $(name)-clear.tex
+	$(LATEX) --shell-escape $(name)-clear.tex
+	$(LATEX) --shell-escape $(name)-clear.tex
+	$(LATEX) --shell-escape $(name)-clear.tex
 	mv $(name)-clear.pdf built/
 	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.*
 
@@ -104,9 +105,9 @@ ifeq ($(TYPE),beamer)
 else
 	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{ext$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean-lp}" > $(name)-large.tex
 endif
-	$(LATEX) $(name)-large.tex
-	$(LATEX) $(name)-large.tex
-	$(LATEX) $(name)-large.tex
+	$(LATEX) --shell-escape $(name)-large.tex
+	$(LATEX) --shell-escape $(name)-large.tex
+	$(LATEX) --shell-escape $(name)-large.tex
 	mv $(name)-large.pdf built/
 	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.*
 
@@ -152,6 +153,8 @@ else
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
 endif
 	$(LATEX) -shell-escape $(name)-web.tex
+#Fix any figures that were produced in png incorrectly
+	$(HOME)/../graphicx/svg-fix.sh ./
 #Convert the rest of the figures
 	cd figures/eps/; $(HOME)/../graphicx/eps-converted2svg.sh ./; cd ../..
 	cd figures/pdf/; $(HOME)/../graphicx/pdftosvg.sh ./; cd ../..
@@ -170,6 +173,9 @@ else
 endif
 	htlatex  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 	htlatex  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+#Change the endings from interim to svg
+	sed -i "s/x.interim/x.svg/" *.html
+	rm *$(NAME)*.interim
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
 #html output. Such things as unmatched brackets can cause problems. If you can't locate the error and can put
 #up with digits instead of numbers then comment out the next line as the web browser and mathjax are less fussy.
@@ -194,6 +200,7 @@ endif
 	if ls ./figures/jpg/*.jpg 1> /dev/null 2>&1; then cp ./figures/jpg/*.jpg built/$(name)-web/figures/jpg/; fi
 	if ls ./figures/svg/*.svg 1> /dev/null 2>&1; then cp ./figures/svg/*.svg built/$(name)-web/figures/svg/; fi
 	[ ! -e ./$(name)-web0x.png ] || cp $(name)-web*.png built/$(name)-web/
+	[ ! -e ./$(name)*svg ] || cp $(name)*svg built/$(name)-web/
 	cd built; [ ! -f $(name)-web.zip ] || rm -f $(name)-web.zip; zip -r $(name)-web.zip $(name)-web; cd ..
 #Tidy up a bit
 	@rm mathml.4ht
@@ -224,6 +231,8 @@ else
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
 endif
 	$(LATEX) -shell-escape $(name)-word.tex
+#Fix any figures that were produced in png incorrectly
+	$(HOME)/../graphicx/svg-fix.sh ./
 	cd figures/eps/; $(HOME)/../graphicx/eps-converted2svg.sh ./; cd ../..
 	cd figures/pdf/; $(HOME)/../graphicx/pdftosvg.sh ./; cd ../..
 	rm $(name)-word.*
@@ -243,6 +252,9 @@ endif
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
 	htlatex $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
 	htlatex $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
+#Change the endings from interim to svg
+	sed -i "s/x.interim/x.svg/" *.html
+	rm *$(NAME)*.interim
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
 #html output. Such things as unmatched brackets can cause problems. If you can't locate the error or the 
 #Word document does not come out as expected then please report to Emma Cliffe
@@ -259,7 +271,7 @@ endif
 	@rm *.htf
 
 clean:
-	@rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot $(name)*x.png *.4ht *-lp1 fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* *.tmp2 *.nav *.snm colorfix.sty fontfix.sty parfix.sty beamerfix.sty 
+	@rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot *x.png *x.svg *.4ht *-lp1 fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* *.tmp2 *.nav *.snm colorfix.sty fontfix.sty parfix.sty beamerfix.sty *-pics*.pdf
 
 cleaner:
 	@rm -f *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp*.tex *-figures.tex *_tex-lp macros.tex demacro-private.sty *-cont* 

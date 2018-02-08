@@ -5,8 +5,10 @@ int author = 0;
 int sections = 0;
 int article = 0;
 int report = 0;
+int book = 0; 
 int extarticle = 0;
 int extreport = 0;
+int extbook = 0;
 int beamer = 0;
 int macrolength = 0;
 int beginendlength = 0;
@@ -16,6 +18,8 @@ char *macros;
 char *beginend;
 int macrosstoresize = 1024;
 int beginendsize = 1024;
+int brackets = 0;
+int frac = 0;
 %}
 
 whitespace (" "|\t|(\r?\n))
@@ -34,14 +38,17 @@ end "\\end{document}"
 tableofcontents "\\tableofcontents"
 packages ("\\usepackage")
 newcommand ("\\newcommand"|"\\renewcommand")
+newenvironment "\\newenvironment"
 danger ("babel"|"fontenc"|"lmodern"|"graphicx"|"geometry"|"spverbatim"|"listings"|"amsmath"|"amssymb"|"amsfonts"|"amsthm"|"hyperref"|"DejaVuSansMono"|"etoolbox")
 standardonly ("\\newpage"|"\\clearpage")
 bracedcolor "{"(([^"}""{"])*)"\\color{"(([^"}""{"])*)"}"
 picturestart "\\begin"{lb}"picture"{rb}
 pictureend "\\end"{lb}"picture"{rb}
 begindocument "\\begin"{lb}"document"{rb}
+pmatrix "\\pmatrix"
+frac "\\frac"
 
-%x COMMENT INPUT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND
+%x COMMENT INPUT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE
 %%
 
  /* {doubledollar} ECHO; yy_push_state(DOUBLEDOLLAR); */
@@ -68,8 +75,10 @@ begindocument "\\begin"{lb}"document"{rb}
 <CLASS>"20pt" fontsize=20; ECHO;
 <CLASS>"extarticle" extarticle=1; ECHO;
 <CLASS>"extreport" extreport=1; ECHO;
+<CLASS>"extbook" extbook=1; ECHO;
 <CLASS>"article" article=1; ECHO;
 <CLASS>"report" report=1; ECHO;
+<CLASS>"book" book=1; ECHO;
 <CLASS>"beamer" beamer=1; ECHO;
 <CLASS>"a4paper" papersize=4; ECHO;
 <CLASS>{rb} ECHO; yy_pop_state(); 
@@ -84,7 +93,7 @@ begindocument "\\begin"{lb}"document"{rb}
 "\\newtoggle{web}"
 "\\newtoggle{large}"
 
-{begindocument} printf("\\usepackage{demacro-private}\n"); ECHO; 
+{begindocument} if(beginendlength > 0) printf("\\usepackage{demacro-private}\n"); ECHO; 
 
 {title} ECHO; title = 1;
 {author}{lb} ECHO; author = 1; printf("\\parbox{\\textwidth}{"); yy_push_state(AUTHOR);
@@ -114,12 +123,29 @@ begindocument "\\begin"{lb}"document"{rb}
 {newcommand}/("{"(.*)"}{"(.*)"^") macrosstore("\\renewcommand",13,0); ECHO; yy_push_state(COMMAND);
 <COMMAND>(.*){rb} macrosstore(yytext,yyleng,0); macrosstore("\n",1,0); ECHO; yy_pop_state();
 
+{newenvironment}{lb}"Proof" ECHO; printf("Ori");
+"\\begin"{lb}"Proof" ECHO; printf("Ori");
+"\\end"{lb}"Proof" ECHO; printf("Ori");
+
 {newcommand}/("{"(.*)"}{"(.*)"\\begin") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND);
 {newcommand}/("{"(.*)"}{"(.*)"\\end") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND);
 <BEGINEND>(.*){rb} macrosstore(yytext,yyleng,1); macrosstore("\n",1,1); yy_pop_state();
 
+{pmatrix}{lb} printf("\\begin{pmatrix}"); brackets=1; yy_push_state(PMATRIX);
+<PMATRIX>{lb} ECHO; brackets=brackets+1; 
+<PMATRIX>{rb} brackets=brackets-1; if(brackets==0) {printf("\\end{pmatrix}"); yy_pop_state();}else ECHO;
+<PMATRIX>"\\cr" printf("\\\\");
+<PMATRIX>(\r?\n) printf("\n");
+
+<INITIAL,PMATRIX>{frac}(" ")*/[0-9][0-9] printf("\\frac"); frac=0; yy_push_state(FRAC);
+<FRAC>[0-9] printf("{"); ECHO; printf("}"); frac=frac+1; if(frac==2) yy_pop_state();
+
+<INITIAL,PMATRIX>{lb}([^"}""{"])*/"\\choose" printf("\\binom"); ECHO; yy_push_state(CHOOSE);
+<CHOOSE>"\\choose" printf("}");
+<CHOOSE>([^"\\choose"])*{rb} printf("{"); ECHO; yy_pop_state();
+
  /* This assumes that the end document is in the same file as the preamble */
-{end} ECHO; choices(); macrosoutput();
+{end} ECHO; choices(); if(beginendlength > 0) macrosoutput();
 
  /*Just in case*/
 \r?\n printf("\n"); 
@@ -199,6 +225,8 @@ int choices(){
     fprintf(typeout,"article");
   if(report == 1 || extreport == 1)
     fprintf(typeout,"report");
+  if(book == 1 || extbook == 1)
+    fprintf(typeout,"book");
   if(beamer == 1)
     fprintf(typeout,"beamer");
 
