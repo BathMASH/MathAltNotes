@@ -102,6 +102,8 @@
  \usepackage{amssymb,amsfonts,amsthm}
  \ifpdf
   \usepackage{hyperref}
+ \else
+  \newcommand{\texorpdfstring}[2]{{#1}}
  \fi
  %% This is our fix for displayoperators in web format
  \usepackage{displayoperators}

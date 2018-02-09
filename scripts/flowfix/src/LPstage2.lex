@@ -179,7 +179,8 @@ newenvironment "\\newenvironment"
  /*<GRAPHICS>"angle"[[:blank:]]*"="[[:blank:]]*"0" if(normalsize > 14) printf("angle=90"); else ECHO; */
  /*<GRAPHICS>"\\textwidth" if(normalsize > 14) printf("\\textheight * \\real{0.9},height=\\textwidth * \\real{0.9},angle=90,keepaspectratio,"); else ECHO;*/
 <GRAPHICS>{rb} if(normalsize > 14) printf("}}"); else ECHO; yy_pop_state();
-<GRAPHICS>"\\textwidth" if(normalsize > 14) {bettergraphics=1; printf("\\textwidth,height=\\textheight,keepaspectratio,");} else ECHO;
+<GRAPHICS>"width"(" ")*"="(.*)/(",") bettergraphics=1; if(normalsize > 14) {printf("width=\\textwidth,height=\\textheight,keepaspectratio,");} else ECHO;
+<GRAPHICS>"width"(" ")*"="(.*)/("]") bettergraphics=1; if(normalsize > 14) {printf("width=\\textwidth,height=\\textheight,keepaspectratio,");} else ECHO;
  /*<GRAPHICS>"]" ECHO; yy_pop_state();*/
 <GRAPHICS>{lb} if(normalsize > 14 && bettergraphics==0) printf("[width=\\textwidth,height=\\textheight,keepaspectratio,]"); bettergraphics=0; ECHO; /*yy_pop_state();*/
  /*"\\begin"{lb}"picture"{rb} if(normalsize > 14) {printf("\\begin{center}\\rotatebox{90}{"); ECHO;} else ECHO;*/

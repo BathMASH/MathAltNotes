@@ -175,7 +175,7 @@ endif
 	htlatex  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #Change the endings from interim to svg
 	sed -i "s/x.interim/x.svg/" *.html
-	rm *$(NAME)*.interim
+	@rm -f *$(NAME)*.interim
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
 #html output. Such things as unmatched brackets can cause problems. If you can't locate the error and can put
 #up with digits instead of numbers then comment out the next line as the web browser and mathjax are less fussy.
@@ -254,7 +254,7 @@ endif
 	htlatex $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #Change the endings from interim to svg
 	sed -i "s/x.interim/x.svg/" *.html
-	rm *$(NAME)*.interim
+	@rm -f *$(NAME)*.interim
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
 #html output. Such things as unmatched brackets can cause problems. If you can't locate the error or the 
 #Word document does not come out as expected then please report to Emma Cliffe
