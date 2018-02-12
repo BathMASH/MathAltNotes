@@ -1,5 +1,4 @@
 %http://tug.org/pipermail/tex4ht/2010q4/000245.html
-
 %% \makeatletter
 %%  \let\savecolor\color
 %%  \NewConfigure{color}[2]{\def\a at color{#1}\def\b at color{#2}}

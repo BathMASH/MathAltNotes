@@ -9,6 +9,8 @@ int book = 0;
 int extarticle = 0;
 int extreport = 0;
 int extbook = 0;
+int amsart = 0;
+int amsbook = 0;
 int beamer = 0;
 int macrolength = 0;
 int beginendlength = 0;
@@ -20,6 +22,8 @@ int macrosstoresize = 1024;
 int beginendsize = 1024;
 int brackets = 0;
 int frac = 0;
+int authorcount = 0;
+int begun = 0;
 %}
 
 whitespace (" "|\t|(\r?\n))
@@ -79,6 +83,8 @@ frac "\\frac"
 <CLASS>"article" article=1; ECHO;
 <CLASS>"report" report=1; ECHO;
 <CLASS>"book" book=1; ECHO;
+<CLASS>"amsart" amsart=1; ECHO;
+<CLASS>"amsbook" amsbook=1; ECHO;
 <CLASS>"beamer" beamer=1; ECHO;
 <CLASS>"a4paper" papersize=4; ECHO;
 <CLASS>{rb} ECHO; yy_pop_state(); 
@@ -93,12 +99,12 @@ frac "\\frac"
 "\\newtoggle{web}"
 "\\newtoggle{large}"
 
-{begindocument} if(beginendlength > 0) printf("\\usepackage{demacro-private}\n"); ECHO; 
+{begindocument} begun=1; if(beginendlength > 0) printf("\\usepackage{demacro-private}\n"); ECHO; 
 
 {title} ECHO; title = 1;
-{author}{lb} ECHO; author = 1; printf("\\parbox{\\textwidth}{"); yy_push_state(AUTHOR);
-<AUTHOR>"\\\\" printf(", ");
-<AUTHOR>{rb} printf("}"); ECHO; yy_pop_state();
+{author}{lb} ECHO; author = 1; /*printf("\\parbox{\\textwidth}{"); yy_push_state(AUTHOR);*/
+ /*<AUTHOR>"\\\\" printf(", ");*/
+ /*<AUTHOR>{rb} printf("}"); ECHO; yy_pop_state();*/
 ({chapter}|{section}|{subsection}|{subsubsection}) ECHO; sections = 1;
 
 {tableofcontents} sections = 1; ECHO;
@@ -106,7 +112,7 @@ frac "\\frac"
 {picturestart} ECHO; yy_push_state(PICTURE);
 <PICTURE>{pictureend} ECHO; yy_pop_state();
 
-{bracedcolor} printf(" \\textcolor{"); getcolor(); 
+{bracedcolor} if(begun==1) {printf(" \\textcolor{"); getcolor();} else ECHO;
 
 ("\\input") ECHO; yy_push_state(INPUT);
 <INPUT>{lb}(.*)/("/") printf("{");
@@ -127,8 +133,8 @@ frac "\\frac"
 "\\begin"{lb}"Proof" ECHO; printf("Ori");
 "\\end"{lb}"Proof" ECHO; printf("Ori");
 
-{newcommand}/("{"(.*)"}{"(.*)"\\begin") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND);
-{newcommand}/("{"(.*)"}{"(.*)"\\end") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND);
+{newcommand}/(("["(.*)"]")*"{"(.*)"}"("["(.*)"]")*"{"(.*)"\\begin") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND);
+{newcommand}/(("["(.*)"]")*"{"(.*)"}"("["(.*)"]")*"{"(.*)"\\end") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND);
 <BEGINEND>(.*){rb} macrosstore(yytext,yyleng,1); macrosstore("\n",1,1); yy_pop_state();
 
 {pmatrix}{lb} printf("\\begin{pmatrix}"); brackets=1; yy_push_state(PMATRIX);
@@ -190,10 +196,12 @@ int choices(){
   int size = 0;
   FILE *output;
   FILE *typeout;
+  FILE *alttype;
   FILE *sizeout;
   FILE *paperout;
   output = fopen("choices.tex","w");
   typeout = fopen(".documentclass","w");
+  alttype = fopen(".alternativeclass","w");
   sizeout = fopen(".fontsize","w");
   paperout = fopen(".papersize","w");
   if(output == NULL){
@@ -202,6 +210,10 @@ int choices(){
   }
   if(typeout == NULL){
     fprintf(stderr, "Can't open documentclass output file\n");
+    exit(1);
+  }
+  if(alttype == NULL){
+    fprintf(stderr, "Can't open alternativeclass output file\n");
     exit(1);
   }
   if(sizeout == NULL){
@@ -221,14 +233,30 @@ int choices(){
   else
     fprintf(output,"\\togglefalse{contents}");
   
-  if(article == 1 || extarticle == 1)
+  if(article == 1 || extarticle == 1){
     fprintf(typeout,"article");
-  if(report == 1 || extreport == 1)
+    fprintf(alttype,"article");
+  }
+  if(report == 1 || extreport == 1){
     fprintf(typeout,"report");
-  if(book == 1 || extbook == 1)
+    fprintf(alttype,"report");
+  }
+  if(book == 1 || extbook == 1){
     fprintf(typeout,"book");
-  if(beamer == 1)
+    fprintf(alttype,"book");
+  }
+  if(amsart == 1){
+    fprintf(typeout,"amsart");
+    fprintf(alttype,"article");
+  }
+  if(amsbook == 1){
+    fprintf(typeout,"amsbook");
+    fprintf(alttype,"book");
+  }
+  if(beamer == 1){
     fprintf(typeout,"beamer");
+    fprintf(alttype,"article");
+  }
 
   fprintf(sizeout,"%d",fontsize);
 

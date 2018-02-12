@@ -4,6 +4,7 @@ name=empty
 LATEX=pdflatex
 HOME=$(shell cat .home)
 TYPE=$(shell cat .documentclass)
+ALTT=$(shell cat .alternativeclass)
 SIZE=$(shell cat .fontsize)
 PAPER=$(shell cat .papersize)
 
@@ -61,7 +62,7 @@ clear: clean $(name)-cont-clean.tex
 ifeq ($(TYPE),beamer)	
 	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerhandout{handout}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
 endif
 	$(LATEX) --shell-escape $(name)-clear.tex
 	$(LATEX) --shell-escape $(name)-clear.tex
@@ -78,7 +79,7 @@ ifeq ($(TYPE),beamer)
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-clear.tex ] || rm -f $(name)-clear.tex
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
@@ -103,7 +104,7 @@ large: clean $(name)-cont-clean-lp.tex
 ifeq ($(TYPE),beamer)
 	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerhandout{handout}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-large.tex
 else
-	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{ext$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean-lp}" > $(name)-large.tex
+	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{ext$(ALTT)}\\\\input{master}\\\\input{$(name)-cont-clean-lp}" > $(name)-large.tex
 endif
 	$(LATEX) --shell-escape $(name)-large.tex
 	$(LATEX) --shell-escape $(name)-large.tex
@@ -120,7 +121,7 @@ ifeq ($(TYPE),beamer)
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{large}" > toggle.tex
 	[ ! -f $(name)-large.tex ] || rm -f $(name)-large.tex
-	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{extarticle}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-large.tex
+	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{ext$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
@@ -148,13 +149,13 @@ web: clean $(name)-cont-clean.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-web.tex ] || rm -f $(name)-web.tex
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
 endif
 	$(LATEX) -shell-escape $(name)-web.tex
 #Fix any figures that were produced in png incorrectly
-	$(HOME)/../graphicx/svg-fix.sh ./
+#	$(HOME)/../graphicx/svg-fix.sh ./
 #Convert the rest of the figures
 	cd figures/eps/; $(HOME)/../graphicx/eps-converted2svg.sh ./; cd ../..
 	cd figures/pdf/; $(HOME)/../graphicx/pdftosvg.sh ./; cd ../..
@@ -167,15 +168,14 @@ endif
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
 	[ ! -f $(name)-web.tex ] || rm -f $(name)-web.tex
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
 endif
-	htlatex  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
-	htlatex  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
-#Change the endings from interim to svg
-	sed -i "s/x.interim/x.svg/" *.html
-	@rm -f *$(NAME)*.interim
+	$(HOME)/../../scripts/htlatex  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HOME)/../../scripts/htlatex  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+#Change the endings from interim to svg - this should not be doing anything any more after fix via .env
+#	sed -i "s/x.interim.png/x.svg/" *.html
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
 #html output. Such things as unmatched brackets can cause problems. If you can't locate the error and can put
 #up with digits instead of numbers then comment out the next line as the web browser and mathjax are less fussy.
@@ -199,8 +199,8 @@ endif
 	if ls ./figures/png/*.png 1> /dev/null 2>&1; then cp ./figures/png/*.png built/$(name)-web/figures/png/; fi
 	if ls ./figures/jpg/*.jpg 1> /dev/null 2>&1; then cp ./figures/jpg/*.jpg built/$(name)-web/figures/jpg/; fi
 	if ls ./figures/svg/*.svg 1> /dev/null 2>&1; then cp ./figures/svg/*.svg built/$(name)-web/figures/svg/; fi
-	[ ! -e ./$(name)-web0x.png ] || cp $(name)-web*.png built/$(name)-web/
-	[ ! -e ./$(name)*svg ] || cp $(name)*svg built/$(name)-web/
+#	[ ! -e ./$(name)-web0x.interim.png ] || mv $(name)-web*.png built/$(name)-web/
+	[ ! -e ./$(name)*svg ] || mv $(name)*svg built/$(name)-web/
 	cd built; [ ! -f $(name)-web.zip ] || rm -f $(name)-web.zip; zip -r $(name)-web.zip $(name)-web; cd ..
 #Tidy up a bit
 	@rm mathml.4ht
@@ -226,13 +226,13 @@ word: clean $(name)-cont-clean.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
 endif
 	$(LATEX) -shell-escape $(name)-word.tex
 #Fix any figures that were produced in png incorrectly
-	$(HOME)/../graphicx/svg-fix.sh ./
+#	$(HOME)/../graphicx/svg-fix.sh ./
 	cd figures/eps/; $(HOME)/../graphicx/eps-converted2svg.sh ./; cd ../..
 	cd figures/pdf/; $(HOME)/../graphicx/pdftosvg.sh ./; cd ../..
 	rm $(name)-word.*
@@ -241,20 +241,19 @@ endif
 	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{article}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
 endif
 #htlatex needs to run twice to prevent disruption to the sectioning tree caused by e.g. footnotes
 #Note, yes this does run latex 6 times! It is a reported bug: https://puszcza.gnu.org.ua/bugs/index.php?197
 #Note that we are not breaking into sections for the Word transform
 #fn-in stops us from losing the footnotes in the Word format: https://tex.stackexchange.com/questions/195551/how-to-add-footnotes-in-htlatex-via-fn-in
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
-	htlatex $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
-	htlatex $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
-#Change the endings from interim to svg
-	sed -i "s/x.interim/x.svg/" *.html
-	@rm -f *$(NAME)*.interim
+	$(HOME)/../../scripts/htlatex $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HOME)/../../scripts/htlatex $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
+#Change the endings from interim to svg - this should not be doing anything any more after fix via .env
+#	sed -i "s/x.interim.png/x.svg/" *.html
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
 #html output. Such things as unmatched brackets can cause problems. If you can't locate the error or the 
 #Word document does not come out as expected then please report to Emma Cliffe
@@ -271,7 +270,7 @@ endif
 	@rm *.htf
 
 clean:
-	@rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot *x.png *x.svg *.4ht *-lp1 fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* *.tmp2 *.nav *.snm colorfix.sty fontfix.sty parfix.sty beamerfix.sty *-pics*.pdf
+	@rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot *x.interim.png *x.svg *.4ht *-lp1 fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* *.tmp2 *.nav *.snm colorfix.sty fontfix.sty parfix.sty beamerfix.sty *-pics*.pdf
 
 cleaner:
 	@rm -f *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp*.tex *-figures.tex *_tex-lp macros.tex demacro-private.sty *-cont* 

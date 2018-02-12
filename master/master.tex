@@ -181,7 +181,7 @@
  \date{Please set a date for these notes or toggle frontmatter off if a title is inappropriate}
  \ifdefstring{\beamerslides}{true}{\date{}}{}
  \AfterEndPreamble{
-  \iftoggle{frontmatter}{\maketitle\newpage}{}
+  \iftoggle{frontmatter}{\renewcommand{\baselinestretch}{1.0}\selectfont\maketitle\renewcommand{\baselinestretch}{1.25}\selectfont\newpage}{}
   \iftoggle{contents}{\tableofcontents\listoffigures\listoftables\renewcommand{\tableofcontents}{}\renewcommand{\listoffigures}{}\renewcommand{\listoftables}{}\newpage}{}
   \pagenumbering{arabic}        
   \setcounter{page}{1}
@@ -198,7 +198,7 @@
   }{}
   \iftoggle{figures}{\usepackage{figurefix}}{}
   \iftoggle{web}{\usepackage{webfix}}{}
-  \iftoggle{web}{\usepackage{xcolor}\usepackage{colorfix}}{}
+  \iftoggle{web}{\usepackage{color}\usepackage{xcolor}\usepackage{colorfix}}{}
   \iftoggle{clearprint}{\newcommand{\scalefactor}{1.1}}{}
   \iftoggle{large}{\renewcommand{\scalefactor}{1.4}}{}
   \ifboolexpr{togl {clearprint} or togl {large}}{\usepackage{fontfix}}{}
