@@ -3,14 +3,6 @@
 int title = 0;
 int author = 0;
 int sections = 0;
-int article = 0;
-int report = 0;
-int book = 0; 
-int extarticle = 0;
-int extreport = 0;
-int extbook = 0;
-int amsart = 0;
-int amsbook = 0;
 int beamer = 0;
 int macrolength = 0;
 int beginendlength = 0;
@@ -18,12 +10,14 @@ int fontsize = 10;
 int papersize = 0;
 char *macros;
 char *beginend;
+char *class;
 int macrosstoresize = 1024;
 int beginendsize = 1024;
 int brackets = 0;
 int frac = 0;
 int authorcount = 0;
 int begun = 0;
+int colorlst = 0;
 %}
 
 whitespace (" "|\t|(\r?\n))
@@ -43,7 +37,7 @@ tableofcontents "\\tableofcontents"
 packages ("\\usepackage")
 newcommand ("\\newcommand"|"\\renewcommand")
 newenvironment "\\newenvironment"
-danger ("babel"|"fontenc"|"lmodern"|"graphicx"|"geometry"|"spverbatim"|"listings"|"amsmath"|"amssymb"|"amsfonts"|"amsthm"|"hyperref"|"DejaVuSansMono"|"etoolbox")
+danger ("babel"|"fontenc"|"lmodern"|"graphicx"|"geometry"|"spverbatim"|"listings"|"amsmath"|"amssymb"|"amsfonts"|"amsthm"|"hyperref"|"DejaVuSansMono"|"etoolbox"|"epsfig"|"mathdesign")
 standardonly ("\\newpage"|"\\clearpage")
 bracedcolor "{"(([^"}""{"])*)"\\color{"(([^"}""{"])*)"}"
 picturestart "\\begin"{lb}"picture"{rb}
@@ -51,8 +45,11 @@ pictureend "\\end"{lb}"picture"{rb}
 begindocument "\\begin"{lb}"document"{rb}
 pmatrix "\\pmatrix"
 frac "\\frac"
+toosmall ("\\tiny"|"\\scriptsize"|"\\footnotesize"|"\\small")
+lstset "\\lstset"{lb}
 
-%x COMMENT INPUT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE
+%x COMMENT INPUT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE LISTING READCLASS
+%s LSTSET
 %%
 
  /* {doubledollar} ECHO; yy_push_state(DOUBLEDOLLAR); */
@@ -77,27 +74,27 @@ frac "\\frac"
 <CLASS>"14pt" fontsize=14; ECHO;
 <CLASS>"17pt" fontsize=17; ECHO;
 <CLASS>"20pt" fontsize=20; ECHO;
-<CLASS>"extarticle" extarticle=1; ECHO;
-<CLASS>"extreport" extreport=1; ECHO;
-<CLASS>"extbook" extbook=1; ECHO;
-<CLASS>"article" article=1; ECHO;
-<CLASS>"report" report=1; ECHO;
-<CLASS>"book" book=1; ECHO;
-<CLASS>"amsart" amsart=1; ECHO;
-<CLASS>"amsbook" amsbook=1; ECHO;
-<CLASS>"beamer" beamer=1; ECHO;
+<CLASS>{lb} ECHO; yy_push_state(READCLASS);
 <CLASS>"a4paper" papersize=4; ECHO;
-<CLASS>{rb} ECHO; yy_pop_state(); 
+<READCLASS>(.*)/"}" ECHO; whatclass(); yy_pop_state(); yy_pop_state(); 
 
 {packages} yy_push_state(PACKAGES);
-<PACKAGES>(("[")(.*)("]")){lb}{danger}{rb} printf("\\ifboolexpr{togl {web} or togl{clearprint}}{}{\\usepackage"); ECHO; printf("}"); printf("%%%%"); yy_pop_state();
-<PACKAGES>(("[")(.*)("]")){lb}(.*){rb} printf("\\usepackage"); ECHO; printf("%%%%"); yy_pop_state();
+<PACKAGES>(("[")(.*)("]"))*{lb}"bm"{rb} printf("\\newcommand{\\hmmax}{0}\\newcommand{\\bmmax}{2}\n\\usepackage"); ECHO; yy_pop_state();
+<PACKAGES>(("[")(.*)("]"))*{lb}{danger}{rb} printf("\\ifboolexpr{togl {web} or togl{clearprint}}{}{\\usepackage"); ECHO; printf("}"); printf("%%%%"); yy_pop_state();
+<PACKAGES>(("[")(.*)("]"))*{lb}(.*){rb} printf("\\usepackage"); ECHO; printf("%%%%"); yy_pop_state();
 <PACKAGES>{lb} printf("\\usepackage{"); 
 <PACKAGES>{rb} ECHO; yy_pop_state();
+
+{lstset} ECHO; brackets=1; yy_push_state(LSTSET);
+<LSTSET>"backgroundcolor" ECHO; colorlst = 1;
+<LSTSET>{lb} ECHO; brackets=brackets+1;
+<LSTSET>{rb} ECHO; brackets=brackets-1; if(brackets==0) yy_pop_state(); 
 
 "\\newtoggle{clearprint}"
 "\\newtoggle{web}"
 "\\newtoggle{large}"
+
+{toosmall} printf("\\ifboolexpr{togl {web} or togl {clearprint}}{\\normalsize}{"); ECHO; printf("}");
 
 {begindocument} begun=1; if(beginendlength > 0) printf("\\usepackage{demacro-private}\n"); ECHO; 
 
@@ -125,8 +122,8 @@ frac "\\frac"
 <INCLUDE>"/"
 <INCLUDE>{rb} ECHO; yy_pop_state();
 
-{newcommand}/("{"(.*)"}{"(.*)"_") macrosstore("\\renewcommand",13,0); ECHO; yy_push_state(COMMAND);
-{newcommand}/("{"(.*)"}{"(.*)"^") macrosstore("\\renewcommand",13,0); ECHO; yy_push_state(COMMAND);
+{newcommand}/("{"(.*)"}"("["(.*)"]")?"{"(.*)"_") macrosstore("\\renewcommand",13,0); ECHO; yy_push_state(COMMAND);
+{newcommand}/("{"(.*)"}"("["(.*)"]")?"{"(.*)"^") macrosstore("\\renewcommand",13,0); ECHO; yy_push_state(COMMAND);
 <COMMAND>(.*){rb} macrosstore(yytext,yyleng,0); macrosstore("\n",1,0); ECHO; yy_pop_state();
 
 {newenvironment}{lb}"Proof" ECHO; printf("Ori");
@@ -151,7 +148,7 @@ frac "\\frac"
 <CHOOSE>([^"\\choose"])*{rb} printf("{"); ECHO; yy_pop_state();
 
  /* This assumes that the end document is in the same file as the preamble */
-{end} ECHO; choices(); if(beginendlength > 0) macrosoutput();
+{end} ECHO; choices(); if(macrolength > 0) macrosoutput();
 
  /*Just in case*/
 \r?\n printf("\n"); 
@@ -192,6 +189,13 @@ int getcolor(){
   return 0;
 }
 
+int whatclass(){
+  class = strdup( yytext );
+  if(strcmp(class,"beamer")==0)
+      beamer = 1;
+  return 0;
+}
+
 int choices(){
   int size = 0;
   FILE *output;
@@ -199,11 +203,13 @@ int choices(){
   FILE *alttype;
   FILE *sizeout;
   FILE *paperout;
+  FILE *unknown;
   output = fopen("choices.tex","w");
   typeout = fopen(".documentclass","w");
   alttype = fopen(".alternativeclass","w");
   sizeout = fopen(".fontsize","w");
   paperout = fopen(".papersize","w");
+  unknown = fopen(".unknownclass","w");
   if(output == NULL){
     fprintf(stderr, "Can't open choices file\n");
     exit(1);
@@ -224,6 +230,10 @@ int choices(){
     fprintf(stderr, "Can't open papersize output file\n");
     exit(1);
   }
+  if(unknown == NULL){
+    fprintf(stderr, "Can't open unknown class output file\n");
+    exit(1);
+  }
   if(title == 1 && author == 1)
     fprintf(output,"\\toggletrue{frontmatter}");
   else
@@ -232,30 +242,30 @@ int choices(){
     fprintf(output,"\\toggletrue{contents}");
   else
     fprintf(output,"\\togglefalse{contents}");
-  
-  if(article == 1 || extarticle == 1){
-    fprintf(typeout,"article");
+
+  fprintf(typeout,"%s",class);
+
+  if(strcmp(class,"article")==0 || strcmp(class,"extarticle")==0){  
     fprintf(alttype,"article");
-  }
-  if(report == 1 || extreport == 1){
-    fprintf(typeout,"report");
+    fprintf(unknown,"false");
+  }else if(strcmp(class,"report")==0 || strcmp(class,"extreport")==0){
     fprintf(alttype,"report");
-  }
-  if(book == 1 || extbook == 1){
-    fprintf(typeout,"book");
+    fprintf(unknown,"false");
+  }else if(strcmp(class,"book")==0 || strcmp(class,"extbook")==0 || strcmp(class,"tufte-book")==0){
     fprintf(alttype,"book");
-  }
-  if(amsart == 1){
-    fprintf(typeout,"amsart");
+    fprintf(unknown,"false");
+  }else if(strcmp(class,"amsart") == 0){
     fprintf(alttype,"article");
-  }
-  if(amsbook == 1){
-    fprintf(typeout,"amsbook");
+    fprintf(unknown,"false");
+  }else if(strcmp(class,"amsbook") == 0){
     fprintf(alttype,"book");
-  }
-  if(beamer == 1){
-    fprintf(typeout,"beamer");
+    fprintf(unknown,"false");
+  }else if(strcmp(class,"beamer") == 0){
     fprintf(alttype,"article");
+    fprintf(unknown,"false");
+  }else{
+    fprintf(alttype,"report");
+    fprintf(unknown,"true");
   }
 
   fprintf(sizeout,"%d",fontsize);
@@ -269,12 +279,12 @@ int choices(){
   fclose(typeout);
   fclose(sizeout);
   fclose(paperout);
+  fclose(unknown);
   return 0;
 }
 
 int checkbeamer(){
   FILE *docinput;
-  char class[1024];
   docinput = fopen(".documentclass","r");
   if(docinput == NULL){
     fprintf(stderr,"Warning: Can't open documentclass input file but this is okay if it doesn't exist yet\n");
@@ -352,6 +362,15 @@ int macrosoutput(){
   }
   for(i=0; i<macrolength;i++)
     fprintf(output,"%c",macros[i]);
+
+  if(colorlst == 1){
+    fprintf(output,"\\ConfigureEnv{lstlisting}\n");
+    fprintf(output,"{\\ifvmode\\IgnorePar\\fi\\EndP\\HCode{<div class=\"shaded\">}\\par}{\\ifvmode\\IgnorePar\\fi\\EndP\\HCode{</div>}\\par}{}{}\n");
+    fprintf(output,"\\Css{div.shaded {\n");
+    fprintf(output,"background-color: AliceBlue;\n");
+    fprintf(output,"}\n"); 
+    fprintf(output,"}\n");
+  }
   fclose(output);
 
   for(i=0; i<beginendlength;i++)

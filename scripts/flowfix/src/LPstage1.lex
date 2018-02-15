@@ -29,7 +29,7 @@ mathsend "\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|
   /* We need this to work on maths lines not between newlines */
 {mathstart} ECHO; yy_push_state(MATHS);
 <MATHS>("%")* ECHO; yy_push_state(COMMENT);
-<MATHS>(.*)({whitespace})*("\\label"{lb}(.*){rb})/({whitespace})*("\\\\"|"\\end") switchtag(); 
+<MATHS>(.*)({whitespace})*("\\label"{lb}([^"{""}"]*){rb})/({whitespace})*("\\\\"|"\\end") switchtag(); 
 <MATHS>(.*)("\\tag"{lb}(.*){rb})/({whitespace})*("\\\\"|"\\end") switchtag();
 <MATHS>(.*)("\\notag")/({whitespace})*("\\\\"|"\\end") switchtag();
 <MATHS>(.*)("\\nonumber")/({whitespace})*("\\\\"|"\\end") switchtag();

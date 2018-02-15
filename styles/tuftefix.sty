@@ -1,0 +1,17 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tuftefix}[2018/02/15]
+%\RequirePackage{etoolbox}
+
+\newcommand{\marginnote}[2][0pt]{%
+  \par\noindent\rule{\linewidth}{1pt}
+  \textbf{Margin note:}
+         {\noindent #2}%
+         \par\noindent\rule{\linewidth}{1pt}
+}
+
+\@ifpackageloaded{hyperref}{
+  \renewcommand*{\eqref}[1]{%
+    \hyperref[{#1}]{\textup{\tagform@{\ref*{#1}}}}%
+  }
+}{}
+

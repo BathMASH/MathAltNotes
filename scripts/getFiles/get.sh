@@ -43,6 +43,10 @@ if [ -d files ]; then
     for i in `find . -name "*.tex" -type f`; do
 	mv $i $home/../../$tmpname/
     done
+    for i in `find . -name "*.cls" -type f`; do
+	mv $i $home/../../$tmpname/
+	echo "Your project includes a class file $i. It is possible that the transformations will fail. Please ask ma-largeprintnotes@bath.ac.uk for help.";
+    done
     for i in `find . -name "*.sty" -type f`; do
 	mv $i $home/../../$tmpname/
 	echo "Your project includes a style file $i. It is possible that the transformations will fail. Please ask ma-largeprintnotes@bath.ac.uk for help.";

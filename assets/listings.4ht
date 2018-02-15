@@ -1,0 +1,116 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Scroll down for copyright notice but please heed this
+%% warning.
+%%
+%% This file is the original from TeX4ht but edited by 
+%% Emma Cliffe, University of Bath, to fix issues when 
+%% used with MathJax rendering.
+%%
+%% Edits as of 13/02/18:
+%% Altered as per http://tug.org/pipermail/tex4ht/2016q2/001549.html
+%%
+%% If this file is named listings.4ht and is in the compilation directory 
+%% it will take precendence over the TeX4ht file. 
+%% If you do not want this to happen just delete the file or rename it.
+
+\message{File listings.4ht is locally defined and modified for mathjax}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% listings.4ht                          2009-05-21-09:32 %
+% Copyright (C) 2001--2009       Eitan M. Gurari         %
+%                                                        %
+% This work may be distributed and/or modified under the %
+% conditions of the LaTeX Project Public License, either %
+% version 1.3c of this license or (at your option) any   %
+% later version. The latest version of this license is   %
+% in                                                     %
+%   http://www.latex-project.org/lppl.txt                %
+% and version 1.3c or later is part of all distributions %
+% of LaTeX version 2005/12/01 or later.                  %
+%                                                        %
+% This work has the LPPL maintenance status "maintained".%
+%                                                        %
+% This Current Maintainer of this work                   %
+% is Eitan M. Gurari.                                    %
+%                                                        %
+% If you modify this program your changing its signature %
+% with a directive of the following form will be         %
+% appreciated.                                           %
+%            \message{signature}                         %
+%                                                        %
+%                             gurari@cse.ohio-state.edu  %
+%                 http://www.cse.ohio-state.edu/~gurari  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\immediate\write-1{version 2009-05-21-09:32}
+
+\append:defII\lst@EnterMode{%
+  \ifx \lsthk:EveryLine\:UnDef
+     \let\lsthk:EveryLine\lsthk@EveryLine
+  \fi
+  \ifx \lsthk:EveryLine\lsthk@EveryLine
+      \pend:def\lsthk@EveryLine{\c:listings
+             \def\dd:listings{\d:listings\let\dd:listings\empty}}%
+  \fi
+  \append:def\lsthk@EveryPar{\dd:listings}%
+  \a:listings\bgroup
+  \Configure{$}{}{}{}%
+  \aftergroup\lst:EnterMode  }
+\def\lst:EnterMode{\b:listings\egroup}
+\NewConfigure{listings}{4}
+\let\dd:listings=\empty
+\append:defI\lst@Init{\csname a:listings-init\endcsname}
+\pend:def\lst@DeInit{\csname b:listings-init\endcsname}
+\NewConfigure{listings-init}{2}
+\lst@AddToHook{TextStyle}{%
+   \Configure{listings}{}{}{}{}%
+%   \a:lstinline \bgroup \aftergroup\b:lstinline\aftergroup\egroup
+    \a:lstinline \bgroup \aftergroup\b:lstinline\egroup
+  }
+\NewConfigure{lstinline}{2}
+\pend:defI\lst@MakeCaption{%
+  \let\lst:addcontentsline\addcontentsline
+  \def\addcontentsline{\gHAdvance\TitleCount by 1
+                       \lst:addcontentsline}%
+}
+\append:defI\lst@MakeCaption{%
+  \let\addcontentsline\lst:addcontentsline
+}
+\def\lst@NewLine{%
+   \ifx\lst@OutputBox\@gobble\else \the\everypar \fi
+   \global\advance\lst@newlines\m@ne
+   \lst@newlinetrue
+}%
+\def\lst@InputListing#1{%
+    \begingroup
+      \lsthk@PreSet \gdef\lst@intname{#1}%
+      \expandafter\lstset\expandafter{\lst@set}%
+      \lsthk@DisplayStyle
+      \catcode\active=\active
+      \a:lstinputlisting \lst@Init\relax \let\lst@gobble\z@
+      \lst@SkipToFirst
+      \lst@ifprint \def\lst@next{\input{#1}}%
+             \else \let\lst@next\@empty \fi
+      \lst@next \lst@DeInit
+      \b:lstinputlisting
+    \endgroup}
+\NewConfigure{lstinputlisting}{2}
+\def\lst@Kern#1{%
+   \setbox\z@\hbox{{\lst@currstyle{\kern#1}}}%
+   \global\advance\lst@currlwidth \wd\z@
+   \tmp:dim=#1 \let\:tempc=\empty
+   \loop \ifdim \tmp:dim>\a:lst@Kern
+      \advance \tmp:dim by -\a:lst@Kern
+      \advance \tmp:dim by -\b:lst@Kern
+      \append:def\:tempc{\:nbsp}%
+   \repeat
+   \setbox\z@\hbox{{\lst@currstyle{\:tempc}}}%
+   \lst@OutputBox\z@}
+\NewConfigure{lst@Kern}{2}
+\Configure{lst@Kern}{0.499em}{0.1em}
+\def\lst@outputspace{\:nbsp}
+
+\HLet\lst@frameInit=\empty
+\HLet\lst@frameExit=\empty
+
+\Hinput{listings}
+\endinput
+
