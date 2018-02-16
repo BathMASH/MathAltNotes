@@ -48,6 +48,28 @@ Computing Services has agreed to ensure that
 has the requisite setup. Hence, all staff should be able to use
 this. For help using linux.bath.ac.uk see http://www.bath.ac.uk/guides/connecting-to-linux-bath/
 
+## Getting the tool 
+
+To get a copy of the tool which can also be updated:
+1. Use a web browser to visit https://github.bath.ac.uk/MathsAccessibleNotes/MathAltNotes so you exist on the system. You can see this readme there and also the files but the right way to get a copy of the files is to use git on the command line. This way you can update the tool as we make changes. 
+2. Log in to linux.bath.ac.uk and 'clone' the tool. This will make a directory called MathAltNotes where the tool can be found: 
+
+> git clone https://github.bath.ac.uk/MathsAccessibleNotes/MathAltNotes.git
+
+and use your Computing Services login details. 
+
+3. Change director to MathAltNotes:
+
+> cd MathAltNotes
+
+You can now use the instructions below. 
+
+Each time you come back to use MathAltNotes you should update it in case
+we have made changes. You can do this using:
+> git pull
+
+and use your Computing Services login details. 
+
 ## Collect a copy of your files
 
 This method of creating alternative formats rewrites the LaTeX.
@@ -93,8 +115,14 @@ filename-180129-1151/built
 
 ### If this fails
 
-If this fails it is because one or more of the formats failed.
-You can compile formats individually. Move into your time-stamped
+If this fails it is because one or more of the formats failed. 
+
+If only the web and word format failed you can try:
+> ./quickSloppyMake filename-180129-1151
+
+but please read the warnings. 
+
+You can also compile formats individually. Move into your time-stamped
 directory:
 > cd filename-180129-1151
 
@@ -120,9 +148,16 @@ For Beamer slides:
 
 > make word name=filename
 
+For sloppy web and word, as a last resort (and please contact us for 
+help too) try:
+> make websloppy name=filename
+
+> make wordsloppy name=filename
+
 ## Reporting issues and getting help
 
-This is a work in progress and is likely to be unstable. 
+This is a work in progress and is unstable!
+ 
 If you have problems email ma-largeprintnotes@bath.ac.uk and 
 attach a zip of your time-stamped directory if possible. 
 
@@ -160,8 +195,17 @@ are provided prior to class and you don't wish to provide them
 to all students then you may need to set up Moodle so that only 
 these students can see certain resources. 
 
-The easiest way to do this is to create a separate topic which
-can only be seen by certain students. To do this:
+The easiest way to do this if you are in the Department of Mathematical
+Sciences is to ask us to set it up for you on one of the alternative 
+notes Moodle pages. We will give you access and tell you what to do. 
+
+If you want to do this on your own Moodle page then you will need to 
+create a separate topic which can only be seen by certain students. 
+
+Please be very careful if you do this yourself, it is easy to accidentally
+break a student's confidentuality. 
+
+To do this:
 * Make an empty topic
 * Click on Edit -> Edit topic
 * Unclick Use default section name and give the topic an appropriate title
@@ -199,4 +243,4 @@ student view you should no longer be able to see the topic at all. If in student
 view you can still see the topic but greyed out then you MUST change this
 otherwise students can see who has access to the topic. 
 
- 
+Any problems, mail us: ma-largeprintnotes@bath.ac.uk 

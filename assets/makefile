@@ -17,7 +17,7 @@ pdflatexfigures:
 	[ ! -f $(name)-figures.tex ] || rm -f $(name)-figures.tex
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\usepackage{color}\\\\thispagestyle{empty}\\\\togglefalse{frontmatter}\\\\togglefalse{contents}\\\\begin{document}\\\\input{$(name)}\\\\end{document}" > $(name)-figures.tex
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}" > toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\togglefalse{word}\\\\togglefalse{large}" > toggle.tex
 	$(LATEX) --shell-escape $(name)-figures.tex 
 	$(LATEX) --shell-escape $(name)-figures.tex
 	$(LATEX) --shell-escape $(name)-figures.tex
@@ -43,7 +43,7 @@ standard: clean $(name)-cont-clean.tex
 #Setting the LaTeX toggles to control how the document is created. 
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 #In this example we have a SVG but need a PDF for the LaTeX to work with.
-	echo "\\\\togglefalse{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}" > toggle.tex
+	echo "\\\\togglefalse{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-standard.tex ] || rm -f $(name)-standard.tex
 	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\papersize{$(PAPER)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-standard.tex
 #https://tex.stackexchange.com/questions/611/setting-class-options-after-documentclass/617
@@ -53,7 +53,7 @@ standard: clean $(name)-cont-clean.tex
 #We can't change the jobname to get different filenames that way as this does not work with some packages
 #we will need to use for graphics in this set up. 
 	mv $(name)-standard.pdf built/
-	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty
 
 #This will be the same except for the toggles and name.
 clear: clean $(name)-cont-clean.tex
@@ -61,7 +61,7 @@ clear: clean $(name)-cont-clean.tex
 	cp $(HOME)/../../styles/* . 
 	cd figures/svg/; $(HOME)/../graphicx/svgtopdf.sh ./; cd ../..
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}" > toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-clear.tex ] || rm -f $(name)-clear.tex
 ifeq ($(UNKN),false)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
@@ -75,7 +75,7 @@ endif
 	$(LATEX) --shell-escape $(name)-clear.tex
 	$(LATEX) --shell-escape $(name)-clear.tex
 	mv $(name)-clear.pdf built/
-	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty
 
 #This will be the same except for the toggles and name.
 clearbart: clean $(name)-cont-clean.tex
@@ -84,14 +84,14 @@ ifeq ($(TYPE),beamer)
 	cp $(HOME)/../../styles/* . 
 	cd figures/svg/; $(HOME)/../graphicx/svgtopdf.sh ./; cd ../..
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}" > toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-clear.tex ] || rm -f $(name)-clear.tex
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	mv $(name)-clear.pdf built/
-	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty
 else
 	@echo "---------------------------------------------------";
 	@echo "You cannot make clear beamer article format for documents which are not beamer slides.";
@@ -106,7 +106,7 @@ large: clean $(name)-cont-clean-lp.tex
 	cp $(HOME)/../../styles/* . 
 	cd figures/svg/; $(HOME)/../graphicx/svgtopdf.sh ./; cd ../..
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{large}" > toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-large.tex ] || rm -f $(name)-large.tex
 ifeq ($(UNKN),false)
 	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{ext$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean-lp}" > $(name)-large.tex
@@ -120,7 +120,7 @@ endif
 	$(LATEX) --shell-escape $(name)-large.tex
 	$(LATEX) --shell-escape $(name)-large.tex
 	mv $(name)-large.pdf built/
-	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty
 
 #This will be the same except for the toggles and name.
 largebart: clean $(name)-cont-clean-lp.tex
@@ -129,14 +129,14 @@ ifeq ($(TYPE),beamer)
 	cp $(HOME)/../../styles/* . 
 	cd figures/svg/; $(HOME)/../graphicx/svgtopdf.sh ./; cd ../..
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{large}" > toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-large.tex ] || rm -f $(name)-large.tex
 	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{ext$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	mv $(name)-large.pdf built/
-	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty
 else
 	@echo "---------------------------------------------------";
 	@echo "You cannot make large beamer article format for documents which are not beamer slides.";
@@ -157,7 +157,7 @@ web: clean $(name)-cont-clean.tex
 	$(HOME)/../graphicx/buildfigure.sh ./
 #Make any tikz figures etc.
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}" > toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-web.tex ] || rm -f $(name)-web.tex
 ifeq ($(UNKN),false)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
@@ -176,7 +176,7 @@ endif
 	rm $(name)-web.*
 #Set up for the web version
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}" > toggle.tex
+	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
 #htlatex needs to run twice to prevent disruption to the sectioning tree caused by e.g. footnotes
 #Note, yes this does run latex 6 times! It is a reported bug: https://puszcza.gnu.org.ua/bugs/index.php?197
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
@@ -223,7 +223,7 @@ endif
 	@rm mathml.4ht
 	@rm unicode.4hf
 	@rm mathjaxMMLWord.cfg
-	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty
 	@rm *.htf
 
 #We require some additional files for everything to work. 
@@ -240,7 +240,7 @@ websloppy: clean $(name)-cont-clean.tex
 	$(HOME)/../graphicx/buildfigure.sh ./
 #Make any tikz figures etc.
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}" > toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-web.tex ] || rm -f $(name)-web.tex
 ifeq ($(UNKN),false)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
@@ -259,7 +259,7 @@ endif
 	rm $(name)-web.*
 #Set up for the web version
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}" > toggle.tex
+	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
 #htlatex needs to run twice to prevent disruption to the sectioning tree caused by e.g. footnotes
 #Note, yes this does run latex 6 times! It is a reported bug: https://puszcza.gnu.org.ua/bugs/index.php?197
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
@@ -306,7 +306,7 @@ endif
 	@rm mathml.4ht
 	@rm unicode.4hf
 	@rm mathjaxMMLWord.cfg
-	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty
 	@rm *.htf
 
 
@@ -325,7 +325,7 @@ word: clean $(name)-cont-clean.tex
 	$(HOME)/../graphicx/buildfigure.sh ./
 #Make any tikz figures etc.
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}" > toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}\\\\toggletrue{word}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
 ifeq ($(UNKN),false)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
@@ -343,7 +343,7 @@ endif
 	rm $(name)-word.*
 #Set up for the word version
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}" > toggle.tex
+	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}\\\\toggletrue{word}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
 ifeq ($(UNKN),false)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
@@ -374,7 +374,7 @@ endif
 	@rm unicode.4hf
 	@rm mathjaxMMLWord.cfg
 	@rm additional.css
-	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty
 	@rm *.htf
 
 #To transform to Word we need to use the web transform but without breaking into sections and then use Pandoc 19+
@@ -392,7 +392,7 @@ wordsloppy: clean $(name)-cont-clean.tex
 	$(HOME)/../graphicx/buildfigure.sh ./
 #Make any tikz figures etc.
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}" > toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}\\\\toggletrue{word}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
 ifeq ($(UNKN),false)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
@@ -410,7 +410,7 @@ endif
 	rm $(name)-word.*
 #Set up for the word version
 	[ ! -f toggle.tex ] || rm -f toggle.tex
-	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}" > toggle.tex
+	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}\\\\toggletrue{word}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
 ifeq ($(UNKN),false)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
@@ -441,7 +441,7 @@ endif
 	@rm unicode.4hf
 	@rm mathjaxMMLWord.cfg
 	@rm additional.css
-	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty
 	@rm *.htf
 
 

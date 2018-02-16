@@ -39,6 +39,7 @@
 \newtoggle{clearprint}
 \newtoggle{large}
 \newtoggle{web}
+\newtoggle{word}
 \newtoggle{figures}
 \newtoggle{frontmatter}
 \newtoggle{contents}
@@ -50,12 +51,16 @@
 \input{choices.tex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% The disclaimer:
+\newcommand{\inputdisclaimer}{}
+\usepackage{bathmathsdisclaimer}
+
 %% Is this an unknown class? If so try to kludge it
 %% Some classes DO NOT HAVE 12pt even!
 \ifdefstring{\unknownclass}{true}{\usepackage[\pointsize]{extsizes}}{}
 
 %% Do we have a known original class we are fixing?
-\ifdefstring{\originalclass}{tufte}{\usepackage{tuftefix}}{}
+\ifdefstring{\originalclass}{tufte-book}{\usepackage{tuftefix}}{}
 
 %% Are these a web or word version of beamer slides?
 \ifdefstring{\beamerslides}{true}{\usepackage[notheorems,hyperref]{beamerarticle}}{}
@@ -192,7 +197,7 @@
  }{}
  \ifdefstring{\beamerslides}{true}{\date{}}{}
  \AfterEndPreamble{
-  \iftoggle{frontmatter}{\renewcommand{\baselinestretch}{1.0}\selectfont\maketitle\renewcommand{\baselinestretch}{1.25}\selectfont\newpage}{}
+  \iftoggle{frontmatter}{\renewcommand{\baselinestretch}{1.0}\selectfont\maketitle\renewcommand{\baselinestretch}{1.25}\selectfont\inputdisclaimer}{}
   \iftoggle{contents}{\tableofcontents\listoffigures\listoftables\renewcommand{\tableofcontents}{}\renewcommand{\listoffigures}{}\renewcommand{\listoftables}{}\newpage}{}
   \pagenumbering{arabic}        
   \setcounter{page}{1}
@@ -237,7 +242,10 @@
   }
  }{}
 
-}{}
+}{
+%% In the standard format I still might need to insert a disclaimer
+\appto{\maketitle}{\inputdisclaimer}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Leave a blank line after this

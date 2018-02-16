@@ -48,7 +48,7 @@ frac "\\frac"
 toosmall ("\\tiny"|"\\scriptsize"|"\\footnotesize"|"\\small")
 lstset "\\lstset"{lb}
 
-%x COMMENT INPUT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE LISTING READCLASS
+%x COMMENT INPUT IMPORT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE LISTING READCLASS
 %s LSTSET
 %%
 
@@ -116,6 +116,11 @@ lstset "\\lstset"{lb}
 <INPUT>"/"
 <INPUT>{rb} printf("-cont"); ECHO; yy_pop_state();
 
+("\\import") printf("\\input"); yy_push_state(IMPORT); 
+<IMPORT>{lb}[^"{""}"]*{rb}/"{"
+<IMPORT>"{" ECHO; 
+<IMPORT>{rb} printf("-cont"); ECHO; yy_pop_state();
+
 ("\\includegraphics") if(beamer==0) checkbeamer(); if(beamer==1) printf("\\fixincludegraphics"); else ECHO; yy_push_state(INCLUDE);
 <INCLUDE>{ls}(.*){rs} ECHO; 
 <INCLUDE>{lb}(.*)/("/") printf("{");
@@ -148,10 +153,11 @@ lstset "\\lstset"{lb}
 <CHOOSE>([^"\\choose"])*{rb} printf("{"); ECHO; yy_pop_state();
 
  /* This assumes that the end document is in the same file as the preamble */
-{end} ECHO; choices(); if(macrolength > 0) macrosoutput();
+{end} ECHO; choices(); if(macrolength > 0 || beginendlength > 0) macrosoutput(); 
 
  /*Just in case*/
 \r?\n printf("\n"); 
+<<EOF>> printf("\n"); yyterminate();
 
 %%
 

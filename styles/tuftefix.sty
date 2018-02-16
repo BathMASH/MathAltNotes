@@ -1,12 +1,18 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{tuftefix}[2018/02/15]
-%\RequirePackage{etoolbox}
+\RequirePackage{etoolbox}
+
+\iftoggle{word}{
+\newcommand{\marginnotelinewidth}{0.5\linewidth}
+}{
+\newcommand{\marginnotelinewidth}{\linewidth}
+}
 
 \newcommand{\marginnote}[2][0pt]{%
-  \par\noindent\rule{\linewidth}{1pt}
+  \par\noindent\rule{\marginnotelinewidth}{1pt}\par
   \textbf{Margin note:}
          {\noindent #2}%
-         \par\noindent\rule{\linewidth}{1pt}
+         \par\noindent\rule{\marginnotelinewidth}{1pt}\par
 }
 
 \@ifpackageloaded{hyperref}{
