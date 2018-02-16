@@ -291,16 +291,18 @@ int choices(){
 
 int checkbeamer(){
   FILE *docinput;
+  char savedclass[1024];
   docinput = fopen(".documentclass","r");
   if(docinput == NULL){
     fprintf(stderr,"Warning: Can't open documentclass input file but this is okay if it doesn't exist yet\n");
     //exit(1);
   }else{
-    fscanf(docinput,"%s",class);
-    if(strcmp(class,"beamer")==0)
+    fscanf(docinput,"%s",savedclass);
+    if(strcmp(savedclass,"beamer")==0)
       beamer = 1;
     fclose(docinput);
   }
+
   return 0;
 }
 
