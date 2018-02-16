@@ -113,6 +113,9 @@ Or, if this is a Beamer presentation:
 Once this has finished you will find the outputs in the folder
 filename-180129-1151/built
 
+When working on linux.bath.ac.uk you can view outputs by locating
+the folder on your H drive. 
+
 ### If this fails
 
 If this fails it is because one or more of the formats failed. 
