@@ -3,6 +3,7 @@
 int here = 0;
 %}
 whitespace (" "|\t|(\r?\n))
+whitenotnew (" "|\t)
 lb ([[:blank:]])*"{"([[:blank:]])*
 rb ([[:blank:]])*"}"
 verbstart "\\begin"{lb}("verbatim"){rb}
@@ -29,15 +30,15 @@ mathsend "\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|
   /* We need this to work on maths lines not between newlines */
 {mathstart} ECHO; yy_push_state(MATHS);
 <MATHS>("%")* ECHO; yy_push_state(COMMENT);
-<MATHS>(.*)({whitespace})*("\\label"{lb}([^"{""}"]*){rb})/({whitespace})*("\\\\"|"\\end") switchtag(); 
-<MATHS>(.*)("\\tag"{lb}(.*){rb})/({whitespace})*("\\\\"|"\\end") switchtag();
-<MATHS>(.*)("\\notag")/({whitespace})*("\\\\"|"\\end") switchtag();
-<MATHS>(.*)("\\nonumber")/({whitespace})*("\\\\"|"\\end") switchtag();
+<MATHS>(.*)({whitenotnew})*("\\label"{lb}([^"{""}"]*){rb})/({whitenotnew})*("\\\\"|"\\end") switchtag(); 
+<MATHS>(.*)("\\tag"{lb}(.*){rb})/({whitenotnew})*("\\\\"|"\\end") switchtag();
+<MATHS>(.*)("\\notag")/({whitenotnew})*("\\\\"|"\\end") switchtag();
+<MATHS>(.*)("\\nonumber")/({whitenotnew})*("\\\\"|"\\end") switchtag();
 <MATHS>"\\\\\\\\" printf("\\\\");
 <MATHS>"\\\\["(.*)"]" printf("\\\\");
-<MATHS>"\\\\"/(({whitespace})*"\\intertext")
+<MATHS>"\\\\"/(({whitenotnew})*"\\intertext")
 <MATHS>("\\intertext"){lb} ECHO; yy_push_state(INTER);
-<MATHS>("\\\\")/({whitespace})*(\r?\n) ECHO; printf("\n");
+<MATHS>("\\\\")/({whitenotnew})*(\r?\n) ECHO; printf("\n");
 <MATHS,INTER,KEEP>(\r?\n) printf(" ");
 <MATHS>{mathsend} ECHO; yy_pop_state();
 

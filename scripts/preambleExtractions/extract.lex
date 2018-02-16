@@ -93,6 +93,7 @@ lstset "\\lstset"{lb}
 "\\newtoggle{clearprint}"
 "\\newtoggle{web}"
 "\\newtoggle{large}"
+"\\endinput"
 
 {toosmall} printf("\\ifboolexpr{togl {web} or togl {clearprint}}{\\normalsize}{"); ECHO; printf("}");
 

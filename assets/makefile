@@ -27,12 +27,11 @@ $(name)-cont-clean.tex:
 	cp $(HOME)/../../assets/macros.tex .
 	$(HOME)/../preambleExtractions/extract.sh ./
 	cp $(name)-cont.tex $(name)-cont-clean.tex
-	[ ! -f demacro-private.sty ] || de-macro $(name)-cont.tex
+	de-macro $(name)-cont.tex
 
+#At this point everything should be in one file due to de-macro
 $(name)-cont-clean-lp.tex: $(name)-cont-clean.tex
-	$(HOME)/../flowfix/flowfix.sh ./
-#Problem : I can de-macro -cont but I only need to de-macro -lp and I need to run extract first then
-#Are flow and extract order sensitive?
+	$(HOME)/../flowfix/flowfix.sh $(name)-cont-clean.tex
 
 #Note that we make clean as a prerequisite in each case as the toggles cause different setups. 
 #Leaving the job output in the directory can cause issues in some cases. 
