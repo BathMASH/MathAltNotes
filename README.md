@@ -114,7 +114,10 @@ Once this has finished you will find the outputs in the folder
 filename-180129-1151/built
 
 When working on linux.bath.ac.uk you can view outputs by locating
-the folder on your H drive. 
+the folder on your H drive. Please note that the Word documents
+may only work in Word 365. In particular many images will only 
+work in this format. Word 365 is freely available to any member
+of the University of Bath: http://www.bath.ac.uk/guides/download-and-install-microsoft-office-on-your-personal-device/
 
 ### If this fails
 
