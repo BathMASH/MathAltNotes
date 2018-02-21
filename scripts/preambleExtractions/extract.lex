@@ -95,6 +95,10 @@ lstset "\\lstset"{lb}
 "\\newtoggle{large}"
 "\\endinput"
 
+"\\smallskip" ECHO;
+"\\medskip" ECHO;
+"\\bigskip" ECHO;
+
 {toosmall} printf("\\ifboolexpr{togl {web} or togl {clearprint}}{\\normalsize}{"); ECHO; printf("}");
 
 {begindocument} begun=1; if(beginendlength > 0) printf("\\usepackage{demacro-private}\n"); ECHO; 
@@ -112,7 +116,7 @@ lstset "\\lstset"{lb}
 
 {bracedcolor} if(begun==1) {printf(" \\textcolor{"); getcolor();} else ECHO;
 
-("\\input") ECHO; yy_push_state(INPUT);
+("\\input"|"\\include") ECHO; yy_push_state(INPUT);
 <INPUT>{lb}(.*)/("/") printf("{");
 <INPUT>"/"
 <INPUT>{rb} printf("-cont"); ECHO; yy_pop_state();
@@ -128,9 +132,11 @@ lstset "\\lstset"{lb}
 <INCLUDE>"/"
 <INCLUDE>{rb} ECHO; yy_pop_state();
 
-{newcommand}/("{"(.*)"}"("["(.*)"]")?"{"(.*)"_") macrosstore("\\renewcommand",13,0); ECHO; yy_push_state(COMMAND);
-{newcommand}/("{"(.*)"}"("["(.*)"]")?"{"(.*)"^") macrosstore("\\renewcommand",13,0); ECHO; yy_push_state(COMMAND);
-<COMMAND>(.*){rb} macrosstore(yytext,yyleng,0); macrosstore("\n",1,0); ECHO; yy_pop_state();
+ /* Changed 0 to 1 and removed ECHO to place these also in the de-marco */
+{newcommand}/("{"(.*)"}"("["(.*)"]")?"{"(.*)"_") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND);//ECHO; yy_push_state(COMMAND);
+{newcommand}/("{"(.*)"}"("["(.*)"]")?"{"(.*)"^") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND);//ECHO; yy_push_state(COMMAND);
+{newcommand}/("{\\vec}") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND); //ECHO; yy_push_state(COMMAND);
+<COMMAND>(.*){rb} macrosstore(yytext,yyleng,1); macrosstore("\n",1,1); yy_pop_state(); //ECHO; yy_pop_state();
 
 {newenvironment}{lb}"Proof" ECHO; printf("Ori");
 "\\begin"{lb}"Proof" ECHO; printf("Ori");

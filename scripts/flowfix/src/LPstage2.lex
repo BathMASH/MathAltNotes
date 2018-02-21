@@ -44,7 +44,7 @@ tabularxstart "\\begin"{lb}("tabularx"|"tabu"|"largetabular"){rb}
 tabularxend "\\end"{lb}("tabularx"|"tabu"|"largetabular"){rb}
 newenvironment "\\newenvironment"
 
-%x COMMENT INPUT CLASS DMATH DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS TABULARX CAPTION NEWENVIR TABBING CASES
+%x COMMENT INPUT CLASS DMATH DMATHFAKESTAR DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS TABULARX CAPTION NEWENVIR TABBING CASES
 %s REMOVE KEEP TABLE
 %%
 
@@ -124,8 +124,10 @@ newenvironment "\\newenvironment"
    /* Lines with tags have them at the start of the line now (see stage0)*/ 
      /* Single line displayed was 20pt*/ 
 {dmathstart}/({whitespace}*("\\tag"|"\\label")) printf("\\begin{dmath}[compact,spread={%lf\\baselineskip}",mathlines); yy_push_state(DMATH); 
+{dmathstart}({whitespace}*("\\nonumber")) printf("\\begin{dmath*}[compact,spread={%lf\\baselineskip}]",mathlines); yy_push_state(DMATHFAKESTAR); 
 {dmathstart} printf("\\begin{dmath}[compact,spread={%lf\\baselineskip}]",mathlines); yy_push_state(DMATH); 
 <DMATH>{dmathend} printf("\\end{dmath}"); yy_pop_state();
+<DMATHFAKESTAR>{dmathend} printf("\\end{dmath*}"); yy_pop_state();
 
     /* Multi-line without alignment */
     /* Need to check if you can have tags in the things that become this env and if you do then what should happen */

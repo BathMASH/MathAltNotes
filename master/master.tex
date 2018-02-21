@@ -115,7 +115,7 @@
  \ifpdf
   \usepackage{hyperref}
  \else
-  \newcommand{\texorpdfstring}[2]{{#1}}
+  \ifundef{\texorpdfstring}{\newcommand{\texorpdfstring}[2]{{#1}}}{}
  \fi
  %% This is our fix for displayoperators in web format
  \usepackage{displayoperators}
@@ -198,7 +198,7 @@
  \ifdefstring{\beamerslides}{true}{\date{}}{}
  \AfterEndPreamble{
   \iftoggle{frontmatter}{\renewcommand{\baselinestretch}{1.0}\selectfont\maketitle\renewcommand{\baselinestretch}{1.25}\selectfont\inputdisclaimer}{}
-  \iftoggle{contents}{\tableofcontents\listoffigures\listoftables\renewcommand{\tableofcontents}{}\renewcommand{\listoffigures}{}\renewcommand{\listoftables}{}\newpage}{}
+  \iftoggle{contents}{\tableofcontents\listoffigures\listoftables\renewcommand{\tableofcontents}{}\renewcommand{\listoffigures}{}\renewcommand{\listoftables}{}\newpage}{\iftoggle{frontmatter}{\newpage}{}}
   \pagenumbering{arabic}        
   \setcounter{page}{1}
  }
@@ -245,6 +245,7 @@
 }{
 %% In the standard format I still might need to insert a disclaimer
 \appto{\maketitle}{\inputdisclaimer}
+\ifdefstring{\class}{beamer}{\appto{\titlepage}{\tiny Lecture notes and audio recording, Department of Mathematical Sciences, The University of Bath\footnote{\tiny\inputdisclaimer}}}{}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

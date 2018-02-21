@@ -1,4 +1,5 @@
 #!/bin/bash
+
 usage() {
 echo "-----------------------------------------------------------------"
 echo "-----------------------------------------------------------------"
@@ -22,6 +23,12 @@ if [ -z $1 ] || [ $1 == "-help" ] || [ $1 == "--help" ] || [ $1 == "-h" ]; then
 usage
 fi
 
+echo "-----------------------------------------------------------------"
+echo "Depending on the number of images in your document it might take"
+echo "some time to make the files. You might like to make a cup of tea!"
+echo "-----------------------------------------------------------------"
+echo "Checking lexers are compiled"
+echo "============================="
 cd scripts/flowfix/
 make
 cd ..
@@ -30,16 +37,32 @@ make
 cd ../../$1
 file=`find . -name "*.fls" -type f`
 name=$(basename "$file" .fls)
+echo "-----------------------------------------------------------------"
 echo "The name of the main LaTeX file found is: $name"
-make standard name=$name
-make clear name=$name
-make large name=$name
-make web name=$name
-make word name=$name
+echo "-----------------------------------------------------------------"
+echo "Making standard print format"
+echo "============================="
+make standard name=$name > .quickMake-standard.out
+echo "-----------------------------------------------------------------"
+echo "Making clear print format"
+echo "============================="
+make clear name=$name > .quickMake-clear.out
+echo "-----------------------------------------------------------------"
+echo "Making large print format"
+echo "============================="
+make large name=$name > .quickMake-large.out
+echo "-----------------------------------------------------------------"
+echo "Making accessible web format"
+echo "============================="
+make web name=$name > .quickMake-web.out
+echo "-----------------------------------------------------------------"
+echo "Making accessible word format"
+echo "============================="
+make word name=$name > .quickMake-word.out
 make clean
 make cleaner
-echo "-----------------------------------------------------------------"
-echo "-----------------------------------------------------------------"
+echo "Look BACK - check for errors"
+echo "============================="
 echo "Assuming no errors the completed outputs can be found in $1built."
 echo "You should find standard, clear, large, web and word formats."
 echo "-----------------------------------------------------------------"
@@ -50,10 +73,18 @@ echo "We recommend that you use quickBeamerMake for beamer!"
 echo "-----------------------------------------------------------------"
 echo "If the web and/or word compilation failed with an xtpipes error"
 echo "then the most usual reason is that you have brackets which do not"
-echo "match in their immediate context. You can try quickSloppyMake to"
-echo "see if that produces output. If it does you can use this but some"
-echo "content will not be read aloud correctly - you should contact us"
-echo "for advice." 
+echo "match in their immediate context. To help you fix brackets you" 
+echo "should use match_parens on each of your original files. To run this"
+echo "on a file called file.tex you would run:"
+echo "> match_parens file.tex"
+echo "on linux.bath.ac.uk. For help using match_parens see the documentation"
+echo "at: http://mirrors.ctan.org/support/match_parens/match_parens.pdf"
+echo "-----------------------------------------------------------------"
+echo "If the web and word compilation still fails with an xtpipes error"
+echo "You can try quickSloppyMake to see if that produces output. "
+echo "If it does you can use it but you should check the document output"
+echo "thoroughly yourself. You should also be aware that some content "
+echo "will not be read aloud correctly - you should contact us for advice." 
 echo "-----------------------------------------------------------------"
 echo "If a format is missing or broken then contact "
 echo "ma-largeprintnotes@bath.ac.uk for help."

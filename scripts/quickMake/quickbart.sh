@@ -18,6 +18,12 @@ if [ -z $1 ] || [ $1 == "-help" ] || [ $1 == "--help" ] || [ $1 == "-h" ]; then
 usage
 fi
 
+echo "-----------------------------------------------------------------"
+echo "Depending on the number of images in your document it might take"
+echo "some time to make the files. You might like to make a cup of tea!"
+echo "-----------------------------------------------------------------"
+echo "Checking lexers are compiled"
+echo "============================="
 cd scripts/flowfix/
 make
 cd ..
@@ -26,16 +32,32 @@ make
 cd ../../$1
 file=`find . -name "*.fls" -type f`
 name=$(basename "$file" .fls)
+echo "-----------------------------------------------------------------"
 echo "The name of the main LaTeX file found is: $name"
-make standard name=$name
-make clearbart name=$name
-make largebart name=$name
-make web name=$name
-make word name=$name
+echo "-----------------------------------------------------------------"
+echo "Making standard print format"
+echo "============================="
+make standard name=$name > .quickMake-standard.out
+echo "-----------------------------------------------------------------"
+echo "Making clear print format"
+echo "============================="
+make clearbart name=$name > .quickMake-clearbart.out
+echo "-----------------------------------------------------------------"
+echo "Making large print format"
+echo "============================="
+make largebart name=$name > .quickMake-largebart.out
+echo "-----------------------------------------------------------------"
+echo "Making accessible web format"
+echo "============================="
+make web name=$name > .quickMake-web.out
+echo "-----------------------------------------------------------------"
+echo "Making accessible word format"
+echo "============================="
+make word name=$name > .quickMake-word.out
 make clean
 make cleaner
-echo "-----------------------------------------------------------------"
-echo "-----------------------------------------------------------------"
+echo "Look BACK - check for errors"
+echo "============================="
 echo "Assuming no errors the completed outputs can be found in $1built."
 echo "You should find standard, clear, large, web and word formats."
 echo "If you are compiling beamer slides then the clear and large print"
