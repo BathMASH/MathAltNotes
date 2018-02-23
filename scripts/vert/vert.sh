@@ -92,11 +92,11 @@ if [ $decision != "y" ]; then
 fi
 
 for i in $files; do
-    vim -c "set hidden | bufdo %s/\%(\\\left\|\\\right\|\\\left\\\|\|\\\right\\\|\)\@<\!|/\\\left|/gce" $i -c :wq
+    vim -c "set hidden | bufdo %s/\%(\\\left\|\\\right\|\\\left\\\\\|\\\right\\\\\|\\\\\)\@<\!|/\\\left|/gce" $i -c :wq
 done
 
 for i in $files; do
-    vim -c "set hidden | bufdo %s/\%(\\\left\|\\\right\|\\\left\\\|\|\\\right\\\|\)\@<\!|/\\\right|/gce" $i -c :wq
+    vim -c "set hidden | bufdo %s/\%(\\\left\|\\\right\|\\\left\\\\\|\\\right\\\\\|\\\\\)\@<\!|/\\\right|/gce" $i -c :wq
 done
 
 # vim -c "set hidden | bufdo %s/|/\\\left|/gce" $files -c :wq
