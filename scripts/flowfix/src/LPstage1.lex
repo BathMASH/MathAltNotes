@@ -36,7 +36,7 @@ mathsend "\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|
 <MATHS>(.*)("\\nonumber")/({whitenotnew})*("\\\\"|"\\end") switchtag();
 <MATHS>"\\\\\\\\" printf("\\\\");
 <MATHS>"\\\\["(.*)"]" printf("\\\\");
-<MATHS>"\\\\"/(({whitenotnew})*"\\intertext")
+<MATHS>"\\\\"/(({whitespace})*"\\intertext")
 <MATHS>("\\intertext"){lb} ECHO; yy_push_state(INTER);
 <MATHS>("\\\\")/({whitenotnew})*(\r?\n) ECHO; printf("\n");
 <MATHS,INTER,KEEP>(\r?\n) printf(" ");

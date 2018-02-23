@@ -23,8 +23,30 @@ if [ -z $1 ] || [ $1 == "-help" ] || [ $1 == "--help" ] || [ $1 == "-h" ]; then
 usage
 fi
 
+echo "-----------------------------------------------------------------"
+echo "-----------------------------------------------------------------"
+echo "Checking lexers are compiled"
+echo "============================="
+cd scripts/flowfix/
+make
+cd ..
+cd preambleExtractions
+make
+cd ..
+cd dedollar
+make
+cd ../../
+echo "-----------------------------------------------------------------"
 echo "By-hand: Non-directional delimiters"
 echo "==================================="
+./scripts/dedollar/dedollar.sh $1
+./scripts/match_parens_ht/match_parens_ht.sh $1
+echo "You should go away and fix the problems described above."
+echo "Do you want to continue anyway? y for yes and n for no"
+read decision
+if [ $decision != "y" ]; then
+    exit 1
+fi
 ./scripts/vert/vert.sh $1
 echo "-----------------------------------------------------------------"
 echo "The rest of this process is automatic - though it can fail or"
@@ -34,14 +56,7 @@ echo "-----------------------------------------------------------------"
 echo "Depending on the number of images in your document it might take"
 echo "some time to make the files. You might like to make a cup of tea!"
 echo "-----------------------------------------------------------------"
-echo "Checking lexers are compiled"
-echo "============================="
-cd scripts/flowfix/
-make
-cd ..
-cd preambleExtractions
-make
-cd ../../$1
+cd $1
 file=`find . -name "*.fls" -type f`
 name=$(basename "$file" .fls)
 echo "-----------------------------------------------------------------"
@@ -68,6 +83,7 @@ echo "============================="
 make word name=$name > .quickMake-word.out
 make clean
 make cleaner
+echo "-----------------------------------------------------------------"
 echo "The conversions are finished"
 echo "============================="
 echo "Assuming no errors the completed outputs can be found in $1built."
@@ -78,6 +94,10 @@ echo "will be identical (print slides on A4). You may also find that"
 echo "your standard slides are the same depending on your font settings."
 echo "We recommend that you use ./quickBeamerMake for beamer!"
 echo "-----------------------------------------------------------------"
+echo "If a format failed with error code 124 then the document could "
+echo "not be compiled in the time limit. This usually means there was"
+echo "an infinite loop. Contact ma-largeprintnotes@bath.ac.uk for help."
+echo "-----------------------------------------------------------------"
 echo "If there were segmentation faults during image conversion then one"
 echo "or more of your images will be missing or faulty in the web and "
 echo "word formats. There is probably not much we can do about this "
@@ -86,18 +106,15 @@ echo "please do contact ma-largeprintnotes@bath.ac.uk for advice."
 echo "-----------------------------------------------------------------"
 echo "If the web and/or word compilation failed with an xtpipes error"
 echo "then the most usual reason is that you have brackets which do not"
-echo "match in their immediate context. To help you fix brackets you" 
-echo "should use match_parens on each of your original files. To run this"
-echo "on a file called file.tex you would run:"
-echo "> match_parens file.tex"
-echo "on linux.bath.ac.uk. For help using match_parens see the documentation"
-echo "at: http://mirrors.ctan.org/support/match_parens/match_parens.pdf"
-echo "-----------------------------------------------------------------"
-echo "If the web and word compilation still fails with an xtpipes error"
+echo "match in their immediate context. You might have ignored a warning"
+echo "about this earlier! If you did then you will find helpful files"
+echo "called filename.parens in the timestamped directory. If you did"
+echo "NOT see such a warning ask ma-largeprintnotes@bath.ac.uk for help."
+echo "-------------------While waiting for help-------------------------"
 echo "You can try ./quickSloppyMake to see if that produces output. "
 echo "If it does you can use it but you should check the document output"
-echo "thoroughly yourself. You should also be aware that some content "
-echo "will not be read aloud correctly - you should contact us for advice." 
+echo "thoroughly yourself for visual rendering problems. You should also"
+echo "be aware that some content will NOT be read aloud correctly." 
 echo "-----------------------------------------------------------------"
 echo "If a format is missing or broken then contact "
 echo "ma-largeprintnotes@bath.ac.uk for help."

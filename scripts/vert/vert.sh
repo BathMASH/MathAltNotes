@@ -33,6 +33,12 @@ echo "but if it is part of a pair of delimiters you need to replace "
 echo "the first with \left| and the second with \right| BUT we will "
 echo "have to do all the \left first and then all the \right"
 echo "--------------------------------------------------------------"
+echo "If the delimiter is in some sense \left or \right but it does"
+echo "NOT have a matching pair this script can't help you - you "
+echo "should select n and carry on. Ideally you would find these and"
+echo "add e.g. \left| some stuff \right. but you might be able to get"
+echo "away with not doing this so try compiling and have a look first."
+echo "--------------------------------------------------------------"
 echo "Are you happy to continue? [y/n then enter]"
 
 read decision
@@ -44,7 +50,7 @@ echo "--------------------------------------------------------------"
 echo "First we do \|"
 echo "============="
 
-files=$(find . -maxdepth 1 -name '*.tex' | xargs grep -Ple '(?<!left|right)\\\|')
+files=$(find . -maxdepth 1 -name "*.tex" ! -name master*.tex ! -name macros*.tex ! -name empty*.tex ! -name "*standard.tex" ! -name "*large.tex" ! -name "*clear.tex" ! -name "*web.tex" ! -name "*word.tex" -type f | xargs grep -Ple '(?<!left|right)\\\|')
 
 if [[ -z "$files" ]]; then
     echo "No matching .tex"
@@ -69,14 +75,11 @@ for i in $files; do
     vim -c "set hidden | bufdo %s/\%(\\\left\|\\\right\)\@<\!\\\|/\\\right\\\|/gce" $i -c :wq
 done
 
-# vim -c "set hidden | bufdo %s/\\\|/\\\left\\\|/gce" $files -c :wq
-# vim -c "set hidden | bufdo %s/\\\|/\\\right\\\|/gce" $files -c :wq
 echo "--------------------------------------------------------------"
 echo "Now we do |"
 echo "============="
 
-#files=$(find . -maxdepth 1 -name '*.tex' | xargs grep -Ple '(?<!left|right|left\\|right\\)\|')
-files=$(find . -maxdepth 1 -name '*.tex' | xargs grep -Ple '(?<!left|right|left\\|right\\|\\)\|')
+files=$(find . -maxdepth 1 -name "*.tex" ! -name master*.tex ! -name macros*.tex ! -name empty*.tex ! -name "*standard.tex" ! -name "*large.tex" ! -name "*clear.tex" ! -name "*web.tex" ! -name "*word.tex" -type f | xargs grep -Ple '(?<!left|right|left\\|right\\|\\)\|')
 
 if [[ -z "$files" ]]; then
     echo "No matching .tex"
@@ -101,14 +104,11 @@ for i in $files; do
     vim -c "set hidden | bufdo %s/\%(\\\left\|\\\right\|\\\left\\\\\|\\\right\\\\\|\\\\\)\@<\!|/\\\right|/gce" $i -c :wq
 done
 
-# vim -c "set hidden | bufdo %s/|/\\\left|/gce" $files -c :wq
-# vim -c "set hidden | bufdo %s/|/\\\right|/gce" $files -c :wq
-
 echo "--------------------------------------------------------------"
 echo "Now we do \vert"
 echo "==================="
 
-files=$(find . -maxdepth 1 -name '*.tex' | xargs grep -Ple '(?<!left|right)\\vert')
+files=$(find . -maxdepth 1 -name "*.tex" ! -name master*.tex ! -name macros*.tex ! -name empty*.tex ! -name "*standard.tex" ! -name "*large.tex" ! -name "*clear.tex" ! -name "*web.tex" ! -name "*word.tex" -type f | xargs grep -Ple '(?<!left|right)\\vert')
 
 if [[ -z "$files" ]]; then
     echo "No matching .tex"
@@ -133,14 +133,11 @@ for i in $files; do
     vim -c "set hidden | bufdo %s/\%(\\\left\|\\\right\)\@<\!\\\vert/\\\right\\\vert/gce" $i -c :wq
 done
 
-# vim -c "set hidden | bufdo %s/\\\vert/\\\left\\\vert/gce" $files -c :wq
-# vim -c "set hidden | bufdo %s/\\\vert|/\\\right\\\vert/gce" $files -c :wq
-
 echo "--------------------------------------------------------------"
 echo "Now we do \Vert"
 echo "==================="
 
-files=$(find . -maxdepth 1 -name '*.tex' | xargs grep -Ple '(?<!left|right)\\\Vert')
+files=$(find . -maxdepth 1 -name "*.tex" ! -name master*.tex ! -name macros*.tex ! -name empty*.tex ! -name "*standard.tex" ! -name "*large.tex" ! -name "*clear.tex" ! -name "*web.tex" ! -name "*word.tex" -type f | xargs grep -Ple '(?<!left|right)\\\Vert')
 
 if [[ -z "$files" ]]; then
     echo "No matching .tex"
@@ -165,5 +162,3 @@ for i in $files; do
     vim -c "set hidden | bufdo %s/\%(\\\left\|\\\right\)\@<\!\\\Vert/\\\right\\\Vert/gce" $i -c :wq
 done
 
-# vim -c "set hidden | bufdo %s/\\\vert/\\\left\\\vert/gce" $files -c :wq
-# vim -c "set hidden | bufdo %s/\\\vert|/\\\right\\\vert/gce" $files -c :wq
