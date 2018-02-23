@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd $1
+
 echo "--------------------------------------------------------------"
 echo "Before transforming your LaTeX we need to check for delimiters"
 echo "which do not have \left or \right defined. This includes | and"

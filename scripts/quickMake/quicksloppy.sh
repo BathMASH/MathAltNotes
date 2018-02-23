@@ -17,6 +17,19 @@ if [ -z $1 ] || [ $1 == "-help" ] || [ $1 == "--help" ] || [ $1 == "-h" ]; then
 usage
 fi
 
+echo "By-hand: Non-directional delimiters"
+echo "==================================="
+echo "Since you are making sloppy versions of web and word you might "
+echo "Decide to answer no to the next request. However, be aware that"
+echo "failure to fix non-directional delimiters WILL result in some"
+echo "poorly presented mathematics - this does not direct only speech"
+echo "output but also visual output"
+echo "-----------------------------------------------------------------"
+./scripts/vert/vert.sh $1
+echo "-----------------------------------------------------------------"
+echo "The rest of this process is automatic - though it can fail or"
+echo "error for many reasons. Please leave it to run and then follow"
+echo "instructions regarding errors or failure to produce output."
 echo "-----------------------------------------------------------------"
 echo "Depending on the number of images in your document it might take"
 echo "some time to make the files. You might like to make a cup of tea!"
@@ -43,10 +56,15 @@ echo "============================="
 make wordsloppy name=$name > .quickMake-wordsloppy.out
 make clean
 make cleaner
-echo "Look BACK - check for errors"
+echo "The conversions are finished"
 echo "============================="
 echo "Assuming no errors the completed outputs can be found in $1built."
-echo "You should find web and word formats."
+echo "You should find web and word formats. If this is the first attempt"
+echo "to make the alternative formats then you have run the wrong script."
+echo "You should always use either quickMake or quickBeamerMaker first."
+echo "This script is a FALL BACK to a sloppier version of the web and "
+echo "word format and should only be used if you have xtpipes errors"
+echo "from one of the other two scripts."
 echo "-----------------------------------------------------------------"
 echo "REMEMBER: You may have immediately usable files but you should "
 echo "check these thoroughly yourself and they WILL BE broken in ways"
@@ -54,3 +72,9 @@ echo "you CANNOT SEE! So you should also contact us for advice"
 echo "on ma-largeprintnotes@bath.ac.uk"
 echo "-----------------------------------------------------------------"
 echo "-----------------------------------------------------------------"
+echo "============================================================="
+echo "Please scroll back, check for errors and read the above text."
+echo "============================================================="
+
+
+

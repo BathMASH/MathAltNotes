@@ -23,6 +23,13 @@ if [ -z $1 ] || [ $1 == "-help" ] || [ $1 == "--help" ] || [ $1 == "-h" ]; then
 usage
 fi
 
+echo "By-hand: Non-directional delimiters"
+echo "==================================="
+./scripts/vert/vert.sh $1
+echo "-----------------------------------------------------------------"
+echo "The rest of this process is automatic - though it can fail or"
+echo "error for many reasons. Please leave it to run and then follow"
+echo "instructions regarding errors or failure to produce output."
 echo "-----------------------------------------------------------------"
 echo "Depending on the number of images in your document it might take"
 echo "some time to make the files. You might like to make a cup of tea!"
@@ -61,7 +68,7 @@ echo "============================="
 make word name=$name > .quickMake-word.out
 make clean
 make cleaner
-echo "Look BACK - check for errors"
+echo "The conversions are finished"
 echo "============================="
 echo "Assuming no errors the completed outputs can be found in $1built."
 echo "You should find standard, clear, large, web and word formats."
@@ -70,6 +77,12 @@ echo "If you are compiling beamer slides then the clear and large print"
 echo "will be identical (print slides on A4). You may also find that"
 echo "your standard slides are the same depending on your font settings."
 echo "We recommend that you use quickBeamerMake for beamer!"
+echo "-----------------------------------------------------------------"
+echo "If there were segmentation faults during image conversion then one"
+echo "or more of your images will be missing or faulty in the web and "
+echo "word formats. There is probably not much we can do about this "
+echo "without reproducing your original image in a different way but "
+echo "please do contact ma-largeprintnotes@bath.ac.uk for advice."
 echo "-----------------------------------------------------------------"
 echo "If the web and/or word compilation failed with an xtpipes error"
 echo "then the most usual reason is that you have brackets which do not"
@@ -90,3 +103,6 @@ echo "If a format is missing or broken then contact "
 echo "ma-largeprintnotes@bath.ac.uk for help."
 echo "-----------------------------------------------------------------"
 echo "-----------------------------------------------------------------"
+echo "============================================================="
+echo "Please scroll back, check for errors and read the above text."
+echo "============================================================="
