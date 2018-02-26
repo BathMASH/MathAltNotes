@@ -166,7 +166,7 @@ parens = parenstext
 #We assume that $...$ has been replaced by \(...\) and $$...$$ by \[...\]
 #We can't do anything about &
 #parenshtlatex = '""|\'\'|“”|‘’|\&\&|\(\)|\[\]|\{\}|\\\[\\\]|\\\{\\\}'
-parenshtlatex = '\(\)|\[\]|\{\}|'
+parenshtlatex = '\(\)|\[\]|\{\}'
 
 arg = ARGV[0] || ''
 unless arg.empty?
