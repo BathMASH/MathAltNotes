@@ -25,6 +25,19 @@ fi
 
 echo "-----------------------------------------------------------------"
 echo "-----------------------------------------------------------------"
+echo "Add disclaimer?"
+echo "==============="
+cd $1
+echo "Do you need to add the Bath Maths department disclaimer to the" 
+echo "file? [y/n then enter]"
+read decision
+if [ $decision == "y" ]; then
+    echo "bathmathsdisclaimer" > .disclaimer
+else
+    echo "" > .disclaimer
+fi
+cd ..
+echo "-----------------------------------------------------------------"
 echo "Checking lexers are compiled"
 echo "============================="
 cd scripts/flowfix/
