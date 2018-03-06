@@ -450,7 +450,9 @@ clean:
 	@rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot *x.interim.png *x.svg *.4ht *-lp1 *-lp0 fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* *.tmp2 *.nav *.snm colorfix.sty fontfix.sty parfix.sty beamerfix.sty *-pics*.pdf tuftefix.sty 
 
 cleaner:
-	@rm -f *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp*.tex *-figures.tex *_tex-lp macros.tex demacro-private.sty *-cont*
+	@rm -f *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp*.tex *-figures.tex *_tex-lp macros.tex demacro-private.sty *-cont* *-co
+
+revert:
 	@[ ! -f *.origin ] || rename -f 's/origin/tex/' *.origin
 	@rm -f *.parens
 
