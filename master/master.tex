@@ -203,6 +203,9 @@
   \setcounter{page}{1}
  }
  \AtEndPreamble{
+  \ifboolexpr{togl {clearprint} or togl {large} or togl {web} or togl {figures}}{
+   \newgeometry{a4paper,margin=2.5cm}
+  }{}
   \ifboolexpr{togl {clearprint} or togl {large}}{
    \pretocmd{\section}{\ifnum\value{section}=0 \else\clearpage\fi}{}{}
   }{}

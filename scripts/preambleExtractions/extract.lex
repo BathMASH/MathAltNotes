@@ -81,9 +81,10 @@ lstset "\\lstset"{lb}
 {packages} yy_push_state(PACKAGES);
 <PACKAGES>(("[")(.*)("]"))*{lb}"bm"{rb} printf("\\newcommand{\\hmmax}{0}\\newcommand{\\bmmax}{2}\n\\usepackage"); ECHO; yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}{danger}{rb} printf("\\ifboolexpr{togl {web} or togl{clearprint}}{}{\\usepackage"); ECHO; printf("}"); printf("%%%%"); yy_pop_state();
-<PACKAGES>(("[")(.*)("]"))*{lb}(.*){rb} printf("\\usepackage"); ECHO; printf("%%%%"); yy_pop_state();
+<PACKAGES>(("[")(.*)("]"))*{lb} printf("\\usepackage"); ECHO; 
+<PACKAGES>","(" ")* printf(",");
 <PACKAGES>{lb} printf("\\usepackage{"); 
-<PACKAGES>{rb} ECHO; yy_pop_state();
+<PACKAGES>{rb} ECHO; printf("%%%%"); yy_pop_state();
 
 {lstset} ECHO; brackets=1; yy_push_state(LSTSET);
 <LSTSET>"backgroundcolor" ECHO; colorlst = 1;
