@@ -177,12 +177,12 @@ newenvironment "\\newenvironment"
 
  /* graphics removed ECHO before if on the next line - is this right?*/
 "\\setlength{\\unitlength}{"(.*)"}" ECHO; /*if (normalsize > 14) printf("\\setlength{\\unitlength}{%lfpt}",factor); else ECHO;*/
-"\\includegraphics" if(normalsize > 14) {printf("{\\centering"); ECHO; yy_push_state(GRAPHICS);} else ECHO;
+"\\includegraphics" if(normalsize > 14) {printf("\\par{\\centering"); ECHO; yy_push_state(GRAPHICS);} else ECHO;
  /*<GRAPHICS>"angle"[[:blank:]]*"="[[:blank:]]*"0" if(normalsize > 14) printf("angle=90"); else ECHO; */
  /*<GRAPHICS>"\\textwidth" if(normalsize > 14) printf("\\textheight * \\real{0.9},height=\\textwidth * \\real{0.9},angle=90,keepaspectratio,"); else ECHO;*/
 <GRAPHICS>{rb} if(normalsize > 14) printf("}}"); else ECHO; yy_pop_state();
 <GRAPHICS>"width"(" ")*"="(.*)/(",") bettergraphics=1; if(normalsize > 14) {printf("width=\\textwidth,totalheight=\\textheight,keepaspectratio,");} else ECHO;
-<GRAPHICS>"width"(" ")*"="(.*)/("]") bettergraphics=1; if(normalsize > 14) {printf("width=\\textwidth,totalheight=\\textheight,keepaspectratio,");} else ECHO;
+<GRAPHICS>("width"|"trim")(" ")*"="(.*)/("]") bettergraphics=1; if(normalsize > 14) {printf("width=\\textwidth,totalheight=\\textheight,keepaspectratio,");} else ECHO;
  /*<GRAPHICS>"]" ECHO; yy_pop_state();*/
 <GRAPHICS>{lb} if(normalsize > 14 && bettergraphics==0) printf("[width=\\textwidth,totalheight=\\textheight,keepaspectratio,]"); bettergraphics=0; ECHO; /*yy_pop_state();*/
  /*"\\begin"{lb}"picture"{rb} if(normalsize > 14) {printf("\\begin{center}\\rotatebox{90}{"); ECHO;} else ECHO;*/
