@@ -115,7 +115,9 @@
  \ifpdf
   \usepackage{hyperref}
  \else
+  \ifundef{\href}{\newcommand{\href}[2]{\HCode{<a href="#1">#2</a>}}}{}
   \ifundef{\texorpdfstring}{\newcommand{\texorpdfstring}[2]{{#1}}}{}
+  \ifundef{\url}{\newcommand{\url}[1]{\HCode{<a href="#1">#1</a>}}}{}
  \fi
  %% This is our fix for displayoperators in web format
  \usepackage{displayoperators}

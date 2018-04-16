@@ -56,6 +56,8 @@ standard: clean $(name)-cont-clean.tex
 	mv $(name)-standard.pdf built/
 	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty
 
+standardtest: clean $(name)-cont-clean.tex
+
 #This will be the same except for the toggles and name.
 clear: clean $(name)-cont-clean.tex
 	mkdir -p built
@@ -78,6 +80,8 @@ endif
 	mv $(name)-clear.pdf built/
 	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty
 
+cleartest: clean $(name)-cont-clean.tex
+
 #This will be the same except for the toggles and name.
 clearbart: clean $(name)-cont-clean.tex
 ifeq ($(TYPE),beamer)	
@@ -98,8 +102,6 @@ else
 	@echo "You cannot make clear beamer article format for documents which are not beamer slides.";
 	@echo "---------------------------------------------------";
 endif
-
-
 
 #This will be the same except for the toggles and name.
 large: clean $(name)-cont-clean-lp.tex
@@ -122,6 +124,8 @@ endif
 	$(LATEX) --shell-escape $(name)-large.tex
 	mv $(name)-large.pdf built/
 	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty
+
+largetest: clean $(name)-cont-clean-lp.tex
 
 #This will be the same except for the toggles and name.
 largebart: clean $(name)-cont-clean-lp.tex
@@ -370,6 +374,38 @@ endif
 #To get styled theorems we are going to need to do something like http://pandoc.org/MANUAL.html#custom-styles-in-docx-output but this will require us to do some nasty poking.
 	pandoc -s -f html -t docx $(name)-word.html -o $(name)-word.docx --reference-doc=$(HOME)/../../assets/reference.docx
 	mv $(name)-word.docx built/
+#Tidy up a bit
+	@rm mathml.4ht
+	@rm unicode.4hf
+	@rm mathjaxMMLWord.cfg
+	@rm additional.css
+	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty
+	@rm *.htf
+
+wordtest: clean $(name)-cont-clean.tex
+#Copy some files to where we need them
+	cp $(HOME)/../../styles/* . 
+	cp $(HOME)/../../fonts/* .
+	cp $(HOME)/../../assets/mathml.4ht .
+	cp $(HOME)/../../assets/listings.4ht .
+	cp $(HOME)/../../assets/unicode.4hf .
+	cp $(HOME)/../../assets/mathjaxMMLWord.cfg .
+	cp $(HOME)/../../assets/additional.css .
+#Set up for the word version
+	[ ! -f toggle.tex ] || rm -f toggle.tex
+	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}\\\\toggletrue{word}" > toggle.tex
+	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
+ifeq ($(UNKN),false)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
+else
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
+endif
+ifeq ($(TYPE),beamer)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
+endif
+	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HOME)/../TeX4htPostprocessing/postprocessWord.sh ./
 #Tidy up a bit
 	@rm mathml.4ht
 	@rm unicode.4hf

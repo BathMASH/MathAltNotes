@@ -1,0 +1,133 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%To use this add \usepackage{colorcycle}
+%You may need to \resetcolors
+%\cyclecolor will force the colour on by hand in a sensible way e.g. add this into theoremstyle definition
+%\cyclecolorback goes the other way
+%You may wish to change the colours in use. There is a section below in which you can set the maximum and select the colours. 
+%To fix the theorems you need to load
+%\theoremstyle{clearprintcolor}
+%Please don't share this with anyone it is a horrible hack and if necessary I will rewrite it at some point when I have more time. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{colorcycle}[2015/12/14]
+%This is all a big hack! It is entirely likely that it ONLY works with CM20217 notes created in 2015. 
+\RequirePackage[usenames,dvipsnames]{xcolor}
+\RequirePackage{ifthen}
+\RequirePackage[excludeor]{everyhook}
+\RequirePackage{amsthm}
+
+%We are compiling with pdflatex. In versions of this prior to 1.40 there are known issues with the color stack and problems may occur. These may be fixed by below but this has not been tested: 
+%\RequirePackage{pdfcolmk} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%These are the only bits you should change
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%How many colors will you be using
+\newcounter{maximumcolor}
+\setcounter{maximumcolor}{12}
+%Counter used to cycle colours
+\newcounter{whichcolor}
+\setcounter{whichcolor}{1}
+%Set your colour cycle here
+\newcommand{\selectcolor}{%
+\ifthenelse{\value{whichcolor}=1}{\color{Brown}}{}%
+\ifthenelse{\value{whichcolor}=2}{\color{BurntOrange}}{}%
+\ifthenelse{\value{whichcolor}=3}{\color{Bittersweet}}{}%
+\ifthenelse{\value{whichcolor}=4}{\color{Red}}{}%
+\ifthenelse{\value{whichcolor}=5}{\color{Thistle}}{}%
+\ifthenelse{\value{whichcolor}=6}{\color{Magenta}}{}%
+\ifthenelse{\value{whichcolor}=7}{\color{Purple}}{}%
+\ifthenelse{\value{whichcolor}=8}{\color{Blue}}{}%
+\ifthenelse{\value{whichcolor}=9}{\color{RoyalBlue}}{}%
+\ifthenelse{\value{whichcolor}=10}{\color{JungleGreen}}{}%
+\ifthenelse{\value{whichcolor}=11}{\color{Green}}{}%
+\ifthenelse{\value{whichcolor}=12}{\color{OliveGreen}}{}}%
+%Colours you have available. These are case sensitive.
+%red, green, blue, cyan, yellow, magenta 
+%GreenYellow, Yellow, Goldenrod, Dandelion, Apricot, Peach, Melon, YellowOrange, Orange, BurntOrange, Bittersweet, RedOrange, Mahogany, Maroon, BrickRed, Red, OrangeRed, RubineRed, WildStrawberry, Salmon, CarnationPink, Magenta, VioletRed, Rhodamine, Mulberry, RedViolet, Fuchsia, Lavender, Thistle, Orchid, DarkOrchid, Purple, Plum, Violet, RoyalPurple, BlueViolet, Periwinkle, CadetBlue, CornflowerBlue, MidnightBlue, NavyBlue, RoyalBlue, Blue, Cerulean, Cyan, ProcessBlue, SkyBlue, Turquoise, TealBlue, Aquamarine, BlueGreen, Emerald, JungleGreen, SeaGreen, Green, ForestGreen, PineGreen, LimeGreen, YellowGreen, SpringGreen, OliveGreen, RawSienna, Sepia, Brown, Tan, Gray
+%You can define new colours with rgb values e.g. 
+%\definecolor{light-blue}{rgb}{0.8,0.85,1}
+%They have to be defined before you use them - above the \selectcolor definition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Counter used to stop headings being coloured (_everything_ is a paragraph - which is actually a good thing or we couldn't do this but we have to stop things we don't want from being coloured with a nasty hack)
+\newcounter{dontcolorme}
+\setcounter{dontcolorme}{0}
+
+%We also need a counter that attempts to preserve the current colour e.g. for the length of an environment
+\newcounter{dontchangeme}
+\setcounter{dontchangeme}{0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%This is the only command you will want to put in the
+%actual document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\resetcolors}{%
+\setcounter{dontcolorme}{0}%
+\setcounter{dontchangeme}{0}%
+\setcounter{whichcolor}{1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Below are horrible hacks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Cycles forwards
+\newcommand{\cyclecolor}{%
+\selectcolor%
+%This is nasty code that works with an override of the headings to stop things we don't want to change colour from changing. But it is a nasty hack controlled by some of the code below.
+\ifthenelse{\value{dontcolorme}>0}%
+	{\color{black}\addtocounter{dontcolorme}{-1}}%
+    {%
+	\ifthenelse{\value{dontchangeme} > 0}{%do nothing
+    	}{\ifthenelse{\value{whichcolor} < \value{maximumcolor}}%		
+    	{\stepcounter{whichcolor}}%
+        {\setcounter{whichcolor}{1}}}}}%
+
+\newcommand{\cyclecolorback}{%
+%This is nasty code that works with an override of the headings to stop things we don't want to change colour from changing. But it is a nasty hack controlled by some of the code below.
+\ifthenelse{\value{dontcolorme}>0}%
+	{\color{black}\addtocounter{dontcolorme}{-1}}%
+    {%
+	\ifthenelse{\value{dontchangeme} > 0}{%do nothing
+    }{\ifthenelse{\value{whichcolor} > 1}%		
+    	{\addtocounter{whichcolor}{-1}}%
+        {\setcounter{whichcolor}{\value{maximumcolor}}}%
+        \selectcolor}}}%
+
+
+%This adds the command \cyclecolor to every single paragraph. Be aware that most things are paragraphs!
+\PushPreHook{par}{\cyclecolor}
+
+%Now we need to do very nasty things to sections and even the tableofcontents. Be warned that these commands may not work in general and could break documents.
+\let\oldsection = \section
+\renewcommand{\section}{
+\addtocounter{dontcolorme}{1}
+\oldsection
+}
+\let\oldsubsection = \subsection
+\renewcommand{\subsection}{
+\addtocounter{dontcolorme}{1}
+\oldsubsection
+}
+\let\oldsubsubsection = \subsubsection
+\renewcommand{\subsubsection}{
+\addtocounter{dontcolorme}{1}
+\oldsubsubsection
+}
+\let\oldtableofcontents = \tableofcontents
+\renewcommand{\tableofcontents}{
+\addtocounter{dontcolorme}{1000}
+\oldtableofcontents
+}
+
+%We have to fix the theorems so that the new paragraph doesn't change colour - which is presumably the actual thing we want
+\newtheoremstyle{clearprintcolor}{20pt}{3pt}{}{}{\cyclecolor\bfseries}{.\newline\cyclecolorback\hspace{-1em}\nobreak}{1.0em\nobreak}{}
+
+%Finally we have to fix the enumerate and itemize environments so they don't create a techni-colour horror
+\let\olditem\item
+\renewcommand{\item}{\cyclecolorback\olditem}
+\let\oldenumerate\enumerate
+\renewcommand{\enumerate}{\cyclecolor\oldenumerate}
+\let\olditemize\itemize
+\renewcommand{\itemize}{\cyclecolor\olditemize}
+
+%Turns out I didn't use the dontchangeme in the end but it is embedded into the code so I'll leave it there for now. Might come in handy. 

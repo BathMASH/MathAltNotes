@@ -80,6 +80,7 @@ lstset "\\lstset"{lb}
 
 {packages} yy_push_state(PACKAGES);
 <PACKAGES>(("[")(.*)("]"))*{lb}"bm"{rb} printf("\\newcommand{\\hmmax}{0}\\newcommand{\\bmmax}{2}\n\\usepackage"); ECHO; yy_pop_state();
+<PACKAGES>(("[")(.*)("]"))*{lb}"xr"{rb} printf("\\usepackage{xr-hyper,xr}"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}{danger}{rb} printf("\\ifboolexpr{togl {web} or togl{clearprint}}{}{\\usepackage"); ECHO; printf("}"); printf("%%%%"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb} printf("\\usepackage"); ECHO; 
 <PACKAGES>","(" ")* printf(",");
