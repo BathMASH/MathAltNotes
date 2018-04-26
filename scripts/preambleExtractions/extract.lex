@@ -47,8 +47,9 @@ pmatrix "\\pmatrix"
 frac "\\frac"
 toosmall ("\\tiny"|"\\scriptsize"|"\\footnotesize"|"\\small")
 lstset "\\lstset"{lb}
+externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 
-%x COMMENT INPUT IMPORT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE LISTING READCLASS
+%x COMMENT INPUT IMPORT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE LISTING READCLASS EXTHYPER
 %s LSTSET
 %%
 
@@ -80,12 +81,15 @@ lstset "\\lstset"{lb}
 
 {packages} yy_push_state(PACKAGES);
 <PACKAGES>(("[")(.*)("]"))*{lb}"bm"{rb} printf("\\newcommand{\\hmmax}{0}\\newcommand{\\bmmax}{2}\n\\usepackage"); ECHO; yy_pop_state();
-<PACKAGES>(("[")(.*)("]"))*{lb}"xr"{rb} printf("\\usepackage{xr-hyper,xr}"); yy_pop_state();
+<PACKAGES>(("[")(.*)("]"))*{lb}"xr"{rb} printf("\\ifpdf\\usepackage{xr,xr-hyper}\\else\\fi"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}{danger}{rb} printf("\\ifboolexpr{togl {web} or togl{clearprint}}{}{\\usepackage"); ECHO; printf("}"); printf("%%%%"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb} printf("\\usepackage"); ECHO; 
 <PACKAGES>","(" ")* printf(",");
 <PACKAGES>{lb} printf("\\usepackage{"); 
 <PACKAGES>{rb} ECHO; printf("%%%%"); yy_pop_state();
+
+{externaldoc} printf("\\ifpdf\\ifboolexpr{togl {clearprint} or togl {web}}{"); ECHO; printf("-clear}}{"); ECHO; yy_push_state(EXTHYPER); 
+<EXTHYPER>{rb} ECHO; printf("}\\else\\fi"); yy_pop_state();
 
 {lstset} ECHO; brackets=1; yy_push_state(LSTSET);
 <LSTSET>"backgroundcolor" ECHO; colorlst = 1;
