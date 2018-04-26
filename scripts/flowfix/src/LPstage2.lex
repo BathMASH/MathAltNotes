@@ -139,7 +139,9 @@ newenvironment "\\newenvironment"
 {dgroupstart}/({whitespace}*("\\notag"|"\\nonumber")) printf("\\begin{dgroup*}[compact,spread={%lf\\baselineskip}]\\begin{dmath*}",mathlines); yy_push_state(DGROUP); yy_push_state(CHECKSTAR); 
 {dgroupstart}/({whitespace}*("\\tag"|"\\label")) printf("\\begin{dgroup*}[compact,spread={%lf\\baselineskip}]\\begin{dmath}[",mathlines); yy_push_state(DGROUP); 
 {dgroupstart} printf("\\begin{dgroup*}[compact,spread={%lf\\baselineskip}]\\begin{dmath}",mathlines); yy_push_state(DGROUP); 
-{dgroupnoalignstart} printf("\\begin{dgroup*}[noalign,compact,spread={%lf\\baselineskip}]\\begin{dmath}[",mathlines); yy_push_state(DGROUP); 
+{dgroupnoalignstart}/({whitespace}*("\\notag"|"\\nonumber")) printf("\\begin{dgroup*}[noalign,compact,spread={%lf\\baselineskip}]\\begin{dmath*}",mathlines); yy_push_state(DGROUP); yy_push_state(CHECKSTAR); 
+{dgroupnoalignstart}/({whitespace}*("\\tag"|"\\label")) printf("\\begin{dgroup*}[noalign,compact,spread={%lf\\baselineskip}]\\begin{dmath}[",mathlines); yy_push_state(DGROUP); 
+{dgroupnoalignstart} printf("\\begin{dgroup*}[noalign,compact,spread={%lf\\baselineskip}]\\begin{dmath}",mathlines); yy_push_state(DGROUP); 
 <DGROUP,CHECKSTAR>{dgroupend} if (YY_START == CHECKSTAR) {printf("\\end{dmath*}"); yy_pop_state();} else printf("\\end{dmath}"); printf("\\end{dgroup*}"); yy_pop_state();
 
 
@@ -182,7 +184,7 @@ newenvironment "\\newenvironment"
  /*<GRAPHICS>"\\textwidth" if(normalsize > 14) printf("\\textheight * \\real{0.9},height=\\textwidth * \\real{0.9},angle=90,keepaspectratio,"); else ECHO;*/
 <GRAPHICS>{rb} if(normalsize > 14) printf("}}"); else ECHO; yy_pop_state();
 <GRAPHICS>"width"(" ")*"="(.*)/(",") bettergraphics=1; if(normalsize > 14) {printf("width=\\textwidth,totalheight=\\textheight,keepaspectratio,");} else ECHO;
-<GRAPHICS>("width"|"trim")(" ")*"="(.*)/("]") bettergraphics=1; if(normalsize > 14) {printf("width=\\textwidth,totalheight=\\textheight,keepaspectratio,");} else ECHO;
+<GRAPHICS>("width"|"trim"|"scale")(" ")*"="(.*)/("]") bettergraphics=1; if(normalsize > 14) {printf("width=\\textwidth,totalheight=\\textheight,keepaspectratio,");} else ECHO;
  /*<GRAPHICS>"]" ECHO; yy_pop_state();*/
 <GRAPHICS>{lb} if(normalsize > 14 && bettergraphics==0) printf("[width=\\textwidth,totalheight=\\textheight,keepaspectratio,]"); bettergraphics=0; ECHO; /*yy_pop_state();*/
  /*"\\begin"{lb}"picture"{rb} if(normalsize > 14) {printf("\\begin{center}\\rotatebox{90}{"); ECHO;} else ECHO;*/
