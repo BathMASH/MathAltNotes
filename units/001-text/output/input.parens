@@ -1,0 +1,4 @@
+   1 |            | \documentclass{article}
+   2 |            | \begin{document}
+   3 |            | Test of basic text.
+   4 |            | \end{document}
