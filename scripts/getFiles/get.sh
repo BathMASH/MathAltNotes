@@ -19,7 +19,7 @@ fi
 
 home=$(dirname $(readlink -f $0))
 name=$(basename "$1" .tex)
-tmpname="$(basename "$1" .tex)-`date +%y%m%d-%H%M`"
+tmpname="$(basename "$1" .tex)-`date +%y%m%d-%H%M%S%3N`"
 mkdir $home/../../$tmpname
 mkdir $home/../../$tmpname/figures
 mkdir $home/../../$tmpname/figures/latexpdf
@@ -33,6 +33,7 @@ cp $home/../../assets/makefile $home/../../$tmpname/
 cp $home/../../assets/empty.tex $home/../../$tmpname/
 cp $home/../../master/master.tex $home/../../$tmpname/
 echo $home > $home/../../$tmpname/.home
+echo $tmpname > $home/../../.lasttimestamp
 dir=$(dirname "$1")
 cd $dir
 mkjobtexmf --jobname $name --destdir=files --copy --exclude-ext aux,log,toc --texopt="--shell-escape"
