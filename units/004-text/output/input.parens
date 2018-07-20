@@ -1,0 +1,23 @@
+   1 |            | %Taken from HESTEM project vanilla tests
+   2 |            | \documentclass[12pt,a4paper,onecolumn]{article}
+   3 |            | \usepackage[english,shorthands=off]{babel}
+   4 |            | \usepackage[T1]{fontenc}
+   5 |            | \begin{document}
+   6 |            | \noindent
+   7 | }{         | Special characters: \$  \%  \_  \}  \&  \#  \{
+   8 | }{         | 
+   9 | }{         | \noindent
+  10 | }{         | Textmode characters: 
+  11 | }{         | \par\noindent
+  12 | }{         | \textasciicircum  \textless  \textasciitilde  \textordfeminine    \textasteriskcentered  \textordmasculine  \textbackslash  \textparagraph  \textbar  \textperiodcentered  \textbraceleft  \textquestiondown  \textbraceright  \textquotedblleft  \textbullet  \textquotedblright  \textcopyright  \textquoteleft  \textdagger  \textquoteright  \textdaggerdbl  \textregistered  \textdollar  \textsection  \textellipsis  \textsterling  \textemdash  \texttrademark  \textendash  \textunderscore  \textexclamdown  \textvisiblespace  \textgreater                                                      
+  13 | }{         | 
+  14 | }{         | \noindent
+  15 | }{         | Mathmode and textmode: \$  \_  \ddag  \{  \P  \copyright  \dots  \}  \S  \dag  \pounds
+  16 | }{         | 
+  17 | }{         | \noindent
+  18 | }{         | Accents: \"{a}  \'{a}  \.{a}  \={a}  \^{a}  \`{a}  \~{a} \c{a}  \d{a}  \H{a} \k{a} \r{a}  \t{a}  \u{a}  \v{a}  \textcircled{a}  
+  19 | }{         | 
+  20 | }{         | \noindent
+  21 | }{         | There are not always symbols for these in all fonts: \i  \j  \"{\i}
+  22 | }{         | 
+  23 | }{         | \end{document}

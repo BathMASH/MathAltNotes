@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.8.23)  20 JUL 2018 17:57
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.8.23)  20 JUL 2018 18:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -23,6 +23,13 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
@@ -56,18 +63,18 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 ) (./input.aux)
 \openout1 = `input.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -104,45 +111,45 @@ LaTeX Font Info:    ... okay on input line 10.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 11.
+(Font)              <14.4> on input line 12.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 11.
+(Font)              <7> on input line 12.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 12.
+(Font)              <12> on input line 13.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 12.
+(Font)              <8> on input line 13.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 12.
+(Font)              <6> on input line 13.
 \frametext=\box26
 
-LaTeX Warning: \oval, \circle, or \line size unavailable on input line 37.
-
-
 LaTeX Warning: \oval, \circle, or \line size unavailable on input line 38.
+
+
+LaTeX Warning: \oval, \circle, or \line size unavailable on input line 39.
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./input.aux) ) 
 Here is how much of TeX's memory you used:
- 763 strings out of 495032
- 10299 string characters out of 6181718
- 76459 words of memory out of 5000000
- 4028 multiletter control sequences out of 15000+600000
- 8893 words of font info for 31 fonts, out of 8000000 for 9000
+ 978 strings out of 495032
+ 11934 string characters out of 6181718
+ 76533 words of memory out of 5000000
+ 4234 multiletter control sequences out of 15000+600000
+ 13272 words of font info for 34 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  23i,6n,19p,469b,187s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/latxfont/lcirclew.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/latxfont/linew10.pfb>
-Output written on input.pdf (1 page, 72615 bytes).
+{/usr/share
+/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/latxfont/lcirclew.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/latxfont/linew10.pfb></usr/share/texmf/fonts/type
+1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sf
+rm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/sha
+re/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1
+/public/cm-super/sfrm2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sft
+i0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1200.pfb>
+Output written on input.pdf (1 page, 85154 bytes).
 PDF statistics:
- 38 PDF objects out of 1000 (max. 8388607)
+ 43 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

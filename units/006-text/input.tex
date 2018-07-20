@@ -1,5 +1,6 @@
 %Taken from HESTEM project vanilla tests
 \documentclass[12pt,a4paper,onecolumn]{article}
+\usepackage[T1]{fontenc}
 \usepackage[a4paper]{geometry}
 \newcommand{\xsb}{x_{1}}
 \newcommand{\xsp}{x^{2}}
@@ -11,17 +12,16 @@
 \maketitle
 \tableofcontents
 \newpage
-\section{Standard mathematical symbols\label{maths-symbols}}
+\section{Standard mathematical symbols}
 
 We will use the robust single dollar environment for these
 
-%The copyright symbol in mathmode means that tex4ht produces a corrupt odt file so is not available \copyright
-Math versions of text symbols: $\$  \_  \ddag  \{  \P  \dots  \}  \S  \dag  \pounds$
+Math versions of text symbols: $\$  \_  \ddag  \{  \P  \dots  \}  \S  \dag  \pounds \copyright$
 
 Keyboard symbols: $+  -  =  <  >  /  :  !  '  |  [  ]  (  )$
 
 \noindent 
-But for longer tests we will use the equation environment so that we don't overrun the line if we increase the font size.
+But for longer tests we will use the equation environment so that we don't overrun the line if we increase the font size. We'll do a basic macro test in section \ref{test}.
 
 Greek:
 \begin{equation}
@@ -270,8 +270,9 @@ Now for an equation array:
 \stackrel{a}{\longrightarrow}
 \]
 
+% {a \atop b} cannot be converted in web format - is this because I am fixing choose and not atop?  
 \[
-{a \atop b} {a \choose b}
+{a \choose b}
 \]
 
 \[
@@ -294,7 +295,7 @@ a + \frac{1}{b + \frac{1}{c + \frac{1}{d + \frac{1}{e + \frac{1}{f + \frac{1}{g 
 &&a , b , c , d , e , f , g , h , i , j , k , l , m , n , o , p , q , r , s , t , u , v , w , x , y , z , a , b , c , d , e , f, g , h , i , j , k , l
 \end{eqnarray*}
 
-\subsection{Testing new commands}
+\subsection{Testing new commands\label{test}}
 \[ 
 \xsb \xsp \xsbnum{2}
 \]

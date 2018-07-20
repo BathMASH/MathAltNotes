@@ -1,0 +1,289 @@
+   1 |            | %Taken from HESTEM project vanilla tests
+   2 |            | \documentclass[12pt,a4paper,onecolumn]{article}
+   3 |            | \usepackage[T1]{fontenc}
+   4 |            | \newtheorem{theorem}{Theorem}[section]
+   5 |            | \usepackage[a4paper]{geometry}
+   6 |            | \usepackage{longtable} 
+   7 |            | \title{Basic structures}
+   8 |            | \author{Emma Cliffe}
+   9 |            | \date{}
+  10 |            | \begin{document}
+  11 |            | \maketitle
+  12 |            | \noindent
+  13 |            | A baseline of text which is a single line long in 12pt font with no indent applied.
+  14 |            | 
+  15 |            | \begin{quote}
+  16 |            | In the quote environment [paragraphs] are indicated with more vertical spacing between them. 
+  17 |            | 
+  18 |            | Additional vertical spacing is inserted above and below the displayed text to separate it visually from the the normal text.
+  19 |            | \end{quote}
+  20 |            | 
+  21 |            | A baseline of text to show the height change in the above and below environments. This line was indented though to show off the next environment. The quotations are from “A Guide to \LaTeX” \cite{KopkaDaly}
+  22 |            | 
+  23 |            | \begin{quotation}
+  24 |            | In the quotation environment, paragraphs are marked by extra indentation of the first line. 
+  25 |            | 
+  26 |            | The quotation environment is only really meaningful when the regular text makes use of first-line indentation to show off new paragraphs.
+  27 |            | \end{quotation}
+  28 |            | 
+  29 |            | %ignored verse enivironment
+  30 |            | 
+  31 |            | \noindent
+  32 |            | A baseline of text which is a single line long in 12pt font with no indent applied.
+  33 |            | 
+  34 |            | \begin{itemize}
+  35 |            | \item An itemized list
+  36 |            | \item Using standard itemize
+  37 |            | \begin{itemize}
+  38 |            | \item With a level 2 sub-point
+  39 |            | \begin{itemize}
+  40 |            | \item With a level 3 sub-point
+  41 |            | \begin{itemize}
+  42 |            | \item With a level 4 sub-point
+  43 |            | \end{itemize}
+  44 |            | \end{itemize}
+  45 |            | \end{itemize}
+  46 |            | \item[\&] Or I can control the marker manually
+  47 |            | \end{itemize}
+  48 |            | 
+  49 |            | \noindent
+  50 |            | A baseline of text which is a single line long in 12pt font with no indent applied.
+  51 |            | 
+  52 |            | Same list with redefinition using renewcommand of the labels labelitem(i-iv)
+  53 |            | \begin{itemize}
+  54 |            | \renewcommand{\labelitemi}{*}
+  55 |            | \renewcommand{\labelitemii}{**}
+  56 |            | \renewcommand{\labelitemiii}{***}
+  57 |            | \renewcommand{\labelitemiv}{****}
+  58 |            | \item An itemized list
+  59 |            | \item Using standard itemize
+  60 |            | \begin{itemize}
+  61 |            | \item With a level 2 sub-point
+  62 |            | \begin{itemize}
+  63 |            | \item With a level 3 sub-point
+  64 |            | \begin{itemize}
+  65 |            | \item With a level 4 sub-point
+  66 |            | \end{itemize}
+  67 |            | \end{itemize}
+  68 |            | \end{itemize}
+  69 |            | \item[\&] Or I can control the marker manually
+  70 |            | \end{itemize}
+  71 |            | 
+  72 |            | \begin{itemize}
+  73 |            | \item Because the renewcommands were contained in the environment they are not global
+  74 |            | \end{itemize}
+  75 |            | 
+  76 |            | \noindent
+  77 |            | A baseline of text which is a single line long in 12pt font with no indent applied.
+  78 |            | 
+  79 |            | \begin{enumerate}
+  80 |            | \item An enumerated list
+  81 |            | \item Using standard enumerate
+  82 |            | \begin{enumerate}
+  83 |            | \item With a level 2 sub-point
+  84 |            | \begin{enumerate}
+  85 |            | \item With a level 3 sub-point
+  86 |            | \begin{enumerate}
+  87 |            | \item With a level 4 sub-point
+  88 |            | \end{enumerate}
+  89 |            | \end{enumerate}
+  90 |            | \end{enumerate}
+  91 |            | \item[\&] Or I can control the marker
+  92 |            | \end{enumerate}
+  93 |            | 
+  94 |            | \noindent
+  95 |            | A baseline of text which is a single line long in 12pt font with no indent applied.
+  96 |            | 
+  97 |            | Same list with redefinition using renewcommand of the labels labelenum(i-iv) by application of arabic, roman, Roman, alph or Alph
+  98 |            | \begin{enumerate}
+  99 |            | \renewcommand{\labelenumi}{\Roman{enumi}.}
+ 100 |            | \renewcommand{\labelenumii}{\roman{enumii}.}
+ 101 |            | \renewcommand{\labelenumiii}{\Alph{enumiii}.}
+ 102 |            | \renewcommand{\labelenumiv}{\alph{enumiv}.}
+ 103 |            | \item An enumerated list
+ 104 |            | \item Using standard enumerate
+ 105 |            | \begin{enumerate}
+ 106 |            | \item With a level 2 sub-point
+ 107 |            | \begin{enumerate}
+ 108 |            | \item With a level 3 sub-point
+ 109 |            | \begin{enumerate}
+ 110 |            | \item With a level 4 sub-point
+ 111 |            | \end{enumerate}
+ 112 |            | \end{enumerate}
+ 113 |            | \end{enumerate}
+ 114 |            | \item[\&] Or I can control the marker
+ 115 |            | \end{enumerate}
+ 116 |            | 
+ 117 |            | \begin{enumerate}
+ 118 |            | \item Because the renewcommands were contained in the environment they are not global
+ 119 |            | \end{enumerate}
+ 120 |            | 
+ 121 |            | \noindent
+ 122 |            | A baseline of text which is a single line long in 12pt font with no indent applied.
+ 123 |            | 
+ 124 |            | \begin{description}
+ 125 |            | \item[first] The marker is a description
+ 126 |            | \item[second] in the description environment
+ 127 |            | \item But it is optional
+ 128 |            | \end{description}
+ 129 |            | 
+ 130 | )          | %ignored the bibliography (non bibtex) for now)
+ 131 | )          | %ignored generalised lists for now
+ 132 | )          | 
+ 133 | )          | \noindent
+ 134 | )          | A baseline of text which is a single line long in 12pt font with no indent applied.
+ 135 | )          | 
+ 136 | )          | \begin{theorem}[Title of the theorem]
+ 137 | )          | This is a theorem that has been produced without the AMS theorem environment or package
+ 138 | )          | \end{theorem}
+ 139 | )          | 
+ 140 | )          | \noindent
+ 141 | )          | A baseline of text which is a single line long in 12pt font with no indent applied.
+ 142 | )          | 
+ 143 | )          | \begin{tabbing}
+ 144 | )          | There is the \=tabbing environment which lines\\
+ 145 | )          | \>this with tabbing above \= and\+\\
+ 146 | )          | \>this with and\\
+ 147 | )          | and this with tabbing again\-\\
+ 148 | )          | until I backwards tab
+ 149 | )          | \end{tabbing}
+ 150 | )          | 
+ 151 | )          | \noindent
+ 152 | )          | A baseline of text which is a single line long in 12pt font with no indent applied.
+ 153 | )          | 
+ 154 | )          | \bigskip
+ 155 | )          | 
+ 156 | )          | \noindent
+ 157 | )          | \fbox{This text is framed in a box. The width is determined by the text.}
+ 158 | )          | 
+ 159 | )          | \bigskip
+ 160 | )          | 
+ 161 | )          | \noindent
+ 162 | )          | \framebox[0.5\textwidth]{This box is 0.5 textwidth wide}
+ 163 | )          | 
+ 164 | )          | \bigskip
+ 165 | )          | 
+ 166 | )          | \noindent
+ 167 | )          | A baseline of text which is a single line long in 12pt font with no indent applied.
+ 168 | )          | 
+ 169 | )          | \bigskip
+ 170 | )          | 
+ 171 | )          | \noindent
+ 172 | )          | \parbox{0.5\textwidth}{This is a parbox half the textwidth of the page. \par This is the second paragraph in the box.}
+ 173 | )          | 
+ 174 | )          | \bigskip
+ 175 | )          | 
+ 176 | )          | \noindent
+ 177 | )          | \fbox{\parbox{0.5\textwidth}{This is a parbox half the textwidth of the page. \par This is the second paragraph in the box.}}
+ 178 | )          | 
+ 179 | )          | \bigskip
+ 180 | )          | 
+ 181 | )          | \noindent
+ 182 | )          | \begin{minipage}{0.5\textwidth}This is a minipage half the textwidth of the page. \par This is the second paragraph in the minipage.\end{minipage}\hfill
+ 183 | )          | \begin{minipage}{0.3\textwidth}A second minipage is over here...\end{minipage}
+ 184 | )          | 
+ 185 | )          | \bigskip
+ 186 | )          | 
+ 187 | )          | \noindent
+ 188 | )          | \rule{\textwidth}{\baselineskip}
+ 189 | )          | 
+ 190 | )          | \bigskip
+ 191 | )          | 
+ 192 | )          | %We want to allow tabular, longtable (maybe later tabular* and maybe tabularx)
+ 193 | )          | \begin{table}[t]\label{table}
+ 194 | ){|{||}||} | \begin{tabular}{|l*{2}{|c|}r|@{insert}|p{2cm}}
+ 195 | ){|{||}||} | %\begin{tabu} to 0.5\textwidth {|X*{2}{|X|}X|@{insert}|X}
+ 196 | ){|{||}||} | \hline
+ 197 | ){|{||}||} | a & b & c & d & abcde\\
+ 198 | ){|{||}||} | \cline{1-4}
+ 199 | ){|{||}||} | \multicolumn{4}{c}{abcd}\vline & abcde\\
+ 200 | ){|{||}||} | \hline
+ 201 | ){|{||}||} | \(\frac{a}{e}\) & \(\frac{b}{e}\) & \(\frac{c}{e}\) & \(\frac{d}{e}\) & \(\alpha\beta\gamma\delta\epsilon\) \\
+ 202 | ){|{||}||} | \hline
+ 203 | ){|{||}||} | \end{tabular}
+ 204 | ){|{||}||} | \caption{This is a table}
+ 205 | ){|{||}||} | \end{table}
+ 206 | ){|{||}||} | 
+ 207 | ){|{||}||} | \noindent
+ 208 | ){|{||}||} | This is just below where the floating table \ref{table} was defined. It should appear at the top of either this page or the page after this. 
+ 209 | ){|{||}||} | 
+ 210 | ){|{||}||} | \bigskip
+ 211 | ){|{||}||} | 
+ 212 | ){|{||}||} | \begin{center}
+ 213 | ){|{||}||} | \renewcommand{\arraystretch}{2}
+ 214 | ){|{||}||} | %\begin{longtabu} to \textwidth {*{3}{|X|}}
+ 215 | ){|{||}||} | \begin{longtable}{*{3}{|l|}}
+ 216 | ){|{||}||} | \hline
+ 217 | ){|{||}||} | \textbf{First} & \textbf{Second} & \textbf{Third} \\
+ 218 | ){|{||}||} | \hline
+ 219 | ){|{||}||} | \endfirsthead
+ 220 | ){|{||}||} | \multicolumn{3}{c}%
+ 221 | ){|{||}||} | {\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
+ 222 | ){|{||}||} | \hline
+ 223 | ){|{||}||} | \textbf{First} & \textbf{Second} & \textbf{Third} \\
+ 224 | ){|{||}||} | \hline
+ 225 | ){|{||}||} | \endhead
+ 226 | ){|{||}||} | \hline \multicolumn{3}{r}{\textit{Continued on next page}} \\
+ 227 | ){|{||}||} | \endfoot
+ 228 | ){|{||}||} | \hline
+ 229 | ){|{||}||} | \endlastfoot
+ 230 | ){|{||}||} | \hline
+ 231 | ){|{||}||} | This is the first line & & \\
+ 232 | ){|{||}||} | \hline
+ 233 | ){|{||}||} | This is the second line & \(1 \times 2\) & \\
+ 234 | ){|{||}||} | \hline
+ 235 | ){|{||}||} | This is the third line & \(1 \times 2 \times 3\) & \(6\)\\
+ 236 | ){|{||}||} | \hline
+ 237 | ){|{||}||} | This is the fourth line & \(1 \times 2 \times 3 \times 4\) & \(24\)\\
+ 238 | ){|{||}||} | \hline
+ 239 | ){|{||}||} | This is the fifth line & \(1 \times 2 \times 3 \times 4 \times 5\) & \(120\)\\
+ 240 | ){|{||}||} | \hline
+ 241 | ){|{||}||} | This is the sixth line & \(1 \times 2 \times 3 \times 4 \times 5 \times 6\) & \(720\)\\
+ 242 | ){|{||}||} | \hline
+ 243 | ){|{||}||} | This is the seventh line & \(1 \times 2 \times 3 \times 4 \times 5 \times 6 \times 7\) & \(5040\)\\
+ 244 | ){|{||}||} | \hline
+ 245 | ){|{||}||} | This is the eighth line & \(1 \times 2 \times 3 \times 4 \times 5 \times 6 \times 7 \times 8\) & \(40320\)\\
+ 246 | ){|{||}||} | \hline
+ 247 | ){|{||}||} | & The & End\\
+ 248 | ){|{||}||} | \hline
+ 249 | ){|{||}||} | \end{longtable}
+ 250 | ){|{||}||} | \end{center}
+ 251 | ){|{||}||} | 
+ 252 | ){|{||}||} | \bigskip
+ 253 | ){|{||}||} | 
+ 254 | ){|{||}||} | \begin{verbatim}
+ 255 | ){|{||}||} | This text should be printed verbatim with a linebreak here
+ 256 | ){|{||}||} |   then two spaces at the start of this line which breaks here
+ 257 | ){|{||}||} | > this line has a prompt at the start and now some braces {}
+ 258 | ){|{||}||} | \end{verbatim}
+ 259 | ){|{||}||} | 
+ 260 | ){|{||}||} | \bigskip
+ 261 | ){|{||}||} | 
+ 262 | ){|{||}||} | This next \verb=verbatim= but with spaces shown\footnote{The word verbatim used inline verbatim.}. 
+ 263 | ){|{||}||} | 
+ 264 | ){|{||}||} | \bigskip
+ 265 | ){|{||}||} | A piece \verb=of verbatim text that we are using to test line breaking=.
+ 266 | ){|{||}||} | 
+ 267 | ){|{||}||} | %spverbatim does not support a starred form 
+ 268 | ){|{||}||} | %\begin{verbatim*}
+ 269 | ){|{||}||} | %This text should be printed verbatim with a linebreak here
+ 270 | ){|{||}||} | %  then two spaces at the start of this line which breaks here
+ 271 | ){|{||}||} | %> this line has a prompt at the start and now some braces {}
+ 272 | ){|{||}||} | %\end{verbatim*}
+ 273 | ){|{||}||} | 
+ 274 | ){|{||}||} | \bigskip
+ 275 | ){|{||}||} | 
+ 276 | ){|{||}||} | \noindent
+ 277 | ){|{||}||} | A baseline of text which is a single line long in 12pt font with no indent applied.\marginpar{Note\\ in the\\ margin.}
+ 278 | ){|{||}||} | 
+ 279 | ){|{||}||} | \vspace{4\baselineskip}
+ 280 | ){|{||}||} | 
+ 281 | ){|{||}||} | \noindent
+ 282 | ){|{||}||} | A baseline of text which is a single line long in 12pt font with no indent applied.\marginpar{\rule[-1ex]{0.3em}{4ex}}
+ 283 | ){|{||}||} | 
+ 284 | ){|{||}||} | % \thebibliography
+ 285 | ){|{||}||} | \begin{thebibliography}{99}
+ 286 | ){|{||}||} | \bibitem{KopkaDaly} Kopka, H. and Daly, P., \textit{A Guide to \LaTeX}. Pearson Education Ltd., 1999
+ 287 | ){|{||}||} | \end{thebibliography}
+ 288 | ){|{||}||} | 
+ 289 | ){|{||}||} | \end{document}

@@ -1,7 +1,7 @@
 %Taken from HESTEM project vanilla tests
-\documentclass[12pt,a4paper,onecolumn]{article}
-\usepackage[english,shorthands=off]{babel}
-\usepackage[T1]{fontenc}
+%\documentclass[12pt,a4paper,onecolumn]{article}
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage[english,shorthands=off]{babel}}
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage[T1]{fontenc}}
 \begin{document}
 \noindent
 Special characters: \$  \%  \_  \}  \&  \#  \{
@@ -21,3 +21,4 @@ Accents: \"{a}  \'{a}  \.{a}  \={a}  \^{a}  \`{a}  \~{a} \c{a}  \d{a}  \H{a} \k{
 There are not always symbols for these in all fonts: \i  \j  \"{\i}
 
 \end{document}
+

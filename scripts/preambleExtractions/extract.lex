@@ -49,7 +49,7 @@ toosmall ("\\tiny"|"\\scriptsize"|"\\footnotesize"|"\\small")
 lstset "\\lstset"{lb}
 externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 
-%x COMMENT INPUT IMPORT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE LISTING READCLASS EXTHYPER
+%x COMMENT INPUT IMPORT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE ATOP LISTING READCLASS EXTHYPER
 %s LSTSET
 %%
 
@@ -164,6 +164,10 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 <INITIAL,PMATRIX>{lb}([^"}""{"])*/"\\choose" printf("\\binom"); ECHO; yy_push_state(CHOOSE);
 <CHOOSE>"\\choose" printf("}");
 <CHOOSE>([^"\\choose"])*{rb} printf("{"); ECHO; yy_pop_state();
+
+<INITIAL,PMATRIX>{lb}([^"}""{"])*/"\\atop" printf("\\binom"); ECHO; yy_push_state(ATOP);
+<ATOP>"\\atop" printf("}");
+<ATOP>([^"\\atop"])*{rb} printf("{"); ECHO; yy_pop_state();
 
  /* This assumes that the end document is in the same file as the preamble */
 {end} ECHO; choices(); if(macrolength > 0 || beginendlength > 0) macrosoutput(); 

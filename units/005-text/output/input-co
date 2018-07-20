@@ -198,7 +198,7 @@ a & b & c & d & abcde\\
 \cline{1-4}
 \multicolumn{4}{c}{abcd}\vline & abcde\\
 \hline
-$\frac{a}{e}$ & $\frac{b}{e}$ & $\frac{c}{e}$ & $\frac{d}{e}$ & $\alpha\beta\gamma\delta\epsilon$ \\
+\(\frac{a}{e}\) & \(\frac{b}{e}\) & \(\frac{c}{e}\) & \(\frac{d}{e}\) & \(\alpha\beta\gamma\delta\epsilon\) \\
 \hline
 \end{tabular}
 \caption{This is a table}
@@ -230,19 +230,19 @@ This is just below where the floating table \ref{table} was defined. It should a
 \hline
 This is the first line & & \\
 \hline
-This is the second line & $1 \times 2$ & \\
+This is the second line & \(1 \times 2\) & \\
 \hline
-This is the third line & $1 \times 2 \times 3$ & $6$\\
+This is the third line & \(1 \times 2 \times 3\) & \(6\)\\
 \hline
-This is the fourth line & $1 \times 2 \times 3 \times 4$ & $24$\\
+This is the fourth line & \(1 \times 2 \times 3 \times 4\) & \(24\)\\
 \hline
-This is the fifth line & $1 \times 2 \times 3 \times 4 \times 5$ & $120$\\
+This is the fifth line & \(1 \times 2 \times 3 \times 4 \times 5\) & \(120\)\\
 \hline
-This is the sixth line & $1 \times 2 \times 3 \times 4 \times 5 \times 6$ & $720$\\
+This is the sixth line & \(1 \times 2 \times 3 \times 4 \times 5 \times 6\) & \(720\)\\
 \hline
-This is the seventh line & $1 \times 2 \times 3 \times 4 \times 5 \times 6 \times 7$ & $5040$\\
+This is the seventh line & \(1 \times 2 \times 3 \times 4 \times 5 \times 6 \times 7\) & \(5040\)\\
 \hline
-This is the eighth line & $1 \times 2 \times 3 \times 4 \times 5 \times 6 \times 7 \times 8$ & $40320$\\
+This is the eighth line & \(1 \times 2 \times 3 \times 4 \times 5 \times 6 \times 7 \times 8\) & \(40320\)\\
 \hline
 & The & End\\
 \hline

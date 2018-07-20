@@ -1,0 +1,66 @@
+<!DOCTYPE html> 
+<html> 
+<head> <title></title> 
+<meta charset="UTF-8" /> 
+<meta name="viewport" content="target-densitydpi=device-dpi; width=device-width; initial-scale=1.0; minimum-scale=1.0; user-scalable=yes;" /> 
+<meta name="HandheldFriendly" content="True" /> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)" /> 
+<link rel="stylesheet" type="text/css" href="input-word.css" /> 
+<link rel="stylesheet" type="text/css" href="additional.css" /> 
+<script type="text/x-mathjax-config"> 
+MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
+explorer:{ subtitle: true }, 
+MatchWebFonts: { 
+matchFor: { "HTML-CSS": true, NativeMML: false, SVG: false }, 
+fontCheckDelay: 2000, 
+fontCheckTimeout: 30 * 1000 
+}, 
+"HTML-CSS": { 
+preferredFont: "STIX",  
+availableFonts: ["STIX","TeX"],  
+webFont: "STIX-Web",  
+linebreaks: { automatic: false, width: "90% container" } 
+}, 
+SVG: {  
+font: "STIX-Web", 
+linebreaks: { automatic: false, width: "90% container" } 
+}, 
+menuSettings: { collapsible: true, autocollapse: true, explorer: false } 
+}); 
+</script> 
+<script type="text/javascript" 
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full" 
+></script> 
+<style type="text/css"> 
+".MathJax_MathML" {text-indent: 0;} 
+</style> 
+</head><body 
+>
+<!--l. 6--><p class="noindent" >Special characters: $ % _ } &#x0026; # {
+</p><!--l. 9--><p class="noindent" >Textmode characters:
+</p><!--l. 11--><p class="noindent" >^&#x003C;~<sup class="textsuperscript"><span 
+class="phvr8t-x-x-109">a</span></sup><span 
+class="cmsy-10x-x-120">∗</span><sup class="textsuperscript"><span 
+class="phvr8t-x-x-109">o</span></sup>\<span 
+class="cmsy-10x-x-120">¶</span>|<span 
+class="cmsy-10x-x-120">⋅</span>{¿}“<span 
+class="cmsy-10x-x-120">∙</span>”<span 
+class="cmsy-10x-x-120">©</span>‘<span 
+class="cmsy-10x-x-120">†</span>&#x2019;<span 
+class="cmsy-10x-x-120">‡</span>®;$§…£—<sup class="textsuperscript"><span 
+class="phvr8t-x-x-109">TM</span></sup>–_¡␣&#x003E;
+</p><!--l. 14--><p class="noindent" >Mathmode and textmode: $ _ <span 
+class="cmsy-10x-x-120">‡</span>{ <span 
+class="cmsy-10x-x-120">¶</span><span 
+class="cmsy-10x-x-120">©</span>…} §<span 
+class="cmsy-10x-x-120">†</span>£
+</p><!--l. 17--><p class="noindent" >Accents: ä á ȧ ā â à ã a̧ ạ a̋ ą å a͡ ă ǎ <img 
+src="input-word0x.svg" alt="a○"  class="oalign"  />
+</p><!--l. 20--><p class="noindent" >There are not always symbols for these in all fonts: ıȷï
+</p>
+ 
+</body> 
+</html>
+                                                                                       
+
+

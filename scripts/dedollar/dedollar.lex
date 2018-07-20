@@ -38,6 +38,7 @@ figend "\\end"{lb}("figure"){rb}
 <INITIAL,DROPMATH>"$$" printf("\\["); yy_push_state(DOUBLEDOLLAR);
 <INITIAL,DROPMATH>"$" printf("\\("); yy_push_state(SINGLEDOLLAR);
 
+<SINGLEDOLLAR,DOUBLEDOLLAR>"\\$" ECHO;
 <SINGLEDOLLAR>"$" printf("\\)"); yy_pop_state();
 <DOUBLEDOLLAR>"$$" printf("\\]"); yy_pop_state(); 
 
