@@ -1,24 +1,26 @@
 %Taken from HESTEM project vanilla tests
-\documentclass[12pt,a4paper,onecolumn]{article}
-\usepackage[T1]{fontenc}
-\usepackage[a4paper]{geometry}
-\newcommand{\xsb}{x_{1}}
-\newcommand{\xsp}{x^{2}}
-\newcommand{\xsbnum}[1]{x_{#1}}
+%\documentclass[12pt,a4paper,onecolumn]{article}
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage[T1]{fontenc}}
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage[a4paper]{geometry}}
+
+
+
 \title{Basic mathematical symbols and structures}
 \author{Emma Cliffe}
 \date{}
+
 \begin{document}
 \maketitle
 \tableofcontents
-\newpage
+\ifboolexpr{togl {clearprint} or togl {large}}{}{\newpage}
+
 \section{Standard mathematical symbols}
 
 We will use the robust single dollar environment for these
 
-Math versions of text symbols: $\$  \_  \ddag  \{  \P  \dots  \}  \S  \dag  \pounds \copyright$
+Math versions of text symbols: \(\$  \_  \ddag  \{  \P  \dots  \}  \S  \dag  \pounds \copyright\)
 
-Keyboard symbols: $+  -  =  <  >  /  :  !  '  |  [  ]  (  )$
+Keyboard symbols: \(+  -  =  <  >  /  :  !  '  |  [  ]  (  )\)
 
 \noindent 
 But for longer tests we will use the equation environment so that we don't overrun the line if we increase the font size. We'll do a basic macro test in section \ref{test}.
@@ -124,7 +126,7 @@ Other:
 
 Symbols with two sizes: 
 \begin{center}
-$\sum \int \oint \prod \coprod \bigcap \bigcup \bigsqcup \bigvee \bigwedge \bigodot \bigotimes \bigoplus \biguplus$
+\(\sum \int \oint \prod \coprod \bigcap \bigcup \bigsqcup \bigvee \bigwedge \bigodot \bigotimes \bigoplus \biguplus\)
 \end{center}
 \begin{equation}
 \sum \int \oint \prod \coprod \bigcap \bigcup \bigsqcup \bigvee \bigwedge \bigodot \bigotimes \bigoplus \biguplus
@@ -193,7 +195,7 @@ Horizontal spacing:
 
 \section{Standard mathematical structures}
 
-Three different ways to inline \begin{math}A_{i,j,k}^{2^n}\end{math} \(A_{i,j,k}^{2^n}\) $A_{i,j,k}^{2^n}$
+Three different ways to inline \begin{math}A_{i,j,k}^{2^n}\end{math} \(A_{i,j,k}^{2^n}\) \(A_{i,j,k}^{2^n}\)
 
 Four different ways to displaymath.
 \setcounter{equation}{99}
@@ -209,9 +211,9 @@ x_1^2 = x_2^2 = x_3^2 = x_4^2 = x_5^2 = x_6^2 = x_7^2 = x_8^2 = x_9^2 = x_{10}^2
 \prod_{i=1}^{15} x_i^2 = x_1^2\ \ x_2^2\ \ x_3^2\ \ x_4^2\ \ x_5^2\ \ x_6^2\ \ x_7^2\ \ x_8^2\ \ x_9^2\ \ x_{10}^2\ \ x_{11}^2\ \ x_{12}^2\ \ x_{13}^2\ \ x_{14}^2\ \ x_{15}^2\ 
 \]
 
-$$
+\[
 \prod_{i=1}^{15} x_i^2 = x_1^2 \cdot x_2^2 \cdot x_3^2 \cdot x_4^2 \cdot x_5^2 \cdot x_6^2 \cdot x_7^2 \cdot x_8^2 \cdot x_9^2 \cdot x_{10}^2 \cdot x_{11}^2 \cdot x_{12}^2 \cdot x_{13}^2 \cdot x_{14}^2 \cdot x_{15}^2 
-$$
+\]
 
 One of the forms is numbered equation \ref{equation}.
 \[
@@ -277,7 +279,7 @@ Now for an equation array:
 
 % {a \atop b} cannot be converted in web format - is this because I am fixing choose and not atop?  
 \[
-{a \choose b}
+\binom{a }{ b}
 \]
 
 \[
@@ -302,6 +304,7 @@ a + \frac{1}{b + \frac{1}{c + \frac{1}{d + \frac{1}{e + \frac{1}{f + \frac{1}{g 
 
 \subsection{Testing new commands\label{test}}
 \[ 
-\xsb \xsp \xsbnum{2}
+x_{1} x^{2} x_{2}
 \]
 \end{document}
+

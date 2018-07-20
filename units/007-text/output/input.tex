@@ -1,0 +1,49 @@
+%Taken from HESTEM project vanilla tests
+\documentclass[12pt,a4paper,onecolumn]{article}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper]{geometry}
+\newcommand{\xsb}{x_{1}}
+\newcommand{\xsp}{x^{2}}
+\newcommand{\xsbnum}[1]{x_{#1}}
+\title{Basic graphics}
+\author{Emma Cliffe}
+\date{}
+\begin{document}
+\maketitle
+This section looks only at graphics available without the graphics packages, that is, internal to vanilla \LaTeX. Kopka and Daly \cite{KopkaDaly} explain that ``Standard \LaTeX does actually contain the means to make primative drawings on its own'' and they consider only the facets of picture that are in standard \LaTeX, not those that require additional packages. This is what we test as a basic starting point in the vanilla stress test. 
+
+\bigskip
+
+%Select a rubber length, this should mean that diagrams scale on their own?
+%plastex has the dimension HARD CODED to 1pt... crazy
+\setlength{\unitlength}{1pt}
+
+\newsavebox{\frametext}
+\savebox{\frametext}{\framebox(320,100){Made earlier!}}
+
+\noindent
+\begin{picture}(320,100)\thinlines
+\usebox{\frametext}
+\end{picture}
+
+\bigskip
+
+\noindent
+\begin{picture}(320,100)\thicklines
+\usebox{\frametext}
+\put(0,0){\vector(-1,1){20}}
+\put(0,100){\vector(-1,-1){20}}
+\put(-320,100){\vector(1,-1){20}}
+\put(-320,0){\vector(1,1){20}}
+\put(-80,50){\circle{100}}
+\put(-240,50){\circle{100}}
+\put(-160,50){\oval(100,30)}
+\put(-320,50){\line(1,0){80}}
+\put(0,50){\line(-1,0){80}}
+\qbezier(-240,0)(-160,50)(-80,0)
+\end{picture}
+
+\begin{thebibliography}{99}
+\bibitem{KopkaDaly} Kopka, H. and Daly, P., \textit{A Guide to \LaTeX}. Pearson Education Ltd., 1999
+\end{thebibliography}
+\end{document}

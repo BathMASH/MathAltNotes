@@ -1,0 +1,49 @@
+   1 |            | %Taken from HESTEM project vanilla tests
+   2 |            | \documentclass[12pt,a4paper,onecolumn]{article}
+   3 |            | \usepackage[T1]{fontenc}
+   4 |            | \usepackage[a4paper]{geometry}
+   5 |            | \newcommand{\xsb}{x_{1}}
+   6 |            | \newcommand{\xsp}{x^{2}}
+   7 |            | \newcommand{\xsbnum}[1]{x_{#1}}
+   8 |            | \title{Basic graphics}
+   9 |            | \author{Emma Cliffe}
+  10 |            | \date{}
+  11 |            | \begin{document}
+  12 |            | \maketitle
+  13 |            | This section looks only at graphics available without the graphics packages, that is, internal to vanilla \LaTeX. Kopka and Daly \cite{KopkaDaly} explain that “Standard \LaTeX does actually contain the means to make primative drawings on its own” and they consider only the facets of picture that are in standard \LaTeX, not those that require additional packages. This is what we test as a basic starting point in the vanilla stress test. 
+  14 |            | 
+  15 |            | \bigskip
+  16 |            | 
+  17 |            | %Select a rubber length, this should mean that diagrams scale on their own?
+  18 |            | %plastex has the dimension HARD CODED to 1pt... crazy
+  19 |            | \setlength{\unitlength}{1pt}
+  20 |            | 
+  21 |            | \newsavebox{\frametext}
+  22 |            | \savebox{\frametext}{\framebox(320,100){Made earlier!}}
+  23 |            | 
+  24 |            | \noindent
+  25 |            | \begin{picture}(320,100)\thinlines
+  26 |            | \usebox{\frametext}
+  27 |            | \end{picture}
+  28 |            | 
+  29 |            | \bigskip
+  30 |            | 
+  31 |            | \noindent
+  32 |            | \begin{picture}(320,100)\thicklines
+  33 |            | \usebox{\frametext}
+  34 |            | \put(0,0){\vector(-1,1){20}}
+  35 |            | \put(0,100){\vector(-1,-1){20}}
+  36 |            | \put(-320,100){\vector(1,-1){20}}
+  37 |            | \put(-320,0){\vector(1,1){20}}
+  38 |            | \put(-80,50){\circle{100}}
+  39 |            | \put(-240,50){\circle{100}}
+  40 |            | \put(-160,50){\oval(100,30)}
+  41 |            | \put(-320,50){\line(1,0){80}}
+  42 |            | \put(0,50){\line(-1,0){80}}
+  43 |            | \qbezier(-240,0)(-160,50)(-80,0)
+  44 |            | \end{picture}
+  45 |            | 
+  46 |            | \begin{thebibliography}{99}
+  47 |            | \bibitem{KopkaDaly} Kopka, H. and Daly, P., \textit{A Guide to \LaTeX}. Pearson Education Ltd., 1999
+  48 |            | \end{thebibliography}
+  49 |            | \end{document}

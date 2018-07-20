@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.8.23)  20 JUL 2018 18:50
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.8.23)  20 JUL 2018 19:57
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -136,17 +136,17 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 19.
  [2] [3] [4]
-Overfull \hbox (10.01093pt too wide) in alignment at lines 221--225
+Overfull \hbox (10.01093pt too wide) in alignment at lines 226--230
  [][][] []
  []
 
 
-Overfull \hbox (10.01093pt too wide) in alignment at lines 227--231
+Overfull \hbox (10.01093pt too wide) in alignment at lines 232--236
  [][][] []
  []
 
 [5]
-Overfull \hbox (25.46634pt too wide) in alignment at lines 283--295
+Overfull \hbox (25.46634pt too wide) in alignment at lines 289--301
  [][][] []
  []
 
@@ -158,7 +158,7 @@ Here is how much of TeX's memory you used:
  4261 multiletter control sequences out of 15000+600000
  16506 words of font info for 45 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 23i,15n,19p,395b,187s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 23i,15n,19p,353b,187s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.e
 nc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/sha
@@ -176,7 +176,7 @@ fb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf
 cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pf
 b></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/
 fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on input.pdf (7 pages, 312812 bytes).
+Output written on input.pdf (7 pages, 312840 bytes).
 PDF statistics:
  99 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
