@@ -1,0 +1,23 @@
+   1 |            | %Taken from HESTEM project vanilla tests
+   2 |            | \documentclass[12pt,a4paper,onecolumn]{article}
+   3 |            | \begin{document}
+   4 |            | 
+   5 |            | \noindent
+   6 |            | A baseline of text which is one line long in 12pt font with no indent applied.
+   7 |            | 
+   8 |            | \begin{center}
+   9 |            | Centered text.
+  10 |            | \end{center}
+  11 |            | 
+  12 |            | \begin{flushleft}
+  13 |            | Flush left text.
+  14 |            | \end{flushleft}
+  15 |            | 
+  16 |            | \begin{flushright}
+  17 |            | Flush right text.
+  18 |            | \end{flushright}
+  19 |            | 
+  20 |            | Standard text. {\tiny Tiny text.} {\scriptsize Scriptsize text.} {\footnotesize Footnotesize text.} {\small Small text.} {\normalsize Normalsize text.} {\large large text.} {\Large Large text.} {\LARGE LARGE text.} {\huge huge text.} {\Huge Huge text.}
+  21 |            | 
+  22 |            | Standard text. \emph{Emphasized text}. \textrm{Roman text.} {\rm Roman inline.} \textsc{Small caps text.} {\sc Small caps inline} \texttt{Typewriter text.} {\tt Typewriter inline.} \textit{Italics text.} {\it Italics inline.} \textsf{Sans serif text.} {\sf San serif inline.} \textsl{Slant text.} {\sl Slant inline.}  \textbf{Bold text.} {\bf Bold inline.} \textbf{A combination of bold and \textit{italic text.}} {\bf A combination inline of bold {\it and inline italics}.}
+  23 |            | \end{document}
