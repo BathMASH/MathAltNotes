@@ -11,7 +11,7 @@ echo "-----------------------------------------------------------------"
 exit
 }
 
-for i in `find . -wholename "./pipes/*-text"`; do
+for i in `ls -d ./pipes/*-text/` ; do
 echo $i
 ./getMyLaTeX $i/input &>/dev/null
 read input < .lasttimestamp
