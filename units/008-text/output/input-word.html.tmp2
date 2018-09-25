@@ -1,0 +1,155 @@
+<!DOCTYPE html> 
+
+<html
+> 
+<head
+> <title
+>Starting with AMS</title> 
+<meta
+ charset="UTF-8"></meta> 
+<meta
+ name="viewport" content="target-densitydpi=device-dpi; width=device-width; initial-scale=1.0; minimum-scale=1.0; user-scalable=yes;"></meta> 
+<meta
+ name="HandheldFriendly" content="True"></meta> 
+<meta
+ name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"></meta> 
+<link
+ rel="stylesheet" type="text/css" href="input-word.css"></link> 
+<link
+ rel="stylesheet" type="text/css" href="additional.css"></link> 
+<script
+ type="text/x-mathjax-config"> 
+MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
+explorer:{ subtitle: true }, 
+MatchWebFonts: { 
+matchFor: { "HTML-CSS": true, NativeMML: false, SVG: false }, 
+fontCheckDelay: 2000, 
+fontCheckTimeout: 30 * 1000 
+}, 
+"HTML-CSS": { 
+preferredFont: "STIX",  
+availableFonts: ["STIX","TeX"],  
+webFont: "STIX-Web",  
+linebreaks: { automatic: false, width: "90% container" } 
+}, 
+SVG: {  
+font: "STIX-Web", 
+linebreaks: { automatic: false, width: "90% container" } 
+}, 
+menuSettings: { collapsible: true, autocollapse: true, explorer: false } 
+}); 
+</script> 
+<script
+ type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script> 
+<style
+ type="text/css"> 
+".MathJax_MathML" {text-indent: 0;} 
+</style> 
+</head><body
+>
+<div
+ class="maketitle">
+                                                                                       
+                                                                                       
+                                                                                       
+                                                                                       
+
+<h2
+ class="titleHead">Starting with AMS</h2>
+<div
+ class="author"><span
+ class="phvr8t-x-x-144">Emma Cliffe</span></div>
+<br
+></br>
+<div
+ class="date"></div>
+</div>
+<h3
+ class="likesectionHead"><a
+ href="#x1-1000" id="x1-1000">Contents</a></h3>
+<div
+ class="tableofcontents">
+<span
+ class="sectionToc">1 <a
+ href="#x1-40001" id="QQ2-1-4">Textmode symbols and structures</a></span>
+<br
+></br>&#xA0;<span
+ class="subsectionToc">1.1 <a
+ href="#x1-50001.1" id="QQ2-1-5">Additional symbols</a></span>
+<br
+></br>&#xA0;<span
+ class="subsectionToc">1.2 <a
+ href="#x1-60001.2" id="QQ2-1-6">AMS theorems</a></span>
+</div>
+<h3
+ class="likesectionHead"><a
+ href="#x1-2000" id="x1-2000">List of Figures</a></h3>
+                                                                                       
+                                                                                       
+<div
+ class="tableofcontents">
+</div>
+<h3
+ class="likesectionHead"><a
+ href="#x1-3000" id="x1-3000">List of Tables</a></h3>
+<div
+ class="tableofcontents">
+</div>
+                                                                                       
+                                                                                       
+<!--l. 23
+--><p
+ class="noindent">
+                                                                                       
+                                                                                       
+</p>
+<h3
+ class="sectionHead"><span
+ class="titlemark">1    </span> <a
+ href="#QQ2-1-4" id="x1-40001">Textmode symbols and structures</a></h3>
+<!--l. 28
+--><p
+ class="noindent">
+</p>
+<h4
+ class="subsectionHead"><span
+ class="titlemark">1.1    </span> <a
+ href="#QQ2-1-5" id="x1-50001.1">Additional symbols</a></h4>
+<!--l. 29
+--><p
+ class="noindent">Mathmode and textmode: <span
+ class="cmsy-10x-x-120">&#x2021;&#xB6;</span>&#x2026;&#xA7;<span
+ class="cmsy-10x-x-120">&#x2020;</span>&#xA3;
+</p><!--l. 32
+--><p
+ class="noindent">
+</p>
+<h4
+ class="subsectionHead"><span
+ class="titlemark">1.2    </span> <a
+ href="#QQ2-1-6" id="x1-60001.2">AMS theorems</a></h4>
+<!--l. 34
+--><p
+ class="noindent">A baseline of text which is a single line long in 12pt font with no indent applied.
+</p>
+<div
+ class="newtheorem">
+<!--l. 37
+--><p
+ class="noindent"><span
+ class="head" custom-style="Theorem">
+<a
+ id="x1-6001r1"></a>
+<span
+ class="phvb8t-x-x-120">Theorem 1.1 </span>(Title of the theorem)<span
+ class="phvb8t-x-x-120">.</span><br
+ class="newline"></br>   </span>This is a theorem that has been produced WITH
+the AMS theorem environment and package.
+</p>
+</div>
+<!--l. 41
+--><p
+ class="noindent">A baseline of text which is a single line long in 12pt font with no indent applied.
+</p> 
+</body> 
+</html>

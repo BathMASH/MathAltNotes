@@ -57,11 +57,11 @@ echo "============================="
 echo "Tests for $2"
 echo "============================="
 cd ..
-if cmp $1/input.fls $2/output/input.fls; then
-echo "PASSED: input.fls"
-else
-echo -e "\e[91mFAILED\e[0m: input.fls"
-fi
+#if cmp $1/input.fls $2/output/input.fls; then
+#echo "PASSED: input.fls"
+#else
+#echo -e "\e[91mFAILED\e[0m: input.fls"
+#fi
 if cmp -s $1/input.tex $2/output/input.tex; then
 echo "PASSED: input.tex"
 else

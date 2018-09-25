@@ -1,0 +1,42 @@
+\documentclass[12pt,a4paper,onecolumn]{article}
+\usepackage[T1]{fontenc} 
+\usepackage[a4paper]{geometry} 
+\usepackage[english]{babel} 
+\usepackage{amsmath}
+\usepackage{amssymb} 
+\usepackage{amsfonts} 
+\usepackage[mathscr]{eucal}
+\usepackage{eufrak} 
+\usepackage{amsthm} 
+\usepackage{longtable} 
+\usepackage{graphicx} 
+\usepackage{verbatim} 
+\usepackage{url} 
+\newtheorem{theorem}{Theorem}[section]
+\title{Starting with AMS}
+\author{Emma Cliffe}
+\date{}
+\pagestyle{headings}
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Textmode symbols and structures}
+
+\subsection{Additional symbols}
+\noindent
+Mathmode and textmode: \ddag  \P  \dots  \S  \dag  \pounds
+
+\subsection{AMS theorems}
+
+\noindent
+A baseline of text which is a single line long in 12pt font with no indent applied.
+
+\begin{theorem}[Title of the theorem]
+This is a theorem that has been produced WITH the AMS theorem environment and package.
+\end{theorem}
+
+\noindent
+A baseline of text which is a single line long in 12pt font with no indent applied.
+\end{document}

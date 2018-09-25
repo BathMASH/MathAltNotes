@@ -1,0 +1,54 @@
+%\documentclass[12pt,a4paper,onecolumn]{article}
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage[T1]{fontenc}} 
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage[a4paper]{geometry}} 
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage[english]{babel}} 
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage{amsmath}}
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage{amssymb}} 
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage{amsfonts}} 
+\usepackage[mathscr]{eucal}
+\usepackage{eufrak} 
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage{amsthm}} 
+\usepackage{longtable} 
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage{graphicx}} 
+\usepackage{spverbatim} 
+\usepackage{url} 
+\newtheorem{theorem}{Theorem}[section]
+\title{Starting with AMS}
+\author{Emma Cliffe}
+\date{}
+\pagestyle{headings}
+\usepackage{calc}
+\usepackage{longtable}
+\usepackage{tabu}
+\usepackage{breqn}
+\setlength{\arraycolsep}{0.800000em}
+\renewcommand{\arraystretch}{1.400000}
+\begin{document}
+\renewcommand{\baselinestretch}{1.250000}
+\selectfont
+\setlength{\parskip}{1.0\baselineskip}
+
+\maketitle
+\tableofcontents
+\ifboolexpr{togl {clearprint} or togl {large}}{}{\newpage}
+
+
+\section{Textmode symbols and structures}
+
+\subsection{Additional symbols}
+\noindent
+Mathmode and textmode: \ddag  \P  \dots  \S  \dag  \pounds
+
+\subsection{AMS theorems}
+
+\noindent
+A baseline of text which is a single line long in 12pt font with no indent applied.
+
+\begin{theorem}[Title of the theorem]
+This is a theorem that has been produced WITH the AMS theorem environment and package.
+\end{theorem}
+
+\noindent
+A baseline of text which is a single line long in 12pt font with no indent applied.
+\end{document}
+

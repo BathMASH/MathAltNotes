@@ -1,0 +1,42 @@
+   1 |            | \documentclass[12pt,a4paper,onecolumn]{article}
+   2 |            | \usepackage[T1]{fontenc} 
+   3 |            | \usepackage[a4paper]{geometry} 
+   4 |            | \usepackage[english]{babel} 
+   5 |            | \usepackage{amsmath}
+   6 |            | \usepackage{amssymb} 
+   7 |            | \usepackage{amsfonts} 
+   8 |            | \usepackage[mathscr]{eucal}
+   9 |            | \usepackage{eufrak} 
+  10 |            | \usepackage{amsthm} 
+  11 |            | \usepackage{longtable} 
+  12 |            | \usepackage{graphicx} 
+  13 |            | \usepackage{verbatim} 
+  14 |            | \usepackage{url} 
+  15 |            | \newtheorem{theorem}{Theorem}[section]
+  16 |            | \title{Starting with AMS}
+  17 |            | \author{Emma Cliffe}
+  18 |            | \date{}
+  19 |            | \pagestyle{headings}
+  20 |            | \begin{document}
+  21 |            | \maketitle
+  22 |            | \tableofcontents
+  23 |            | \newpage
+  24 |            | 
+  25 |            | \section{Textmode symbols and structures}
+  26 |            | 
+  27 |            | \subsection{Additional symbols}
+  28 |            | \noindent
+  29 |            | Mathmode and textmode: \ddag  \P  \dots  \S  \dag  \pounds
+  30 |            | 
+  31 |            | \subsection{AMS theorems}
+  32 |            | 
+  33 |            | \noindent
+  34 |            | A baseline of text which is a single line long in 12pt font with no indent applied.
+  35 |            | 
+  36 |            | \begin{theorem}[Title of the theorem]
+  37 |            | This is a theorem that has been produced WITH the AMS theorem environment and package.
+  38 |            | \end{theorem}
+  39 |            | 
+  40 |            | \noindent
+  41 |            | A baseline of text which is a single line long in 12pt font with no indent applied.
+  42 |            | \end{document}
