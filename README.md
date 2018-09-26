@@ -46,6 +46,7 @@ will definitely run.
 ## Getting the tool 
 
 To get a copy of the tool which can also be updated:
+
 1. Be able to run docker builds. You should probably ask someone, or the internet for help with that if you have no idea what this means. If you are based at the University of Bath then please email ma-largeprintnotes@bath.ac.uk to ask for help. 
 
 2. Change directory into the directory which contains the LaTeX you wish to process (and any files needed by that document) and run the build with the command:
@@ -66,7 +67,11 @@ we still recommend that you have your originals backed up elsewhere.
 To collect your files run the script ./getMyLaTeX 
 on the main LaTeX file in your project. 
 
+<<<<<<< HEAD
 > ./getMyLaTeX ../yourusername/filename.tex
+=======
+> ./getMyLaTeX ../notes/filename.tex
+>>>>>>> External readme
 
 ### Outcome
 
