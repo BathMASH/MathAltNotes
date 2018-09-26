@@ -148,8 +148,6 @@ This is a work in progress and is unstable!
 If you have problems email ma-largeprintnotes@bath.ac.uk to report them.
 We may eventually solve the problem but make no promises!
 
-Every problem reported will help make the system more stable.
-
 # Providing files to students
 
 We recommend providing the alternative formats to all students.
