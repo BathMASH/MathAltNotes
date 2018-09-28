@@ -3,6 +3,4 @@ RUN mkdir MyLaTeX
 RUN mkdir MathAltNotes
 COPY ./ /MathAltNotes/
 ENV HOME=/MyLaTeX
-ENV SHELL=/bin/bash
-VOLUME /MyLaTeX
 WORKDIR /MyLaTeX
