@@ -13,6 +13,7 @@ char *beginend;
 char *class;
 int macrosstoresize = 1024;
 int beginendsize = 1024;
+int donesetup = 0;
 int brackets = 0;
 int frac = 0;
 int authorcount = 0;
@@ -38,7 +39,8 @@ packages ("\\usepackage")
 newcommand ("\\newcommand"|"\\renewcommand")
 newenvironment "\\newenvironment"
 danger ("babel"|"fontenc"|"lmodern"|"graphicx"|"geometry"|"spverbatim"|"listings"|"amsmath"|"amssymb"|"amsfonts"|"amsthm"|"hyperref"|"DejaVuSansMono"|"etoolbox"|"epsfig"|"mathdesign")
-standardonly ("\\newpage"|"\\clearpage")
+notlarge ("cleveref")
+standardonly ("\\newpage"|"\\clearpage") 
 bracedcolor "{"(([^"}""{"])*)"\\color{"(([^"}""{"])*)"}"
 picturestart "\\begin"{lb}"picture"{rb}
 pictureend "\\end"{lb}"picture"{rb}
@@ -65,8 +67,10 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 <COMMENT>(\r?\n) printf("\n"); yy_pop_state();
 
 {standardonly} printf("\\ifboolexpr{togl {clearprint} or togl {large}}{}{"); ECHO; printf("}\n");
+("\\hypersetup"){lb}(.*){whitespace}* printf("\\ifboolexpr{togl {clearprint} or togl {large} or togl {web}}{}{"); ECHO; printf("}\n");
 
-{docclass} printf("%%"); ECHO; macrossetup(0); macrossetup(1); yy_push_state(CLASS);
+
+{docclass} printf("%%"); ECHO; macrossetup(0); macrossetup(1); donesetup=1; yy_push_state(CLASS);
 <CLASS>"8pt" fontsize=8; ECHO;
 <CLASS>"9pt" fontsize=9; ECHO;
 <CLASS>"10pt" fontsize=10; ECHO;
@@ -83,6 +87,7 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 <PACKAGES>(("[")(.*)("]"))*{lb}"bm"{rb} printf("\\newcommand{\\hmmax}{0}\\newcommand{\\bmmax}{2}\n\\usepackage"); ECHO; yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}"xr"{rb} printf("\\ifpdf\\usepackage{xr,xr-hyper}\\else\\fi"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}{danger}{rb} printf("\\ifboolexpr{togl {web} or togl{clearprint}}{}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
+<PACKAGES>(("[")(.*)("]"))*{lb}{notlarge}{rb} printf("\\ifboolexpr{togl {web} or togl{large}}{}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb} printf("\\usepackage"); ECHO; 
 <PACKAGES>","(" ")* printf(",");
 <PACKAGES>{lb} printf("\\usepackage{"); 
@@ -148,9 +153,9 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 "\\begin"{lb}"Proof" ECHO; printf("Ori");
 "\\end"{lb}"Proof" ECHO; printf("Ori");
 
-{newcommand}/(("["(.*)"]")*"{"(.*)"}"("["(.*)"]")*"{"(.*)"\\begin") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND);
-{newcommand}/(("["(.*)"]")*"{"(.*)"}"("["(.*)"]")*"{"(.*)"\\end") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND);
-<BEGINEND>(.*){rb} macrosstore(yytext,yyleng,1); macrosstore("\n",1,1); yy_pop_state();
+ {newcommand}/(("["(.*)"]")*"{"(.*)"}"("["(.*)"]")*"{"(.*)"\\begin") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND);
+ {newcommand}/(("["(.*)"]")*"{"(.*)"}"("["(.*)"]")*"{"(.*)"\\end") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND);
+ <BEGINEND>(.*){rb} macrosstore(yytext,yyleng,1); macrosstore("\n",1,1); yy_pop_state();
 
 {pmatrix}{lb} printf("\\begin{pmatrix}"); brackets=1; yy_push_state(PMATRIX);
 <PMATRIX>{lb} ECHO; brackets=brackets+1; 
@@ -174,7 +179,7 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 
  /*Just in case*/
 \r?\n printf("\n"); 
-<<EOF>> printf("\n"); yyterminate();
+<<EOF>> if(macrolength > 0 || beginendlength > 0) macrosoutput();  yyterminate();
 
 %%
 
@@ -335,6 +340,11 @@ int macrossetup(int type){
 int macrosstore(char *tostore, int tolength, int type){
   int i;
   char *tmp;
+  if(donesetup==0){
+    macrossetup(0); 
+    macrossetup(1);
+    donesetup=1;
+  }
   if(type == 0){
     if(macrolength + tolength > macrosstoresize){
       tmp = (char *) calloc (macrosstoresize, sizeof(char));
@@ -351,6 +361,7 @@ int macrosstore(char *tostore, int tolength, int type){
     }
     macrolength=macrolength+tolength;
   }
+
   if(type == 1){
     if(beginendlength + tolength > beginendsize){
       tmp = (char *) calloc (beginendsize, sizeof(char));
@@ -374,7 +385,7 @@ int macrosoutput(){
   FILE *output;
   FILE *demacro;
   int i;
-  //fprintf(stderr,"Output\n");
+  //printf("Output\n");
   output = fopen("macros.tex","w");
   demacro = fopen("demacro-private.sty","w");
   if(output == NULL){

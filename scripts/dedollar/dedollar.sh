@@ -1,9 +1,15 @@
 echo "-----------------------------------------------------------------"
-echo "Switching $...$ to \(...\) and \$\$...\$\$ to \[...\]"
 echo "Dollars are TeX primitives and not LaTeX and make our job harder. "
 echo "Autoswitching is a risky strategy - try not to use $'s if possible."
 echo "Place you do need to use them are in chapter and section titles "
 echo "and similar; in captions and within figures."
+echo "Please comfirm that automatic dedollaring is suitable for this file"
+echo "y for yes and no for no then press enter"
+read decision
+if [ $decision != "y" ]; then
+    exit 1
+fi
+echo "Switching $...$ to \(...\) and \$\$...\$\$ to \[...\]"
 echo "-----------------------------------------------------------------"
 
 home=$(dirname $(readlink -f $0))

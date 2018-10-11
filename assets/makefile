@@ -54,7 +54,7 @@ standard: clean $(name)-cont-clean.tex
 #We can't change the jobname to get different filenames that way as this does not work with some packages
 #we will need to use for graphics in this set up. 
 	mv $(name)-standard.pdf built/
-	@rm fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty
 
 standardtest: clean $(name)-cont-clean.tex
 

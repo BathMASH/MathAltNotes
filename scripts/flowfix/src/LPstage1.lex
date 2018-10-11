@@ -1,6 +1,7 @@
 %option stack
 %{
 int here = 0;
+int bracketmatch = 0;
 %}
 whitespace (" "|\t|(\r?\n))
 whitenotnew (" "|\t)
@@ -45,7 +46,7 @@ mathsend "\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|
  /* Have newline, intertext, no new line; need no newline, intertext, endmarker */
 <INTER,KEEP>{lb} ECHO; yy_push_state(KEEP);
 <KEEP>{rb} ECHO; yy_pop_state();
-<INTER>{rb} ECHO; printf("\\intertextend"); yy_pop_state();
+<INTER>{rb} ECHO; printf("\\intertextend\n"); yy_pop_state();
 
  /*Just in case*/
 \r?\n printf("\n"); 

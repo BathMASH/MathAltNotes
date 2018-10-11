@@ -42,10 +42,10 @@ tabustart "\\begin"{lb}("tabular"|"longtable"){rb}
 tabuend "\\end"{lb}("tabular"|"longtable"){rb}
 tabularxstart "\\begin"{lb}("tabularx"|"tabu"|"largetabular"){rb}
 tabularxend "\\end"{lb}("tabularx"|"tabu"|"largetabular"){rb}
-newenvironment "\\newenvironment"
+newenvironment ("\\newenvironment"|"\\substack")
 
 %x COMMENT INPUT CLASS DMATH DMATHFAKESTAR DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS TABULARX CAPTION NEWENVIR TABBING CASES
-%s REMOVE KEEP TABLE
+%s REMOVE KEEP TABLE SUBSTACK
 %%
 
 ("$"|"\\$") ECHO; /* protect */
@@ -88,6 +88,7 @@ newenvironment "\\newenvironment"
 <CHECKSTAR>("\\notag"|"\\nonumber"|"\\intertextend")
 <DGROUPSTAR,DGROUP,CHECKSTAR,SPLIT>("&") printf(" "); /*printf("\\ ");*/
 <DMATHSTAR,DSERIESSTAR,DGROUPSTAR,DMATH,DSERIES,DGROUP,CHECKSTAR,SPLIT,ARRAY>{arraystart} ECHO; yy_push_state(ARRAY); /* protect */
+<DMATHSTAR,DSERIESSTAR,DGROUPSTAR,DMATH,DSERIES,DGROUP,CHECKSTAR,SPLIT,ARRAY>{newenvironment} ECHO; yy_push_state(NEWENVIR); /* protect */
 <DSERIESSTAR,DSERIES>("\\\\") printf("\\end{math}\\\\\\begin{math}");
 <DGROUPSTAR>("\\\\") printf("\\end{dmath*}\\begin{dmath*}");
 <DGROUP,CHECKSTAR>("\\\\")/({whitespace}*("\\tag"|"\\label")) if (YY_START == CHECKSTAR) {printf("\\end{dmath*}"); yy_pop_state();} else printf("\\end{dmath}"); printf("\\begin{dmath}[");
