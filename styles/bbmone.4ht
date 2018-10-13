@@ -1,0 +1,3 @@
+\NewConfigure{1}{1}
+\MathSymbol\mathop{1}
+\Configure{1}{\x:unicode{1D7D9}} 
