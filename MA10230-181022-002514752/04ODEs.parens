@@ -1,0 +1,1519 @@
+   1 |            | \section{Ordinary Differential Equations (ODEs)}
+   2 |            | 
+   3 |            | % AIMS: cut as with other sections.
+   4 |            | %\subsection*{Aims}
+   5 |            | %\begin{itemize}
+   6 |            | %\item Describing basic ideas of ODEs
+   7 |            | %\item Solve first order ODEs
+   8 |            | %\item Solve linear second order ODEs
+   9 |            | %\end{itemize}
+  10 |            | 
+  11 |            | Differential equations are widely used in science, engineering and economics.  After 400 years there are still lots of open problems to solve.
+  12 |            | 
+  13 |            | \subsection{Overview}
+  14 |            | 
+  15 |            | A differential equation is an equation which links $y$,\quad
+  16 |            | $\dfrac{dy}{dx}$, \quad $\dfrac{d^2 y}{dx^2}$, etc.
+  17 |            | 
+  18 |            | \begin{examples}\quad
+  19 |            | \begin{tabular}{ll}
+  20 |            | $\dfrac{dy}{dx}  =  x$ & Easy \\
+  21 |            | $\dfrac{dy}{dx}  =  x + y^2$ & Hard \\
+  22 |            | $\left(\dfrac{dy}{dx}\right)^2 + \left(\dfrac{dy}{dx}\right)  =  \sin(y)$ & Very hard \\
+  23 |            | $\dfrac{d^2y}{dx^2} + \dfrac{dy}{dx}  =  \sin(x)$ & Easy
+  24 |            | \end{tabular}
+  25 |            | \end{examples}
+  26 |            | 
+  27 |            | “Ordinary” means there is only one independent variable.
+  28 |            | 
+  29 |            | \subsection*{Some terminology}
+  30 |            | 
+  31 |            | \begin{itemize}
+  32 |            | \item The \textbf{order} of a differential equation is the largest
+  33 |            | number of derivatives.
+  34 |            | 
+  35 |            | \begingroup
+  36 |            | \renewcommand{\arraystretch}{2}
+  37 |            | \begin{tabular}[3]{ll}
+  38 |            | $\dfrac{dy}{dx}  =  x$ & \textbf{First} order \\
+  39 |            | $\dfrac{d^2y}{dx^2}  =  x$ & \textbf{Second} order \\
+  40 |            | $\dfrac{d^4y}{dx^4} + p \dfrac{d^2y}{dx^2} + y  =  0$ &
+  41 |            | \textbf{Fourth} order
+  42 |            | \end{tabular}
+  43 |            | \endgroup
+  44 |            | 
+  45 |            | \item A differential equation is \textbf{linear} if we only have
+  46 |            | $\dfrac{d^2y}{dx^2}$, $\dfrac{dy}{dx}$ or $y$ and no functions such
+  47 |            | as $y^2$.
+  48 |            | 
+  49 |            | \begin{itemize}
+  50 |            | \item Linear equations are easy to solve and very common.
+  51 |            | 
+  52 |            | \item Nonlinear equations are often \textbf{very} hard to
+  53 |            | solve.  The solutions usually use numerical methods.
+  54 |            | \end{itemize}
+  55 |            | 
+  56 |            | \item The \textbf{initial condition(s)} of a differential equation
+  57 |            | is information about the solution at a point $x=a$. We need this to find a particular solution to the equation; that is, one that does not depend on any arbitrary constants.
+  58 |            | 
+  59 |            | \begin{tabular}{ll}
+  60 |            |  First order: & Need to know $y(a)$ \\\\
+  61 |            |  Second order: & Need to know $y(a)$, $\dfrac{dy(a)}{dx}$
+  62 |            | \end{tabular}
+  63 |            | \end{itemize}
+  64 |            | 
+  65 |            | 
+  66 |            | 
+  67 |            | \subsection{Separable first order differential equations}  \label{sect:sepdiff}
+  68 |            | 
+  69 |            | \begin{definition}
+  70 |            | A \textbf{separable} first order ordinary differential equation has
+  71 |            | the form
+  72 | [          | \[
+  73 | [          | \dfrac{dy}{dx}  =  p(x)q(y).
+  74 |            | \]
+  75 |            | \end{definition}
+  76 |            | 
+  77 |            | We can solve these \textbf{directly by integration}:
+  78 |            | 
+  79 |            | Rearrange and integrate
+  80 |            | \begin{align*}
+  81 |            | \dfrac{1}{q(y)} \dfrac{dy}{dx}  & =  p(x)  \\
+  82 |            | \implies \int \dfrac{1}{q(y)} \dfrac{dy}{dx}dx & = \int p(x)dx  \\
+  83 |            | \implies \int \dfrac{dy}{q(y)} & =  \int p(x)dx
+  84 |            | % \label{sepde_eqn}
+  85 |            | \end{align*}
+  86 |            | 
+  87 |            | \begin{example}
+  88 | [          |  \[
+  89 | [          |   \dfrac{dy}{dx} = \dfrac{xe^{x^2}}{y^2}
+  90 |            |  \]
+  91 |            | 
+  92 |            |  Separate and integrate
+  93 |            |  \begin{eqnarray*}
+  94 |            |   && \int y^2 dy = \int x e^{x^2} dx\\
+  95 |            |   &\Rightarrow& \dfrac{y^3}{3} = \dfrac{1}{2} e^{x^2} + c\\
+  96 |            |   &\Rightarrow& {y^3} = \dfrac{3}{2} e^{x^2} + c 
+  97 |            |  \end{eqnarray*}
+  98 |            | 
+  99 |            | \end{example}
+ 100 |            | 
+ 101 |            | \begin{example}
+ 102 |            | In the introduction to the course we saw a basic model for world population.  A more sophisticated model for population $p(t)$ might satisfy the differential equation
+ 103 | [          | \[
+ 104 | [          | \dfrac{dp}{dt}  = p(M-p).
+ 105 |            | \]
+ 106 |            | 
+ 107 |            | Separating variables and integrating gives
+ 108 |            | \begin{eqnarray*}
+ 109 |            | && \int \dfrac{dp}{p(M-p)}  =  \int dt \\
+ 110 |            | & &\text{LHS use partial fractions} \\
+ 111 |            | && \dfrac{1}{p(M-p)}  =  \dfrac{\dfrac{1}{M}}{p} +
+ 112 |            | \dfrac{\dfrac{1}{M}}{M-p} \\
+ 113 | ||         | &\therefore & \dfrac{1}{M} \ln \left|\dfrac{p}{M-p}\right|
+ 114 | ||         |  =  t + C.
+ 115 | ||         | \end{eqnarray*}
+ 116 | ||         | 
+ 117 | ||         | To find $C$ we need some initial data. Let $p=p_0$ at $t=0$.
+ 118 | ||         | \begin{eqnarray*}
+ 119 | ||||       | &\Rightarrow  & C  =  \dfrac{1}{M} \ln \left|\dfrac{p_0}{M-p_0}\right| \\
+ 120 | ||||||     | &\therefore & \dfrac{1}{M} \ln \left|\dfrac{p}{M-p}\right|
+ 121 | ||||||||   |  =  t + \dfrac{1}{M} \ln \left|\dfrac{p_0}{M-p_0}\right|.
+ 122 | ||||||||   | \end{eqnarray*}
+ 123 | ||||||||   | 
+ 124 | ||||||||   | Multiply by $M$ and exponentiate
+ 125 | ||||||||[  | \[
+ 126 | ||||||||[  | \frac{p}{M-p}  =  \dfrac{p_0}{M-p_0} e^{Mt}.
+ 127 | ||||||||   | \]
+ 128 | ||||||||   | 
+ 129 | ||||||||   | Rearrange
+ 130 | ||||||||   | \begin{eqnarray*}
+ 131 | ||||||||[  | && p  =  \left[ \dfrac{p_0}{M-p_0} e^{Mt}\right] M - \left[
+ 132 | ||||||||   | \dfrac{p_0}{M-p_0} e^{Mt}\right]p \\
+ 133 | ||||||||({ | && p\left[1 + \dfrac{p_0}{M-p_0} e^{Mt}\right] = \left( \dfrac{p_0
+ 134 | ||||||||   | M}{M-p_0}\right) e^{Mt}
+ 135 | ||||||||   | \end{eqnarray*}
+ 136 | ||||||||   | \begin{eqnarray*}
+ 137 | ||||||||   | \therefore \quad  p  &=&  \dfrac{M p_0 e^{Mt}}{M-p_0+p_0 e^{Mt}}\\
+ 138 | ||||||||   | &=&  \dfrac{M p_0 e^{Mt}}{M-p_0} \cdot  \dfrac{M - p_0}{M-p_0+p_0 e^{Mt}}
+ 139 | ||||||||   | \end{eqnarray*}
+ 140 | ||||||||   | % The last expression doesn't seem helpful.
+ 141 | ||||||||   | 
+ 142 | ||||||||   | Sketch:
+ 143 | ||||||||   | 
+ 144 | ||||||||   | At $t=0$, 
+ 145 | ||||||||[  | \[
+ 146 | ||||||||[  | p = \dfrac{M p_0}{M - p_0 + p_0}=p_0.
+ 147 | ||||||||   | \]
+ 148 | ||||||||   | 
+ 149 | ||||||||   | As $t \to \infty$,
+ 150 | ||||||||[  | \[
+ 151 | ||||||||[  |  \dfrac{Mp_0}{p_0} = M.
+ 152 | ||||||||   | \]
+ 153 | ||||||||   | 
+ 154 | ||||||||   | %% \nextalt{Request description from lecturer or tactile diagram.}
+ 155 | ||||||||   | \begin{figure}[H]
+ 156 | ||||||||   | \centering
+ 157 | ||||||||   | \includegraphics[width=0.5\textwidth]{population-de.pdf}
+ 158 | ||||||||   | \caption{Sketch of example}
+ 159 | ||||||||   | \label{populationde}
+ 160 | ||||||||   | \end{figure}
+ 161 | ||||||||   | 
+ 162 | ||||||||   | \end{example}
+ 163 | ||||||||   | 
+ 164 | ||||||||   | 
+ 165 | ||||||||   | 
+ 166 | ||||||||   | \subsection{Homogeneous equations}
+ 167 | ||||||||   | 
+ 168 | ||||||||   | A function $f(x,y)$ is homogeneous of degree $n$ if
+ 169 | ||||||||[  | \[
+ 170 | ||||||||[  |  f(tx,ty) = t^{n} f(x,y).
+ 171 | ||||||||   | \]
+ 172 | ||||||||   | 
+ 173 | ||||||||   | \begin{examples}
+ 174 | ||||||||   |  \quad
+ 175 | ||||||||   |  \begin{eqnarray*}
+ 176 | ||||||||   |    f(x,y) &=& x^2 + xy\\
+ 177 | ||||||||   |   \Rightarrow\quad f(tx, ty) &=& t^2 x^2 + t^2 xy \\
+ 178 | ||||||||   |   &=& t^2 f(x,y)
+ 179 | ||||||||   |  \end{eqnarray*}
+ 180 | ||||||||   | (homogeneous, degree $2$)
+ 181 | ||||||||   | 
+ 182 | ||||||||   |  \begin{eqnarray*}
+ 183 | ||||||||   |    f(x,y) &=& \sqrt{x^2 + y^2}\\
+ 184 | ||||||||   |   \Rightarrow\quad f(tx, ty) &=& t \sqrt{x^2 + y^2} \\
+ 185 | ||||||||   |   &=& t f(x,y)
+ 186 | ||||||||   |  \end{eqnarray*}
+ 187 | ||||||||   | (homogeneous, degree $1$)
+ 188 | ||||||||   | 
+ 189 | ||||||||[  | \[
+ 190 | ||||||||[  |  f(x,y) = \sin \left(\dfrac{y}{x}\right)
+ 191 | ||||||||   | \]
+ 192 | ||||||||   | (homogeneous, degree $0$)
+ 193 | ||||||||   | \end{examples}
+ 194 | ||||||||   | 
+ 195 | ||||||||   | 
+ 196 | ||||||||   | % There's no higher degree version, but it looks like it is possible to use a similar method using t = 1/x.
+ 197 | ||||||||   | \subsubsection*{Degree $0$.}
+ 198 | ||||||||   | 
+ 199 | ||||||||   | The general form for a homogeneous differential equation of degree $0$ is
+ 200 | ||||||||[  | \[
+ 201 | ||||||||[  |  \dfrac{dy}{dx} = f \left(\dfrac{y}{x}\right)
+ 202 | ||||||||   | \]
+ 203 | ||||||||   | 
+ 204 | ||||||||   | \begin{solution}
+ 205 | ||||||||   |  Let $u=\dfrac{y}{x}$. Then
+ 206 | ||||||||   |  \begin{eqnarray*}
+ 207 | ||||||||   |   && ux = y\\
+ 208 | ||||||||   |   &\Rightarrow& u+x \dfrac{du}{dx} = \dfrac{dy}{dx}.
+ 209 | ||||||||   |  \end{eqnarray*}
+ 210 | ||||||||   | 
+ 211 | ||||||||   |  Hence
+ 212 | ||||||||   |   \begin{eqnarray*}
+ 213 | ||||||||   |   && u + x \dfrac{du}{dx} = f(u)\\
+ 214 | ||||||||   |   &\Rightarrow& x \dfrac{du}{dx} = f(u) - u\\
+ 215 | |||||||||| |   &\Rightarrow& \int \dfrac{du}{f(u)-u} = \int \dfrac{dx}{x} = \ln \left|x\right|+c.
+ 216 | |||||||||| |  \end{eqnarray*}
+ 217 | |||||||||| | \end{solution}
+ 218 | |||||||||| | 
+ 219 | |||||||||| | \begin{example}
+ 220 | |||||||||| |  \[
+ 221 | |||||||||| |   \dfrac{dy}{dx} = \dfrac{y}{x} \left(1 + \ln \left(\dfrac{y}{x}\right)\right)
+ 222 | |||||||||| |  \]
+ 223 | |||||||||| |  
+ 224 | |||||||||| |  Let $u=\dfrac{y}{x}$. Then
+ 225 | |||||||||| |  \begin{eqnarray*}
+ 226 | |||||||||| |   u + x \dfrac{du}{dx} &=& u (1 + \ln(u))\\
+ 227 | |||||||||| |   &=& u + u \ln (u)\\
+ 228 | |||||||||| |   \Rightarrow \quad \int \dfrac{du}{u \ln(u)} &=& \int \dfrac{dx}{x} \\
+ 229 | |||||||||| |   &=& \ln \left|x\right| + c.
+ 230 | |||||||||| |  \end{eqnarray*}
+ 231 | |||||||||| | 
+ 232 | |||||||||| |  Let $v=\ln(u)$. Then
+ 233 | |||||||||| |  \[
+ 234 | |||||||||| |   \dfrac{dv}{du} = \dfrac{1}{u} \qquad (u>0)
+ 235 | |||||||||| |  \]
+ 236 | |||||||||| | 
+ 237 | |||||||||| |  So
+ 238 | |||||||||| |  \[
+ 239 | |||||||||| |   \int \dfrac{du}{u \ln(u)} = \int \dfrac{dv}{v} = \ln \left|v\right|
+ 240 | |||||||||| |  \]
+ 241 | |||||||||| |  
+ 242 | |||||||||| |  Hence
+ 243 | |||||||||| |  \[
+ 244 | |||||||||| |   \ln \left|v\right| = \ln (x)+c
+ 245 | |||||||||| |  \]
+ 246 | |||||||||| |  
+ 247 | |||||||||| |  If $v>0$, \quad $v=Ax$, \quad $A=e^{c}$.
+ 248 | |||||||||| | 
+ 249 | |||||||||| | \begin{eqnarray*}
+ 250 | |||||||||| | & \Rightarrow & \ln (u) = Ax\\
+ 251 | |||||||||| | & \Rightarrow & \ln \left(\dfrac{y}{x}\right) = Ax\\
+ 252 | |||||||||| | & \Rightarrow & u=xe^{Ax}.
+ 253 | |||||||||| | \end{eqnarray*}
+ 254 | |||||||||| | \end{example}
+ 255 | |||||||||| | 
+ 256 | |||||||||| | 
+ 257 | |||||||||| | \subsection{Linear first order ordinary differential equations}
+ 258 | |||||||||| | 
+ 259 | |||||||||| | These take the form
+ 260 | |||||||||| | \begin{equation*}
+ 261 | |||||||||| | \dfrac{dy}{dx} + p(x)y  =  q(x).
+ 262 | |||||||||| | \label{lin_ODE}
+ 263 | |||||||||| | \end{equation*}
+ 264 | |||||||||| | The LHS is a linear combination of $y$ and its derivative.
+ 265 | |||||||||| | 
+ 266 | |||||||||| | 
+ 267 | |||||||||| | We solve these by using an \textbf{integrating factor}. 
+ 268 | |||||||||| | 
+ 269 | |||||||||| | 
+ 270 | |||||||||| | \begin{lemma}
+ 271 | |||||||||| | If $r(x) = e^{\int p(x)dx}$ then
+ 272 | |||||||||| | \[
+ 273 | |||||||||| | \dfrac{dr}{dx}  =  p(x) r(x).
+ 274 | |||||||||| | \]
+ 275 | |||||||||| | \end{lemma}
+ 276 | |||||||||| | 
+ 277 | |||||||||| | \begin{Proof}
+ 278 | |||||||||| | By chain rule
+ 279 | |||||||||| | \begin{eqnarray*}
+ 280 | |||||||||| |  \dfrac{dr}{dx}  &=&  e^{\int p(x)dx} \dfrac{d}{dx} \int
+ 281 | |||||||||| | p(x)dx\\
+ 282 | |||||||||| | &=& p(x) e^{\int p(x)dx} \\
+ 283 | |||||||||| | && \text{by Fundamental theorem of calculus}\\
+ 284 | |||||||||| | &=& p(x) r(x)
+ 285 | |||||||||| | \end{eqnarray*}
+ 286 | |||||||||| | \end{Proof}
+ 287 | |||||||||| | 
+ 288 | |||||||||| | The function $r(x) =  e^{\int p(x)dx}$ is called the \emph{integrating factor}.
+ 289 | |||||||||| | 
+ 290 | |||||||||| | \begin{proposition}
+ 291 | |||||||||| | The equation
+ 292 | |||||||||| | \begin{equation}
+ 293 | |||||||||| |  \dfrac{dy}{dx} + p(x)y = q(x)
+ 294 | |||||||||| |  \label{eq5.1}
+ 295 | |||||||||| | \end{equation}
+ 296 | |||||||||| | has solution
+ 297 | |||||||||| | \[
+ 298 | |||||||||| |  y(x) = \dfrac{1}{r(x)} \int r(x)q(x)dx.
+ 299 | |||||||||| | \]
+ 300 | |||||||||| | \end{proposition}
+ 301 | |||||||||| | 
+ 302 | |||||||||| | \begin{Proof}
+ 303 | |||||||||| | Consider
+ 304 | |||||||||| | \begin{eqnarray*}
+ 305 | |||||||||| |  && \dfrac{d}{dx} (r(x)y(x)) \\
+ 306 | |||||||||| |  &=& r(x) \dfrac{dy}{dx} + y \dfrac{dr}{dx}\\
+ 307 | |||||||||| |  &=& r(x) \dfrac{dy}{dx} + y pr\\
+ 308 | |||||||||| |  &=& r(x) \left(\dfrac{dy}{dx} + y p\right)
+ 309 | |||||||||| | \end{eqnarray*}
+ 310 | |||||||||| | 
+ 311 | |||||||||| | Hence if $y$ satisfies \eqref{eq5.1}, then
+ 312 | |||||||||| | \begin{eqnarray*}
+ 313 | |||||||||| |  && \dfrac{d}{dx}(ry) = r \left(\dfrac{dy}{dx}+py\right) = rq\\
+ 314 | |||||||||| |  &\Rightarrow& y = \dfrac{1}{r} \int rq dx.
+ 315 | |||||||||| | \end{eqnarray*}
+ 316 | |||||||||| | \end{Proof}
+ 317 | |||||||||| | 
+ 318 | |||||||||| | 
+ 319 | |||||||||| | \begin{examples}
+ 320 | |||||||||| | \quad
+ 321 | |||||||||| | 
+ 322 | |||||||||| | \begin{enumerate}
+ 323 | |||||||||| |  \item $\dfrac{dy}{dx} + y  =  x$
+ 324 | |||||||||| | 
+ 325 | |||||||||| |  So
+ 326 | |||||||||| |  \[
+ 327 | |||||||||| |   \dfrac{dy}{dx} + p(x)y = q(x),
+ 328 | |||||||||| |  \]
+ 329 | |||||||||| | where
+ 330 | |||||||||| | \[
+ 331 | |||||||||| | p(x) = 1, \quad q(x) = x.
+ 332 | |||||||||| | \]
+ 333 | |||||||||| | 
+ 334 | |||||||||| | Integrating factor:
+ 335 | |||||||||| | \begin{eqnarray*}
+ 336 | |||||||||| | r(x) = e^{\int p(x)dx}
+ 337 | |||||||||| |  =  e^x.
+ 338 | |||||||||| |  \end{eqnarray*}
+ 339 | |||||||||| |  
+ 340 | |||||||||| | Hence
+ 341 | |||||||||| | \begin{eqnarray*}
+ 342 | |||||||||| | y(x) &=&  e^{-x} \int e^x x dx\\
+ 343 | |||||||||| | &=&  e^{-x} [xe^{x} - e^{x} + c]\\
+ 344 | |||||||||| | &=&  x - 1 + ce^{-x}.
+ 345 | |||||||||| | \end{eqnarray*}
+ 346 | |||||||||| | (note: non-trivial constant)
+ 347 | |||||||||| | 
+ 348 | |||||||||| | \item $x \dfrac{dy}{dx} + 2 u  =  x^3$
+ 349 | |||||||||| | 
+ 350 | |||||||||| | Rearranging,
+ 351 | |||||||||| | \[
+ 352 | |||||||||| |  \frac{dy}{dx} + 2 \frac{y}{x}  =  x^2 ,
+ 353 | |||||||||| | \]
+ 354 | |||||||||| | so
+ 355 | |||||||||| | \[
+ 356 | |||||||||| |  \frac{dy}{dx} + p(x)y  =  q{x}, 
+ 357 | |||||||||| | \]
+ 358 | |||||||||| | where $p(x)=\dfrac{2}{x}$, $q(x) = x^2$.
+ 359 | |||||||||| | 
+ 360 | |||||||||| | Integrating factor:
+ 361 | |||||||||| | \begin{eqnarray*}
+ 362 | |||||||||| |  r(x) &=& e^{\int \frac{2}{x}dx} \\
+ 363 | |||||||||| |  &=& e^{2\ln(x)}\\
+ 364 | |||||||||| |  &=& x^2.
+ 365 | |||||||||| | \end{eqnarray*}
+ 366 | |||||||||| | 
+ 367 | |||||||||| | Hence
+ 368 | |||||||||| | \begin{eqnarray*}
+ 369 | |||||||||| |  y(x) &=& \dfrac{1}{x^2} \int x^2 x^2 dx \\
+ 370 | |||||||||| |  &=& \dfrac{1}{x^2} \left[\dfrac{x^5}{5}+c\right]\\
+ 371 | |||||||||| |  &=& \dfrac{x^3}{5} + \dfrac{c}{x^2}.
+ 372 | |||||||||| | \end{eqnarray*}
+ 373 | |||||||||| | 
+ 374 | |||||||||| | % I have never done this long and tedious example in the lecture.
+ 375 | |||||||||| | % Omitting it from the lecture notes for now.
+ 376 | |||||||||| | 
+ 377 | |||||||||| | %% Definitely a problems class example.
+ 378 | |||||||||| | %% Also from "Now, for constants..." I think it could use some work to make it more easy to follow.
+ 379 | |||||||||| | %\item Climate: Why is February such a rotten month (in England)?
+ 380 | |||||||||| | %
+ 381 | |||||||||| | %\nextalt{Request description from lecturer or tactile diagram.}
+ 382 | |||||||||| | %\begin{figure}[H]
+ 383 | |||||||||| | %\centering
+ 384 | |||||||||| | %\includegraphics[width=0.55\textwidth]{climate.pdf}
+ 385 | |||||||||| | %\caption{Climate}
+ 386 | |||||||||| | %\label{climate}
+ 387 | |||||||||| | %\end{figure}
+ 388 | |||||||||| | %
+ 389 | |||||||||| | %$t$:\quad years;  $t=0$  on 21st Dec. (Winter Solstice)
+ 390 | |||||||||| | %% Winter Solstice is actually 22nd December this year.
+ 391 | |||||||||| | %
+ 392 | |||||||||| | %$S$:\quad sunshine, modelled as
+ 393 | |||||||||| | %\[
+ 394 | |||||||||| | %S(t)=\overline{s} (1-\cos(2\pi t)).
+ 395 | |||||||||| | %\]
+ 396 | |||||||||| | %
+ 397 | |||||||||| | %$T$:\quad Kelvin; the sea (surface) temperature.
+ 398 | |||||||||| | %
+ 399 | |||||||||| | %Newton's law of cooling:
+ 400 | |||||||||| | %\[
+ 401 | |||||||||| |  %\frac{dT}{dt}  =  -k (T - S(t)) 
+ 402 | |||||||||| | %\]
+ 403 | |||||||||| | %($k$ constant)
+ 404 | |||||||||| | %
+ 405 | |||||||||| | %Rearranging
+ 406 | |||||||||| | %\[
+ 407 | |||||||||| |  %\frac{dT}{dt} + k T  =  k S(t)
+ 408 | |||||||||| | %\]
+ 409 | |||||||||| | %
+ 410 | |||||||||| | %So this is in the form \eqref{eq5.1}
+ 411 | |||||||||| | %with $p(t)=k$, $q(t)=k S(t)$.
+ 412 | |||||||||| | %
+ 413 | |||||||||| |  %Integrating factor:
+ 414 | |||||||||| |  %\[
+ 415 | |||||||||| |   %r(t) = e^{\int kdt} = e^{kt}.
+ 416 | |||||||||| |  %\]
+ 417 | |||||||||| | %
+ 418 | |||||||||| |  %Hence
+ 419 | |||||||||| |  %\begin{eqnarray*}
+ 420 | |||||||||| |   %T(t) &=& e^{-kt} \int e^{kt} k S(t) dt\\
+ 421 | |||||||||| |    %&=& \overline{s} k e^{-kt} \int e^{kt} (1-\cos(2\pi t)) dt
+ 422 | |||||||||| |  %\end{eqnarray*}
+ 423 | |||||||||| | %
+ 424 | |||||||||| | %Now, for constants $a,b\in\RR$ we have
+ 425 | |||||||||| | %\begin{eqnarray*}
+ 426 | |||||||||| |  %&& \int e^{at} \cos(bt) dt 
+ 427 | |||||||||| | %=%\\ &=&
+ 428 | |||||||||| |  %\dfrac{e^{at}}{a^2+b^2}  [a \cos(bt) + b \sin (bt)] + c.
+ 429 | |||||||||| | %\end{eqnarray*}
+ 430 | |||||||||| | %
+ 431 | |||||||||| | %Hence the sea surface temperature is 
+ 432 | |||||||||| | %\begin{eqnarray*}
+ 433 | |||||||||| | %T(t) &=& \overline{s} ke^{-k t} \left(\frac{e^{k t}}{k} 
+ 434 | |||||||||| | %- \frac{ e^{k t}}{k^2+4\pi^2} \left[k \cos(2\pi t) + 2\pi
+ 435 | |||||||||| | %\sin(2\pi t)\right] + c\right)
+ 436 | |||||||||| | %\\
+ 437 | |||||||||| | %&=& \underbrace{\overline{s}}
+ 438 | |||||||||| | %- \underbrace{\dfrac{\overline{s}k}{k^2+4\pi^2}
+ 439 | |||||||||| | %\left[k \cos(2\pi t) + 2\pi\sin(2\pi t)\right]}
+ 440 | |||||||||| | %+ \underbrace{c \overline{s} k e^{-k t}.}
+ 441 | |||||||||| | %\\&&\text{base\hspace{2.5cm}seasonality\hspace{2cm}transient effect}
+ 442 | |||||||||| | %\end{eqnarray*}
+ 443 | |||||||||| | %
+ 444 | |||||||||| | %Aside:
+ 445 | |||||||||| | %\let\thhh=\theta\def\theta{\chi}%%% fix theta to chi temporarily
+ 446 | |||||||||| | %
+ 447 | |||||||||| | %Consider $$a \cos(x) + b \sin(x).$$
+ 448 | |||||||||| | %%
+ 449 | |||||||||| | %For $\theta$ such that $\tan (\theta)=\dfrac{b}{a}$ we have
+ 450 | |||||||||| | %\[
+ 451 | |||||||||| |  %\sin (\theta) = \dfrac{b}{\sqrt{a^2+b^2}}, \qquad \cos(\theta) = \dfrac{a}{\sqrt{a^2+b^2}}
+ 452 | |||||||||| | %\]
+ 453 | |||||||||| | %Then
+ 454 | |||||||||| | %\begin{eqnarray*}
+ 455 | |||||||||| | %&& \sqrt{a^2+b^2} \cos (x-\theta)\\
+ 456 | |||||||||| | %&&= \sqrt{a^2+b^2} [\cos(x) \cos{\theta} + \sin(x) \sin(\theta)]\\
+ 457 | |||||||||| | %&&= a \cos(x) + b \sin(x)
+ 458 | |||||||||| | %\end{eqnarray*}
+ 459 | |||||||||| | %Hence%, take $a=k,\ b=2\pi,\ x=2\pi t$,
+ 460 | |||||||||| | %\begin{eqnarray*}
+ 461 | |||||||||| |  %&& k \cos(2\pi t) + 2 \pi \sin(2\pi t)
+ 462 | |||||||||| |  %\\ &&= 
+ 463 | |||||||||| | %\sqrt{k^2+4\pi^2} \cos(2\pi t-\theta)
+ 464 | |||||||||| | %\end{eqnarray*}
+ 465 | |||||||||| | %where \[\tan(\theta)=\dfrac{2\pi}{k}\]
+ 466 | |||||||||| | %and $\theta$ is the phase shift or lag wrt.\ the sunshine intensity $S(t)$.
+ 467 | |||||||||| | %
+ 468 | |||||||||| | %Thus, after transient worn off
+ 469 | |||||||||| | %\[
+ 470 | |||||||||| |  %T(t) \simeq \overline{s} \left(
+ 471 | |||||||||| |  %1 - \dfrac{k}{\sqrt{k^2+4\pi^2}} \cos \left(2\pi\left(t-\dfrac{\theta}{2\pi}\right)\right)
+ 472 | |||||||||| |  %\right)
+ 473 | |||||||||| | %\]
+ 474 | |||||||||| | %\\
+ 475 | |||||||||| | %On our %island
+ 476 | |||||||||| | %sea coast 
+ 477 | |||||||||| | %$k\approx8$ is 'large', 
+ 478 | |||||||||| | %%$k\approx7$, 
+ 479 | |||||||||| | %%
+ 480 | |||||||||| | %so $$\dfrac{\theta}{2\pi}=\dfrac{1}{2\pi}\arctan\left(\dfrac{2\pi}{k}\right)
+ 481 | |||||||||| | %\approx\dfrac1k
+ 482 | |||||||||| | %\approx\dfrac18\text{  (years) $\cong$ 1.5 (months),}$$
+ 483 | |||||||||| |  %so the sea is coldest in February (= 21st Dec.+1.5 months).
+ 484 | |||||||||| | %%\approx\dfrac19\text{  (years) $\cong$ 6 (weeks),}$$
+ 485 | |||||||||| | %% so the sea is coldest in February (= 21st Dec.+6 weeks).
+ 486 | |||||||||| | %
+ 487 | |||||||||| | %\nextalt{Request description from lecturer or tactile diagram.}
+ 488 | |||||||||| | %\iftoggle{clearprint}{
+ 489 | |||||||||| | %\begin{figure}[H]
+ 490 | |||||||||| | %\centering
+ 491 | |||||||||| | %\boldmath
+ 492 | |||||||||| | %\includegraphics[width=0.6\textwidth]{periodic_response.pdf} \\
+ 493 | |||||||||| | %\raisebox{1.1cm}[0pt][0pt]{\hspace{.1cm}$/2\pi$\hspace{2.3cm}$/2\pi$}\\[-.5cm]
+ 494 | |||||||||| | %\caption{Steady periodic response. Legend: $S$ -- red; $T$ -- blue.}
+ 495 | |||||||||| | %\label{periodicresponse}
+ 496 | |||||||||| | %\end{figure}
+ 497 | |||||||||| | %}{
+ 498 | |||||||||| | %\iftoggle{web}{
+ 499 | |||||||||| | %\begin{figure}[H]
+ 500 | |||||||||| | %\centering
+ 501 | |||||||||| | %\includegraphics[width=0.6\textwidth]{periodic_response-byhand.svg}
+ 502 | |||||||||| | %\caption{Steady periodic response. Legend: $S$ -- red; $T$ -- blue.}
+ 503 | |||||||||| | %\label{periodicresponse}
+ 504 | |||||||||| | %\end{figure}
+ 505 | |||||||||| | %}{
+ 506 | |||||||||| | %\begin{figure}[H]
+ 507 | |||||||||| | %\centering
+ 508 | |||||||||| | %\boldmath
+ 509 | |||||||||| | %\includegraphics[width=0.6\textwidth]{periodic_response.pdf} \\
+ 510 | |||||||||| | %\raisebox{.9cm}[0pt][0pt]{\hspace{.1cm}$/2\pi$\hspace{2.3cm}$/2\pi$}\\[-.5cm]
+ 511 | |||||||||| | %\caption{Steady periodic response. Legend: $S$ -- red; $T$ -- blue.}
+ 512 | |||||||||| | %\label{periodicresponse}
+ 513 | |||||||||| | %\end{figure}
+ 514 | |||||||||| | %}}
+ 515 | |||||||||| | %\let\theta=\thhh
+ 516 | |||||||||| | 
+ 517 | |||||||||| | \end{enumerate}
+ 518 | |||||||||| | \end{examples}
+ 519 | |||||||||| | 
+ 520 | |||||||||| | \subsection{Bernoulli equations}
+ 521 | |||||||||| | 
+ 522 | |||||||||| | A differential equation of the form
+ 523 | |||||||||| | \[
+ 524 | |||||||||| |  \dfrac{dy}{dx} + p(x)y = q(x)y^{n}, \quad n \in \ZZ
+ 525 | |||||||||| | \]
+ 526 | |||||||||| | is called a Bernoulli equation (named after Jacob Bernoulli, who proposed it, and his brother Johann Bernoulli, who found a solution).
+ 527 | |||||||||| | 
+ 528 | |||||||||| | If $n=0$ or $1$ they are linear. Solve by integrating factor ($n=0$) or separation ($n=1$). 
+ 529 | |||||||||| | Otherwise they are non-linear.
+ 530 | |||||||||| | 
+ 531 | |||||||||| | \emph{Method} for $n\ne0$ or $1$.
+ 532 | |||||||||| | 
+ 533 | |||||||||| | Idea: use a substitution to make the equation linear.
+ 534 | |||||||||| | 
+ 535 | |||||||||| | Divide by $y^{n}$:
+ 536 | |||||||||| | \[
+ 537 | |||||||||| |  y^{-n} \dfrac{dy}{dx} + p(x) y^{1-n} = q(x)
+ 538 | |||||||||| | \]
+ 539 | |||||||||| | 
+ 540 | |||||||||| | Let $z=y^{1-n}$.  Then by the chain rule
+ 541 | |||||||||| | \[
+ 542 | |||||||||| |  \dfrac{dz}{dx} = (1-n) y^{-n} \dfrac{dy}{dx} .
+ 543 | |||||||||| | \]
+ 544 | |||||||||| | 
+ 545 | |||||||||| | Substitute 
+ 546 | |||||||||| | \[
+ 547 | |||||||||| |  \dfrac{1}{1-n} \dfrac{dz}{dx} + p(x) z= q(x)
+ 548 | |||||||||| | \]
+ 549 | |||||||||| | 
+ 550 | |||||||||| | This equation is now \emph{linear} in the  $z$-terms: use integrating factor to solve.
+ 551 | |||||||||| | 
+ 552 | |||||||||| | %\newpage
+ 553 | |||||||||| | 
+ 554 | |||||||||| | \begin{examples}\
+ 555 | |||||||||| | \begin{enumerate}
+ 556 | |||||||||| |  
+ 557 | |||||||||| |  \item $\dfrac{dy}{dx} + \dfrac{4}{x}y = x^3 y^2$
+ 558 | |||||||||| |  
+ 559 | |||||||||| |  Bernoulli equation with
+ 560 | |||||||||| |  \[
+ 561 | |||||||||| |   p(x)=\dfrac{4}{x}, \quad q(x)=x^3, \quad n=2.
+ 562 | |||||||||| |  \]
+ 563 | |||||||||| | 
+ 564 | |||||||||| |  Divide by $y^2$
+ 565 | |||||||||| |  \[
+ 566 | |||||||||| |   y^{-2} \dfrac{dy}{dx} + \dfrac{4}{x} y^{-1} = x^3
+ 567 | |||||||||| |  \]
+ 568 | |||||||||| |  
+ 569 | |||||||||| |  Let $z=y^{-1}$. So
+ 570 | |||||||||| | $
+ 571 | |||||||||| |   \dfrac{dz}{dx} = -y^{-2} \dfrac{dy}{dx}.
+ 572 | |||||||||| | $
+ 573 | |||||||||| | 
+ 574 | |||||||||| |  Substitute
+ 575 | |||||||||| |  \begin{eqnarray*}
+ 576 | |||||||||| |   && -\dfrac{dz}{dx} + \dfrac{4}{x} z = x^{3}\\
+ 577 | |||||||||| |   &\Rightarrow& \dfrac{dz}{dx} - \dfrac{4}{x} z = -x^{3}
+ 578 | |||||||||| |  \end{eqnarray*}
+ 579 | |||||||||| | 
+ 580 | |||||||||| |  Integrating factor
+ 581 | |||||||||| |  \[
+ 582 | |||||||||| |   r(x) = e^{\int -\frac{4}{x}dx} = e^{\int -4\ln\left|x\right|} = x^{-4}.
+ 583 | |||||||||| |  \]
+ 584 | |||||||||| | 
+ 585 | |||||||||| |  Then
+ 586 | |||||||||| |  \begin{eqnarray*}
+ 587 | |||||||||| |   z(x) &=& \dfrac{1}{r(x)} \int r(x) q(x) dx\\
+ 588 | |||||||||| |   &=& x^4 \int x^{-4}(-x^3)dx\\
+ 589 | |||||||||| |   &=& x^4 \int -x^{-1}dx\\
+ 590 | |||||||||| |   &=& x^4 (-\ln\left|x\right|+c)\\
+ 591 | |||||||||| |   &=& x^4 (c-\ln\left|x\right|).
+ 592 | |||||||||| |  \end{eqnarray*}
+ 593 | |||||||||| | 
+ 594 | |||||||||| |  Hence
+ 595 | |||||||||| |  \[
+ 596 | |||||||||| |   y=\dfrac{1}{x^4(c-\ln\left|x\right|)}.
+ 597 | |||||||||| |  \]
+ 598 | |||||||||| | 
+ 599 | |||||||||| | 
+ 600 | |||||||||| | 
+ 601 | |||||||||| |  \item $\dfrac{dy}{dx} = 5y + e^{-2x}y^{-2}$
+ 602 | |||||||||| |  
+ 603 | |||||||||| |  Rearrange 
+ 604 | |||||||||| |  \[
+ 605 | |||||||||| |   \dfrac{dy}{dx} - 5y = e^{-2x} y^{-2}
+ 606 | |||||||||| |  \]
+ 607 | |||||||||| | 
+ 608 | |||||||||| |  Bernoulli equation with $$p(x)=-5,\ q(x)=e^{-2x},\ n=-2.$$
+ 609 | |||||||||| | 
+ 610 | |||||||||| | So $z=y^{1-n}=y^{3}$ satisfies
+ 611 | |||||||||| | \begin{eqnarray*}
+ 612 | |||||||||| | && \dfrac{1}{1-n} \dfrac{dz}{dx} + p(x) z= q(x)\\
+ 613 | |||||||||| | \iff&&
+ 614 | |||||||||| |   \dfrac{1}{3} \dfrac{dz}{dx} - 5z = e^{-2x}.
+ 615 | |||||||||| | \end{eqnarray*}
+ 616 | |||||||||| | 
+ 617 | |||||||||| | Rearrange 
+ 618 | |||||||||| | \[
+ 619 | |||||||||| |  \dfrac{dz}{dx} - 15z = 3e^{-2x}
+ 620 | |||||||||| | \]
+ 621 | |||||||||| | 
+ 622 | |||||||||| | 
+ 623 | |||||||||| |  Integrating factor
+ 624 | |||||||||| |  \[
+ 625 | |||||||||| |   r(x) = e^{\int -15dx} = e^{-15x}
+ 626 | |||||||||| |  \]
+ 627 | |||||||||| | 
+ 628 | |||||||||| |  So
+ 629 | |||||||||| |  \begin{eqnarray*}
+ 630 | |||||||||| |   z(x) &=& e^{15x} \int e^{-15x} (3e^{-2x})dx\\
+ 631 | |||||||||| |   &=& e^{15x} \left[ -\dfrac{3}{17} e^{-17x} + c \right]
+ 632 | |||||||||| | %\\  &=& ce^{15x} -\dfrac{3}{17} e^{-2x} 
+ 633 | |||||||||| |  \end{eqnarray*}
+ 634 | |||||||||| | 
+ 635 | |||||||||| |  Then \[
+ 636 | |||||||||| | y=z^{\frac{1}{3}}=e^{5x}\sqrt[3]{c-\dfrac{3}{17} e^{-17x} }
+ 637 | |||||||||| | \]
+ 638 | |||||||||| | 
+ 639 | |||||||||| | %\newpage
+ 640 | |||||||||| | 
+ 641 | |||||||||| | \item
+ 642 | |||||||||| |  $6\dfrac{dy}{dx} - 2y = xy^{4}$
+ 643 | |||||||||| |  
+ 644 | |||||||||| |  Rearrange
+ 645 | |||||||||| |  \[
+ 646 | |||||||||| |   \dfrac{dy}{dx} - \dfrac{y}{3} = \dfrac{x}{6}y^{4}
+ 647 | |||||||||| |  \]
+ 648 | |||||||||| | 
+ 649 | |||||||||| |  Bernoulli equation with $$p(x)=-\dfrac{1}{3},\ q(x)=\dfrac{x}{6},\ n=4.$$
+ 650 | |||||||||| |  
+ 651 | |||||||||| | So $z=y^{1-n}=y^{-3}$ satisfies
+ 652 | |||||||||| | \begin{eqnarray*}
+ 653 | |||||||||| | && \dfrac{1}{1-n} \dfrac{dz}{dx} + p(x) z= q(x)\\
+ 654 | |||||||||| | \iff&&
+ 655 | |||||||||| |   -\dfrac{1}{3} \dfrac{dz}{dx} - \dfrac{z}{3} = \dfrac{x}{6}.
+ 656 | |||||||||| | \end{eqnarray*}
+ 657 | |||||||||| | 
+ 658 | |||||||||| | 
+ 659 | |||||||||| | Rearrange
+ 660 | |||||||||| |  \[
+ 661 | |||||||||| |   \dfrac{dz}{dx} + z = -\dfrac{x}{2}
+ 662 | |||||||||| |  \]
+ 663 | |||||||||| | 
+ 664 | |||||||||| | Integrating factor
+ 665 | |||||||||| | \[
+ 666 | |||||||||| |  r(x) = e^{\int 1 dx} = e^{x}
+ 667 | |||||||||| | \]
+ 668 | |||||||||| | 
+ 669 | |||||||||| | Hence
+ 670 | |||||||||| | \begin{eqnarray*}
+ 671 | |||||||||| |  z(x) &=& e^{-x} \int e^{x} \left(-\dfrac{x}{2}\right) dx\\
+ 672 | |||||||||| |  &=& e^{-x}  \left[-\dfrac{1}{2}(xe^{x}-e^{x}) + c\right]\\
+ 673 | |||||||||| |  &=& ce^{-x} - \dfrac{1}{2} (x-1)
+ 674 | |||||||||| | \end{eqnarray*}
+ 675 | |||||||||| | 
+ 676 | |||||||||| | Then $y=z^{-\frac{1}{3}}$.
+ 677 | |||||||||| | 
+ 678 | |||||||||| | \item Logistic growth: (e.g. population)\qquad
+ 679 | |||||||||| |  $\dfrac{dy}{dx} =y(M-y)$
+ 680 | |||||||||| | \qquad (see Section~\ref{sect:sepdiff})
+ 681 | |||||||||| |  
+ 682 | |||||||||| |  Rearrange
+ 683 | |||||||||| |  \[
+ 684 | |||||||||| |   \dfrac{dy}{dx} - My = -y^2
+ 685 | |||||||||| |  \]
+ 686 | |||||||||| | to Bernoulli equation with $$p(x)=-M,\ q(x)=-1,\ n=2.$$
+ 687 | |||||||||| |  
+ 688 | |||||||||| | So $z=y^{1-n}=y^{-1}$ satisfies
+ 689 | |||||||||| | %\begin{eqnarray*}
+ 690 | |||||||||| | %&& \dfrac{1}{1-n} \dfrac{dz}{dx} + p(x) z= q(x)\\
+ 691 | |||||||||| | %\iff&&
+ 692 | |||||||||| | %  - \dfrac{dz}{dx} - Mz = -1.
+ 693 | |||||||||| | %\end{eqnarray*}
+ 694 | |||||||||| | %
+ 695 | |||||||||| | %
+ 696 | |||||||||| | %Rearrange
+ 697 | |||||||||| |  \[
+ 698 | |||||||||| |   \dfrac{dz}{dx} + Mz = 1
+ 699 | |||||||||| |  \]
+ 700 | |||||||||| | 
+ 701 | |||||||||| | Integrating factor
+ 702 | |||||||||| | $
+ 703 | |||||||||| |  r(x) = e^{\int M dx} = e^{Mx}
+ 704 | |||||||||| | $
+ 705 | |||||||||| | gives
+ 706 | |||||||||| | \begin{eqnarray*}
+ 707 | |||||||||| |  z(x) &=& e^{-Mx} \int e^{Mx}  dx\\
+ 708 | |||||||||| |  &=& e^{-Mx}  \left[\dfrac{e^{Mx}}M+ c\right]
+ 709 | |||||||||| | =%\\ &=& 
+ 710 | |||||||||| | \dfrac1M+ce^{-Mx}
+ 711 | |||||||||| | \\
+ 712 | |||||||||| | \Rightarrow
+ 713 | |||||||||| | \quad y&=&z^{-1}=\left[\dfrac1M+ce^{-Mx}\right]^{-1}=\dfrac M{1+\tilde ce^{-Mx}}
+ 714 | |||||||||| | %\qquad\text{(cf. Section 5.1)}
+ 715 | |||||||||| | .
+ 716 | |||||||||| | \end{eqnarray*}
+ 717 | |||||||||| | 
+ 718 | |||||||||| | \end{enumerate}
+ 719 | |||||||||| | 
+ 720 | |||||||||| | \end{examples}
+ 721 | |||||||||| | 
+ 722 | |||||||||| | % NOTE: Leave this section unchanged for now.  It includes some partial derivatives that have not been covered yet, and the chain rule in two variables.  THIS IS BAD.
+ 723 | |||||||||| | % ALSO this may end up being the problems class/extra lecture material.  (It's starred on the problem sheet.)
+ 724 | |||||||||| | 
+ 725 | |||||||||| | \subsection{Exact equations}  \label{sect:exact}
+ 726 | |||||||||| | 
+ 727 | |||||||||| | Consider a differential equation of the form 
+ 728 | |||||||||| | \[
+ 729 | |||||||||| |  M(x,y) + N(x,y) \dfrac{dy}{dx} = 0.
+ 730 | |||||||||| | \]
+ 731 | |||||||||| | 
+ 732 | |||||||||| | This includes functions of two variables $x$ and $y$.
+ 733 | |||||||||| | 
+ 734 | |||||||||| | Suppose there exists some function $f(x,y)$ such that
+ 735 | |||||||||| | \[
+ 736 | |||||||||| |  \dfrac{\partial f}{\partial x} = M
+ 737 | |||||||||| | \]
+ 738 | |||||||||| | (“partial derivative”: rate of change with respect to $x$ if $y$ held constant)
+ 739 | |||||||||| | \[
+ 740 | |||||||||| |  \dfrac{\partial f}{\partial y} = N
+ 741 | |||||||||| | \]
+ 742 | |||||||||| | (rate of change with respect to $y$ if $x$ held constant)
+ 743 | |||||||||| | 
+ 744 | |||||||||| | Then
+ 745 | |||||||||| | \begin{eqnarray*}
+ 746 | |||||||||| |  \dfrac{\partial f}{\partial x} + \dfrac{\partial f}{\partial y} \dfrac{dy}{dx} &=& M + N \dfrac{dy}{dx}\\
+ 747 | |||||||||| |  &=& 0
+ 748 | |||||||||| | \end{eqnarray*}
+ 749 | |||||||||| | 
+ 750 | |||||||||| | Now, the chain rule for two variables says:
+ 751 | |||||||||| | \[
+ 752 | |||||||||| |  \dfrac{df}{dx} = \dfrac{\partial f}{\partial x} + \dfrac{\partial f}{\partial y} \dfrac{dy}{dx}
+ 753 | |||||||||| | \]
+ 754 | |||||||||| | 
+ 755 | |||||||||| | So
+ 756 | |||||||||| | \begin{eqnarray*}
+ 757 | |||||||||| |  && \dfrac{\partial f}{\partial x} + \dfrac{\partial f}{\partial y} \dfrac{dy}{dx} = 0 \\
+ 758 | |||||||||| |  &\Rightarrow& \dfrac{df}{dx} = 0\\
+ 759 | |||||||||| |  &\Rightarrow& f(x,y) = c.
+ 760 | |||||||||| | \end{eqnarray*}
+ 761 | |||||||||| | 
+ 762 | |||||||||| | So $f(x,y)=c$ is an \emph{implicit} solution to the differential equation, i.e. if $x,y$ satisfy $f(x,y)=c$, they will also satisfy the ODE.
+ 763 | |||||||||| | 
+ 764 | |||||||||| | \subsection*{Test for exactness}
+ 765 | |||||||||| | 
+ 766 | |||||||||| | The equation
+ 767 | |||||||||| | \[
+ 768 | |||||||||| |  M(x,y) + N(x,y) \dfrac{dy}{dx} = 0
+ 769 | |||||||||| | \]
+ 770 | |||||||||| | is exact if $\dfrac{\partial M}{\partial y}=\dfrac{\partial N}{\partial x}$.
+ 771 | |||||||||| | 
+ 772 | |||||||||| | \subsection*{Finding the solution $f(x,y)$}
+ 773 | |||||||||| | 
+ 774 | |||||||||| | We can find $f$ by integrating $M$ or $N$, but we have to be careful.  We have
+ 775 | |||||||||| |   \[
+ 776 | |||||||||| |     \frac{\partial f}{\partial x} = M.
+ 777 | |||||||||| |   \]
+ 778 | |||||||||| | Integrate both sides with respect to $x$:
+ 779 | |||||||||| |   \[
+ 780 | |||||||||| |     f(x, y) = \int M \, dx + g(y),
+ 781 | |||||||||| |   \]
+ 782 | |||||||||| | where $g(y)$ is constant with respect to $x$, but may depend on $y$.
+ 783 | |||||||||| | 
+ 784 | |||||||||| | What is $g$?  Differentiate both sides with respect to $y$:
+ 785 | |||||||||| |   \[
+ 786 | |||||||||| |     \frac{\partial f}{\partial y} = \frac{\partial}{\partial y}\int M \, dx + g'(y).
+ 787 | |||||||||| |   \]
+ 788 | |||||||||| | 
+ 789 | |||||||||| | Rearranging,
+ 790 | |||||||||| |   \begin{align*}
+ 791 | |||||||||| |     g'(y) & = \frac{\partial f}{\partial y} - \frac{\partial}{\partial y}\int M \, dx  \\
+ 792 | |||||||||| |      & = N - \frac{\partial}{\partial y}\int M \, dx.
+ 793 | |||||||||| |   \end{align*}
+ 794 | |||||||||| | 
+ 795 | |||||||||| | Hence
+ 796 | |||||||||| |   \[
+ 797 | |||||||||| |     g(y) = \int g'(y) \, dy = \int \left[ N - \dfrac{\partial}{\partial y} \int M \, dx \right] dy
+ 798 | |||||||||| |   \]
+ 799 | |||||||||| | 
+ 800 | |||||||||| | So an exact ODE has implicit solution $f(x,y)=c$ where
+ 801 | |||||||||| | \[
+ 802 | |||||||||| |  f(x,y) = \int Mdx + \int \left[
+ 803 | |||||||||| |  N - \dfrac{\partial}{\partial y} \int M \, dx
+ 804 | |||||||||| |  \right] dy
+ 805 | |||||||||| | \]
+ 806 | |||||||||| | 
+ 807 | |||||||||| | \begin{examples}\quad
+ 808 | |||||||||| |  \begin{enumerate}
+ 809 | |||||||||| |   \item $y+x \dfrac{dy}{dx} = 0$
+ 810 | |||||||||| |   
+ 811 | |||||||||| |   Inspiration:
+ 812 | |||||||||| |   \begin{eqnarray*}
+ 813 | |||||||||| |    && \dfrac{\partial}{\partial y} (xy) = x\\
+ 814 | |||||||||| |    && \dfrac{\partial}{\partial x} (xy) = y
+ 815 | |||||||||| |   \end{eqnarray*}
+ 816 | |||||||||| |   
+ 817 | |||||||||| |   So $f(x,y)=xy$ satisfied 
+ 818 | |||||||||| |   \[
+ 819 | |||||||||| |   \dfrac{\partial f}{\partial x}=M, \qquad \dfrac{\partial f}{\partial y}=N
+ 820 | |||||||||| |   \]
+ 821 | |||||||||| | where $M=y$, $N=x$.
+ 822 | |||||||||| |   
+ 823 | |||||||||| |   Hence solution is $xy=c$.
+ 824 | |||||||||| |   
+ 825 | |||||||||| |   \item $e^{y} + (xe^{y} + 2y) \dfrac{dy}{dx}=0$.
+ 826 | |||||||||| |   
+ 827 | |||||||||| |   So
+ 828 | |||||||||| |   \begin{eqnarray*}
+ 829 | |||||||||| | &&   M=e^{y}, \qquad N=xe^{y} + 2y\\
+ 830 | |||||||||| | &\Rightarrow& \dfrac{\partial M}{\partial y} = e^{y}, \qquad \dfrac{\partial N}{\partial x}=e^{y}.
+ 831 | |||||||||| |   \end{eqnarray*}
+ 832 | |||||||||| | 
+ 833 | |||||||||| |   Hence the ODE is exact. So solution is $f(x,y)=c$ where
+ 834 | |||||||||| |   \begin{eqnarray*}
+ 835 | |||||||||| |    f(x,y) &=& \int M dx + \int \left(N - \dfrac{\partial}{\partial y} \int Mdx\right)dy\\
+ 836 | |||||||||| |    &=& \int e^{y}dx + \int \left(xe^{y} + 2y - \dfrac{\partial}{\partial y} \int e^{y} dx\right) dy\\
+ 837 | |||||||||| |    &=& x e^{y} + \int xe^{y} + 2y - xe^{y} dy\\
+ 838 | |||||||||| |    &=& xe^{y} + \int 2y dy\\
+ 839 | |||||||||| |    &=& xe^{y} + y^{2}
+ 840 | |||||||||| |   \end{eqnarray*}
+ 841 | |||||||||| | 
+ 842 | |||||||||| |   Hence implicit solution of ODE is
+ 843 | |||||||||| |   \[
+ 844 | |||||||||| |    xe^{y} + y^{2} = c.
+ 845 | |||||||||| |   \]
+ 846 | |||||||||| | 
+ 847 | |||||||||| |   
+ 848 | |||||||||| |   \item $2xy - 9x^2 + (2y+x^2+1)\dfrac{dy}{dx} = 0$
+ 849 | |||||||||| |   
+ 850 | |||||||||| |   So
+ 851 | |||||||||| |   \begin{eqnarray*}
+ 852 | |||||||||| | &&   M=2xy-9x^2, \qquad N=2y+x^2+1\\
+ 853 | |||||||||| | &&   \dfrac{\partial M}{\partial y} = 2x, \qquad \dfrac{\partial N}{\partial x}=2x
+ 854 | |||||||||| |   \end{eqnarray*}
+ 855 | |||||||||| | 
+ 856 | |||||||||| |   Hence exact.
+ 857 | |||||||||| | 
+ 858 | |||||||||| |   Next, find $f(x,y)$:
+ 859 | |||||||||| |   \begin{eqnarray*}
+ 860 | |||||||||| |    \int M dx &=& \int 2xy - 9x^2 dx\\
+ 861 | |||||||||| |    &=& x^2 y - 3 x^3
+ 862 | |||||||||| |   \end{eqnarray*}
+ 863 | |||||||||| | 
+ 864 | |||||||||| |   So
+ 865 | |||||||||| |   \begin{eqnarray*}
+ 866 | |||||||||| |    f(x,y) &=& x^2y - 3x^3 + \int 2y + x^2 + 1 - \dfrac{\partial}{\partial y} (x^2y-3x^3)dy\\
+ 867 | |||||||||| |    &=& x^2y - 3x^3 + \int 2y + x^2 + 1 - x^2 dy\\
+ 868 | |||||||||| |    &=& x^2y - 3x^3 + \int 2y + 1 dy\\
+ 869 | |||||||||| |    &=& x^2y - 3x^3 + y^2 + y\\
+ 870 | |||||||||| |    &=& y^2 + (x^2+1)y - 3x^3
+ 871 | |||||||||| |   \end{eqnarray*}
+ 872 | |||||||||| | 
+ 873 | |||||||||| |   Hence the ODE has implicit solution 
+ 874 | |||||||||| |   \[
+ 875 | |||||||||| |    y^2 + (x^2+1) y - 3x^3 = c.
+ 876 | |||||||||| |   \]
+ 877 | |||||||||| | 
+ 878 | |||||||||| |   \item $2xy^2 + 4 - 2(3-x^2y) \dfrac{dy}{dx} = 0$
+ 879 | |||||||||| |   
+ 880 | |||||||||| |     So
+ 881 | |||||||||| |   \begin{eqnarray*}
+ 882 | |||||||||| | &&   M=2xy^2+4, \qquad N=-2(3-x^2y)\\
+ 883 | |||||||||| | &&   \dfrac{\partial M}{\partial y} = 4xy, \qquad \dfrac{\partial N}{\partial x}=4xy
+ 884 | |||||||||| |   \end{eqnarray*}
+ 885 | |||||||||| | 
+ 886 | |||||||||| |   Hence exact.
+ 887 | |||||||||| | 
+ 888 | |||||||||| |   Next, find $f(x,y)$.
+ 889 | |||||||||| |   \begin{eqnarray*}
+ 890 | |||||||||| |    \int M dx &=& \int 2xy^2 + 4 dx\\
+ 891 | |||||||||| |    &=& x^2 y^2 + 4x
+ 892 | |||||||||| |   \end{eqnarray*}
+ 893 | |||||||||| | 
+ 894 | |||||||||| |   Hence
+ 895 | |||||||||| |   \begin{eqnarray*}
+ 896 | |||||||||| |    f(x,y) &=& x^2 y^2 + 4x + \int -2(3x-x^2y) - \dfrac{\partial}{\partial y} (x^2y^2+4x)dy\\
+ 897 | |||||||||| |    &=& x^2y^2 + 4x + \int -2(3-x^2y) -2x^2ydy\\
+ 898 | |||||||||| |    &=& x^2y^2 + 4x -\int 6dy\\
+ 899 | |||||||||| |    &=& x^2y^2 + 4x - 6y.
+ 900 | |||||||||| |   \end{eqnarray*}
+ 901 | |||||||||| | 
+ 902 | |||||||||| |   Hence the ODE has implicit solution
+ 903 | |||||||||| |   \[
+ 904 | |||||||||| |    x^2y^2 + 4x - 6y = c.
+ 905 | |||||||||| |   \]
+ 906 | |||||||||| | 
+ 907 | |||||||||| |  \end{enumerate}
+ 908 | |||||||||| | \end{examples}
+ 909 | |||||||||| | 
+ 910 | |||||||||| | % END OF BAD SECTION.
+ 911 | |||||||||| | 
+ 912 | |||||||||| | 
+ 913 | |||||||||| | %\newpage 
+ 914 | |||||||||| | 
+ 915 | |||||||||| | \subsection{Linear second order ordinary differential equations}
+ 916 | |||||||||| | 
+ 917 | |||||||||| | \subsubsection*{Overview}
+ 918 | |||||||||| | 
+ 919 | |||||||||| | These take the form
+ 920 | |||||||||| | \begin{align*}
+ 921 | |||||||||| | a \dfrac{d^2 u}{dx^2} + b \dfrac{du}{dx} + cu & =  0 \qquad
+ 922 | |||||||||| | \text{(Free/Unforced)} \\
+ 923 | |||||||||| | a \dfrac{d^2 u}{dx^2} + b \dfrac{du}{dx} + cu & =  f(x) \qquad
+ 924 | |||||||||| | \text{(Forced)}
+ 925 | |||||||||| | \end{align*}
+ 926 | |||||||||| | 
+ 927 | |||||||||| | \begin{example}[Falling ball]
+ 928 | |||||||||| | \[
+ 929 | |||||||||| | m\frac{d^2 y}{dt^2} + k\frac{dy}{dt}  =  -gm.
+ 930 | |||||||||| | \]
+ 931 | |||||||||| | \end{example}
+ 932 | |||||||||| | 
+ 933 | |||||||||| | Each of these equations has an uncountable number of solutions. To
+ 934 | |||||||||| | find a \textbf{unique} solution we must specify \textbf{two}
+ 935 | |||||||||| | properties of the solution.
+ 936 | |||||||||| | 
+ 937 | |||||||||| | \begin{description}
+ 938 | |||||||||| | \item[A.] Initial value problem: $u(0) = \alpha$, \quad $u'(0)=\beta$;
+ 939 | |||||||||| | $u$ \emph{and} $u'$ at \emph{some} point, 
+ 940 | |||||||||| | \\e.g. throwing a ball.
+ 941 | |||||||||| | 
+ 942 | |||||||||| | \item[B.] (Dirichlet) Boundary value problem: $u(0) = \alpha$, \quad $u(1)=\beta$;
+ 943 | |||||||||| | \\ e.g. making the ball land on target.
+ 944 | |||||||||| | 
+ 945 | |||||||||| | \item[C.] (Neumann) Boundary value problem: $u'(0) = \alpha$, \quad
+ 946 | |||||||||| | $u'(1)=\beta$;
+ 947 | |||||||||| | \\i.e.\ $u'$ at two points, arises in studying biological problems. 
+ 948 | |||||||||| | 
+ 949 | |||||||||| | \end{description}
+ 950 | |||||||||| | 
+ 951 | |||||||||| | 
+ 952 | |||||||||| | \subsubsection*{Free linear second order ODEs}
+ 953 | |||||||||| | 
+ 954 | |||||||||| | \begin{theorem}[Superposition] \label{thm:superposition}
+ 955 | |||||||||| |  Let $p(x)$ and $q(x)$ be solutions to the second order ODE
+ 956 | |||||||||| |  \[
+ 957 | |||||||||| |   a \dfrac{d^2 u}{dx^2} + b \dfrac{du}{dx} + cu  =  0.
+ 958 | |||||||||| |  \]
+ 959 | |||||||||| | Then
+ 960 | |||||||||| | \[
+ 961 | |||||||||| | r(x)  =  A p(x) + B q(x)
+ 962 | |||||||||| | \]
+ 963 | |||||||||| | is also a solution for any constants $A,B$.
+ 964 | |||||||||| | \end{theorem}
+ 965 | |||||||||| | 
+ 966 | |||||||||| | \begin{Proof}
+ 967 | |||||||||| |  Due to the linearity of the derivative
+ 968 | |||||||||| |  \begin{align*}
+ 969 | |||||||||| |   r & = Ap + Bq  \\
+ 970 | |||||||||| |   \Rightarrow r' & = Ap' + Bq'  \\
+ 971 | |||||||||| |   \Rightarrow r” & = Ap” + Bq”.
+ 972 | |||||||||| |  \end{align*}
+ 973 | |||||||||| |  Hence
+ 974 | |||||||||| |  \begin{eqnarray*}
+ 975 | |||||||||| |   && ar” + br' + cr\\
+ 976 | |||||||||| |   &=& A [ap” + bp' + cp] + B [aq” + bq' + q]\\
+ 977 | |||||||||| |   &=& 0+0 \\
+ 978 | |||||||||| |   && \text{(since $p.q$ solutions)}\\
+ 979 | |||||||||| |   &=& 0,
+ 980 | |||||||||| |  \end{eqnarray*}
+ 981 | |||||||||| |   so $r$ is also a solution to the equation.
+ 982 | |||||||||| | \end{Proof}
+ 983 | |||||||||| | 
+ 984 | |||||||||| | \begin{definition}
+ 985 | |||||||||| | We call
+ 986 | |||||||||| |  $r=r(x)$  a \emph{linear combination} of $p$ and $q$.
+ 987 | |||||||||| | \end{definition}
+ 988 | |||||||||| |  \begin{definition}
+ 989 | |||||||||| |  $p$ and $q$ are \emph{linearly independent} if there are \emph{no} non-zero constants $A$ and $B$ such that
+ 990 | |||||||||| |  \[
+ 991 | |||||||||| |   Ap(x) + Bq(x) = 0 \qquad \forall x
+ 992 | |||||||||| |  \]
+ 993 | |||||||||| | \end{definition}
+ 994 | |||||||||| | 
+ 995 | |||||||||| | \begin{note}
+ 996 | |||||||||| |  $Ap+Bq=0$ may still  be satisfied at \emph{some} values of $x$.
+ 997 | |||||||||| | \end{note}
+ 998 | |||||||||| | 
+ 999 | |||||||||| | \begin{theorem}
+1000 | |||||||||| |  A free linear second order ODE has \emph{exactly two} linearly independent solutions.
+1001 | |||||||||| |  Any solution of the ODE are linear combinations of these two solutions.
+1002 | |||||||||| | \end{theorem}
+1003 | |||||||||| | % NO PROOF.
+1004 | |||||||||| | % There isn't one in the books either.
+1005 | |||||||||| | 
+1006 | |||||||||| | \begin{definition}
+1007 | |||||||||| | Let the free linear second order ODE have two  linearly independent solutions $p(x)$, $q(x)$. 
+1008 | |||||||||| | Then the \emph{general solution} is
+1009 | |||||||||| | \[
+1010 | |||||||||| |  Ap(x) + Bq(x), \qquad \text{$A,B\in\RR$ constants.}
+1011 | |||||||||| | \]
+1012 | |||||||||| | \end{definition}
+1013 | |||||||||| | 
+1014 | |||||||||| | \begin{example}  Simple harmonic motion (e.g. oscillation of a spring, simple pendulum, molecular vibration)
+1015 | |||||||||| |  \[
+1016 | |||||||||| |   \dfrac{d^2u}{dx^2} + u = 0
+1017 | |||||||||| |  \]
+1018 | |||||||||| | 
+1019 | |||||||||| | Two linearly independent solutions are $\sin(x)$ and $\cos(x)$.% (check by substitution)
+1020 | |||||||||| | 
+1021 | |||||||||| | So, general solution is
+1022 | |||||||||| | \[
+1023 | |||||||||| |  u = A \cos(x) + B \sin(x).
+1024 | |||||||||| | \]
+1025 | |||||||||| | \end{example}
+1026 | |||||||||| | 
+1027 | |||||||||| | %\newpage
+1028 | |||||||||| | 
+1029 | |||||||||| | \subsubsection*{Constructing the General solution}
+1030 | |||||||||| | 
+1031 | |||||||||| | Consider
+1032 | |||||||||| | \begin{equation}
+1033 | |||||||||| |  a \dfrac{d^2u}{dx^2} + b \dfrac{du}{dx} + cu = 0
+1034 | |||||||||| |  \label{eq5.2}
+1035 | |||||||||| | \end{equation}
+1036 | |||||||||| | 
+1037 | |||||||||| | Suppose $u=e^{\lambda x}$, $\lambda$ constant. Then
+1038 | |||||||||| | \[
+1039 | |||||||||| |  a \dfrac{d^2u}{dx^2} + b \dfrac{du}{dx} + cu = (a\lambda^2 + b\lambda +c) e^{\lambda x}
+1040 | |||||||||| | \]
+1041 | |||||||||| | 
+1042 | |||||||||| | Hence \eqref{eq5.2} is satisfied if $\lambda$ is such that
+1043 | |||||||||| | \[
+1044 | |||||||||| |  a\lambda^2 + b\lambda +c = 0
+1045 | |||||||||| | \]
+1046 | |||||||||| | 
+1047 | |||||||||| | This quadratic in $\lambda$ is the \emph{auxiliary equation (AE)}.
+1048 | |||||||||| | 
+1049 | |||||||||| | Solutions are
+1050 | |||||||||| | \[
+1051 | |||||||||| |  \lambda_{1,2} = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}
+1052 | |||||||||| | \]
+1053 | |||||||||| | 
+1054 | |||||||||| | Depending on the type of solutions of the AE
+1055 | |||||||||| | there are three cases to distinguish:
+1056 | |||||||||| | 
+1057 | |||||||||| | \begin{description}
+1058 | |||||||||| |  \item[Case 1.]  ($b^2-4ac>0$)\quad $\lambda_1, \lambda_2$ real and distinct
+1059 | |||||||||| |  
+1060 | |||||||||| |  General solution
+1061 | |||||||||| |  \[
+1062 | |||||||||| |   u = A e^{\lambda_1x} + B e^{\lambda_2 x}
+1063 | |||||||||| |  \]
+1064 | |||||||||| |  
+1065 | |||||||||| |  Solution behaviour: No oscillations;\\
+1066 | |||||||||| |  long term growth ($\lambda_1>0$ or $\lambda_2>0$) or decline ($\lambda_1<0$ and $\lambda_2<0$).
+1067 | |||||||||| |  \begin{note}\
+1068 | |||||||||| | 
+1069 | |||||||||| |   $e^{\lambda_1x}$ and $e^{\lambda_2x}$ are linearly independent because 
+1070 | |||||||||| |   \[
+1071 | |||||||||| |    \dfrac{e^{\lambda_1x}}{e^{\lambda_2x}} = e^{(\lambda_1-\lambda_2)x}
+1072 | |||||||||| |   \]
+1073 | |||||||||| | is not constant.
+1074 | |||||||||| |  \end{note}
+1075 | |||||||||| | 
+1076 | |||||||||| | 
+1077 | |||||||||| |  \item[Case 2.] ($b^2-4ac<0$)\quad $\lambda_1, \lambda_2$ complex conjugates, $\lambda_{1,2} = \alpha \pm i\beta$
+1078 | |||||||||| |  
+1079 | |||||||||| |  General solution
+1080 | |||||||||| |  \[
+1081 | |||||||||| |   u = e^{\alpha x} (A \cos (\beta x) + B \sin (\beta x)).
+1082 | |||||||||| |  \]
+1083 | |||||||||| | 
+1084 | |||||||||| | Solution behaviour: Oscillatory with long term growth $(\alpha > 0)$ or decline $(\alpha < 0)$.
+1085 | |||||||||| | 
+1086 | |||||||||| | \begin{proof}
+1087 | |||||||||| | 
+1088 | |||||||||| | Real and imaginary parts of the roots of the auxiliary equation
+1089 | |||||||||| | \[
+1090 | |||||||||| | \lambda_{1,2} = \alpha \pm i\beta
+1091 | |||||||||| | \]
+1092 | |||||||||| | are $$\alpha = -\dfrac{b}{2a},\qquad\beta=\dfrac{\sqrt{4ac-b^2}}{2a}.$$
+1093 | |||||||||| | 
+1094 | |||||||||| | Thus
+1095 | |||||||||| | \[
+1096 | |||||||||| |  u_{1,2} = e^{(\alpha \pm i\beta)x}
+1097 | |||||||||| | %, \qquad u_2 = e^{(\alpha - i\beta)}
+1098 | |||||||||| | \]
+1099 | |||||||||| | are solutions of \eqref{eq5.2}.
+1100 | |||||||||| | 
+1101 | |||||||||| | But $u_1$ and $u_2$ involve complex numbers for all $x$. The ODE is real-valued. We want real-valued solutions.
+1102 | |||||||||| | 
+1103 | |||||||||| | By Euler's formula
+1104 | |||||||||| | %\[
+1105 | |||||||||| | % e^{\pm i\beta x} = \cos(\beta x) \pm i \sin(\beta x)
+1106 | |||||||||| | %\]
+1107 | |||||||||| | %
+1108 | |||||||||| | %Hence
+1109 | |||||||||| | \begin{eqnarray*}
+1110 | |||||||||| |  u_{1,2}  = e^{\alpha x} [\cos(\beta x) \pm i \sin(\beta x)]
+1111 | |||||||||| | % && u_1 = e^{\alpha x} [\cos(\beta x) + i \sin(\beta x)]\\
+1112 | |||||||||| | % && u_2 = e^{\alpha x} [\cos(\beta x) - i \sin(\beta x)]
+1113 | |||||||||| | \end{eqnarray*}
+1114 | |||||||||| | 
+1115 | |||||||||| | Recall superposition (Theorem~\ref{thm:superposition}): Linear combinations of $u_1$ and $u_2$ are also solutions (even with complex coefficients).
+1116 | |||||||||| | 
+1117 | |||||||||| | So
+1118 | |||||||||| | \[
+1119 | |||||||||| |  \dfrac{1}{2}u_1 + \dfrac{1}{2}u_2 = e^{\alpha x} \cos(\beta x)
+1120 | |||||||||| | \]
+1121 | |||||||||| | is a solution, as well as 
+1122 | |||||||||| | \[
+1123 | |||||||||| |  \dfrac{1}{2i}u_1 - \dfrac{1}{2i}u_2 = e^{\alpha x} \sin(\beta x)
+1124 | |||||||||| | \]
+1125 | |||||||||| | is a solution.
+1126 | |||||||||| | 
+1127 | |||||||||| | Clearly $e^{\alpha x} \cos(\beta x)$, $e^{\alpha x} \sin(\beta x)$ are real-valued and  linearly independent. 
+1128 | |||||||||| | 
+1129 | |||||||||| | So the general solution is
+1130 | |||||||||| | \[
+1131 | |||||||||| |  A e^{\alpha x} \cos(\beta x) + B e^{\alpha x} \sin(\beta x).
+1132 | |||||||||| | \]
+1133 | |||||||||| | \end{proof}
+1134 | |||||||||| | 
+1135 | |||||||||| |  \item[Case 3.] ($b^2=4ac$)\quad $\lambda_1=\lambda_2$, so write $\lambda$ for the unique root of the AE.
+1136 | |||||||||| |  
+1137 | |||||||||| | Then $\lambda = - \dfrac{b}{2a}$  is real-valued and the general solution is
+1138 | |||||||||| |  \[
+1139 | |||||||||| |   u=Ae^{\lambda x} + Bx e^{\lambda x}.
+1140 | |||||||||| |  \]
+1141 | |||||||||| | 
+1142 | |||||||||| |  Solution behaviour: no oscillations, long term growth ($\lambda>0$) or decline ($\lambda<0$).
+1143 | |||||||||| | 
+1144 | |||||||||| | 
+1145 | |||||||||| |  \begin{proof}
+1146 | |||||||||| |   If
+1147 | |||||||||| |   \[
+1148 | |||||||||| |    u = Ae^{\lambda x} + B x e^{\lambda x}
+1149 | |||||||||| |   \]
+1150 | |||||||||| |   
+1151 | |||||||||| |   Then
+1152 | |||||||||| |   \begin{eqnarray*}
+1153 | |||||||||| |    &&    u' = \lambda Ae^{\lambda x}+ B e^{\lambda x} + \lambda B x e^{\lambda x}
+1154 | |||||||||| | \\
+1155 | |||||||||| |    &&    u” = \lambda^2 Ae^{\lambda x}+ 2\lambda B e^{\lambda x} %+ \lambda^2 B e^{\lambda x} 
+1156 | |||||||||| | + \lambda^2 B x e^{\lambda x}
+1157 | |||||||||| |   \end{eqnarray*}
+1158 | |||||||||| |   
+1159 | |||||||||| |   Hence
+1160 | |||||||||| |   \begin{eqnarray}
+1161 | |||||||||| |    && au” + bu' +cu \notag\\
+1162 | |||||||||| |    &=& \quad A [a\lambda^2 + b\lambda_1 + c]e^{\lambda x}\label{eq5.3a}\\
+1163 | |||||||||| |    &&  + B [2a\lambda + b]e^{\lambda x}\label{eq5.3b}\\
+1164 | |||||||||| |    &&  + B x [a\lambda^2 + b\lambda + c]e^{\lambda x}\label{eq5.3c}
+1165 | |||||||||| |   \end{eqnarray}
+1166 | |||||||||| | 
+1167 | |||||||||| |   But
+1168 | |||||||||| |   \begin{eqnarray*}
+1169 | |||||||||| |    && a\lambda^2 + b\lambda + c = 0\\
+1170 | |||||||||| |    &\Rightarrow& \text{\eqref{eq5.3a} and \eqref{eq5.3c} vanish}
+1171 | |||||||||| |   \end{eqnarray*}
+1172 | |||||||||| | and
+1173 | |||||||||| |   \begin{eqnarray*}
+1174 | |||||||||| |    && \lambda = - \dfrac{b}{2a}\\
+1175 | |||||||||| |    &\Rightarrow& \text{\eqref{eq5.3b} vanishes}
+1176 | |||||||||| |   \end{eqnarray*}
+1177 | |||||||||| | 
+1178 | |||||||||| |  \end{proof}
+1179 | |||||||||| | 
+1180 | |||||||||| |  \end{description}
+1181 | |||||||||| | 
+1182 | |||||||||| | \subsubsection*{Forced linear second order ordinary differential equations}
+1183 | |||||||||| | 
+1184 | |||||||||| | \[
+1185 | |||||||||| | au” + bu' +cu  =  f(x)
+1186 | |||||||||| | \]
+1187 | |||||||||| | 
+1188 | |||||||||| | In  practice solved by three methods:
+1189 | |||||||||| | \begin{enumerate}
+1190 | |||||||||| | \item Undetermined coefficients: the method we will use.  Easy but only works for simple cases.
+1191 | |||||||||| | 
+1192 | |||||||||| | \item Transforms:\\
+1193 | |||||||||| | \begin{tabular}{ll}
+1194 | |||||||||| | Fourier & $\widehat{u}(\omega)  =  \displaystyle\int_{-\infty}^{\infty} e^{-i\
+1195 | |||||||||| | \omega x} u(x)dx$ \\
+1196 | |||||||||| | Laplace & $\widehat{u}(p)  =  \displaystyle\int_{0}^{\infty} e^{-px} u(x)dx$
+1197 | |||||||||| | \end{tabular}
+1198 | |||||||||| | 
+1199 | |||||||||| | Widely used in science and engineering.
+1200 | |||||||||| | 
+1201 | |||||||||| | \item Variation of constants / Green's functions
+1202 | |||||||||| | \[
+1203 | |||||||||| | u(x)  =  \int_{-\infty}^{\infty} G(x-y)f(y)d y
+1204 | |||||||||| | \]
+1205 | |||||||||| | very general (extends to $a=a(x)$ etc.\ but hard to use (need to find $G$).
+1206 | |||||||||| | \end{enumerate}
+1207 | |||||||||| | 
+1208 | |||||||||| | 
+1209 | |||||||||| | \subsubsection*{Basic idea for systematic substitution}
+1210 | |||||||||| | \begin{enumerate}
+1211 | |||||||||| | \item
+1212 | |||||||||| | Find \textbf{most general solution possible} of the equation
+1213 | |||||||||| | \[
+1214 | |||||||||| | aq” + bq' + cq  =  0 
+1215 | |||||||||| | \]
+1216 | |||||||||| | $q$: CF: \emph{complementary function}.
+1217 | |||||||||| | \item
+1218 | |||||||||| | Find a \emph{particular solution} of the equation
+1219 | |||||||||| | \[
+1220 | |||||||||| | ap” + bp' + cp  =  f(x)
+1221 | |||||||||| | \]
+1222 | |||||||||| | $p$: PI: \emph{Particular integral}.
+1223 | |||||||||| | \item
+1224 | |||||||||| | Set $u  =  p + q$.
+1225 | |||||||||| | \end{enumerate}
+1226 | |||||||||| | 
+1227 | |||||||||| | We will focus on finding the particular solution for some simple cases of $f(x)$.
+1228 | |||||||||| | 
+1229 | |||||||||| | % I think this is confusing as a subsection:
+1230 | |||||||||| | %\subsubsection{Particular integrals}
+1231 | |||||||||| | 
+1232 | |||||||||| | % Changed the format to examples first, since they're easier to follow that way.
+1233 | |||||||||| | 
+1234 | |||||||||| | \subsubsection*{Particular integrals involving exponentials}
+1235 | |||||||||| | % Might do this one after the other two; not sure yet.
+1236 | |||||||||| | 
+1237 | |||||||||| | Suppose
+1238 | |||||||||| | \begin{equation}
+1239 | |||||||||| | au” + bu' + cu  =  \gamma e^{\mu x},
+1240 | |||||||||| | \label{eq5.4}
+1241 | |||||||||| | \end{equation}
+1242 | |||||||||| | $\gamma$, $\mu$ constants.
+1243 | |||||||||| | 
+1244 | |||||||||| | Set $p = \alpha e^{\mu x}$.
+1245 | |||||||||| | 
+1246 | |||||||||| | Then
+1247 | |||||||||| | \[
+1248 | |||||||||| | ap” + bp' + cp  =  \alpha e^{\mu x} (a\mu^2 + b\mu + c)
+1249 | |||||||||| | \]
+1250 | |||||||||| | 
+1251 | |||||||||| | So $p$ satisfies \eqref{eq5.4} if
+1252 | |||||||||| | \begin{eqnarray*}
+1253 | |||||||||| | &&\alpha  e^{\mu x} (a\mu^2 + b\mu + c) = \gamma e^{\mu x}\\
+1254 | |||||||||| | &\Rightarrow& \alpha = \dfrac{\gamma}{a\mu^2 + b\mu + c}  
+1255 | |||||||||| | \end{eqnarray*}
+1256 | |||||||||| | 
+1257 | |||||||||| | \begin{note}
+1258 | |||||||||| | This method blows up if $a\mu^2 + b\mu + c=0.$ In this case $e^{\mu x}$ solves
+1259 | |||||||||| | \[
+1260 | |||||||||| |  au” + bu' + cu = 0,
+1261 | |||||||||| | \]
+1262 | |||||||||| | i.e. $e^{\mu x}$ is part of the complementary function. This is called \emph{resonance}.  In this case we have to use
+1263 | |||||||||| | \[
+1264 | |||||||||| |  p=\alpha x e^{\mu x}
+1265 | |||||||||| | \]
+1266 | |||||||||| | or if $\mu$ is even a double root of  $a\lambda^2 + b \lambda + c = 0$ use
+1267 | |||||||||| | \[
+1268 | |||||||||| |  p=\alpha x^2 e^{\mu x}.
+1269 | |||||||||| | \]
+1270 | |||||||||| | 
+1271 | |||||||||| | \end{note}
+1272 | |||||||||| | 
+1273 | |||||||||| | \begin{note}
+1274 | |||||||||| |  In case of sums of (non-resonance) exponentials, e.g.\
+1275 | |||||||||| |  \[
+1276 | |||||||||| |   au” + bu' + cu = \gamma_1 e^{\mu_1 x} + \gamma_2 e^{\mu_2 x}
+1277 | |||||||||| |  \]
+1278 | |||||||||| | use
+1279 | |||||||||| | \[
+1280 | |||||||||| |  p = \alpha_1 e^{\mu_1 x} + \alpha_2 e^{\mu_2 x},
+1281 | |||||||||| | \]
+1282 | |||||||||| | %where the $\alpha_i$ are set analogously  to before $\alpha_i= \dfrac{\gamma_i}{a\mu_i^2 + b\mu_i + c}  $.
+1283 | |||||||||| | 
+1284 | |||||||||| | \end{note}
+1285 | |||||||||| | 
+1286 | |||||||||| | 
+1287 | |||||||||| | \subsubsection*{Particular integrals involving sine and cosine}
+1288 | |||||||||| | 
+1289 | |||||||||| | \begin{example}
+1290 | |||||||||| | 
+1291 | |||||||||| | Solve
+1292 | |||||||||| |   \[
+1293 | |||||||||| |     u” + 6u' + 25u = 2 \cos(2x)
+1294 | |||||||||| |   \]
+1295 | |||||||||| | 
+1296 | |||||||||| |   Complimentary function $q$ satisfies:
+1297 | |||||||||| |  \quad
+1298 | |||||||||| |  \begin{eqnarray*}
+1299 | |||||||||| |   && q” + 6q' + 25q = 0\\
+1300 | |||||||||| |   &\text{AE:}& \lambda^2 + 6\lambda + 25 = 0\\
+1301 | |||||||||| |   &\Rightarrow& (\lambda+3)^2 + 16 = 0\\
+1302 | |||||||||| |   &\Rightarrow& \lambda = -3 \pm 4i
+1303 | |||||||||| |  \end{eqnarray*}
+1304 | |||||||||| | so
+1305 | |||||||||| | \[
+1306 | |||||||||| |  q = e^{-3x} (A \cos(4x) + B \sin(4x))
+1307 | |||||||||| | \]
+1308 | |||||||||| | 
+1309 | |||||||||| | PI: Let
+1310 | |||||||||| | \begin{eqnarray*}
+1311 | |||||||||| |  && p = \ell \cos(2x) + m \sin(2x)\\
+1312 | |||||||||| |  &\Rightarrow& p' = -2 \ell \sin(2x) + 2 m \cos(2x)\\
+1313 | |||||||||| |  &\Rightarrow& p” = -4 \ell \cos(2x) - 4 m \sin(2x).
+1314 | |||||||||| | \end{eqnarray*}
+1315 | |||||||||| | Hence
+1316 | |||||||||| | \[
+1317 | |||||||||| |  p” + 6p' + 25p = 2 \cos(2x)
+1318 | |||||||||| | \]
+1319 | |||||||||| | if
+1320 | |||||||||| | \begin{eqnarray*}
+1321 | |||||||||| |  && -4 \ell \cos(2x) - 4 m \sin(2x)\\
+1322 | |||||||||| |  && + 12m \cos(2x) - 12 \ell \sin(2x)\\
+1323 | |||||||||| |  && + 25 \ell \cos(2x) + 25 m \sin(2x)\\
+1324 | |||||||||| |  &=& 2 \cos(2x) +0\cdot \sin(2x).
+1325 | |||||||||| | \end{eqnarray*}
+1326 | |||||||||| | Hence, solve
+1327 | |||||||||| | \begin{eqnarray*}
+1328 | |||||||||| | 21 \ell+ 12m l &=& 2,
+1329 | |||||||||| | \\
+1330 | |||||||||| | 21 m -12 \ell   &=& 0.
+1331 | |||||||||| | \end{eqnarray*}
+1332 | |||||||||| | \[
+1333 | |||||||||| |  \Rightarrow \quad
+1334 | |||||||||| |  \ell =\dfrac{21\cdot2}{21^2+12^2}= \dfrac{42}{585}, \qquad m = \dfrac{12\cdot2}{585}
+1335 | |||||||||| | \]
+1336 | |||||||||| | 
+1337 | |||||||||| | So
+1338 | |||||||||| | \[
+1339 | |||||||||| |  p = \dfrac{42}{585} \cos(2x) + \dfrac{24}{585} \sin(2x)
+1340 | |||||||||| | \]
+1341 | |||||||||| | 
+1342 | |||||||||| | Hence
+1343 | |||||||||| | \begin{eqnarray*}
+1344 | |||||||||| |  u &=& e^{-3x} (A \cos(4x) + B \sin(4x))\\
+1345 | |||||||||| |  && %\quad 
+1346 | |||||||||| | + \dfrac{42}{585} \cos(2x) + \dfrac{24}{585} \sin(2x).
+1347 | |||||||||| | \end{eqnarray*} 
+1348 | |||||||||| |  \end{example}
+1349 | |||||||||| | 
+1350 | |||||||||| | % I find this note more confusing than helpful.
+1351 | |||||||||| | % \begin{note}\
+1352 | |||||||||| | %
+1353 | |||||||||| | %The $\sin(2x)$ contribution means $u$ has a different phase to the forcing function.
+1354 | |||||||||| | % 
+1355 | |||||||||| | %To see this, let us suppose \eqref{eq5.sincos} is forced by  $\cos(\beta x)$ and the 
+1356 | |||||||||| | %general solution is therefore $u=q+p$ with
+1357 | |||||||||| | % \[
+1358 | |||||||||| | %  q(x) = e^{\lambda x} [A \cos(\alpha x) + B \sin(\alpha x)] 
+1359 | |||||||||| | % \]
+1360 | |||||||||| | %and
+1361 | |||||||||| | % \[
+1362 | |||||||||| | %  p(x) = \ell \cos(\beta x) + m \sin(\beta x).
+1363 | |||||||||| | % \]
+1364 | |||||||||| | %Further, assume $\lambda<0$, so that $q(x)\to 0$.
+1365 | |||||||||| | % 
+1366 | |||||||||| | % Rewrite
+1367 | |||||||||| | % \begin{eqnarray*}
+1368 | |||||||||| | %  p(x) &=& \sqrt{\ell^2+m^2} \left[
+1369 | |||||||||| | %  \dfrac{\ell}{\sqrt{\ell^2+m^2}} \cos(\beta x) 
+1370 | |||||||||| | %  + \dfrac{m}{\sqrt{\ell^2+m^2}} \sin(\beta x)
+1371 | |||||||||| | %  \right]\\
+1372 | |||||||||| | %  &=& A \cos(\beta x - \phi),
+1373 | |||||||||| | % \end{eqnarray*}
+1374 | |||||||||| | %where
+1375 | |||||||||| | % $\phi=\arctan \left(\dfrac{m}{\ell}\right)$ (as shown previously).
+1376 | |||||||||| | % 
+1377 | |||||||||| | % So for large $x$
+1378 | |||||||||| | % \[
+1379 | |||||||||| | %  u(x) \simeq p(x)=A \cos (\beta x - \phi).
+1380 | |||||||||| | % \]
+1381 | |||||||||| | %\end{note}
+1382 | |||||||||| | 
+1383 | |||||||||| | \emph{General case:} Suppose
+1384 | |||||||||| | \begin{equation}
+1385 | |||||||||| | au” + bu' + cu 
+1386 | |||||||||| | =
+1387 | |||||||||| | \alpha \cos (\beta x) + \gamma \sin(\beta x).
+1388 | |||||||||| | \label{eq5.sincos}
+1389 | |||||||||| | \end{equation}
+1390 | |||||||||| | for some frequency $\beta$.
+1391 | |||||||||| | 
+1392 | |||||||||| | \emph{Even if $\alpha = 0$ or $\gamma = 0$ }
+1393 | |||||||||| | set
+1394 | |||||||||| |  \[
+1395 | |||||||||| |   p(x) = \ell \cos (\beta x) + m \sin (\beta x).
+1396 | |||||||||| |  \]
+1397 | |||||||||| | Then
+1398 | |||||||||| | \begin{eqnarray*}
+1399 | |||||||||| | && a p” + b p' + c p \\
+1400 | |||||||||| | &=& - a \beta^2 \ell \cos(\beta x)
+1401 | |||||||||| |  - b \beta \ell \sin(\beta x)
+1402 | |||||||||| |  + c \ell \cos (\beta x) \\
+1403 | |||||||||| | &&  - a \beta^2 m \sin(\beta x)
+1404 | |||||||||| |  + b \beta m \cos(\beta x)
+1405 | |||||||||| |  + c m \sin(\beta x) \\
+1406 | |||||||||| | &=& (-a \beta^2 \ell + b \beta m + c \ell) \cos (\beta x)\\
+1407 | |||||||||| | && + (-a \beta^2 m - b \beta \ell + c m)\sin(\beta x)\\
+1408 | |||||||||| | &=&  \alpha \cos (\beta x) + \gamma \sin(\beta x)
+1409 | |||||||||| | \end{eqnarray*}
+1410 | |||||||||| | if
+1411 | |||||||||| | \begin{eqnarray*}
+1412 | |||||||||| |  (c-a\beta^2) \ell + b \beta m &=& \alpha,
+1413 | |||||||||| | \\
+1414 | |||||||||| |  (c-a \beta^2)m - b \beta \ell &=& \gamma.
+1415 | |||||||||| | \end{eqnarray*}
+1416 | |||||||||| | Solving system for $\ell$ and $m$
+1417 | |||||||||| | \begin{eqnarray*}
+1418 | |||||||||| |  \Rightarrow \quad \ell &=& \dfrac{(c-a\beta^2)\alpha - b \beta \gamma}{(c-a\beta^2)^2 + b^2 \beta^2}\\
+1419 | |||||||||| |  m &=& \dfrac{b \beta  \alpha + (c - a\beta^2)\gamma}{(c-a\beta^2)^2 + b^2\beta^2}
+1420 | |||||||||| | \end{eqnarray*}
+1421 | |||||||||| | 
+1422 | |||||||||| | \begin{note}
+1423 | |||||||||| |  $(c-a\beta^2)^2 + b^2\beta^2$ must be non-zero.
+1424 | |||||||||| | \end{note}
+1425 | |||||||||| | 
+1426 | |||||||||| | 
+1427 | |||||||||| |  \emph{Special case shortcut}. If $b=0$ and $\gamma=0$ then \eqref{eq5.sincos} reads
+1428 | |||||||||| |  \[
+1429 | |||||||||| |   au” + cu = \alpha \cos(\beta x).
+1430 | |||||||||| |  \]
+1431 | |||||||||| |  
+1432 | |||||||||| |  In this case it is sufficient to use
+1433 | |||||||||| |  \[
+1434 | |||||||||| |   p(x) = \ell \cos(\beta x).
+1435 | |||||||||| |  \]
+1436 | |||||||||| | 
+1437 | |||||||||| | Then, for $\ell = \dfrac{\alpha}{c-\alpha \beta^2}$,
+1438 | |||||||||| | \[
+1439 | |||||||||| |  ap” + cp =
+1440 | |||||||||| |  -a \ell \beta^2 \cos(\beta x) + c \ell \cos(\beta x) = \alpha \cos(\beta x).
+1441 | |||||||||| | \]
+1442 | |||||||||| | 
+1443 | |||||||||| | 
+1444 | |||||||||| | 
+1445 | |||||||||| | \subsubsection*{Particular integrals involving polynomials}
+1446 | |||||||||| | 
+1447 | |||||||||| | \begin{example}  Solve
+1448 | |||||||||| |   \[
+1449 | |||||||||| |     3u” + 2u' + u = x^2.
+1450 | |||||||||| |   \]
+1451 | |||||||||| | 
+1452 | |||||||||| |   Complimentary function $q$ satisfies
+1453 | |||||||||| |  \begin{eqnarray*}
+1454 | |||||||||| |  && 3q” + 2q' + q = 0\\
+1455 | |||||||||| |  &\text{AE:}& 3\lambda^2 + 2\lambda + 1 = 0\\
+1456 | |||||||||| | &\Rightarrow& \lambda = \dfrac{-2 \pm \sqrt{4-12}}{6} = \dfrac{-1 \pm \sqrt{-2}}{3}
+1457 | |||||||||| |  \end{eqnarray*}
+1458 | |||||||||| |  
+1459 | |||||||||| |  So
+1460 | |||||||||| |  \[
+1461 | |||||||||| |   q = e^{-\frac{x}{3}} \left(
+1462 | |||||||||| |   A \cos \left(\dfrac{\sqrt{2}x}{3}\right) +  B \sin \left(\dfrac{\sqrt{2}x}{3}\right)
+1463 | |||||||||| |   \right)
+1464 | |||||||||| |  \]
+1465 | |||||||||| | 
+1466 | |||||||||| |  PI: Let
+1467 | |||||||||| |  \begin{eqnarray*}
+1468 | |||||||||| |   && p(x) = r_0 + r_1 x + r_2 x^2\\
+1469 | |||||||||| |   &\Rightarrow& p' = r_1 + 2 r_2 x\\
+1470 | |||||||||| |   && p” = 2r_2
+1471 | |||||||||| |  \end{eqnarray*}
+1472 | |||||||||| | 
+1473 | |||||||||| | So
+1474 | |||||||||| | \[
+1475 | |||||||||| |  3p” + 2p' + p = x^2
+1476 | |||||||||| | \]
+1477 | |||||||||| | 
+1478 | |||||||||| | If
+1479 | |||||||||| | \begin{eqnarray*}
+1480 | |||||||||| | && 6r_2 + 2r_1 + 4r_2x + r_0 + r_1 x + r_2 x^2 = x^2\\
+1481 | |||||||||| | &\Rightarrow& r_2 x^2 + (4r_2+r_1)x + 6r_2 + 2r_1 r_0 = x^2
+1482 | |||||||||| | \end{eqnarray*}
+1483 | |||||||||| | 
+1484 | |||||||||| | Equating coefficients
+1485 | |||||||||| | \begin{eqnarray*}
+1486 | |||||||||| |  x^2: && r_2 = 1 \\
+1487 | |||||||||| |  x: && 4r_2+r_1 = 0 \quad \Rightarrow \quad r_1=-4 \\
+1488 | |||||||||| |  1: && 6r_2+ 2r_1 + r_0= 0 \quad \Rightarrow \quad r_0=2
+1489 | |||||||||| | \end{eqnarray*}
+1490 | |||||||||| | 
+1491 | |||||||||| | Hence
+1492 | |||||||||| | \[
+1493 | |||||||||| |  p(x) = x^2 - 4x + 2,
+1494 | |||||||||| | \]
+1495 | |||||||||| | so
+1496 | |||||||||| | \[
+1497 | |||||||||| |  u(x) = e^{-\frac{x}{3}} \left[
+1498 | |||||||||| |   A \cos \left(\dfrac{\sqrt{2}x}{3}\right) +  B \sin \left(\dfrac{\sqrt{2}x}{3}\right)
+1499 | |||||||||| |   \right] + x^2 - 4x + 2
+1500 | |||||||||| | \]
+1501 | |||||||||| | 
+1502 | |||||||||| | \end{example}
+1503 | |||||||||| | 
+1504 | |||||||||| | \emph{General Case:} Suppose
+1505 | |||||||||| | \[
+1506 | |||||||||| |  au” + bu' + cu = p_0 + p_1x + \ldots + p_{n}x^{n}
+1507 | |||||||||| | \]
+1508 | |||||||||| | 
+1509 | |||||||||| | Try
+1510 | |||||||||| | \[
+1511 | |||||||||| |  p(x) = r_0 + r_1 x + \ldots + r_{n} x^{n}.
+1512 | |||||||||| | \]
+1513 | |||||||||| | 
+1514 | |||||||||| | Then $ap” + bp' + cp$ is a polynomial. Equate coefficients of powers of $x^{k}$ in
+1515 | |||||||||| | \[
+1516 | |||||||||| |  ap” + bp' + cp = p_0 + p_1 x + p_{n}x^{n}
+1517 | |||||||||| | \]
+1518 | |||||||||| | to find $r_0,r_1, \ldots, r_{n}$ in terms of $p_1, p_2, \ldots, p_n$ and $a,b,c$.
+1519 | |||||||||| | 

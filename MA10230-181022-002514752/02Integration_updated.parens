@@ -1,0 +1,1103 @@
+   1 |            | \section{Integration}
+   2 |            | 
+   3 |            | Recall: There are two different types of integral.  Suppose we have a function $f$.
+   4 |            |   \begin{enumerate}
+   5 |            |     \item The \emph{indefinite integral} of $f$ is a function $F$ such that
+   6 | [          |       \[
+   7 | [          |         \frac{dF}{dx} = f(x).
+   8 |            |       \]
+   9 |            |     We write
+  10 | [          |       \[
+  11 | [          |         F = \int f \, dx.
+  12 |            |       \]
+  13 |            |     This defines integration as the inverse of differentiation (antidifferentiation). $F$ is called the \emph{antiderivative} of $f$.
+  14 |            |     \item The \emph{definite integral} is defined as the \emph{net signed area} between $f$ and the horizontal axis between $a$ and $b$. It is written
+  15 | [          |       \[
+  16 | [          |         \int_{a}^{b} f(x) \, dx.
+  17 |            |       \]
+  18 |            |   \end{enumerate}
+  19 |            | 
+  20 |            | You are probably used to using indefinite integrals to evaluate definite integrals, e.g.
+  21 |            |   \begin{align*}
+  22 |            |     \int_{0}^{\pi/2} \sin(x) dx &= [-\cos(x)]_{0}^{\pi/2} \\
+  23 |            |     &= 0 - (-1) \\
+  24 |            |     &= 1.
+  25 |            |   \end{align*}
+  26 |            | But why are we allowed to combine definite and indefinite integrals in this way?
+  27 |            | 
+  28 |            | 
+  29 |            | \subsection{Fundamental Theorem of Calculus}
+  30 |            | 
+  31 |            | This theorem establishes the astonishing connection between indefinite and definite integrals.
+  32 |            | 
+  33 |            | \begin{theorem}
+  34 |            | 
+  35 |            | Let $f$ be a continuous function on $u \in [a,b]$.
+  36 |            | 
+  37 |            | \emph{Part A.}
+  38 |            | 
+  39 |            | The function $f$ has an antiderivative $g$ given by
+  40 | [          | \[
+  41 | [          |  g(x) = \int_{a}^{x} f(u) du
+  42 |            | \]
+  43 |            | (signed area between $a$ and $x$, definite integral).
+  44 |            | 
+  45 |            | \emph{Part B.}
+  46 |            | 
+  47 |            | Given any antiderivative $h$ of $f$,
+  48 |            | \begin{eqnarray*}
+  49 |            |  \int_{a}^{b} f(u) \, du &=& h(b) - h(a) \\
+  50 |            |  &=& g(b) - g(a)\\
+  51 | ||         | &=& \int f(x)dx \Big|_{x=b} - \int f(x)dx \Big|_{x=a}
+  52 | ||         |  \end{eqnarray*}
+  53 | ||         | 
+  54 | ||         |  \end{theorem}
+  55 | ||         | 
+  56 | ||         | We don't have the formal mathematics required to prove this rigorously, and won't have until Semester 2 of Analysis 1.  Isaac Newton didn't have that formal mathematics yet either, so we (roughly) followed the method of justification he used in 1669.
+  57 | ||         | % I could possibly add more detail about what he did - which I think was just a special case - after the "proof".
+  58 | ||         | 
+  59 | ||         | 
+  60 | ||         | \begin{proof}[Justification of Part A]
+  61 | ||         | 
+  62 | ||         | We wish to differentiate
+  63 | ||[        | \[
+  64 | ||[        |  g(x) = \int_{a}^{x} f(u) \, du.
+  65 | ||         | \]
+  66 | ||         | 
+  67 | ||         | Suppose $x$ changes by a small increment $\Delta x$.  The corresponding change in $g$ is $g(x + \Delta x) - g(x)$, so the average rate of change from $x$ to $x + \Delta x$ is
+  68 | ||[        |   \[
+  69 | ||[        | 	  \frac{\Delta g}{\Delta x} = \frac{g(x + \Delta x) - g(x)}{\Delta x}.
+  70 | ||         | 	\]
+  71 | ||         | 
+  72 | ||         | As $\Delta x \rightarrow 0$, this approaches the derivative $\dfrac{dg}{dx}$.
+  73 | ||         | 
+  74 | ||         | Now, consider the diagram in figure (\ref{FTC_Proof}).
+  75 | ||         | 
+  76 | ||         |   \begin{figure}[H]
+  77 | ||         |     \centering
+  78 | ||         |     \def\svgwidth{0.8\columnwidth}
+  79 | ||         |     \input{figures/latex/FTC_Proof.pdf_tex}
+  80 | ||         |     \caption{The area $g(x+\Delta x) = \text{area $A$} + \text{area $\Delta A$}$}
+  81 | ||         |     \label{FTC_Proof}
+  82 | ||         |   \end{figure}
+  83 | ||         | By definition of the definite integral defining $g$,
+  84 | ||[        | \[
+  85 | ||[        | g(x+\Delta x) = \text{area $A$} + \text{area $\Delta A$} = g(x) + \text{area $\Delta A$}.
+  86 | ||         | \]
+  87 | ||         | 
+  88 | ||         | There is a point $\hat{x}$ with $x \leq \hat{x} \leq x + \Delta x$ such that $\Delta A = f(\hat{x})\Delta x$, as shown in figure (\ref{FTC_Proof}).  So
+  89 | ||         | \begin{align*}
+  90 | ||         |  g(x+\Delta x) - g(x) &= \text{area $\Delta A$} \\
+  91 | ||         |  &= f(\hat{x})\Delta x
+  92 | ||         |  \end{align*}
+  93 | ||         | 
+  94 | ||         |  Hence
+  95 | ||[        |  \[
+  96 | ||[        |   \dfrac{g(x+\Delta x) - g(x)}{\Delta x} = f(\hat{x})
+  97 | ||         |  \]
+  98 | ||         | 
+  99 | ||         |  As $\Delta x \to 0$, $\hat{x} \to x$ (since it gets sandwiched between $x$ and $x + \Delta x$), so \(f(\hat{x}) \to f(x)\) and
+ 100 | ||[        |  \[
+ 101 | ||[        |   \dfrac{dg}{dx} = f(x)
+ 102 | ||         |  \]
+ 103 | ||         | 
+ 104 | ||         | Hence $g$ is an antiderivative for $f$.
+ 105 | ||         | 
+ 106 | ||         | (see Analysis 1 Semester 2 for a rigorous proof).
+ 107 | ||         | 
+ 108 | ||         | \end{proof}
+ 109 | ||         | 
+ 110 | ||         | Note that this result allows us to differentiate certain functions defined in terms of integrals.  Explicitly, the statement “$g$ is an antiderivative for $f$” means that
+ 111 | ||[        |   \[
+ 112 | ||[        |     \frac{dg}{dx} = \frac{d}{dx}\left(\int_{a}^{x} f(u) \, du\right) = f(x).
+ 113 | ||         |   \]
+ 114 | ||         | Notice also that the derivative of $g$ does not depend on the lower limit of the integral, $a$.  If we were to evaluate the integral and write an explicit expression for $g$ (assuming that this is possible), this constant $a$ would only contribute a constant term to that expression; the derivative of that constant term would therefore be $0$.
+ 115 | ||         | 
+ 116 | ||         | 
+ 117 | ||         | 
+ 118 | ||         | \begin{proof}[Justification of Part B]
+ 119 | ||         | 
+ 120 | ||         | Let $h$ be an antiderivative of $f$.
+ 121 | ||         | 
+ 122 | ||         | So
+ 123 | ||         | \begin{eqnarray*}
+ 124 | ||         |  && \dfrac{dh}{dx} = f = \dfrac{dg}{dx}\\
+ 125 | ||         | % && F(x) = \int_{0}^{x} f(u)du \\
+ 126 | ||         |  &\Longrightarrow& \dfrac{dh}{dx} - \dfrac{dg}{dx} = 0\\
+ 127 | ||         |  &\Longrightarrow& \dfrac{d}{dx}(h-g) = 0\\
+ 128 | ||         |  && \text{by linearity of derivative}\\
+ 129 | ||         |  &\Longrightarrow& h-g=c, \quad \text{constant}.
+ 130 | ||         | \end{eqnarray*}
+ 131 | ||         | 
+ 132 | ||         | Hence
+ 133 | ||[        | \[
+ 134 | ||[        |  h=g+c.
+ 135 | ||         | \]
+ 136 | ||         | 
+ 137 | ||         | Now
+ 138 | ||         | \begin{eqnarray*}
+ 139 | |||        |  \int_{a}^{b} f(x)dx &=& \int_{a}^{x} f(u)du \Big|_{x=b}\\
+ 140 | ||||       |  &=& g(x)\Big|_{x=b} = g(b)
+ 141 | ||||       | \end{eqnarray*}
+ 142 | ||||       | \begin{eqnarray*}
+ 143 | ||||       |  \int_{a}^{a} f(x)dx &=& g(a)=0,
+ 144 | ||||       | \end{eqnarray*}
+ 145 | ||||       | so
+ 146 | ||||       | \begin{eqnarray*}
+ 147 | ||||       |  \int_{a}^{b} f(x)dx &=&  g(b) - g(a)\\
+ 148 | ||||       |  &=& (g(b)+c) - (g(a)+c)\\
+ 149 | ||||       |  &=& h(b) - h(a)
+ 150 | ||||       | \end{eqnarray*}
+ 151 | ||||       | 
+ 152 | ||||       | \end{proof}
+ 153 | ||||       | 
+ 154 | ||||       | % I'm not convinced that this corollary is useful or enlightening.
+ 155 | ||||       | % I think the point is that it's common-ish for functions to be defined as integrals, and these functions are therefore easy to differentiate.
+ 156 | ||||       | \begin{corollary}
+ 157 | ||||[      |  \[
+ 158 | ||||[      |   \dfrac{d}{dx} \int_{a(x)}^{b(x)} f(u)du = f(b) \dfrac{db}{dx} - f(a) \dfrac{da}{dx}
+ 159 | ||||       |  \]
+ 160 | ||||       | \end{corollary}
+ 161 | ||||       | 
+ 162 | ||||       | \begin{proof}
+ 163 | ||||       |  Let $g(x)$ be an antiderivative of $f(x)$, so
+ 164 | ||||[      |  \[
+ 165 | ||||[      |   \dfrac{dg}{dx} = f(x)
+ 166 | ||||       |  \]
+ 167 | ||||       | 
+ 168 | ||||       |  Then by Fundamental Theorem of Calculus,
+ 169 | ||||[      |  \[
+ 170 | ||||[      |   \int_{a(x)}^{b(x)} f(u)du = g(b(x))-g(a(x))
+ 171 | ||||       |  \]
+ 172 | ||||       | 
+ 173 | ||||       |  \begin{eqnarray*}
+ 174 | ||||       |   \Longrightarrow \quad \dfrac{d}{dx} \int_{a(x)}^{b(x)} f(u)du &=&
+ 175 | ||||       |   \dfrac{dg}{db} \dfrac{db}{dx} - \dfrac{dg}{da} \dfrac{da}{dx}\\
+ 176 | ||||       |   && \text{(chain rule)}\\ % This kind of typesetting is hideous.
+ 177 | ||||       |   &=& f(b) \dfrac{db}{dx} - f(a) \dfrac{da}{dx}
+ 178 | ||||       |  \end{eqnarray*}
+ 179 | ||||       | \end{proof}
+ 180 | ||||       | 
+ 181 | ||||       | 
+ 182 | ||||       | 
+ 183 | ||||       | \subsection{Hyperbolic functions}
+ 184 | ||||       | 
+ 185 | ||||       | Hyperbolic functions are a type of function related to trigonometric functions.  We will use them to help us integrate various types of functions, using a technique called \emph{integration by substitution}, which we'll meet in the next section.
+ 186 | ||||       | 
+ 187 | ||||       | \begin{eqnarray*}
+ 188 | ||||       |  && \cosh (x) = \dfrac{1}{2} (e^{x}+e^{-x})\\
+ 189 | ||||       |  && \sinh (x) = \dfrac{1}{2} (e^{x}-e^{-x})\\
+ 190 | ||||       |  && \tanh (x) = \dfrac{\sinh (x)}{\cosh (x)} = \dfrac{e^{x}-e^{-x}}{e^{x}+e^{-x}}
+ 191 | ||||       | \end{eqnarray*}
+ 192 | ||||       | 
+ 193 | ||||       | 
+ 194 | ||||       | \subsubsection*{Sketches}
+ 195 | ||||       | 
+ 196 | ||||       | What do $\cosh$ and $\sinh$ look like?
+ 197 | ||||       | 
+ 198 | ||||       | $\cosh(0)=1$
+ 199 | ||||       | 
+ 200 | ||||       | As $x \to \infty$, $\cosh(x) \to \infty$.
+ 201 | ||||       | 
+ 202 | ||||       | As $x \to -\infty$, $\cosh(x) \to \infty$.
+ 203 | ||||       | 
+ 204 | ||||       | $\cosh (x)>0$ $\forall x$.
+ 205 | ||||       | 
+ 206 | ||||       | \begin{figure}[H]
+ 207 | ||||       | \centering
+ 208 | ||||       |  \includegraphics[width=0.6\textwidth]{cosh.pdf}
+ 209 | ||||       | %\captionsetup{labelformat=empty}
+ 210 | ||||       | \caption{$\cosh(x)$}
+ 211 | ||||       | \end{figure}
+ 212 | ||||       | 
+ 213 | ||||       | Hanging chains (e.g. those in suspension bridges) have $\cosh$ shape, called a "catenary".
+ 214 | ||||       | 
+ 215 | ||||       | Soap bubbles between wands have a surface derived from the $\cosh$ shape.
+ 216 | ||||       | 
+ 217 | ||||       | $\sinh(0)=0$
+ 218 | ||||       | 
+ 219 | ||||       | As $x \to \infty$, $\sinh(x) \to \infty$.
+ 220 | ||||       | 
+ 221 | ||||       | As $x \to -\infty$, $\sinh(x) \to -\infty$.
+ 222 | ||||       | 
+ 223 | ||||       | \begin{figure}[H]
+ 224 | ||||       | \centering
+ 225 | ||||       |  \includegraphics[width=0.6\textwidth]{sinh.pdf}
+ 226 | ||||       | %\captionsetup{labelformat=empty}
+ 227 | ||||       | \caption{$\sinh(x)$}
+ 228 | ||||       | \end{figure}
+ 229 | ||||       | 
+ 230 | ||||       | $\tanh(0)=0$
+ 231 | ||||       | 
+ 232 | ||||       | As $x \to \infty$, $\tanh(x) \to 1$.
+ 233 | ||||       | 
+ 234 | ||||       | As $x \to -\infty$, $\tanh(x) \to -1$.
+ 235 | ||||       | 
+ 236 | ||||       | \begin{figure}[H]
+ 237 | ||||       | \centering
+ 238 | ||||       |  \includegraphics[width=0.6\textwidth]{tanh.pdf}
+ 239 | ||||       | %\captionsetup{labelformat=empty}
+ 240 | ||||       | \caption{$\tanh(x)$}
+ 241 | ||||       | \end{figure}
+ 242 | ||||       | 
+ 243 | ||||       | \subsubsection*{Hyperbolic identities}
+ 244 | ||||       | 
+ 245 | ||||       | Hyperbolic functions satisfy identities similar to trigonometric identities.
+ 246 | ||||       | 
+ 247 | ||||       | \begin{examples}
+ 248 | ||||       |   \quad
+ 249 | ||||       |   \begin{enumerate}
+ 250 | ||||       | 		\item \(\cosh^{2}(x) - \sinh^{2}(x) = 1\) because
+ 251 | ||||       | \begin{eqnarray*}
+ 252 | ||||       |  \cosh^{2}(x) - \sinh^{2}(x)
+ 253 | ||||       |  &=& \left(\dfrac{e^{x}+e^{-x}}{2}\right)^2
+ 254 | ||||       |  - \left(\dfrac{e^{x}-e^{-x}}{2}\right)^2 \\
+ 255 | ||||       |  &=& \dfrac{1}{4} \left(e^{2x} + 2 + e^{-2x}\right)
+ 256 | ||||       |  - \dfrac{1}{4} \left(e^{2x} - 2 + e^{-2x}\right) \\
+ 257 | ||||       |  &=& \dfrac{1}{2} + \dfrac{1}{2} = 1.
+ 258 | ||||       | \end{eqnarray*}
+ 259 | ||||       | 
+ 260 | ||||       | Compare this with the trigonometric identity
+ 261 | ||||[      | \[
+ 262 | ||||[      |  \cos^{2}(x) + \sin^{2}(x) = 1.
+ 263 | ||||       | \]
+ 264 | ||||       |     \item \(1 - \tanh^2(x) = \sech^2(x).\)  Using \(\cosh^2(x) - \sinh^2(x) = 1\) and dividing through by \(\cosh^2(x)\) gives
+ 265 | ||||[      | 		\[
+ 266 | ||||[      | 		  \frac{\cosh^2(x)}{\cosh^2(x)} - \frac{\sinh^2(x)}{\cosh^2(x)} = \frac{1}{\cosh^2(x)},
+ 267 | ||||       | 		\]
+ 268 | ||||       | 		i.e. \(1 - \tanh^2(x) = \sech^2(x).\)
+ 269 | ||||       | 		
+ 270 | ||||       | 		Compare this with the trigonometric identity 
+ 271 | ||||[      | 		  \[
+ 272 | ||||[      | 			  1 + \tan^2(x) = \sec^2(x).
+ 273 | ||||       | 			\]
+ 274 | ||||       | 		\item The hyperbolic addition formula for \(\sinh\) is
+ 275 | ||||[      | 		  \[
+ 276 | ||||[      | 			  \sinh(x + y) = \sinh(x)\cosh(y) + \cosh(x)\cosh(y).
+ 277 | ||||       | 			\]
+ 278 | ||||       | 		The corresponding trigonometric identity is
+ 279 | ||||[      | 		  \[
+ 280 | ||||[      | 			  \sin(x + y) = \sin(x)\cos(y) + \cos(x)\cos(y).
+ 281 | ||||       | 			\]
+ 282 | ||||       | 		(See Exercise Sheet 1.)
+ 283 | ||||       | 		\item The hyperbolic addition formula for \(\cosh\) is
+ 284 | ||||[      | 		  \[
+ 285 | ||||[      | 			  \cosh(x + y) = \cosh(x)\cosh(y) + \sinh(x)\sinh(y).
+ 286 | ||||       | 			\]
+ 287 | ||||       | 		The corresponding trigonometric identity is
+ 288 | ||||[      | 		  \[
+ 289 | ||||[      | 			  \cos(x + y) = \cos(x)\cos(y) - \sin(x)\sin(y).
+ 290 | ||||       | 			\]
+ 291 | ||||       | 	\end{enumerate}
+ 292 | ||||       | \end{examples}	
+ 293 | ||||       | 
+ 294 | ||||       | % I'm not sure that this Osborn's Rule stuff is strictly necessary, although the part about complex numbers is enlightening.
+ 295 | ||||       | 
+ 296 | ||||       | 	In fact, \emph{Osborn's Rule} states that any trigonometric identity can be converted into a hyperbolic identity by
+ 297 | ||||       | 	  \begin{itemize}
+ 298 | ||||       | 			\item replacing trigonometric functions with their hyperbolic counterparts,
+ 299 | ||||       | 			\item swapping the sign of any product of two \(\sinh\)s.
+ 300 | ||||       | 		\end{itemize}
+ 301 | ||||       | 	Note: be careful with the second step, e.g.
+ 302 | ||||[      | 	  \[
+ 303 | ||||[      | 		  \tanh(x) = \frac{\sinh(x)}{\cosh(x)},
+ 304 | ||||       | 		\]
+ 305 | ||||       | 	so \(\tan^2(x)\) becomes \(-\tanh^2(x)\) (see Example 2).
+ 306 | ||||       | 	
+ 307 | ||||       | 	This arises because hyperbolic and trigonometric functions are related as follows:
+ 308 | ||||       | 	  \begin{align*}
+ 309 | ||||       | 		  \cosh(ix) & = \cos(x),  \\
+ 310 | ||||       | 			\cosh(x) & = \cos(ix),  \\
+ 311 | ||||       | 			\sinh(ix) & = i\sin(x),  \\
+ 312 | ||||       | 			\sinh(x) & = -i\sin(ix),
+ 313 | ||||       | 		\end{align*}
+ 314 | ||||       | 	where \(i^2 = -1\).
+ 315 | ||||       | 	
+ 316 | ||||       | 	This comes from Euler's relation:
+ 317 | ||||[      | 	  \[
+ 318 | ||||[      | 		  e^{i\theta} = \cos(\theta) + i\sin(\theta).
+ 319 | ||||       | 		\]
+ 320 | ||||       | 		
+ 321 | ||||       | 		
+ 322 | ||||       | \subsubsection*{Geometric interpretation}
+ 323 | ||||       | 
+ 324 | ||||       | In trigonometric expressions such as \(\sin(\theta)\), \(\cos(\theta)\), etc., \(\theta\) can be interpreted as an angle.  Similarly, in \(\sinh(t)\) and \(\cosh(t)\), \(t\) can be interpreted as an area.
+ 325 | ||||       | 
+ 326 | ||||       | Since \(\cosh^2(t) - \sinh^2(t) = 1\), for any \(t\), the point \((x, y) = (\cosh(t), \sinh(t))\) lies on the curve \(x^2 - y^2 = 1\).  Then \(t\) corresponds to twice the area bounded by this curve, the \(x\)-axis, and the line from the origin to the point \((\cosh(t), \sinh(t))\), as shown in figure (\ref{inversehyperbolicarea}).
+ 327 | ||||       | 
+ 328 | ||||       |   \begin{figure}[H]
+ 329 | ||||       |     \centering
+ 330 | ||||       |     \def\svgwidth{0.3\columnwidth}
+ 331 | ||||       |     \input{figures/latex/Inverse_Hyperbolic_Area.pdf_tex}
+ 332 | ||||       |     \caption{$t$ corresponds to twice the shaded area}
+ 333 | ||||       |     \label{inversehyperbolicarea}
+ 334 | ||||       |   \end{figure}
+ 335 | ||||       | 
+ 336 | ||||       | Because of this, the inverse hyperbolic functions are denoted \(\arsinh\), \(\arcosh\), etc. -- “ar” is an abbreviation of “area”.
+ 337 | ||||       | 
+ 338 | ||||       | 
+ 339 | ||||       | \subsubsection*{Differentiating hyperbolic functions}
+ 340 | ||||       | 
+ 341 | ||||       | Since hyperbolic functions are defined in terms of the exponential function, they are straightforward to differentiate.
+ 342 | ||||       | 
+ 343 | ||||       | \begin{align*}
+ 344 | ||||       |   \frac{d}{dx}\sinh(x) & = \frac{d}{dx}\left(\frac{e^x - e^{-x}}{2}\right)  \\
+ 345 | ||||       |                        & = \frac{e^x + e^{-x}}{2}  \\
+ 346 | ||||       |                        & = \cosh(x)
+ 347 | ||||       | \end{align*}
+ 348 | ||||       | 
+ 349 | ||||       | Similarly,
+ 350 | ||||[      |   \[
+ 351 | ||||[      |     \frac{d}{dx}\cosh(x) = \sinh(x),
+ 352 | ||||       |   \]
+ 353 | ||||[      |   \[
+ 354 | ||||[      |     \frac{d}{dx}\tanh{x} = \frac{1}{\cosh^2(x)} = \sech^2(x).
+ 355 | ||||       |   \]
+ 356 | ||||       | 
+ 357 | ||||       | 
+ 358 | ||||       | 
+ 359 | ||||       | 
+ 360 | ||||       | \subsection{Integrating functions involving square roots}  \label{sect:sqrts}
+ 361 | ||||       | 
+ 362 | ||||       | Integrals involving functions with square roots often arise in mechanics.  In this section, we will investigate methods for integrating them using trigonometric and hyperbolic substitutions.
+ 363 | ||||       | 
+ 364 | ||||       | Recall that integration by substitution is a technique for evaluating integrals involving composite functions, using the formula
+ 365 | ||||[      |   \[
+ 366 | ||||[      |     \int f(g(x)) \dfrac{dg}{dx}dx = F(g(x)) + c,
+ 367 | ||||       |   \]
+ 368 | ||||       | derived from the chain rule for differentiation. (For a more detailed reminder of integration by substitution, see the additional notes on the course Moodle page.)
+ 369 | ||||       | 
+ 370 | ||||       | 
+ 371 | ||||       | \begin{example}
+ 372 | ||||       | 
+ 373 | ||||       | Evaluate the integral
+ 374 | ||||[      |   \[
+ 375 | ||||[      | 	  \int \sqrt{a^2 - x^2} \, dx,
+ 376 | ||||       | 	\]
+ 377 | ||||(||)   | where \(\left|x\right| < a\).
+ 378 | ||||(||)   | 
+ 379 | ||||(||)   | The integrand is a semicircle with radius \(a\).  To inform which choice of substitution to use, consider figure (\ref{semicircleintegralindefinite}).  The coordinates of any point \((x, \sqrt{a^2 - x^2})\) on the curve can be expressed in terms of \(\theta\), the angle between the \(y\)-axis and the line segment from the origin to that point, using trigonometric functions.
+ 380 | ||||(||)   | 
+ 381 | ||||(||)   |   \begin{figure}[H]
+ 382 | ||||(||)   |     \centering
+ 383 | ||||(||)   |     \def\svgwidth{0.55\columnwidth}
+ 384 | ||||(||)   |     \input{figures/latex/semicircleintegralindefinite.pdf_tex}
+ 385 | ||||(||)   |     \caption{Finding a substitution to integrate the curve $\sqrt{a^2 - x^2}$}
+ 386 | ||||(||)   |     \label{semicircleintegralindefinite}
+ 387 | ||||(||)   |   \end{figure}
+ 388 | ||||(||)   | 	
+ 389 | ||||(||)   | From the right-angled triangle in figure (\ref{semicircleintegralindefinite}), we see that
+ 390 | ||||(||)[  |   \[
+ 391 | ||||(||)[  |     x  =  a \sin{\theta}.
+ 392 | ||||(||)   |   \]
+ 393 | ||||(||)   | We will use this for our substitution.  Then $\theta=\arcsin \left(\dfrac{x}{a}\right)$,\quad $\dfrac{dx}{d \theta} = a \cos(\theta)$, and
+ 394 | ||||(||)[  |   \[
+ 395 | ||||(||)[  | 	  \sqrt{a^2 - x^2} = \sqrt{a^2 - a^2\sin^2(\theta)} = \sqrt{a^2\cos^2(\theta)} = a\cos(\theta),
+ 396 | ||||(||)   | 	\]
+ 397 | ||||(||)   | using \(1 - \sin^2(\theta) = \cos^2(\theta)\); alternatively, one can deduce this from the right-angled triangle in figure (\ref{semicircleintegralindefinite}).
+ 398 | ||||(||)   | 
+ 399 | ||||(||)   | Thus the integral is
+ 400 | ||||(||)   |   \begin{align*}
+ 401 | ||||(||)   |     \int \sqrt{a^2 - x^2} \, dx & = \int a\cos(\theta) \times a\cos(\theta) \, d\theta \\
+ 402 | ||||(||)   |     & = \int a^2 \cos^2(\theta) \, d\theta \\
+ 403 | ||||(||)   |     & = \int \frac{a^2}{2}\left(1+\cos(2\theta)\right) \, d\theta \\
+ 404 | ||||(||)   |     & = \frac{a^2}{2} \theta + \frac{a^2}{4} \sin(2\theta) + c \\
+ 405 | ||||(||)   |     & = \frac{a^2}{2} \arcsin \left(\frac{x}{a}\right)+\frac{a^2}{4} \sin \left(2 \arcsin\left(\frac{x}{a}\right)\right) +c.\\
+ 406 | ||||(||)   |   \end{align*}
+ 407 | ||||(||)   | 
+ 408 | ||||(||)   | The second term can be simplified further: using the trigonometric identities
+ 409 | ||||(||)   |   \begin{align*}
+ 410 | ||||(||)   | 	  \sin (2\theta) & = 2 \sin (\theta) \cos (\theta), \text{ and}   \\
+ 411 | ||||(||)   | 		\cos (\theta) & = \sqrt{1-\sin^{2}(\theta)},
+ 412 | ||||(||)   | 	\end{align*}
+ 413 | ||||(||)   | we have
+ 414 | ||||(||)   |   \begin{align*}
+ 415 | ||||(||)   | 	  \sin \left(2 \arcsin\left(\frac{x}{a}\right)\right) & = 2 \sin \left(\arcsin\left(\frac{x}{a}\right)\right)\cos \left(\arcsin\left(\frac{x}{a}\right)\right)  \\
+ 416 | ||||(||)   | 		& = 2\dfrac{x}{a} \left[1 - \sin^2 \left(\arcsin\left(\frac{x}{a}\right)\right) \right]^{1/2}  \\
+ 417 | ||||(||)   | 		& = \dfrac{2x}{a} \sqrt{1-\dfrac{x^{2}}{a^{2}}}.
+ 418 | ||||(||)   | 	\end{align*}
+ 419 | ||||(||)   | Thus
+ 420 | ||||(||)   |   \begin{align*}
+ 421 | ||||(||)   |     \int \sqrt{a^2 - x^2} \, dx & = \frac{a^2}{2} \arcsin \left(\frac{x}{a}\right)+\frac{a^2}{4} \sin \left(2 \arcsin\left(\frac{x}{a}\right)\right) +c.\\
+ 422 | ||||(||)   | 		& = \frac{a^2}{2} \arcsin \left(\frac{x}{a}\right) + \frac{ax}{2} \sqrt{1-\dfrac{x^2}{a^2}} + c  \\
+ 423 | ||||(||)   | 		& = \frac{a^2}{2} \arcsin \left(\frac{x}{a}\right) + \frac{x}{2} \sqrt{a^2 - x^2} + c.
+ 424 | ||||(||)   |   \end{align*}
+ 425 | ||||(||)   | 	
+ 426 | ||||(||)   | For a geometric interpretation of this answer, consider the definite integral
+ 427 | ||||(||)   |   \begin{equation}  \label{semicircledefiniteexpression}
+ 428 | ||||(||)   | 	  \int_0^b \sqrt{a^2 - x^2} \, dx = \frac{a^2}{2}\arcsin\left(\frac{b}{a}\right) + \frac{b}{2} \sqrt{a^2 - b^2},
+ 429 | ||||(||)   | 	\end{equation}
+ 430 | ||||(||)   | where \(0 < b < a\).  This definite integral is the area shown in figure (\ref{semicircleintegraldefinite}), divided into two regions, \(R\) and \(S\).
+ 431 | ||||(||)   | 
+ 432 | ||||(||)   |   \begin{figure}[H]
+ 433 | ||||(||)   |     \centering
+ 434 | ||||(||)   |     \def\svgwidth{0.4\columnwidth}
+ 435 | ||||(||)   |     \input{figures/latex/semicircleintegraldefinite.pdf_tex}
+ 436 | ||||(||)   |     \caption{Definite integral of the curve $\sqrt{a^2 - x^2}$}
+ 437 | ||||(||)   |     \label{semicircleintegraldefinite}
+ 438 | ||||(||)   |   \end{figure}
+ 439 | ||||(||)   | 	
+ 440 | ||||(||)   | The region \(R\) is a sector of a circle of radius \(a\) with angle \(\arcsin\left(\dfrac{b}{a}\right)\), and therefore has area
+ 441 | ||||(||)[  |   \[
+ 442 | ||||(||)[  | 	  \frac{\pi a^2}{2\pi}\arcsin\left(\frac{b}{a}\right) = \frac{a^2}{2}\arcsin\left(\frac{b}{a}\right),
+ 443 | ||||(||)   | 	\]
+ 444 | ||||(||)   | the first term in the expression for the definite integral (\ref{semicircledefiniteexpression}).
+ 445 | ||||(||)   | 
+ 446 | ||||(||)   | The region \(S\) is a triangle with base length \(b\) and height \(\sqrt{a^2 - b^2}\), and therefore has area
+ 447 | ||||(||)[  |   \[
+ 448 | ||||(||)[  | 	  \frac{b}{2} \sqrt{a^2 - b^2},
+ 449 | ||||(||)   | 	\]
+ 450 | ||||(||)   | the second term in the expression for the definite integral (\ref{semicircledefiniteexpression}).
+ 451 | ||||(||)   | \end{example}
+ 452 | ||||(||)   | 
+ 453 | ||||(||)   | There are a total of six similar cases (including this one) of integrals involving square roots:
+ 454 | ||||(||)   |   \begin{enumerate}
+ 455 | ||||(||)(| |     \item $\sqrt{a^2 - x^2}$ \qquad ($\left|x\right| < a$)
+ 456 | ||||(||)(| |     \item $\dfrac{1}{\sqrt{a^2 - x^2}}$ \qquad ($\left|x\right| < a$)
+ 457 | ||||(||)(| |     \item $\dfrac{1}{\sqrt{a^2 + x^2}}$
+ 458 | ||||(||)(| |     \item $\sqrt{a^2 + x^2}$
+ 459 | ||||(||)(| |     \item $\dfrac{1}{\sqrt{x^2 - a^2}}$ \qquad ($\left|x\right| > a$)
+ 460 | ||||(||)(| |     \item $\sqrt{x^2-a^2}$\qquad ($\left|x\right| > a$)
+ 461 | ||||(||)(| |   \end{enumerate}
+ 462 | ||||(||)(| | 
+ 463 | ||||(||)(| | \begin{description}
+ 464 | ||||(||)(| | \item[Case 2.]  This integrand includes the same square root expression as Case 1, so we use the same substitution,
+ 465 | ||||(||)(| |   \[
+ 466 | ||||(||)(| |     x  =  a \sin{\theta}.
+ 467 | ||||(||)(| |   \]
+ 468 | ||||(||)(| | With this substitution, $\theta=\arcsin \left(\dfrac{x}{a}\right)$ and $\dfrac{dx}{d \theta} = a \cos(\theta)$.
+ 469 | ||||(||)(| | 
+ 470 | ||||(||)(| |   \begin{align*}
+ 471 | ||||(||)(| |     \int \dfrac{1}{\sqrt{a^2-x^2}} \, dx & = \int \dfrac{a \cos (\theta)}{\sqrt{a^2 - a^2\sin^2(\theta)}} \, d\theta  \\
+ 472 | ||||(||)(| | 		& = \int \dfrac{a \cos (\theta)}{a \cos(\theta)} \, d\theta  \\
+ 473 | ||||(||)(| | 		& = \int  d\theta \\
+ 474 | ||||(||)(| | 		& = \theta + c \\
+ 475 | ||||(||)(| | 		& = \arcsin\left(\dfrac{x}{a}\right) + c.
+ 476 | ||||(||)(| | \end{align*}
+ 477 | ||||(||)(| | 
+ 478 | ||||(||)(| | \item[Case 3.] In Cases 1 and 2, we simplified the square root using the trigonometric identity
+ 479 | ||||(||)(| |   \[
+ 480 | ||||(||)(| | 	  1 - \sin^2(\theta) = \cos^2(\theta).
+ 481 | ||||(||)(| | 	\]
+ 482 | ||||(||)(| | In this case, we will use the hyperbolic identity
+ 483 | ||||(||)(| |   \[
+ 484 | ||||(||)(| | 	  1 + \sinh^2(\theta) = \cosh^2(\theta)
+ 485 | ||||(||)(| | 	\]
+ 486 | ||||(||)(| | in a similar way.  To do this, we use the substitution $x=a \sinh(\theta)$,  so
+ 487 | ||||(||)(| |   \[
+ 488 | ||||(||)(| |     \theta = \arcsinh \left(\dfrac{x}{a}\right), \qquad \dfrac{dx}{d\theta} = a \cosh(\theta).
+ 489 | ||||(||)(| |   \]
+ 490 | ||||(||)(| | 
+ 491 | ||||(||)(| | \begin{eqnarray*}
+ 492 | ||||(||)(| |  && \int \dfrac{dx}{\sqrt{a^2+x^2}} \\
+ 493 | ||||(||)(| |  &=& \int \dfrac{a \cosh (\theta) d\theta}{\sqrt{a^2+a^2 \sinh^2(\theta)}} \\
+ 494 | ||||(||)(| |  &=& \int \dfrac{a \cosh (\theta)}{a \cosh(\theta)}  d\theta \\
+ 495 | ||||(||)(| | &=& \theta + c\\
+ 496 | ||||(||)(| | &=& \arcsinh \left(\dfrac{x}{a}\right) + c\\
+ 497 | ||||(||)(| |  \end{eqnarray*}
+ 498 | ||||(||)(| | 
+ 499 | ||||(||)(| | Recall from Exercise Sheet 1, question 4(a), that
+ 500 | ||||(||)(| | \[
+ 501 | ||||(||)(| |  \arcsinh (u) = \ln (u+\sqrt{u^2+1}),
+ 502 | ||||(||)(| | \]
+ 503 | ||||(||)(| | so
+ 504 | ||||(||)(| |   \[
+ 505 | ||||(||)(| |     \int \dfrac{dx}{\sqrt{a^2+x^2}} = \ln (x+\sqrt{x^2+a^2}) + c.
+ 506 | ||||(||)(| |   \]
+ 507 | ||||(||)(| | 
+ 508 | ||||(||)(| | \item[Case 4, 5 and 6.] See Exercise Sheet 2.
+ 509 | ||||(||)(| | 
+ 510 | ||||(||)(| | \end{description}
+ 511 | ||||(||)(| | 
+ 512 | ||||(||)(| | 
+ 513 | ||||(||)(| | 
+ 514 | ||||(||)(| | \subsection{Integrating rational functions}
+ 515 | ||||(||)(| | 
+ 516 | ||||(||)(| | In this section, we will investigate methods for integrating rational functions.  A rational function is a function of the form
+ 517 | ||||(||)(| | \[
+ 518 | ||||(||)(| |  f(x) = \dfrac{a+bx+cx^{2} + \ldots + dx^{n}}{p + qx + rx^{2} + \ldots + sx^{m}}.
+ 519 | ||||(||)(| | \]
+ 520 | ||||(||)(| | They can be used to approximate many other functions.
+ 521 | ||||(||)(| | 
+ 522 | ||||(||)(| | \subsubsection*{Numerator $1$, denominator linear}
+ 523 | ||||(||)(| | 
+ 524 | ||||(||)(| | \begin{eqnarray*}
+ 525 | ||||(||)(| |  f(x) &=& \dfrac{1}{ax+b}\\
+ 526 | ||||(||)(| |  &=& \dfrac{1}{a} \times \dfrac{a}{ax+b}\\
+ 527 | ||||(||)(| |  &=& \dfrac{1}{a} \dfrac{1}{g(x)} \dfrac{dg}{dx}\\
+ 528 | ||||(||)(| |  \text{where } g(x) &=& ax+b
+ 529 | ||||(||)(| | \end{eqnarray*}
+ 530 | ||||(||)(| | 
+ 531 | ||||(||)(| | So
+ 532 | ||||(||)(| | \[
+ 533 | ||||(||)(| |  \int f(x) dx = \dfrac{1}{a} \ln \left|ax+b\right| + c
+ 534 | ||||(||)(| | \]
+ 535 | ||||(||)(| | 
+ 536 | ||||(||)(| | \subsubsection*{Numerator $1$, denominator quadratic}
+ 537 | ||||(||)(| | 
+ 538 | ||||(||)(| | \[
+ 539 | ||||(||)(| |  f(x) = \dfrac{1}{ax^{2}+bx+c}
+ 540 | ||||(||)(| | \]
+ 541 | ||||(||)(| | 
+ 542 | ||||(||)(| | We first consider two simpler cases, then show how the general case can be reduced to one of these.
+ 543 | ||||(||)(| | 
+ 544 | ||||(||)(| | \begin{examplesnumbered} \label{ex:quadraticdenominators}
+ 545 | ||||(||)(| |  \quad
+ 546 | ||||(||)(| |  \begin{enumerate}
+ 547 | ||||(||)(| |   \item $f(x) = \dfrac{1}{a^{2} + x^{2}}$
+ 548 | ||||(||)(| | 
+ 549 | ||||(||)(| |          Substitution: let $x = a \tan(u)$, so that $u = \arctan \left(\dfrac{x}{a}\right)$.
+ 550 | ||||(||)(| | 				% This could do with more explanation about why I'm using that substitution.
+ 551 | ||||(||)(| | 				
+ 552 | ||||(||)(| | 				Then
+ 553 | ||||(||)(| | 				  \[
+ 554 | ||||(||)(| | 					  \frac{dx}{du} = a\sec^2(u),
+ 555 | ||||(||)(| | 					\]
+ 556 | ||||(||)(| | 				so
+ 557 | ||||(||)(| | 				  \begin{align*}
+ 558 | ||||(||)(| | 					  \int \frac{1}{a^2 + x^2} \, dx & = \int \frac{1}{a^2 + a^2\tan^2(u)} \times a\sec^2(u) \, du  \\
+ 559 | ||||(||)(| | 						& = \int \frac{a\sec^2(u)}{a^2(1 + \tan^2(u))} \, du  \\
+ 560 | ||||(||)(| | 						& = \int \frac{a\sec^2(u)}{a^2\sec^2(u)} \, du  \\
+ 561 | ||||(||)(| | 						& = \int \frac{1}{a} \, du  \\
+ 562 | ||||(||)(| | 						& = \frac{u}{a} + c  \\
+ 563 | ||||(||)(| | 						& = \frac{1}{a}\arctan\left(\frac{x}{a}\right) + c.
+ 564 | ||||(||)(| | 					\end{align*}
+ 565 | ||||(||)(| | 
+ 566 | ||||(||)(| |     \item $f(x) = \dfrac{1}{a^{2}-x^{2}} = -\dfrac{1}{x^{2}-a^{2}}$
+ 567 | ||||(||)(| | 		
+ 568 | ||||(||)(| | 		In this case, we have several options:
+ 569 | ||||(||)(| | 		  \begin{itemize}
+ 570 | ||||(||)(| | 				\item Use partial fractions:
+ 571 | ||||(||)(| | 				  \begin{align*}
+ 572 | ||||(||)(| | 					  f(x) & = \frac{1}{(a + x)(a - x)}  \\
+ 573 | ||||(||)(| | 						& = \frac{1}{2a}\left(\frac{1}{a + x} + \frac{1}{a - x}\right).
+ 574 | ||||(||)(| | 					\end{align*}
+ 575 | ||||(||)(| | 				\item If \(|x| < a\), use \(x = a\tanh(u)\).  Then \(a^2 - x^2 = a^2(1 - \tanh^2(u)) = a^2\sech^2(u)\).
+ 576 | ||||(||)(| | 				\item If \(|x| > a\), use \(x = a\coth(u)\), so \(a^2 - x^2 = a^2(1 - \coth^2(u)) = -a^2\cosech^2(u)\).
+ 577 | ||||(||)(| | 			\end{itemize}
+ 578 | ||||(||)(| | 		We will not cover the details of the substitutions here, since they are so similar to the \(\tan\) substitution in Case 1.
+ 579 | ||||(||)(| |  \end{enumerate}
+ 580 | ||||(||)(| | 
+ 581 | ||||(||)(| | \end{examplesnumbered}
+ 582 | ||||(||)(| | 
+ 583 | ||||(||)(| | 
+ 584 | ||||(||)(| | \subsubsection*{General quadratic denominator}
+ 585 | ||||(||)(| | 
+ 586 | ||||(||)(| | Given an integral with a general quadratic denominator,
+ 587 | ||||(||)(| |     \begin{equation}  \label{eq:genquadraticdenom}
+ 588 | ||||(||)(| |       \int \dfrac{dx}{ax^{2} + bx + c},
+ 589 | ||||(||)(| |     \end{equation}
+ 590 | ||||(||)(| | we perform the following steps:
+ 591 | ||||(||)(| |   \begin{itemize}
+ 592 | ||||(||)(| | 		\item Complete the square in the denominator.
+ 593 | ||||(||)(| | 		\item Use a substitution to transform this into
+ 594 | ||||(||)(| | 		  \[
+ 595 | ||||(||)(| | 			  \int \frac{p}{u^2 \pm q^2} \, du,
+ 596 | ||||(||)(| | 			\]
+ 597 | ||||(||)(| | 		with \(p\) and \(q\) constant.
+ 598 | ||||(||)(| | 		\item If \(q = 0\), this can be integrated directly.
+ 599 | ||||(||)(| | 		\item Otherwise, integrate using the method from Case 1 or Case 2 from Examples~\ref{ex:quadraticdenominators}.
+ 600 | ||||(||)(| | 	\end{itemize}
+ 601 | ||||(||)(| | 	
+ 602 | ||||(||)(| | 	\begin{examplenumbered} \label{ex:genquaddenom}
+ 603 | ||||(||)(| | 	  Evaluate
+ 604 | ||||(||)(| | 		  \[
+ 605 | ||||(||)(| | 			  \int \frac{dx}{x^2 + 4x + 8} = \int \frac{dx}{(x + 2)^2 + 4}.
+ 606 | ||||(||)(| | 			\]
+ 607 | ||||(||)(| | 		We have completed the square in the denominator.  Now let \(u = x + 2\), so \(\dfrac{du}{dx} = 1\).  Then
+ 608 | ||||(||)(| | 		  \begin{align*}
+ 609 | ||||(||)(| | 			  \int \frac{dx}{(x + 2)^2 + 4} & = \int \frac{du}{u^2 + 2^2}  \\
+ 610 | ||||(||)(| | 				& = \frac{1}{2}\arctan\left(\frac{u}{2}\right) + c  \\
+ 611 | ||||(||)(| | 				& = \frac{1}{2}\arctan\left(\frac{x + 2}{2}\right) + c.
+ 612 | ||||(||)(| | 			\end{align*}
+ 613 | ||||(||)(| | 	\end{examplenumbered}
+ 614 | ||||(||)(| | 	
+ 615 | ||||(||)(| | 	For completeness, there follows an argument for evaluating \ref{eq:genquadraticdenom} for general values of \(a\), \(b\) and \(c\). 	Since this is notationally fiddly, but not substantially more complicated than the previous example, this general argument will not be covered in the lectures.
+ 616 | ||||(||)(| | 
+ 617 | ||||(||)(| | The denominator is
+ 618 | ||||(||)(| | \begin{eqnarray}
+ 619 | ||||(||)(| |  ax^{2} + bx + c &=& a \left[x^{2}+ \left(\dfrac{b}{a}\right)x + \left(\dfrac{c}{a}\right)\right]\notag\\
+ 620 | ||||(||)(| |  &=& a \left[\left(x+ \dfrac{b}{2a}\right)^{2} + \dfrac{c}{a}-\dfrac{b^{2}}{4a^{2}}\right]\notag\\
+ 621 | ||||(||)(| |   &=& a \left[\left(x+ \dfrac{b}{2a}\right)^{2} + \dfrac{4ac-b^{2}}{4a^{2}}\right]\label{eq4.5}.
+ 622 | ||||(||)(| | \end{eqnarray}
+ 623 | ||||(||)(| | 
+ 624 | ||||(||)(| | To simplify the notation, write $\Delta=4ac-b^{2}$, which is a constant.  We make the substitution $u=x+\dfrac{b}{2a}$, so $\dfrac{du}{dx}=1$.
+ 625 | ||||(||)(| | 
+ 626 | ||||(||)(| | Then, from \eqref{eq4.5},
+ 627 | ||||(||)(| | \[
+ 628 | ||||(||)(| |  ax^{2} + bx + c = a \left[u^{2}+ \dfrac{\Delta}{4a^{2}}\right]
+ 629 | ||||(||)(| | \]
+ 630 | ||||(||)(| | so
+ 631 | ||||(||)(| | \[
+ 632 | ||||(||)(| |  \int \dfrac{dx}{ax^{2}+bx+c} = \dfrac{1}{a} \int \dfrac{du}{u^{2} + \dfrac{\Delta}{4a^{2}}}
+ 633 | ||||(||)(| | \]
+ 634 | ||||(||)(| | 
+ 635 | ||||(||)(| | If $\Delta>0$, use $\tan$ substitution for $\dfrac{1}{q^2 + u^{2}}$ with $q = \dfrac{\sqrt{\Delta}}{2a}$.
+ 636 | ||||(||)(| | 
+ 637 | ||||(||)(| | If $\Delta<0$, use partial fractions or a $\tanh$ or \(\coth\) substitution for $-\dfrac{1}{q^2 - u^{2}}$ with $q = \dfrac{\sqrt{-\Delta}}{2a}$.
+ 638 | ||||(||)(| | 
+ 639 | ||||(||)(| | If $\Delta=0$, the integral does not require a substitution.
+ 640 | ||||(||)(| | 
+ 641 | ||||(||)(| | \subsubsection*{General quadratic numerator and denominator}
+ 642 | ||||(||)(| | 
+ 643 | ||||(||)(| | Given an integral with a general quadratic numerator and denominator,
+ 644 | ||||(||)(| | \[
+ 645 | ||||(||)(| |  \int \dfrac{px^{2} + qx + r}{ax^{2} + bx + c} dx,
+ 646 | ||||(||)(| | \]
+ 647 | ||||(||)(| | we use a series of transformations to break this into expressions that we already know how to integrate.
+ 648 | ||||(||)(| | 
+ 649 | ||||(||)(| |   \begin{example}
+ 650 | ||||(||)(| | 	  Evaluate
+ 651 | ||||(||)(| | 		  \[
+ 652 | ||||(||)(| | 			  \int \frac{2x^2 + 6x + 15}{x^2 + 4x + 8} \, dx.
+ 653 | ||||(||)(| | 			\]
+ 654 | ||||(||)(| | 		We write \(f(x)\) for the integrand.  First, we manipulate the integrand to remove the \(x^2\) term from the numerator:
+ 655 | ||||(||)(| | 		  \begin{align*}
+ 656 | ||||(||)(| | 			  f(x) & = \frac{2x^2 + 6x + 15}{x^2 + 4x + 8}  \\
+ 657 | ||||(||)(| | 				& = \frac{2(x^2 + 4x + 8) - 2x - 1}{x^2 + 4x + 8}  \\
+ 658 | ||||(||)(| | 				& = 2 - \frac{2x + 1}{x^2 + 4x + 8}.
+ 659 | ||||(||)(| | 			\end{align*}
+ 660 | ||||(||)(| | 		We cannot do the same to simplify the linear over quadratic term; however, this would be straightforward to integrate if the numerator was the derivative of the denominator.
+ 661 | ||||(||)(| | 		
+ 662 | ||||(||)(| | 		Observe: \(\dfrac{d}{dx}(x^2 + 4x + 8) = 2x + 4\), so we write
+ 663 | ||||(||)(| | 		  \begin{align*}
+ 664 | ||||(||)(| | 			  f(x) & = 2 - \frac{2x + 4 - 3}{x^2 + 4x + 8}  \\
+ 665 | ||||(||)(| | 				& = 2 - \frac{2x + 4}{x^2 + 4x + 8} + \frac{3}{(x + 2) + 4}.
+ 666 | ||||(||)(| | 			\end{align*}
+ 667 | ||||(||)(| | 			
+ 668 | ||||(||)(| | 	We have broken \(f(x)\) into three terms that we can integrate.  Notice that the third term is a multiple of the function from Example~\ref{ex:genquaddenom}.  We get
+ 669 | ||||(||)(| | 	\[
+ 670 | ||||(||)(| | 	  \int f(x) \, dx = 2x - \ln(x^2 + 4x + 8) + \frac{3}{2}\arctan\left(\frac{x + 2}{2}\right) + c.
+ 671 | ||||(||)(| | 	\]			
+ 672 | ||||(||)(| |   \end{example}
+ 673 | ||||(||)(| | 	
+ 674 | ||||(||)(| | 	As before, the fully general case will not be covered in lectures, but is included here for completeness:
+ 675 | ||||(||)(| | \begin{eqnarray*}
+ 676 | ||||(||)(| | && \int \dfrac{px^{2} + qx + r}{ax^{2} + bx + c} dx \\
+ 677 | ||||(||)(| |  &=& \int \dfrac{\dfrac{p}{a} (ax^{2} + bx + c)}{ax^{2} + bx + c}
+ 678 | ||||(||)(| |  + \dfrac{qx + r - \left[\dfrac{pb}{a}x - \dfrac{pc}{a}\right]}{ax^{2} + bx + c} dx\\
+ 679 | ||||(||)(| | &=& \dfrac{px}{a} + \int \dfrac{ex+f}{ax^{2}+bx+c} dx \\
+ 680 | ||||(||)(| | &=& \dfrac{px}{a} + \int \dfrac{\dfrac{e}{2a} (2ax+b)}{ax^{2}+bx+c} + \dfrac{f-\left[\dfrac{be}{2a}\right]}{ax^{2}+bx+c} dx\\
+ 681 | ||||(||)(| | &=& \dfrac{px}{a} + \dfrac{e}{2a} \ln \left|ax^{2}+bx+c\right| + \left(f-\dfrac{be}{2a}\right) \int \dfrac{dx}{ax^{2}+bx+1}.
+ 682 | ||||(||)(| | \end{eqnarray*}
+ 683 | ||||(||)(| | 
+ 684 | ||||(||)(| | 
+ 685 | ||||(||)(| | 
+ 686 | ||||(||)(| | \subsection{Reciprocals of trigonometric functions}
+ 687 | ||||(||)(| | 
+ 688 | ||||(||)(| | The methods in the previous have uses beyond integrating rational functions.  Certain other integrals can be evaluated by making a careful choice of substitution that converts the integrand into a rational function.
+ 689 | ||||(||)(| | 
+ 690 | ||||(||)(| | In the following examples we look at substitution that does this for integrals involving trigonometric functions.  The substitution we will use is not at all obvious substitution -- it was described by Michael Spivak (author of one of the recommended books for Analysis 1) as “the world's sneakiest substitution”.
+ 691 | ||||(||)(| | 
+ 692 | ||||(||)(| | \begin{example}
+ 693 | ||||(||)(| | Evaluate $\displaystyle\int \dfrac{d \theta}{2+\sin(\theta)+\cos(\theta)}$.
+ 694 | ||||(||)(| | 
+ 695 | ||||(||)(| | We will use the substitution $t=\tan \left(\dfrac{\theta}{2}\right)$.  Consider the right-angled triangle
+ 696 | ||||(||)(| | 
+ 697 | ||||(||)(| | 
+ 698 | ||||(||)(| | \begin{center}
+ 699 | ||||(||)(| | \includegraphics[width=0.45\textwidth]{triangle.pdf}
+ 700 | ||||(||)(| | \end{center}
+ 701 | ||||(||)(| | 
+ 702 | ||||(||)(| | We have
+ 703 | ||||(||)(| | \begin{eqnarray*}
+ 704 | ||||(||)(| |  \sin \left(\frac{\theta}{2}\right) & = & \dfrac{t}{\sqrt{1+t^2}}, \\
+ 705 | ||||(||)(| |  \cos \left(\frac{\theta}{2}\right) & = & \dfrac{1}{\sqrt{1+t^2}},
+ 706 | ||||(||)(| | \end{eqnarray*}
+ 707 | ||||(||)(| | so
+ 708 | ||||(||)(| | \begin{eqnarray*}
+ 709 | ||||(||)(| |  \sin(\theta) & = & 2 \sin \left(\frac{\theta}{2} \right) \cos
+ 710 | ||||(||)(| | \left(\frac{\theta}{2} \right) \\
+ 711 | ||||(||)(| | &= & \frac{2t}{(1+t^2)} \\
+ 712 | ||||(||)(| |  \cos (\theta)& = & \cos^2 \left(\frac{\theta}{2} \right) -
+ 713 | ||||(||)(| | \sin^2 \left(\frac{\theta}{2} \right) \\
+ 714 | ||||(||)(| | & = &
+ 715 | ||||(||)(| | \frac{(1-t^2)}{(1+t^2)}
+ 716 | ||||(||)(| | \\
+ 717 | ||||(||)(| |  \tan(\theta) & = & \frac{2 t}{(1-t^2)}
+ 718 | ||||(||)(| | \end{eqnarray*}
+ 719 | ||||(||)(| | 
+ 720 | ||||(||)(| | Also
+ 721 | ||||(||)(| | \begin{eqnarray*}
+ 722 | ||||(||)(| | \frac{dt}{d \theta} & =& \frac{1}{2} \sec^2
+ 723 | ||||(||)(| | \left(\frac{\theta}{2} \right) \\
+ 724 | ||||(||)(| | & = & \frac{t^2+1}{2},
+ 725 | ||||(||)(| | \end{eqnarray*}
+ 726 | ||||(||)(| | so
+ 727 | ||||(||)(| | \[
+ 728 | ||||(||)(| |   \frac{d \theta}{dt}  =  \frac{2}{1+t^2}
+ 729 | ||||(||)(| | \]
+ 730 | ||||(||)(| | 
+ 731 | ||||(||)(| | Observe that this substitution will convert any integral involving only $\sin$, $\cos$ and $\tan$, combined by addition, multiplication and division, into the integral of a rational function.  We now use it to evaluate the integral in our example.
+ 732 | ||||(||)(| | 
+ 733 | ||||(||)(| | Then
+ 734 | ||||(||)(| | \begin{align*}
+ 735 | ||||(||)(| | & \phantom{=} \int \frac{d \theta}{2+\sin(\theta)+\cos(\theta)}  \\
+ 736 | ||||(||)(| | & = \int \frac{1}{2 + \left( \frac{2t}{1 + t^2} \right) + \left( \frac{1 - t^2}{1 + t^2} \right)} \times \frac{2}{1 + t^2} dt \\
+ 737 | ||||(||)(| | & = \int\frac{2 dt}{t^2+2t+3} \\
+ 738 | ||||(||)(| | & = \int \frac{2 dt}{(t+1)^2 + 2} \\
+ 739 | ||||(||)(| | & = \sqrt{2} \arctan \left(\frac{1+t}{\sqrt{2}}\right) + c \\
+ 740 | ||||(||)(| | & = \sqrt{2} \arctan \left(\frac{1+\tan(\theta/2)}{\sqrt{2}}\right) + c.
+ 741 | ||||(||)(| | \end{align*}
+ 742 | ||||(||)(| | 
+ 743 | ||||(||)(| | \end{example}
+ 744 | ||||(||)(| | 
+ 745 | ||||(||)(| | % I have never done this example in the lectures and have omitted it for now.
+ 746 | ||||(||)(| | % It would be nice on an exercise sheet, but there probably isn't space.
+ 747 | ||||(||)(| | 
+ 748 | ||||(||)(| | %\begin{example}
+ 749 | ||||(||)(| |  %Suppose the radius $r$ of the orbit of a planet around its sun satisfies
+ 750 | ||||(||)(| |  %\[
+ 751 | ||||(||)(| |  %r=\dfrac{\ell}{1+k \cos(\theta)}, \qquad 0 \leq k \leq 1, \qquad l > 0.
+ 752 | ||||(||)(| |  %\]
+ 753 | ||||(||)(| | %
+ 754 | ||||(||)(| |  %\begin{center}
+ 755 | ||||(||)(| |   %\includegraphics[width=0.7\textwidth]{trig4.pdf}
+ 756 | ||||(||)(| |  %\end{center}
+ 757 | ||||(||)(| | %
+ 758 | ||||(||)(| |  %What is the mean distance from the sun?  To find it we integrate the distance over all angles $\theta$, then divide by sum of all angles, $2\pi$.  We will be using the subtitution $t=\tan(\theta/2)$, so we must integrate from $\pi$ to $\pi$, since this substitution gives $\theta = 2\arctan(t)$, and
+ 759 | ||||(||)(| |   %\[
+ 760 | ||||(||)(| |     %- \frac{\pi}{2} < \arctan(t) < \frac{\pi}{2}
+ 761 | ||||(||)(| |   %\]
+ 762 | ||||(||)(| | %for all real numbers $t$.
+ 763 | ||||(||)(| | %
+ 764 | ||||(||)(| |  %\[
+ 765 | ||||(||)(| |   %\overline{r} = \dfrac{1}{2\pi} \int_{-\pi}^{\pi} \dfrac{\ell}{1+k \cos(\theta)} d\theta
+ 766 | ||||(||)(| |  %\]
+ 767 | ||||(||)(| | %
+ 768 | ||||(||)(| | %Let $t=\tan\left(\dfrac{\theta}{2}\right)$.  Then
+ 769 | ||||(||)(| |   %\begin{align*}
+ 770 | ||||(||)(| |     %\overline{r} & = \frac{1}{2\pi} \int_{\pi}^{\pi} \frac{l}{1 + k\cos(\theta)} \, d\theta  \\
+ 771 | ||||(||)(| |     %& = \frac{l}{2\pi} \int_{-\infty}^{\infty} \frac{l}{1 + k\left( \frac{1 - t^2}{1 + t^2} \right)} \times \frac{2}{1 + t^2} \, dt  \\
+ 772 | ||||(||)(| |     %& = \frac{l}{\pi} \int_{-\infty}^{\infty} \frac{1}{1 + t^2 + k - kt^2} \, dt  \\
+ 773 | ||||(||)(| |     %& = \frac{l}{\pi} \int_{-\infty}^{\infty} \frac{1}{(1 - k)t^2 + (1 + k)} \, dt.
+ 774 | ||||(||)(| |   %\end{align*}
+ 775 | ||||(||)(| | %Now let $u = \sqrt{1 - k}t$, write $a = \sqrt{1 + k}$.  Then
+ 776 | ||||(||)(| |   %\begin{align*}
+ 777 | ||||(||)(| |     %\overline{r} & = \frac{l}{\pi} \int_{\pi}^{\pi} \frac{1}{u^2 + a^2} \times \frac{1}{\sqrt{1 - k}} \, du  \\
+ 778 | ||||(||)(| |     %& = \frac{l}{\pi\sqrt{1 - k}} \left[ \frac{1}{a} \arctan\left( \frac{u}{a} \right) \right]_{-\infty}^{\infty}  \\
+ 779 | ||||(||)(| |     %& = \frac{l}{\pi\sqrt{1 - k}\sqrt{1 + k}} \left[\frac{\pi}{2} - \left( - \frac{\pi}{2} \right)\right]  \\
+ 780 | ||||(||)(| |     %& = \frac{l}{\sqrt{1 - k^2}}.
+ 781 | ||||(||)(| |   %\end{align*}
+ 782 | ||||(||)(| | %
+ 783 | ||||(||)(| | %\end{example}
+ 784 | ||||(||)(| | 
+ 785 | ||||(||)(| | 
+ 786 | ||||(||)(| | 
+ 787 | ||||(||)(| | 
+ 788 | ||||(||)(| | \subsection{Reduction formulae}
+ 789 | ||||(||)(| | 
+ 790 | ||||(||)(| | Recall that integration by parts is a technique for evaluating integrals involving products of functions using the formula
+ 791 | ||||(||)(| |   \[
+ 792 | ||||(||)(| |     \int u \frac{dv}{dx} \, dx   =   u v - \int v \frac{du}{dx} \, dx,
+ 793 | ||||(||)(| |   \]
+ 794 | ||||(||)(| | which is derived from the product rule for differentiation.  (For a more detailed reminder of integration by parts, see the additional notes on the course Moodle page.)
+ 795 | ||||(||)(| | 
+ 796 | ||||(||)(| | Sometimes complicated integrals can be reduced to simpler expressions by successive application of integration by parts, giving a type of formula called a \emph{reduction formula}.
+ 797 | ||||(||)(| | % Not convinced by the wording of this last sentence.
+ 798 | ||||(||)(| | 
+ 799 | ||||(||)(| | \begin{examples}
+ 800 | ||||(||)(| | \quad
+ 801 | ||||(||)(| | 
+ 802 | ||||(||)(| | \begin{enumerate}
+ 803 | ||||(||)(| | 
+ 804 | ||||(||)(| | \item $\displaystyle\int \left(\ln(x)\right)^n \, dx$,\quad $n=0,1,2,\dotsc$
+ 805 | ||||(||)(| | 
+ 806 | ||||(||)(| | Write
+ 807 | ||||(||)(| |   \begin{align*}
+ 808 | ||||(||)(| |     I_n & = \int \left(\ln(x)\right)^n \, dx  \\
+ 809 | ||||(||)(| |     & = \int 1 \times (\ln(x))^ndx \\
+ 810 | ||||(||)(| | 	\end{align*}
+ 811 | ||||(||)(| | Let
+ 812 | ||||(||)(| |   \[
+ 813 | ||||(||)(| | 	  u = (\ln(x))^n, \quad \frac{dv}{dx} = 1,
+ 814 | ||||(||)(| | 	\]
+ 815 | ||||(||)(| | so
+ 816 | ||||(||)(| |   \[
+ 817 | ||||(||)(| | 	  \frac{du}{dx} = \frac{n(\ln(x))^{n - 1}}{x}, \quad v = x.
+ 818 | ||||(||)(| | 	\]
+ 819 | ||||(||)(| | Then, using integration by parts,
+ 820 | ||||(||)(| | 	\begin{align*}
+ 821 | ||||(||)(| |     I_n & = x (\ln(x))^n - \int x \frac{n (\ln(x))^{n-1}}{x} dx \\
+ 822 | ||||(||)(| |     & = x (\ln(x))^n - n \int (\ln(x))^{n-1} dx \\
+ 823 | ||||(||)(| |     I_n & = x (\ln(x))^n - n I_{n-1}
+ 824 | ||||(||)(| |   \end{align*}
+ 825 | ||||(||)(| | 	
+ 826 | ||||(||)(| | This formula allows us to evaluate \(I_n\) for a given value of \(n\) -- provided we also do so for all lower values of \(n\):
+ 827 | ||||(||)(| |   \begin{align*}
+ 828 | ||||(||)(| |     I_3 & = x[\ln(x)]^3 - 3 I_2, \\
+ 829 | ||||(||)(| |     I_2 & = x [\ln(x)]^2 - 2 I_1, \\
+ 830 | ||||(||)(| |     I_1 & = x \ln(x) - I_0, \\
+ 831 | ||||(||)(| |     I_0 & = \int 1dx  =  x,
+ 832 | ||||(||)(| | 	\end{align*}
+ 833 | ||||(||)(| | so
+ 834 | ||||(||)(| | 	\begin{align*}
+ 835 | ||||(||)(| |     I_1 & = x\ln(x) - x, \\
+ 836 | ||||(||)(| |     I_2 & = x[\ln(x)]^2 - 2 x \ln(x) + 2x, \\
+ 837 | ||||(||)(| |     I_3 & = x[\ln(x)]^3 - 3 x [\ln(x)]^2 + 6 x \ln(x) - 6 x\ln(x) - 6x + C.
+ 838 | ||||(||)(| |   \end{align*}
+ 839 | ||||(||)(| | 
+ 840 | ||||(||)(| | \item $I_n = \displaystyle\int \sin^n(x)dx$,\quad $n=0,1,2, \dotsc$
+ 841 | ||||(||)(| |   
+ 842 | ||||(||)(| | 	Write this as
+ 843 | ||||(||)(| |   \[
+ 844 | ||||(||)(| |     I_n = \int \sin(x) \sin^{n-1}(x) \, dx
+ 845 | ||||(||)(| |   \]
+ 846 | ||||(||)(| | Let 
+ 847 | ||||(||)(| |   \[
+ 848 | ||||(||)(| | 	  u = \sin^{n-1}(x), \quad \frac{dv}{dx} = \sin(x),
+ 849 | ||||(||)(| | 	\]
+ 850 | ||||(||)(| | so
+ 851 | ||||(||)(| |   \[
+ 852 | ||||(||)(| | 	  \frac{du}{dx} = (n - 1)\cos(x)\sin^{n-2}(x), \quad v = -\cos(x).
+ 853 | ||||(||)(| | 	\]
+ 854 | ||||(||)(| | Then, using integration by parts,
+ 855 | ||||(||)(| |   \begin{align*}
+ 856 | ||||(||)(| |     I_n & =  -\cos(x)\sin^{n-1}(x) + \int \cos(x) (n-1)\cos(x) \sin^{n-2}(x)dx  \\
+ 857 | ||||(||)(| |     & = -\cos(x)\sin^{n-1}(x) + (n-1) \int \cos^2(x)\sin^{n-2}(x)dx
+ 858 | ||||(||)(| |   \end{align*}
+ 859 | ||||(||)(| | But $\cos^2(x) = 1 - \sin^2 (x)$
+ 860 | ||||(||)(| |   \begin{align*}
+ 861 | ||||(||)(| |     I_n & = -\cos(x)\sin^{n-1}(x) + (n-1)\int \sin^{n-2}(x)dx - (n-1)\int \sin^n (x)dx  \\
+ 862 | ||||(||)(| |     & = -\cos(x)\sin^{n-1}(x) + (n-1) I_{n-2} - (n-1)I_n.
+ 863 | ||||(||)(| | 	\end{align*}
+ 864 | ||||(||)(| | 	
+ 865 | ||||(||)(| | 	Rearranging this gives
+ 866 | ||||(||)(| | 	  \[
+ 867 | ||||(||)(| | 		  I_n = \frac{1}{n} \left[-\cos(x)\sin^{n-1}(x)\right] + \frac{n-1}{n} I_{n-2}.
+ 868 | ||||(||)(| | 		\]
+ 869 | ||||(||)(| |   
+ 870 | ||||(||)(| | 	We can use this calculate any \(I_n\).  For example, when \(n = 3\), we get
+ 871 | ||||(||)(| | 	\begin{align*}
+ 872 | ||||(||)(| |     I_3 & = \frac{1}{3} \left[-\cos(x)\sin^2(x)\right] + \frac{2}{3}I_1, \\
+ 873 | ||||(||)(| |     I_1 & = \int \sin(x)dx  =  -\cos(x) + c, \\
+ 874 | ||||(||)(| |     \therefore \quad I_3 & = -\frac{1}{3} \cos(x)\sin^2(x) - \frac{2}{3}\cos(x) + c.
+ 875 | ||||(||)(| |   \end{align*}
+ 876 | ||||(||)(| | 
+ 877 | ||||(||)(| | 
+ 878 | ||||(||)(| | % Removed this example -- it will be Exercise Sheet material only from now on.
+ 879 | ||||(||)(| | 
+ 880 | ||||(||)(| | %\item $\displaystyle\int \dfrac{dx}{(1+x^2)^{n}}$.
+ 881 | ||||(||)(| | %
+ 882 | ||||(||)(| | %\begin{eqnarray*}
+ 883 | ||||(||)(| | %I_n &  = & \int \frac{dx}{(1+x^2)^n} \\
+ 884 | ||||(||)(| | %I_1 &  = & \int \frac{dx}{1+x^2}  =  \int \frac{1 \times dx}{1+x^2} \\
+ 885 | ||||(||)(| | %&  = & \frac{x}{1 + x^2} + \int \frac{2 x^2}{(1+x^2)^2}dx \\
+ 886 | ||||(||)(| | %I_1 &  = & \frac{x}{1 + x^2} + 2 \int \frac{x^2 + 1 - 1}{(1 +
+ 887 | ||||(||)(| | %x^2)^2} dx \\
+ 888 | ||||(||)(| | %I_1 &  =  &\frac{x}{1 + x^2} + 2 \int \frac{dx}{(1 +
+ 889 | ||||(||)(| | %x^2)}  - 2 \int \frac{dx}{(1 + x^2)^2} \\
+ 890 | ||||(||)(| | %I_1 &  = & \frac{x}{1+x^2} + 2 I_1 - 2I_2 \\
+ 891 | ||||(||)(| | %\therefore \qquad I_2 &  = & \frac{1}{2}
+ 892 | ||||(||)(| | %\left[\dfrac{x}{1+x^2}\right] + \dfrac{I_1}{2} \\
+ 893 | ||||(||)(| | %I_1 &  = & \arctan(x) + c
+ 894 | ||||(||)(| | %\end{eqnarray*}
+ 895 | ||||(||)(| | %
+ 896 | ||||(||)(| | %Now find $I_{n+1}$ given $I_{n}$ (See Exercie Sheet 3).
+ 897 | ||||(||)(| | % Check which worksheet it is once the worksheets are ready!
+ 898 | ||||(||)(| | 
+ 899 | ||||(||)(| | \end{enumerate}
+ 900 | ||||(||)(| | \end{examples}
+ 901 | ||||(||)(| | 
+ 902 | ||||(||)(| | 
+ 903 | ||||(||)(| | \subsection{Arc length and surface areas of revolution}
+ 904 | ||||(||)(| | 
+ 905 | ||||(||)(| | 
+ 906 | ||||(||)(| | \subsubsection*{Arc length} 
+ 907 | ||||(||)(| | We often need to know the length of a curve between two points,
+ 908 | ||||(||)(| | e.g.\ what is the length of the ropes holding Clifton suspension bridge
+ 909 | ||||(||)(| | (see Exercise Sheet 3).
+ 910 | ||||(||)(| | 
+ 911 | ||||(||)(| | \textbf{Idea. } Given a curve $y=y(x)$
+ 912 | ||||(||)(| | 
+ 913 | ||||(||)(| |   \begin{figure}[H]
+ 914 | ||||(||)(| |     \centering
+ 915 | ||||(||)(| |    % \def\svgwidth{0.4\columnwidth}
+ 916 | ||||(||)(| |     \includegraphics[width=0.6\textwidth]{arclength1.pdf}
+ 917 | ||||(||)(| |   \end{figure}
+ 918 | ||||(||)(| | 
+ 919 | ||||(||)(| | 
+ 920 | ||||(||)(| | Let $S$ be the arc length
+ 921 | ||||(||)(| | and  $\Delta S$ a short section of it.
+ 922 | ||||(||)(| | 
+ 923 | ||||(||)(| |   \begin{figure}[H]
+ 924 | ||||(||)(| |     \centering
+ 925 | ||||(||)(| |    % \def\svgwidth{0.4\columnwidth}
+ 926 | ||||(||)(| |     \includegraphics[width=0.6\textwidth]{arclengthdx.pdf}
+ 927 | ||||(||)(| |   \end{figure}
+ 928 | ||||(||)(| | 
+ 929 | ||||(||)(| | 
+ 930 | ||||(||)(| | By Pythagoras' Theorem,
+ 931 | ||||(||)(| | \begin{eqnarray*}
+ 932 | ||||(||)(| | \Delta S^2&\approx& \Delta x^2+\Delta y^2\\
+ 933 | ||||(||)(| | \Rightarrow
+ 934 | ||||(||)(| | \left(\dfrac{\Delta S}{\Delta x}\right)^2&\approx&1+\left(\dfrac{\Delta y}{\Delta x}\right)^2
+ 935 | ||||(||)(| | \end{eqnarray*}
+ 936 | ||||(||)(| | As $\Delta x\to0$ this becomes an identity
+ 937 | ||||(||)(| | \begin{eqnarray*}
+ 938 | ||||(||)(| | \left(\dfrac{d S}{d x}\right)^2&=&1+\left(\dfrac{d y}{d x}\right)^2\\
+ 939 | ||||(||)(| | \Rightarrow
+ 940 | ||||(||)(| | \dfrac{d S}{d x}&=&\sqrt{1+\left(\dfrac{d y}{d x}\right)^2}
+ 941 | ||||(||)(| | \end{eqnarray*}
+ 942 | ||||(||)(| | The arclength between $x=a$ and $x=b$ is then
+ 943 | ||||(||)(| | \begin{eqnarray*}
+ 944 | ||||(||)(| | S(a,b)&=&\int_a^b\dfrac{d S}{d x}dx\\
+ 945 | ||||(||)(| | &=&\int_a^b\sqrt{1+\left(\dfrac{d y}{d x}\right)^2}dx.
+ 946 | ||||(||)(| | \end{eqnarray*}
+ 947 | ||||(||)(| | 
+ 948 | ||||(||)(| | \begin{example}
+ 949 | ||||(||)(| | 
+ 950 | ||||(||)(| | Find the arc length of the graph of the function
+ 951 | ||||(||)(| | \[
+ 952 | ||||(||)(| | y=f(x)=\dfrac{x^3}6+\dfrac1{2x}
+ 953 | ||||(||)(| | \]
+ 954 | ||||(||)(| | on the interval $\left(\dfrac12,2\right)$.
+ 955 | ||||(||)(| | 
+ 956 | ||||(||)(| | Sketch the graph of $f(x)$ for $x>0$:
+ 957 | ||||(||)(| | 
+ 958 | ||||(||)(| | If $x=0$, $y$ is undefined.
+ 959 | ||||(||)(| | 
+ 960 | ||||(||)(| | We have $y=0$ if $\dfrac{x^3}6=-\dfrac1{2x}\Rightarrow x^4=-3$, hence never.
+ 961 | ||||(||)(| | 
+ 962 | ||||(||)(| | As $x\to0_+$, $y\to\infty$.
+ 963 | ||||(||)(| | \\
+ 964 | ||||(||)(| | As $x\to\infty$, $y\to\infty$ as well.
+ 965 | ||||(||)(| | 
+ 966 | ||||(||)(| | \begin{figure}[H]
+ 967 | ||||(||)(| | \centering
+ 968 | ||||(||)(| |  \includegraphics[width=0.5\textwidth]{arclengthexample.pdf}
+ 969 | ||||(||)(| | %\captionsetup{labelformat=empty}
+ 970 | ||||(||)(| | \end{figure}
+ 971 | ||||(||)(| | 
+ 972 | ||||(||)(| | Also, 
+ 973 | ||||(||)(| | \[
+ 974 | ||||(||)(| | \dfrac{d y}{d x}=\dfrac{3x^2}6-\dfrac1{2x^2}=\dfrac12\left(x^2-\dfrac1{x^2}\right).
+ 975 | ||||(||)(| | \]
+ 976 | ||||(||)(| | So
+ 977 | ||||(||)(| | $\dfrac{d y}{d x}=0$ when $x^2-\dfrac1{x^2}=0
+ 978 | ||||(||)(| | \Rightarrow
+ 979 | ||||(||)(| | x^4=1
+ 980 | ||||(||)(| | \Rightarrow
+ 981 | ||||(||)(| | x=\pm1$.
+ 982 | ||||(||)(| | 
+ 983 | ||||(||)(| | Now, the arc length is
+ 984 | ||||(||)(| | \[
+ 985 | ||||(||)(| | S\left(\dfrac12,2\right)=\int_{\frac12}^2\sqrt{1+\left(\dfrac{d y}{d x}\right)^2}dx,
+ 986 | ||||(||)(| | \]
+ 987 | ||||(||)(| | with
+ 988 | ||||(||)(| | \begin{eqnarray*}
+ 989 | ||||(||)(| | 1+\left(\dfrac{d y}{d x}\right)^2
+ 990 | ||||(||)(| | &=&1+\dfrac14\left(x^2-\dfrac1{x^2}\right)^2\\
+ 991 | ||||(||)(| | &=&1+\dfrac14\left(x^4-2+\dfrac1{x^4}\right)\\
+ 992 | ||||(||)(| | &=&\dfrac14\left(x^4+2+\dfrac1{x^4}\right)\\
+ 993 | ||||(||)(| | &=&\dfrac14\left(x^2+\dfrac1{x^2}\right)^2.
+ 994 | ||||(||)(| | \end{eqnarray*}
+ 995 | ||||(||)(| | Thus,
+ 996 | ||||(||)(| | \begin{eqnarray*}
+ 997 | ||||(||)(| | S\left(\dfrac12,2\right)
+ 998 | ||||(||)(| | &=&\int_{\frac12}^2\dfrac12\left(x^2+\dfrac1{x^2}\right)dx\\
+ 999 | ||||(||)(| | &=&\dfrac12\left[\dfrac{x^3}3-\dfrac1{x}\right]_{\frac12}^2=\dfrac{33}{16}.
+1000 | ||||(||)(| | \end{eqnarray*}
+1001 | ||||(||)(| | \end{example}
+1002 | ||||(||)(| | 
+1003 | ||||(||)(| | \begin{example}
+1004 | ||||(||)(| | 
+1005 | ||||(||)(| | It can be shown that a hanging chain forms a curve (see Exercise Sheet 4 Q.5)
+1006 | ||||(||)(| | \[
+1007 | ||||(||)(| | y=\cosh(x).
+1008 | ||||(||)(| | \]
+1009 | ||||(||)(| | The arc length on the interval $\left(-a,a\right)$ is
+1010 | ||||(||)(| | \begin{eqnarray*}
+1011 | ||||(||)(| | S\left(-a,a\right)&=&\int_{-a}^a\sqrt{1+\left(\dfrac{d y}{d x}\right)^2}dx\\
+1012 | ||||(||)(| | &=&\int_{-a}^a\sqrt{1+\sinh^2(x)}dx\\
+1013 | ||||(||)(| | &=&\int_{-a}^a\cosh(x)dx
+1014 | ||||(||)(| | =%\\&=&
+1015 | ||||(||)(| | \Big[\sinh(x)\Big]_{-a}^a=2\sinh(a).
+1016 | ||||(||)(| | \end{eqnarray*}
+1017 | ||||(||)(| | \end{example}
+1018 | ||||(||)(| | 
+1019 | ||||(||)(| | \textbf{Warning. } Calculating arc length often leads to integrals we cannot evaluate, e.g. $y(x)=\sin(x)$ yields
+1020 | ||||(||)(| | \[
+1021 | ||||(||)(| | S=\int_a^b\sqrt{1+\cos^2(x)} \, dx=???
+1022 | ||||(||)(| | \]
+1023 | ||||(||)(| | 
+1024 | ||||(||)(| | \subsubsection*{Surface areas of revolutions} 
+1025 | ||||(||)(| | 
+1026 | ||||(||)(| | Given a curve $y(x)$ we can generate a surface (of revolution) by rotating the curve about the $x$-axis.
+1027 | ||||(||)(| | 
+1028 | ||||(||)(| | What is the area of such a surface?
+1029 | ||||(||)(| | 
+1030 | ||||(||)(| | \textbf{Idea. } 
+1031 | ||||(||)(| | Split the shell into thin strips
+1032 | ||||(||)(| | 
+1033 | ||||(||)(| |   \begin{figure}[H]
+1034 | ||||(||)(| |     \centering
+1035 | ||||(||)(| |    % \def\svgwidth{0.4\columnwidth}
+1036 | ||||(||)(| |     \includegraphics[width=0.6\textwidth]{frustum.pdf}
+1037 | ||||(||)(| |   \end{figure}
+1038 | ||||(||)(| | 
+1039 | ||||(||)(| | The area of the shell of a {\bf Conical Frustum} is $A=\pi (r_1+r_2)L$.
+1040 | ||||(||)(| | 
+1041 | ||||(||)(| | Thus, the area of the strip is approximately 
+1042 | ||||(||)(| | (set $r_1=y, r_2=y+\Delta y, L=\Delta S$)
+1043 | ||||(||)(| | 
+1044 | ||||(||)(| | \begin{eqnarray*}
+1045 | ||||(||)(| | \Delta A&\approx&\pi (y+(y+\Delta y))\cdot\Delta S\\
+1046 | ||||(||)(| | \Rightarrow\ \dfrac{\Delta A}{\Delta x}&=&2\pi \left(y+\frac12\Delta x\dfrac{\Delta y}{\Delta x}\right)\cdot\dfrac{\Delta S}{\Delta x}.
+1047 | ||||(||)(| | \end{eqnarray*}
+1048 | ||||(||)(| | As $\Delta x\to0$ 
+1049 | ||||(||)(| | $$
+1050 | ||||(||)(| | \dfrac{dA}{dx}=2\pi y\dfrac{dS}{dx}
+1051 | ||||(||)(| | \text{\qquad  as\quad} \dfrac{\Delta y}{\Delta x}\to\dfrac{dy}{dx} \text{ stays bounded.}
+1052 | ||||(||)(| | $$
+1053 | ||||(||)(| | Hence, using the previous arclength formula
+1054 | ||||(||)(| | \begin{eqnarray*}
+1055 | ||||(||)(| | A(a,b)&=&\int_a^b\dfrac{dA}{dx}dx
+1056 | ||||(||)(| | =%\\&=&
+1057 | ||||(||)(| | 2\pi \int_a^b y\sqrt{1+\left(\dfrac{d y}{d x}\right)^2}\ dx.
+1058 | ||||(||)(| | \end{eqnarray*}
+1059 | ||||(||)(| | 
+1060 | ||||(||)(| | 
+1061 | ||||(||)(| | \begin{example}
+1062 | ||||(||)(| | 
+1063 | ||||(||)(| | Consider the curve $y=\sqrt{1+x^2}$, creating a hyperboloid of revolution (the flipped cooling tower).
+1064 | ||||(||)(| | 
+1065 | ||||(||)(| |   \begin{figure}[H]
+1066 | ||||(||)(| |     \centering
+1067 | ||||(||)(| |     \def\svgwidth{0.5\columnwidth}
+1068 | ||||(||)(| |     \includegraphics[width=0.6\textwidth]{hyperbola.pdf}
+1069 | ||||(||)(| |     %\captionsetup{labelformat=empty}
+1070 | ||||(||)(| |     \caption{$y=\sqrt{1+x^2}$}
+1071 | ||||(||)(| |   \end{figure}
+1072 | ||||(||)(| | 
+1073 | ||||(||)(| |   \begin{figure}[H]
+1074 | ||||(||)(| |     \centering
+1075 | ||||(||)(| |     \def\svgwidth{0.7\columnwidth}
+1076 | ||||(||)(| |     \includegraphics[width=0.6\textwidth]{hyperboloidrev.pdf}
+1077 | ||||(||)(| |     %\captionsetup{labelformat=empty}
+1078 | ||||(||)(| |     \caption{Hyperboloid of revolution}
+1079 | ||||(||)(| |   \end{figure}
+1080 | ||||(||)(| | 
+1081 | ||||(||)(| | 
+1082 | ||||(||)(| | As
+1083 | ||||(||)(| | \[
+1084 | ||||(||)(| | \dfrac{d y}{d x}=2x\dfrac12(1+x^2)^{-\frac12}=\dfrac x{\sqrt{1+x^2}}
+1085 | ||||(||)(| | \]
+1086 | ||||(||)(| | the surface area is
+1087 | ||||(||)(| | \begin{eqnarray*}
+1088 | ||||(||)(| | A(-a,a)
+1089 | ||||(||)(| | &=&2\pi \int_{-a}^a y\sqrt{1+\left(\dfrac{d y}{d x}\right)^2}\ dx\\
+1090 | ||||(||)(| | &=&2\pi \int_{-a}^a \sqrt{1+x^2}\sqrt{1+\dfrac {x^2}{1+x^2}}\ dx\\
+1091 | ||||(||)(| | &=&2\pi \int_{-a}^a \sqrt{1+x^2+x^2}\ dx\\
+1092 | ||||(||)(| | &=&2\pi \int_{-a}^a \sqrt{1+2x^2}\ dx.
+1093 | ||||(||)(| | \end{eqnarray*}
+1094 | ||||(||)(| | Hence, the substitution $u=\sqrt2 x$ yields $du=\sqrt 2 dx$ and so
+1095 | ||||(||)(| | \begin{eqnarray*}
+1096 | ||||(||)(| | A(-a,a)
+1097 | ||||(||)(| | &=&2\pi \int_{-\sqrt2 a}^{\sqrt2 a} \sqrt{1+u^2}\ \dfrac{du}{\sqrt2}\\
+1098 | ||||(||)(| | &=&\sqrt2\pi \cdot\dfrac12\left[u\sqrt{1+u^2}+\arcsinh(u)\right]_{-\sqrt2 a}^{\sqrt2 a}\\
+1099 | ||||(||)(| | &=&\sqrt2\pi \left[\sqrt2 a\sqrt{1+2a^2}+\arcsinh(\sqrt2 a)\right].
+1100 | ||||(||)(| | \end{eqnarray*}
+1101 | ||||(||)(| | \end{example}
+1102 | ||||(||)(| | 
+1103 | ||||(||)(| | 

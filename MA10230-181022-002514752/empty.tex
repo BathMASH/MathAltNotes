@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{verbatim}
+\begin{document}
+If you can see this text then you have forgotten to give an argument to make the file of your choice. For instance, if your \LaTeX~file is called \verb=file.tex= you can make all document formats using:
+\begin{verbatim}
+> make name=file
+\end{verbatim}
+You can make individual formats as follows:
+\begin{verbatim}
+> make standard name=file
+> make clear name=file
+> make clearbart name=file
+> make large name=file
+> make largebart name=file
+> make web name=file
+> make word name=file
+\end{verbatim}
+Or see the \verb=README.md= and \verb=./quickMake --help= and \verb=./quickBeamerMake --help= for more information.
+\end{document}

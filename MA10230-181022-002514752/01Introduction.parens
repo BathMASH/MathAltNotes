@@ -1,0 +1,143 @@
+   1 |            | \section*{Introduction} 
+   2 |            | % To give the unnumbered section a line in the table of contents:
+   3 |            | \addcontentsline{toc}{section}{Introduction} 
+   4 |            | % To add the correct header text for this section:
+   5 |            | % (Otherwise it says CONTENTS from the previous section.)
+   6 |            | \markright{INTRODUCTION}
+   7 |            | 
+   8 |            | The following example is intended to illustrate how calculus is applied in other fields.  You don't have to follow every step at this stage (although some of you will).  By the end of the unit, you should be able to tackle more complex examples.
+   9 |            | 
+  10 |            | \begin{example}
+  11 |            | 
+  12 |            | Application: predicting global population.
+  13 |            | 
+  14 |            | Population is a function $u(t)$ of time $t$.
+  15 |            | 
+  16 |            | Express this as:
+  17 |            |  \begin{description}
+  18 |            | \item[A.] \textbf{Table}
+  19 |            | 
+  20 |            | \begin{center}
+  21 | {|||}      | \begin{tabular}{| c | c |}\hline
+  22 | {|||}      | Year & Population (millions)\\\hline
+  23 | {|||}      | 1000 & 310 \\\hline 1800 & 978 \\\hline 1900 & 1650 \\\hline 1990 &
+  24 | {|||}      | 5263 \\\hline 2000 & 6070 \\\hline 2008 & 6707\\\hline
+  25 | {|||}      | 2008 & 6707 \\\hline 2010 & 6873 \\\hline
+  26 | {|||}      | \end{tabular}
+  27 | {|||}      | \end{center}
+  28 | {|||}      | 
+  29 | {|||}      | 
+  30 | {|||}      | \item[B.] \textbf{Graph} (figure (\ref{expgrowth}))
+  31 | {|||}      | 
+  32 | {|||}      | %\nextalt{Axes $u$ against $t$. Sketch of a curve showing exponential growth.}
+  33 | {|||}      | \begin{figure}[!hbtp]
+  34 | {|||}      | \centering
+  35 | {|||}      | \includegraphics[width=0.5\textwidth]{exp_growth.pdf}
+  36 | {|||}      | \caption{Exponential growth}
+  37 | {|||}      | \label{expgrowth}
+  38 | {|||}      | \end{figure}
+  39 | {|||}      | 
+  40 | {|||}      | \newpage
+  41 | {|||}      | 
+  42 | {|||}      | \item[C.] \textbf{Differential equation}
+  43 | {|||}      | 
+  44 | {|||}      | 
+  45 | {|||}      | Population is $u(t)$. What is the \textbf{rate of change} of the
+  46 | {|||}      | population?
+  47 | {|||}      | 
+  48 | {|||}      | In a time interval $\delta t$:
+  49 | {|||}      | \begin{itemize}
+  50 | {|||}      | \item A proportion $a \delta t$ of population produce
+  51 | {|||}      | children.
+  52 | {|||}      | 
+  53 | {|||}      | \item A proportion $b \delta t$ of population die.
+  54 | {|||}      | 
+  55 | {|||}      | \item A proportion $c \delta t$ of population emigrate to Mars.
+  56 | {|||}      | \end{itemize}
+  57 | {|||}      | 
+  58 | {|||}      | So,
+  59 | {|||}      | \begin{align*}
+  60 | {|||}      | & u(t + \delta t)  =  u(t) + (a-b-c)u(t) \delta t  \\
+  61 | {|||}      | \Longrightarrow & \dfrac{u(t+\delta t) - u(t)}{\delta t} =
+  62 | {|||}      | \lambda u(t),
+  63 | {|||}      | \end{align*}
+  64 | {|||}      | where $\lambda = a - b - c$.
+  65 | {|||}      | 
+  66 | {|||}      | \end{description}
+  67 | {|||}      | 
+  68 | {|||}      | Let $\delta t \to 0$ (see analysis course).
+  69 | {|||}      | 
+  70 | {|||}      | Then
+  71 | {|||}      |   \begin{align*}
+  72 | {|||}      |     \dfrac{du(t)}{dt} & =  \lambda u(t)  \\
+  73 | {|||}      |     u(t_{0}) & = u_{0}
+  74 | {|||}      |   \end{align*}
+  75 | {|||}      | 
+  76 | {|||}      | A differential equation like this, describing population growth, was used by Thomas Malthus, early 19th century.
+  77 | {|||}      | 
+  78 | {|||}      | \subsection*{Parameter estimation}
+  79 | {|||}      | 
+  80 | {|||}      | The UN estimates that the population grows by $1.14\%$ per year.
+  81 | {|||}      | 
+  82 | {|||}      | Let $t$ be time in years.
+  83 | {|||}      | 
+  84 | {|||}      | We separate the variables in our differential equation, then integrate (details later, when we study differential equations).
+  85 | {|||}      |   \begin{align*}
+  86 | {|||}      |     \dfrac{du}{dt} & = \lambda u  \\
+  87 | {|||}      |     \implies \int \dfrac{1}{u} \, du & = \int \lambda \, dt  \\
+  88 | {|||}      |     \implies u(t) & = u_{0} e^{\lambda(t-t_{0})}
+  89 | {|||}      |   \end{align*}
+  90 | {|||}      | 
+  91 | {|||}      | We are interested in the change over one year, so let $t_{0}=t$, so $u_{0}=u(t)$, and consider
+  92 | {|||}      |   \begin{align*}
+  93 | {|||}      |     u(t + 1) & = u(t)e^{\lambda(t + 1 - t)}  \\
+  94 | {|||}      |     & = u(t)e^{\lambda}  \\
+  95 | {|||}      |     \implies \frac{u(t+1)-u(t)}{u(t)} & = \frac{u(t)e^{\lambda} - u(t)}{u(t)}  \\
+  96 | {|||}      |     & = e^{\lambda} - 1.
+  97 | {|||}      |   \end{align*}
+  98 | {|||}      | This is the proportional increase in population over one year, so the UN estimate tells us that
+  99 | {|||}      |   \begin{align*}
+ 100 | {|||}      |     e^{\lambda} - 1 & = 0.0114 \qquad (\text{$1.14\%$ growth})  \\
+ 101 | {|||}      |     \implies \lambda & = \ln (1+ 0.0114) \approx 0.01133551
+ 102 | {|||}      |   \end{align*}
+ 103 | {|||}      | 
+ 104 | {|||}      | Hence
+ 105 | {|||}[     | \[
+ 106 | {|||}[     |  u(t) = u_{0} e^{0.01133551(t-t_{0})}
+ 107 | {|||}      | \]
+ 108 | {|||}      | \end{example}
+ 109 | {|||}      | 
+ 110 | {|||}      | \subsection*{Application}
+ 111 | {|||}      | 
+ 112 | {|||}      | How long would it take for the population to double?
+ 113 | {|||}      | 
+ 114 | {|||}      | Pros:
+ 115 | {|||}      | \begin{itemize}[topsep=0pt]
+ 116 | {|||}      | \item Model easy to solve
+ 117 | {|||}      | \item Gives testable predictions
+ 118 | {|||}      | \end{itemize}
+ 119 | {|||}      | 
+ 120 | {|||}      | Cons:
+ 121 | {|||}      | \begin{itemize}[topsep=0pt]
+ 122 | {|||}      |  \item Unrealistic -- does not include effects of resource depletion, over-crowding, medical advances, agricultural advances, etc.
+ 123 | {|||}      | \end{itemize}
+ 124 | {|||}      | 
+ 125 | {|||}      | % I've cut this next paragraph because (a) I didn't like it; (b) the third point is vague/meaningless; (c) the fourth point makes the whole thing self-defeating (as, indeed, this kind of maths is).
+ 126 | {|||}      | %Generally
+ 127 | {|||}      | %\begin{itemize}[topsep=0pt]
+ 128 | {|||}      | % \item Use of differential equations started with Newton.
+ 129 | {|||}      | % \item Differential equations arise in many fields, including the sciences, engineering, economics, astronomy, etc.
+ 130 | {|||}      | % \item Very powerful approach.
+ 131 | {|||}      | % \item Most realistic models need a computer to solve.
+ 132 | {|||}      | %\end{itemize}
+ 133 | {|||}      | 
+ 134 | {|||}      | % This bit now unfortunately spills onto another page.
+ 135 | {|||}      | % (This sort of thing probably goes to pot when typesetting in large print anyway.)
+ 136 | {|||}      | To construct more realistic models, we will need to be able to
+ 137 | {|||}      |   \begin{itemize}[topsep=0pt]
+ 138 | {|||}      |     \item work with more than one independent variable;
+ 139 | {|||}      |     \item construct and solve more complex differential equations;
+ 140 | {|||}      |     \item evaluate more complex integrals.
+ 141 | {|||}      |   \end{itemize}
+ 142 | {|||}      | 
+ 143 | {|||}      | 
