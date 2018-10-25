@@ -43,8 +43,10 @@ tabuend "\\end"{lb}("tabular"|"longtable"){rb}
 tabularxstart "\\begin"{lb}("tabularx"|"tabu"|"largetabular"){rb}
 tabularxend "\\end"{lb}("tabularx"|"tabu"|"largetabular"){rb}
 newenvironment ("\\newenvironment"|"\\substack")
+protectstart ("\\begin{picture}"|"\\makeatletter")
+protectend ("\\end{picture}"|"\\makeatother")
 
-%x COMMENT INPUT CLASS DMATH DMATHFAKESTAR DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS TABULARX CAPTION NEWENVIR TABBING CASES
+%x COMMENT PROTECT INPUT CLASS DMATH DMATHFAKESTAR DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS TABULARX CAPTION NEWENVIR TABBING CASES
 %s REMOVE KEEP TABLE SUBSTACK
 %%
 
@@ -55,6 +57,10 @@ newenvironment ("\\newenvironment"|"\\substack")
 ("%")* ECHO; yy_push_state(COMMENT);
 <COMMENT>("%") ECHO;
 <COMMENT>(\r?\n) ECHO; yy_pop_state();
+
+{protectstart} ECHO; yy_push_state(PROTECT);
+<PROTECT>(\r?\n) printf("\n"); /*Just in case*/
+<PROTECT>{protectend} ECHO; yy_pop_state();
 
  /* Protect newenvironments until we know otherwise */
 {newenvironment} ECHO; yy_push_state(NEWENVIR); yy_push_state(NEWENVIR);

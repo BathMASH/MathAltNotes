@@ -44,6 +44,8 @@ standardonly ("\\newpage"|"\\clearpage")
 bracedcolor "{"(([^"}""{"])*)"\\color{"(([^"}""{"])*)"}"
 picturestart "\\begin"{lb}"picture"{rb}
 pictureend "\\end"{lb}"picture"{rb}
+figurestart "\\begin"{lb}"figure"{rb}
+figureend "\\end"{lb}"figure"{rb}
 begindocument "\\begin"{lb}"document"{rb}
 pmatrix "\\pmatrix"
 frac "\\frac"
@@ -51,7 +53,7 @@ toosmall ("\\tiny"|"\\scriptsize"|"\\footnotesize"|"\\small")
 lstset "\\lstset"{lb}
 externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 
-%x COMMENT INPUT IMPORT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE ATOP LISTING READCLASS EXTHYPER
+%x COMMENT INPUT IMPORT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE ATOP LISTING READCLASS EXTHYPER FIGURE INPUTPDFLATEX
 %s LSTSET
 %%
 
@@ -93,6 +95,8 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 <PACKAGES>{lb} printf("\\usepackage{"); 
 <PACKAGES>{rb} ECHO; yy_pop_state();
 
+"\\graphicspath" printf("%%"); ECHO; 
+
 {externaldoc} printf("\\ifpdf\\ifboolexpr{togl {clearprint} or togl {web}}{"); ECHO; printf("-clear}}{"); ECHO; yy_push_state(EXTHYPER); 
 <EXTHYPER>{rb} ECHO; printf("}\\else\\fi"); yy_pop_state();
 
@@ -124,6 +128,13 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 
 {picturestart} ECHO; yy_push_state(PICTURE);
 <PICTURE>{pictureend} ECHO; yy_pop_state();
+
+{figurestart} ECHO; yy_push_state(FIGURE);
+<FIGURE>("\\input"|"\\include") ECHO; yy_push_state(INPUTPDFLATEX);
+<INPUTPDFLATEX>{lb}(.*)/("/") printf("{");
+<INPUTPDFLATEX>"/"
+<INPUTPDFLATEX>{rb} ECHO; yy_pop_state();
+<FIGURE>{figureend} ECHO; yy_pop_state();
 
 {bracedcolor} if(begun==1) {printf(" \\textcolor{"); getcolor();} else ECHO;
 

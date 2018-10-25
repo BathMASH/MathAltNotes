@@ -8,3 +8,13 @@ for i in `find . -maxdepth 1 -name "*.tex" ! -name master*.tex ! -name macros*.t
     $home/extract < $(basename "$i" .tex)-co > $(basename "$i" .tex)-cont.tex
     echo "Processing $i"
 done
+
+for i in `find . -maxdepth 1 -name "*.pdf_tex" -type f`; do
+#    cp $i $i-cont.tex
+#We need to do this because de-macro expects all inputs to end in .tex 
+    cp $i $i.tex
+#    $home/macro < $i > $i-co
+#    $home/extract < $i > $i-cont.tex
+    echo "Processing $i"
+done
+

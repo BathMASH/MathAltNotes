@@ -16,16 +16,22 @@ fi
 
 cd $1
 
-for file in `find . -maxdepth 1 -name "*_tex" -type f`; do
-output=$(basename $file .pdf_tex).svg
-cp $file $file-lp
-sed -i 's/width=\\unitlength/width=\\textwidth,height=\\textheight,keepaspectratio/g' $file-lp
+#for file in `find . -maxdepth 1 -name "*_tex-cont.tex" -type f`; do
+for file in `find . -maxdepth 1 -name "*.pdf_tex.tex" -type f`; do
+output=$(basename $file .pdf_tex.tex).svg
+interim=$(basename $file .pdf_tex.tex).interim
+web=$(basename $file .pdf_tex.tex).web.tex
+cp  $file $(basename $file .tex)-clean-lp.tex
+sed -i 's/width=\\unitlength/width=\\textwidth,height=\\textheight,keepaspectratio/g' $(basename $file .tex)-clean-lp.tex
 
+echo $file
 make pdflatexfigures name=$file
 mv built/$file-figures.pdf figures/latexpdfsvg/
 cd figures/latexpdfsvg/
 pdfcrop $file-figures.pdf
 inkscape --without-gui --file=$file-figures-crop.pdf --export-plain-svg=$output
 cd ../..
-grep iftoggle $file || (sed -i "1 i\\\\\iftoggle{web}{\\\includegraphics{$output}}{" $file; sed -i -e '$a\}\' $file)
+cp $file $web
+#We need to do this to stop tex4ht trying to process this file
+grep iftoggle $web || (sed -i "1 i\\\\\iftoggle{web}{\\\includegraphics{$interim}}{" $web; sed -i -e '$a\}\' $web)
 done
