@@ -621,6 +621,7 @@ vanilla}
    {}
 
 \def\:MM{m}
+\def\mathml:hborder{%
 \Configure{HBorder}
    {<\a:mathml mtr\Hnewline \mml:class="hline">}
    {<\a:mathml mtd><mo> \string&\#x0332; </mo></\a:mathml mtd>
@@ -635,6 +636,14 @@ vanilla}
          \mml:class="vspace" style="font-size:\HBorderspace">}
    {<\a:mathml mtd\Hnewline></\a:mathml mtd>}
    {</\a:mathml mtr>}
+   }
+   \mathml:hborder
+   
+   \def\providemtextclass#1{%
+  \Configure{@mtext}{#1}%
+  \HCode{</mtext>}\ht:special{t4ht@,}\HCode{<mtext \a:@mtext>}\ht:special{t4ht@,&\#x00A0;}%
+}
+
 \Configure{texttt}
    {\ifmathml \Configure{@mtext}{\mml:class="texttt"
          mathvariant="monospace" }\fi}
