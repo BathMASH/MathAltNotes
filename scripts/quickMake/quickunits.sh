@@ -11,6 +11,21 @@ echo "-----------------------------------------------------------------"
 exit
 }
 
+echo "Checking lexers are compiled"
+echo "============================="
+cd scripts/flowfix/
+make
+cd ..
+cd preambleExtractions
+make
+cd ..
+cd dedollar
+make
+cd ..
+cd graphicx
+make
+cd ../../
+
 for i in `ls -d ./units/*-text/` ; do
 echo $i
 ./getMyLaTeX $i/input &>/dev/null

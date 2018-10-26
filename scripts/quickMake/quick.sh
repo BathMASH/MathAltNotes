@@ -48,6 +48,9 @@ make
 cd ..
 cd dedollar
 make
+cd ..
+cd graphicx
+make
 cd ../../
 echo "-----------------------------------------------------------------"
 echo "By-hand: Non-directional delimiters"
