@@ -54,7 +54,7 @@ if [ -d files ]; then
     done
     for i in `find . -name "*_tex" -type f`; do
 	mv $i $home/../../$tmpname/
-	mv $(basename "$i" .pdf_tex).pdf $home/../../$tmpname/figures/latexpdf/
+	[ ! -f $(basename "$i" .pdf_tex).pdf ] || mv $(basename "$i" .pdf_tex).pdf $home/../../$tmpname/figures/latexpdf/
     done
     for i in `find . -name "*.eps" -type f`; do
 	mv $i $home/../../$tmpname/figures/eps/

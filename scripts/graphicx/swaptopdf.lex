@@ -9,5 +9,5 @@ rb ([[:blank:]])*"}"
 %%
 
 ("\\input"|"\\include") ECHO; yy_push_state(INPUT);
-<INPUT>(".web.tex") printf(".pdf_tex.tex");
+<INPUT>(".web.tex") printf(".pdf_tex");
 <INPUT>{rb} ECHO; yy_pop_state();
