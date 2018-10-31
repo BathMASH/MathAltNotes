@@ -5,6 +5,8 @@
 \@ifpackageloaded{tikz}{
  \usetikzlibrary{external}
  \tikzexternalize[mode=only graphics]
+ \AtBeginEnvironment{tikzcd}{\tikzexternaldisable}
+ \AtEndEnvironment{tikzcd}{\tikzexternalenable}
  \tikzset{
   pdf export/.style={
    /pgf/images/external info,

@@ -90,6 +90,7 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 <PACKAGES>(("[")(.*)("]"))*{lb}"xr"{rb} printf("\\ifpdf\\usepackage{xr,xr-hyper}\\else\\fi"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}{danger}{rb} printf("\\ifboolexpr{togl {web} or togl{clearprint}}{}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}{notlarge}{rb} printf("\\ifboolexpr{togl {web} or togl{large}}{}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
+<PACKAGES>(("[")(.*)("]"))*{lb}"tikz"{rb} printf("\\usepackage[dvipsnames]{xcolor}\\usepackage"); ECHO; yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb} printf("\\usepackage"); ECHO; 
 <PACKAGES>","(" ")* printf(",");
 <PACKAGES>{lb} printf("\\usepackage{"); 
