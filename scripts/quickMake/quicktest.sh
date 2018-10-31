@@ -29,7 +29,7 @@ fi
 echo "============================="
 echo "Delimiters"
 echo "============================="
-./scripts/dedollar/dedollar.sh $1 &>/dev/null
+echo y | ./scripts/dedollar/dedollar.sh $1 &>/dev/null
 ./scripts/match_parens_ht/match_parens_ht.sh $1 &>/dev/null
 #./scripts/vert/vert.sh $1
 cd $1
