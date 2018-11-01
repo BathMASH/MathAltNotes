@@ -5,7 +5,7 @@ whitespace (" "|\t|(\r?\n))
 lb ([[:blank:]])*"{"([[:blank:]])*
 rb ([[:blank:]])*"}"
 
-%x INPUT
+%x INPUT 
 %%
 
 ("\\input"|"\\include") ECHO; yy_push_state(INPUT);

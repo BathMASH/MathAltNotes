@@ -232,6 +232,8 @@
    \AfterEndEnvironment{lstlisting}{\end{shaded}}
   }{}
 
+  \ifboolexpr{togl {word} or togl {web} or togl {figures}}{}{\newenvironment{mytikz}{\begin{center}\begin{tikzcd}[ampersand replacement=\&]}{\end{tikzcd}\end{center}}}
+
   \iftoggle{clearprint}{\newcommand{\scalefactor}{1.1}}{}
   \iftoggle{large}{\renewcommand{\scalefactor}{1.4}}{}
   \ifboolexpr{togl {clearprint} or togl {large}}{\usepackage{fontfix}}{}
@@ -251,6 +253,7 @@
  }{}
 
 }{
+\newenvironment{mytikz}{\begin{center}\begin{tikzcd}[ampersand replacement=\&]}{\end{tikzcd}\end{center}}
 %% In the standard format I still might need to insert a disclaimer
 \appto{\maketitle}{\inputdisclaimer}
 \ifdefstring{\class}{beamer}{\appto{\titlepage}{\tiny Lecture notes and audio recording, Department of Mathematical Sciences, The University of Bath\footnote{\tiny\inputdisclaimer}}}{}

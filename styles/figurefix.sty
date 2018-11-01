@@ -1,13 +1,17 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{figurefix}[2018/01/25]
+\RequirePackage{environ}
 
   \@ifpackageloaded{tikz}{
     %https://tex.stackexchange.com/questions/40135/htlatex-and-tikz-creates-sometimes-incorrect-svgs
     \usetikzlibrary{external}
     \tikzexternalize[prefix=./figures/pdf/]
     \tikzexternalize[mode=only graphics]
-    \AtBeginEnvironment{tikzcd}{\tikzexternaldisable}
-    \AtEndEnvironment{tikzcd}{\tikzexternalenable}
+%%  I have hacked together a solution which allows us to externalise tikzcd... but keep an eye on the results
+%%    \AtBeginEnvironment{tikzcd}{\tikzexternaldisable}
+%%    \AtEndEnvironment{tikzcd}{\tikzexternalenable}
+    \NewEnviron{mytikz}[1][]{
+      \begin{figure}[htp] \begin{center} \begin{tikzpicture}[#1] \node {\begin{tikzcd}[ampersand replacement=\&] \BODY \end{tikzcd}}; \end{tikzpicture} \end{center} \end{figure}}
     \tikzset{
      pdf export/.style={
       /pgf/images/external info,

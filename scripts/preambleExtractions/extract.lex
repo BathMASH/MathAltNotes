@@ -46,6 +46,8 @@ picturestart "\\begin"{lb}"picture"{rb}
 pictureend "\\end"{lb}"picture"{rb}
 figurestart "\\begin"{lb}"figure"{rb}
 figureend "\\end"{lb}"figure"{rb}
+mathstart "\\begin"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|"multline"|"gather"|"eqnarray*"|"align*"|"eqnarray"|"align"){rb}
+mathsend "\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|"multline"|"gather"|"eqnarray*"|"align*"|"eqnarray"|"align"){rb}
 begindocument "\\begin"{lb}"document"{rb}
 pmatrix "\\pmatrix"
 frac "\\frac"
@@ -53,7 +55,7 @@ toosmall ("\\tiny"|"\\scriptsize"|"\\footnotesize"|"\\small")
 lstset "\\lstset"{lb}
 externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 
-%x COMMENT INPUT IMPORT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE ATOP LISTING READCLASS EXTHYPER FIGURE INPUTPDFLATEX
+%x COMMENT INPUT IMPORT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE ATOP LISTING READCLASS EXTHYPER FIGURE INPUTPDFLATEX TIKZCD MATH
 %s LSTSET
 %%
 
@@ -129,6 +131,10 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 
 {picturestart} ECHO; yy_push_state(PICTURE);
 <PICTURE>{pictureend} ECHO; yy_pop_state();
+
+{mathstart}?{whitespace}*"\\begin"{lb}"tikzcd"{rb} printf("\n\\begin{mytikz}"); yy_push_state(TIKZCD);
+<TIKZCD>"\\end"{lb}"tikzcd"{rb}{whitespace}*{mathsend}? printf("\\end{mytikz}\n"); yy_pop_state();
+<TIKZCD>"&" printf("\\&");
 
 {figurestart} ECHO; yy_push_state(FIGURE);
 <FIGURE>("\\input"|"\\include") ECHO; yy_push_state(INPUTPDFLATEX);
