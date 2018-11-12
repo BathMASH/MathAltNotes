@@ -134,6 +134,8 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 
 {mathstart}?{whitespace}*"\\begin"{lb}"tikzcd"{rb} printf("\n\\begin{mytikz}"); yy_push_state(TIKZCD);
 <TIKZCD>"\\end"{lb}"tikzcd"{rb}{whitespace}*{mathsend}? printf("\\end{mytikz}\n"); yy_pop_state();
+<TIKZCD>{ls}{whitespace}*"ampersand"{whitespace}*"replacement"{whitespace}*"="{whitespace}*"\\&"{rs}
+<TIKZCD>"\\&" ECHO;
 <TIKZCD>"&" printf("\\&");
 
 {figurestart} ECHO; yy_push_state(FIGURE);
