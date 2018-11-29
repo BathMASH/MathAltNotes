@@ -84,7 +84,7 @@ href="#QQ2-1-4" id="x1-40001">Standard mathematical symbols</a></h3>
 display="inline" ><mrow 
 >  <mi 
 >$</mi><mstyle 
-class="text"><mtext  >_</mtext></mstyle><mo 
+class="mbox"><mtext  >_</mtext></mstyle><mo 
 class="MathClass-bin">‡</mo><mrow ><mo 
 class="MathClass-open">{</mo><mrow><mo 
 class="MathClass-op">¶</mo><mo 
@@ -2127,8 +2127,8 @@ class="eqnarray-4"> <mtext class="eqnarray"></mtext></mtd></mtr></mtable>
 display="block" ><mrow 
 >
 <mfenced separators="" 
-open="["  close="]" ><mrow> <mtable  style="text-align:axis;"  
-equalrows="false" columnlines="none" equalcolumns="false" class="array"><mtr><mtd 
+open="["  close="]" ><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none" equalcolumns="false" class="array"> <mtr><mtd 
 class="array"  columnalign="center"><msub><mrow 
 ><mi 
 >a</mi></mrow><mrow 
@@ -2139,12 +2139,12 @@ class="array"  columnalign="center"><msub><mrow
 >a</mi></mrow><mrow 
 ><mn>1</mn><mn>2</mn></mrow></msub 
 ></mtd>
-</mtr><mtr><mtd 
-class="array"  columnalign="center"> <msub><mrow 
+</mtr>  <mtr><mtd 
+class="array"  columnalign="center"><msub><mrow 
 ><mi 
 >a</mi></mrow><mrow 
 ><mn>2</mn><mn>1</mn></mrow></msub 
-> </mtd><mtd 
+></mtd><mtd 
 class="array"  columnalign="center"><msub><mrow 
 ><mi 
 >a</mi></mrow><mrow 
@@ -2159,8 +2159,8 @@ class="array"  columnalign="center"><msub><mrow
 display="block" ><mrow 
 >
 <mfenced separators="" 
-open="["  close="]" ><mrow> <mtable  style="text-align:axis;"  
-equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array"><mtr><mtd 
+open="["  close="]" ><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array"> <mtr><mtd 
 class="array"  columnalign="center"><mn>1</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
@@ -2171,7 +2171,7 @@ class="array"  columnalign="center"><mn>0</mn></mtd><mtd
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd></mtr><mtr><mtd 
-class="array"  columnalign="center"><mn>0</mn> </mtd><mtd 
+class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>1</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
@@ -2181,7 +2181,7 @@ class="array"  columnalign="center"><mn>0</mn></mtd><mtd
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd>
-</mtr><mtr><mtd 
+</mtr>  <mtr><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>1</mn></mtd><mtd 
@@ -2192,7 +2192,7 @@ class="array"  columnalign="center"><mn>0</mn></mtd><mtd
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd></mtr><mtr><mtd 
-class="array"  columnalign="center"><mn>0</mn> </mtd><mtd 
+class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>1</mn></mtd><mtd 
@@ -2202,7 +2202,7 @@ class="array"  columnalign="center"><mn>0</mn></mtd><mtd
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd>
-</mtr><mtr><mtd 
+</mtr>  <mtr><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
@@ -2213,7 +2213,7 @@ class="array"  columnalign="center"><mn>0</mn></mtd><mtd
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd></mtr><mtr><mtd 
-class="array"  columnalign="center"><mn>0</mn> </mtd><mtd 
+class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
@@ -2223,7 +2223,7 @@ class="array"  columnalign="center"><mn>0</mn></mtd><mtd
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd>
-</mtr><mtr><mtd 
+</mtr>  <mtr><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
@@ -2234,7 +2234,7 @@ class="array"  columnalign="center"><mn>1</mn></mtd><mtd
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd></mtr><mtr><mtd 
-class="array"  columnalign="center"><mn>0</mn> </mtd><mtd 
+class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
@@ -2244,7 +2244,7 @@ class="array"  columnalign="center"><mn>0</mn></mtd><mtd
 class="array"  columnalign="center"><mn>1</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd>
-</mtr><mtr><mtd 
+</mtr>  <mtr><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
@@ -2255,7 +2255,7 @@ class="array"  columnalign="center"><mn>0</mn></mtd><mtd
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>1</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd></mtr><mtr><mtd 
-class="array"  columnalign="center"><mn>0</mn> </mtd><mtd 
+class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
 class="array"  columnalign="center"><mn>0</mn></mtd><mtd 
@@ -2279,11 +2279,11 @@ display="block" >
 class="eqnarray-star" columnalign="right center left" displaystyle="true">
 <mtr><mtd 
 class="eqnarray-1"> <mfenced separators="" 
-open="|"  close="|" ><mrow> <mtable  style="text-align:axis;"  
-equalrows="false" columnlines="none" equalcolumns="false" class="array"><mtr><mtd 
+open="|"  close="|" ><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none" equalcolumns="false" class="array"> <mtr><mtd 
 class="array"  columnalign="center"><mn>1</mn></mtd><mtd 
-class="array"  columnalign="center"><mn>2</mn></mtd></mtr><mtr><mtd 
-class="array"  columnalign="center">  <mn>3</mn> </mtd> <mtd 
+class="array"  columnalign="center"><mn>2</mn></mtd></mtr>  <mtr><mtd 
+class="array"  columnalign="center"><mn>3</mn></mtd> <mtd 
 class="array"  columnalign="center"><mn>4</mn></mtd></mtr>
 <!--cc--></mtable>                                                                                                                    </mrow></mfenced></mtd><mtd 
 class="eqnarray-2">      <mo 
@@ -2404,8 +2404,8 @@ class="MathClass-rel">→</mo></mrow><mrow
 display="block" ><mrow 
 >
 <mfenced separators="" 
-open="("  close=")" ><mrow> <mtable  style="text-align:axis;"  
-equalrows="false" columnlines="" equalcolumns="false" class="array"><mtr><mtd 
+open="("  close=")" ><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="" equalcolumns="false" class="array"> <mtr><mtd 
 class="array"  columnalign="center"><mi 
 >a</mi></mtd></mtr><mtr><mtd 
 class="array"  columnalign="center"><mi 

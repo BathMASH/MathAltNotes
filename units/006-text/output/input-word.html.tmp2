@@ -121,7 +121,7 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 >  <mi
 >$</mi><mstyle
- class="text"><mtext
+ class="mbox"><mtext
 >_</mtext></mstyle><mo
  class="MathClass-bin">&#x2021;</mo><mrow
 ><mo
@@ -2963,7 +2963,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 <mfenced
  separators="" open="[" close="]"><mrow
 > <mtable
- style="text-align:axis;" equalrows="false" columnlines="none" equalcolumns="false" class="array"><mtr
+ align="axis" style="" equalrows="false" columnlines="none" equalcolumns="false" class="array"> <mtr
 ><mtd
  class="array" columnalign="center"><msub
 ><mrow
@@ -2975,13 +2975,13 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><mi
 >a</mi></mrow><mrow
 ><mn>12</mn></mrow></msub></mtd>
-</mtr><mtr
+</mtr>  <mtr
 ><mtd
- class="array" columnalign="center"> <msub
+ class="array" columnalign="center"><msub
 ><mrow
 ><mi
 >a</mi></mrow><mrow
-><mn>21</mn></mrow></msub> </mtd><mtd
+><mn>21</mn></mrow></msub></mtd><mtd
  class="array" columnalign="center"><msub
 ><mrow
 ><mi
@@ -3002,7 +3002,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 <mfenced
  separators="" open="[" close="]"><mrow
 > <mtable
- style="text-align:axis;" equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array"><mtr
+ align="axis" style="" equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array"> <mtr
 ><mtd
  class="array" columnalign="center"><mn>1</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
@@ -3015,7 +3015,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd></mtr><mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn> </mtd><mtd
+ class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>1</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
@@ -3025,7 +3025,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd>
-</mtr><mtr
+</mtr>  <mtr
 ><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
@@ -3038,7 +3038,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd></mtr><mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn> </mtd><mtd
+ class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>1</mn></mtd><mtd
@@ -3048,7 +3048,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd>
-</mtr><mtr
+</mtr>  <mtr
 ><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
@@ -3061,7 +3061,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd></mtr><mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn> </mtd><mtd
+ class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
@@ -3071,7 +3071,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd>
-</mtr><mtr
+</mtr>  <mtr
 ><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
@@ -3084,7 +3084,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd></mtr><mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn> </mtd><mtd
+ class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
@@ -3094,7 +3094,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="array" columnalign="center"><mn>1</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd>
-</mtr><mtr
+</mtr>  <mtr
 ><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
@@ -3107,7 +3107,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="array" columnalign="center"><mn>1</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd></mtr><mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn> </mtd><mtd
+ class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
  class="array" columnalign="center"><mn>0</mn></mtd><mtd
@@ -3141,12 +3141,12 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="eqnarray-1"> <mfenced
  separators="" open="|" close="|"><mrow
 > <mtable
- style="text-align:axis;" equalrows="false" columnlines="none" equalcolumns="false" class="array"><mtr
+ align="axis" style="" equalrows="false" columnlines="none" equalcolumns="false" class="array"> <mtr
 ><mtd
  class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>2</mn></mtd></mtr><mtr
+ class="array" columnalign="center"><mn>2</mn></mtd></mtr>  <mtr
 ><mtd
- class="array" columnalign="center">  <mn>3</mn> </mtd> <mtd
+ class="array" columnalign="center"><mn>3</mn></mtd> <mtd
  class="array" columnalign="center"><mn>4</mn></mtd></mtr>
 <!--cc
 --></mtable>                                                                                                                    </mrow></mfenced></mtd><mtd
@@ -3311,7 +3311,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 <mfenced
  separators="" open="(" close=")"><mrow
 > <mtable
- style="text-align:axis;" equalrows="false" columnlines="" equalcolumns="false" class="array"><mtr
+ align="axis" style="" equalrows="false" columnlines="" equalcolumns="false" class="array"> <mtr
 ><mtd
  class="array" columnalign="center"><mi
 >a</mi></mtd></mtr><mtr

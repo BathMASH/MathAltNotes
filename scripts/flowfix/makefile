@@ -14,7 +14,7 @@ $(BDIR):
 
 $(BDIR)%: $(SDIR)%.lex
 	flex $<
-	gcc lex.yy.c -lfl -o $@
+	gcc lex.yy.c -lfl -Wno-implicit-function-declaration -o $@
 	@rm lex.yy.c
 
 clean: 

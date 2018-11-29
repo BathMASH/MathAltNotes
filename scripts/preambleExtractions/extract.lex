@@ -65,7 +65,7 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
  /* {singledollar} ECHO; yy_push_state(SINGLEDOLLAR); */
  /* <SINGLEDOLLAR>{singledollar} ECHO; yy_pop_state(); */
 
- /*We need to ensure that comments are not processed */
+  /*We need to ensure that comments are not processed */
 ("%")* ECHO; yy_push_state(COMMENT);
 <COMMENT>("%") ECHO;
 <COMMENT>(\r?\n) printf("\n"); yy_pop_state();
