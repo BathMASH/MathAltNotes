@@ -1,0 +1,39 @@
+
+I believe that all problem cases come down to:
+
+|...|...|...|
+
+which could be:
+\left|...\right|...\left|...\right|
+
+or
+\left|...\left|...\right|...\right|
+
+I do not believe that these are syntactically differentiable.
+
+This is THE ambiguity and it exists _IN LATEX_!!
+http://www.pbx-brasil.com/Pesquisa/Ferramentas/Latex/mathjax/martinkeefe/mathjax6.html
+
+The LaTeX compiler cannot distinguish and this leads to incorrect spacing which apparently NO ONE notices.
+
+So. Can we spot this, warn and abort and fix all others?
+
+Their example is |k|=|-k| (e.g. vs |2|k|-k|
+
+We would need to decide, once and for all, what we consider to be local context. It is probably a good thing that we do this but do we have the confidence?
+
+We would also need a complete list of all possible sizing prefixes (in all packages??).
+
+Or, I guess that it is *possible* that the ONLY examples which led to sizing or reading problems in mathjax and/or word are these precise examples. If this is the case then why are we bothering to do anything? So. This is the first thing that we need to find out.
+
+How?
+* Trials
+* Reseach
+* Phone a friend
+
+Note: LaTeX does not attempt to height match but mathjax does. This is why we see a clearer visual feedback.
+
+Nothing is that simple. Large and mathjax agree (HTF?) and LaTeX does not. We need to check out what happens in speech and braille.
+
+
+
