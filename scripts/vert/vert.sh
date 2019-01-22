@@ -19,7 +19,7 @@ cd $1
 for i in `find . -maxdepth 1 -name "*.tex" ! -name master*.tex ! -name macros*.tex ! -name empty*.tex ! -name "*standard.tex" ! -name "*large.tex" ! -name "*clear.tex" ! -name "*web.tex" ! -name "*word.tex" ! -name "*-cont.tex" ! -name "choices.tex" -type f`; do
     echo "Processing: $i"
     $home/bin/vert1 < $i > $(basename "$i" .tex)-v1
-    $home/bin/vert2 < $(basename "$i" .tex)-v1 > $(basename "$i" .tex)-v2
+    $home/bin/vert3 < $(basename "$i" .tex)-v1 > $(basename "$i" .tex)-v2
      if grep -c "syntactically ambiguous" $(basename "$i" .tex)-v2 &> /dev/null; then
 	echo "$i contains ambiguous verticals"
 	mv $i $(basename "$i" .tex).pre-vert

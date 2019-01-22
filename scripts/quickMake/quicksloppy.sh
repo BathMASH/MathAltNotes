@@ -3,7 +3,7 @@ usage() {
 echo "-----------------------------------------------------------------"
 echo "-----------------------------------------------------------------"
 echo "Only call this if ./quickMake resulted in an xtpipes error!"
-echo "Ideally you should check your bracket matching first!"
+echo "Ideally you should check your delimiter matching first!"
 echo "See the output from ./quickMake!"
 echo "In some cases $0 will result in immediately usable files however"
 echo "they are broken in ways you CANNOT SEE! So you should also"
@@ -45,12 +45,15 @@ make
 cd ..
 cd graphicx
 make
+cd ..
+cd vert
+make
 cd ../../
 echo "-----------------------------------------------------------------"
-echo "By-hand: Non-directional delimiters"
+echo "Non-directional delimiters"
 echo "==================================="
 echo "Since you have chosen to make sloppy versions of web and word we"
-echo "assume you have a bracket matching problem you prefer not to fix"
+echo "assume you have a delimiter matching problem you prefer not to fix"
 echo "or a vert problem you prefer not to fix. So, we won't make you do"
 echo "these. There could be other problems too and these won't be avoided"
 echo "by making sloppy versions. SO you should check your output!"

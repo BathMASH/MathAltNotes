@@ -31,7 +31,7 @@ echo "Delimiters"
 echo "============================="
 echo y | ./scripts/dedollar/dedollar.sh $1 &>/dev/null
 ./scripts/match_parens_ht/match_parens_ht.sh $1 &>/dev/null
-#./scripts/vert/vert.sh $1
+./scripts/vert/vert.sh $1 &>/dev/null
 cd $1
 file=`find . -name "*.fls" -type f`
 name=$(basename "$file" .fls)

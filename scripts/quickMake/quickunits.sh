@@ -24,6 +24,9 @@ make
 cd ..
 cd graphicx
 make
+cd ..
+cd vert
+make
 cd ../../
 
 for i in `ls -d ./units/*-text/` ; do
