@@ -23,6 +23,7 @@ for i in `find . -maxdepth 1 -name "*.tex" ! -name master*.tex ! -name macros*.t
 	mv $(basename "$i" .tex)-d $i
     else
 	echo "$i does not contain $'s - good for you"
+	cp $i $(basename "$i" .tex).origin
 	rm $(basename "$i" .tex)-d
     fi
 done

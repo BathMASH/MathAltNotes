@@ -12,7 +12,7 @@ mathstart ("\\("|"\\["|"\\begin"{lb}("equation"|"equation*"|"displaymath"|"multl
 mathsend ("\\)"|"\\]"|"\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|"multline"|"gather"|"eqnarray*"|"align*"|"eqnarray"|"align"){rb})
 protect ("\\left"|"\\right"|"\\big"|"\\Big"|"\\bigg"|"\\Bigg"|"\\bigr"|"\\bigl"|"\\Bigl"|"\\Bigr"|"\\biggl"|"\\biggr"|"\\Biggl"|"\\Biggr")("|"|"\\|"|"\\vert"|"\\Vert")
 
-%x COMMENT VERBATIM MATHS BAR BARBAR MATCH TOOMANY
+%x COMMENT VERBATIM MATHS BAR BARBAR MATCH TOOMANY 
 %%
 
 {protect} ECHO;
@@ -31,8 +31,8 @@ protect ("\\left"|"\\right"|"\\big"|"\\Big"|"\\bigg"|"\\Bigg"|"\\bigr"|"\\bigl"|
 {mathstart} ECHO; yy_push_state(MATHS);
 <MATHS>("%")[^\n]* ECHO;
 <MATHS>{protect} ECHO;
-<MATHS>"\\|" yy_push_state(BARBAR); /*printf("BB");*/ 
-<MATHS>"|" yy_push_state(BAR); /*printf("B");*/
+<MATHS>"\\|" yy_push_state(BARBAR); printf("BB"); 
+<MATHS>"|" yy_push_state(BAR); printf("B");
 <MATHS,TOOMANY>{mathsend}/(" ")*{newline} ECHO; commentcheck(0); yy_pop_state();
 <MATHS,TOOMANY>{mathsend} ECHO; commentcheck(1); yy_pop_state();
 
@@ -40,17 +40,17 @@ protect ("\\left"|"\\right"|"\\big"|"\\Big"|"\\bigg"|"\\Bigg"|"\\bigr"|"\\bigl"|
 <TOOMANY>"&" ECHO; yy_pop_state();
 
  /* Not sure whether this is context safe when there is no match */
-<BARBAR>[^|]*{mathsend} printf("\\|"); /*printf("L");*/ ECHO; yy_pop_state(); check = 1; commentcheck(0); yy_pop_state();
-<BARBAR>[^&\n]*"\\|"[^&\n]*"\\|"[^\\&]* printf("\\|"); /*printf("T");*/ ECHO; yy_pop_state(); check = 2; yy_pop_state(); yy_push_state(TOOMANY);
-<BARBAR>[^|]*/"\\|" printf("\\left\\|"); ECHO; printf("\\right"); yy_pop_state(); check = 1; yy_push_state(MATCH);
+<BARBAR>[^|\n]*"\\n" printf("\\|"); printf("L"); ECHO; yy_pop_state(); check = 1; commentcheck(0); yy_pop_state();
+<BARBAR>[^&\n]*"\\|"[^&\n]*"\\|"[^\\&]* printf("\\|"); printf("T"); ECHO; yy_pop_state(); check = 2; yy_pop_state(); yy_push_state(TOOMANY);
+<BARBAR>[^|\n]*/"\\|" printf("\\left\\|"); ECHO; printf("\\right"); yy_pop_state(); check = 1; yy_push_state(MATCH);
 <BARBAR>{mathsend} ECHO; printf("%%%%%%%% SOMETHING HAS GONE WRONG WITH VERT");
 
-<BAR>[^|]*{mathsend} printf("|"); /*printf("L");*/ ECHO; yy_pop_state(); check = 1; commentcheck(0); yy_pop_state();
-<BAR>[^&\n]*"|"[^&\n]*"|"[^\\&]* printf("|"); /*printf("T");*/ ECHO;  yy_pop_state(); check = 2; yy_pop_state(); yy_push_state(TOOMANY); 
-<BAR>[^|]*/"|" printf("\\left|"); ECHO; printf("\\right"); yy_pop_state(); check = 1; yy_push_state(MATCH);
+<BAR>[^|\n]*"\\n" printf("|"); printf("L"); ECHO; yy_pop_state(); check = 1; commentcheck(0); yy_pop_state();
+<BAR>[^&\n]*"|"[^&\n]*"|"[^\\&]* printf("|"); printf("T"); ECHO;  yy_pop_state(); check = 2; yy_pop_state(); yy_push_state(TOOMANY); 
+<BAR>[^|\n]*/"|" printf("\\left|"); ECHO; printf("\\right"); yy_pop_state(); check = 1; yy_push_state(MATCH);
 <BAR>{mathsend} ECHO; printf("%%%%%%%% SOMETHING HAS GONE WRONG WITH VERT");
 
-<MATCH>("|"|"\\|") ECHO; check = 1; yy_pop_state(); /*printf("M");*/
+<MATCH>("|"|"\\|") ECHO; check = 1; yy_pop_state(); printf("M");
 
 %%
 
