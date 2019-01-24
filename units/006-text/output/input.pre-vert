@@ -1,19 +1,17 @@
 %Taken from HESTEM project vanilla tests
-%\documentclass[12pt,a4paper,onecolumn]{article}
-\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage[T1]{fontenc}}
-\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage[a4paper]{geometry}}
-
-
-
+\documentclass[12pt,a4paper,onecolumn]{article}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper]{geometry}
+\newcommand{\xsb}{x_{1}}
+\newcommand{\xsp}{x^{2}}
+\newcommand{\xsbnum}[1]{x_{#1}}
 \title{Basic mathematical symbols and structures}
 \author{Emma Cliffe}
 \date{}
-
 \begin{document}
 \maketitle
 \tableofcontents
-\ifboolexpr{togl {clearprint} or togl {large}}{}{\newpage}
-
+\newpage
 \section{Standard mathematical symbols}
 
 We will use the robust single dollar environment for these
@@ -28,7 +26,7 @@ But for longer tests we will use the equation environment so that we don't overr
 Greek:
 \begin{equation}
 \alpha  \beta  \gamma  \delta  \epsilon  \varepsilon  \zeta  \eta  \theta  \vartheta  \iota  \kappa  \lambda  \mu  \nu  \xi  o  \pi  \varpi  \rho  \varrho  \sigma  \varsigma  \tau  \upsilon  \phi  \varphi  \chi  \psi  \omega
-\end{equation}%%%% Please add \left and \right to all verticals, this is syntactically ambiguous due to linebreaks
+\end{equation}
 
 Upper case Greek:
 \begin{equation}
@@ -99,7 +97,7 @@ Binary operators:
 Relations:
 \begin{equation}
 \le \leq \ll \subset \subseteq \sqsubseteq \in \vdash \models \ge \geq \gg \supset \supseteq \sqsubseteq \ni \dashv \perp \neq \doteq \approx \cong \equiv \propto \prec \preceq \parallel \| \sim \simeq \asymp \smile \frown \bowtie \succ \succeq \mid
-\end{equation}%%%% Please add \left and \right to all verticals, this is syntactically ambiguous due to linebreaks
+\end{equation}
 
 Negated which do not stop conversion but may not be displayed in Word:
 \begin{equation}
@@ -122,7 +120,7 @@ Arrows:
 Other:
 \begin{equation}
 \aleph \hbar \imath \jmath \ell \wp \Re \Im \prime \emptyset \nabla \surd \partial \top \bot \vdash \dashv \forall \exists \neq \flat \natural \sharp \| \angle \backslash \triangle \clubsuit \diamondsuit \heartsuit \spadesuit \infty
-\end{equation}%%%% Please add \left and \right to all verticals, this is syntactically ambiguous due to linebreaks
+\end{equation}
 
 Symbols with two sizes: 
 \begin{center}
@@ -191,7 +189,7 @@ a \ldots a \quad a \vdots a \quad  a \cdots a \quad  a \ddots a
 Horizontal spacing:
 \begin{equation}
 |~|\,|\:|\;|\quad | \qquad |
-\end{equation}%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
+\end{equation}
 
 \section{Standard mathematical structures}
 
@@ -279,7 +277,7 @@ Now for an equation array:
 
 % {a \atop b} cannot be converted in web format - is this because I am fixing choose and not atop?  
 \[
-\binom{a }{ b}
+{a \choose b}
 \]
 
 \[
@@ -304,6 +302,6 @@ a + \frac{1}{b + \frac{1}{c + \frac{1}{d + \frac{1}{e + \frac{1}{f + \frac{1}{g 
 
 \subsection{Testing new commands\label{test}}
 \[ 
-x_{1} x^{2} x_{2}
+\xsb \xsp \xsbnum{2}
 \]
 \end{document}

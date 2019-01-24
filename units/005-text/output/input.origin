@@ -1,0 +1,289 @@
+%Taken from HESTEM project vanilla tests
+\documentclass[12pt,a4paper,onecolumn]{article}
+\usepackage[T1]{fontenc}
+\newtheorem{theorem}{Theorem}[section]
+\usepackage[a4paper]{geometry}
+\usepackage{longtable} 
+\title{Basic structures}
+\author{Emma Cliffe}
+\date{}
+\begin{document}
+\maketitle
+\noindent
+A baseline of text which is a single line long in 12pt font with no indent applied.
+
+\begin{quote}
+In the quote environment [paragraphs] are indicated with more vertical spacing between them. 
+
+Additional vertical spacing is inserted above and below the displayed text to separate it visually from the the normal text.
+\end{quote}
+
+A baseline of text to show the height change in the above and below environments. This line was indented though to show off the next environment. The quotations are from ``A Guide to \LaTeX'' \cite{KopkaDaly}
+
+\begin{quotation}
+In the quotation environment, paragraphs are marked by extra indentation of the first line. 
+
+The quotation environment is only really meaningful when the regular text makes use of first-line indentation to show off new paragraphs.
+\end{quotation}
+
+%ignored verse enivironment
+
+\noindent
+A baseline of text which is a single line long in 12pt font with no indent applied.
+
+\begin{itemize}
+\item An itemized list
+\item Using standard itemize
+\begin{itemize}
+\item With a level 2 sub-point
+\begin{itemize}
+\item With a level 3 sub-point
+\begin{itemize}
+\item With a level 4 sub-point
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\item[\&] Or I can control the marker manually
+\end{itemize}
+
+\noindent
+A baseline of text which is a single line long in 12pt font with no indent applied.
+
+Same list with redefinition using renewcommand of the labels labelitem(i-iv)
+\begin{itemize}
+\renewcommand{\labelitemi}{*}
+\renewcommand{\labelitemii}{**}
+\renewcommand{\labelitemiii}{***}
+\renewcommand{\labelitemiv}{****}
+\item An itemized list
+\item Using standard itemize
+\begin{itemize}
+\item With a level 2 sub-point
+\begin{itemize}
+\item With a level 3 sub-point
+\begin{itemize}
+\item With a level 4 sub-point
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\item[\&] Or I can control the marker manually
+\end{itemize}
+
+\begin{itemize}
+\item Because the renewcommands were contained in the environment they are not global
+\end{itemize}
+
+\noindent
+A baseline of text which is a single line long in 12pt font with no indent applied.
+
+\begin{enumerate}
+\item An enumerated list
+\item Using standard enumerate
+\begin{enumerate}
+\item With a level 2 sub-point
+\begin{enumerate}
+\item With a level 3 sub-point
+\begin{enumerate}
+\item With a level 4 sub-point
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\item[\&] Or I can control the marker
+\end{enumerate}
+
+\noindent
+A baseline of text which is a single line long in 12pt font with no indent applied.
+
+Same list with redefinition using renewcommand of the labels labelenum(i-iv) by application of arabic, roman, Roman, alph or Alph
+\begin{enumerate}
+\renewcommand{\labelenumi}{\Roman{enumi}.}
+\renewcommand{\labelenumii}{\roman{enumii}.}
+\renewcommand{\labelenumiii}{\Alph{enumiii}.}
+\renewcommand{\labelenumiv}{\alph{enumiv}.}
+\item An enumerated list
+\item Using standard enumerate
+\begin{enumerate}
+\item With a level 2 sub-point
+\begin{enumerate}
+\item With a level 3 sub-point
+\begin{enumerate}
+\item With a level 4 sub-point
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\item[\&] Or I can control the marker
+\end{enumerate}
+
+\begin{enumerate}
+\item Because the renewcommands were contained in the environment they are not global
+\end{enumerate}
+
+\noindent
+A baseline of text which is a single line long in 12pt font with no indent applied.
+
+\begin{description}
+\item[first] The marker is a description
+\item[second] in the description environment
+\item But it is optional
+\end{description}
+
+%ignored the bibliography (non bibtex) for now)
+%ignored generalised lists for now
+
+\noindent
+A baseline of text which is a single line long in 12pt font with no indent applied.
+
+\begin{theorem}[Title of the theorem]
+This is a theorem that has been produced without the AMS theorem environment or package
+\end{theorem}
+
+\noindent
+A baseline of text which is a single line long in 12pt font with no indent applied.
+
+\begin{tabbing}
+There is the \=tabbing environment which lines\\
+\>this with tabbing above \= and\+\\
+\>this with and\\
+and this with tabbing again\-\\
+until I backwards tab
+\end{tabbing}
+
+\noindent
+A baseline of text which is a single line long in 12pt font with no indent applied.
+
+\bigskip
+
+\noindent
+\fbox{This text is framed in a box. The width is determined by the text.}
+
+\bigskip
+
+\noindent
+\framebox[0.5\textwidth]{This box is 0.5 textwidth wide}
+
+\bigskip
+
+\noindent
+A baseline of text which is a single line long in 12pt font with no indent applied.
+
+\bigskip
+
+\noindent
+\parbox{0.5\textwidth}{This is a parbox half the textwidth of the page. \par This is the second paragraph in the box.}
+
+\bigskip
+
+\noindent
+\fbox{\parbox{0.5\textwidth}{This is a parbox half the textwidth of the page. \par This is the second paragraph in the box.}}
+
+\bigskip
+
+\noindent
+\begin{minipage}{0.5\textwidth}This is a minipage half the textwidth of the page. \par This is the second paragraph in the minipage.\end{minipage}\hfill
+\begin{minipage}{0.3\textwidth}A second minipage is over here...\end{minipage}
+
+\bigskip
+
+\noindent
+\rule{\textwidth}{\baselineskip}
+
+\bigskip
+
+%We want to allow tabular, longtable (maybe later tabular* and maybe tabularx)
+\begin{table}[t]\label{table}
+\begin{tabular}{|l*{2}{|c|}r|@{insert}|p{2cm}}
+%\begin{tabu} to 0.5\textwidth {|X*{2}{|X|}X|@{insert}|X}
+\hline
+a & b & c & d & abcde\\
+\cline{1-4}
+\multicolumn{4}{c}{abcd}\vline & abcde\\
+\hline
+$\frac{a}{e}$ & $\frac{b}{e}$ & $\frac{c}{e}$ & $\frac{d}{e}$ & $\alpha\beta\gamma\delta\epsilon$ \\
+\hline
+\end{tabular}
+\caption{This is a table}
+\end{table}
+
+\noindent
+This is just below where the floating table \ref{table} was defined. It should appear at the top of either this page or the page after this. 
+
+\bigskip
+
+\begin{center}
+\renewcommand{\arraystretch}{2}
+%\begin{longtabu} to \textwidth {*{3}{|X|}}
+\begin{longtable}{*{3}{|l|}}
+\hline
+\textbf{First} & \textbf{Second} & \textbf{Third} \\
+\hline
+\endfirsthead
+\multicolumn{3}{c}%
+{\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
+\hline
+\textbf{First} & \textbf{Second} & \textbf{Third} \\
+\hline
+\endhead
+\hline \multicolumn{3}{r}{\textit{Continued on next page}} \\
+\endfoot
+\hline
+\endlastfoot
+\hline
+This is the first line & & \\
+\hline
+This is the second line & $1 \times 2$ & \\
+\hline
+This is the third line & $1 \times 2 \times 3$ & $6$\\
+\hline
+This is the fourth line & $1 \times 2 \times 3 \times 4$ & $24$\\
+\hline
+This is the fifth line & $1 \times 2 \times 3 \times 4 \times 5$ & $120$\\
+\hline
+This is the sixth line & $1 \times 2 \times 3 \times 4 \times 5 \times 6$ & $720$\\
+\hline
+This is the seventh line & $1 \times 2 \times 3 \times 4 \times 5 \times 6 \times 7$ & $5040$\\
+\hline
+This is the eighth line & $1 \times 2 \times 3 \times 4 \times 5 \times 6 \times 7 \times 8$ & $40320$\\
+\hline
+& The & End\\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+
+\begin{verbatim}
+This text should be printed verbatim with a linebreak here
+  then two spaces at the start of this line which breaks here
+> this line has a prompt at the start and now some braces {}
+\end{verbatim}
+
+\bigskip
+
+This next \verb=verbatim= but with spaces shown\footnote{The word verbatim used inline verbatim.}. 
+
+\bigskip
+A piece \verb=of verbatim text that we are using to test line breaking=.
+
+%spverbatim does not support a starred form 
+%\begin{verbatim*}
+%This text should be printed verbatim with a linebreak here
+%  then two spaces at the start of this line which breaks here
+%> this line has a prompt at the start and now some braces {}
+%\end{verbatim*}
+
+\bigskip
+
+\noindent
+A baseline of text which is a single line long in 12pt font with no indent applied.\marginpar{Note\\ in the\\ margin.}
+
+\vspace{4\baselineskip}
+
+\noindent
+A baseline of text which is a single line long in 12pt font with no indent applied.\marginpar{\rule[-1ex]{0.3em}{4ex}}
+
+% \thebibliography
+\begin{thebibliography}{99}
+\bibitem{KopkaDaly} Kopka, H. and Daly, P., \textit{A Guide to \LaTeX}. Pearson Education Ltd., 1999
+\end{thebibliography}
+
+\end{document}

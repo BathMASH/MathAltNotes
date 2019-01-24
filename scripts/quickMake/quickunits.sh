@@ -35,6 +35,7 @@ echo $i
 read input < .lasttimestamp
 #echo $input
 ./quickTest $input $i
+./quickTest $input $i
 rm -r $input
 sleep 2
 done
