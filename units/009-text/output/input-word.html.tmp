@@ -1,0 +1,472 @@
+<!DOCTYPE html> 
+<html> 
+<head> <title>AMS math symbols</title> 
+<meta charset="UTF-8" /> 
+<meta name="viewport" content="target-densitydpi=device-dpi; width=device-width; initial-scale=1.0; minimum-scale=1.0; user-scalable=yes;" /> 
+<meta name="HandheldFriendly" content="True" /> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)" /> 
+<link rel="stylesheet" type="text/css" href="input-word.css" /> 
+<link rel="stylesheet" type="text/css" href="additional.css" /> 
+<script type="text/x-mathjax-config"> 
+MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
+explorer:{ subtitle: true }, 
+MatchWebFonts: { 
+matchFor: { "HTML-CSS": true, NativeMML: false, SVG: false }, 
+fontCheckDelay: 2000, 
+fontCheckTimeout: 30 * 1000 
+}, 
+"HTML-CSS": { 
+preferredFont: "STIX",  
+availableFonts: ["STIX","TeX"],  
+webFont: "STIX-Web",  
+linebreaks: { automatic: false, width: "90% container" } 
+}, 
+SVG: {  
+font: "STIX-Web", 
+linebreaks: { automatic: false, width: "90% container" } 
+}, 
+menuSettings: { collapsible: true, autocollapse: true, explorer: false } 
+}); 
+</script> 
+<script type="text/javascript" 
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full" 
+></script> 
+<style type="text/css"> 
+".MathJax_MathML" {text-indent: 0;} 
+</style> 
+</head><body 
+>
+<div class="maketitle">
+                                                                                       
+                                                                                       
+                                                                                       
+                                                                                       
+
+<h2 class="titleHead">AMS math symbols</h2>
+<div class="author" ><span 
+class="phvr8t-x-x-144">Emma Cliffe</span></div>
+<br />
+<div class="date" ></div>
+</div>
+<h3 class="likesectionHead"><a 
+href="#x1-1000" id="x1-1000">Contents</a></h3>
+<div class="tableofcontents">
+<span class="sectionToc" >1 <a 
+href="#x1-40001" id="QQ2-1-4">Alphabets!</a></span>
+</div>
+<h3 class="likesectionHead"><a 
+href="#x1-2000" id="x1-2000">List of Figures</a></h3>
+<div class="tableofcontents">
+</div>
+                                                                                       
+                                                                                       
+<h3 class="likesectionHead"><a 
+href="#x1-3000" id="x1-3000">List of Tables</a></h3>
+<div class="tableofcontents">
+</div>
+                                                                                       
+                                                                                       
+<h3 class="sectionHead"><span class="titlemark">1    </span> <a 
+href="#QQ2-1-4" id="x1-40001">Alphabets!</a></h3>
+<!--l. 25--><p class="noindent" >Blackboard bold, upper case only (no boldsymbol version available as standard):
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔸</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔹</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℂ</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔻</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔼</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔽</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔾</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℍ</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝕀</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝕁</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝕂</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝕃</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝕄</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℕ</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝕆</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℙ</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℚ</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℝ</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝕊</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝕋</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝕌</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝕍</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝕎</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝕏</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝕐</mi> </mrow></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℤ</mi> </mrow></math>
+</p><!--l. 32--><p class="noindent" >Math script, upper case only: <!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+>  <mi 
+>𝒜</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℬ</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒞</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒟</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℰ</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℱ</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒢</mi> </mrow></math>,
+                                                                                       
+                                                                                       
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℋ</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℐ</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒥</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒦</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℒ</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℳ</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒩</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒪</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒫</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒬</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℛ</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒮</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒯</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒰</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒱</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒲</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒳</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒴</mi> </mrow></math>,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝒵</mi> </mrow></math>
+</p><!--l. 38--><p class="noindent" >Math Frak, upper case only: <!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+>  <mi 
+>𝔄</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔅</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℭ</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔇</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔈</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔉</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔊</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℌ</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℑ</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔍</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔎</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔏</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔐</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔑</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔒</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔓</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔔</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℜ</mi> </mrow></math>,
+                                                                                       
+                                                                                       
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔖</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔗</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔘</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔙</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔚</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔛</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>𝔜</mi> </mrow></math>,
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow 
+> <mi 
+>ℨ</mi> </mrow></math>
+</p>
+ 
+</body> 
+</html>
+                                                                                       
+
+
