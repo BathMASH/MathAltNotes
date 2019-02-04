@@ -4,15 +4,18 @@ int brackets = 0;
 %}
 whitespace (" "|\t|(\r?\n))
 lb ([[:blank:]])*"{"([[:blank:]])*
+ls ([[:blank:]])*"["([[:blank:]])*
 rb ([[:blank:]])*"}"
+rs ([[:blank:]])*"]"
 verbstart "\\begin"{lb}("verbatim"){rb}
 verbend "\\end"{lb}("verbatim"){rb}
 dropmath ("\\text"{lb}|"\\intertext"{lb})
 toc ("\\chapter"|"\\section"|"\\subsection"|"\\subsubsection"|"\\caption")
 figstart "\\begin"{lb}("figure"){rb}
 figend "\\end"{lb}("figure"){rb}
+decthm "\\declaretheorem"{ls}
 
-%x COMMENT VERBATIM SINGLEDOLLAR DOUBLEDOLLAR DROPMATH TOC FIG
+%x COMMENT VERBATIM SINGLEDOLLAR DOUBLEDOLLAR DROPMATH TOC FIG DECTHM
 %%
 
 ("\\$") ECHO; /* protect */
@@ -29,6 +32,9 @@ figend "\\end"{lb}("figure"){rb}
 
 {figstart} ECHO; yy_push_state(FIG);
 <FIG>{figend} ECHO; yy_pop_state();
+
+{decthm} ECHO; yy_push_state(DECTHM);
+<DECTHM>{rs} ECHO; yy_pop_state();
 
  /*We need to ensure that comments are not processed */
 ("%")* ECHO; yy_push_state(COMMENT);
