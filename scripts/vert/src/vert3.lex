@@ -13,7 +13,7 @@ mathstart ("\\("|"\\["|"\\begin"{lb}("equation"|"equation*"|"displaymath"|"multl
 mathsend ("\\)"|"\\]"|"\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|"multline"|"gather"|"eqnarray*"|"align*"|"eqnarray"|"align"){rb})
 protect ("\\left"|"\\right"|"\\big"|"\\Big"|"\\bigg"|"\\Bigg"|"\\bigr"|"\\bigl"|"\\Bigl"|"\\Bigr"|"\\biggl"|"\\biggr"|"\\Biggl"|"\\Biggr")("|"|"\\|"|"\\vert"|"\\Vert")
 
-%x COMMENT VERBATIM MATHS BAR BARBAR MATCH TOOMANY 
+%x COMMENT VERBATIM MATHS BAR BARBAR MATCH TOOMANY BAIL
 %%
 
 {protect} ECHO;
@@ -34,8 +34,9 @@ protect ("\\left"|"\\right"|"\\big"|"\\Big"|"\\bigg"|"\\Bigg"|"\\bigr"|"\\bigl"|
 <MATHS>{protect} ECHO;
 <MATHS>"\\|"[^&\n]*"\\|"[^&\n]*"\\|"[^\\&]* /*printf("TBB");*/ ECHO; check = 2; yy_push_state(TOOMANY);
 <MATHS>"|"[^&\n]*"|"[^&\n]*"|"[^\\&]* /*printf("TB");*/ ECHO; check = 2; yy_push_state(TOOMANY);
-<MATHS>"\\|"[^|\n]*/"\\|" yy_push_state(MATCH); /*printf("BB");*/ printf("\\left"); ECHO; 
-<MATHS>"|"[^|\n]*/"|" yy_push_state(MATCH); /*printf("B");*/ printf("\\left"); ECHO;
+<MATHS>"|"[^|\n]*{mathsend}[^|\n]*/"|" ECHO; if(check != 2) check = 1; yy_push_state(BAIL);
+<MATHS>"\\|"[^|\n\]\)\}]*/"\\|" yy_push_state(MATCH); /*printf("BB");*/ printf("\\left"); ECHO; 
+<MATHS>"|"[^|\n\]\)\}]*/"|" yy_push_state(MATCH); /*printf("B");*/ printf("\\left"); ECHO;
 <MATHS>"|"[^|\n]*\n ECHO; if(check != 2) check = 3;
 <MATHS>{mathsend}/(" ")*{newline} ECHO; commentcheck(0); yy_pop_state();
 <MATHS>{mathsend} ECHO; commentcheck(1); yy_pop_state();
@@ -44,6 +45,8 @@ protect ("\\left"|"\\right"|"\\big"|"\\Big"|"\\bigg"|"\\Bigg"|"\\bigr"|"\\bigl"|
 <TOOMANY>"&" ECHO; yy_pop_state();
 <TOOMANY>{mathsend}/(" ")*{newline} ECHO; commentcheck(0); yy_pop_state(); yy_pop_state();
 <TOOMANY>{mathsend} ECHO; commentcheck(1); yy_pop_state(); yy_pop_state();
+
+<BAIL>\n commentcheck(1); yy_pop_state(); yy_pop_state();
 
 <MATCH>("|"|"\\|") printf("\\right"); ECHO; if(check == 0) check = 1; yy_pop_state(); /*printf("M");*/
 
