@@ -161,19 +161,19 @@ protectend ("\\end{picture}"|"\\makeatother")
 <TAG>(([^"}"]*)) printf(",number="); ECHO; 
 <LABEL>(([^"}"]*)) printf(",label="); ECHO; 
 
- /* tables - we need to use longtabu and this ASSUMES there is a newline at the end of the tabular argument */
+ /* tables - we need to use longtabu and I believe that I have removed the assumption that there is a newline at the end of the tabular argument and none within it */
  /* Working on the assumption that if you used tabularx it was because you have a hideous wide table */
  /* We can't allow the table construct as longtabu doesn't do its job then */
 {tablestart} yy_push_state(TABLE);
 {tabularxstart} printf("\\newpage\\begin{landscape}\n\\begin{longtabu} to \\linewidth"); yy_push_state(TABULARX); yy_push_state(TABU);
-{tabustart} printf("\\begin{longtabu} to \\textwidth"); yy_push_state(TABU);
+{tabustart}(\r?\n)* printf("\\begin{longtabu} to \\textwidth"); yy_push_state(TABU);
 <TABU>(("to")(([^"}"]*)))/("{") 
 <TABU>("{\\linewidth}"|"{\\textwidth}")
 <TABU>("@{"([^"}""{"]*)) ECHO; yy_push_state(KEEP); 
 <TABU>("p{"([^"}""{"]*)) printf("X[p]"); yy_push_state(REMOVE);
 <TABU>("c"|"l"|"r") printf("X["); ECHO; printf("]");
 <TABU>("X") printf("X");
-<TABU>("}"({whitespace}*)(\r?\n)) printf("}\n"); yy_pop_state();
+<TABU>("}"({whitespace}*)(\r?\n)?) printf("}\n"); yy_pop_state();
   /* Only use to keep/remove a single brace that is immediately after the current matched text that does not contain a brace */
 <KEEP>"}" ECHO; yy_pop_state();
 <REMOVE>"}" yy_pop_state();

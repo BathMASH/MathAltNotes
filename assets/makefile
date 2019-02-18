@@ -56,7 +56,7 @@ standard: clean $(name)-cont-clean.tex
 #In this example we have a SVG but need a PDF for the LaTeX to work with.
 	echo "\\\\togglefalse{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-standard.tex ] || rm -f $(name)-standard.tex
-	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\papersize{$(PAPER)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-standard.tex
+	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\emphasis{standard}\\\\def\\\\papersize{$(PAPER)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-standard.tex
 #https://tex.stackexchange.com/questions/611/setting-class-options-after-documentclass/617
 	$(LATEX) --shell-escape $(name)-standard.tex
 	$(LATEX) --shell-escape $(name)-standard.tex
@@ -324,6 +324,93 @@ endif
 	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty
 	@rm *.htf
 
+#We require some additional files for everything to work. 
+webstandard: clean $(name)-cont-web-clean.tex 
+	mkdir -p built
+#Copy required files to where they are needed
+	cp $(HOME)/../../styles/* . 
+	cp $(HOME)/../../fonts/* .
+	cp $(HOME)/../../assets/mathml.4ht .
+	cp $(HOME)/../../assets/listings.4ht .
+	cp $(HOME)/../../assets/unicode.4hf .
+	cp $(HOME)/../../assets/mathjaxMMLWord.cfg .
+#Make any pdf_tex figures
+#	$(HOME)/../graphicx/buildfigure.sh ./
+#Make any tikz figures etc.
+	[ ! -f toggle.tex ] || rm -f toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
+	[ ! -f $(name)-web.tex ] || rm -f $(name)-web-standard.tex
+ifeq ($(UNKN),false)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\emphasis{standard}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web-standard.tex
+else
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\emphasis{standard}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web-standard.tex
+endif
+ifeq ($(TYPE),beamer)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\emphasis{standard}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web-standard.tex
+endif
+	$(LATEX) -shell-escape $(name)-web-standard.tex
+#Fix any figures that were produced in png incorrectly
+#	$(HOME)/../graphicx/svg-fix.sh ./
+#Convert the rest of the figures
+	cd figures/eps/; $(HOME)/../graphicx/eps-converted2svg.sh ./; cd ../..
+	cd figures/pdf/; $(HOME)/../graphicx/pdftosvg.sh ./; cd ../..
+	rm $(name)-web-standard.*
+#Set up for the web version
+	[ ! -f toggle.tex ] || rm -f toggle.tex
+	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
+#htlatex needs to run twice to prevent disruption to the sectioning tree caused by e.g. footnotes
+#Note, yes this does run latex 6 times! It is a reported bug: https://puszcza.gnu.org.ua/bugs/index.php?197
+#We need to use early_ and early^ so that the author doesn't need to do anything special for macros
+	[ ! -f $(name)-web-standard.tex ] || rm -f $(name)-web-standard.tex
+ifeq ($(UNKN),false)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\emphasis{standard}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web-standard.tex
+else
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\emphasis{standard}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web-standard.tex
+endif
+ifeq ($(TYPE),beamer)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\emphasis{standard}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web-standard.tex
+endif
+	$(HTLATEX)  $(name)-web-standard.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web-standard.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+#Change the endings from interim to svg - this should not be doing anything any more after fix via .env
+#	sed -i "s/x.interim.png/x.svg/" *.html
+#The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
+#html output. Such things as unmatched brackets can cause problems. If you can't locate the error and can put
+#up with digits instead of numbers then comment out the next line as the web browser and mathjax are less fussy.
+	$(HOME)/../TeX4htPostprocessing/postprocess.sh ./
+#Creating a zip for ease of upload or sending
+	[ ! -d built/$(name)-web-standard/ ] || rm -r built/$(name)-web-standard/
+	mkdir built/$(name)-web-standard/
+	mkdir built/$(name)-web-standard/figures/
+	mkdir built/$(name)-web-standard/figures/eps/
+	mkdir built/$(name)-web-standard/figures/latexpdfsvg/
+	mkdir built/$(name)-web-standard/figures/pdf/
+	mkdir built/$(name)-web-standard/figures/png/
+	mkdir built/$(name)-web-standard/figures/jpg/
+	mkdir built/$(name)-web-standard/figures/svg/
+	mv *.html built/$(name)-web-standard/
+#Tidy up the html a litte for human processing (in web standard only). 
+#	tidy --indent auto --indent-spaces 1 --quiet yes --show-body-only auto --show-errors 0 --wrap 0 -m built/$(name)-web-standard/*.html
+#	-utf8 ?
+#Use a serif font in the standard web format
+	cp $(HOME)/../../assets/additionalstandard.css built/$(name)-web-standard/
+	mv *.css built/$(name)-web-standard/
+	if ls ./figures/eps/*.svg 1> /dev/null 2>&1; then cp ./figures/eps/*.svg built/$(name)-web-standard/figures/eps/; fi
+	if ls ./figures/latexpdfsvg/*.svg 1> /dev/null 2>&1; then cp ./figures/latexpdfsvg/*.svg built/$(name)-web-standard/figures/latexpdfsvg/; fi
+	if ls ./figures/pdf/*.svg 1> /dev/null 2>&1; then cp ./figures/pdf/*.svg built/$(name)-web-standard/figures/pdf/; fi
+	if ls ./figures/png/*.png 1> /dev/null 2>&1; then cp ./figures/png/*.png built/$(name)-web-standard/figures/png/; fi
+	if ls ./figures/jpg/*.jpg 1> /dev/null 2>&1; then cp ./figures/jpg/*.jpg built/$(name)-web-standard/figures/jpg/; fi
+	if ls ./figures/svg/*.svg 1> /dev/null 2>&1; then cp ./figures/svg/*.svg built/$(name)-web-standard/figures/svg/; fi
+#	[ ! -e ./$(name)-web0x.interim.png ] || mv $(name)-web*.png built/$(name)-web/
+	[ ! -e ./$(name)*svg ] || mv $(name)*svg built/$(name)-web-standard/
+	cd built; [ ! -f $(name)-web-standard.zip ] || rm -f $(name)-web-standard.zip; zip -r $(name)-web-standard.zip $(name)-web-standard; cd ..
+#Tidy up a bit
+	@rm mathml.4ht
+	@rm unicode.4hf
+	@rm mathjaxMMLWord.cfg
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty
+	@rm *.htf
+
 
 #To transform to Word we need to use the web transform but without breaking into sections and then use Pandoc 19+
 word: clean $(name)-cont-web-clean.tex
@@ -496,7 +583,7 @@ clean:
 	@rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot *x.interim.png *x.svg *.4ht *-lp1 *-lp0 bbmone.* fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* *.tmp2 *.nav *.snm colorfix.sty fontfix.sty parfix.sty beamerfix.sty *-pics*.pdf tuftefix.sty *.htf
 
 cleaner:
-	@rm -f *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp*.tex *-figures.tex *_tex-lp macros.tex demacro-private.sty *-cont* *-co *.pre zz*-web* *.pdf_tex.tex *.pdf_tex-clean.tex *.web.tex
+	@rm -f *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp*.tex *-figures.tex *_tex-lp macros.tex demacro-private.sty *-cont* *-co *.pre zz*-web* *.pdf_tex.tex *.pdf_tex-clean.tex *.web.tex *-web-standard.tex
 
 revert:
 	@[ ! -f *.origin ] || rename -f 's/origin/tex/' *.origin
