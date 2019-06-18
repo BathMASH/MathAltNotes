@@ -35,6 +35,7 @@ mathsend "\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|
 <MATHS>(.*)("\\tag"{lb}(.*){rb})/({whitenotnew})*("\\\\"|"\\end") switchtag();
 <MATHS>(.*)("\\notag")/({whitenotnew})*("\\\\"|"\\end") switchtag();
 <MATHS>(.*)("\\nonumber")/({whitenotnew})*("\\\\"|"\\end") switchtag();
+<MATHS>"REMOVEMATHENDLINE\\\\" 
 <MATHS>"\\\\\\\\" printf("\\\\");
 <MATHS>"\\\\["(.*)"]" printf("\\\\");
 <MATHS>"\\\\"/(({whitespace})*"\\intertext")

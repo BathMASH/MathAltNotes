@@ -1,0 +1,43 @@
+   1 |            | \documentclass[12pt,a4paper,onecolumn]{article}
+   2 |            | \usepackage[T1]{fontenc} 
+   3 |            | \usepackage[a4paper]{geometry} 
+   4 |            | \usepackage[english]{babel} 
+   5 |            | \usepackage{amsmath}
+   6 |            | \usepackage{amssymb} 
+   7 |            | \usepackage{amsfonts} 
+   8 |            | \usepackage[mathscr]{eucal}
+   9 |            | \usepackage{eufrak} 
+  10 |            | \usepackage{amsthm} 
+  11 |            | \usepackage{longtable} 
+  12 |            | \usepackage{graphicx} 
+  13 |            | \usepackage{verbatim} 
+  14 |            | \usepackage{url} 
+  15 |            | \newtheorem{theorem}{Theorem}[section]
+  16 |            | \title{AMS math symbols}
+  17 |            | \author{Emma Cliffe}
+  18 |            | \date{}
+  19 |            | \pagestyle{headings}
+  20 |            | \begin{document}
+  21 |            | \maketitle
+  22 |            | 
+  23 |            | \section{Alphabets!}
+  24 |            | 
+  25 |            | \noindent 
+  26 |            | Blackboard bold, upper case only (no boldsymbol version available as standard):
+  27 |            | %Some of these appear to be italicised in Word? Suggests I might have the unicode translation slightly off for them in oolatex? 
+  28 |            | \(\mathbb{A}\), \(\mathbb{B}\), \(\mathbb{C}\), \(\mathbb{D}\), \(\mathbb{E}\), \(\mathbb{F}\), \(\mathbb{G}\), \(\mathbb{H}\), \(\mathbb{I}\), \(\mathbb{J}\), \(\mathbb{K}\), \(\mathbb{L}\), \(\mathbb{M}\), \(\mathbb{N}\), \(\mathbb{O}\), \(\mathbb{P}\), \(\mathbb{Q}\), \(\mathbb{R}\), \(\mathbb{S}\), \(\mathbb{T}\), \(\mathbb{U}\), \(\mathbb{V}\), \(\mathbb{W}\), \(\mathbb{X}\), \(\mathbb{Y}\), \(\mathbb{Z}\)
+  29 |            | 
+  30 |            | \bigskip
+  31 |            | 
+  32 |            | \noindent
+  33 |            | Math script, upper case only:
+  34 |            | \(\mathscr{A}\), \(\mathscr{B}\), \(\mathscr{C}\), \(\mathscr{D}\), \(\mathscr{E}\), \(\mathscr{F}\), \(\mathscr{G}\), \(\mathscr{H}\), \(\mathscr{I}\), \(\mathscr{J}\), \(\mathscr{K}\), \(\mathscr{L}\), \(\mathscr{M}\), \(\mathscr{N}\), \(\mathscr{O}\), \(\mathscr{P}\), \(\mathscr{Q}\), \(\mathscr{R}\), \(\mathscr{S}\), \(\mathscr{T}\), \(\mathscr{U}\), \(\mathscr{V}\), \(\mathscr{W}\), \(\mathscr{X}\), \(\mathscr{Y}\), \(\mathscr{Z}\)
+  35 |            | 
+  36 |            | \bigskip
+  37 |            | 
+  38 |            | \noindent
+  39 |            | Math Frak, upper case only:
+  40 |            | %Some of these appear to be italicised in Word? Suggests I might have the unicode translation slightly off for them in oolatex? 
+  41 |            | \(\mathfrak{A}\), \(\mathfrak{B}\), \(\mathfrak{C}\), \(\mathfrak{D}\), \(\mathfrak{E}\), \(\mathfrak{F}\), \(\mathfrak{G}\), \(\mathfrak{H}\), \(\mathfrak{I}\), \(\mathfrak{J}\), \(\mathfrak{K}\), \(\mathfrak{L}\), \(\mathfrak{M}\), \(\mathfrak{N}\), \(\mathfrak{O}\), \(\mathfrak{P}\), \(\mathfrak{Q}\), \(\mathfrak{R}\), \(\mathfrak{S}\), \(\mathfrak{T}\), \(\mathfrak{U}\), \(\mathfrak{V}\), \(\mathfrak{W}\), \(\mathfrak{X}\), \(\mathfrak{Y}\), \(\mathfrak{Z}\)
+  42 |            | 
+  43 |            | \end{document}

@@ -1,0 +1,23 @@
+%Taken from HESTEM project vanilla tests
+\documentclass[12pt,a4paper,onecolumn]{article}
+\begin{document}
+
+\noindent
+A baseline of text which is one line long in 12pt font with no indent applied.
+
+\begin{center}
+Centered text.
+\end{center}
+
+\begin{flushleft}
+Flush left text.
+\end{flushleft}
+
+\begin{flushright}
+Flush right text.
+\end{flushright}
+
+Standard text. {\tiny Tiny text.} {\scriptsize Scriptsize text.} {\footnotesize Footnotesize text.} {\small Small text.} {\normalsize Normalsize text.} {\large large text.} {\Large Large text.} {\LARGE LARGE text.} {\huge huge text.} {\Huge Huge text.}
+
+Standard text. \emph{Emphasized text}. \textrm{Roman text.} {\rm Roman inline.} \textsc{Small caps text.} {\sc Small caps inline} \texttt{Typewriter text.} {\tt Typewriter inline.} \textit{Italics text.} {\it Italics inline.} \textsf{Sans serif text.} {\sf San serif inline.} \textsl{Slant text.} {\sl Slant inline.}  \textbf{Bold text.} {\bf Bold inline.} \textbf{A combination of bold and \textit{italic text.}} {\bf A combination inline of bold {\it and inline italics}.}
+\end{document}

@@ -1,0 +1,23 @@
+
+Context is:
+* Between dollars
+* On the line
+* In the cell
+* Is between {} a context?
+** What about \{\}?
+** Or any other matching sets of brackets? Probably it needs to be for safety purposes e.g. bra ket notation 
+
+This is a do no harm algorithm. It requires us to work within contexts which could be nested.
+
+If we are not within mathematical text then do nothing
+If we are within verbatim text then do nothing
+
+If there is already \left \right \bigl \bigr \Bigl \Bigr \biggl \biggr \Biggl \Biggr or similar directory before the vert like symbol then do not count this
+
+If there is a single |, \|, \vert or \Vert within the context then do nothing.
+
+If there is a single pair of |, \|, \vert or \Vert within the context then apply left and right and append a warning comment.
+
+If there is a sequence of |...| operator |...| operator |...| then apply left and right and append a warning comment. This will only work for the list of operators we come up with.
+
+In all other situations append a correction request. 

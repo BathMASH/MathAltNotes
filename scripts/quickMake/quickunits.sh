@@ -24,13 +24,17 @@ make
 cd ..
 cd graphicx
 make
+cd ..
+cd vert
+make
 cd ../../
 
 for i in `ls -d ./units/*-text/` ; do
 echo $i
-./getMyLaTeX $i/input &>/dev/null
+echo n | ./getMyLaTeX $i/input &>/dev/null
 read input < .lasttimestamp
 #echo $input
+./quickTest $input $i
 ./quickTest $input $i
 rm -r $input
 sleep 2

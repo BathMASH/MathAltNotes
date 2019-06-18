@@ -1,164 +1,37 @@
 #!/bin/bash
 
+echo "Verticals including |, \|, \vert and \Vert without either \left "
+echo "\right or size specified make our job harder and may lead to "
+echo "output which is displayed or spoken incorrectly. "
+echo "Without knowledge of the meaning of the context it is not possible"
+echo "to completely fix this. We are about to process your files "
+echo "syntactically. Your original files will be placed in *.pre-vert"
+echo "and we will comment against all lines which contain verts."
+echo "If you are warned that a file contains ambiguous verts you "
+echo "should fix this by hand before continuing. If you do not "
+echo "fix this then transformations may fail or they may proceed "
+echo "but the output may be displayed or spoken incorrectly."
+
+home=$(dirname $(readlink -f $0))
 cd $1
 
-echo "--------------------------------------------------------------"
-echo "Before transforming your LaTeX we need to check for delimiters"
-echo "which do not have \left or \right defined. This includes | and"
-echo "\| for instance. This is not a job that a computer can do, it"
-echo "requires a mathematically trained human with enough time to "
-echo "look at every case in every file in your project. "
-echo "--------------------------------------------------------------"
-echo "If you are a suitable human with time to do this now press y"
-echo "If you are already sure that you have marked all delimiters as"
-echo "left or right then press n. If you do not wish to do this task"
-echo "now then press n. If you are unsure about completing this task"
-echo "press n and email ma-largeprintnotes@bath.ac.uk "
-echo "--------------------------------------------------------------"
-echo "Press enter after your choice."
+echo "-----------------------------------------------------------------"
 
-read decision
-
-if [ $decision != "y" ]; then
-    exit 1
-fi
-
-echo "--------------------------------------------------------------"
-echo "We will try to isolate the problem as far as we can but you "
-echo "need to pay attention! For each possible instance you will "
-echo "need to press y to make the plausible change and n not to. "
-echo "Be careful, for instance | is often used in tabular notation "
-echo "or in a set definition and for these the answer would be n"
-echo "but if it is part of a pair of delimiters you need to replace "
-echo "the first with \left| and the second with \right| BUT we will "
-echo "have to do all the \left first and then all the \right"
-echo "--------------------------------------------------------------"
-echo "If the delimiter is in some sense \left or \right but it does"
-echo "NOT have a matching pair this script can't help you - you "
-echo "should select n and carry on. Ideally you would find these and"
-echo "add e.g. \left| some stuff \right. but you might be able to get"
-echo "away with not doing this so try compiling and have a look first."
-echo "--------------------------------------------------------------"
-echo "Are you happy to continue? [y/n then enter]"
-
-read decision
-
-if [ $decision != "y" ]; then
-    exit 1
-fi
-echo "--------------------------------------------------------------"
-echo "First we do \|"
-echo "============="
-
-files=$(find . -maxdepth 1 -name "*.tex" ! -name master*.tex ! -name macros*.tex ! -name empty*.tex ! -name "*standard.tex" ! -name "*large.tex" ! -name "*clear.tex" ! -name "*web.tex" ! -name "*word.tex" -type f | xargs grep -Ple '(?<!left|right)\\\|')
-
-if [[ -z "$files" ]]; then
-    echo "No matching .tex"
-fi  
-
-echo "The following files need attention:" 
-echo $files
-echo "They will open one after another, first we do ALL the \left"
-echo "replacements and then ALL the \right. Ready? [y/n then enter]"
-
-read decision
-
-if [ $decision != "y" ]; then
-    exit 1
-fi
-
-for i in $files; do
-    vim -c "set hidden | bufdo %s/\%(\\\left\|\\\right\)\@<\!\\\|/\\\left\\\|/gce" $i -c :wq
+for i in `find . -maxdepth 1 -name "*.tex" ! -name master*.tex ! -name macros*.tex ! -name empty*.tex ! -name "*standard.tex" ! -name "*large.tex" ! -name "*clear.tex" ! -name "*web.tex" ! -name "*word.tex" ! -name "*-cont.tex" ! -name "choices.tex" ! -name "*-cont-clean.tex" ! -name "*-cont-clean-lp.tex" -type f`; do
+    echo "Processing: $i"
+    $home/bin/vert1 < $i > $(basename "$i" .tex)-v1
+    $home/bin/vert3 < $(basename "$i" .tex)-v1 > $(basename "$i" .tex)-v2
+     if grep -c "syntactically ambiguous" $(basename "$i" .tex)-v2 &> /dev/null; then
+	echo "$i contains ambiguous verticals"
+	cp -n $i $(basename "$i" .tex).pre-vert
+	mv $(basename "$i" .tex)-v2 $i
+	rm $(basename "$i" .tex)-v1 
+   else
+	echo "$i does not contain ambiguous verticals - good for you"
+	cp -n $i $(basename "$i" .tex).pre-vert
+	mv $(basename "$i" .tex)-v2 $i
+	rm $(basename "$i" .tex)-v1 
+    fi
 done
-
-for i in $files; do
-    vim -c "set hidden | bufdo %s/\%(\\\left\|\\\right\)\@<\!\\\|/\\\right\\\|/gce" $i -c :wq
-done
-
-echo "--------------------------------------------------------------"
-echo "Now we do |"
-echo "============="
-
-files=$(find . -maxdepth 1 -name "*.tex" ! -name master*.tex ! -name macros*.tex ! -name empty*.tex ! -name "*standard.tex" ! -name "*large.tex" ! -name "*clear.tex" ! -name "*web.tex" ! -name "*word.tex" -type f | xargs grep -Ple '(?<!left|right|left\\|right\\|\\)\|')
-
-if [[ -z "$files" ]]; then
-    echo "No matching .tex"
-fi  
-
-echo "The following files need attention:" 
-echo $files
-echo "They will open one after another, first we do ALL the \left"
-echo "replacements and then ALL the \right. Ready? [y/n then enter]"
-
-read decision
-
-if [ $decision != "y" ]; then
-    exit 1
-fi
-
-for i in $files; do
-    vim -c "set hidden | bufdo %s/\%(\\\left\|\\\right\|\\\left\\\\\|\\\right\\\\\|\\\\\)\@<\!|/\\\left|/gce" $i -c :wq
-done
-
-for i in $files; do
-    vim -c "set hidden | bufdo %s/\%(\\\left\|\\\right\|\\\left\\\\\|\\\right\\\\\|\\\\\)\@<\!|/\\\right|/gce" $i -c :wq
-done
-
-echo "--------------------------------------------------------------"
-echo "Now we do \vert"
-echo "==================="
-
-files=$(find . -maxdepth 1 -name "*.tex" ! -name master*.tex ! -name macros*.tex ! -name empty*.tex ! -name "*standard.tex" ! -name "*large.tex" ! -name "*clear.tex" ! -name "*web.tex" ! -name "*word.tex" -type f | xargs grep -Ple '(?<!left|right)\\vert')
-
-if [[ -z "$files" ]]; then
-    echo "No matching .tex"
-fi  
-
-echo "The following files need attention:" 
-echo $files
-echo "They will open one after another, first we do ALL the \left"
-echo "replacements and then ALL the \right. Ready? [y/n then enter]"
-
-read decision
-
-if [ $decision != "y" ]; then
-    exit 1
-fi
-
-for i in $files; do
-    vim -c "set hidden | bufdo %s/\%(\\\left\|\\\right\)\@<\!\\\vert/\\\left\\\vert/gce" $i -c :wq
-done
-
-for i in $files; do
-    vim -c "set hidden | bufdo %s/\%(\\\left\|\\\right\)\@<\!\\\vert/\\\right\\\vert/gce" $i -c :wq
-done
-
-echo "--------------------------------------------------------------"
-echo "Now we do \Vert"
-echo "==================="
-
-files=$(find . -maxdepth 1 -name "*.tex" ! -name master*.tex ! -name macros*.tex ! -name empty*.tex ! -name "*standard.tex" ! -name "*large.tex" ! -name "*clear.tex" ! -name "*web.tex" ! -name "*word.tex" -type f | xargs grep -Ple '(?<!left|right)\\\Vert')
-
-if [[ -z "$files" ]]; then
-    echo "No matching .tex"
-fi  
-
-echo "The following files need attention:" 
-echo $files
-echo "They will open one after another, first we do ALL the \left"
-echo "replacements and then ALL the \right. Ready? [y/n then enter]"
-
-read decision
-
-if [ $decision != "y" ]; then
-    exit 1
-fi
-
-for i in $files; do
-    vim -c "set hidden | bufdo %s/\%(\\\left\|\\\right\)\@<\!\\\Vert/\\\left\\\Vert/gce" $i -c :wq
-done
-
-for i in $files; do
-    vim -c "set hidden | bufdo %s/\%(\\\left\|\\\right\)\@<\!\\\Vert/\\\right\\\Vert/gce" $i -c :wq
-done
+echo "-----------------------------------------------------------------"
 

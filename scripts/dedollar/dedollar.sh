@@ -16,6 +16,7 @@ home=$(dirname $(readlink -f $0))
 cd $1
 
 for i in `find . -maxdepth 1 -name "*.tex" ! -name master*.tex ! -name macros*.tex ! -name empty*.tex ! -name "*standard.tex" ! -name "*large.tex" ! -name "*clear.tex" ! -name "*web.tex" ! -name "*word.tex" ! -name "*-cont.tex" ! -name "choices.tex" -type f`; do
+    echo "Processing: $i"
     $home/dedollar < $i > $(basename "$i" .tex)-d
     if ! diff -q $i $(basename "$i" .tex)-d &> /dev/null; then
 	echo "$i contains $'s"
@@ -23,6 +24,7 @@ for i in `find . -maxdepth 1 -name "*.tex" ! -name master*.tex ! -name macros*.t
 	mv $(basename "$i" .tex)-d $i
     else
 	echo "$i does not contain $'s - good for you"
+	cp -n $i $(basename "$i" .tex).origin
 	rm $(basename "$i" .tex)-d
     fi
 done

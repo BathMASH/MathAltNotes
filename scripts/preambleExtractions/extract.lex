@@ -129,6 +129,9 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 
 {tableofcontents} sections = 1; ECHO;
 
+ /* Single letter short forms which are used by TeX4ht and other packages for internal work need to be redefined */
+"\\b"{lb} printf("\\underline{");
+
 {picturestart} ECHO; yy_push_state(PICTURE);
 <PICTURE>{pictureend} ECHO; yy_pop_state();
 

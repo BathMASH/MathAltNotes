@@ -1,0 +1,307 @@
+%Taken from HESTEM project vanilla tests
+\documentclass[12pt,a4paper,onecolumn]{article}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper]{geometry}
+\newcommand{\xsb}{x_{1}}
+\newcommand{\xsp}{x^{2}}
+\newcommand{\xsbnum}[1]{x_{#1}}
+\title{Basic mathematical symbols and structures}
+\author{Emma Cliffe}
+\date{}
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\section{Standard mathematical symbols}
+
+We will use the robust single dollar environment for these
+
+Math versions of text symbols: \(\$  \_  \ddag  \{  \P  \dots  \}  \S  \dag  \pounds \copyright\)
+
+Keyboard symbols: \(+  -  =  <  >  /  :  !  '  |  [  ]  (  )\)
+
+\noindent 
+But for longer tests we will use the equation environment so that we don't overrun the line if we increase the font size. We'll do a basic macro test in section \ref{test}.
+
+Greek:
+\begin{equation}
+\alpha  \beta  \gamma  \delta  \epsilon  \varepsilon  \zeta  \eta  \theta  \vartheta  \iota  \kappa  \lambda  \mu  \nu  \xi  o  \pi  \varpi  \rho  \varrho  \sigma  \varsigma  \tau  \upsilon  \phi  \varphi  \chi  \psi  \omega
+\end{equation}
+
+Upper case Greek:
+\begin{equation}
+\Gamma  \Delta  \Theta  \Lambda  \Xi  \Pi  \Sigma  \Upsilon  \Phi  \Psi  \Omega
+\end{equation}
+
+Normal, lower case:
+\begin{equation}
+a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z
+\end{equation}
+
+Normal, upper case:
+\begin{equation}
+A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z  
+\end{equation}
+
+Bold using boldmath, lower case:\boldmath
+\begin{equation}
+a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z
+\end{equation}\unboldmath
+
+Bold using boldmath, upper case:\boldmath
+\begin{equation}
+A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z  
+\end{equation}\unboldmath
+
+
+Italic, lower case:
+\begin{equation}
+\mathit{a}~\mathit{b}~\mathit{c}~\mathit{d}~\mathit{e}~\mathit{f}~\mathit{g}~\mathit{h}~\mathit{i}~\mathit{j}~\mathit{k}~\mathit{l}~\mathit{m}~\mathit{n}~\mathit{o}~\mathit{p}~\mathit{q}~\mathit{r}~\mathit{s}~\mathit{t}~\mathit{u}~\mathit{v}~\mathit{w}~\mathit{x}~\mathit{y}~\mathit{z}
+\end{equation}
+
+Italic, upper case:
+\begin{equation}
+\mathit{A}~\mathit{B}~\mathit{C}~\mathit{D}~\mathit{E}~\mathit{F}~\mathit{G}~\mathit{H}~\mathit{I}~\mathit{J}~\mathit{K}~\mathit{L}~\mathit{M}~\mathit{N}~\mathit{O}~\mathit{P}~\mathit{Q}~\mathit{R}~\mathit{S}~\mathit{T}~\mathit{U}~\mathit{V}~\mathit{W}~\mathit{X}~\mathit{Y}~\mathit{Z}
+\end{equation}
+
+Roman, lower case:
+\begin{equation}
+\mathrm{a}  \mathrm{b}  \mathrm{c}  \mathrm{d}  \mathrm{e}  \mathrm{f}  \mathrm{g}  \mathrm{h}  \mathrm{i}  \mathrm{j}  \mathrm{k}  \mathrm{l}  \mathrm{m}  \mathrm{n}  \mathrm{o}  \mathrm{p}  \mathrm{q}  \mathrm{r}  \mathrm{s}  \mathrm{t}  \mathrm{u}  \mathrm{v}  \mathrm{w}  \mathrm{x}  \mathrm{y}  \mathrm{z}
+\end{equation}
+
+Roman, upper case:
+\begin{equation}
+\mathrm{A}  \mathrm{B}  \mathrm{C}  \mathrm{D}  \mathrm{E}  \mathrm{F}  \mathrm{G}  \mathrm{H}  \mathrm{I}  \mathrm{J}  \mathrm{K}  \mathrm{L}  \mathrm{M}  \mathrm{N}  \mathrm{O}  \mathrm{P}  \mathrm{Q}  \mathrm{R}  \mathrm{S}  \mathrm{T}  \mathrm{U}  \mathrm{V}  \mathrm{W}  \mathrm{X}  \mathrm{Y}  \mathrm{Z}
+\end{equation}
+
+Bold using bf, lower case:
+\begin{equation}
+\mathbf{a}  \mathbf{b}  \mathbf{c}  \mathbf{d}  \mathbf{e}  \mathbf{f}  \mathbf{g}  \mathbf{h}  \mathbf{i}  \mathbf{j}  \mathbf{k}  \mathbf{l}  \mathbf{m}  \mathbf{n}  \mathbf{o}  \mathbf{p}  \mathbf{q}  \mathbf{r}  \mathbf{s}  \mathbf{t}  \mathbf{u}  \mathbf{v}  \mathbf{w}  \mathbf{x}  \mathbf{y}  \mathbf{z}
+\end{equation}
+
+Bold using bf, upper case:
+\begin{equation}
+\mathbf{A}  \mathbf{B}  \mathbf{C}  \mathbf{D}  \mathbf{E}  \mathbf{F}  \mathbf{G}  \mathbf{H}  \mathbf{I}  \mathbf{J}  \mathbf{K}  \mathbf{L}  \mathbf{M}  \mathbf{N}  \mathbf{O}  \mathbf{P}  \mathbf{Q}  \mathbf{R}  \mathbf{S}  \mathbf{T}  \mathbf{U}  \mathbf{V}  \mathbf{W}  \mathbf{X}  \mathbf{Y}  \mathbf{Z}
+\end{equation}
+
+Calligraphic (upper case only):
+\begin{equation}
+\mathcal{A}  \mathcal{B}  \mathcal{C}  \mathcal{D}  \mathcal{E}  \mathcal{F}  \mathcal{G}  \mathcal{H}  \mathcal{I}  \mathcal{J}  \mathcal{K}  \mathcal{L}  \mathcal{M}  \mathcal{N}  \mathcal{O}  \mathcal{P}  \mathcal{Q}  \mathcal{R}  \mathcal{S}  \mathcal{T}  \mathcal{U}  \mathcal{V}  \mathcal{W}  \mathcal{X}  \mathcal{Y}  \mathcal{Z}
+\end{equation}
+
+Binary operators:
+\begin{equation}
+\pm \mp \times \div \cdot \ast \star \dagger \ddagger \amalg \cap \cup \uplus \sqcap \sqcup \vee \wedge \oplus \ominus \otimes \circ \bullet \diamond \oslash \odot \bigcirc \bigtriangleup \bigtriangledown \triangleleft \triangleright \setminus \wr
+\end{equation}
+
+Relations:
+\begin{equation}
+\le \leq \ll \subset \subseteq \sqsubseteq \in \vdash \models \ge \geq \gg \supset \supseteq \sqsubseteq \ni \dashv \perp \neq \doteq \approx \cong \equiv \propto \prec \preceq \parallel \| \sim \simeq \asymp \smile \frown \bowtie \succ \succeq \mid
+\end{equation}
+
+Negated which do not stop conversion but may not be displayed in Word:
+\begin{equation}
+\not< \not\leq \not\subset \not\subseteq \not\sqsubseteq \not\in \notin \not\vdash \not\models \not> \not\geq \not\supset \not\supseteq \not\sqsubseteq \not\ni \not= \not\approx \not\cong \not\equiv \not\prec \not\sim \not\simeq \not\asymp \not\succ 
+\end{equation}
+
+%Negated which stop conversion to word:
+%\begin{equation}
+%\not\le \not\ll \not\ge \not\gg \not\dashv \not\perp \not\doteq \not\propto \not\preceq \not\smile \not\frown \not\bowtie \not\succeq
+%\end{equation}
+
+Arrows:
+\begin{equation}
+\leftarrow \gets \Leftarrow \rightarrow \to \Rightarrow \leftrightarrow \Leftrightarrow \mapsto \hookleftarrow \leftharpoonup \leftharpoondown \rightleftharpoons \longleftarrow \Longleftarrow \longrightarrow \Longrightarrow 
+\end{equation}
+\begin{equation}
+\longleftrightarrow \Longleftrightarrow \iff \longmapsto \hookrightarrow \rightharpoonup \rightharpoondown \uparrow \Uparrow \downarrow \Downarrow \updownarrow \Updownarrow \nearrow \searrow \swarrow \nwarrow
+\end{equation}
+
+Other:
+\begin{equation}
+\aleph \hbar \imath \jmath \ell \wp \Re \Im \prime \emptyset \nabla \surd \partial \top \bot \vdash \dashv \forall \exists \neq \flat \natural \sharp \| \angle \backslash \triangle \clubsuit \diamondsuit \heartsuit \spadesuit \infty
+\end{equation}
+
+Symbols with two sizes: 
+\begin{center}
+\(\sum \int \oint \prod \coprod \bigcap \bigcup \bigsqcup \bigvee \bigwedge \bigodot \bigotimes \bigoplus \biguplus\)
+\end{center}
+\begin{equation}
+\sum \int \oint \prod \coprod \bigcap \bigcup \bigsqcup \bigvee \bigwedge \bigodot \bigotimes \bigoplus \biguplus
+\end{equation}
+
+Function names:
+\begin{equation}
+\arccos \arcsin \arctan \arg \cos \cosh \cot \coth \csc \deg \det 
+\end{equation}
+\begin{equation}
+\dim \exp \gcd \hom \inf \ker \lg \lim \liminf \limsup \ln \log 
+\end{equation}
+\begin{equation}
+\max \min \Pr \sec \sin \sinh \sup \tan \tanh
+\end{equation}
+
+Those with under-subscript available:
+\begin{equation}
+\det_{a} \gcd_{a} \inf_{a} \lim_{a} \liminf_{a} \limsup_{a} \max_{a} \min_{a} \Pr_{a} \sup_{a}
+\end{equation}
+
+Modulus:
+\begin{equation}
+a \bmod b \qquad a \pmod{b}
+\end{equation}
+
+Accents and under/over:
+\begin{equation}
+\hat{a} \check{a} \dot{a} \breve{a} \acute{a} \ddot{a} \grave{a} \tilde{a} \mathring{a} \bar{a} \vec{a} \widehat{aaa} \widetilde{aaa} \overline{aaa} \underline{aaa} \overbrace{aaa} \underbrace{aaa}
+\end{equation}
+
+Symbols left and right can be applied to:
+\begin{equation}
+\left( \frac{1}{2} \right) \left[ \frac{1}{2} \right] \left\{ \frac{1}{2} \right\} \left| \frac{1}{2} \right| \left/ \frac{1}{2} \right\backslash \left\lfloor \frac{1}{2} \right\rfloor \left\lceil \frac{1}{2} \right\rceil \left\langle \frac{1}{2} \right\rangle 
+%breqn does not recognise the following as matching either each other or \right. or \left. and hence these cannot be used as matching, stretchy:
+%\left\uparrow \frac{1}{2} \right\uparrow \left\downarrow \frac{1}{2} \right\downarrow \left\updownarrow \frac{1}{2} \right\updownarrow \left\Uparrow \frac{1}{2} \right\Uparrow \left\Downarrow \frac{1}{2} \right\Downarrow \left\Updownarrow \frac{1}{2} \right\Updownarrow   
+\end{equation}
+
+Manual sizing:
+\begin{equation}
+\big( \big) \big[ \big] \big\{ \big\} \big\lfloor \big\rfloor \big\lceil \big\rceil \big\langle \big\rangle 
+\big/ \big\backslash \big| \big\| \big\uparrow \big\Uparrow \big\downarrow \big\Downarrow \big\updownarrow \big\Updownarrow
+\end{equation}
+\begin{equation}
+\Big( \Big) \Big[ \Big] \Big\{ \Big\} \Big\lfloor \Big\rfloor \Big\lceil \Big\rceil \Big\langle \Big\rangle 
+\Big/ \Big\backslash \Big| \Big\| \Big\uparrow \Big\Uparrow \Big\downarrow \Big\Downarrow \Big\updownarrow \Big\Updownarrow
+\end{equation}
+\begin{equation}
+\bigg( \bigg) \bigg[ \bigg] \bigg\{ \bigg\} \bigg\lfloor \bigg\rfloor \bigg\lceil \bigg\rceil \bigg\langle \bigg\rangle 
+\bigg/ \bigg\backslash \bigg| \bigg\| \bigg\uparrow \bigg\Uparrow \bigg\downarrow \bigg\Downarrow \bigg\updownarrow \bigg\Updownarrow
+\end{equation}
+\begin{equation}
+\Bigg( \Bigg) \Bigg[ \Bigg] \Bigg\{ \Bigg\} \Bigg\lfloor \Bigg\rfloor \Bigg\lceil \Bigg\rceil \Bigg\langle \Bigg\rangle 
+\bigg/ \bigg\backslash \bigg| \bigg\| \bigg\uparrow \bigg\Uparrow \bigg\downarrow \bigg\Downarrow \bigg\updownarrow \bigg\Updownarrow
+\end{equation}
+
+Dots:
+\begin{equation}
+a \ldots a \quad a \vdots a \quad  a \cdots a \quad  a \ddots a
+\end{equation}
+
+Horizontal spacing:
+\begin{equation}
+|~|\,|\:|\;|\quad | \qquad |
+\end{equation}
+
+\section{Standard mathematical structures}
+
+Three different ways to inline \begin{math}A_{i,j,k}^{2^n}\end{math} \(A_{i,j,k}^{2^n}\) \(A_{i,j,k}^{2^n}\)
+
+Four different ways to displaymath.
+\setcounter{equation}{99}
+\begin{equation}\label{equation}
+\sum_{i=1}^{15} x_i^2 = x_1^2 + x_2^2 + x_3^2 + x_4^2 + x_5^2 + x_6^2 + x_7^2 + x_8^2 + x_9^2 + x_{10}^2 + x_{11}^2 + x_{12}^2 + x_{13}^2 + x_{14}^2 + x_{15}^2 
+\end{equation}
+
+\begin{displaymath}
+x_1^2 = x_2^2 = x_3^2 = x_4^2 = x_5^2 = x_6^2 = x_7^2 = x_8^2 = x_9^2 = x_{10}^2 = x_{11}^2 = x_{12}^2 = x_{13}^2 = x_{14}^2 = x_{15}^2 
+\end{displaymath}
+
+\[
+\prod_{i=1}^{15} x_i^2 = x_1^2\ \ x_2^2\ \ x_3^2\ \ x_4^2\ \ x_5^2\ \ x_6^2\ \ x_7^2\ \ x_8^2\ \ x_9^2\ \ x_{10}^2\ \ x_{11}^2\ \ x_{12}^2\ \ x_{13}^2\ \ x_{14}^2\ \ x_{15}^2\ 
+\]
+
+\[
+\prod_{i=1}^{15} x_i^2 = x_1^2 \cdot x_2^2 \cdot x_3^2 \cdot x_4^2 \cdot x_5^2 \cdot x_6^2 \cdot x_7^2 \cdot x_8^2 \cdot x_9^2 \cdot x_{10}^2 \cdot x_{11}^2 \cdot x_{12}^2 \cdot x_{13}^2 \cdot x_{14}^2 \cdot x_{15}^2 
+\]
+
+One of the forms is numbered equation \ref{equation}.
+\[
+\sqrt{\sum_{i=1}^{13} x_i^2} = \sqrt{x_1^2 + x_2^2 + x_3^2 + x_4^2 + x_5^2 + x_6^2 + x_7^2 + x_8^2 + x_9^2 + x_{10}^2+ x_{11}^2 + x_{12}^2 + x_{13}^2 }
+\]
+
+\[
+\sqrt{\sum_{i=1}^{13} x_i^2} = \left(x_1^2 + x_2^2 + x_3^2 + x_4^2 + x_5^2 + x_6^2 + x_7^2 + x_8^2 + x_9^2 + x_{10}^2+ x_{11}^2 + x_{12}^2 + x_{13}^2 \right)^{\frac{1}{2}}
+\]
+
+Now for an equation array:
+\begin{eqnarray}
+\sum_{i=1}^{13} 2^i &=& 2^1 + 2^2 + 2^3 + 2^4 + 2^5 + 2^6 + 2^7 + 2^8 + 2^9 + 2^{10} + 2^{11} + 2^{12} + 2^{13}\nonumber\\
+&=&2 + 4 + 8 + 16 + 32 + 64 + 128 + 256 + 512 + 1024 + 2048 + 4096 + 8192 \nonumber\\
+&=&16382 
+\end{eqnarray}
+
+\begin{eqnarray*}
+\sum_{i=1}^{13} 2^i &=& 2^1 + 2^2 + 2^3 + 2^4 + 2^5 + 2^6 + 2^7 + 2^8 + 2^9 + 2^{10} + 2^{11} + 2^{12} + 2^{13}\\
+&=&2 + 4 + 8 + 16 + 32 + 64 + 128 + 256 + 512 + 1024 + 2048 + 4096 + 8192\\
+&=&16382 \qquad\mbox{here is some text in the formula to fill up the line at 12pt font}
+\end{eqnarray*}
+
+\[
+\left[\begin{array}{cc} a_{11} & a_{12}\\ a_{21} & a_{22}\end{array}\right]
+\]
+
+\[
+\left[\begin{array}{*{10}{c}} 
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\ 
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\ 
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\ 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\ 
+\end{array}\right]
+\]
+
+\begin{eqnarray*}
+\left|\begin{array}{cc} 1 & 2\\ 3 & 4\end{array}\right| &=& (1\times 4) - (2 \times 3)\\
+&=& 4-6 = -2
+\end{eqnarray*}
+
+\[
+\sqrt{a + \sqrt{\frac{b + c + d}{e}} + f}
+\]
+
+\[
+\overline{\underline{a} + \overline{b + \underline{c} + d} + \overline{\overline{e}}}
+\]
+
+\[
+\underbrace{a + \overbrace{b + c}^{=0} + d}_{\mbox{text}}
+\]
+
+\[
+\stackrel{a}{\longrightarrow}
+\]
+
+% {a \atop b} cannot be converted in web format - is this because I am fixing choose and not atop?  
+\[
+{a \choose b}
+\]
+
+\[
+a + \frac{1}{b + \frac{1}{c + \frac{1}{d + \frac{1}{e + \frac{1}{f + \frac{1}{g + \frac{1}{h}}}}}}} \qquad a + \frac{1}{\displaystyle b + \frac{1}{\displaystyle c + \frac{1}{\displaystyle d + \frac{1}{\displaystyle e + \frac{1}{\displaystyle f + \frac{1}{\displaystyle g + \frac{1}{h}}}}}}}
+\]
+
+\subsection{Testing line breaking}
+
+\begin{eqnarray*}
+&&a = b = c = d = e = f = g = h = i = j = k = l = m = n = o = p = q = r = s = t\\
+&&a < b < c < d < e < f < g < h < i < j < k < l < m < n < o < p < q < r < s < t\\
+&&a > b > c > d > e > f > g > h > i > j > k > l > m > n > o > p > q > r > s > t\\
+&&a \leq b \leq c \leq d \leq e \leq f \leq g \leq h \leq i \leq j \leq k \leq l \leq m \leq n \leq o \leq p \leq q \leq r \leq s \leq t\\
+&&a \geq b \geq c \geq d \geq e \geq f \geq g \geq h \geq i \geq j \geq k \geq l \geq m \geq n \geq o \geq p \geq q \geq r \geq s \geq t\\
+&&a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u\\
+&&a - b - c - d - e - f - g - h - i - j - k - l - m - n - o - p - q - r - s - t - u\\
+&&a \times b \times c \times d \times e \times f \times g \times h \times i \times j \times k \times l \times m \times n \times o \times p \times q \times r \times s \times t \times u\\
+&&a * b * c * d * e * f * g * h * i * j * k * l * m * n * o * p * q * r * s * t * u * v * w * x * y\\
+&&a \cdot b \cdot c \cdot d \cdot e \cdot f \cdot g \cdot h \cdot i \cdot j \cdot k \cdot l \cdot m \cdot n \cdot o \cdot p \cdot q \cdot r \cdot s \cdot t \cdot u \cdot v \cdot w \cdot x \cdot y \cdot z \cdot a \cdot b \cdot c\\
+&&a , b , c , d , e , f , g , h , i , j , k , l , m , n , o , p , q , r , s , t , u , v , w , x , y , z , a , b , c , d , e , f, g , h , i , j , k , l
+\end{eqnarray*}
+
+\subsection{Testing new commands\label{test}}
+\[ 
+\xsb \xsp \xsbnum{2}
+\]
+\end{document}

@@ -167,6 +167,7 @@ parens = parenstext
 #We can't do anything about &
 #parenshtlatex = '""|\'\'|“”|‘’|\&\&|\(\)|\[\]|\{\}|\\\[\\\]|\\\{\\\}'
 parenshtlatex = '\(\)|\[\]|\{\}'
+parenshtmove = '\(\)\[\]\{\}'
 
 arg = ARGV[0] || ''
 unless arg.empty?
@@ -203,14 +204,18 @@ while x = input.gets()
   end
 
   # move parens' characters into s
-  s << x.tr('^'+parens,'')
+  if htlatex
+    s << x.tr('^'+parenshtmove,'')
+  else
+    s << x.tr('^'+parens,'')
+  end
   # remove matches from inside
   while s.gsub!(re,'') do end
   puts "%4d | %-*s | %s" % [lineno+=1,number,s.slice(0..number-1),x]
 end
 
 if test
-  if s != '“{”}'
+  if s != '({)'
     raise("test failed! (final mismatch should be “{”})")
   else
     puts "test succeeded"
@@ -220,7 +225,7 @@ else
 end
 __END__
 This first line “{()}” has no mismatch
-but here ( we have one.
+but here ( we have one and maybe another |\{
 It is even extended “{() with two more.
 
 Here comes an untested angle bracket <, but here }” all) mismatches are erased.

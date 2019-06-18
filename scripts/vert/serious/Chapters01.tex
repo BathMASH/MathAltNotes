@@ -1,0 +1,931 @@
+\documentclass[a4paper,reqno]{amsart}
+\usepackage[english]{babel}
+%\usepackage{a4wide}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+% total={170mm,257mm},
+right=25mm,
+ left=25mm,
+ top=25mm,
+ bottom = 25mm,
+ }
+
+
+%\usepackage[notcite,notref]{showkeys}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsthm, amsgen,mathrsfs}
+\usepackage[latin1]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{dsfont}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{rotating}
+\usepackage{hhline}
+\usepackage{subfigure}
+\usepackage{multirow}
+\usepackage{enumerate}
+\usepackage[bookmarks]{}
+\usepackage{amsfonts}   % if you want the fonts
+\usepackage{dsfont}
+%\usepackage{showkeys}
+
+\numberwithin{equation}{section}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{example}[definition]{Example}
+\newtheorem{exercise}[definition]{Exercise}
+
+
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\id}{id}
+
+
+\def\eps{\varepsilon}
+\def\Omegasp{{\Omega^{\mathrm sp}}}
+\def\xx{\mathbf{x}_0}
+\def\z0{\mathbf{z}_0}
+\def\h{\mathbf{h}}
+\def\c{\mathbf{c}}
+\def\r{\mathbf{r}}
+\def\x{\mathbf{x}}
+\def\y{\mathbf{y}}
+\def\C{\mathbb{C}}
+\def\N{\mathbb{N}}
+\def\Q{\mathbb{Q}}
+\def\R{\mathbb{R}}
+\def\S{\mathbb{S}}
+\def\Z{\mathbb{Z}}
+\def\calA{\mathcal{A}}
+\def\calE{\mathcal{E}}
+\def\calF{\mathcal{F}}
+\def\calH{\mathcal{H}}
+\def\calL{\mathcal{L}}
+\def\calM{\mathcal{M}}
+
+\def\curl{\mathop\mathrm{curl}}
+\def\dist{\mathop\mathrm{dist}}
+\def\Id{\mathrm{Id}}
+\def\SBV{\mathrm{SBV}}
+\def\SO{\mathrm{SO}}
+\def\skw{\mathop{\mathrm{skw}}}
+\def\supp{\mathop{\mathrm{supp}}}
+\def\sym{\mathop{\mathrm{sym}}}
+\def\weak{\rightharpoonup}
+\def\weakstar{\overset{\ast}{\rightharpoonup}}
+
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+
+
+
+\renewcommand{\div}{\mathop\mathrm{div}}
+
+
+\begin{document}
+\title[MA20218: Analysis 2A]{MA20218: Analysis 2A}
+\maketitle
+
+\section*{Chapter 0: Recap from MA10207}
+
+\begin{definition} Let $A\subset \R$ be a set and $f : A \to \R$ a function. Suppose that $x \in A$. We say that $f$ is continuous at $x$ if
+$$
+\forall\, \varepsilon \,\, \exists\, \delta>0 \quad \textrm{such that } \, \forall \, y\in A:  |y - x| < \delta \Rightarrow |f (y) - f (x)| < \varepsilon.
+$$
+Equivalently, in terms of sequences, we have that $f$ is continuous at $x$ if for any sequence $(x_k)_{k\in \N}$ in $A$ with $x=\lim_{k\to \infty} x_k$, we have  
+$$
+f(x)=\lim_{k\to \infty} f(x_k).
+$$
+We say that $f$ is continuous if it is continuous at every point of $A$. 
+
+We say that $f$ is uniformly continuous if
+$$
+\forall\, \varepsilon \,\, \exists\, \delta>0 \quad \textrm{such that } \, \forall \, x, y\in A:  |y - x| < \delta \Rightarrow |f (y) - f (x)| < \varepsilon.
+$$
+Finally, we say that $f$ is Lipschitz continuous if there exists a number $L > 0$ such that for all $x,y \in A$,
+$$
+|f(y) - f(x)| \le L |y - x|.
+$$
+\end{definition}
+
+These definitions may have been given in MA10207 only for functions defined on an interval. The conditions are exactly the same, however, for any set $A\subset \R$. If $A$ is a closed, bounded interval, then continuity has particularly nice consequences.
+
+\begin{theorem}[Theorem of uniform continuity] 
+Let $I \subset \R$ be a closed, bounded interval and suppose that $f : I \to \R$ is continuous. Then $f$ is uniformly continuous.
+\end{theorem}
+
+\begin{theorem}[Weierstrass extreme value theorem]
+Let $I \subset \R$ be a closed, bounded interval and suppose that $f : I \to \R$ is continuous. Then $f$ is bounded and attains its infimum and supremum.
+\end{theorem}
+
+
+\newpage
+
+
+
+
+\section{Chapter 1: Sequences and series of functions}
+In this chapter we consider sequences and series of functions, and we investigate convergence concepts and properties of the limits.
+\medskip
+
+\noindent
+Let $(f_k)_{k\in \mathbb{N}}$ be a sequence of functions $f_k:A \to \R$, with $A\subset \R$. (Usually, $A$ will be an interval.)
+
+\begin{definition}[Pointwise and uniform convergence for sequences] The sequence $f_k$ converges pointwise to a function $f$ on $A$ as $k\to \infty$ if the sequence $(f_k(x))_{k\in \N}$ converges to $f(x)$ for every $x\in A$; namely if for every $x\in A$ and every $\varepsilon>0$ there exists $N\in \mathbb{N}$ such that for every $k\geq N$ we have $|f_k (x) - f (x)| < \varepsilon$.
+
+\medskip
+
+The sequence $f_k$ converges uniformly to $f$ on $A$ if
+$$
+\forall \,\varepsilon>0 \quad \exists\, N\in \mathbb{N} \quad \textrm{such that } \forall \,k\geq N, \forall\, x\in A: |f_k (x) - f (x)| < \varepsilon.
+$$
+\end{definition}
+
+
+\begin{remark}
+Note that $f_k$ converges to $f$ uniformly on $A$ if and only if 
+$$
+\lim_{k\to \infty} \left(\sup_{x\in A} |f_k(x)-f(x)|\right)=0.
+$$
+\end{remark}
+
+Similarly, for series, we have the corresponding convergence concepts (in terms of convergence of their partial sums). 
+
+\begin{definition}[Pointwise and uniform convergence for series] Let $(f_k)_{k\in \mathbb{N}}$ be a sequence of functions $f_k:A \to \R$, with $A\subset \R$, and let $s_n:A\to \R$ denote the sequence of partial sums defined as 
+$$
+s_n:= \sum_{k=1}^n f_k, \quad n\in \N.
+$$
+The series $\sum_{k=1}^\infty f_k$ converges pointwise to a function $f$ on $A$ if the sequence $(s_n)_n$ converges to $f$ pointwise on $A$.
+
+The series $\sum_{k=1}^\infty f_k$ converges uniformly to a function $f$ on $A$ if the sequence $(s_n)_n$ converges to $f$ uniformly on $A$.
+\end{definition}
+
+Uniform convergence implies pointwise convergence. The viceversa is not true in general, as shown in the following example
+
+\begin{example}
+Let $f_k: [0,1] \to \R$ be defined as $f_k(x)=x^k$. 
+
+Then clearly the sequence $(f_k)_{k\in \N}$ converges pointwise to the function $f:[0,1] \to \R$ defined as 
+$$
+f(x) = \begin{cases}
+0 \quad &\textrm{if } x\neq 1,\\
+1 \quad &\textrm{if } x = 1.\\
+\end{cases}
+$$
+The convergence is however not uniform. This is due to the points $x$ close to the endpoint $1$, but $x\neq 1$. Assume for contradiction that $f_k$ converges to $f$ uniformly in $[0,1]$, and let $0<\varepsilon<1$ be 
+fixed and arbitrary. By definition of uniform convergence, there exists $N\in \N$ such that whenever $k>N$ we have 
+$$
+\sup_{x\in [0,1]} |f_k(x) - f(x)| <\varepsilon.
+$$ 
+This means in particular that  
+$$
+x^{N+1} < \varepsilon \quad \forall x\in [0,1);
+$$
+but this means that $x<\varepsilon^{1/(N+1)}$ for every $x\in [0,1)$, which is clearly false since $0<\varepsilon^{1/(N+1)}<1$ is a fixed number, while $x$ can be chosen arbitrarily close to $1$.
+
+\medskip
+
+The convergence is however uniform in $[0,b]$ for every $0\leq b <1$ (by choosing $N = \frac{\log\varepsilon}{\log b}$).
+\end{example}
+
+\medskip
+
+A useful criterion for uniform convergence of sequences of functions (due to Cauchy) is as follows. 
+
+\begin{theorem}\label{Cauchy:c}
+A sequence of functions $(f_k)_{k\in \mathbb{N}}$, $f_k:A\to \R$ converges uniformly on $A$ if and only if for every $\varepsilon>0$ there exists an integer $N$ such that if $j,m\geq N$ and $x\in A$, then
+$$
+|f_j(x) - f_m(x)| < \varepsilon.
+$$
+\end{theorem}
+
+\begin{proof}
+Assume that $f_k$ converges to $f$ uniformly on $A$. Then, by definition, for eevry $\varepsilon>0$ there exists $N\in \N$ such that for every $k>N$ we have 
+$$
+|f_k(x) - f(x)|<\frac{\varepsilon}{2} \quad \forall \, x\in A.
+$$
+By the triangle inequality, for any $j,m>N$ we then have 
+$$
+|f_j(x) - f_m(x)|\leq |f_j(x) - f(x)| + |f_m(x) - f(x)| <\varepsilon.
+$$
+
+\medskip
+Now, let us assume the Cauchy condition. First, note that this implies that for all $x\in A$ the real sequence $(f_k(x))_k$ is a Cauchy sequence in $\R$, so it converges by the completeness of $\R$. We set 
+$$
+f(x):= \lim_{k\to \infty} f_k(x).
+$$
+Clearly $(f_k)_k$ converges pointwise to $f$. 
+
+Let then $\varepsilon>0$ be fixed. By assumption there exists $N\in \N$ such that for every $j,m>N$ we have $|f_j(x) - f_m(x)| <\varepsilon/2$ for every $x\in A$. 
+
+In particular, we can choose $m>N$ such that 
+$$
+|f_m(x) - f(x)|<\frac{\varepsilon}{2},
+$$ 
+since $(f_k)_k$ converges to $f$ pointwise hence at $x\in A$. Note that $m$ will depend on $x$ (and of $\varepsilon$). By the choice of $m$ we have that 
+$$
+|f_j(x) - f(x)| \leq |f_j(x) - f_m(x)| + |f_m(x) - f(x)| <\varepsilon,
+$$
+implying uniform convergence.
+
+(Note: the fact that $m$ might depend on $x$ is not relevant here: $m$ is chosen as intermediate step of the proof, but the conclusion does not depend on $m$.)
+
+\end{proof} 
+
+This result can be translated immediately into an analogous result for series:
+
+\begin{theorem}\label{Cauchy:s}
+Let $(f_k)_{k\in \mathbb{N}}$, $f_k:A\to \R$ be a sequence of functions on $A$. The series $\sum_{k=1}^\infty f_k$ converges uniformly on $A$ if and only if for every $\varepsilon>0$ there exists an integer $N$ such that if $j>m\geq N$ and $x\in A$, we have
+$$
+\left|\sum_{k=m+1}^jf_k(x)\right| < \varepsilon.
+$$
+\end{theorem}
+
+
+For series there is a useful test for uniform convergence, due to Weierstrass. (The name comes from the letter traditionally used to denote the constants, or `majorants', that bound the terms in the series.)
+
+\begin{theorem}[Weierstrass $M$-test]
+Let $(f_k)_{k\in \mathbb{N}}$ be a sequence of functions, $f_k:A\to \R$, and suppose that for every $k\in \N$ there exists a constant $M_k>0$ such that
+$$
+|f_k(x)| \leq M_k \quad \textrm{for every } x\in A, \quad \sum_{k=1}^\infty M_k <\infty.
+$$ 
+Then the series $\sum_k f_k$ converges uniformly on $A$.
+\end{theorem}
+
+\begin{proof}
+Since $\sum_k M_k$ converges, the Cauchy criterion for real series (analogue of Theorem \ref{Cauchy:s} for real series) ensures that for any $\varepsilon>0$ there exists $K\in \N$ such that for $j>m>K$ one has
+$$
+\sum_{k=m+1}^j M_k < \varepsilon.
+$$
+Then, by the bound on $|f_k|$ we immediately deduce that for $j>m>K$
+$$
+\Bigg| \sum_{k=m+1}^j f_k(x)\Bigg| \leq \sum_{k=m+1}^j M_k < \varepsilon \quad \forall\, x\in A.
+$$
+Then the claim follows directly from Theorem \ref{Cauchy:s}.
+\end{proof}
+
+This theorem shows the value of the Cauchy condition: We can prove uniform convergence of the series without having to know what its sum is.
+
+\begin{remark}[Absolute convergence]
+If uniform convergence of a series is proved by means of the Weierstrass $M$-test, then the series also converge absolutely, namely 
+$$
+\sum_{k=1}^\infty |f_k(x)| <\infty \quad \forall \, x\in A.
+$$
+(Thus the Weierstrass $M$-test is not applicable to series that converge uniformly but not absolutely.)
+
+Note that uniform convergence does not imply absolute convergence: Consider the trivial example 
+$$
+f_k:\R\to \R, \quad f_k(x) = \frac{(-1)^{k+1}}{k}.
+$$
+Then $\sum_k f_k$ converges on $\R$ to the constant function $f(x)=c=\log 2$, uniformly since the series does not depend on $x$, but the convergence is not absolute.
+\end{remark}
+
+
+\subsection{Uniform convergence and continuity, integration and differentiation}
+
+One of the main questions in relation to convergence of sequences and series is whether important properties of the functions $f_k$, like continuity, integrability and differentiability, are preserved in the limit process. Also, what is the relation between $f'_k$ and $f'$, or between the integral of $f_k$ and the integral of $f$?
+\medskip
+
+By a result from MA10207, the uniform limit of continuous functions $f_k:[a,b]\to \R$ is continuous. 
+
+\begin{remark}
+The continuity of the limit can be phrased in a more suggestive way, in terms of `exchange of limits': for every $x\in [a,b]$:
+$$
+\lim_{t\to x} \lim_{k\to \infty} f_k(t) = \lim_{k\to \infty}\lim_{t\to x} f_k(t).
+$$
+We will see that this `commutativity' is common to many results related to uniform convergence.
+\end{remark}
+
+We also have another continuity result, under the assumption of pointwise convergence and monotonicity:
+
+
+\begin{theorem}\label{pointwisemonotone}
+Let $(f_k)_{k\in \mathbb{N}}$ be a sequence of continuous functions $f_k:[a,b]\to \R$. Suppose that for every $x\in [a,b]$ the sequence $(f_k(x))_{k\in \N}$ is decreasing (namely $f_k(x)\geq f_{k+1}(x)$ for every $x$ and every $k$) and that $(f_k)_{k\in \N}$ converges pointwise to a continuous function $f:[a,b]\to \R$ as $k\to \infty$. Then $(f_k)_{k\in \N}$ converges to $f$ uniformly in $[a,b]$.
+\end{theorem}
+
+\begin{remark}
+In the theorem above, the fact that the functions are defined on a closed and bounded set (a compact of $\R$) is crucial. Indeed, the sequence 
+$$
+f_k(x):= \frac{1}{kx+1}, \quad x\in (0,1), k\in \N,
+$$
+converges pointwise to $0$ in $(0,1)$ and is decreasing, but the convergence is not uniform.
+\end{remark}
+
+
+We now address the question of integrability.
+
+
+\begin{theorem}\label{limit:integral}
+Let $(f_k)_{k\in \mathbb{N}}$ be a sequence of Riemann integrable functions on $[a,b]$ converging uniformly to a function $f : [a,b] \to \R$. Then $f$ is Riemann integrable and
+$$
+\int_a^b f_k(x)dx \to \int_a^b f(x)dx
+$$
+as $k \to \infty$.
+\end{theorem}
+
+
+\begin{proof}
+Let $\varepsilon > 0$ and fix a number $N \in \mathbb{N}$ such that for all $k \geq N$ and all $x \in [a, b]$, we have $|f_k (x) - f (x)| < \varepsilon$. 
+By the definition of Riemann integrability, we find a subdivision $\Delta$ of $[a,b]$ such that $U(f_N,\Delta) - L(f_N,\Delta) < \varepsilon$. Let $I_1,...,I_M$ be the intervals of 
+$\Delta$. Then for every $n = 1,...,M$, we have
+\begin{align*}
+\omega(f, I_n) &= \sup f(I_n) - \inf f(I_n)\\
+&\leq \sup f_N (I_n) + \varepsilon - \inf f_N (I_n) + \varepsilon\\
+&= \omega(f_N , I_n) + 2\varepsilon.
+\end{align*}
+It follows that
+\begin{align*}
+U(f,\Delta) - L(f,\Delta) &= \sum_{n=1}^M \omega(f, I_n) |I_n| \leq \sum_{n=1}^M \omega(f_K, I_n) |I_n| + 2\varepsilon\sum_{n=1}^M |I_n| \\
+& = U(f_N,\Delta) - L(f_N,\Delta) + 2\varepsilon (b-a) < \varepsilon (1+ 2b - 2a).
+\end{align*}
+The right-hand side can be made arbitrarily small. Thus $f$ is Riemann integrable.
+Moreover, by the linearity and by the monotonicity of the integral we have
+\begin{align*}
+\left|\int_a^b f_k(x)dx - \int_a^b f(x)dx\right| &= \left|\int_a^b \Big(f_k(x) - f(x)\Big)dx \right|\\
+&\leq \int_a^b \Big|f_k(x) - f(x)\Big|dx\\
+&\leq(b-a) \sup_{x\in [a,b]} \Big|f_k(x) - f(x)\Big| \to 0\\
+\end{align*}
+as $k\to \infty$. Therefore, we have the desired convergence.
+\end{proof}
+
+
+\begin{remark}
+The conclusion of the theorem can be written in the form
+$$
+\lim_{k\to \infty}\int_a^b f_k(x)dx = \int_a^b \lim_{k\to \infty} f_k(x)dx.
+$$
+So we can summarise the theorem as follows: if we have uniform convergence,
+then we can `exchange' the integral with the limit.
+\end{remark}
+
+\begin{corollary}\label{series:i}
+If $\sum_{k=1}^\infty f_k$ is a uniformly convergent series of Riemann integrable functions $f_k : [a, b] \to \R$, then the sum of the series is Riemann integrable and
+$$
+\int_a^b\sum_{k=1}^\infty f_k(x) dx = \sum_{k=1}^\infty \int_a^b f_k(x) dx.
+$$
+\end{corollary}
+
+In other words, the series may be integrated term by term (or, equivalently, we can exchange the operations of integration and sum).
+
+
+
+\medskip
+
+Finally, we address the issue of differentiability. It is easy to see that uniform convergence of a sequence of functions $f_k:[a,b] \to \R$ implies nothing about the sequence 
+$(f'_k)_{k\in \N}$. 
+
+\begin{example}
+Let 
+$$
+f_k(x) = \frac{\sin kx}{\sqrt k}, \quad x\in \R, k\in \N.
+$$
+Then $(f_k)_k$ converges to the function $f\equiv 0$ uniformly. However, $f'(x)\equiv 0$, while $f'_k(x) = \sqrt k\cos kx$, which clearly does not converge to $f'$. For instance, 
+$f'_k(0)=\sqrt k \to +\infty$ as $k\to \infty$.
+\end{example}
+
+
+
+\begin{theorem}\label{uniform:differentiability}
+Let $(f_k)_{k\in \mathbb{N}}$ be a sequence of continuously differentiable functions on $(a, b)$. Suppose that
+\begin{itemize}
+\item[(i)] there exists a number $x_0 \in (a, b)$ such that the sequence $(f_k(x_0))_{k\in \mathbb{N}}$ is convergent, and
+\item[(ii)] $(f'_k)_{k\in \mathbb{N}}$ converges uniformly on $(a,b)$.
+\end{itemize}
+Then there exists a continuously differentiable function $f : (a, b) \to \R$ such that $f_k \to f$ uniformly and $f'_k \to f'$ uniformly as $k \to \infty$.
+\end{theorem}
+
+\begin{proof}
+Let $y_0:=\lim_{k\to\infty} f_k(x_0)$ and let $g : (a, b) \to \R$ be the uniform limit of $f'_k$. Then $g$ is continuous, being the uniform limit of continuous functions.
+Define
+$$
+f(x):= y_0 + \int_{x_0}^x g(t) dt, \quad x\in (a,b).
+$$
+Then, by the Fundamental Theorem of Calculus, $f'=g$. Moreover, for any $x\in (a,b)$,
+\begin{align*}
+|f_k(x) - f(x)|&= \left|f_k(x_0)+\int_{x_0}^x f'_k(t) dt - y_0 - \int_{x_0}^x g(t) dt\right|\\
+&\leq |f_k(x_0)-y_0|+ \left| \int_{x_0}^x \Big(f'_k(t) - g(t)\Big) dt \right|\\
+&\leq |f_k(x_0)-y_0|+  \int_{x_0}^x \Big|f'_k(t) - g(t)\Big| dt \\
+&\leq |f_k(x_0)-y_0|+  (b-a)\sup_{t\in (a,b)}\Big|f'_k(t) - g(t)\Big| \to 0.
+\end{align*}
+Hence $f_k \to f$ uniformly. We already know that $f'_k \to g = f'$ uniformly.
+\end{proof}
+
+\begin{remark}
+If, in Theorem \ref{uniform:differentiability}, one replaces (i) with the stronger condition that $f_k$ converges pointwise to a function $f$ on $(a,b)$, then the proof simplifies as follows.
+
+Fix some $x_0\in (a,b)$; the uniform convergence of $f'_k$ to $g$ implies that 
+$$
+\int_{x_0}^x f'_k(t) dt \to \int_{x_0}^x g(t) dt \quad \textrm{as } k\to \infty,
+$$
+by Theorem \ref{limit:integral}. It then follows from the Fundamental Theorem of Calculus that 
+$$
+f_k(x) - f_k(x_0) \to  \int_{x_0}^x g(t) dt \quad \textrm{as } k\to \infty.
+$$
+The pointwise convergence of $f_k$ to $f$ then gives
+$$
+f(x) - f(x_0) =  \int_{x_0}^x g(t) dt,
+$$
+which, again by the Fundamental Theorem of Calculus implies that $f$ is differentiable and $f'=g$.
+
+\end{remark}
+
+\begin{remark}
+There is another version of Theorem \ref{uniform:differentiability} under weaker assumptions (only differentiability of $f_k$, no continuity for $f'_k$, but still (i) and (ii)) that guarantees the convergence of the derivatives (but clearly $f'$ will not be continuous in general). The proof however requires more care, as the use of the fundamental theorem is not allowed.
+\end{remark}
+
+
+Similarly, for series, one can exchange the operations of derivative and sum, under the following assumptions.
+
+\begin{theorem}[Differentiation for series]\label{series:d}
+Let $(f_k)_{k\in \N}$ be a sequence of functions $f_k:[a,b]\to \R$ of class $C^1$ in $(a,b)$ and assume that the two series of functions 
+$$
+\sum_{k=1}^\infty f_k \quad \textrm{and} \quad \sum_{k=1}^\infty f_k'
+$$
+converge uniformly to functions $f$ and $g$, respectively. Then $f$ is differentiable in $(a,b)$, its derivative is continuous in $(a,b)$ and 
+$$
+f'=g.
+$$
+
+More in general, if the functions $f_k$ are $m$-times differentiable with continuity ($f_k\in C^m(a,b)$) and the series 
+$$
+\sum_{k=1}^\infty f_k, \quad \sum_{k=1}^\infty f_k',  \dots , \textrm{and }  \, \sum_{k=1}^\infty f_k^{(m)}
+$$
+converge uniformly to functions $f$, $g_1$,..., and $g_m$, respectively, then $f$ is $m$-times differentiable with continuity in $(a,b)$ and 
+$$
+f^{(i)}=g_i.
+$$
+\end{theorem}
+
+\begin{remark}
+Again, the conclusion of Theorem \ref{series:d} is valid under weaker assumptions. Indeed it is enough to have convergence of the series $\sum_{k=1}^\infty f_k(x_0)$ for some $x_0\in (a,b)$ and 
+uniform convergence of the series of derivatives, in the spirit of Theorem \ref{uniform:differentiability}.
+\end{remark}
+
+
+
+As a last result, we analyse the `exchange' of integration and differentiation. We first need a preliminary lemma.
+
+\begin{lemma}
+Let $f: [a,b]\times \R \to \R$, $(x,t)\mapsto f(x,t)\in \R$, be a bounded function which is continuous in $t$ for every $x$ and Riemann-integrable in $x$ for every $t$. Then 
+$$
+F:\R\to \R, \quad F(t):= \int_a^b f(x,t) dx
+$$
+is continuous.
+\end{lemma} 
+
+\begin{proof}
+To prove continuity at $t_0$, we just need to apply Theorem \ref{limit:integral} to the sequence $f_k:[a,b]\to \R$ defined as $f_k(x):= f(x,t_k)$, where $(t_k)_{k\in \N}$ is an arbitrary sequence converging to $t_0$.
+\end{proof}
+
+\begin{theorem}
+Let $f: [a,b]\times \R \to \R$, $(x,t)\mapsto f(x,t)\in \R$, be Riemann-integrable in $x$ for every $t$, and assume that the partial derivative 
+$\frac{\partial f}{\partial t}$ is bounded and integrable in $x$ for every $t$. Then the function 
+$$
+F:\R\to \R, \quad F(t):= \int_a^b f(x,t) dx
+$$
+is differentiable, and 
+$$
+F'(t) = \frac{d}{dt}  \int_a^b f(x,t) dx =  \int_a^b \frac{\partial f}{\partial t}(x,t) dx.
+$$
+\end{theorem}
+
+\begin{proof}
+Set $f_k(x):= k\left[f\left(x,t_0+\frac1k\right)-f(x,t_0)\right]$. Then $f_k(x)\to \frac{\partial f}{\partial t}(x,t_0)$ as $k\to \infty$ for each $x$, and 
+$$
+|f_k(x)| \leq \left|\frac{\partial f}{\partial t}\left(x,t_0+\frac\theta k\right)\right| \leq K,
+$$
+by the Mean Value Theorem and the boundedness of $\frac{\partial f}{\partial t}$. The claim then follows by Theorem \ref{limit:integral}.
+\end{proof}
+
+%%%%%%%%%%%%%%%%
+
+\subsection{Power series}
+A special type of series of functions is given by the power series:
+\begin{equation}\label{powerx0}
+\sum_{k=0}^\infty a_k(x-x_0)^k,
+\end{equation}
+or, with no loss of generality (e.g. by setting $y=x-x_0$),
+\begin{equation}\label{power0}
+\sum_{k=0}^\infty a_k x^k.
+\end{equation}
+Obviously the series \eqref{power0} converges at $x=0$. This could be the only point where the series converge, as for example in the case of the series
+$$
+\sum_{k=0}^\infty k^k x^k.
+$$
+
+\begin{remark}
+Note that if the series \eqref{power0} converges at some point $y\in \R$, then it converges at every $x\in \R$ with $|x|\leq |y|$ (by the comparison principle for series). It is then clear that if the series does not converges at $y$, 
+it will not converge for any $x$ with $|x|>|y|$ (again by the comparison principle). The set of points $x\in \R$ where the series converges is then an 
+interval centred at $0$ (or centred at $x_0$ for the series \eqref{powerx0}).
+\end{remark}
+
+\begin{definition}
+We say that 
+$$
+r = \sup \{|x|\geq 0: \eqref{power0} \, \textrm{converges}\}
+$$
+is the radius of convergence of the series. The interval of convergence is the open interval $(-r,r)$.
+\end{definition}
+
+\begin{example}
+The series 
+$$
+\sum_{k=0}^\infty k^k x^k
+$$
+has radius of convergence $r=0$; the series 
+$$
+\sum_{k=0}^\infty \frac{x^k}{k!}
+$$
+has radius of convergence $r=\infty$.
+The series 
+$$
+\sum_{k=0}^\infty  x^k, \quad \sum_{k=0}^\infty  \frac{x^k}{(k+1)^2}, \quad \sum_{k=0}^\infty  \frac{x^k}{k+1}
+$$
+all have $r=1$. However, the first series does not converge at $x=\pm1$; the second one converges at both $x=-1$ and $x=1$; the third series converges at $x=-1$ and diverges at $x=1$. 
+
+So the endpoints of the interval of convergence of the series have to be checked separately.
+\end{example}
+
+The following theorem gives a way of computing the convergence radius of a series:
+
+\begin{theorem}
+Let
+$$
+\sum_{k=0}^\infty a_k x^k
+$$
+be a power series, and let 
+$$
+L:= \limsup_{k\to \infty} (|a_k|)^{\frac1k}.
+$$
+Then the radius of convergence of the series is 
+$$
+r = 
+\begin{cases}
+0 \quad &\textrm{if } L=\infty\\
++\infty \quad &\textrm{if } L=0\\
+\frac1L \quad &\textrm{if } 0<L<\infty.
+\end{cases}
+$$
+\end{theorem}
+
+
+
+We will now show that if the power series \eqref{power0} has radius of convergence $r>0$, then in the interval $(-r,r)$ the function 
+$$
+f(x) = \sum_{k=0}^\infty a_k x^k
+$$
+is well defined and continuous, since the series converges uniformly in $(-r,r)$. It is actually better than this, as the following theorem shows.
+
+
+
+
+\begin{theorem}\label{power:deriv}
+Suppose that the power series 
+$$
+\sum_{k=0}^\infty a_k x^k
+$$
+converges for every $x\in \R$ with $|x|< r$ (namely, it has radius of convergence $r>0$). Assume that $r<\infty$; then the series converges uniformly on $[-r+\varepsilon, r+\varepsilon]$, and the function $f$ defined as
+$$
+f(x):=\sum_{k=0}^\infty a_k x^k, \quad |x|<r,
+$$
+is continuous and differentiable in $(-r,r)$, with
+$$
+f'(x) = \sum_{k=1}^\infty k a_k x^{k-1}, \quad |x|<r.
+$$
+\end{theorem}
+
+
+\begin{proof}
+Let $\varepsilon>0$ be arbitrary. Then, for every $x$ such that $|x|\leq r-\varepsilon$ we have
+$$
+|a_k x^k|<|a_k|(r-\varepsilon)^k=: M_k.
+$$
+Since the series $\sum M_k$ converges (every power series converges absolutely in the interior of its interval of convergence, by the root test), the Weierstrass $M$-test tells us that the convergence of the series is uniform for $x\in [-r+\varepsilon,r+\varepsilon]$. 
+
+Now, to prove differentiability, we first show that the series 
+\begin{equation}\label{power:d}
+\sum_{k=1}^\infty k a_k x^{k-1}
+\end{equation}
+converges in the same interval, namely for $|x|<r$.
+
+To show this, let $|x_0|<r$, and let $|x|<|x_0|$, so that $\left|\frac{x}{x_0}\right|=\rho<1$; since $\sum_{k=0}^\infty a_k x_0^k$ converges, we have that 
+$z_k x_0^k\to 0$ as $k\to \infty$. This implies that there exists a constant $A$ such that $|a_kx_0^k|<A$ for every $k$. As a consequence, for every $k\in \N$
+\begin{align*}
+|k a_k x^{k-1}| & \leq \left| k a_k x^{k-1} \frac{x_0^k}{x_0^k}\right| = \left|\frac{k}{x_0} a_k x_0^k \frac{x^k}{x_0^k}\right|\leq \frac{k}{|x_0|}\, |a_kx_0^k| \rho^{k-1} \leq \frac{k}{|x_0|} A \rho^{k-1}.
+\end{align*}
+Note that the series 
+$$
+\sum_{k=1}^\infty \frac{k}{|x_0|} A \rho^{k-1}
+$$
+converges, by the ratio test, since 
+$$
+\frac{k+1}{|x_0|} A \rho^{k} \frac{|x_0| A \rho^{k-1}}{k} = \frac{k+1}{k} \rho \to \rho <1;
+$$
+hence, by comparison, the series \eqref{power:d} converges for $|x|<r$. This implies that, denoting with $r'$ the radius of convergence of \eqref{power:d}, $r'\geq r$.
+
+Suppose that $r'>r$ and choose $r<|x|<r'$. For this $x$ the series \eqref{power:d} converges, while the power series diverges. But on the other hand 
+$$
+|a_k x^k| = |k a_k x^{k-1}| \frac{|x|}k \leq |k a_k x^{k-1}| \quad \textrm{for } |x|<k.
+$$
+This means that the original series converges by comparison for this $x$, which is false. Hence $r'=r$. 
+\medskip
+We then define 
+$$
+g(x) = \sum_{k=1}^\infty k a_k x^{k-1}, \quad |x|<r.
+$$
+
+The fact that $g = f'$ for $|x|\leq r-\varepsilon$ is a direct consequence of Theorem \ref{series:d}. Since this is true for every $\varepsilon>0$ it follows that $f$ is differentiable in the whole interval $|x|<r$ and $f'=g$. 
+Continuity of $f$ follows from the existence of $f'$. 
+\end{proof}
+
+
+\begin{remark}
+In our proof we have assumed that the radius of convergence of the power series is finite, and we have deduced uniform convergence in the interior of the interval of convergence. If $r=\infty$ then the convergence is not 
+necessarily uniform on the entire line, but it is uniform on any closed interval, using the same arguments as above.
+\end{remark}
+
+\begin{remark}
+Note that if a power series converges for $|x|<r$, then uniform convergence may fail to hold for $|x|<r$. Indeed, the geometric series
+$$
+\sum_{k=0}^\infty x^k
+$$
+has radius of convergence $r=1$, so it converges for $|x|<1$ and diverges for $|x|>1$, to the function $1/(1-x)$. The series does not converge at the endpoints.
+
+The series converges uniformly on $[-\rho, \rho]$ for every $0\leq \rho<1$ but does not converge uniformly on $(-1,1)$.
+
+\medskip
+
+
+Also, the series $\sum_{k=0}^\infty \frac{x^k}{k}$ has radius of convergence $r=1$. At $x=1$ it diverges, while at $x=-1$ it converges, but not absolutely. The series does not converge uniformly on $(-1,1)$.
+
+
+
+\end{remark}
+
+
+Under the same assumptions as in the Theorem \ref{power:deriv}, we have the following result (which can be proved by induction).
+
+\begin{theorem}
+Assume that the power series \eqref{power0} has radius of convergence $r>0$ and let 
+$$
+f(x) = \sum_{k=0}^\infty a_k x^k, \quad x\in (-r,r).
+$$
+Then $f$ is infinitely many times differentiable in $(-r,r)$ and for every $m\in \N$ we have 
+\begin{equation}\label{Taylor}
+f^{(m)}(x) = \sum_{k=m}^\infty k(k-1)\dots(k-m+1)a_kx^{k-m}.
+\end{equation}
+(Here, $f^{(m)}$ is the $m$-th derivative of $f$.)
+\end{theorem}
+
+\begin{remark}[Taylor series]
+From \eqref{Taylor}, by setting $x=0$ we have that 
+$$
+f^{(m)}(0) = m! a_m,
+$$
+namely if a power series converges to a function $f$, then $f$ is infinitely many times differentiable and the power series coincides with the Taylor series of $f$.
+
+It is however important to stress that a function $f$ may have derivatives of all orders, and at the same time the series $\sum_{k=0}^\infty a_k x^k$, with $f^{(k)}(0) = k! a_k$, may not converge to $f$ for 
+$x\neq 0$. 
+
+The typical example is the function $f:\R\to \R$ defined as
+$$
+f(x) = \begin{cases}
+e^{-1/x^2} \quad &\textrm{if } \, x\neq 0,\\
+0 \quad &\textrm{if } \, x= 0.
+\end{cases}
+$$
+The function $f$ has derivatives of all orders at $x=0$, and $f^{(m)}(0)=0$ for every $m\in \N$.
+\end{remark} 
+
+\bigskip
+
+Power series can be also integrated term by term, as a direct consequence of Corollary \ref{series:i}:
+
+\begin{corollary}
+Suppose that the power series 
+$$
+\sum_{k=0}^\infty a_k x^k
+$$
+converges uniformly for $|x|<r$. Then, if $-r<a<b<r$, we have 
+$$
+\int_a^b \sum_{k=0}^\infty a_k x^k = \sum_{k=0}^\infty a_k \int_a^b x^k dx = \sum_{k=0}^\infty a_k \frac{b^{k+1}-a^{k+1}}{k+1}.
+$$
+\end{corollary}
+
+
+\subsection{Complex sequences and series}
+We can extend to complex numbers all the definitions and theorems in $\R$ that only rely on the `metric structure' of $\R$ (namely on the fact that we can compute 
+distances among elements in $\R$, with the absolute value), since we have defined a modulus on complex numbers that mimics the absolute value in $\R$, but not the properties that rely on the `ordering' of $\R$, since there is no ordering in $\C$.
+
+In particular we can extend to $\C$ the concepts of sequences and convergence of sequences. 
+
+\noindent
+If $(z_k)_{k\in \N}$ is a sequence in $\C$, we will say that $z_k\to z_0$ as $k\to \infty$ if
+$$
+\forall\, \varepsilon>0 \quad \exists\, N\in \N: \, k\geq N \Rightarrow |z_k-z_0|<\varepsilon,
+$$
+where, of course, $|z| = \sqrt{z\bar z}$ ($=\sqrt{a^2+b^2}$ if we write $z=a+ib$). Also, since a sequence $(z_k)_{k\in \N}$ in $\C$ corresponds to two real sequences $(a_k)_{k\in \N}$ and $(b_k)_{k\in \N}$ of its real and imaginary parts, 
+we have that $z_k$ converges if and only if the sequences $a_k$ and $b_k$ converge.
+
+\bigskip
+
+\noindent
+Concerning complex series, it is clear that $\sum_k z_k$ converges if and only if the real series $\sum_k a_k$ and $\sum_k b_k$ converge. Moreover, if the real series $\sum_k |z_k|$ converges (namely, if $\sum_k z_k$ converges absolutely), then the series $\sum_k z_k$ converges as well.
+
+Similarly, if $\sum_k z_k$ converges, then $z_k \to 0$, as in the real case. 
+
+\begin{example}[Complex geometric series]
+The complex geometric series 
+$$
+\sum_{k=0}^\infty z^k, \quad z\in \C
+$$
+converges if $|z|<1$ and does not converge if $|z|\geq 1$.
+
+This is clear, since for $|z|<1$ we have the bound
+$$
+\sum_{k=0}^\infty |z^k| \leq \sum_{k=0}^\infty |z|^k,
+$$
+which ensures convergence by the comparison principle. On the other hand, if $|z|\geq 1$, then $|z^k|\geq 1$, and hence does not converge to zero, which is a necessary condition for the convergence of the series.
+
+
+
+\bigskip
+
+More in general, the series 
+$$
+\sum_{k=0}^\infty a_k z^k, \quad a_k, z\in \C
+$$
+converges at $z=0$, and if it converges at some $w\neq 0$, then it converges for every $z\in \C$, $|z|<|w|$. 
+We can therefore define a radius of convergence as for the case of real power series. Note that in $\C$ the set of points 
+where the series converges is a circle, and not an interval.
+
+\begin{theorem}
+Given the power series $\sum_{k=0}^\infty a_k z^k$ with $z\in \C$, set
+$$
+L:= \limsup_{k\to \infty} (|a_k|)^{\frac1k}, \quad \textrm{and} \quad r=\frac1L.
+$$
+(If $L=0$, then $r=+\infty$; if $L=\infty$, then $r=0$.) Then the series converges for $|z|<r$ and does not converge for $|z|>r$.
+\end{theorem}
+\end{example}
+
+\medskip
+
+Concerning the differentiation of complex power series, similar results as in the real case apply. Namely, within a power series' radius of convergence, a power series is differentiable, and its derivative can be obtained bt differentiating the individual terms of the power series term by term.
+
+First of all we need to define the derivative of a complex function.
+
+\begin{definition}
+Let $A\subset \C$ and let $z_0\in A$ be such that $B_R(z_0)=\{z\in \C: |z-z_0|<R\}\subset A$. A function $f:A\to \C$ is said to be (complex-)differentiable at $z_0$ if the limit 
+$$
+\lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}
+$$
+exists; in that case we set 
+$$
+f'(z_0):= \lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0},
+$$
+and call it the derivative of $f$ at $z_0$. 
+\end{definition}
+
+Now we can state the differentiability result for complex power series.
+
+\begin{theorem}
+Let $f(z)=\sum_{k=0}^\infty a_k z^k$ be a power series with radius of convergence $r>0$. Then $f$ is complex-differentiable for $|z|<r$ (also called holomorphic) and its derivative is equal to the power series 
+$f'(z) = \sum_{k=1}^\infty ka_k z^{k-1}$ obtained by differentiating $f$ term by term. Also, $f'$ has the same radius of convergence as $f$.
+\end{theorem}
+
+\begin{corollary}
+A complex power series is infinitely (complex-)differentiable in its disc of convergence, and each of its $m$-th derivatives can be obtained by differentiating term-by-term $m$ times. The resulting power series has radius of convergence equal to the original power series.
+\end{corollary}
+
+\begin{example}[Complex exponential]
+The complex power series 
+$$
+\sum_{k=0}^\infty \frac{z^k}{k!}
+$$
+is equal to the exponential function on the real line (by the convergence of the Taylor series of the exponential) and is convergent for every $z\in \C$. Indeed we have that 
+$$
+\left|\frac{z^k}{k!}\right| \leq \frac{|z|^k}{k!},
+$$
+which is a real and convergent series. We set
+\begin{equation}\label{complex:exp}
+e^z:= \sum_{k=0}^\infty \frac{z^k}{k!}
+\end{equation}
+to define the \textit{complex exponential function}. Note that since $a_k = 1/k!$, and $\lim_k|a_{k+1}|/|a_k|=0$, this power series has radius of convergence $r=\infty$, so it converges for all $z$.
+
+We moreover have the following property:
+\begin{equation}
+e^z e^w = e^{z+w}.
+\end{equation}
+
+To prove it, we need to recall the definition of multiplication of complex series. Given $\sum_k \alpha_k$ and $\sum_k \beta_k$, the product of the series is 
+$$
+\sum_k c_k, \quad c_k = \sum_{m=0}^k \alpha_m \beta_{k-m}, \quad k=0,1,\dots.
+$$
+We also recall that the product of two convergent sequences converges to the product of their sums if at least one of the two converges absolutely.
+
+As last ingredient we recall that if a complex series converges absolutely, then every rearrangement converges, and they all converge to the same sum.
+\medskip
+ 
+Now just note that 
+\begin{align*}
+e^z e^w &= \sum_{k=0}^\infty \sum_{h=0}^\infty \frac{z^k}{k!} \frac{w^h}{h!} = \sum_{n=0}^\infty \sum_{h+k=n} \frac{z^k w^h}{k!h!}  = \sum_{n=0}^\infty \sum_{k=0}^n  \frac{z^k w^{n-k}}{k!(n-k)!}\\
+& = \sum_{n=0}^\infty \frac{1}{n!} \sum_{k=0}^n \binom{n}{k}z^k w^{n-k} = \sum_{n=0}^\infty \frac{1}{n!} (z+w)^n = e^{z+w}.
+\end{align*}
+One immediate consequence is that 
+$$
+e^z e^{-z} = e^{z-z} = e^0 = 1.
+$$
+
+\medskip
+
+It is also easy to see that $(e^z)'=e^z$. Indeed, by differentiating the power series expression for $e^z$ term by term, we find 
+$$
+(e^z)' = 1+ \frac{2z}{2!} + \frac{3z^2}{3!}+\dots = 1+ z+\frac{z^2}{2!} + \frac{z^3}{3!}+\dots = e^z.
+$$
+
+\medskip
+
+
+Now note that if we write \eqref{complex:exp} for $z=iy$, with $y\in \R$, then we have 
+\begin{align*}
+e^{iy} = \sum_{k=0}^\infty \frac{(iy)^k}{k!} = \sum_{m=0}^\infty (-1)^m\frac{y^{2m}}{(2m)!} + i \sum_{m=0}^\infty (-1)^m\frac{y^{2m+1}}{(2m+1)!}  = \cos y+ i\sin y.
+\end{align*}
+This is the famous Euler formula, a surprising relation between the exponential function and trigonometric functions:
+$$
+e^{iy} = \cos y + i \sin y.
+$$
+\end{example}
+
+
+\begin{example}[Complex trigonometric functions]
+We can define $\cos z$ and $\sin z$ by either using their respective power series, or by declaring 
+$$
+\cos z= \frac{e^{iz} + e^{-iz}}{2}, \quad \sin z= \frac{e^{iz} - e^{-iz}}{2},
+$$
+and using the power series expression of the complex exponential.
+\end{example}
+
+
+\begin{example}[Complex logarithm]
+We have that the complex logarithm is defined as
+
+$$
+\log(1+z) = \sum_{k=1}^{\infty} \frac{(-1)^{k+1}z^{k}}{k}, \quad |z|<1
+$$
+
+Heuristically (for now, it will be clear in MA20219) we can obtain the formula from the formula of the complex geometric series.
+We know that 
+$$
+\sum_{k=0}^\infty z^k = \frac{1}{1-z}, \quad |z|\le1, z\neq -1.
+$$
+In particular we also have 
+$$
+\frac{1}{1-z} = \sum_{k=0}^n z^k + \frac{z^{n+1}}{1-z}.
+$$
+Integrating the previous formula on the straight segment $L$ between $0$ and $z$ we have 
+$$
+-\log(1-z) = \sum_{k=0}^n \frac{z^{k+1}}{k+1} + \int_L\frac{w^{n+1}}{1-w} dw.
+$$
+It is easy to show that the second term in the right-hand side is infinitesimal for $n\to \infty$, since 
+$$
+\left|\int_L\frac{w^{n+1}}{1-w} dw\right|\leq \frac{|z|^{n+2}}{1-|z|}.
+$$
+In conclusion
+$$
+-\log(1-z) = \sum_{k=1}^{\infty} \frac{z^{k}}{k}, \quad |z|<1.
+$$
+\end{example}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

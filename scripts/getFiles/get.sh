@@ -29,7 +29,18 @@ mkdir $home/../../$tmpname/figures/pdf/
 mkdir $home/../../$tmpname/figures/png/
 mkdir $home/../../$tmpname/figures/jpg/
 mkdir $home/../../$tmpname/figures/svg/
-cp $home/../../assets/makefile $home/../../$tmpname/
+echo "-----------------------------------------------------------------"
+echo "-----------------------------------------------------------------"
+echo "Compiling for use at University of Bath only?"
+echo "============================================="
+echo "Do you need to use the University of Bath MathJax setup?" 
+echo "[y/n then enter]"
+read decision
+if [ $decision == "y" ]; then
+    cp $home/../../assets/makefile-bath $home/../../$tmpname/makefile    
+else
+    cp $home/../../assets/makefile $home/../../$tmpname/    
+fi
 cp $home/../../assets/empty.tex $home/../../$tmpname/
 cp $home/../../master/master.tex $home/../../$tmpname/
 echo $home > $home/../../$tmpname/.home

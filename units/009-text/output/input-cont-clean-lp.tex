@@ -1,0 +1,53 @@
+%\documentclass[12pt,a4paper,onecolumn]{article}
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage[T1]{fontenc}} 
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage[a4paper]{geometry}} 
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage[english]{babel}} 
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage{amsmath}}
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage{amssymb}} 
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage{amsfonts}} 
+\usepackage[mathscr]{eucal}
+\usepackage{eufrak} 
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage{amsthm}} 
+\usepackage{longtable} 
+\ifboolexpr{togl {web} or togl{clearprint}}{}{\usepackage{graphicx}} 
+\usepackage{spverbatim} 
+\usepackage{url} 
+\newtheorem{theorem}{Theorem}[section]
+\title{AMS math symbols}
+\author{Emma Cliffe}
+\date{}
+\pagestyle{headings}
+\usepackage{calc}
+\usepackage{longtable}
+\usepackage{tabu}
+\usepackage{breqn}
+\setlength{\arraycolsep}{0.800000em}
+\renewcommand{\arraystretch}{1.400000}
+\begin{document}
+\renewcommand{\baselinestretch}{1.250000}
+\selectfont
+\setlength{\parskip}{1.0\baselineskip}
+
+\maketitle
+
+\section{Alphabets!}
+
+\noindent 
+Blackboard bold, upper case only (no boldsymbol version available as standard):
+%Some of these appear to be italicised in Word? Suggests I might have the unicode translation slightly off for them in oolatex? 
+\(\mathbb{A}\), \(\mathbb{B}\), \(\mathbb{C}\), \(\mathbb{D}\), \(\mathbb{E}\), \(\mathbb{F}\), \(\mathbb{G}\), \(\mathbb{H}\), \(\mathbb{I}\), \(\mathbb{J}\), \(\mathbb{K}\), \(\mathbb{L}\), \(\mathbb{M}\), \(\mathbb{N}\), \(\mathbb{O}\), \(\mathbb{P}\), \(\mathbb{Q}\), \(\mathbb{R}\), \(\mathbb{S}\), \(\mathbb{T}\), \(\mathbb{U}\), \(\mathbb{V}\), \(\mathbb{W}\), \(\mathbb{X}\), \(\mathbb{Y}\), \(\mathbb{Z}\)
+
+\bigskip
+
+\noindent
+Math script, upper case only:
+\(\mathscr{A}\), \(\mathscr{B}\), \(\mathscr{C}\), \(\mathscr{D}\), \(\mathscr{E}\), \(\mathscr{F}\), \(\mathscr{G}\), \(\mathscr{H}\), \(\mathscr{I}\), \(\mathscr{J}\), \(\mathscr{K}\), \(\mathscr{L}\), \(\mathscr{M}\), \(\mathscr{N}\), \(\mathscr{O}\), \(\mathscr{P}\), \(\mathscr{Q}\), \(\mathscr{R}\), \(\mathscr{S}\), \(\mathscr{T}\), \(\mathscr{U}\), \(\mathscr{V}\), \(\mathscr{W}\), \(\mathscr{X}\), \(\mathscr{Y}\), \(\mathscr{Z}\)
+
+\bigskip
+
+\noindent
+Math Frak, upper case only:
+%Some of these appear to be italicised in Word? Suggests I might have the unicode translation slightly off for them in oolatex? 
+\(\mathfrak{A}\), \(\mathfrak{B}\), \(\mathfrak{C}\), \(\mathfrak{D}\), \(\mathfrak{E}\), \(\mathfrak{F}\), \(\mathfrak{G}\), \(\mathfrak{H}\), \(\mathfrak{I}\), \(\mathfrak{J}\), \(\mathfrak{K}\), \(\mathfrak{L}\), \(\mathfrak{M}\), \(\mathfrak{N}\), \(\mathfrak{O}\), \(\mathfrak{P}\), \(\mathfrak{Q}\), \(\mathfrak{R}\), \(\mathfrak{S}\), \(\mathfrak{T}\), \(\mathfrak{U}\), \(\mathfrak{V}\), \(\mathfrak{W}\), \(\mathfrak{X}\), \(\mathfrak{Y}\), \(\mathfrak{Z}\)
+
+\end{document}

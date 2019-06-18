@@ -8,6 +8,7 @@
 \providecommand{\pointsize}{12pt}
 \providecommand{\papersize}{a4paper}
 \providecommand{\class}{article}
+\providecommand{\emphasis}{clear}
 %% We need to know if we are in a nonstandard class
 \providecommand{\unknownclass}{}
 \providecommand{\originalclass}{}
@@ -134,14 +135,14 @@
 
  %% Emphasis in bold only - add additional examples 
  %% as per resource
- \renewcommand{\em}{\bf}
- \renewcommand{\textit}{\textbf}
- \renewcommand{\emph}{\textbf}
- \renewcommand{\it}{\bf }
- %%Not sure about this one, if it is a problem generally
+ %% In web format we are in clearprint with clear emphasis
+ %% In web standard format we are in clearprint with standard emphasis
+ %% but we need to redefine em to be it in that case so it is <i> not
+ %% a particular font
+ \ifdefstring{\emphasis}{clear}{\renewcommand{\em}{\bf}\renewcommand{\textit}{\textbf}\renewcommand{\emph}{\textbf}\renewcommand{\it}{\bf }\renewcommand{\itshape}{\bf}}{\renewcommand{\em}{\it}\renewcommand{\emph}{\textit}}
+ %%Not sure about the last one, if it is a problem generally
  %%stick it in tuftefix for now 
- \renewcommand{\itshape}{\bf}
-
+ 
  %% Additional spacing - may not be honoured in 
  %% web version
  \setlength{\parindent}{0.0pt}
@@ -221,7 +222,7 @@
   }{}
   \iftoggle{figures}{\usepackage{figurefix}}{}
   \iftoggle{web}{
-   \usepackage{bbmone}
+   %%%\usepackage{bbmone}
    \usepackage{webfix}
    \usepackage{color}
    \usepackage{xcolor}

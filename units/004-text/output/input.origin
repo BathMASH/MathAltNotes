@@ -1,0 +1,23 @@
+%Taken from HESTEM project vanilla tests
+\documentclass[12pt,a4paper,onecolumn]{article}
+\usepackage[english,shorthands=off]{babel}
+\usepackage[T1]{fontenc}
+\begin{document}
+\noindent
+Special characters: \$  \%  \_  \}  \&  \#  \{
+
+\noindent
+Textmode characters: 
+\par\noindent
+\textasciicircum  \textless  \textasciitilde  \textordfeminine    \textasteriskcentered  \textordmasculine  \textbackslash  \textparagraph  \textbar  \textperiodcentered  \textbraceleft  \textquestiondown  \textbraceright  \textquotedblleft  \textbullet  \textquotedblright  \textcopyright  \textquoteleft  \textdagger  \textquoteright  \textdaggerdbl  \textregistered  \textdollar  \textsection  \textellipsis  \textsterling  \textemdash  \texttrademark  \textendash  \textunderscore  \textexclamdown  \textvisiblespace  \textgreater                                                      
+
+\noindent
+Mathmode and textmode: \$  \_  \ddag  \{  \P  \copyright  \dots  \}  \S  \dag  \pounds
+
+\noindent
+Accents: \"{a}  \'{a}  \.{a}  \={a}  \^{a}  \`{a}  \~{a} \c{a}  \d{a}  \H{a} \k{a} \r{a}  \t{a}  \u{a}  \v{a}  \textcircled{a}  
+
+\noindent
+There are not always symbols for these in all fonts: \i  \j  \"{\i}
+
+\end{document}

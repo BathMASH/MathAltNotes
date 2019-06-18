@@ -51,19 +51,22 @@ make
 cd ..
 cd graphicx
 make
+cd ..
+cd vert
+make
 cd ../../
 echo "-----------------------------------------------------------------"
-echo "By-hand: Non-directional delimiters"
+echo "Non-directional delimiters"
 echo "==================================="
 ./scripts/dedollar/dedollar.sh $1
 ./scripts/match_parens_ht/match_parens_ht.sh $1
+./scripts/vert/vert.sh $1
 echo "You should go away and fix the problems described above."
 echo "Do you want to continue anyway? y for yes and n for no"
 read decision
 if [ $decision != "y" ]; then
     exit 1
 fi
-./scripts/vert/vert.sh $1
 echo "-----------------------------------------------------------------"
 echo "The rest of this process is automatic - though it can fail or"
 echo "error for many reasons. Please leave it to run and then follow"
@@ -121,11 +124,12 @@ echo "without reproducing your original image in a different way but "
 echo "please do contact ma-largeprintnotes@bath.ac.uk for advice."
 echo "-----------------------------------------------------------------"
 echo "If the web and/or word compilation failed with an xtpipes error"
-echo "then the most usual reason is that you have brackets which do not"
+echo "then the most usual reason is that you have delimiters which do not"
 echo "match in their immediate context. You might have ignored a warning"
 echo "about this earlier! If you did then you will find helpful files"
-echo "called filename.parens in the timestamped directory. If you did"
-echo "NOT see such a warning ask ma-largeprintnotes@bath.ac.uk for help."
+echo "called filename.parens and filename.pre-vert in the timestamped" 
+echo "directory. If you did NOT see such a warning ask "
+echo "ma-largeprintnotes@bath.ac.uk for help."
 echo "-------------------While waiting for help-------------------------"
 echo "You can try ./quickSloppyMake to see if that produces output. "
 echo "If it does you can use it but you should check the document output"

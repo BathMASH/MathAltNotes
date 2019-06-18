@@ -18,290 +18,290 @@
   18 |            | 
   19 |            | Math versions of text symbols: \(\$  \_  \ddag  \{  \P  \dots  \}  \S  \dag  \pounds \copyright\)
   20 |            | 
-  21 | (|)        | Keyboard symbols: \(+  -  =  <  >  /  :  !  '  |  [  ]  (  )\)
-  22 | (|)        | 
-  23 | (|)        | \noindent 
-  24 | (|)        | But for longer tests we will use the equation environment so that we don't overrun the line if we increase the font size. We'll do a basic macro test in section \ref{test}.
-  25 | (|)        | 
-  26 | (|)        | Greek:
-  27 | (|)        | \begin{equation}
-  28 | (|)        | \alpha  \beta  \gamma  \delta  \epsilon  \varepsilon  \zeta  \eta  \theta  \vartheta  \iota  \kappa  \lambda  \mu  \nu  \xi  o  \pi  \varpi  \rho  \varrho  \sigma  \varsigma  \tau  \upsilon  \phi  \varphi  \chi  \psi  \omega
-  29 | (|)        | \end{equation}
-  30 | (|)        | 
-  31 | (|)        | Upper case Greek:
-  32 | (|)        | \begin{equation}
-  33 | (|)        | \Gamma  \Delta  \Theta  \Lambda  \Xi  \Pi  \Sigma  \Upsilon  \Phi  \Psi  \Omega
-  34 | (|)        | \end{equation}
-  35 | (|)        | 
-  36 | (|)        | Normal, lower case:
-  37 | (|)        | \begin{equation}
-  38 | (|)        | a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z
-  39 | (|)        | \end{equation}
-  40 | (|)        | 
-  41 | (|)        | Normal, upper case:
-  42 | (|)        | \begin{equation}
-  43 | (|)        | A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z  
-  44 | (|)        | \end{equation}
-  45 | (|)        | 
-  46 | (|)        | Bold using boldmath, lower case:\boldmath
-  47 | (|)        | \begin{equation}
-  48 | (|)        | a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z
-  49 | (|)        | \end{equation}\unboldmath
-  50 | (|)        | 
-  51 | (|)        | Bold using boldmath, upper case:\boldmath
-  52 | (|)        | \begin{equation}
-  53 | (|)        | A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z  
-  54 | (|)        | \end{equation}\unboldmath
-  55 | (|)        | 
-  56 | (|)        | 
-  57 | (|)        | Italic, lower case:
-  58 | (|)        | \begin{equation}
-  59 | (|)        | \mathit{a}~\mathit{b}~\mathit{c}~\mathit{d}~\mathit{e}~\mathit{f}~\mathit{g}~\mathit{h}~\mathit{i}~\mathit{j}~\mathit{k}~\mathit{l}~\mathit{m}~\mathit{n}~\mathit{o}~\mathit{p}~\mathit{q}~\mathit{r}~\mathit{s}~\mathit{t}~\mathit{u}~\mathit{v}~\mathit{w}~\mathit{x}~\mathit{y}~\mathit{z}
-  60 | (|)        | \end{equation}
-  61 | (|)        | 
-  62 | (|)        | Italic, upper case:
-  63 | (|)        | \begin{equation}
-  64 | (|)        | \mathit{A}~\mathit{B}~\mathit{C}~\mathit{D}~\mathit{E}~\mathit{F}~\mathit{G}~\mathit{H}~\mathit{I}~\mathit{J}~\mathit{K}~\mathit{L}~\mathit{M}~\mathit{N}~\mathit{O}~\mathit{P}~\mathit{Q}~\mathit{R}~\mathit{S}~\mathit{T}~\mathit{U}~\mathit{V}~\mathit{W}~\mathit{X}~\mathit{Y}~\mathit{Z}
-  65 | (|)        | \end{equation}
-  66 | (|)        | 
-  67 | (|)        | Roman, lower case:
-  68 | (|)        | \begin{equation}
-  69 | (|)        | \mathrm{a}  \mathrm{b}  \mathrm{c}  \mathrm{d}  \mathrm{e}  \mathrm{f}  \mathrm{g}  \mathrm{h}  \mathrm{i}  \mathrm{j}  \mathrm{k}  \mathrm{l}  \mathrm{m}  \mathrm{n}  \mathrm{o}  \mathrm{p}  \mathrm{q}  \mathrm{r}  \mathrm{s}  \mathrm{t}  \mathrm{u}  \mathrm{v}  \mathrm{w}  \mathrm{x}  \mathrm{y}  \mathrm{z}
-  70 | (|)        | \end{equation}
-  71 | (|)        | 
-  72 | (|)        | Roman, upper case:
-  73 | (|)        | \begin{equation}
-  74 | (|)        | \mathrm{A}  \mathrm{B}  \mathrm{C}  \mathrm{D}  \mathrm{E}  \mathrm{F}  \mathrm{G}  \mathrm{H}  \mathrm{I}  \mathrm{J}  \mathrm{K}  \mathrm{L}  \mathrm{M}  \mathrm{N}  \mathrm{O}  \mathrm{P}  \mathrm{Q}  \mathrm{R}  \mathrm{S}  \mathrm{T}  \mathrm{U}  \mathrm{V}  \mathrm{W}  \mathrm{X}  \mathrm{Y}  \mathrm{Z}
-  75 | (|)        | \end{equation}
-  76 | (|)        | 
-  77 | (|)        | Bold using bf, lower case:
-  78 | (|)        | \begin{equation}
-  79 | (|)        | \mathbf{a}  \mathbf{b}  \mathbf{c}  \mathbf{d}  \mathbf{e}  \mathbf{f}  \mathbf{g}  \mathbf{h}  \mathbf{i}  \mathbf{j}  \mathbf{k}  \mathbf{l}  \mathbf{m}  \mathbf{n}  \mathbf{o}  \mathbf{p}  \mathbf{q}  \mathbf{r}  \mathbf{s}  \mathbf{t}  \mathbf{u}  \mathbf{v}  \mathbf{w}  \mathbf{x}  \mathbf{y}  \mathbf{z}
-  80 | (|)        | \end{equation}
-  81 | (|)        | 
-  82 | (|)        | Bold using bf, upper case:
-  83 | (|)        | \begin{equation}
-  84 | (|)        | \mathbf{A}  \mathbf{B}  \mathbf{C}  \mathbf{D}  \mathbf{E}  \mathbf{F}  \mathbf{G}  \mathbf{H}  \mathbf{I}  \mathbf{J}  \mathbf{K}  \mathbf{L}  \mathbf{M}  \mathbf{N}  \mathbf{O}  \mathbf{P}  \mathbf{Q}  \mathbf{R}  \mathbf{S}  \mathbf{T}  \mathbf{U}  \mathbf{V}  \mathbf{W}  \mathbf{X}  \mathbf{Y}  \mathbf{Z}
-  85 | (|)        | \end{equation}
-  86 | (|)        | 
-  87 | (|)        | Calligraphic (upper case only):
-  88 | (|)        | \begin{equation}
-  89 | (|)        | \mathcal{A}  \mathcal{B}  \mathcal{C}  \mathcal{D}  \mathcal{E}  \mathcal{F}  \mathcal{G}  \mathcal{H}  \mathcal{I}  \mathcal{J}  \mathcal{K}  \mathcal{L}  \mathcal{M}  \mathcal{N}  \mathcal{O}  \mathcal{P}  \mathcal{Q}  \mathcal{R}  \mathcal{S}  \mathcal{T}  \mathcal{U}  \mathcal{V}  \mathcal{W}  \mathcal{X}  \mathcal{Y}  \mathcal{Z}
-  90 | (|)        | \end{equation}
-  91 | (|)        | 
-  92 | (|)        | Binary operators:
-  93 | (|)        | \begin{equation}
-  94 | (|)        | \pm \mp \times \div \cdot \ast \star \dagger \ddagger \amalg \cap \cup \uplus \sqcap \sqcup \vee \wedge \oplus \ominus \otimes \circ \bullet \diamond \oslash \odot \bigcirc \bigtriangleup \bigtriangledown \triangleleft \triangleright \setminus \wr
-  95 | (|)        | \end{equation}
-  96 | (|)        | 
-  97 | (|)        | Relations:
-  98 | (|)        | \begin{equation}
-  99 | (|)|       | \le \leq \ll \subset \subseteq \sqsubseteq \in \vdash \models \ge \geq \gg \supset \supseteq \sqsubseteq \ni \dashv \perp \neq \doteq \approx \cong \equiv \propto \prec \preceq \parallel \| \sim \simeq \asymp \smile \frown \bowtie \succ \succeq \mid
- 100 | (|)|       | \end{equation}
- 101 | (|)|       | 
- 102 | (|)|       | Negated which do not stop conversion but may not be displayed in Word:
- 103 | (|)|       | \begin{equation}
- 104 | (|)|       | \not< \not\leq \not\subset \not\subseteq \not\sqsubseteq \not\in \notin \not\vdash \not\models \not> \not\geq \not\supset \not\supseteq \not\sqsubseteq \not\ni \not= \not\approx \not\cong \not\equiv \not\prec \not\sim \not\simeq \not\asymp \not\succ 
- 105 | (|)|       | \end{equation}
- 106 | (|)|       | 
- 107 | (|)|       | %Negated which stop conversion to word:
- 108 | (|)|       | %\begin{equation}
- 109 | (|)|       | %\not\le \not\ll \not\ge \not\gg \not\dashv \not\perp \not\doteq \not\propto \not\preceq \not\smile \not\frown \not\bowtie \not\succeq
- 110 | (|)|       | %\end{equation}
- 111 | (|)|       | 
- 112 | (|)|       | Arrows:
- 113 | (|)|       | \begin{equation}
- 114 | (|)|       | \leftarrow \gets \Leftarrow \rightarrow \to \Rightarrow \leftrightarrow \Leftrightarrow \mapsto \hookleftarrow \leftharpoonup \leftharpoondown \rightleftharpoons \longleftarrow \Longleftarrow \longrightarrow \Longrightarrow 
- 115 | (|)|       | \end{equation}
- 116 | (|)|       | \begin{equation}
- 117 | (|)|       | \longleftrightarrow \Longleftrightarrow \iff \longmapsto \hookrightarrow \rightharpoonup \rightharpoondown \uparrow \Uparrow \downarrow \Downarrow \updownarrow \Updownarrow \nearrow \searrow \swarrow \nwarrow
- 118 | (|)|       | \end{equation}
- 119 | (|)|       | 
- 120 | (|)|       | Other:
- 121 | (|)|       | \begin{equation}
- 122 | (|)||      | \aleph \hbar \imath \jmath \ell \wp \Re \Im \prime \emptyset \nabla \surd \partial \top \bot \vdash \dashv \forall \exists \neq \flat \natural \sharp \| \angle \backslash \triangle \clubsuit \diamondsuit \heartsuit \spadesuit \infty
- 123 | (|)||      | \end{equation}
- 124 | (|)||      | 
- 125 | (|)||      | Symbols with two sizes: 
- 126 | (|)||      | \begin{center}
- 127 | (|)||      | \(\sum \int \oint \prod \coprod \bigcap \bigcup \bigsqcup \bigvee \bigwedge \bigodot \bigotimes \bigoplus \biguplus\)
- 128 | (|)||      | \end{center}
- 129 | (|)||      | \begin{equation}
- 130 | (|)||      | \sum \int \oint \prod \coprod \bigcap \bigcup \bigsqcup \bigvee \bigwedge \bigodot \bigotimes \bigoplus \biguplus
- 131 | (|)||      | \end{equation}
- 132 | (|)||      | 
- 133 | (|)||      | Function names:
- 134 | (|)||      | \begin{equation}
- 135 | (|)||      | \arccos \arcsin \arctan \arg \cos \cosh \cot \coth \csc \deg \det 
- 136 | (|)||      | \end{equation}
- 137 | (|)||      | \begin{equation}
- 138 | (|)||      | \dim \exp \gcd \hom \inf \ker \lg \lim \liminf \limsup \ln \log 
- 139 | (|)||      | \end{equation}
- 140 | (|)||      | \begin{equation}
- 141 | (|)||      | \max \min \Pr \sec \sin \sinh \sup \tan \tanh
- 142 | (|)||      | \end{equation}
- 143 | (|)||      | 
- 144 | (|)||      | Those with under-subscript available:
- 145 | (|)||      | \begin{equation}
- 146 | (|)||      | \det_{a} \gcd_{a} \inf_{a} \lim_{a} \liminf_{a} \limsup_{a} \max_{a} \min_{a} \Pr_{a} \sup_{a}
- 147 | (|)||      | \end{equation}
- 148 | (|)||      | 
- 149 | (|)||      | Modulus:
- 150 | (|)||      | \begin{equation}
- 151 | (|)||      | a \bmod b \qquad a \pmod{b}
- 152 | (|)||      | \end{equation}
- 153 | (|)||      | 
- 154 | (|)||      | Accents and under/over:
- 155 | (|)||      | \begin{equation}
- 156 | (|)||      | \hat{a} \check{a} \dot{a} \breve{a} \acute{a} \ddot{a} \grave{a} \tilde{a} \mathring{a} \bar{a} \vec{a} \widehat{aaa} \widetilde{aaa} \overline{aaa} \underline{aaa} \overbrace{aaa} \underbrace{aaa}
- 157 | (|)||      | \end{equation}
- 158 | (|)||      | 
- 159 | (|)||      | Symbols left and right can be applied to:
- 160 | (|)||      | \begin{equation}
- 161 | (|)||||    | \left( \frac{1}{2} \right) \left[ \frac{1}{2} \right] \left\{ \frac{1}{2} \right\} \left| \frac{1}{2} \right| \left/ \frac{1}{2} \right\backslash \left\lfloor \frac{1}{2} \right\rfloor \left\lceil \frac{1}{2} \right\rceil \left\langle \frac{1}{2} \right\rangle 
- 162 | (|)||||    | %breqn does not recognise the following as matching either each other or \right. or \left. and hence these cannot be used as matching, stretchy:
- 163 | (|)||||    | %\left\uparrow \frac{1}{2} \right\uparrow \left\downarrow \frac{1}{2} \right\downarrow \left\updownarrow \frac{1}{2} \right\updownarrow \left\Uparrow \frac{1}{2} \right\Uparrow \left\Downarrow \frac{1}{2} \right\Downarrow \left\Updownarrow \frac{1}{2} \right\Updownarrow   
- 164 | (|)||||    | \end{equation}
- 165 | (|)||||    | 
- 166 | (|)||||    | Manual sizing:
- 167 | (|)||||    | \begin{equation}
- 168 | (|)||||    | \big( \big) \big[ \big] \big\{ \big\} \big\lfloor \big\rfloor \big\lceil \big\rceil \big\langle \big\rangle 
- 169 | (|)||||||  | \big/ \big\backslash \big| \big\| \big\uparrow \big\Uparrow \big\downarrow \big\Downarrow \big\updownarrow \big\Updownarrow
- 170 | (|)||||||  | \end{equation}
- 171 | (|)||||||  | \begin{equation}
- 172 | (|)||||||  | \Big( \Big) \Big[ \Big] \Big\{ \Big\} \Big\lfloor \Big\rfloor \Big\lceil \Big\rceil \Big\langle \Big\rangle 
- 173 | (|)||||||| | \Big/ \Big\backslash \Big| \Big\| \Big\uparrow \Big\Uparrow \Big\downarrow \Big\Downarrow \Big\updownarrow \Big\Updownarrow
- 174 | (|)||||||| | \end{equation}
- 175 | (|)||||||| | \begin{equation}
- 176 | (|)||||||| | \bigg( \bigg) \bigg[ \bigg] \bigg\{ \bigg\} \bigg\lfloor \bigg\rfloor \bigg\lceil \bigg\rceil \bigg\langle \bigg\rangle 
- 177 | (|)||||||| | \bigg/ \bigg\backslash \bigg| \bigg\| \bigg\uparrow \bigg\Uparrow \bigg\downarrow \bigg\Downarrow \bigg\updownarrow \bigg\Updownarrow
- 178 | (|)||||||| | \end{equation}
- 179 | (|)||||||| | \begin{equation}
- 180 | (|)||||||| | \Bigg( \Bigg) \Bigg[ \Bigg] \Bigg\{ \Bigg\} \Bigg\lfloor \Bigg\rfloor \Bigg\lceil \Bigg\rceil \Bigg\langle \Bigg\rangle 
- 181 | (|)||||||| | \bigg/ \bigg\backslash \bigg| \bigg\| \bigg\uparrow \bigg\Uparrow \bigg\downarrow \bigg\Downarrow \bigg\updownarrow \bigg\Updownarrow
- 182 | (|)||||||| | \end{equation}
- 183 | (|)||||||| | 
- 184 | (|)||||||| | Dots:
- 185 | (|)||||||| | \begin{equation}
- 186 | (|)||||||| | a \ldots a \quad a \vdots a \quad  a \cdots a \quad  a \ddots a
- 187 | (|)||||||| | \end{equation}
- 188 | (|)||||||| | 
- 189 | (|)||||||| | Horizontal spacing:
- 190 | (|)||||||| | \begin{equation}
- 191 | (|)||||||| | |~|\,|\:|\;|\quad | \qquad |
- 192 | (|)||||||| | \end{equation}
- 193 | (|)||||||| | 
- 194 | (|)||||||| | \section{Standard mathematical structures}
- 195 | (|)||||||| | 
- 196 | (|)||||||| | Three different ways to inline \begin{math}A_{i,j,k}^{2^n}\end{math} \(A_{i,j,k}^{2^n}\) \(A_{i,j,k}^{2^n}\)
- 197 | (|)||||||| | 
- 198 | (|)||||||| | Four different ways to displaymath.
- 199 | (|)||||||| | \setcounter{equation}{99}
- 200 | (|)||||||| | \begin{equation}\label{equation}
- 201 | (|)||||||| | \sum_{i=1}^{15} x_i^2 = x_1^2 + x_2^2 + x_3^2 + x_4^2 + x_5^2 + x_6^2 + x_7^2 + x_8^2 + x_9^2 + x_{10}^2 + x_{11}^2 + x_{12}^2 + x_{13}^2 + x_{14}^2 + x_{15}^2 
- 202 | (|)||||||| | \end{equation}
- 203 | (|)||||||| | 
- 204 | (|)||||||| | \begin{displaymath}
- 205 | (|)||||||| | x_1^2 = x_2^2 = x_3^2 = x_4^2 = x_5^2 = x_6^2 = x_7^2 = x_8^2 = x_9^2 = x_{10}^2 = x_{11}^2 = x_{12}^2 = x_{13}^2 = x_{14}^2 = x_{15}^2 
- 206 | (|)||||||| | \end{displaymath}
- 207 | (|)||||||| | 
- 208 | (|)||||||| | \[
- 209 | (|)||||||| | \prod_{i=1}^{15} x_i^2 = x_1^2\ \ x_2^2\ \ x_3^2\ \ x_4^2\ \ x_5^2\ \ x_6^2\ \ x_7^2\ \ x_8^2\ \ x_9^2\ \ x_{10}^2\ \ x_{11}^2\ \ x_{12}^2\ \ x_{13}^2\ \ x_{14}^2\ \ x_{15}^2\ 
- 210 | (|)||||||| | \]
- 211 | (|)||||||| | 
- 212 | (|)||||||| | \[
- 213 | (|)||||||| | \prod_{i=1}^{15} x_i^2 = x_1^2 \cdot x_2^2 \cdot x_3^2 \cdot x_4^2 \cdot x_5^2 \cdot x_6^2 \cdot x_7^2 \cdot x_8^2 \cdot x_9^2 \cdot x_{10}^2 \cdot x_{11}^2 \cdot x_{12}^2 \cdot x_{13}^2 \cdot x_{14}^2 \cdot x_{15}^2 
- 214 | (|)||||||| | \]
- 215 | (|)||||||| | 
- 216 | (|)||||||| | One of the forms is numbered equation \ref{equation}.
- 217 | (|)||||||| | \[
- 218 | (|)||||||| | \sqrt{\sum_{i=1}^{13} x_i^2} = \sqrt{x_1^2 + x_2^2 + x_3^2 + x_4^2 + x_5^2 + x_6^2 + x_7^2 + x_8^2 + x_9^2 + x_{10}^2+ x_{11}^2 + x_{12}^2 + x_{13}^2 }
- 219 | (|)||||||| | \]
- 220 | (|)||||||| | 
- 221 | (|)||||||| | \[
- 222 | (|)||||||| | \sqrt{\sum_{i=1}^{13} x_i^2} = \left(x_1^2 + x_2^2 + x_3^2 + x_4^2 + x_5^2 + x_6^2 + x_7^2 + x_8^2 + x_9^2 + x_{10}^2+ x_{11}^2 + x_{12}^2 + x_{13}^2 \right)^{\frac{1}{2}}
- 223 | (|)||||||| | \]
- 224 | (|)||||||| | 
- 225 | (|)||||||| | Now for an equation array:
- 226 | (|)||||||| | \begin{eqnarray}
- 227 | (|)||||||| | \sum_{i=1}^{13} 2^i &=& 2^1 + 2^2 + 2^3 + 2^4 + 2^5 + 2^6 + 2^7 + 2^8 + 2^9 + 2^{10} + 2^{11} + 2^{12} + 2^{13}\nonumber\\
- 228 | (|)||||||| | &=&2 + 4 + 8 + 16 + 32 + 64 + 128 + 256 + 512 + 1024 + 2048 + 4096 + 8192 \nonumber\\
- 229 | (|)||||||| | &=&16382 
- 230 | (|)||||||| | \end{eqnarray}
- 231 | (|)||||||| | 
- 232 | (|)||||||| | \begin{eqnarray*}
- 233 | (|)||||||| | \sum_{i=1}^{13} 2^i &=& 2^1 + 2^2 + 2^3 + 2^4 + 2^5 + 2^6 + 2^7 + 2^8 + 2^9 + 2^{10} + 2^{11} + 2^{12} + 2^{13}\\
- 234 | (|)||||||| | &=&2 + 4 + 8 + 16 + 32 + 64 + 128 + 256 + 512 + 1024 + 2048 + 4096 + 8192\\
- 235 | (|)||||||| | &=&16382 \qquad\mbox{here is some text in the formula to fill up the line at 12pt font}
- 236 | (|)||||||| | \end{eqnarray*}
- 237 | (|)||||||| | 
- 238 | (|)||||||| | \[
- 239 | (|)||||||| | \left[\begin{array}{cc} a_{11} & a_{12}\\ a_{21} & a_{22}\end{array}\right]
- 240 | (|)||||||| | \]
- 241 | (|)||||||| | 
- 242 | (|)||||||| | \[
- 243 | (|)||||||| | \left[\begin{array}{*{10}{c}} 
- 244 | (|)||||||| | 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
- 245 | (|)||||||| | 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
- 246 | (|)||||||| | 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
- 247 | (|)||||||| | 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
- 248 | (|)||||||| | 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\ 
- 249 | (|)||||||| | 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\ 
- 250 | (|)||||||| | 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\ 
- 251 | (|)||||||| | 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\ 
- 252 | (|)||||||| | 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\ 
- 253 | (|)||||||| | 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\ 
- 254 | (|)||||||| | \end{array}\right]
- 255 | (|)||||||| | \]
- 256 | (|)||||||| | 
- 257 | (|)||||||| | \begin{eqnarray*}
- 258 | (|)||||||| | \left|\begin{array}{cc} 1 & 2\\ 3 & 4\end{array}\right| &=& (1\times 4) - (2 \times 3)\\
- 259 | (|)||||||| | &=& 4-6 = -2
- 260 | (|)||||||| | \end{eqnarray*}
- 261 | (|)||||||| | 
- 262 | (|)||||||| | \[
- 263 | (|)||||||| | \sqrt{a + \sqrt{\frac{b + c + d}{e}} + f}
- 264 | (|)||||||| | \]
- 265 | (|)||||||| | 
- 266 | (|)||||||| | \[
- 267 | (|)||||||| | \overline{\underline{a} + \overline{b + \underline{c} + d} + \overline{\overline{e}}}
- 268 | (|)||||||| | \]
- 269 | (|)||||||| | 
- 270 | (|)||||||| | \[
- 271 | (|)||||||| | \underbrace{a + \overbrace{b + c}^{=0} + d}_{\mbox{text}}
- 272 | (|)||||||| | \]
- 273 | (|)||||||| | 
- 274 | (|)||||||| | \[
- 275 | (|)||||||| | \stackrel{a}{\longrightarrow}
- 276 | (|)||||||| | \]
- 277 | (|)||||||| | 
- 278 | (|)||||||| | % {a \atop b} cannot be converted in web format - is this because I am fixing choose and not atop?  
- 279 | (|)||||||| | \[
- 280 | (|)||||||| | {a \choose b}
- 281 | (|)||||||| | \]
- 282 | (|)||||||| | 
- 283 | (|)||||||| | \[
- 284 | (|)||||||| | a + \frac{1}{b + \frac{1}{c + \frac{1}{d + \frac{1}{e + \frac{1}{f + \frac{1}{g + \frac{1}{h}}}}}}} \qquad a + \frac{1}{\displaystyle b + \frac{1}{\displaystyle c + \frac{1}{\displaystyle d + \frac{1}{\displaystyle e + \frac{1}{\displaystyle f + \frac{1}{\displaystyle g + \frac{1}{h}}}}}}}
- 285 | (|)||||||| | \]
- 286 | (|)||||||| | 
- 287 | (|)||||||| | \subsection{Testing line breaking}
- 288 | (|)||||||| | 
- 289 | (|)||||||| | \begin{eqnarray*}
- 290 | (|)||||||| | &&a = b = c = d = e = f = g = h = i = j = k = l = m = n = o = p = q = r = s = t\\
- 291 | (|)||||||| | &&a < b < c < d < e < f < g < h < i < j < k < l < m < n < o < p < q < r < s < t\\
- 292 | (|)||||||| | &&a > b > c > d > e > f > g > h > i > j > k > l > m > n > o > p > q > r > s > t\\
- 293 | (|)||||||| | &&a \leq b \leq c \leq d \leq e \leq f \leq g \leq h \leq i \leq j \leq k \leq l \leq m \leq n \leq o \leq p \leq q \leq r \leq s \leq t\\
- 294 | (|)||||||| | &&a \geq b \geq c \geq d \geq e \geq f \geq g \geq h \geq i \geq j \geq k \geq l \geq m \geq n \geq o \geq p \geq q \geq r \geq s \geq t\\
- 295 | (|)||||||| | &&a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u\\
- 296 | (|)||||||| | &&a - b - c - d - e - f - g - h - i - j - k - l - m - n - o - p - q - r - s - t - u\\
- 297 | (|)||||||| | &&a \times b \times c \times d \times e \times f \times g \times h \times i \times j \times k \times l \times m \times n \times o \times p \times q \times r \times s \times t \times u\\
- 298 | (|)||||||| | &&a * b * c * d * e * f * g * h * i * j * k * l * m * n * o * p * q * r * s * t * u * v * w * x * y\\
- 299 | (|)||||||| | &&a \cdot b \cdot c \cdot d \cdot e \cdot f \cdot g \cdot h \cdot i \cdot j \cdot k \cdot l \cdot m \cdot n \cdot o \cdot p \cdot q \cdot r \cdot s \cdot t \cdot u \cdot v \cdot w \cdot x \cdot y \cdot z \cdot a \cdot b \cdot c\\
- 300 | (|)||||||| | &&a , b , c , d , e , f , g , h , i , j , k , l , m , n , o , p , q , r , s , t , u , v , w , x , y , z , a , b , c , d , e , f, g , h , i , j , k , l
- 301 | (|)||||||| | \end{eqnarray*}
- 302 | (|)||||||| | 
- 303 | (|)||||||| | \subsection{Testing new commands\label{test}}
- 304 | (|)||||||| | \[ 
- 305 | (|)||||||| | \xsb \xsp \xsbnum{2}
- 306 | (|)||||||| | \]
- 307 | (|)||||||| | \end{document}
+  21 |            | Keyboard symbols: \(+  -  =  <  >  /  :  !  '  |  [  ]  (  )\)
+  22 |            | 
+  23 |            | \noindent 
+  24 |            | But for longer tests we will use the equation environment so that we don't overrun the line if we increase the font size. We'll do a basic macro test in section \ref{test}.
+  25 |            | 
+  26 |            | Greek:
+  27 |            | \begin{equation}
+  28 |            | \alpha  \beta  \gamma  \delta  \epsilon  \varepsilon  \zeta  \eta  \theta  \vartheta  \iota  \kappa  \lambda  \mu  \nu  \xi  o  \pi  \varpi  \rho  \varrho  \sigma  \varsigma  \tau  \upsilon  \phi  \varphi  \chi  \psi  \omega
+  29 |            | \end{equation}
+  30 |            | 
+  31 |            | Upper case Greek:
+  32 |            | \begin{equation}
+  33 |            | \Gamma  \Delta  \Theta  \Lambda  \Xi  \Pi  \Sigma  \Upsilon  \Phi  \Psi  \Omega
+  34 |            | \end{equation}
+  35 |            | 
+  36 |            | Normal, lower case:
+  37 |            | \begin{equation}
+  38 |            | a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z
+  39 |            | \end{equation}
+  40 |            | 
+  41 |            | Normal, upper case:
+  42 |            | \begin{equation}
+  43 |            | A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z  
+  44 |            | \end{equation}
+  45 |            | 
+  46 |            | Bold using boldmath, lower case:\boldmath
+  47 |            | \begin{equation}
+  48 |            | a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z
+  49 |            | \end{equation}\unboldmath
+  50 |            | 
+  51 |            | Bold using boldmath, upper case:\boldmath
+  52 |            | \begin{equation}
+  53 |            | A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z  
+  54 |            | \end{equation}\unboldmath
+  55 |            | 
+  56 |            | 
+  57 |            | Italic, lower case:
+  58 |            | \begin{equation}
+  59 |            | \mathit{a}~\mathit{b}~\mathit{c}~\mathit{d}~\mathit{e}~\mathit{f}~\mathit{g}~\mathit{h}~\mathit{i}~\mathit{j}~\mathit{k}~\mathit{l}~\mathit{m}~\mathit{n}~\mathit{o}~\mathit{p}~\mathit{q}~\mathit{r}~\mathit{s}~\mathit{t}~\mathit{u}~\mathit{v}~\mathit{w}~\mathit{x}~\mathit{y}~\mathit{z}
+  60 |            | \end{equation}
+  61 |            | 
+  62 |            | Italic, upper case:
+  63 |            | \begin{equation}
+  64 |            | \mathit{A}~\mathit{B}~\mathit{C}~\mathit{D}~\mathit{E}~\mathit{F}~\mathit{G}~\mathit{H}~\mathit{I}~\mathit{J}~\mathit{K}~\mathit{L}~\mathit{M}~\mathit{N}~\mathit{O}~\mathit{P}~\mathit{Q}~\mathit{R}~\mathit{S}~\mathit{T}~\mathit{U}~\mathit{V}~\mathit{W}~\mathit{X}~\mathit{Y}~\mathit{Z}
+  65 |            | \end{equation}
+  66 |            | 
+  67 |            | Roman, lower case:
+  68 |            | \begin{equation}
+  69 |            | \mathrm{a}  \mathrm{b}  \mathrm{c}  \mathrm{d}  \mathrm{e}  \mathrm{f}  \mathrm{g}  \mathrm{h}  \mathrm{i}  \mathrm{j}  \mathrm{k}  \mathrm{l}  \mathrm{m}  \mathrm{n}  \mathrm{o}  \mathrm{p}  \mathrm{q}  \mathrm{r}  \mathrm{s}  \mathrm{t}  \mathrm{u}  \mathrm{v}  \mathrm{w}  \mathrm{x}  \mathrm{y}  \mathrm{z}
+  70 |            | \end{equation}
+  71 |            | 
+  72 |            | Roman, upper case:
+  73 |            | \begin{equation}
+  74 |            | \mathrm{A}  \mathrm{B}  \mathrm{C}  \mathrm{D}  \mathrm{E}  \mathrm{F}  \mathrm{G}  \mathrm{H}  \mathrm{I}  \mathrm{J}  \mathrm{K}  \mathrm{L}  \mathrm{M}  \mathrm{N}  \mathrm{O}  \mathrm{P}  \mathrm{Q}  \mathrm{R}  \mathrm{S}  \mathrm{T}  \mathrm{U}  \mathrm{V}  \mathrm{W}  \mathrm{X}  \mathrm{Y}  \mathrm{Z}
+  75 |            | \end{equation}
+  76 |            | 
+  77 |            | Bold using bf, lower case:
+  78 |            | \begin{equation}
+  79 |            | \mathbf{a}  \mathbf{b}  \mathbf{c}  \mathbf{d}  \mathbf{e}  \mathbf{f}  \mathbf{g}  \mathbf{h}  \mathbf{i}  \mathbf{j}  \mathbf{k}  \mathbf{l}  \mathbf{m}  \mathbf{n}  \mathbf{o}  \mathbf{p}  \mathbf{q}  \mathbf{r}  \mathbf{s}  \mathbf{t}  \mathbf{u}  \mathbf{v}  \mathbf{w}  \mathbf{x}  \mathbf{y}  \mathbf{z}
+  80 |            | \end{equation}
+  81 |            | 
+  82 |            | Bold using bf, upper case:
+  83 |            | \begin{equation}
+  84 |            | \mathbf{A}  \mathbf{B}  \mathbf{C}  \mathbf{D}  \mathbf{E}  \mathbf{F}  \mathbf{G}  \mathbf{H}  \mathbf{I}  \mathbf{J}  \mathbf{K}  \mathbf{L}  \mathbf{M}  \mathbf{N}  \mathbf{O}  \mathbf{P}  \mathbf{Q}  \mathbf{R}  \mathbf{S}  \mathbf{T}  \mathbf{U}  \mathbf{V}  \mathbf{W}  \mathbf{X}  \mathbf{Y}  \mathbf{Z}
+  85 |            | \end{equation}
+  86 |            | 
+  87 |            | Calligraphic (upper case only):
+  88 |            | \begin{equation}
+  89 |            | \mathcal{A}  \mathcal{B}  \mathcal{C}  \mathcal{D}  \mathcal{E}  \mathcal{F}  \mathcal{G}  \mathcal{H}  \mathcal{I}  \mathcal{J}  \mathcal{K}  \mathcal{L}  \mathcal{M}  \mathcal{N}  \mathcal{O}  \mathcal{P}  \mathcal{Q}  \mathcal{R}  \mathcal{S}  \mathcal{T}  \mathcal{U}  \mathcal{V}  \mathcal{W}  \mathcal{X}  \mathcal{Y}  \mathcal{Z}
+  90 |            | \end{equation}
+  91 |            | 
+  92 |            | Binary operators:
+  93 |            | \begin{equation}
+  94 |            | \pm \mp \times \div \cdot \ast \star \dagger \ddagger \amalg \cap \cup \uplus \sqcap \sqcup \vee \wedge \oplus \ominus \otimes \circ \bullet \diamond \oslash \odot \bigcirc \bigtriangleup \bigtriangledown \triangleleft \triangleright \setminus \wr
+  95 |            | \end{equation}
+  96 |            | 
+  97 |            | Relations:
+  98 |            | \begin{equation}
+  99 |            | \le \leq \ll \subset \subseteq \sqsubseteq \in \vdash \models \ge \geq \gg \supset \supseteq \sqsubseteq \ni \dashv \perp \neq \doteq \approx \cong \equiv \propto \prec \preceq \parallel \| \sim \simeq \asymp \smile \frown \bowtie \succ \succeq \mid
+ 100 |            | \end{equation}
+ 101 |            | 
+ 102 |            | Negated which do not stop conversion but may not be displayed in Word:
+ 103 |            | \begin{equation}
+ 104 |            | \not< \not\leq \not\subset \not\subseteq \not\sqsubseteq \not\in \notin \not\vdash \not\models \not> \not\geq \not\supset \not\supseteq \not\sqsubseteq \not\ni \not= \not\approx \not\cong \not\equiv \not\prec \not\sim \not\simeq \not\asymp \not\succ 
+ 105 |            | \end{equation}
+ 106 |            | 
+ 107 |            | %Negated which stop conversion to word:
+ 108 |            | %\begin{equation}
+ 109 |            | %\not\le \not\ll \not\ge \not\gg \not\dashv \not\perp \not\doteq \not\propto \not\preceq \not\smile \not\frown \not\bowtie \not\succeq
+ 110 |            | %\end{equation}
+ 111 |            | 
+ 112 |            | Arrows:
+ 113 |            | \begin{equation}
+ 114 |            | \leftarrow \gets \Leftarrow \rightarrow \to \Rightarrow \leftrightarrow \Leftrightarrow \mapsto \hookleftarrow \leftharpoonup \leftharpoondown \rightleftharpoons \longleftarrow \Longleftarrow \longrightarrow \Longrightarrow 
+ 115 |            | \end{equation}
+ 116 |            | \begin{equation}
+ 117 |            | \longleftrightarrow \Longleftrightarrow \iff \longmapsto \hookrightarrow \rightharpoonup \rightharpoondown \uparrow \Uparrow \downarrow \Downarrow \updownarrow \Updownarrow \nearrow \searrow \swarrow \nwarrow
+ 118 |            | \end{equation}
+ 119 |            | 
+ 120 |            | Other:
+ 121 |            | \begin{equation}
+ 122 |            | \aleph \hbar \imath \jmath \ell \wp \Re \Im \prime \emptyset \nabla \surd \partial \top \bot \vdash \dashv \forall \exists \neq \flat \natural \sharp \| \angle \backslash \triangle \clubsuit \diamondsuit \heartsuit \spadesuit \infty
+ 123 |            | \end{equation}
+ 124 |            | 
+ 125 |            | Symbols with two sizes: 
+ 126 |            | \begin{center}
+ 127 |            | \(\sum \int \oint \prod \coprod \bigcap \bigcup \bigsqcup \bigvee \bigwedge \bigodot \bigotimes \bigoplus \biguplus\)
+ 128 |            | \end{center}
+ 129 |            | \begin{equation}
+ 130 |            | \sum \int \oint \prod \coprod \bigcap \bigcup \bigsqcup \bigvee \bigwedge \bigodot \bigotimes \bigoplus \biguplus
+ 131 |            | \end{equation}
+ 132 |            | 
+ 133 |            | Function names:
+ 134 |            | \begin{equation}
+ 135 |            | \arccos \arcsin \arctan \arg \cos \cosh \cot \coth \csc \deg \det 
+ 136 |            | \end{equation}
+ 137 |            | \begin{equation}
+ 138 |            | \dim \exp \gcd \hom \inf \ker \lg \lim \liminf \limsup \ln \log 
+ 139 |            | \end{equation}
+ 140 |            | \begin{equation}
+ 141 |            | \max \min \Pr \sec \sin \sinh \sup \tan \tanh
+ 142 |            | \end{equation}
+ 143 |            | 
+ 144 |            | Those with under-subscript available:
+ 145 |            | \begin{equation}
+ 146 |            | \det_{a} \gcd_{a} \inf_{a} \lim_{a} \liminf_{a} \limsup_{a} \max_{a} \min_{a} \Pr_{a} \sup_{a}
+ 147 |            | \end{equation}
+ 148 |            | 
+ 149 |            | Modulus:
+ 150 |            | \begin{equation}
+ 151 |            | a \bmod b \qquad a \pmod{b}
+ 152 |            | \end{equation}
+ 153 |            | 
+ 154 |            | Accents and under/over:
+ 155 |            | \begin{equation}
+ 156 |            | \hat{a} \check{a} \dot{a} \breve{a} \acute{a} \ddot{a} \grave{a} \tilde{a} \mathring{a} \bar{a} \vec{a} \widehat{aaa} \widetilde{aaa} \overline{aaa} \underline{aaa} \overbrace{aaa} \underbrace{aaa}
+ 157 |            | \end{equation}
+ 158 |            | 
+ 159 |            | Symbols left and right can be applied to:
+ 160 |            | \begin{equation}
+ 161 |            | \left( \frac{1}{2} \right) \left[ \frac{1}{2} \right] \left\{ \frac{1}{2} \right\} \left| \frac{1}{2} \right| \left/ \frac{1}{2} \right\backslash \left\lfloor \frac{1}{2} \right\rfloor \left\lceil \frac{1}{2} \right\rceil \left\langle \frac{1}{2} \right\rangle 
+ 162 |            | %breqn does not recognise the following as matching either each other or \right. or \left. and hence these cannot be used as matching, stretchy:
+ 163 |            | %\left\uparrow \frac{1}{2} \right\uparrow \left\downarrow \frac{1}{2} \right\downarrow \left\updownarrow \frac{1}{2} \right\updownarrow \left\Uparrow \frac{1}{2} \right\Uparrow \left\Downarrow \frac{1}{2} \right\Downarrow \left\Updownarrow \frac{1}{2} \right\Updownarrow   
+ 164 |            | \end{equation}
+ 165 |            | 
+ 166 |            | Manual sizing:
+ 167 |            | \begin{equation}
+ 168 |            | \big( \big) \big[ \big] \big\{ \big\} \big\lfloor \big\rfloor \big\lceil \big\rceil \big\langle \big\rangle 
+ 169 |            | \big/ \big\backslash \big| \big\| \big\uparrow \big\Uparrow \big\downarrow \big\Downarrow \big\updownarrow \big\Updownarrow
+ 170 |            | \end{equation}
+ 171 |            | \begin{equation}
+ 172 |            | \Big( \Big) \Big[ \Big] \Big\{ \Big\} \Big\lfloor \Big\rfloor \Big\lceil \Big\rceil \Big\langle \Big\rangle 
+ 173 |            | \Big/ \Big\backslash \Big| \Big\| \Big\uparrow \Big\Uparrow \Big\downarrow \Big\Downarrow \Big\updownarrow \Big\Updownarrow
+ 174 |            | \end{equation}
+ 175 |            | \begin{equation}
+ 176 |            | \bigg( \bigg) \bigg[ \bigg] \bigg\{ \bigg\} \bigg\lfloor \bigg\rfloor \bigg\lceil \bigg\rceil \bigg\langle \bigg\rangle 
+ 177 |            | \bigg/ \bigg\backslash \bigg| \bigg\| \bigg\uparrow \bigg\Uparrow \bigg\downarrow \bigg\Downarrow \bigg\updownarrow \bigg\Updownarrow
+ 178 |            | \end{equation}
+ 179 |            | \begin{equation}
+ 180 |            | \Bigg( \Bigg) \Bigg[ \Bigg] \Bigg\{ \Bigg\} \Bigg\lfloor \Bigg\rfloor \Bigg\lceil \Bigg\rceil \Bigg\langle \Bigg\rangle 
+ 181 |            | \bigg/ \bigg\backslash \bigg| \bigg\| \bigg\uparrow \bigg\Uparrow \bigg\downarrow \bigg\Downarrow \bigg\updownarrow \bigg\Updownarrow
+ 182 |            | \end{equation}
+ 183 |            | 
+ 184 |            | Dots:
+ 185 |            | \begin{equation}
+ 186 |            | a \ldots a \quad a \vdots a \quad  a \cdots a \quad  a \ddots a
+ 187 |            | \end{equation}
+ 188 |            | 
+ 189 |            | Horizontal spacing:
+ 190 |            | \begin{equation}
+ 191 |            | |~|\,|\:|\;|\quad | \qquad |
+ 192 |            | \end{equation}
+ 193 |            | 
+ 194 |            | \section{Standard mathematical structures}
+ 195 |            | 
+ 196 |            | Three different ways to inline \begin{math}A_{i,j,k}^{2^n}\end{math} \(A_{i,j,k}^{2^n}\) \(A_{i,j,k}^{2^n}\)
+ 197 |            | 
+ 198 |            | Four different ways to displaymath.
+ 199 |            | \setcounter{equation}{99}
+ 200 |            | \begin{equation}\label{equation}
+ 201 |            | \sum_{i=1}^{15} x_i^2 = x_1^2 + x_2^2 + x_3^2 + x_4^2 + x_5^2 + x_6^2 + x_7^2 + x_8^2 + x_9^2 + x_{10}^2 + x_{11}^2 + x_{12}^2 + x_{13}^2 + x_{14}^2 + x_{15}^2 
+ 202 |            | \end{equation}
+ 203 |            | 
+ 204 |            | \begin{displaymath}
+ 205 |            | x_1^2 = x_2^2 = x_3^2 = x_4^2 = x_5^2 = x_6^2 = x_7^2 = x_8^2 = x_9^2 = x_{10}^2 = x_{11}^2 = x_{12}^2 = x_{13}^2 = x_{14}^2 = x_{15}^2 
+ 206 |            | \end{displaymath}
+ 207 |            | 
+ 208 | [          | \[
+ 209 | [          | \prod_{i=1}^{15} x_i^2 = x_1^2\ \ x_2^2\ \ x_3^2\ \ x_4^2\ \ x_5^2\ \ x_6^2\ \ x_7^2\ \ x_8^2\ \ x_9^2\ \ x_{10}^2\ \ x_{11}^2\ \ x_{12}^2\ \ x_{13}^2\ \ x_{14}^2\ \ x_{15}^2\ 
+ 210 |            | \]
+ 211 |            | 
+ 212 | [          | \[
+ 213 | [          | \prod_{i=1}^{15} x_i^2 = x_1^2 \cdot x_2^2 \cdot x_3^2 \cdot x_4^2 \cdot x_5^2 \cdot x_6^2 \cdot x_7^2 \cdot x_8^2 \cdot x_9^2 \cdot x_{10}^2 \cdot x_{11}^2 \cdot x_{12}^2 \cdot x_{13}^2 \cdot x_{14}^2 \cdot x_{15}^2 
+ 214 |            | \]
+ 215 |            | 
+ 216 |            | One of the forms is numbered equation \ref{equation}.
+ 217 | [          | \[
+ 218 | [          | \sqrt{\sum_{i=1}^{13} x_i^2} = \sqrt{x_1^2 + x_2^2 + x_3^2 + x_4^2 + x_5^2 + x_6^2 + x_7^2 + x_8^2 + x_9^2 + x_{10}^2+ x_{11}^2 + x_{12}^2 + x_{13}^2 }
+ 219 |            | \]
+ 220 |            | 
+ 221 | [          | \[
+ 222 | [          | \sqrt{\sum_{i=1}^{13} x_i^2} = \left(x_1^2 + x_2^2 + x_3^2 + x_4^2 + x_5^2 + x_6^2 + x_7^2 + x_8^2 + x_9^2 + x_{10}^2+ x_{11}^2 + x_{12}^2 + x_{13}^2 \right)^{\frac{1}{2}}
+ 223 |            | \]
+ 224 |            | 
+ 225 |            | Now for an equation array:
+ 226 |            | \begin{eqnarray}
+ 227 |            | \sum_{i=1}^{13} 2^i &=& 2^1 + 2^2 + 2^3 + 2^4 + 2^5 + 2^6 + 2^7 + 2^8 + 2^9 + 2^{10} + 2^{11} + 2^{12} + 2^{13}\nonumber\\
+ 228 |            | &=&2 + 4 + 8 + 16 + 32 + 64 + 128 + 256 + 512 + 1024 + 2048 + 4096 + 8192 \nonumber\\
+ 229 |            | &=&16382 
+ 230 |            | \end{eqnarray}
+ 231 |            | 
+ 232 |            | \begin{eqnarray*}
+ 233 |            | \sum_{i=1}^{13} 2^i &=& 2^1 + 2^2 + 2^3 + 2^4 + 2^5 + 2^6 + 2^7 + 2^8 + 2^9 + 2^{10} + 2^{11} + 2^{12} + 2^{13}\\
+ 234 |            | &=&2 + 4 + 8 + 16 + 32 + 64 + 128 + 256 + 512 + 1024 + 2048 + 4096 + 8192\\
+ 235 |            | &=&16382 \qquad\mbox{here is some text in the formula to fill up the line at 12pt font}
+ 236 |            | \end{eqnarray*}
+ 237 |            | 
+ 238 | [          | \[
+ 239 | [          | \left[\begin{array}{cc} a_{11} & a_{12}\\ a_{21} & a_{22}\end{array}\right]
+ 240 |            | \]
+ 241 |            | 
+ 242 | [          | \[
+ 243 | [[         | \left[\begin{array}{*{10}{c}} 
+ 244 | [[         | 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 245 | [[         | 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 246 | [[         | 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 247 | [[         | 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+ 248 | [[         | 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\ 
+ 249 | [[         | 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\ 
+ 250 | [[         | 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\ 
+ 251 | [[         | 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\ 
+ 252 | [[         | 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\ 
+ 253 | [[         | 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\ 
+ 254 | [          | \end{array}\right]
+ 255 |            | \]
+ 256 |            | 
+ 257 |            | \begin{eqnarray*}
+ 258 |            | \left|\begin{array}{cc} 1 & 2\\ 3 & 4\end{array}\right| &=& (1\times 4) - (2 \times 3)\\
+ 259 |            | &=& 4-6 = -2
+ 260 |            | \end{eqnarray*}
+ 261 |            | 
+ 262 | [          | \[
+ 263 | [          | \sqrt{a + \sqrt{\frac{b + c + d}{e}} + f}
+ 264 |            | \]
+ 265 |            | 
+ 266 | [          | \[
+ 267 | [          | \overline{\underline{a} + \overline{b + \underline{c} + d} + \overline{\overline{e}}}
+ 268 |            | \]
+ 269 |            | 
+ 270 | [          | \[
+ 271 | [          | \underbrace{a + \overbrace{b + c}^{=0} + d}_{\mbox{text}}
+ 272 |            | \]
+ 273 |            | 
+ 274 | [          | \[
+ 275 | [          | \stackrel{a}{\longrightarrow}
+ 276 |            | \]
+ 277 |            | 
+ 278 |            | % {a \atop b} cannot be converted in web format - is this because I am fixing choose and not atop?  
+ 279 | [          | \[
+ 280 | [          | {a \choose b}
+ 281 |            | \]
+ 282 |            | 
+ 283 | [          | \[
+ 284 | [          | a + \frac{1}{b + \frac{1}{c + \frac{1}{d + \frac{1}{e + \frac{1}{f + \frac{1}{g + \frac{1}{h}}}}}}} \qquad a + \frac{1}{\displaystyle b + \frac{1}{\displaystyle c + \frac{1}{\displaystyle d + \frac{1}{\displaystyle e + \frac{1}{\displaystyle f + \frac{1}{\displaystyle g + \frac{1}{h}}}}}}}
+ 285 |            | \]
+ 286 |            | 
+ 287 |            | \subsection{Testing line breaking}
+ 288 |            | 
+ 289 |            | \begin{eqnarray*}
+ 290 |            | &&a = b = c = d = e = f = g = h = i = j = k = l = m = n = o = p = q = r = s = t\\
+ 291 |            | &&a < b < c < d < e < f < g < h < i < j < k < l < m < n < o < p < q < r < s < t\\
+ 292 |            | &&a > b > c > d > e > f > g > h > i > j > k > l > m > n > o > p > q > r > s > t\\
+ 293 |            | &&a \leq b \leq c \leq d \leq e \leq f \leq g \leq h \leq i \leq j \leq k \leq l \leq m \leq n \leq o \leq p \leq q \leq r \leq s \leq t\\
+ 294 |            | &&a \geq b \geq c \geq d \geq e \geq f \geq g \geq h \geq i \geq j \geq k \geq l \geq m \geq n \geq o \geq p \geq q \geq r \geq s \geq t\\
+ 295 |            | &&a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u\\
+ 296 |            | &&a - b - c - d - e - f - g - h - i - j - k - l - m - n - o - p - q - r - s - t - u\\
+ 297 |            | &&a \times b \times c \times d \times e \times f \times g \times h \times i \times j \times k \times l \times m \times n \times o \times p \times q \times r \times s \times t \times u\\
+ 298 |            | &&a * b * c * d * e * f * g * h * i * j * k * l * m * n * o * p * q * r * s * t * u * v * w * x * y\\
+ 299 |            | &&a \cdot b \cdot c \cdot d \cdot e \cdot f \cdot g \cdot h \cdot i \cdot j \cdot k \cdot l \cdot m \cdot n \cdot o \cdot p \cdot q \cdot r \cdot s \cdot t \cdot u \cdot v \cdot w \cdot x \cdot y \cdot z \cdot a \cdot b \cdot c\\
+ 300 |            | &&a , b , c , d , e , f , g , h , i , j , k , l , m , n , o , p , q , r , s , t , u , v , w , x , y , z , a , b , c , d , e , f, g , h , i , j , k , l
+ 301 |            | \end{eqnarray*}
+ 302 |            | 
+ 303 |            | \subsection{Testing new commands\label{test}}
+ 304 | [          | \[ 
+ 305 | [          | \xsb \xsp \xsbnum{2}
+ 306 |            | \]
+ 307 |            | \end{document}

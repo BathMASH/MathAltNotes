@@ -191,99 +191,99 @@
  191 | )          | 
  192 | )          | %We want to allow tabular, longtable (maybe later tabular* and maybe tabularx)
  193 | )          | \begin{table}[t]\label{table}
- 194 | ){|{||}||} | \begin{tabular}{|l*{2}{|c|}r|@{insert}|p{2cm}}
- 195 | ){|{||}||} | %\begin{tabu} to 0.5\textwidth {|X*{2}{|X|}X|@{insert}|X}
- 196 | ){|{||}||} | \hline
- 197 | ){|{||}||} | a & b & c & d & abcde\\
- 198 | ){|{||}||} | \cline{1-4}
- 199 | ){|{||}||} | \multicolumn{4}{c}{abcd}\vline & abcde\\
- 200 | ){|{||}||} | \hline
- 201 | ){|{||}||} | \(\frac{a}{e}\) & \(\frac{b}{e}\) & \(\frac{c}{e}\) & \(\frac{d}{e}\) & \(\alpha\beta\gamma\delta\epsilon\) \\
- 202 | ){|{||}||} | \hline
- 203 | ){|{||}||} | \end{tabular}
- 204 | ){|{||}||} | \caption{This is a table}
- 205 | ){|{||}||} | \end{table}
- 206 | ){|{||}||} | 
- 207 | ){|{||}||} | \noindent
- 208 | ){|{||}||} | This is just below where the floating table \ref{table} was defined. It should appear at the top of either this page or the page after this. 
- 209 | ){|{||}||} | 
- 210 | ){|{||}||} | \bigskip
- 211 | ){|{||}||} | 
- 212 | ){|{||}||} | \begin{center}
- 213 | ){|{||}||} | \renewcommand{\arraystretch}{2}
- 214 | ){|{||}||} | %\begin{longtabu} to \textwidth {*{3}{|X|}}
- 215 | ){|{||}||} | \begin{longtable}{*{3}{|l|}}
- 216 | ){|{||}||} | \hline
- 217 | ){|{||}||} | \textbf{First} & \textbf{Second} & \textbf{Third} \\
- 218 | ){|{||}||} | \hline
- 219 | ){|{||}||} | \endfirsthead
- 220 | ){|{||}||} | \multicolumn{3}{c}%
- 221 | ){|{||}||} | {\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
- 222 | ){|{||}||} | \hline
- 223 | ){|{||}||} | \textbf{First} & \textbf{Second} & \textbf{Third} \\
- 224 | ){|{||}||} | \hline
- 225 | ){|{||}||} | \endhead
- 226 | ){|{||}||} | \hline \multicolumn{3}{r}{\textit{Continued on next page}} \\
- 227 | ){|{||}||} | \endfoot
- 228 | ){|{||}||} | \hline
- 229 | ){|{||}||} | \endlastfoot
- 230 | ){|{||}||} | \hline
- 231 | ){|{||}||} | This is the first line & & \\
- 232 | ){|{||}||} | \hline
- 233 | ){|{||}||} | This is the second line & \(1 \times 2\) & \\
- 234 | ){|{||}||} | \hline
- 235 | ){|{||}||} | This is the third line & \(1 \times 2 \times 3\) & \(6\)\\
- 236 | ){|{||}||} | \hline
- 237 | ){|{||}||} | This is the fourth line & \(1 \times 2 \times 3 \times 4\) & \(24\)\\
- 238 | ){|{||}||} | \hline
- 239 | ){|{||}||} | This is the fifth line & \(1 \times 2 \times 3 \times 4 \times 5\) & \(120\)\\
- 240 | ){|{||}||} | \hline
- 241 | ){|{||}||} | This is the sixth line & \(1 \times 2 \times 3 \times 4 \times 5 \times 6\) & \(720\)\\
- 242 | ){|{||}||} | \hline
- 243 | ){|{||}||} | This is the seventh line & \(1 \times 2 \times 3 \times 4 \times 5 \times 6 \times 7\) & \(5040\)\\
- 244 | ){|{||}||} | \hline
- 245 | ){|{||}||} | This is the eighth line & \(1 \times 2 \times 3 \times 4 \times 5 \times 6 \times 7 \times 8\) & \(40320\)\\
- 246 | ){|{||}||} | \hline
- 247 | ){|{||}||} | & The & End\\
- 248 | ){|{||}||} | \hline
- 249 | ){|{||}||} | \end{longtable}
- 250 | ){|{||}||} | \end{center}
- 251 | ){|{||}||} | 
- 252 | ){|{||}||} | \bigskip
- 253 | ){|{||}||} | 
- 254 | ){|{||}||} | \begin{verbatim}
- 255 | ){|{||}||} | This text should be printed verbatim with a linebreak here
- 256 | ){|{||}||} |   then two spaces at the start of this line which breaks here
- 257 | ){|{||}||} | > this line has a prompt at the start and now some braces {}
- 258 | ){|{||}||} | \end{verbatim}
- 259 | ){|{||}||} | 
- 260 | ){|{||}||} | \bigskip
- 261 | ){|{||}||} | 
- 262 | ){|{||}||} | This next \verb=verbatim= but with spaces shown\footnote{The word verbatim used inline verbatim.}. 
- 263 | ){|{||}||} | 
- 264 | ){|{||}||} | \bigskip
- 265 | ){|{||}||} | A piece \verb=of verbatim text that we are using to test line breaking=.
- 266 | ){|{||}||} | 
- 267 | ){|{||}||} | %spverbatim does not support a starred form 
- 268 | ){|{||}||} | %\begin{verbatim*}
- 269 | ){|{||}||} | %This text should be printed verbatim with a linebreak here
- 270 | ){|{||}||} | %  then two spaces at the start of this line which breaks here
- 271 | ){|{||}||} | %> this line has a prompt at the start and now some braces {}
- 272 | ){|{||}||} | %\end{verbatim*}
- 273 | ){|{||}||} | 
- 274 | ){|{||}||} | \bigskip
- 275 | ){|{||}||} | 
- 276 | ){|{||}||} | \noindent
- 277 | ){|{||}||} | A baseline of text which is a single line long in 12pt font with no indent applied.\marginpar{Note\\ in the\\ margin.}
- 278 | ){|{||}||} | 
- 279 | ){|{||}||} | \vspace{4\baselineskip}
- 280 | ){|{||}||} | 
- 281 | ){|{||}||} | \noindent
- 282 | ){|{||}||} | A baseline of text which is a single line long in 12pt font with no indent applied.\marginpar{\rule[-1ex]{0.3em}{4ex}}
- 283 | ){|{||}||} | 
- 284 | ){|{||}||} | % \thebibliography
- 285 | ){|{||}||} | \begin{thebibliography}{99}
- 286 | ){|{||}||} | \bibitem{KopkaDaly} Kopka, H. and Daly, P., \textit{A Guide to \LaTeX}. Pearson Education Ltd., 1999
- 287 | ){|{||}||} | \end{thebibliography}
- 288 | ){|{||}||} | 
- 289 | ){|{||}||} | \end{document}
+ 194 | )          | \begin{tabular}{|l*{2}{|c|}r|@{insert}|p{2cm}}
+ 195 | )          | %\begin{tabu} to 0.5\textwidth {|X*{2}{|X|}X|@{insert}|X}
+ 196 | )          | \hline
+ 197 | )          | a & b & c & d & abcde\\
+ 198 | )          | \cline{1-4}
+ 199 | )          | \multicolumn{4}{c}{abcd}\vline & abcde\\
+ 200 | )          | \hline
+ 201 | )          | \(\frac{a}{e}\) & \(\frac{b}{e}\) & \(\frac{c}{e}\) & \(\frac{d}{e}\) & \(\alpha\beta\gamma\delta\epsilon\) \\
+ 202 | )          | \hline
+ 203 | )          | \end{tabular}
+ 204 | )          | \caption{This is a table}
+ 205 | )          | \end{table}
+ 206 | )          | 
+ 207 | )          | \noindent
+ 208 | )          | This is just below where the floating table \ref{table} was defined. It should appear at the top of either this page or the page after this. 
+ 209 | )          | 
+ 210 | )          | \bigskip
+ 211 | )          | 
+ 212 | )          | \begin{center}
+ 213 | )          | \renewcommand{\arraystretch}{2}
+ 214 | )          | %\begin{longtabu} to \textwidth {*{3}{|X|}}
+ 215 | )          | \begin{longtable}{*{3}{|l|}}
+ 216 | )          | \hline
+ 217 | )          | \textbf{First} & \textbf{Second} & \textbf{Third} \\
+ 218 | )          | \hline
+ 219 | )          | \endfirsthead
+ 220 | )          | \multicolumn{3}{c}%
+ 221 | )          | {\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
+ 222 | )          | \hline
+ 223 | )          | \textbf{First} & \textbf{Second} & \textbf{Third} \\
+ 224 | )          | \hline
+ 225 | )          | \endhead
+ 226 | )          | \hline \multicolumn{3}{r}{\textit{Continued on next page}} \\
+ 227 | )          | \endfoot
+ 228 | )          | \hline
+ 229 | )          | \endlastfoot
+ 230 | )          | \hline
+ 231 | )          | This is the first line & & \\
+ 232 | )          | \hline
+ 233 | )          | This is the second line & \(1 \times 2\) & \\
+ 234 | )          | \hline
+ 235 | )          | This is the third line & \(1 \times 2 \times 3\) & \(6\)\\
+ 236 | )          | \hline
+ 237 | )          | This is the fourth line & \(1 \times 2 \times 3 \times 4\) & \(24\)\\
+ 238 | )          | \hline
+ 239 | )          | This is the fifth line & \(1 \times 2 \times 3 \times 4 \times 5\) & \(120\)\\
+ 240 | )          | \hline
+ 241 | )          | This is the sixth line & \(1 \times 2 \times 3 \times 4 \times 5 \times 6\) & \(720\)\\
+ 242 | )          | \hline
+ 243 | )          | This is the seventh line & \(1 \times 2 \times 3 \times 4 \times 5 \times 6 \times 7\) & \(5040\)\\
+ 244 | )          | \hline
+ 245 | )          | This is the eighth line & \(1 \times 2 \times 3 \times 4 \times 5 \times 6 \times 7 \times 8\) & \(40320\)\\
+ 246 | )          | \hline
+ 247 | )          | & The & End\\
+ 248 | )          | \hline
+ 249 | )          | \end{longtable}
+ 250 | )          | \end{center}
+ 251 | )          | 
+ 252 | )          | \bigskip
+ 253 | )          | 
+ 254 | )          | \begin{verbatim}
+ 255 | )          | This text should be printed verbatim with a linebreak here
+ 256 | )          |   then two spaces at the start of this line which breaks here
+ 257 | )          | > this line has a prompt at the start and now some braces {}
+ 258 | )          | \end{verbatim}
+ 259 | )          | 
+ 260 | )          | \bigskip
+ 261 | )          | 
+ 262 | )          | This next \verb=verbatim= but with spaces shown\footnote{The word verbatim used inline verbatim.}. 
+ 263 | )          | 
+ 264 | )          | \bigskip
+ 265 | )          | A piece \verb=of verbatim text that we are using to test line breaking=.
+ 266 | )          | 
+ 267 | )          | %spverbatim does not support a starred form 
+ 268 | )          | %\begin{verbatim*}
+ 269 | )          | %This text should be printed verbatim with a linebreak here
+ 270 | )          | %  then two spaces at the start of this line which breaks here
+ 271 | )          | %> this line has a prompt at the start and now some braces {}
+ 272 | )          | %\end{verbatim*}
+ 273 | )          | 
+ 274 | )          | \bigskip
+ 275 | )          | 
+ 276 | )          | \noindent
+ 277 | )          | A baseline of text which is a single line long in 12pt font with no indent applied.\marginpar{Note\\ in the\\ margin.}
+ 278 | )          | 
+ 279 | )          | \vspace{4\baselineskip}
+ 280 | )          | 
+ 281 | )          | \noindent
+ 282 | )          | A baseline of text which is a single line long in 12pt font with no indent applied.\marginpar{\rule[-1ex]{0.3em}{4ex}}
+ 283 | )          | 
+ 284 | )          | % \thebibliography
+ 285 | )          | \begin{thebibliography}{99}
+ 286 | )          | \bibitem{KopkaDaly} Kopka, H. and Daly, P., \textit{A Guide to \LaTeX}. Pearson Education Ltd., 1999
+ 287 | )          | \end{thebibliography}
+ 288 | )          | 
+ 289 | )          | \end{document}

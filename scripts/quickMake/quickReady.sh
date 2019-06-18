@@ -52,17 +52,20 @@ make
 cd ..
 cd graphicx
 make
+cd ..
+cd vert
+make
 cd ../../
 echo "-----------------------------------------------------------------"
-echo "By-hand: Non-directional delimiters"
+echo "Non-directional delimiters"
 echo "==================================="
 ./scripts/dedollar/dedollar.sh $1
 ./scripts/match_parens_ht/match_parens_ht.sh $1
+./scripts/vert/vert.sh $1
 echo "You should go away and fix the problems described above."
 echo "Do you want to continue? y for yes and n for no"
 read decision
 if [ $decision != "y" ]; then
     exit 1
 fi
-./scripts/vert/vert.sh $1
 cd ../..
