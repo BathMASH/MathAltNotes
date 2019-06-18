@@ -31,7 +31,7 @@ cd ../../
 
 for i in `ls -d ./units/*-text/` ; do
 echo $i
-./getMyLaTeX $i/input &>/dev/null
+echo n | ./getMyLaTeX $i/input &>/dev/null
 read input < .lasttimestamp
 #echo $input
 ./quickTest $input $i
