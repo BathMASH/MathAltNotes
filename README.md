@@ -50,6 +50,7 @@ will definitely run.
 ## Getting the tool 
 
 To get a copy of the tool which can also be updated:
+
 1. Be able to run docker builds and be using either Windows 10 or Debian based Linux. You should probably ask someone, or the internet for help with that if you have no idea what this means. If you are based at the University of Bath then please email ma-largeprintnotes@bath.ac.uk to ask for help. 
 
 2. Change directory into the directory which contains the LaTeX you wish to process (and any files needed by that document) and run the build with the command:
