@@ -11,7 +11,7 @@ This is a work in progress and is likely to be unstable. It is not
 intended for use with complex LaTeX documents such as books or 
 articles for publication. Help and support is available from 
 ma-largeprintnotes@bath.ac.uk but only if you are trying to 
-create alternative formats for student use. 
+create alternative formats for student use at the University of Bath.
 
 ## The alternative formats
 
@@ -39,36 +39,24 @@ used please email ma-largeprintnotes@bath.ac.uk
 
 This method has many dependencies and currently only works on the
 command line, in Linux and with the correct setup. We do not have
-the resources to help staff set up their own machines to run
-the method. 
-
-Computing Services has agreed to ensure that 
-> linux.bath.ac.uk 
-
-has the requisite setup. Hence, all staff should be able to use
-this. For help using linux.bath.ac.uk see http://www.bath.ac.uk/guides/connecting-to-linux-bath/
+the resources to help people set up their own machines to run
+the method so we have produced a docker build in which the tool 
+will definitely run. 
 
 ## Getting the tool 
 
 To get a copy of the tool which can also be updated:
-1. Use a web browser to visit https://github.bath.ac.uk/MathsAccessibleNotes/MathAltNotes so you exist on the system. You can see this readme there and also the files but the right way to get a copy of the files is to use git on the command line. This way you can update the tool as we make changes. 
-2. Log in to linux.bath.ac.uk and 'clone' the tool. This will make a directory called MathAltNotes where the tool can be found: 
+1. Be able to run docker builds. You should probably ask someone, or the internet for help with that if you have no idea what this means. If you are based at the University of Bath then please email ma-largeprintnotes@bath.ac.uk to ask for help. 
 
-> git clone https://github.bath.ac.uk/MathsAccessibleNotes/MathAltNotes.git
+2. Change directory into the directory which contains the LaTeX you wish to process (and any files needed by that document) and run the build with the command:
 
-and use your Computing Services login details. 
+> docker run -it -v $(pwd):/home/mathaltuser/$(whoami) bathmash/mathaltnotes
 
 3. Change director to MathAltNotes:
 
 > cd MathAltNotes
 
 You can now use the instructions below. 
-
-Each time you come back to use MathAltNotes you should update it in case
-we have made changes. You can do this using:
-> git pull
-
-and use your Computing Services login details. 
 
 ## Collect a copy of your files
 
@@ -78,11 +66,7 @@ we still recommend that you have your originals backed up elsewhere.
 To collect your files run the script ./getMyLaTeX 
 on the main LaTeX file in your project. 
 
-E.g. if to make your output from this directory you would run
-> pdflatex ../notes/filename.tex
-
-then run
-> ./getMyLaTeX ../notes/filename.tex
+> ./getMyLaTeX ../yourusername/filename.tex
 
 ### Outcome
 
@@ -96,7 +80,7 @@ Please be aware that only files used by the current setup will be
 collected. For instance, if you have a Beamer document which can
 be used to produce slides or an article and you use a command like
 
-> \only&lt;article&gt;{\input{subfile}}
+> '\only<article>{\input{subfile}}'
 
 then the subfile will only be collected by the script if the
 document is currently set to compile the article format.
@@ -113,11 +97,10 @@ Or, if this is a Beamer presentation:
 Once this has finished you will find the outputs in the folder
 filename-180129-1151/built
 
-When working on linux.bath.ac.uk you can view outputs by locating
-the folder on your H drive. Please note that the Word documents
+You can view outputs by opening them on your computer in the usual way.
+Please note that the Word documents
 may only work in Word 365. In particular many images will only 
-work in this format. Word 365 is freely available to any member
-of the University of Bath: http://www.bath.ac.uk/guides/download-and-install-microsoft-office-on-your-personal-device/
+work in this format. 
 
 ### If this fails
 
@@ -164,12 +147,8 @@ help too) try:
 
 This is a work in progress and is unstable!
  
-If you have problems email ma-largeprintnotes@bath.ac.uk and 
-attach a zip of your time-stamped directory if possible. 
-
-Every problem reported will help make the system more stable.
-We will delete time-stamped directories after we have used
-them to understand and fix the issue. 
+If you have problems email ma-largeprintnotes@bath.ac.uk to report them.
+We may eventually solve the problem but make no promises!
 
 # Providing files to students
 
@@ -177,76 +156,3 @@ We recommend providing the alternative formats to all students.
 Whether you provide these prior to class depends on the 
 resource and your teaching practice. 
 
-## Putting the files on Moodle
-
-Most of the formats can be uploaded to Moodle in the usual way.
-The only resource which needs special attention is the web format.
-You will see that this is provided as a folder and a zipped 
-archive in the built directory. To upload this to Moodle you need
-to upload the zipped archive as a file and then set it up:
-* Select Add a resource -> File. Give the resource a name (e.g. MA10230 web notes).
-* Add the zip file. Right click on the zip file, a window appears, click on unzip and wait until complete. 
-* Right click on the zip again and click on delete. You will have a folder remaining. 
-* Left click on the folder to open it. 
-* Find the main file e.g. MA10230-web.html and right click on this, 
-a window appears, click on Set main file. 
-* Change any other settings you wish in the resource and then save. 
-
-### Providing files to only some students
-
-You will likely have some disabled students with a 
-Disability Access Plan (DAP) in your class. DAPs can be viewed 
-on SAMIS. If a student's DAP recommends that learning resources 
-are provided prior to class and you don't wish to provide them
-to all students then you may need to set up Moodle so that only 
-these students can see certain resources. 
-
-The easiest way to do this if you are in the Department of Mathematical
-Sciences is to ask us to set it up for you on one of the alternative 
-notes Moodle pages. We will give you access and tell you what to do. 
-
-If you want to do this on your own Moodle page then you will need to 
-create a separate topic which can only be seen by certain students. 
-
-Please be very careful if you do this yourself, it is easy to accidentally
-break a student's confidentuality. 
-
-To do this:
-* Make an empty topic
-* Click on Edit -> Edit topic
-* Unclick Use default section name and give the topic an appropriate title
-* At the base of the page click on the arrow next to Restrict access
-* Click on Add restriction...
-* A window appears, select Restriction set but leave it as it is for now
-* Click on Add restriction... at the very base of the page again and 
-again select Restriction set. 
-* At the top of the section change "Student must (drop down) match all (drop down)" 
-to "Student must (drop down) match any (drop down)". Then BEFORE YOU DO ANYTHING 
-ELSE click on the eye next to this line so it is crossed through. This
-is necessary to ensure you do not break confidentuality and will completely
-hide the section from all other students.
-
-Now you can add students in to the restriction sets. We suggest you add
-yourself first so you can test it by viewing the page as a student:
-* Inside one of the grey boxes click on the Add restriction... button and 
-then select User profile
-* Set it so a student "must" (first drop down) match the following 
-** Under User profile field select "First name"
-** Leave middle drop down as "is equal to" 
-** Add your first name into the box
-* Now click on the Add restriction... button within the grey box again and again
-select User profile. This time add a restriction on your Surname.
-* Now add the student to the second grey box in the same way. 
-* Further students can be added by adding new restriction sets. 
-
-You should end up with a series of restrictions in grouped pairs of first name 
-and surname linked by "and" and the pairs linked by "or".  
-
-Save the page and test it works. To test it change your view to student view 
-(Administration -> Switch role to...) and check that you can see the topic. 
-Now edit the restrictions and change your surname, for instance. Then, in
-student view you should no longer be able to see the topic at all. If in student
-view you can still see the topic but greyed out then you MUST change this
-otherwise students can see who has access to the topic. 
-
-Any problems, mail us: ma-largeprintnotes@bath.ac.uk 
