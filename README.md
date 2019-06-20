@@ -67,11 +67,7 @@ we still recommend that you have your originals backed up elsewhere.
 To collect your files run the script ./getMyLaTeX 
 on the main LaTeX file in your project. 
 
-<<<<<<< HEAD
 > ./getMyLaTeX ../yourusername/filename.tex
-=======
-> ./getMyLaTeX ../notes/filename.tex
->>>>>>> External readme
 
 ### Outcome
 
