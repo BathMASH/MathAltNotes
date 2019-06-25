@@ -78,11 +78,8 @@ January 2018 it could create the folder filename-180129-1151
 
 Please be aware that only files used by the current setup will be
 collected. For instance, if you have a Beamer document which can
-be used to produce slides or an article and you use a command like
-
-> '\only<article>{\input{subfile}}'
-
-then the subfile will only be collected by the script if the
+includes an image in the article output but not the slides then
+the image file will only be collected by the script if the
 document is currently set to compile the article format.
 
 ## Compiling the alternative formats
