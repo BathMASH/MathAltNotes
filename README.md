@@ -7,8 +7,12 @@ prefer or make use of some of the formats so please consider making
 all formats available to all students. For instance, some formats
 may be useful to students using devices with small screens. 
 
-This is a work in progress and is likely to be unstable. It is not
-intended for use with complex LaTeX documents such as books or 
+This is a work in progress and is likely to be unstable. Please note
+that, in general, it is not possible to convert LaTeX to accessible
+formats. This method will only work with relatively simple documents.
+It is intended to be used on lecture notes and problem sheets written
+by authors who are not very adventurous in their use of LaTeX!
+It is not intended for use with complex LaTeX documents such as books or 
 articles for publication. Help and support is available from 
 ma-largeprintnotes@bath.ac.uk but only if you are trying to 
 create alternative formats for student use at the University of Bath.
@@ -46,7 +50,7 @@ will definitely run.
 ## Getting the tool 
 
 To get a copy of the tool which can also be updated:
-1. Be able to run docker builds. You should probably ask someone, or the internet for help with that if you have no idea what this means. If you are based at the University of Bath then please email ma-largeprintnotes@bath.ac.uk to ask for help. 
+1. Be able to run docker builds and be using either Windows 10 or Debian based Linux. You should probably ask someone, or the internet for help with that if you have no idea what this means. If you are based at the University of Bath then please email ma-largeprintnotes@bath.ac.uk to ask for help. 
 
 2. Change directory into the directory which contains the LaTeX you wish to process (and any files needed by that document) and run the build with the command:
 
@@ -142,14 +146,18 @@ help too) try:
 
 ## Reporting issues and getting help
 
-This is a work in progress and is unstable!
+This is a work in progress and is unstable! Regardless of how good we
+get it will never be possible for us to process general LaTeX. Before
+contacting us try to minimise your use of packages and fonts. 
  
 If you have problems email ma-largeprintnotes@bath.ac.uk to report them.
-We may eventually solve the problem but make no promises!
+We may eventually solve the problem, if it is possible to solve it,
+but make no promises!
 
 # Providing files to students
 
 We recommend providing the alternative formats to all students.
 Whether you provide these prior to class depends on the 
-resource and your teaching practice. 
+resource and your teaching practice. Resources should be provided
+to disabled students prior to class. 
 
