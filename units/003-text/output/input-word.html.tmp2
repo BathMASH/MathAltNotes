@@ -30,13 +30,13 @@ fontCheckTimeout: 30 * 1000
 preferredFont: "STIX",  
 availableFonts: ["STIX","TeX"],  
 webFont: "STIX-Web",  
-linebreaks: { automatic: false, width: "90% container" } 
+linebreaks: { automatic: true, width: "90% container" } 
 }, 
 SVG: {  
 font: "STIX-Web", 
 linebreaks: { automatic: false, width: "90% container" } 
 }, 
-menuSettings: { collapsible: true, autocollapse: true, explorer: false } 
+menuSettings: { collapsible: false, autocollapse: false, explorer: false } 
 }); 
 </script> 
 <script
@@ -84,8 +84,7 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
 </p><!--l. 22
 --><p
  class="noindent">Standard text. <b
-><span
- class="phvb8t-x-x-120">Emphasized text</span></b>. <span
+>Emphasized text</b>. <span
  class="ec-lmr-12">Roman text. Roman inline. </span><span
  class="phvrc8t-x-x-120">S<span
  class="small-caps">M</span><span
@@ -117,22 +116,17 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  class="small-caps">N</span><span
  class="small-caps">E</span> </span><span
  class="ec-lmtt-12">Typewriter text. Typewriter inline. </span><b
-><span
- class="phvb8t-x-x-120">Italics text.</span></b> <span
+>Italics text.</b> <span
  class="phvb8t-x-x-120">Italics</span>
 <span
  class="phvb8t-x-x-120">inline. </span><span
  class="ec-lmss-12">Sans serif text. San serif inline. </span><span
  class="phvro8t-x-x-120">Slant text. Slant inline. </span><b
-><span
- class="phvb8t-x-x-120">Bold text.</span></b> <span
+>Bold text.</b> <span
  class="phvb8t-x-x-120">Bold inline. </span><b
-><span
- class="phvb8t-x-x-120">A</span>
-<span
- class="phvb8t-x-x-120">combination of bold and </span><b
-><span
- class="phvb8t-x-x-120">italic text.</span></b></b> <span
+>A
+combination of bold and <b
+>italic text.</b></b> <span
  class="phvb8t-x-x-120">A combination inline of bold and inline italics.</span>
 </p> 
 </body> 
