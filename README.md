@@ -51,15 +51,15 @@ will definitely run.
 
 To get a copy of the tool which can also be updated:
 
-1. Be able to run docker builds and be using either Windows 10 or Debian based Linux. You should probably ask someone, or the internet for help with that if you have no idea what this means. If you are based at the University of Bath then please email ma-largeprintnotes@bath.ac.uk to ask for help. 
+1. Be able to run docker builds and be using either Windows 10 or Linux. You should probably ask someone, or the internet for help with that if you have no idea what this means. If you are based at the University of Bath then please email ma-largeprintnotes@bath.ac.uk to ask for help. 
 
-2. Change directory into the directory which contains the LaTeX you wish to process (and any files needed by that document). In Debian based Linux use the following command to run the build:
+2. Change directory into the directory which contains the LaTeX you wish to process (and any files needed by that document). In Linux use the following command to run the build:
 
 > docker run -it -v $(pwd):/home/mathaltuser/$(whoami) bathmash/mathaltnotes
 
 In Windows use the following command to run the build:
 
-> docker run -it -v ${PWD}:/home/mathaltuser/${env:username} bathmash/mathaltnotes
+> docker run -it -v ${PWD}:/home/mathaltuser/${env:username} bathmash/mathaltnotes bash
 
 3. Change director to MathAltNotes:
 
