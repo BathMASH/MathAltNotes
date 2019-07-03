@@ -18,9 +18,9 @@ lb ([[:blank:]])*"{"([[:blank:]])*
 rb ([[:blank:]])*"}"
 packages ("\\usepackage")("["*)(.*)("]"*){lb}
 verbstart "\\begin"{lb}("verbatim"){rb}
-verbend "\\end"{lb}("tabbing"){rb}
+verbend "\\end"{lb}("verbatim"){rb}
 tabbingstart "\\begin"{lb}("tabbing"){rb}
-tabbingend "\\end"{lb}("verbatim"){rb}
+tabbingend "\\end"{lb}("tabbing"){rb}
 dmathstart "\\begin"{lb}("equation"){rb}
 dmathend "\\end"{lb}("equation"){rb}
 dmathstarstart ("$$"|"\\["|"\\begin"{lb}("equation*"|"displaymath"){rb})
