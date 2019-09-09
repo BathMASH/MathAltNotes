@@ -28,8 +28,9 @@ decthm "\\declaretheorem"{ls}
 "\\begin"{lb}(([^"}""{""["])*){rb}{ls} ECHO; yy_push_state(OPTIONS);
 <OPTIONS>{rs} ECHO; yy_pop_state();
 
- /* We need to leave the $ in these alone */
-{toc}(("[")(.*)("]"))*{lb} ECHO; brackets = 1; yy_push_state(TOC);
+ /* We need to leave the $ in these alone {toc}(("[")(.*)("]"))*{lb} ECHO; brackets = 1; yy_push_state(TOC); */
+{toc}{lb} ECHO; brackets = 1; yy_push_state(TOC);
+{toc}{ls} ECHO; brackets = 0; yy_push_state(TOC); yy_push_state(OPTIONS);
 <TOC>{lb} ECHO; brackets = brackets+1;
 <TOC>{rb} ECHO; brackets = brackets-1; if(brackets==0) yy_pop_state();
 
@@ -38,6 +39,9 @@ decthm "\\declaretheorem"{ls}
 
 {decthm} ECHO; yy_push_state(DECTHM);
 <DECTHM>{rs} ECHO; yy_pop_state();
+
+<TOC,FIG,OPTIONS>("\\("|"\\)") printf("$");
+<TOC,FIG,OPTIONS>("\\["|"\\]") printf("$$");
 
  /*We need to ensure that comments are not processed */
 ("%")* ECHO; yy_push_state(COMMENT);
