@@ -1,6 +1,8 @@
 ﻿.PHONY: clean standard clear large web word
 #Change the name to the main tex file without the file extension.
 name=empty
+#The below is the break level for the web version
+level=$(shell cat .level)
 LATEX=timeout 1m pdflatex -interaction=nonstopmode -halt-on-error
 HOME=$(shell cat .home)
 HTLATEX=timeout 2m $(HOME)/../../scripts/htlatex
@@ -204,8 +206,8 @@ endif
 ifeq ($(TYPE),beamer)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
 endif
-	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
-	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #Change the endings from interim to svg - this should not be doing anything any more after fix via .env
 #	sed -i "s/x.interim.png/x.svg/" *.html
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
@@ -287,8 +289,8 @@ endif
 ifeq ($(TYPE),beamer)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
 endif
-	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
-	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #Change the endings from interim to svg - this should not be doing anything any more after fix via .env
 #	sed -i "s/x.interim.png/x.svg/" *.html
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
@@ -370,8 +372,8 @@ endif
 ifeq ($(TYPE),beamer)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\emphasis{standard}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web-standard.tex
 endif
-	$(HTLATEX)  $(name)-web-standard.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
-	$(HTLATEX)  $(name)-web-standard.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web-standard.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web-standard.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #Change the endings from interim to svg - this should not be doing anything any more after fix via .env
 #	sed -i "s/x.interim.png/x.svg/" *.html
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct

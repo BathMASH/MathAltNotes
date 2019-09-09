@@ -1,0 +1,52 @@
+   1 |            | \documentclass{article}
+   2 |            | \usepackage{lipsum}
+   3 |            | 
+   4 |            | \title{Test for sectioning}
+   5 |            | \author{}
+   6 |            | \date{}
+   7 |            | 
+   8 |            | \begin{document}
+   9 |            | \maketitle
+  10 |            | \tableofcontents
+  11 |            | 
+  12 |            | \newpage
+  13 |            | 
+  14 |            | \lipsum[1-1]
+  15 |            | 
+  16 |            | \section{Section 1}
+  17 |            | 
+  18 |            | \lipsum[2-3]
+  19 |            | 
+  20 |            | \section{Section 2}
+  21 |            | 
+  22 |            | \subsection{Subsection 2.1}
+  23 |            | 
+  24 |            | \lipsum[4-6]
+  25 |            | 
+  26 |            | \subsection{Subsection 2.2}
+  27 |            | 
+  28 |            | \lipsum[7-9]
+  29 |            | 
+  30 |            | \section{Section 3}
+  31 |            | 
+  32 |            | \lipsum[10-12]
+  33 |            | 
+  34 |            | \subsection{Subsection 3.1}
+  35 |            | 
+  36 |            | \subsubsection{Subsubsection 3.1.1}
+  37 |            | 
+  38 |            | \lipsum[13-15]
+  39 |            | 
+  40 |            | \subsection{Subsection 3.2}
+  41 |            | 
+  42 |            | \lipsum[16-18]
+  43 |            | 
+  44 |            | \subsubsection{Subsubsection 3.2.1}
+  45 |            | 
+  46 |            | \lipsum[19-21]
+  47 |            | 
+  48 |            | \subsubsection{Subsubsection 3.2.2}
+  49 |            | 
+  50 |            | \lipsum[22-23]
+  51 |            | 
+  52 |            | \end{document}
