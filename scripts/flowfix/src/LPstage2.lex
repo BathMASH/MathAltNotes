@@ -72,7 +72,7 @@ protectend ("\\end{picture}"|"\\makeatother")
 <PACKAGES>("verbatim") printf("spverbatim");
 <PACKAGES>{rb} ECHO; yy_pop_state();
 
-("\\begin"{lb}("document"){rb}) printf("\\usepackage{calc}\n\\usepackage{longtable}\n\\usepackage{tabu}\n\\usepackage{breqn}\n\\setlength{\\arraycolsep}{%lfem}\n\\renewcommand{\\arraystretch}{%lf}\n\\begin{document}\n\\renewcommand{\\baselinestretch}{%lf}\n\\selectfont\n\\setlength{\\parskip}{1.0\\baselineskip}\n",cols,factor,lines); 
+("\\begin"{lb}("document"){rb}) printf("\\usepackage{calc}\n\\usepackage{longtable}\n\\usepackage{tabu}\n\\usepackage{breqn}\n\\setlength{\\arraycolsep}{%lfem}\n\\renewcommand{\\arraystretch}{%lf}\n\\begin{document}\n\\renewcommand{\\baselinestretch}{%lf}\n\\selectfont\n\\setlength{\\parskip}{1.0\\baselineskip}\n\\ifdefstring{\\fleqn}{fleqn}{\n\\belowdisplayskip=-10pt plus2pt\n\\abovedisplayskip=-10pt plus2pt\n}{}\n\n",cols,factor,lines); 
 
 {verbstart} printf("\\begin{spverbatim}"); yy_push_state(VERBATIM);
 <VERBATIM>(\r?\n) printf("\n"); /*Just in case*/

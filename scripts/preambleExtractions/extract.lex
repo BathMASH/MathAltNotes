@@ -8,6 +8,7 @@ int macrolength = 0;
 int beginendlength = 0;
 int fontsize = 10;
 int papersize = 0;
+int fleqn = 0;
 char *macros;
 char *beginend;
 char *class;
@@ -85,6 +86,7 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 <CLASS>"20pt" fontsize=20; ECHO;
 <CLASS>{lb} ECHO; yy_push_state(READCLASS);
 <CLASS>"a4paper" papersize=4; ECHO;
+<CLASS>"fleqn" fleqn=1; ECHO;
 <READCLASS>(.*)/"}" ECHO; whatclass(); yy_pop_state(); yy_pop_state(); 
 
 {packages} yy_push_state(PACKAGES);
@@ -255,12 +257,14 @@ int choices(){
   FILE *sizeout;
   FILE *paperout;
   FILE *unknown;
+  FILE *fleqnout;
   output = fopen("choices.tex","w");
   typeout = fopen(".documentclass","w");
   alttype = fopen(".alternativeclass","w");
   sizeout = fopen(".fontsize","w");
   paperout = fopen(".papersize","w");
   unknown = fopen(".unknownclass","w");
+  fleqnout = fopen(".fleqn","w");
   if(output == NULL){
     fprintf(stderr, "Can't open choices file\n");
     exit(1);
@@ -283,6 +287,10 @@ int choices(){
   }
   if(unknown == NULL){
     fprintf(stderr, "Can't open unknown class output file\n");
+    exit(1);
+  }
+  if(fleqnout == NULL){
+    fprintf(stderr, "Can't open fleqn class option output file\n");
     exit(1);
   }
   if(title == 1 && author == 1)
@@ -325,12 +333,17 @@ int choices(){
     fprintf(paperout," ");
   if(papersize == 4)
     fprintf(paperout,"a4paper");
+  if(fleqn == 0)
+    fprintf(fleqnout," ");
+  if(fleqn == 1)
+    fprintf(fleqnout,"fleqn");
   
   fclose(output);
   fclose(typeout);
   fclose(sizeout);
   fclose(paperout);
   fclose(unknown);
+  fclose(fleqnout);
   return 0;
 }
 

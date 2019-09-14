@@ -15,7 +15,9 @@
 %% Beamer is even more special 
 \providecommand{\beamerslides}{}
 \providecommand{\beamerhandout}{}
-\documentclass[\pointsize,\papersize,\beamerhandout]{\class}
+%% As is flushed left equations
+\providecommand{\fleqn}{}
+\documentclass[\pointsize,\papersize,\beamerhandout,\fleqn]{\class}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Babel package to specify English typographical 
@@ -75,6 +77,14 @@
 \usefonttheme[onlymath]{serif}
 \usepackage{beamerfix}
 }{}
+
+\ifdefstring{\fleqn}{fleqn}{
+\newcommand{\displaywhere}{left}
+%\belowdisplayskip = -10pt plus 2pt
+%\abovedisplayskip = -10pt plus 2pt
+}{
+\newcommand{\displaywhere}{center}
+}
 
 \iftoggle{large}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
