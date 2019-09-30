@@ -8,15 +8,19 @@ whitespace (" "|\t|(\r?\n))
 newline (\r?\n)
 lb ([[:blank:]])*"{"([[:blank:]])*
 rb ([[:blank:]])*"}"
+ls ([[:blank:]])*"["([[:blank:]])*
+rs ([[:blank:]])*"]"
 verbstart "\\begin"{lb}("verbatim"){rb}
 verbend "\\end"{lb}("verbatim"){rb}
 mathstart ("\\("|"\\["|"\\begin"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|"multline"|"gather"|"eqnarray*"|"align*"|"eqnarray"|"align"){rb})
 mathsend ("\\)"|"\\]"|"\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|"multline"|"gather"|"eqnarray*"|"align*"|"eqnarray"|"align"){rb})
 protect ("\\left"|"\\right"|"\\big"|"\\Big"|"\\bigg"|"\\Bigg"|"\\bigr"|"\\bigl"|"\\Bigl"|"\\Bigr"|"\\biggl"|"\\biggr"|"\\Biggl"|"\\Biggr")("|"|"\\|"|"\\vert"|"\\Vert")
+tables ("\\begin"{lb}("tabular"){rb}{ls}[^\]]{rs})
 
-%x COMMENT VERBATIM MATHS BAR BARBAR MATCH TOOMANY BAIL PAREN SQUARE BRACE
+%x COMMENT VERBATIM MATHS BAR BARBAR MATCH TOOMANY BAIL PAREN SQUARE BRACE TABLES
 %%
 
+"\\\\[" ECHO;
 {protect} ECHO;
 
  /* Protect */
@@ -31,6 +35,7 @@ protect ("\\left"|"\\right"|"\\big"|"\\Big"|"\\bigg"|"\\Bigg"|"\\bigr"|"\\bigl"|
 
   /* We need this to work on maths lines not between newlines - which is not possible without pulling everything up which is too risky for now*/
 {mathstart} ECHO; yy_push_state(MATHS); if(debug) printf("MS");
+<MATHS,PAREN,SQUARE,BRACE>{tables} ECHO; BEGIN(INITIAL); /* Some people put tables in maths... */
 <MATHS,PAREN,SQUARE,BRACE>("%")[^\n]* ECHO;
 <MATHS,PAREN,SQUARE,BRACE>{protect} ECHO;
 <MATHS>"\\|"[^&\n]*"\\|"[^&\n]*"\\|"[^\\&]* if(debug) printf("TBB"); ECHO; check = 2; yy_push_state(TOOMANY);
