@@ -13,7 +13,7 @@ mathstart ("\\("|"\\["|"\\begin"{lb}("equation"|"equation*"|"displaymath"|"multl
 mathsend ("\\)"|"\\]"|"\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|"multline"|"gather"|"eqnarray*"|"align*"|"eqnarray"|"align"){rb})
 protect ("\\left"|"\\right"|"\\big"|"\\Big"|"\\bigg"|"\\Bigg"|"\\bigr"|"\\bigl"|"\\Bigl"|"\\Bigr"|"\\biggl"|"\\biggr"|"\\Biggl"|"\\Biggr")("|"|"\\|"|"\\vert"|"\\Vert")
 
-%x COMMENT VERBATIM MATHS BAR BARBAR MATCH TOOMANY BAIL
+%x COMMENT VERBATIM MATHS BAR BARBAR MATCH TOOMANY BAIL PAREN SQUARE BRACE
 %%
 
 {protect} ECHO;
@@ -29,17 +29,28 @@ protect ("\\left"|"\\right"|"\\big"|"\\Big"|"\\bigg"|"\\Bigg"|"\\bigr"|"\\bigl"|
 <COMMENT>(\r?\n) ECHO; yy_pop_state();
 
   /* We need this to work on maths lines not between newlines - which is not possible without pulling everything up which is too risky for now*/
-{mathstart} ECHO; yy_push_state(MATHS);
+{mathstart} ECHO; yy_push_state(MATHS); /*printf("MS");*/
 <MATHS>("%")[^\n]* ECHO;
 <MATHS>{protect} ECHO;
 <MATHS>"\\|"[^&\n]*"\\|"[^&\n]*"\\|"[^\\&]* /*printf("TBB");*/ ECHO; check = 2; yy_push_state(TOOMANY);
 <MATHS>"|"[^&\n]*"|"[^&\n]*"|"[^\\&]* /*printf("TB");*/ ECHO; check = 2; yy_push_state(TOOMANY);
-<MATHS>"|"[^|\n]*{mathsend}[^|\n]*/"|" ECHO; if(check != 2) check = 1; yy_push_state(BAIL);
-<MATHS>"\\|"[^|\n\]\)\}]*/"\\|" yy_push_state(MATCH); /*printf("BB");*/ printf("\\left"); ECHO; 
-<MATHS>"|"[^|\n\]\)\}]*/"|" yy_push_state(MATCH); /*printf("B");*/ printf("\\left"); ECHO;
-<MATHS>"|"[^|\n]*\n ECHO; if(check != 2) check = 3;
-<MATHS>{mathsend}/(" ")*{newline} ECHO; commentcheck(0); yy_pop_state();
-<MATHS>{mathsend} ECHO; commentcheck(1); yy_pop_state();
+<MATHS>"|"[^|\n]*{mathsend}[^|\n]*/"|" /*printf("HERE1");*/ ECHO; if(check != 2) check = 1; yy_push_state(BAIL);
+<MATHS>"\\|"[^|\n\]\}]*/"\\|" yy_push_state(MATCH); /*printf("BB");*/ printf("\\left"); ECHO; 
+<MATHS>"|"[^|\n\]\}]*/"|" yy_push_state(MATCH); /*printf("B");*/ printf("\\left"); ECHO;
+<MATHS>"(" ECHO; yy_push_state(PAREN);
+<MATHS>"[" ECHO; yy_push_state(SQUARE);
+<MATHS>"{" ECHO; yy_push_state(BRACE);
+<MATHS>"|"[^|\n]*\n ECHO; /*printf("HERE2");*/ if(check != 2) check = 3;
+<MATHS>{mathsend}/(" ")*{newline} ECHO; /*printf("ME");*/ commentcheck(0); yy_pop_state();
+<MATHS>{mathsend} ECHO; /*printf("ME");*/ commentcheck(1); yy_pop_state();
+
+<PAREN>")" ECHO; yy_pop_state();
+<SQUARE>"]" ECHO; yy_pop_state();
+<BRACE>"}" ECHO; yy_pop_state();
+<PAREN,SQUARE,BRACE>"\right." ECHO; yy_pop_state();
+<PAREN,SQUARE,BRACE>"(" ECHO; yy_push_state(PAREN); 
+<PAREN,SQUARE,BRACE>"[" ECHO; yy_push_state(SQUARE);
+<PAREN,SQUARE,BRACE>"{" ECHO; yy_push_state(BRACE);
 
 <TOOMANY>"\\\\" ECHO; yy_pop_state();
 <TOOMANY>"&" ECHO; yy_pop_state();
