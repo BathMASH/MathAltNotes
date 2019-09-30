@@ -31,8 +31,8 @@ protect ("\\left"|"\\right"|"\\big"|"\\Big"|"\\bigg"|"\\Bigg"|"\\bigr"|"\\bigl"|
 
   /* We need this to work on maths lines not between newlines - which is not possible without pulling everything up which is too risky for now*/
 {mathstart} ECHO; yy_push_state(MATHS); if(debug) printf("MS");
-<MATHS>("%")[^\n]* ECHO;
-<MATHS>{protect} ECHO;
+<MATHS,PAREN,SQUARE,BRACE>("%")[^\n]* ECHO;
+<MATHS,PAREN,SQUARE,BRACE>{protect} ECHO;
 <MATHS>"\\|"[^&\n]*"\\|"[^&\n]*"\\|"[^\\&]* if(debug) printf("TBB"); ECHO; check = 2; yy_push_state(TOOMANY);
 <MATHS>"|"[^&\n]*"|"[^&\n]*"|"[^\\&]* if(debug) printf("TB"); ECHO; check = 2; yy_push_state(TOOMANY);
 <MATHS>"|"[^|\n]*{mathsend}[^|\n]*/"|" if(debug) printf("BAIL"); ECHO; if(check != 2) check = 1; yy_push_state(BAIL);
@@ -45,8 +45,9 @@ protect ("\\left"|"\\right"|"\\big"|"\\Big"|"\\bigg"|"\\Bigg"|"\\bigr"|"\\bigl"|
 <MATHS>{mathsend}/(" ")*{newline} ECHO; if(debug) printf("ME"); commentcheck(0); yy_pop_state();
 <MATHS>{mathsend} ECHO; if(debug) printf("ME"); commentcheck(1); yy_pop_state();
 
-<PAREN>")" if(debug) printf("C"); ECHO; yy_pop_state();
-<SQUARE>"]" if(debug) printf("C"); ECHO; yy_pop_state();
+ /* In maths, brackets don't have to 'match' e.g. semiopen interval, will this breack things? */
+<PAREN,SQUARE>")" if(debug) printf("C"); ECHO; yy_pop_state();
+<SQUARE,PAREN>"]" if(debug) printf("C"); ECHO; yy_pop_state();
 <BRACE>"}" if(debug) printf("C"); ECHO; yy_pop_state();
 <PAREN,SQUARE,BRACE>"\\|"[^&\n\)\]\}\(\[\{]*"\\|"[^&\n\)\]\}\(\[\{]*"\\|"[^\\&]* if(debug) printf("PTBB"); ECHO; check = 2; yy_push_state(TOOMANY);
 <PAREN,SQUARE,BRACE>"|"[^&\n\)\]\}\(\[\{]*"|"[^&\n\)\]\}\(\[\{]*"|"[^\\&]* if(debug) printf("PTB"); ECHO; check = 2; yy_push_state(TOOMANY);
