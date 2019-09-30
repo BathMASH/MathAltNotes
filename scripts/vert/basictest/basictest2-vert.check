@@ -3,7 +3,7 @@
 \begin{document}
 
 Maths:
-\(\{x \in \mathbb{R} | x > 2\}\)%%%% Check syntactic interpretation of verticals
+\(\{x \in \mathbb{R} | x > 2\}\)
 
 \end{document}
 

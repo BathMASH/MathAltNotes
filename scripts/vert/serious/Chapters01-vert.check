@@ -348,14 +348,14 @@ It follows that
 \begin{align*}
 U(f,\Delta) - L(f,\Delta) &= \sum_{n=1}^M \omega(f, I_n) |I_n| \leq \sum_{n=1}^M \omega(f_K, I_n) |I_n| + 2\varepsilon\sum_{n=1}^M |I_n| \\
 & = U(f_N,\Delta) - L(f_N,\Delta) + 2\varepsilon (b-a) < \varepsilon (1+ 2b - 2a).
-\end{align*}
+\end{align*}%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
 The right-hand side can be made arbitrarily small. Thus $f$ is Riemann integrable.
 Moreover, by the linearity and by the monotonicity of the integral we have
 \begin{align*}
 \left|\int_a^b f_k(x)dx - \int_a^b f(x)dx\right| &= \left|\int_a^b \Big(f_k(x) - f(x)\Big)dx \right|\\
 &\leq \int_a^b \Big|f_k(x) - f(x)\Big|dx\\
 &\leq(b-a) \sup_{x\in [a,b]} \Big|f_k(x) - f(x)\Big| \to 0\\
-\end{align*}%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
+\end{align*}
 as $k\to \infty$. Therefore, we have the desired convergence.
 \end{proof}
 
@@ -417,7 +417,7 @@ Then, by the Fundamental Theorem of Calculus, $f'=g$. Moreover, for any $x\in (a
 &\leq |f_k(x_0)-y_0|+ \left| \int_{x_0}^x \Big(f'_k(t) - g(t)\Big) dt \right|\\
 &\leq |f_k(x_0)-y_0|+  \int_{x_0}^x \Big|f'_k(t) - g(t)\Big| dt \\
 &\leq |f_k(x_0)-y_0|+  (b-a)\sup_{t\in (a,b)}\Big|f'_k(t) - g(t)\Big| \to 0.
-\end{align*}
+\end{align*}%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
 Hence $f_k \to f$ uniformly. We already know that $f'_k \to g = f'$ uniformly.
 \end{proof}
 
@@ -514,7 +514,7 @@ by the Mean Value Theorem and the boundedness of $\frac{\partial f}{\partial t}$
 A special type of series of functions is given by the power series:
 \begin{equation}\label{powerx0}
 \sum_{k=0}^\infty a_k(x-x_0)^k,
-\end{equation}%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
+\end{equation}
 or, with no loss of generality (e.g. by setting $y=x-x_0$),
 \begin{equation}\label{power0}
 \sum_{k=0}^\infty a_k x^k.
@@ -622,7 +622,7 @@ converges in the same interval, namely for $|x|<r$.
 To show this, let $|x_0|<r$, and let $|x|<|x_0|$, so that $\left|\frac{x}{x_0}\right|=\rho<1$; since $\sum_{k=0}^\infty a_k x_0^k$ converges, we have that 
 $z_k x_0^k\to 0$ as $k\to \infty$. This implies that there exists a constant $A$ such that $|a_kx_0^k|<A$ for every $k$. As a consequence, for every $k\in \N$
 \begin{align*}
-\left|k a_k x^{k-1}\right| & \leq \left| k a_k x^{k-1} \frac{x_0^k}{x_0^k}\right| = \left|\frac{k}{x_0} a_k x_0^k \frac{x^k}{x_0^k}\right|\leq \frac{k}{|x_0|}\, |a_kx_0^k| \rho^{k-1} \leq \frac{k}{|x_0|} A \rho^{k-1}.
+\left|k a_k x^{k-1}\right| & \leq \left| k a_k x^{k-1} \frac{x_0^k}{x_0^k}\right| = \left|\frac{k}{x_0} a_k x_0^k \frac{x^k}{x_0^k}\right|\leq \frac{k}{\left|x_0\right|}\, |a_kx_0^k| \rho^{k-1} \leq \frac{k}{|x_0|} A \rho^{k-1}.
 \end{align*}%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
 Note that the series 
 $$
