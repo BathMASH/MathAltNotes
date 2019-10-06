@@ -46,7 +46,7 @@ newenvironment ("\\newenvironment"|"\\substack")
 protectstart ("\\begin{picture}"|"\\makeatletter")
 protectend ("\\end{picture}"|"\\makeatother")
 
-%x COMMENT PROTECT INPUT CLASS DMATH DMATHFAKESTAR DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS TABULARX CAPTION NEWENVIR TABBING CASES
+%x COMMENT PROTECT INPUT CLASS DMATH DMATHFAKESTAR DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS TABULARX CAPTION NEWENVIR TABBING CASES FINDBRACE 
 %s REMOVE KEEP TABLE SUBSTACK
 %%
 
@@ -130,7 +130,8 @@ protectend ("\\end{picture}"|"\\makeatother")
  /* Numbered */
    /* Lines with tags have them at the start of the line now (see stage0)*/ 
      /* Single line displayed was 20pt*/ 
-{dmathstart}/({whitespace}*("\\tag"|"\\label")) printf("\\begin{dmath}[compact,spread={%lf\\baselineskip}",mathlines); yy_push_state(DMATH); 
+{dmathstart}/({whitespace}*("\\tag"|"\\label")) printf("\\begin{dmath}[compact,spread={%lf\\baselineskip}",mathlines); yy_push_state(DMATH);
+{dmathstart}"EXTRABRACEHERE" printf("\\begin{dmath}[compact,spread={%lf\\baselineskip}",mathlines); yy_push_state(DMATH); yy_push_state(FINDBRACE); 
 {dmathstart}({whitespace}*("\\nonumber")) printf("\\begin{dmath*}[compact,spread={%lf\\baselineskip}]",mathlines); yy_push_state(DMATHFAKESTAR); 
 {dmathstart} printf("\\begin{dmath}[compact,spread={%lf\\baselineskip}]",mathlines); yy_push_state(DMATH); 
 <DMATH>{dmathend} printf("\\end{dmath}"); yy_pop_state();
@@ -151,15 +152,15 @@ protectend ("\\end{picture}"|"\\makeatother")
 {dgroupnoalignstart} printf("\\begin{dgroup*}[noalign,compact,spread={%lf\\baselineskip}]\\begin{dmath}",mathlines); yy_push_state(DGROUP); 
 <DGROUP,CHECKSTAR>{dgroupend} if (YY_START == CHECKSTAR) {printf("\\end{dmath*}"); yy_pop_state();} else printf("\\end{dmath}"); printf("\\end{dgroup*}"); yy_pop_state();
 
-
-<DMATH,DGROUP>"\\tag"{lb} yy_push_state(TAG);
+<DMATH,DGROUP,FINDBRACE>"\\tag"{lb} 
 <DMATH,DGROUP>"\\label"{lb} yy_push_state(LABEL);
 
  /* Should this be inside the breqn or outside? */
 <TAG,LABEL>("}")/({whitespace}*("\\tag"|"\\label")) yy_pop_state();
-<TAG,LABEL>("}") yy_pop_state(); printf("]");
+<TAG,LABEL,FINDBRACE>("}") yy_pop_state(); printf("]");
 <TAG>(([^"}"]*)) printf(",number="); ECHO; 
 <LABEL>(([^"}"]*)) printf(",label="); ECHO; 
+<FINDBRACE>[^\}\{]*{lb}[^\}\{]*{rb}[^\}]* printf(",number="); ECHO; yy_pop_state(); yy_push_state(TAG);
 
  /* tables - we need to use longtabu and I believe that I have removed the assumption that there is a newline at the end of the tabular argument and none within it */
  /* Working on the assumption that if you used tabularx it was because you have a hideous wide table */

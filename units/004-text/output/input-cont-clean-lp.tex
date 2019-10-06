@@ -12,6 +12,11 @@
 \renewcommand{\baselinestretch}{1.250000}
 \selectfont
 \setlength{\parskip}{1.0\baselineskip}
+\ifdefstring{\fleqn}{fleqn}{
+\belowdisplayskip=-10pt plus2pt
+\abovedisplayskip=-10pt plus2pt
+}{}
+
 
 \noindent
 Special characters: \$  \%  \_  \}  \&  \#  \{

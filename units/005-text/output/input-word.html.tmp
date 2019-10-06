@@ -10,6 +10,7 @@
 <script type="text/x-mathjax-config"> 
 MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
 explorer:{ subtitle: true }, 
+displayAlign: "center",  
 MatchWebFonts: { 
 matchFor: { "HTML-CSS": true, NativeMML: false, SVG: false }, 
 fontCheckDelay: 2000, 
@@ -218,17 +219,17 @@ style="vertical-align:baseline;" class="tabbing"><td
 class="tabbing">until I backwards tab</td></tr></table>
 <!--l. 149--><p class="noindent" >
 </p><!--l. 151--><p class="noindent" >A baseline of text which is a single line long in 12pt font with no indent applied.
-</p><!--l. 156--><p class="noindent" ><span class="fbox">This text is framed in a box. The width is determined by the text.</span>
-</p><!--l. 161--><p class="noindent" ><span class="framebox-c" 
+</p><!--l. 156--><p class="noindent" ></p><span class="fbox">This text is framed in a box. The width is determined by the text.</span>
+<!--l. 161--><p class="noindent" ><span class="framebox-c" 
 style="width:18.96em;">This box is 0.5 textwidth wide</span>
 </p><!--l. 166--><p class="noindent" >A baseline of text which is a single line long in 12pt font with no indent applied.
 </p><!--l. 171--><p class="noindent" >This  is  a  parbox  half  the  textwidth  of  the
 page.
 This is the second paragraph in the box.
-</p><!--l. 176--><p class="noindent" ><span class="fbox">This  is  a  parbox  half  the  textwidth  of  the
+</p><!--l. 176--><p class="noindent" ></p><span class="fbox">This  is  a  parbox  half  the  textwidth  of  the
 page.
 This is the second paragraph in the box.   </span>
-</p><!--l. 181--><p class="noindent" ></p><div class="minipage">This is a minipage half the textwidth of the
+<!--l. 181--><p class="noindent" ></p><div class="minipage">This is a minipage half the textwidth of the
 page.
 <!--l. 182--><p class="noindent" >This   is   the   second   paragraph   in   the
 minipage.

@@ -689,7 +689,7 @@ vanilla}
 \def\:temp{\relax\ifmmode
     \Configure{fbox}{\leavevmode\Configure{HtmlPar}{}{}{}{}\IgnoreRule
                      \AA:text{fbox}}{\BB:text\EndIgnoreRule}\else
-    \Configure{fbox}{\leavevmode
+    \Configure{fbox}{\ifvmode\IgnorePar\fi\EndP\leavevmode
                      \IgnoreRule\A:fbox}{\B:fbox\EndIgnoreRule}\fi
     \OLDf:box}
 \HLet\fbox\:temp

@@ -10,6 +10,7 @@
 <script type="text/x-mathjax-config"> 
 MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
 explorer:{ subtitle: true }, 
+displayAlign: "center",  
 MatchWebFonts: { 
 matchFor: { "HTML-CSS": true, NativeMML: false, SVG: false }, 
 fontCheckDelay: 2000, 
@@ -1334,7 +1335,7 @@ class="MathClass-bin">+</mo><msubsup><mrow
 </math></td><td class="eq-no">(100)</td></tr></table>
                                                                                        
                                                                                        
-<div class="par-math-display"><!--l. 206--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 206--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 ><msubsup><mrow 
@@ -1443,9 +1444,7 @@ class="MathClass-rel">=</mo> <msubsup><mrow
 ><mn>2</mn></mrow></msubsup 
 >
 </mrow></math></div>
-<!--l. 208--><p class="nopar" >
-</p>
-<div class="par-math-display"><!--l. 210--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 210--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -1557,9 +1556,7 @@ class="MathClass-rel">=</mo> <msubsup><mrow
 ><mn>2</mn></mrow></msubsup 
 ><mspace width="1em" class="nbsp" />
 </mrow></math></div>
-<!--l. 212--><p class="nopar" >
-</p>
-<div class="par-math-display"><!--l. 214--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 214--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -1685,13 +1682,12 @@ class="MathClass-bin">⋅</mo> <msubsup><mrow
 ><mn>2</mn></mrow></msubsup 
 >
 </mrow></math></div>
-                                                                                       
-                                                                                       
-<!--l. 216--><p class="nopar" >
-</p><!--l. 218--><p class="noindent" >One of the forms is numbered equation <a 
+<!--l. 218--><p class="noindent" >One of the forms is numbered equation <a 
 href="#x1-5001r100">100<!--tex4ht:ref: equation --></a>.
 </p>
-<div class="math-display"><!--l. 219--><math 
+                                                                                       
+                                                                                       
+<div class="math-block" custom-style="Normal"><!--l. 219--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -1790,9 +1786,7 @@ class="MathClass-bin">+</mo> <msubsup><mrow
 >  <mn>2</mn></mrow></msubsup 
 ></mrow></msqrt>
 </mrow></math></div>
-<!--l. 221--><p class="nopar" >
-</p>
-<div class="par-math-display"><!--l. 223--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 223--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -1910,10 +1904,7 @@ class="MathClass-bin">+</mo> <msubsup><mrow
 ><mn>2</mn></mrow></mfrac> </mrow></msup 
 >
 </mrow></math></div>
-<!--l. 225--><p class="nopar" >
-</p><!--l. 227--><p class="noindent" >Now for an equation array: </p>
-                                                                                       
-                                                                                       
+<!--l. 227--><p class="noindent" >Now for an equation array: </p>
 <!--tex4ht:inline--><!--l. 228--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" >
@@ -2015,6 +2006,8 @@ class="eqnarray-4"> <mtext class="eqnarray">(101)</mtext><mtext
    id="x1-5002r101"  class="label" ></mtext><mtext 
 class="endlabel"></mtext></mtd></mtr></mtable>
 </math>
+                                                                                       
+                                                                                       
 <!--l. 232--><p class="nopar" >
 </p>
 <!--l. 234--><p class="noindent" >
@@ -2120,9 +2113,7 @@ class="eqnarray-4"> <mtext class="eqnarray"></mtext></mtd></mtr></mtable>
 </math>
 <!--l. 238--><p class="nopar" >
 </p>
-                                                                                       
-                                                                                       
-<div class="par-math-display"><!--l. 240--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 240--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -2152,9 +2143,9 @@ class="array"  columnalign="center"><msub><mrow
 ></mtd></mtr>
 <!--cc--></mtable>                                                                                       </mrow></mfenced>
 </mrow></math></div>
-<!--l. 242--><p class="nopar" >
-</p>
-<div class="par-math-display"><!--l. 244--><math 
+                                                                                       
+                                                                                       
+<div class="par-math-block" custom-style="Normal"><!--l. 244--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -2268,10 +2259,7 @@ class="array"  columnalign="center"><mn>1</mn></mtd></mtr><mtr><mtd
 class="array"  columnalign="center"></mtd></mtr>
 <!--*{10}{c}--></mtable>                                                                                       </mrow></mfenced>
 </mrow></math></div>
-<!--l. 257--><p class="nopar" >
-</p><!--l. 259--><p class="noindent" >
-                                                                                       
-                                                                                       
+<!--l. 259--><p class="noindent" >
 <!--tex4ht:inline--></p><!--l. 259--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" >
@@ -2309,7 +2297,9 @@ class="eqnarray-4"> <mtext class="eqnarray"></mtext></mtd></mtr></mtable>
 </math>
 <!--l. 262--><p class="nopar" >
 </p>
-<div class="par-math-display"><!--l. 264--><math 
+                                                                                       
+                                                                                       
+<div class="par-math-block" custom-style="Normal"><!--l. 264--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -2329,9 +2319,7 @@ class="MathClass-bin">+</mo> <mi
 class="MathClass-bin">+</mo> <mi 
 >f</mi></mrow></msqrt>
 </mrow></math></div>
-<!--l. 266--><p class="nopar" >
-</p>
-<div class="par-math-display"><!--l. 268--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 268--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -2358,11 +2346,7 @@ accent="true">¯</mo></mover> </mrow><mo
 accent="true">¯</mo></mover> </mrow><mo 
 accent="true">¯</mo></mover>
 </mrow></math></div>
-                                                                                       
-                                                                                       
-<!--l. 270--><p class="nopar" >
-</p>
-<div class="par-math-display"><!--l. 272--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 272--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -2384,9 +2368,9 @@ class="MathClass-bin">+</mo> <mi
 class="mbox"><mtext  >text</mtext></mstyle></mrow></munder 
 >
 </mrow></math></div>
-<!--l. 274--><p class="nopar" >
-</p>
-<div class="par-math-display"><!--l. 276--><math 
+                                                                                       
+                                                                                       
+<div class="par-math-block" custom-style="Normal"><!--l. 276--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -2397,9 +2381,7 @@ class="MathClass-rel">→</mo></mrow><mrow
 ><mrow><mi 
 >a</mi></mrow></mrow></mover>
 </mrow></math></div>
-<!--l. 278--><p class="nopar" >
-</p>
-<div class="par-math-display"><!--l. 281--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 281--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -2412,11 +2394,7 @@ class="array"  columnalign="center"><mi
 >b</mi></mtd></mtr>
 <!--c--></mtable>                                                                                       </mrow></mfenced>
 </mrow></math></div>
-                                                                                       
-                                                                                       
-<!--l. 283--><p class="nopar" >
-</p>
-<div class="par-math-display"><!--l. 285--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 285--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -2493,14 +2471,13 @@ class="MathClass-bin">+</mo> <mfrac><mrow
 ><mi 
 >h</mi></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac>
 </mrow></math></div>
-<!--l. 287--><p class="nopar" >
-</p><!--l. 289--><p class="noindent" >
+                                                                                       
+                                                                                       
+<!--l. 289--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">2.1    </span> <a 
 href="#QQ2-1-6" id="x1-60002.1">Testing line breaking</a></h4>
 <!--l. 291--><p class="noindent" >
-                                                                                       
-                                                                                       
 <!--tex4ht:inline--></p><!--l. 291--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" >
@@ -3064,11 +3041,11 @@ class="eqnarray-4"> <mtext class="eqnarray"></mtext></mtd></mtr></mtable>
 <!--l. 303--><p class="nopar" >
 </p><!--l. 305--><p class="noindent" >
 </p>
+                                                                                       
+                                                                                       
 <h4 class="subsectionHead"><span class="titlemark">2.2    </span> <a 
 href="#QQ2-1-7" id="x1-70002.2">Testing new commands</a></h4>
-                                                                                       
-                                                                                       
-<div class="par-math-display"><!--l. 306--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 306--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -3087,7 +3064,7 @@ display="block" ><mrow
 <mn>2</mn></mrow></msub 
 >
 </mrow></math></div>
-<!--l. 308--><p class="nopar" > </p> 
+ 
 </body> 
 </html>
                                                                                        
