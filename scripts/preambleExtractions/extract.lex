@@ -102,6 +102,9 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 
 "\\graphicspath" printf("%%"); ECHO; 
 
+"\\beamertemplatenavigationsymbolsempty" /* This switches the commands off in beamer which is silly but also doesn't work in handout format*/
+"\\frametitle"{lb}[^\{\}]*{rb} printf("\\mode<presentation>{"); ECHO; printf("}"); /* This creates extra sections in the handout */
+
 {externaldoc} printf("\\ifpdf\\ifboolexpr{togl {clearprint} or togl {web}}{"); ECHO; printf("-clear}}{"); ECHO; yy_push_state(EXTHYPER); 
 <EXTHYPER>{rb} ECHO; printf("}\\else\\fi"); yy_pop_state();
 
