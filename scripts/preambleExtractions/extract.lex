@@ -55,8 +55,9 @@ frac "\\frac"
 toosmall ("\\tiny"|"\\scriptsize"|"\\footnotesize"|"\\small")
 lstset "\\lstset"{lb}
 externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
+verbatim "\\begin"{lb}("verbatim"|"spverbatim"){rb}
 
-%x COMMENT INPUT IMPORT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE ATOP LISTING READCLASS EXTHYPER FIGURE INPUTPDFLATEX TIKZCD MATH
+%x COMMENT INPUT IMPORT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE ATOP LISTING READCLASS EXTHYPER FIGURE INPUTPDFLATEX TIKZCD MATH VERBATIM
 %s LSTSET
 %%
 
@@ -66,10 +67,14 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
  /* {singledollar} ECHO; yy_push_state(SINGLEDOLLAR); */
  /* <SINGLEDOLLAR>{singledollar} ECHO; yy_pop_state(); */
 
-  /*We need to ensure that comments are not processed */
+  /*We need to ensure that comments AND VERBATIM are not processed */
 ("%")* ECHO; yy_push_state(COMMENT);
 <COMMENT>("%") ECHO;
 <COMMENT>(\r?\n) printf("\n"); yy_pop_state();
+
+{verbatim} ECHO; yy_push_state(VERBATIM);
+<VERBATIM>"\\end"{lb}("verbatim"|"spverbatim"){rb} ECHO; yy_pop_state();
+<VERBATIM>(\r?\n) printf("\n");
 
 {standardonly} printf("\\ifboolexpr{togl {clearprint} or togl {large}}{}{"); ECHO; printf("}\n");
 ("\\hypersetup"){lb}(.*){whitespace}* printf("\\ifboolexpr{togl {clearprint} or togl {large} or togl {web}}{}{"); ECHO; printf("}\n");
@@ -203,7 +208,7 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 <ATOP>([^"\\atop"])*{rb} printf("{"); ECHO; yy_pop_state();
 
  /* This assumes that the end document is in the same file as the preamble */
-{end} ECHO; choices(); if(macrolength > 0 || beginendlength > 0) macrosoutput(); 
+{end} ECHO;   printf("I have class %s",class); choices(); if(macrolength > 0 || beginendlength > 0) macrosoutput(); 
 
  /*Just in case*/
 \r?\n printf("\n"); 
@@ -247,8 +252,11 @@ int getcolor(){
 
 int whatclass(){
   class = strdup( yytext );
-  if(strcmp(class,"beamer")==0)
+  printf("I have class %s",class);
+  if(strcmp(class,"beamer")==0){
       beamer = 1;
+      /*printf("beamer located");*/
+  }
   return 0;
 }
 
@@ -306,7 +314,8 @@ int choices(){
     fprintf(output,"\\togglefalse{contents}");
 
   fprintf(typeout,"%s",class);
-
+  printf("I have class %s",class);
+  
   if(strcmp(class,"article")==0 || strcmp(class,"extarticle")==0){  
     fprintf(alttype,"article");
     fprintf(unknown,"false");
@@ -323,6 +332,7 @@ int choices(){
     fprintf(alttype,"book");
     fprintf(unknown,"false");
   }else if(strcmp(class,"beamer") == 0){
+    printf("class still beamer");
     fprintf(alttype,"article");
     fprintf(unknown,"false");
   }else{
