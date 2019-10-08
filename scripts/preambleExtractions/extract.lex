@@ -208,7 +208,7 @@ verbatim "\\begin"{lb}("verbatim"|"spverbatim"){rb}
 <ATOP>([^"\\atop"])*{rb} printf("{"); ECHO; yy_pop_state();
 
  /* This assumes that the end document is in the same file as the preamble */
-{end} ECHO;   printf("I have class %s",class); choices(); if(macrolength > 0 || beginendlength > 0) macrosoutput(); 
+{end} ECHO; choices(); if(macrolength > 0 || beginendlength > 0) macrosoutput(); 
 
  /*Just in case*/
 \r?\n printf("\n"); 
@@ -252,7 +252,6 @@ int getcolor(){
 
 int whatclass(){
   class = strdup( yytext );
-  printf("I have class %s",class);
   if(strcmp(class,"beamer")==0){
       beamer = 1;
       /*printf("beamer located");*/
@@ -269,6 +268,7 @@ int choices(){
   FILE *paperout;
   FILE *unknown;
   FILE *fleqnout;
+  FILE *beamerfix;
   output = fopen("choices.tex","w");
   typeout = fopen(".documentclass","w");
   alttype = fopen(".alternativeclass","w");
@@ -276,6 +276,7 @@ int choices(){
   paperout = fopen(".papersize","w");
   unknown = fopen(".unknownclass","w");
   fleqnout = fopen(".fleqn","w");
+  beamerfix = fopen(".beamerfix","w");
   if(output == NULL){
     fprintf(stderr, "Can't open choices file\n");
     exit(1);
@@ -304,6 +305,10 @@ int choices(){
     fprintf(stderr, "Can't open fleqn class option output file\n");
     exit(1);
   }
+  if(beamerfix == NULL){
+    fprintf(stderr, "Can't open beamefix class option output file\n");
+    exit(1);
+  }
   if(title == 1 && author == 1)
     fprintf(output,"\\toggletrue{frontmatter}");
   else
@@ -314,7 +319,6 @@ int choices(){
     fprintf(output,"\\togglefalse{contents}");
 
   fprintf(typeout,"%s",class);
-  printf("I have class %s",class);
   
   if(strcmp(class,"article")==0 || strcmp(class,"extarticle")==0){  
     fprintf(alttype,"article");
@@ -332,9 +336,9 @@ int choices(){
     fprintf(alttype,"book");
     fprintf(unknown,"false");
   }else if(strcmp(class,"beamer") == 0){
-    printf("class still beamer");
     fprintf(alttype,"article");
     fprintf(unknown,"false");
+    fprintf(beamerfix,"unknownkeysallowed,xcolor={usenames,svgnames,dvipsnames}");
   }else{
     fprintf(alttype,"report");
     fprintf(unknown,"true");

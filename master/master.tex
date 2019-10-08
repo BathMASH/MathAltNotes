@@ -17,7 +17,8 @@
 \providecommand{\beamerhandout}{}
 %% As is flushed left equations
 \providecommand{\fleqn}{}
-\documentclass[\pointsize,\papersize,\beamerhandout,\fleqn]{\class}
+\providecommand{\beamerfix}{}
+\documentclass[\pointsize,\papersize,\beamerhandout,\fleqn,\beamerfix]{\class}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Babel package to specify English typographical 
@@ -265,9 +266,8 @@
 
 }{
 \newenvironment{mytikz}{\begin{center}\begin{tikzcd}[ampersand replacement=\&]}{\end{tikzcd}\end{center}}
-%% In the standard format I still might need to insert a disclaimer
-\appto{\maketitle}{\inputdisclaimer}
-\ifdefstring{\class}{beamer}{\appto{\titlepage}{\tiny Lecture notes and audio recording, Department of Mathematical Sciences, The University of Bath\footnote{\tiny\inputdisclaimer}}}{}
+%% In the standard format I still might need to insert a disclaimer but it shouldn't be there if maketitle is used in beamer, we do it a different way in beamer
+\ifdefstring{\class}{beamer}{\appto{\titlepage}{\tiny Lecture notes and audio recording, Department of Mathematical Sciences, The University of Bath\footnote{\tiny\inputdisclaimer}}}{\appto{\maketitle}{\inputdisclaimer}}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
