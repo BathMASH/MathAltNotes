@@ -310,7 +310,8 @@ endif
 	mkdir built/$(name)-web/figures/jpg/
 	mkdir built/$(name)-web/figures/svg/
 	mv *.html built/$(name)-web/
-	cp $(HOME)/../../assets/additional.css built/$(name)-web/
+#I am not really sure if this is necessary. It was on ONE example - doctoral writing thing written by EHC. Should explore further.
+	cp $(HOME)/../../assets/additionalfix.css built/$(name)-web/additional.css
 	mv *.css built/$(name)-web/
 	if ls ./figures/eps/*.svg 1> /dev/null 2>&1; then cp ./figures/eps/*.svg built/$(name)-web/figures/eps/; fi
 	if ls ./figures/latexpdfsvg/*.svg 1> /dev/null 2>&1; then cp ./figures/latexpdfsvg/*.svg built/$(name)-web/figures/latexpdfsvg/; fi
@@ -537,7 +538,8 @@ endif
 	cp $(HOME)/../../assets/listings.4ht .
 	cp $(HOME)/../../assets/unicode.4hf .
 	cp $(HOME)/../../assets/mathjaxMMLWord.cfg .
-	cp $(HOME)/../../assets/additional.css .
+#Not sure if this is necessary. It was on ONE example, doctoral writing thing by EHC. This should be investigated.
+	cp $(HOME)/../../assets/additionalfix.css additional.css
 #Make any pdf_tex figures
 #	$(HOME)/../graphicx/buildfigure.sh ./
 #Make any tikz figures etc.
