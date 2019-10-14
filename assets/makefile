@@ -150,7 +150,7 @@ ifeq ($(TYPE),beamer)
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-large.tex ] || rm -f $(name)-large.tex
-	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{ext$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-large.tex
+	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{ext$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean-lp}" > $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex

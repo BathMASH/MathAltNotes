@@ -214,7 +214,7 @@
  \ifdefstring{\beamerslides}{true}{\date{}}{}
  \AfterEndPreamble{
   \iftoggle{frontmatter}{\renewcommand{\baselinestretch}{1.0}\selectfont\maketitle\renewcommand{\baselinestretch}{1.25}\selectfont\inputdisclaimer}{}
-  \iftoggle{contents}{\tableofcontents\listoffigures\listoftables\renewcommand{\tableofcontents}{}\renewcommand{\listoffigures}{}\renewcommand{\listoftables}{}\newpage}{\iftoggle{frontmatter}{\newpage}{}}
+  \iftoggle{contents}{\tableofcontents\listoffigures\listoftables  \iftoggle{web}{\ifdefstring{\beamerslides}{true}{\section*{Start of slides}}{}}{}\renewcommand{\tableofcontents}{}\renewcommand{\listoffigures}{}\renewcommand{\listoftables}{}\newpage}{\iftoggle{frontmatter}{\newpage}{}}
   \pagenumbering{arabic}        
   \setcounter{page}{1}
  }

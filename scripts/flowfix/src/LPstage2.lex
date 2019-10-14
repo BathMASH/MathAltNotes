@@ -13,6 +13,7 @@ int bracketmatch = 0;
 int bettergraphics = 0;
 %}
 whitespace (" "|\t|(\r?\n))
+whitenonew (" "|\t)
 alpha ([A-Za-z])
 lb ([[:blank:]])*"{"([[:blank:]])*
 rb ([[:blank:]])*"}"
@@ -30,10 +31,10 @@ dseriesstarend "\\end"{lb}("multline*"|"gather*"){rb}
 dseriesstart "\\begin"{lb}("multline"){rb}
 dseriesend "\\end"{lb}("multline"){rb}
 dgroupnoalignstart "\\begin"{lb}("gather"){rb}
-dgroupstarstart "\\begin"{lb}(("eqnarray*"|"align*"|"flalign*"){rb}|("alignat*"{rb}{lb}(.*){rb}))
-dgroupstarend "\\end"{lb}("eqnarray*"|"align*"|"flalign*"|"alignat*"){rb}
-dgroupstart "\\begin"{lb}(("eqnarray"|"align"|"flalign"){rb}|("alignat"{rb}{lb}(.*){rb}))
-dgroupend "\\end"{lb}("eqnarray"|"align"|"flalign"|"alignat"|"gather"){rb}
+dgroupstarstart "\\begin"{lb}(("eqnarray*"|"align*"|"flalign*"){rb}|(("alignat*"|"xalignat*"){rb}{lb}(.*){rb}))
+dgroupstarend "\\end"{lb}("eqnarray*"|"align*"|"flalign*"|"alignat*"|"xalignat*"){rb}
+dgroupstart "\\begin"{lb}(("eqnarray"|"align"|"flalign"){rb}|(("alignat"|"xalignat"){rb}{lb}(.*){rb}))
+dgroupend "\\end"{lb}("eqnarray"|"align"|"flalign"|"alignat"|"gather"|"xalignat"){rb}
 arraystart ("\\begin"{lb}("array"){rb}{lb}|"\\begin"{lb}("matrix"|"pmatrix"|"bmatrix"|"Bmatrix"|"vmatrix"|"Vmatrix"|"smallmatrix"|"cases"){rb}) 
 arrayend "\\end"{lb}("array"|"matrix"|"pmatrix"|"bmatrix"|"Bmatrix"|"vmatrix"|"Vmatrix"|"smallmatrix"|"cases"){rb}
 tablestart "\\begin"{lb}("table"){rb}("["*)(.*)("]"*)
@@ -92,6 +93,7 @@ protectend ("\\end{picture}"|"\\makeatother")
 
  /* Rules possibly used in several multi-line situations */
 <CHECKSTAR>("\\notag"|"\\nonumber"|"\\intertextend")
+<DGROUPSTAR,DGROUP,CHECKSTAR,SPLIT>("&")({whitenonew}*)(\r?\n) printf(" "); /*printf("\\ ");*/
 <DGROUPSTAR,DGROUP,CHECKSTAR,SPLIT>("&") printf(" "); /*printf("\\ ");*/
 <DMATHSTAR,DSERIESSTAR,DGROUPSTAR,DMATH,DSERIES,DGROUP,CHECKSTAR,SPLIT,ARRAY>{arraystart} ECHO; yy_push_state(ARRAY); /* protect */
 <DMATHSTAR,DSERIESSTAR,DGROUPSTAR,DMATH,DSERIES,DGROUP,CHECKSTAR,SPLIT,ARRAY>{newenvironment} ECHO; yy_push_state(NEWENVIR); /* protect */

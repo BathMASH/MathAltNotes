@@ -27,6 +27,8 @@ lb ([[:blank:]])*"{"([[:blank:]])*
 rb ([[:blank:]])*"}"
 ls ([[:blank:]])*"["([[:blank:]])*
 rs ([[:blank:]])*"]"
+lp ([[:blank:]])*"("([[:blank:]])*
+rp ([[:blank:]])*")"
 docclass "\\documentclass"
 title "\\title"
 author "\\author"
@@ -47,6 +49,8 @@ picturestart "\\begin"{lb}"picture"{rb}
 pictureend "\\end"{lb}"picture"{rb}
 figurestart "\\begin"{lb}"figure"{rb}
 figureend "\\end"{lb}"figure"{rb}
+textblockstart "\\begin"{lb}"textblock"{rb}{lb}[^\{\}]*{rb}{lp}[^()]*{rp}
+textblockend "\\end"{lb}"textblock"{rb}
 mathstart "\\begin"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|"multline"|"gather"|"eqnarray*"|"align*"|"eqnarray"|"align"){rb}
 mathsend "\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|"multline"|"gather"|"eqnarray*"|"align*"|"eqnarray"|"align"){rb}
 begindocument "\\begin"{lb}"document"{rb}
@@ -58,7 +62,7 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 verbatim "\\begin"{lb}("verbatim"|"spverbatim"){rb}
 
 %x COMMENT INPUT IMPORT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE ATOP LISTING READCLASS EXTHYPER FIGURE INPUTPDFLATEX TIKZCD MATH VERBATIM
-%s LSTSET
+%s LSTSET TEXTBLOCK
 %%
 
  /* {doubledollar} ECHO; yy_push_state(DOUBLEDOLLAR); */
@@ -175,6 +179,10 @@ verbatim "\\begin"{lb}("verbatim"|"spverbatim"){rb}
 <INCLUDE>{lb}(.*)/("/") printf("{");
 <INCLUDE>"/"
 <INCLUDE>{rb} ECHO; yy_pop_state();
+
+ /* Textblocks put things in random places when we make the move from Beamer to Beamer article */
+{textblockstart} printf("\\mode<presentation>{"); ECHO; printf("}"); yy_push_state(TEXTBLOCK);
+<TEXTBLOCK>{textblockend} printf("\\mode<presentation>{"); ECHO; printf("}"); yy_pop_state();
 
  /* Changed 0 to 1 and removed ECHO to place these also in the de-marco */
 {newcommand}/("{"(.*)"}"("["(.*)"]")?"{"(.*)"_") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND);//ECHO; yy_push_state(COMMAND);
