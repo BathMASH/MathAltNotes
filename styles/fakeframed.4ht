@@ -22,3 +22,11 @@
  } 
 }
 
+\ConfigureEnv{leftbar}
+{\ifvmode\IgnorePar\fi\EndP\HCode{<div class="framed">}\par}{\ifvmode\IgnorePar\fi\EndP\HCode{</div>}\par}{}{}
+
+\Css{div.framed {
+ background-color: Gainsboro;
+ } 
+}
+
