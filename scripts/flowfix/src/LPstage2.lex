@@ -167,9 +167,10 @@ protectend ("\\end{picture}"|"\\makeatother")
  /* tables - we need to use longtabu and I believe that I have removed the assumption that there is a newline at the end of the tabular argument and none within it */
  /* Working on the assumption that if you used tabularx it was because you have a hideous wide table */
  /* We can't allow the table construct as longtabu doesn't do its job then */
+ /* I have changed this to longtabu* as this allows verbatim content. However, it throws away some functionality (what?) to do that so this may need to be reverted */
 {tablestart} yy_push_state(TABLE);
-{tabularxstart} printf("\\newpage\\begin{landscape}\n\\begin{longtabu} to \\linewidth"); yy_push_state(TABULARX); yy_push_state(TABU);
-{tabustart}(\r?\n)* printf("\\begin{longtabu} to \\textwidth"); yy_push_state(TABU);
+{tabularxstart} printf("\\newpage\\begin{landscape}\n\\begin{longtabu*} to \\linewidth"); yy_push_state(TABULARX); yy_push_state(TABU);
+{tabustart}(\r?\n)* printf("\\begin{longtabu*} to \\textwidth"); yy_push_state(TABU);
 <TABU>(("to")(([^"}"]*)))/("{") 
 <TABU>("{\\linewidth}"|"{\\textwidth}")
 <TABU>("@{"([^"}""{"]*)) ECHO; yy_push_state(KEEP); 
@@ -181,11 +182,11 @@ protectend ("\\end{picture}"|"\\makeatother")
 <KEEP>"}" ECHO; yy_pop_state();
 <REMOVE>"}" yy_pop_state();
 
-{tabuend} printf("\\end{longtabu}\n"); /*if (YY_START != TABLE) printf("\\end{longtabu}\n");*/
+{tabuend} printf("\\end{longtabu*}\n"); /*if (YY_START != TABLE) printf("\\end{longtabu*}\n");*/
 <TABLE>"\\caption" printf("Table caption: "); yy_push_state(CAPTION);/*<TABLE>"\\caption"{lb}(.*){rb} ECHO;*/ 
 <CAPTION>("{"(.*))/"}" ECHO; printf("}\\addcontentsline{lot}{table}"); ECHO; printf("\\protect"); yy_pop_state();
 <TABLE>{tableend} yy_pop_state();
-<TABULARX>{tabularxend} printf("\\end{longtabu}\\end{landscape}\n"); yy_pop_state();
+<TABULARX>{tabularxend} printf("\\end{longtabu*}\\end{landscape}\n"); yy_pop_state();
 
  /* graphics removed ECHO before if on the next line - is this right?*/
 "\\setlength{\\unitlength}{"(.*)"}" ECHO; /*if (normalsize > 14) printf("\\setlength{\\unitlength}{%lfpt}",factor); else ECHO;*/

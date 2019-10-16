@@ -105,6 +105,15 @@
 %% set up a directory structure that must be used
 \graphicspath{{./figures/latexpdfsvg/}{./figures/svg/}{./figures/eps/}{./figures/pdf/}{./figures/png/}{./figures/jpg/}{./figures/latexpdf/}} 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Emergency commands to force math in standard and
+%% clear to be within the line width but without
+%% affecting large, web or word
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareRobustCommand{\mathaltemergencyresize}[1]{
+  \resizebox{\linewidth}{!}{$ #1 $}}
+
+
 %% Level of reliance on amsmath means we require this
 %% syntax and fix things that it will not accept
 \usepackage{amsmath}
