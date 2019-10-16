@@ -18,6 +18,7 @@ decthm "\\declaretheorem"{ls}
 %x COMMENT VERBATIM SINGLEDOLLAR DOUBLEDOLLAR DROPMATH TOC FIG DECTHM OPTIONS
 %%
 
+("\\\\") ECHO; /* protect above the below as sometimes people write \\$ */
 ("\\$") ECHO; /* protect */
 
  /* Protect */
