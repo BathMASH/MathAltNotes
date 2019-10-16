@@ -68,7 +68,7 @@ standard: clean $(name)-cont-clean.tex
 #We can't change the jobname to get different filenames that way as this does not work with some packages
 #we will need to use for graphics in this set up. 
 	mv $(name)-standard.pdf built/
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 
 standardtest: clean $(name)-cont-clean.tex
 
@@ -92,7 +92,7 @@ endif
 	$(LATEX) --shell-escape $(name)-clear.tex
 	$(LATEX) --shell-escape $(name)-clear.tex
 	mv $(name)-clear.pdf built/
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 
 cleartest: clean $(name)-cont-clean.tex
 
@@ -110,7 +110,7 @@ ifeq ($(TYPE),beamer)
 	$(LATEX) $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	mv $(name)-clear.pdf built/
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 else
 	@echo "---------------------------------------------------";
 	@echo "You cannot make clear beamer article format for documents which are not beamer slides.";
@@ -137,7 +137,7 @@ endif
 	$(LATEX) --shell-escape $(name)-large.tex
 	$(LATEX) --shell-escape $(name)-large.tex
 	mv $(name)-large.pdf built/
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 
 largetest: clean $(name)-cont-clean-lp.tex
 
@@ -155,7 +155,7 @@ ifeq ($(TYPE),beamer)
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	mv $(name)-large.pdf built/
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 else
 	@echo "---------------------------------------------------";
 	@echo "You cannot make large beamer article format for documents which are not beamer slides.";
@@ -242,7 +242,7 @@ endif
 	@rm mathml.4ht
 	@rm unicode.4hf
 	@rm mathjaxMMLWord.cfg
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 	@rm *.htf
 
 #We require some additional files for everything to work. 
@@ -326,7 +326,7 @@ endif
 	@rm mathml.4ht
 	@rm unicode.4hf
 	@rm mathjaxMMLWord.cfg
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 	@rm *.htf
 
 #We require some additional files for everything to work. 
@@ -413,7 +413,7 @@ endif
 	@rm mathml.4ht
 	@rm unicode.4hf
 	@rm mathjaxMMLWord.cfg
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 	@rm *.htf
 
 
@@ -485,7 +485,7 @@ endif
 	@rm unicode.4hf
 	@rm mathjaxMMLWord.cfg
 	@rm additional.css
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 	@rm *.htf
 
 wordtest: clean $(name)-cont-web-clean.tex
@@ -521,7 +521,7 @@ endif
 	@rm unicode.4hf
 	@rm mathjaxMMLWord.cfg
 	@rm additional.css
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 	@rm *.htf
 
 #To transform to Word we need to use the web transform but without breaking into sections and then use Pandoc 19+
@@ -593,12 +593,12 @@ endif
 	@rm unicode.4hf
 	@rm mathjaxMMLWord.cfg
 	@rm additional.css
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 	@rm *.htf
 
 
 clean:
-	@rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot *x.interim.png *x.svg *.4ht *-lp1 *-lp0 bbmone.* fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* *.tmp2 *.nav *.snm colorfix.sty fontfix.sty parfix.sty beamerfix.sty *-pics*.pdf tuftefix.sty *.htf
+	@rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot *x.interim.png *x.svg *.4ht *-lp1 *-lp0 bbmone.* fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* *.tmp2 *.nav *.snm colorfix.sty fontfix.sty parfix.sty beamerfix.sty *-pics*.pdf tuftefix.sty *.htf algorithmicfix.*
 
 cleaner:
 	@rm -f *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp*.tex *-figures.tex *_tex-lp macros.tex demacro-private.sty *-cont* *-co *.pre zz*-web* *.pdf_tex.tex *.pdf_tex-clean.tex *.web.tex *-web-standard.tex
