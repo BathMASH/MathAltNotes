@@ -154,7 +154,8 @@ protectend ("\\end{picture}"|"\\makeatother")
 {dgroupnoalignstart} printf("\\begin{dgroup*}[noalign,compact,spread={%lf\\baselineskip}]\\begin{dmath}",mathlines); yy_push_state(DGROUP); 
 <DGROUP,CHECKSTAR>{dgroupend} if (YY_START == CHECKSTAR) {printf("\\end{dmath*}"); yy_pop_state();} else printf("\\end{dmath}"); printf("\\end{dgroup*}"); yy_pop_state();
 
-<DMATH,DGROUP,FINDBRACE>"\\tag"{lb} 
+<DMATH,DGROUP>"\\tag"{lb} yy_push_state(TAG);
+<FINDBRACE>"\\tag"{lb} 
 <DMATH,DGROUP>"\\label"{lb} yy_push_state(LABEL);
 
  /* Should this be inside the breqn or outside? */
