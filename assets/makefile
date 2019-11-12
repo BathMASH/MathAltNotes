@@ -1,6 +1,8 @@
 ﻿.PHONY: clean standard clear large web word
 #Change the name to the main tex file without the file extension.
 name=empty
+#The below is the break level for the web version
+level=$(shell cat .level)
 LATEX=timeout 1m pdflatex -interaction=nonstopmode -halt-on-error
 HOME=$(shell cat .home)
 HTLATEX=timeout 2m $(HOME)/../../scripts/htlatex
@@ -12,13 +14,15 @@ ALTT=$(shell cat .alternativeclass 2> /dev/null)
 UNKN=$(shell cat .unknownclass 2> /dev/null)
 SIZE=$(shell cat .fontsize 2> /dev/null)
 PAPER=$(shell cat .papersize 2> /dev/null)
+FLEQN=$(shell cat .fleqn 2> /dev/null)
+BEAMERFIX=$(shell cat .beamerfix 2> /dev/full)
 DIS=$(shell cat .disclaimer 2> /dev/null)
 
 pdflatexfigures:
 	mkdir -p built
 	cp $(HOME)/../../styles/* . 
 	[ ! -f $(name)-figures.tex ] || rm -f $(name)-figures.tex
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\input{master}\\\\usepackage{color}\\\\thispagestyle{empty}\\\\togglefalse{frontmatter}\\\\togglefalse{contents}\\\\begin{document}\\\\input{$(name)}\\\\end{document}" > $(name)-figures.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{color}\\\\thispagestyle{empty}\\\\togglefalse{frontmatter}\\\\togglefalse{contents}\\\\begin{document}\\\\input{$(name)}\\\\end{document}" > $(name)-figures.tex
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\togglefalse{word}\\\\togglefalse{large}" > toggle.tex
 	$(LATEX) --shell-escape $(name)-figures.tex 
@@ -56,7 +60,7 @@ standard: clean $(name)-cont-clean.tex
 #In this example we have a SVG but need a PDF for the LaTeX to work with.
 	echo "\\\\togglefalse{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-standard.tex ] || rm -f $(name)-standard.tex
-	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\emphasis{standard}\\\\def\\\\papersize{$(PAPER)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-standard.tex
+	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\emphasis{standard}\\\\def\\\\papersize{$(PAPER)}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{$(BEAMERFIX)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-standard.tex
 #https://tex.stackexchange.com/questions/611/setting-class-options-after-documentclass/617
 	$(LATEX) --shell-escape $(name)-standard.tex
 	$(LATEX) --shell-escape $(name)-standard.tex
@@ -64,7 +68,7 @@ standard: clean $(name)-cont-clean.tex
 #We can't change the jobname to get different filenames that way as this does not work with some packages
 #we will need to use for graphics in this set up. 
 	mv $(name)-standard.pdf built/
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty 
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty algorithmicfix.*
 
 standardtest: clean $(name)-cont-clean.tex
 
@@ -77,18 +81,18 @@ clear: clean $(name)-cont-clean.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-clear.tex ] || rm -f $(name)-clear.tex
 ifeq ($(UNKN),false)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
 endif
 ifeq ($(TYPE),beamer)	
-	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerhandout{handout}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
+	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerhandout{handout}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{$(BEAMERFIX)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
 endif
 	$(LATEX) --shell-escape $(name)-clear.tex
 	$(LATEX) --shell-escape $(name)-clear.tex
 	$(LATEX) --shell-escape $(name)-clear.tex
 	mv $(name)-clear.pdf built/
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty 
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty algorithmicfix.*
 
 cleartest: clean $(name)-cont-clean.tex
 
@@ -101,12 +105,12 @@ ifeq ($(TYPE),beamer)
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-clear.tex ] || rm -f $(name)-clear.tex
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	mv $(name)-clear.pdf built/
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty 
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty algorithmicfix.*
 else
 	@echo "---------------------------------------------------";
 	@echo "You cannot make clear beamer article format for documents which are not beamer slides.";
@@ -122,18 +126,18 @@ large: clean $(name)-cont-clean-lp.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-large.tex ] || rm -f $(name)-large.tex
 ifeq ($(UNKN),false)
-	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{ext$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean-lp}" > $(name)-large.tex
+	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{ext$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean-lp}" > $(name)-large.tex
 else
-	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean-lp}" > $(name)-large.tex
+	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean-lp}" > $(name)-large.tex
 endif
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerhandout{handout}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-large.tex
+	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerhandout{handout}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{$(BEAMERFIX)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-large.tex
 endif
 	$(LATEX) --shell-escape $(name)-large.tex
 	$(LATEX) --shell-escape $(name)-large.tex
 	$(LATEX) --shell-escape $(name)-large.tex
 	mv $(name)-large.pdf built/
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty 
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty algorithmicfix.*
 
 largetest: clean $(name)-cont-clean-lp.tex
 
@@ -146,12 +150,12 @@ ifeq ($(TYPE),beamer)
 	[ ! -f toggle.tex ] || rm -f toggle.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-large.tex ] || rm -f $(name)-large.tex
-	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{ext$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-large.tex
+	echo "\\\\def\\\\pointsize{17pt}\\\\def\\\\class{ext$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean-lp}" > $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	mv $(name)-large.pdf built/
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty 
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty algorithmicfix.*
 else
 	@echo "---------------------------------------------------";
 	@echo "You cannot make large beamer article format for documents which are not beamer slides.";
@@ -175,12 +179,12 @@ web: clean $(name)-cont-web-clean.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-web.tex ] || rm -f $(name)-web.tex
 ifeq ($(UNKN),false)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
 endif
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
 endif
 	$(LATEX) -shell-escape $(name)-web.tex
 #Fix any figures that were produced in png incorrectly
@@ -197,15 +201,15 @@ endif
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
 	[ ! -f $(name)-web.tex ] || rm -f $(name)-web.tex
 ifeq ($(UNKN),false)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
 endif
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
 endif
-	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
-	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #Change the endings from interim to svg - this should not be doing anything any more after fix via .env
 #	sed -i "s/x.interim.png/x.svg/" *.html
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
@@ -238,7 +242,7 @@ endif
 	@rm mathml.4ht
 	@rm unicode.4hf
 	@rm mathjaxMMLWord.cfg
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty 
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty algorithmicfix.*
 	@rm *.htf
 
 #We require some additional files for everything to work. 
@@ -258,12 +262,12 @@ websloppy: clean $(name)-cont-web-clean.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-web.tex ] || rm -f $(name)-web.tex
 ifeq ($(UNKN),false)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
 endif
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web.tex
 endif
 	$(LATEX) -shell-escape $(name)-web.tex
 #Fix any figures that were produced in png incorrectly
@@ -280,15 +284,15 @@ endif
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
 	[ ! -f $(name)-web.tex ] || rm -f $(name)-web.tex
 ifeq ($(UNKN),false)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
 endif
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
 endif
-	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
-	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #Change the endings from interim to svg - this should not be doing anything any more after fix via .env
 #	sed -i "s/x.interim.png/x.svg/" *.html
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
@@ -306,7 +310,8 @@ endif
 	mkdir built/$(name)-web/figures/jpg/
 	mkdir built/$(name)-web/figures/svg/
 	mv *.html built/$(name)-web/
-	cp $(HOME)/../../assets/additional.css built/$(name)-web/
+#I am not really sure if this is necessary. It was on ONE example - doctoral writing thing written by EHC. Should explore further.
+	cp $(HOME)/../../assets/additionalfix.css built/$(name)-web/additional.css
 	mv *.css built/$(name)-web/
 	if ls ./figures/eps/*.svg 1> /dev/null 2>&1; then cp ./figures/eps/*.svg built/$(name)-web/figures/eps/; fi
 	if ls ./figures/latexpdfsvg/*.svg 1> /dev/null 2>&1; then cp ./figures/latexpdfsvg/*.svg built/$(name)-web/figures/latexpdfsvg/; fi
@@ -321,7 +326,7 @@ endif
 	@rm mathml.4ht
 	@rm unicode.4hf
 	@rm mathjaxMMLWord.cfg
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty 
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty algorithmicfix.*
 	@rm *.htf
 
 #We require some additional files for everything to work. 
@@ -341,12 +346,12 @@ webstandard: clean $(name)-cont-web-clean.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
 	[ ! -f $(name)-web.tex ] || rm -f $(name)-web-standard.tex
 ifeq ($(UNKN),false)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\emphasis{standard}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web-standard.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\emphasis{standard}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web-standard.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\emphasis{standard}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web-standard.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\emphasis{standard}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web-standard.tex
 endif
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\emphasis{standard}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web-standard.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\emphasis{standard}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web-standard.tex
 endif
 	$(LATEX) -shell-escape $(name)-web-standard.tex
 #Fix any figures that were produced in png incorrectly
@@ -363,15 +368,15 @@ endif
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
 	[ ! -f $(name)-web-standard.tex ] || rm -f $(name)-web-standard.tex
 ifeq ($(UNKN),false)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\emphasis{standard}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web-standard.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\emphasis{standard}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web-standard.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\emphasis{standard}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web-standard.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\emphasis{standard}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web-standard.tex
 endif
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\emphasis{standard}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web-standard.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\emphasis{standard}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web-standard.tex
 endif
-	$(HTLATEX)  $(name)-web-standard.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
-	$(HTLATEX)  $(name)-web-standard.tex "mathjaxMMLWord.cfg,2,sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web-standard.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web-standard.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #Change the endings from interim to svg - this should not be doing anything any more after fix via .env
 #	sed -i "s/x.interim.png/x.svg/" *.html
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
@@ -408,7 +413,7 @@ endif
 	@rm mathml.4ht
 	@rm unicode.4hf
 	@rm mathjaxMMLWord.cfg
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty 
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty algorithmicfix.*
 	@rm *.htf
 
 
@@ -418,7 +423,11 @@ word: clean $(name)-cont-web-clean.tex
 #Copy some files to where we need them
 	cp $(HOME)/../../styles/* . 
 	cp $(HOME)/../../fonts/* .
+ifeq ($(FLEQN),fleqn)
+	cp $(HOME)/../../assets/mathml-fleqn.4ht ./mathml.4ht
+else
 	cp $(HOME)/../../assets/mathml.4ht .
+endif
 	cp $(HOME)/../../assets/listings.4ht .
 	cp $(HOME)/../../assets/unicode.4hf .
 	cp $(HOME)/../../assets/mathjaxMMLWord.cfg .
@@ -430,12 +439,12 @@ word: clean $(name)-cont-web-clean.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}\\\\toggletrue{word}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
 ifeq ($(UNKN),false)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
 endif
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
 endif
 	$(LATEX) -shell-escape $(name)-word.tex
 #Fix any figures that were produced in png incorrectly
@@ -448,12 +457,12 @@ endif
 	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}\\\\toggletrue{word}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
 ifeq ($(UNKN),false)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
 endif
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
 endif
 #htlatex needs to run twice to prevent disruption to the sectioning tree caused by e.g. footnotes
 #Note, yes this does run latex 6 times! It is a reported bug: https://puszcza.gnu.org.ua/bugs/index.php?197
@@ -476,14 +485,18 @@ endif
 	@rm unicode.4hf
 	@rm mathjaxMMLWord.cfg
 	@rm additional.css
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty 
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty algorithmicfix.*
 	@rm *.htf
 
 wordtest: clean $(name)-cont-web-clean.tex
 #Copy some files to where we need them
 	cp $(HOME)/../../styles/* . 
 	cp $(HOME)/../../fonts/* .
+ifeq ($(FLEQN),fleqn)
+	cp $(HOME)/../../assets/mathml-fleqn.4ht ./mathml.4ht
+else
 	cp $(HOME)/../../assets/mathml.4ht .
+endif
 	cp $(HOME)/../../assets/listings.4ht .
 	cp $(HOME)/../../assets/unicode.4hf .
 	cp $(HOME)/../../assets/mathjaxMMLWord.cfg .
@@ -493,12 +506,12 @@ wordtest: clean $(name)-cont-web-clean.tex
 	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}\\\\toggletrue{word}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
 ifeq ($(UNKN),false)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
 endif
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
 endif
 	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
 	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
@@ -508,7 +521,7 @@ endif
 	@rm unicode.4hf
 	@rm mathjaxMMLWord.cfg
 	@rm additional.css
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty 
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty algorithmicfix.*
 	@rm *.htf
 
 #To transform to Word we need to use the web transform but without breaking into sections and then use Pandoc 19+
@@ -517,11 +530,16 @@ wordsloppy: clean $(name)-cont-web-clean.tex
 #Copy some files to where we need them
 	cp $(HOME)/../../styles/* . 
 	cp $(HOME)/../../fonts/* .
+ifeq ($(FLEQN),fleqn)
+	cp $(HOME)/../../assets/mathml-fleqn.4ht ./mathml.4ht
+else
 	cp $(HOME)/../../assets/mathml.4ht .
+endif
 	cp $(HOME)/../../assets/listings.4ht .
 	cp $(HOME)/../../assets/unicode.4hf .
 	cp $(HOME)/../../assets/mathjaxMMLWord.cfg .
-	cp $(HOME)/../../assets/additional.css .
+#Not sure if this is necessary. It was on ONE example, doctoral writing thing by EHC. This should be investigated.
+	cp $(HOME)/../../assets/additionalfix.css additional.css
 #Make any pdf_tex figures
 #	$(HOME)/../graphicx/buildfigure.sh ./
 #Make any tikz figures etc.
@@ -529,12 +547,12 @@ wordsloppy: clean $(name)-cont-web-clean.tex
 	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}\\\\toggletrue{word}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
 ifeq ($(UNKN),false)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
 endif
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
 endif
 	$(LATEX) -shell-escape $(name)-word.tex
 #Fix any figures that were produced in png incorrectly
@@ -547,12 +565,12 @@ endif
 	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}\\\\toggletrue{word}" > toggle.tex
 	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
 ifeq ($(UNKN),false)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
 else
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
 endif
 ifeq ($(TYPE),beamer)
-	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
 endif
 #htlatex needs to run twice to prevent disruption to the sectioning tree caused by e.g. footnotes
 #Note, yes this does run latex 6 times! It is a reported bug: https://puszcza.gnu.org.ua/bugs/index.php?197
@@ -575,12 +593,12 @@ endif
 	@rm unicode.4hf
 	@rm mathjaxMMLWord.cfg
 	@rm additional.css
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty 
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty algorithmicfix.*
 	@rm *.htf
 
 
 clean:
-	@rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot *x.interim.png *x.svg *.4ht *-lp1 *-lp0 bbmone.* fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* *.tmp2 *.nav *.snm colorfix.sty fontfix.sty parfix.sty beamerfix.sty *-pics*.pdf tuftefix.sty *.htf
+	@rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot *x.interim.png *x.svg *.4ht *-lp1 *-lp0 bbmone.* fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* *.tmp2 *.nav *.snm colorfix.sty fontfix.sty parfix.sty beamerfix.sty *-pics*.pdf tuftefix.sty *.htf algorithmicfix.*
 
 cleaner:
 	@rm -f *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp*.tex *-figures.tex *_tex-lp macros.tex demacro-private.sty *-cont* *-co *.pre zz*-web* *.pdf_tex.tex *.pdf_tex-clean.tex *.web.tex *-web-standard.tex

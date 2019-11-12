@@ -28,6 +28,28 @@ echo "-----------------------------------------------------------------"
 echo "-----------------------------------------------------------------"
 cd $1
 echo "" > .disclaimer
+echo "-----------------------------------------------------------------"
+echo "Section breaking for web version"
+echo "================================"
+echo "It is recommended that the web version has each section on a new "
+echo "page. For most documents this balances page load time (which "
+echo "increases for each pieces of mathematics) and fragmentation of the"
+echo "document. Please select your break level now:"
+echo "[1] No breaks"
+echo "[2] Break on section (chapter in report format)"
+echo "[3] Break on subsection (section in report format)"
+echo "Please input 1, 2 or 3 followed by enter:"
+read level
+if [ $level == "1" ]; then
+    echo "1" > .level
+elif [ $level == "2" ]; then
+    echo "2" > .level
+elif [ $level == "3" ]; then
+    echo "3" > .level
+else
+    echo "You did not pick 1, 2 or 3. Using 2 as the default."
+    echo "2" > .level
+fi
 cd ..
 echo "Checking lexers are compiled"
 echo "============================="

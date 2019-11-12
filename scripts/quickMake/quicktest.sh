@@ -29,10 +29,11 @@ fi
 echo "============================="
 echo "Delimiters"
 echo "============================="
-echo y | ./scripts/dedollar/dedollar.sh $1 &>/dev/null
+./scripts/dedollar/dedollar.sh $1 &>/dev/null
 ./scripts/match_parens_ht/match_parens_ht.sh $1 &>/dev/null
 echo y | ./scripts/vert/vert.sh $1 &>/dev/null
 cd $1
+echo "2" > .level
 file=`find . -name "*.fls" -type f`
 name=$(basename "$file" .fls)
 echo "Making standard print format"

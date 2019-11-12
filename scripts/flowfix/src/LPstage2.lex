@@ -13,6 +13,7 @@ int bracketmatch = 0;
 int bettergraphics = 0;
 %}
 whitespace (" "|\t|(\r?\n))
+whitenonew (" "|\t)
 alpha ([A-Za-z])
 lb ([[:blank:]])*"{"([[:blank:]])*
 rb ([[:blank:]])*"}"
@@ -30,10 +31,10 @@ dseriesstarend "\\end"{lb}("multline*"|"gather*"){rb}
 dseriesstart "\\begin"{lb}("multline"){rb}
 dseriesend "\\end"{lb}("multline"){rb}
 dgroupnoalignstart "\\begin"{lb}("gather"){rb}
-dgroupstarstart "\\begin"{lb}(("eqnarray*"|"align*"|"flalign*"){rb}|("alignat*"{rb}{lb}(.*){rb}))
-dgroupstarend "\\end"{lb}("eqnarray*"|"align*"|"flalign*"|"alignat*"){rb}
-dgroupstart "\\begin"{lb}(("eqnarray"|"align"|"flalign"){rb}|("alignat"{rb}{lb}(.*){rb}))
-dgroupend "\\end"{lb}("eqnarray"|"align"|"flalign"|"alignat"|"gather"){rb}
+dgroupstarstart "\\begin"{lb}(("eqnarray*"|"align*"|"flalign*"){rb}|(("alignat*"|"xalignat*"){rb}{lb}(.*){rb}))
+dgroupstarend "\\end"{lb}("eqnarray*"|"align*"|"flalign*"|"alignat*"|"xalignat*"){rb}
+dgroupstart "\\begin"{lb}(("eqnarray"|"align"|"flalign"){rb}|(("alignat"|"xalignat"){rb}{lb}(.*){rb}))
+dgroupend "\\end"{lb}("eqnarray"|"align"|"flalign"|"alignat"|"gather"|"xalignat"){rb}
 arraystart ("\\begin"{lb}("array"){rb}{lb}|"\\begin"{lb}("matrix"|"pmatrix"|"bmatrix"|"Bmatrix"|"vmatrix"|"Vmatrix"|"smallmatrix"|"cases"){rb}) 
 arrayend "\\end"{lb}("array"|"matrix"|"pmatrix"|"bmatrix"|"Bmatrix"|"vmatrix"|"Vmatrix"|"smallmatrix"|"cases"){rb}
 tablestart "\\begin"{lb}("table"){rb}("["*)(.*)("]"*)
@@ -46,7 +47,7 @@ newenvironment ("\\newenvironment"|"\\substack")
 protectstart ("\\begin{picture}"|"\\makeatletter")
 protectend ("\\end{picture}"|"\\makeatother")
 
-%x COMMENT PROTECT INPUT CLASS DMATH DMATHFAKESTAR DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS TABULARX CAPTION NEWENVIR TABBING CASES
+%x COMMENT PROTECT INPUT CLASS DMATH DMATHFAKESTAR DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS TABULARX CAPTION NEWENVIR TABBING CASES FINDBRACE 
 %s REMOVE KEEP TABLE SUBSTACK
 %%
 
@@ -72,7 +73,7 @@ protectend ("\\end{picture}"|"\\makeatother")
 <PACKAGES>("verbatim") printf("spverbatim");
 <PACKAGES>{rb} ECHO; yy_pop_state();
 
-("\\begin"{lb}("document"){rb}) printf("\\usepackage{calc}\n\\usepackage{longtable}\n\\usepackage{tabu}\n\\usepackage{breqn}\n\\setlength{\\arraycolsep}{%lfem}\n\\renewcommand{\\arraystretch}{%lf}\n\\begin{document}\n\\renewcommand{\\baselinestretch}{%lf}\n\\selectfont\n\\setlength{\\parskip}{1.0\\baselineskip}\n",cols,factor,lines); 
+("\\begin"{lb}("document"){rb}) printf("\\usepackage{calc}\n\\usepackage{longtable}\n\\usepackage{tabu}\n\\usepackage{breqn}\n\\setlength{\\arraycolsep}{%lfem}\n\\renewcommand{\\arraystretch}{%lf}\n\\begin{document}\n\\renewcommand{\\baselinestretch}{%lf}\n\\selectfont\n\\setlength{\\parskip}{1.0\\baselineskip}\n\\ifdefstring{\\fleqn}{fleqn}{\n\\belowdisplayskip=-10pt plus2pt\n\\abovedisplayskip=-10pt plus2pt\n}{}\n\n",cols,factor,lines); 
 
 {verbstart} printf("\\begin{spverbatim}"); yy_push_state(VERBATIM);
 <VERBATIM>(\r?\n) printf("\n"); /*Just in case*/
@@ -92,6 +93,7 @@ protectend ("\\end{picture}"|"\\makeatother")
 
  /* Rules possibly used in several multi-line situations */
 <CHECKSTAR>("\\notag"|"\\nonumber"|"\\intertextend")
+<DGROUPSTAR,DGROUP,CHECKSTAR,SPLIT>("&")({whitenonew}*)(\r?\n) printf(" "); /*printf("\\ ");*/
 <DGROUPSTAR,DGROUP,CHECKSTAR,SPLIT>("&") printf(" "); /*printf("\\ ");*/
 <DMATHSTAR,DSERIESSTAR,DGROUPSTAR,DMATH,DSERIES,DGROUP,CHECKSTAR,SPLIT,ARRAY>{arraystart} ECHO; yy_push_state(ARRAY); /* protect */
 <DMATHSTAR,DSERIESSTAR,DGROUPSTAR,DMATH,DSERIES,DGROUP,CHECKSTAR,SPLIT,ARRAY>{newenvironment} ECHO; yy_push_state(NEWENVIR); /* protect */
@@ -130,7 +132,8 @@ protectend ("\\end{picture}"|"\\makeatother")
  /* Numbered */
    /* Lines with tags have them at the start of the line now (see stage0)*/ 
      /* Single line displayed was 20pt*/ 
-{dmathstart}/({whitespace}*("\\tag"|"\\label")) printf("\\begin{dmath}[compact,spread={%lf\\baselineskip}",mathlines); yy_push_state(DMATH); 
+{dmathstart}/({whitespace}*("\\tag"|"\\label")) printf("\\begin{dmath}[compact,spread={%lf\\baselineskip}",mathlines); yy_push_state(DMATH);
+{dmathstart}"EXTRABRACEHERE" printf("\\begin{dmath}[compact,spread={%lf\\baselineskip}",mathlines); yy_push_state(DMATH); yy_push_state(FINDBRACE); 
 {dmathstart}({whitespace}*("\\nonumber")) printf("\\begin{dmath*}[compact,spread={%lf\\baselineskip}]",mathlines); yy_push_state(DMATHFAKESTAR); 
 {dmathstart} printf("\\begin{dmath}[compact,spread={%lf\\baselineskip}]",mathlines); yy_push_state(DMATH); 
 <DMATH>{dmathend} printf("\\end{dmath}"); yy_pop_state();
@@ -151,22 +154,24 @@ protectend ("\\end{picture}"|"\\makeatother")
 {dgroupnoalignstart} printf("\\begin{dgroup*}[noalign,compact,spread={%lf\\baselineskip}]\\begin{dmath}",mathlines); yy_push_state(DGROUP); 
 <DGROUP,CHECKSTAR>{dgroupend} if (YY_START == CHECKSTAR) {printf("\\end{dmath*}"); yy_pop_state();} else printf("\\end{dmath}"); printf("\\end{dgroup*}"); yy_pop_state();
 
-
 <DMATH,DGROUP>"\\tag"{lb} yy_push_state(TAG);
+<FINDBRACE>"\\tag"{lb} 
 <DMATH,DGROUP>"\\label"{lb} yy_push_state(LABEL);
 
  /* Should this be inside the breqn or outside? */
 <TAG,LABEL>("}")/({whitespace}*("\\tag"|"\\label")) yy_pop_state();
-<TAG,LABEL>("}") yy_pop_state(); printf("]");
+<TAG,LABEL,FINDBRACE>("}") yy_pop_state(); printf("]");
 <TAG>(([^"}"]*)) printf(",number="); ECHO; 
 <LABEL>(([^"}"]*)) printf(",label="); ECHO; 
+<FINDBRACE>[^\}\{]*{lb}[^\}\{]*{rb}[^\}]* printf(",number="); ECHO; yy_pop_state(); yy_push_state(TAG);
 
  /* tables - we need to use longtabu and I believe that I have removed the assumption that there is a newline at the end of the tabular argument and none within it */
  /* Working on the assumption that if you used tabularx it was because you have a hideous wide table */
  /* We can't allow the table construct as longtabu doesn't do its job then */
+ /* I have changed this to longtabu* as this allows verbatim content. However, it throws away some functionality (what?) to do that so this may need to be reverted */
 {tablestart} yy_push_state(TABLE);
-{tabularxstart} printf("\\newpage\\begin{landscape}\n\\begin{longtabu} to \\linewidth"); yy_push_state(TABULARX); yy_push_state(TABU);
-{tabustart}(\r?\n)* printf("\\begin{longtabu} to \\textwidth"); yy_push_state(TABU);
+{tabularxstart} printf("\\newpage\\begin{landscape}\n\\begin{longtabu*} to \\linewidth"); yy_push_state(TABULARX); yy_push_state(TABU);
+{tabustart}(\r?\n)* printf("\\begin{longtabu*} to \\textwidth"); yy_push_state(TABU);
 <TABU>(("to")(([^"}"]*)))/("{") 
 <TABU>("{\\linewidth}"|"{\\textwidth}")
 <TABU>("@{"([^"}""{"]*)) ECHO; yy_push_state(KEEP); 
@@ -178,11 +183,11 @@ protectend ("\\end{picture}"|"\\makeatother")
 <KEEP>"}" ECHO; yy_pop_state();
 <REMOVE>"}" yy_pop_state();
 
-{tabuend} printf("\\end{longtabu}\n"); /*if (YY_START != TABLE) printf("\\end{longtabu}\n");*/
+{tabuend} printf("\\end{longtabu*}\n"); /*if (YY_START != TABLE) printf("\\end{longtabu*}\n");*/
 <TABLE>"\\caption" printf("Table caption: "); yy_push_state(CAPTION);/*<TABLE>"\\caption"{lb}(.*){rb} ECHO;*/ 
 <CAPTION>("{"(.*))/"}" ECHO; printf("}\\addcontentsline{lot}{table}"); ECHO; printf("\\protect"); yy_pop_state();
 <TABLE>{tableend} yy_pop_state();
-<TABULARX>{tabularxend} printf("\\end{longtabu}\\end{landscape}\n"); yy_pop_state();
+<TABULARX>{tabularxend} printf("\\end{longtabu*}\\end{landscape}\n"); yy_pop_state();
 
  /* graphics removed ECHO before if on the next line - is this right?*/
 "\\setlength{\\unitlength}{"(.*)"}" ECHO; /*if (normalsize > 14) printf("\\setlength{\\unitlength}{%lfpt}",factor); else ECHO;*/

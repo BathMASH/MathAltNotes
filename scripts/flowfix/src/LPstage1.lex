@@ -32,6 +32,8 @@ mathsend "\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|
 {mathstart} ECHO; yy_push_state(MATHS);
 <MATHS>("%")* ECHO; yy_push_state(COMMENT);
 <MATHS>(.*)({whitenotnew})*("\\label"{lb}([^"{""}"]*){rb})/({whitenotnew})*("\\\\"|"\\end") switchtag(); 
+<MATHS>(.*)("\\tag"{lb}(.*)"\\eqref"{lb}(.*){rb}{rb})/({whitenotnew})*("\\\\"|"\\end") switchtag();
+<MATHS>(.*)("\\tag"{lb}(.*)"\\ref"{lb}(.*)){rb}{rb}/({whitenotnew})*("\\\\"|"\\end") printf("EXTRABRACEHERE"); switchtag(); 
 <MATHS>(.*)("\\tag"{lb}(.*){rb})/({whitenotnew})*("\\\\"|"\\end") switchtag();
 <MATHS>(.*)("\\notag")/({whitenotnew})*("\\\\"|"\\end") switchtag();
 <MATHS>(.*)("\\nonumber")/({whitenotnew})*("\\\\"|"\\end") switchtag();

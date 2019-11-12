@@ -8,6 +8,7 @@ int macrolength = 0;
 int beginendlength = 0;
 int fontsize = 10;
 int papersize = 0;
+int fleqn = 0;
 char *macros;
 char *beginend;
 char *class;
@@ -26,6 +27,8 @@ lb ([[:blank:]])*"{"([[:blank:]])*
 rb ([[:blank:]])*"}"
 ls ([[:blank:]])*"["([[:blank:]])*
 rs ([[:blank:]])*"]"
+lp ([[:blank:]])*"("([[:blank:]])*
+rp ([[:blank:]])*")"
 docclass "\\documentclass"
 title "\\title"
 author "\\author"
@@ -46,6 +49,8 @@ picturestart "\\begin"{lb}"picture"{rb}
 pictureend "\\end"{lb}"picture"{rb}
 figurestart "\\begin"{lb}"figure"{rb}
 figureend "\\end"{lb}"figure"{rb}
+textblockstart "\\begin"{lb}"textblock"{rb}{lb}[^\{\}]*{rb}{lp}[^()]*{rp}
+textblockend "\\end"{lb}"textblock"{rb}
 mathstart "\\begin"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|"multline"|"gather"|"eqnarray*"|"align*"|"eqnarray"|"align"){rb}
 mathsend "\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|"multline"|"gather"|"eqnarray*"|"align*"|"eqnarray"|"align"){rb}
 begindocument "\\begin"{lb}"document"{rb}
@@ -54,9 +59,10 @@ frac "\\frac"
 toosmall ("\\tiny"|"\\scriptsize"|"\\footnotesize"|"\\small")
 lstset "\\lstset"{lb}
 externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
+verbatim "\\begin"{lb}("verbatim"|"spverbatim"){rb}
 
-%x COMMENT INPUT IMPORT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE ATOP LISTING READCLASS EXTHYPER FIGURE INPUTPDFLATEX TIKZCD MATH
-%s LSTSET
+%x COMMENT INPUT IMPORT INCLUDE CLASS SECTIONS COMMAND PACKAGES AUTHOR PICTURE BEGINEND PMATRIX FRAC CHOOSE ATOP LISTING READCLASS EXTHYPER FIGURE INPUTPDFLATEX TIKZCD MATH VERBATIM
+%s LSTSET TEXTBLOCK
 %%
 
  /* {doubledollar} ECHO; yy_push_state(DOUBLEDOLLAR); */
@@ -65,10 +71,14 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
  /* {singledollar} ECHO; yy_push_state(SINGLEDOLLAR); */
  /* <SINGLEDOLLAR>{singledollar} ECHO; yy_pop_state(); */
 
-  /*We need to ensure that comments are not processed */
+  /*We need to ensure that comments AND VERBATIM are not processed */
 ("%")* ECHO; yy_push_state(COMMENT);
 <COMMENT>("%") ECHO;
 <COMMENT>(\r?\n) printf("\n"); yy_pop_state();
+
+{verbatim} ECHO; yy_push_state(VERBATIM);
+<VERBATIM>"\\end"{lb}("verbatim"|"spverbatim"){rb} ECHO; yy_pop_state();
+<VERBATIM>(\r?\n) printf("\n");
 
 {standardonly} printf("\\ifboolexpr{togl {clearprint} or togl {large}}{}{"); ECHO; printf("}\n");
 ("\\hypersetup"){lb}(.*){whitespace}* printf("\\ifboolexpr{togl {clearprint} or togl {large} or togl {web}}{}{"); ECHO; printf("}\n");
@@ -85,6 +95,7 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 <CLASS>"20pt" fontsize=20; ECHO;
 <CLASS>{lb} ECHO; yy_push_state(READCLASS);
 <CLASS>"a4paper" papersize=4; ECHO;
+<CLASS>"fleqn" fleqn=1; ECHO;
 <READCLASS>(.*)/"}" ECHO; whatclass(); yy_pop_state(); yy_pop_state(); 
 
 {packages} yy_push_state(PACKAGES);
@@ -92,13 +103,16 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 <PACKAGES>(("[")(.*)("]"))*{lb}"xr"{rb} printf("\\ifpdf\\usepackage{xr,xr-hyper}\\else\\fi"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}{danger}{rb} printf("\\ifboolexpr{togl {web} or togl{clearprint}}{}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}{notlarge}{rb} printf("\\ifboolexpr{togl {web} or togl{large}}{}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
-<PACKAGES>(("[")(.*)("]"))*{lb}"tikz"{rb} printf("\\usepackage[dvipsnames]{xcolor}\\usepackage"); ECHO; yy_pop_state();
+<PACKAGES>(("[")(.*)("]"))*{lb}"tikz"{rb} if(beamer==0) printf("\\usepackage[dvipsnames]{xcolor}\\usepackage"); else printf("\\PassOptionsToPackage{dvipsnames}{xcolor}\\usepackage"); ECHO; yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb} printf("\\usepackage"); ECHO; 
 <PACKAGES>","(" ")* printf(",");
 <PACKAGES>{lb} printf("\\usepackage{"); 
 <PACKAGES>{rb} ECHO; yy_pop_state();
 
 "\\graphicspath" printf("%%"); ECHO; 
+
+"\\beamertemplatenavigationsymbolsempty" /* This switches the commands off in beamer which is silly but also doesn't work in handout format*/
+"\\frametitle"{lb}[^\{\}]*{rb} printf("\\mode<presentation>{"); ECHO; printf("}"); /* This creates extra sections in the handout */
 
 {externaldoc} printf("\\ifpdf\\ifboolexpr{togl {clearprint} or togl {web}}{"); ECHO; printf("-clear}}{"); ECHO; yy_push_state(EXTHYPER); 
 <EXTHYPER>{rb} ECHO; printf("}\\else\\fi"); yy_pop_state();
@@ -165,6 +179,10 @@ externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 <INCLUDE>{lb}(.*)/("/") printf("{");
 <INCLUDE>"/"
 <INCLUDE>{rb} ECHO; yy_pop_state();
+
+ /* Textblocks put things in random places when we make the move from Beamer to Beamer article */
+{textblockstart} printf("\\mode<presentation>{"); ECHO; printf("}"); yy_push_state(TEXTBLOCK);
+<TEXTBLOCK>{textblockend} printf("\\mode<presentation>{"); ECHO; printf("}"); yy_pop_state();
 
  /* Changed 0 to 1 and removed ECHO to place these also in the de-marco */
 {newcommand}/("{"(.*)"}"("["(.*)"]")?"{"(.*)"_") macrosstore("\\renewcommand",13,1); yy_push_state(BEGINEND);//ECHO; yy_push_state(COMMAND);
@@ -242,8 +260,10 @@ int getcolor(){
 
 int whatclass(){
   class = strdup( yytext );
-  if(strcmp(class,"beamer")==0)
+  if(strcmp(class,"beamer")==0){
       beamer = 1;
+      /*printf("beamer located");*/
+  }
   return 0;
 }
 
@@ -255,12 +275,16 @@ int choices(){
   FILE *sizeout;
   FILE *paperout;
   FILE *unknown;
+  FILE *fleqnout;
+  FILE *beamerfix;
   output = fopen("choices.tex","w");
   typeout = fopen(".documentclass","w");
   alttype = fopen(".alternativeclass","w");
   sizeout = fopen(".fontsize","w");
   paperout = fopen(".papersize","w");
   unknown = fopen(".unknownclass","w");
+  fleqnout = fopen(".fleqn","w");
+  beamerfix = fopen(".beamerfix","w");
   if(output == NULL){
     fprintf(stderr, "Can't open choices file\n");
     exit(1);
@@ -285,6 +309,14 @@ int choices(){
     fprintf(stderr, "Can't open unknown class output file\n");
     exit(1);
   }
+  if(fleqnout == NULL){
+    fprintf(stderr, "Can't open fleqn class option output file\n");
+    exit(1);
+  }
+  if(beamerfix == NULL){
+    fprintf(stderr, "Can't open beamefix class option output file\n");
+    exit(1);
+  }
   if(title == 1 && author == 1)
     fprintf(output,"\\toggletrue{frontmatter}");
   else
@@ -295,7 +327,7 @@ int choices(){
     fprintf(output,"\\togglefalse{contents}");
 
   fprintf(typeout,"%s",class);
-
+  
   if(strcmp(class,"article")==0 || strcmp(class,"extarticle")==0){  
     fprintf(alttype,"article");
     fprintf(unknown,"false");
@@ -314,6 +346,7 @@ int choices(){
   }else if(strcmp(class,"beamer") == 0){
     fprintf(alttype,"article");
     fprintf(unknown,"false");
+    fprintf(beamerfix,"unknownkeysallowed,xcolor={usenames,svgnames,dvipsnames}");
   }else{
     fprintf(alttype,"report");
     fprintf(unknown,"true");
@@ -325,12 +358,17 @@ int choices(){
     fprintf(paperout," ");
   if(papersize == 4)
     fprintf(paperout,"a4paper");
+  if(fleqn == 0)
+    fprintf(fleqnout," ");
+  if(fleqn == 1)
+    fprintf(fleqnout,"fleqn");
   
   fclose(output);
   fclose(typeout);
   fclose(sizeout);
   fclose(paperout);
   fclose(unknown);
+  fclose(fleqnout);
   return 0;
 }
 

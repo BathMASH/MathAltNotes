@@ -5,10 +5,10 @@
 %\RequirePackage{xcolor}
 %\PassOptionsToPackage{usenames,dvipsnames,svgnames}{xcolor}
 \newcommand{\fixincludegraphics}[2][]{\includegraphics[#1]{#2}}
+%The below HAS TO BE ON one line, if not then we get spaces at the start and end of the filename. Web is fine with this. PANDOC isn't.
 \makeatletter
-\newcommand{\actualfile}[1]{
-\filename@parse{#1}
-./figures/\filename@ext/\filename@base\ifdefstring{\filename@ext}{pdf}{.svg}{.png}
-}
+\newcommand{\actualfile}[1]{\filename@parse{#1}./figures/\filename@ext/\filename@base\ifdefstring{\filename@ext}{pdf}{.svg}{.png}}
 \makeatother
+
+\newcommand{\maxsize}{\the\linewidth}
 

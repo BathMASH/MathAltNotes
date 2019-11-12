@@ -1,14 +1,15 @@
 echo "-----------------------------------------------------------------"
 echo "Dollars are TeX primitives and not LaTeX and make our job harder. "
 echo "Autoswitching is a risky strategy - try not to use $'s if possible."
-echo "Place you do need to use them are in chapter and section titles "
-echo "and similar; in captions and within figures."
-echo "Please comfirm that automatic dedollaring is suitable for this file"
-echo "y for yes and no for no then press enter"
-read decision
-if [ $decision != "y" ]; then
-    exit 1
-fi
+echo "Places you do need to use them are in chapter and section titles "
+echo "and similar; in captions and within figures. We preserve these."
+echo "We will now automatically de-dollar your file."
+echo "-----------------------------------------------------------------"
+#echo "y for yes and no for no then press enter"
+#read decision
+#if [ $decision != "y" ]; then
+#    exit 1
+#fi
 echo "Switching $...$ to \(...\) and \$\$...\$\$ to \[...\]"
 echo "-----------------------------------------------------------------"
 
@@ -19,11 +20,11 @@ for i in `find . -maxdepth 1 -name "*.tex" ! -name master*.tex ! -name macros*.t
     echo "Processing: $i"
     $home/dedollar < $i > $(basename "$i" .tex)-d
     if ! diff -q $i $(basename "$i" .tex)-d &> /dev/null; then
-	echo "$i contains $'s"
+	echo "$i contains $'s we have altered"
 	mv $i $(basename "$i" .tex).origin
 	mv $(basename "$i" .tex)-d $i
     else
-	echo "$i does not contain $'s - good for you"
+	echo "$i does not contain $'s we need to alter - good for you"
 	cp -n $i $(basename "$i" .tex).origin
 	rm $(basename "$i" .tex)-d
     fi

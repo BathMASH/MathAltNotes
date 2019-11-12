@@ -15,7 +15,10 @@
 %% Beamer is even more special 
 \providecommand{\beamerslides}{}
 \providecommand{\beamerhandout}{}
-\documentclass[\pointsize,\papersize,\beamerhandout]{\class}
+%% As is flushed left equations
+\providecommand{\fleqn}{}
+\providecommand{\beamerfix}{}
+\documentclass[\pointsize,\papersize,\beamerhandout,\fleqn,\beamerfix]{\class}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Babel package to specify English typographical 
@@ -76,6 +79,14 @@
 \usepackage{beamerfix}
 }{}
 
+\ifdefstring{\fleqn}{fleqn}{
+\newcommand{\displaywhere}{left}
+%\belowdisplayskip = -10pt plus 2pt
+%\abovedisplayskip = -10pt plus 2pt
+}{
+\newcommand{\displaywhere}{center}
+}
+
 \iftoggle{large}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Note, you should have cm-super installed otherwise
@@ -93,6 +104,15 @@
 %% Due to the processing requirements of graphics we have
 %% set up a directory structure that must be used
 \graphicspath{{./figures/latexpdfsvg/}{./figures/svg/}{./figures/eps/}{./figures/pdf/}{./figures/png/}{./figures/jpg/}{./figures/latexpdf/}} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Emergency commands to force math in standard and
+%% clear to be within the line width but without
+%% affecting large, web or word
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareRobustCommand{\mathaltemergencyresize}[1]{
+  \resizebox{\linewidth}{!}{$ #1 $}}
+
 
 %% Level of reliance on amsmath means we require this
 %% syntax and fix things that it will not accept
@@ -203,7 +223,7 @@
  \ifdefstring{\beamerslides}{true}{\date{}}{}
  \AfterEndPreamble{
   \iftoggle{frontmatter}{\renewcommand{\baselinestretch}{1.0}\selectfont\maketitle\renewcommand{\baselinestretch}{1.25}\selectfont\inputdisclaimer}{}
-  \iftoggle{contents}{\tableofcontents\listoffigures\listoftables\renewcommand{\tableofcontents}{}\renewcommand{\listoffigures}{}\renewcommand{\listoftables}{}\newpage}{\iftoggle{frontmatter}{\newpage}{}}
+  \iftoggle{contents}{\tableofcontents\listoffigures\listoftables  \iftoggle{web}{\ifdefstring{\beamerslides}{true}{\section*{Start of slides}}{}}{}\renewcommand{\tableofcontents}{}\renewcommand{\listoffigures}{}\renewcommand{\listoftables}{}\newpage}{\iftoggle{frontmatter}{\newpage}{}}
   \pagenumbering{arabic}        
   \setcounter{page}{1}
  }
@@ -255,9 +275,8 @@
 
 }{
 \newenvironment{mytikz}{\begin{center}\begin{tikzcd}[ampersand replacement=\&]}{\end{tikzcd}\end{center}}
-%% In the standard format I still might need to insert a disclaimer
-\appto{\maketitle}{\inputdisclaimer}
-\ifdefstring{\class}{beamer}{\appto{\titlepage}{\tiny Lecture notes and audio recording, Department of Mathematical Sciences, The University of Bath\footnote{\tiny\inputdisclaimer}}}{}
+%% In the standard format I still might need to insert a disclaimer but it shouldn't be there if maketitle is used in beamer, we do it a different way in beamer
+\ifdefstring{\class}{beamer}{\appto{\titlepage}{\tiny Lecture notes and audio recording, Department of Mathematical Sciences, The University of Bath\footnote{\tiny\inputdisclaimer}}}{\appto{\maketitle}{\inputdisclaimer}}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -37,7 +37,7 @@ it is clear what the corresponding metric is.
 Let $n \in \N$; we define $d_2 : \R^n \times \R^n \to \R$ as
 \[
 d_2(x,y):= \left\|x - y\right\|_2 = \left(\sum_{i = 1}^n (x_i - y_i)^2\right)^{1/2}, \quad x,y \in \R^n.
-\]%%%% Check syntactic interpretation of verticals
+\]%%%% Please add \left and \right to all verticals, this may be syntactically ambiguous and was abandoned due to bracketing depth
 If $n=1$ we use the notation $d_2(x,y) = |x-y|$. We often omit the subscript $2$ from the Euclidean distance $\|x-y\|_2$.
 
 We prove that $d_2$ is a metric and thus $(\R^n,d_2)$ is a metric space. Axioms \eqref{def:non-negative}--\eqref{def:symmetry}
@@ -82,12 +82,12 @@ d_1(x,y):= \left\|x-y\right\|_1 = \sum_{i = 1}^n \left|x_i - y_i\right|,
 also called the $\ell^1$ metric (also referred to informally as the ``taxi-cab" metric, since it's the distance one would travel by taxi on a rectangular grid of streets);
 \begin{align*}
 d_\infty(x,y):= \left\|x-y\right\|_\infty = \max_{i \in \{1,\ldots,n\}} \left|x_i - y_i\right|,
-\end{align*}%%%% Check syntactic interpretation of verticals
+\end{align*}%%%% Please add \left and \right to all verticals, this may be syntactically ambiguous and was abandoned due to bracketing depth
 also called the $\ell^\infty$ metric, or the maximum metric.
 More generally, for $1 \le p < \infty$, we have a metric
 \[
 d_p(x,y):= \left\|x-y\right\|_p = \left(\sum_{i = 1}^n \left|x_i - y_i\right|^p\right)^{1/p}
-\]%%%% Check syntactic interpretation of verticals
+\]%%%% Please add \left and \right to all verticals, this may be syntactically ambiguous and was abandoned due to bracketing depth
 on $\R^n$, but this is more difficult to verify (the triangle inequality does not follow from the Cauchy-Schwarz inequality, but from the Minkowski inequality). 
 For $p < 1$, $d_p$ does not define a metric since the triangle inequality fails! E.g., in $\R^2$, for $p=\frac12$, and $x=(1,0)$, $z=(0,-1)$, $y=(0,0)$, we have 
 $$
@@ -114,12 +114,12 @@ out that $d$ is a metric.
 Define $d : \R^n \times \R^n \to \R$ as follows: for $x,y \in \R^n$,
 \[
 d(x,y) = \begin{cases} \left\|x - y\right\| & \text{if $x,y,0$ are collinear}, \\ \|x\| + \|y\| & \text{otherwise}. \end{cases}
-\]
+\]%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
 E.g., for $n = 2$,
 \begin{align*}
 d((1,1),(2,2)) & = \sqrt{2}, \\
 d((1,1),(-2,2)) & = 3\sqrt{2}.
-\end{align*}%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
+\end{align*}
 (\textit{Curiosity:} It is called the Railway metric in Britain (and in France), because all the train lines radiate from London (and Paris), located at the origin. To take a train from town $x$ to town $y$, one has to take a train from $x$ to $0$ and then take a train from $0$ to $y$, unless $x$ and $y$ are on the same line, when one can take a direct train.)
 
 \medskip
@@ -158,7 +158,7 @@ Consider the space $C^0([0,1])$ of all continuous functions from $[0,1]$ to $\R$
 Define
 \[
 d_\infty(f,g) = \max_{t \in [0,1]} \left|f(t) - g(t)\right|, \quad f,g \in C^0([0,1]).
-\]%%%% Check syntactic interpretation of verticals
+\]%%%% Please add \left and \right to all verticals, this may be syntactically ambiguous and was abandoned due to bracketing depth
 Then $(C^0([0,1]),d_\infty)$ is a metric space. 
 
 \quad 
@@ -886,12 +886,12 @@ Definition 1.1%%%%%\ref{pu-conv}
 \begin{example}
 Consider the space $C^0([0,1])$ with the metric
 \[
-d_2(f,g) = \left\|f-g\right\|_{2} = \left(\int_0^1 \left|f(t) - g(t)\right|^2 dt\right)^\frac12.
-\]%%%% Check syntactic interpretation of verticals
+d_2(f,g) = \left\|f-g\right\|_{2} = \left(\int_0^1 |f(t) - g(t)|^2 dt\right)^\frac12.
+\]%%%% Please add \left and \right to all verticals, this may be syntactically ambiguous and was abandoned due to bracketing depth
 A sequence $(f_k)_{k \in \N}$ converges to $f_0$ with respect to the metric $d_2$ (commonly said in the $L^2$-norm) if, and only if,
 \[
-\left(\int_0^1 \left|f_k(t) - f_0(t)\right|^2 dt\right)^\frac12 \to 0 \quad \textrm{as } \, k\to \infty.
-\]%%%% Check syntactic interpretation of verticals
+\left(\int_0^1 |f_k(t) - f_0(t)|^2 dt\right)^\frac12 \to 0 \quad \textrm{as } \, k\to \infty.
+\]%%%% Please add \left and \right to all verticals, this may be syntactically ambiguous and was abandoned due to bracketing depth
 \smallskip
 
 Note that this norm can be defined on all functions $f: [0,1] \to \R$ with $f^2$ Riemann-integrable (continuity is not needed).

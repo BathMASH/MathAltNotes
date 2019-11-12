@@ -19,6 +19,11 @@
 \renewcommand{\baselinestretch}{1.250000}
 \selectfont
 \setlength{\parskip}{1.0\baselineskip}
+\ifdefstring{\fleqn}{fleqn}{
+\belowdisplayskip=-10pt plus2pt
+\abovedisplayskip=-10pt plus2pt
+}{}
+
 
 \maketitle
 This section looks only at graphics available without the graphics packages, that is, internal to vanilla \LaTeX. Kopka and Daly \cite{KopkaDaly} explain that ``Standard \LaTeX does actually contain the means to make primative drawings on its own'' and they consider only the facets of picture that are in standard \LaTeX, not those that require additional packages. This is what we test as a basic starting point in the vanilla stress test. 

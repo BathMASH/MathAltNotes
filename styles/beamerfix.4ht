@@ -1,3 +1,3 @@
 
 %https://tex.stackexchange.com/questions/195919/tex4ht-problem-with-includegraphics-using-beamer-class
-\renewcommand{\fixincludegraphics}[2][]{\HCode{<img src="}\expandafter\actualfile{#2}\HCode{" alt="}\thealt\HCode{"/>}}
+\renewcommand{\fixincludegraphics}[2][]{\HCode{<img style="max-width:\maxsize" src="}\expandafter\actualfile{#2}\HCode{" alt="}\thealt\HCode{"/>}}

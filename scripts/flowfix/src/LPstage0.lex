@@ -9,7 +9,7 @@ mathsend "\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|
 arraystart ("\\begin"{lb}("array"){rb}{lb}|"\\begin"{lb}("matrix"|"pmatrix"|"bmatrix"|"Bmatrix"|"vmatrix"|"Vmatrix"|"smallmatrix"|"cases"){rb}) 
 arrayend "\\end"{lb}("array"|"matrix"|"pmatrix"|"bmatrix"|"Bmatrix"|"vmatrix"|"Vmatrix"|"smallmatrix"|"cases"){rb}
 
-%x COMMENT VERBATIM MATHS ARRAY
+%x COMMENT VERBATIM MATHS ARRAY RESIZE
 %%
 
  /* Protect */
@@ -24,12 +24,14 @@ arrayend "\\end"{lb}("array"|"matrix"|"pmatrix"|"bmatrix"|"Bmatrix"|"vmatrix"|"V
 
   /* We need this to work on maths lines not between newlines */
 {mathstart} ECHO; yy_push_state(MATHS);
-<MATHS>{arraystart} ECHO; yy_push_state(ARRAY); //protect arrays
-<MATHS>("%")[^\n]* //yy_push_state(COMMENT);
+<MATHS>"\\mathaltemergencyresize"{lb} yy_push_state(RESIZE);
+<MATHS,RESIZE>{arraystart} ECHO; yy_push_state(ARRAY); //protect arrays
+<MATHS,RESIZE>("%")[^\n]* //yy_push_state(COMMENT);
 <MATHS>("\\\\")+(\r?\n)*{mathsend} printf("REMOVEMATHENDLINE"); ECHO; yy_pop_state();
-<MATHS>("\\\\")+(\r?\n)* printf("\\\\\n"); 
-<MATHS>(\r?\n) printf(" ");
+<MATHS,RESIZE>("\\\\")+(\r?\n)* printf("\\\\\n"); 
+<MATHS,RESIZE>(\r?\n) printf(" ");
 <MATHS>{mathsend} ECHO; yy_pop_state();
+<RESIZE>{rb}{whitespace}/{mathsend} yy_pop_state();
 
 <ARRAY>(\r?\n) printf(" ");
 <ARRAY>{arrayend} ECHO; yy_pop_state();

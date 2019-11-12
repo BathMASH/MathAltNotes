@@ -142,6 +142,8 @@ div.lstinputlisting{ font-family: monospace; white-space: nowrap; }
 .lstinputlisting .label{margin-right:0.5em;}
 div.shaded { background-color: AliceBlue; } 
 div.framed { background-color: Gainsboro; } 
+div.framed { background-color: Gainsboro; } 
+div.framed { background-color: Gainsboro; } 
 span.head { font-weight:bold; }
 /* end css.sty */
 

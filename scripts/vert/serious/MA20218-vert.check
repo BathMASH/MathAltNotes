@@ -1,0 +1,2125 @@
+\documentclass[a4paper,reqno]{amsart}
+\usepackage[english]{babel}
+%\usepackage{a4wide}
+\usepackage{geometry}
+\usepackage{graphicx,color}
+\usepackage{pinlabel-test}
+%\usepackage{amsthm, amssymb, amsmath, latexsym, upgreek,accents}
+%\usepackage{amsfonts, mathrsfs, color}
+%\usepackage{a4wide}
+%\usepackage{hyperref}
+%\usepackage{booktabs}
+%\usepackage{textcomp}
+%\usepackage{subfigure}
+
+ \geometry{
+ a4paper,
+% total={170mm,257mm},
+right=25mm,
+ left=25mm,
+ top=25mm,
+ bottom = 25mm,
+ }
+
+
+%\usepackage[notcite,notref]{showkeys}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsthm, amsgen,mathrsfs}
+\usepackage[latin1]{inputenc}
+%\usepackage{listings}
+\usepackage{color}
+\usepackage{dsfont}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{rotating}
+\usepackage{hhline}
+\usepackage{subfigure}
+\usepackage{multirow}
+\usepackage{enumerate}
+\usepackage[bookmarks]{}
+\usepackage{amsfonts}   % if you want the fonts
+\usepackage{dsfont}
+%\usepackage{showkeys}
+
+\numberwithin{equation}{section}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{example}{Example}
+\newtheorem{exercise}[definition]{Exercise}
+
+
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\id}{id}
+
+
+\def\eps{\varepsilon}
+\def\Omegasp{{\Omega^{\mathrm sp}}}
+\def\xx{\mathbf{x}_0}
+\def\z0{\mathbf{z}_0}
+\def\h{\mathbf{h}}
+\def\c{\mathbf{c}}
+\def\r{\mathbf{r}}
+\def\x{\mathbf{x}}
+\def\y{\mathbf{y}}
+\def\C{\mathbb{C}}
+\def\N{\mathbb{N}}
+\def\Q{\mathbb{Q}}
+\def\R{\mathbb{R}}
+\def\S{\mathbb{S}}
+\def\Z{\mathbb{Z}}
+\def\calA{\mathcal{A}}
+\def\calE{\mathcal{E}}
+\def\calF{\mathcal{F}}
+\def\calH{\mathcal{H}}
+\def\calL{\mathcal{L}}
+\def\calM{\mathcal{M}}
+
+\def\curl{\mathop\mathrm{curl}}
+\def\dist{\mathop\mathrm{dist}}
+\def\Id{\mathrm{Id}}
+\def\SBV{\mathrm{SBV}}
+\def\SO{\mathrm{SO}}
+\def\skw{\mathop{\mathrm{skw}}}
+\def\supp{\mathop{\mathrm{supp}}}
+\def\sym{\mathop{\mathrm{sym}}}
+\def\weak{\rightharpoonup}
+\def\weakstar{\overset{\ast}{\rightharpoonup}}
+
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+
+
+
+\renewcommand{\div}{\mathop\mathrm{div}}
+
+%%%%%%%%%%%%%%%%%%Were originally before concise3 - why?
+\def\nl{}
+\def\bis{}
+\def\np{}
+\let\h=\emph
+\def\sect#1{\newpage\section{#1}}
+\def\subsect#1{\subsection{#1}}
+\def\slinc#1#2{#1}
+
+
+\usepackage{hyperref}
+\begin{document}
+\title[MA20218: Analysis 2A]{MA20218:  Analysis  2A}
+%\date{}
+\author[]{Lecturer: Karsten Matthies\\University of  Bath, First semester 2019/20 }
+
+\maketitle
+
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+\setcounter{page}{1}
+%\vspace*{2cm}
+
+\input{concise0}
+\newpage
+
+
+
+
+\section{Chapter 1: Sequences and series of functions}
+%{\color{red} Differentiating under the integral. Differentiation and integration of power series.}
+In this chapter we combine the major themes in Analysis 1 (sequences\& series and functions): We consider sequences and series of functions, and we investigate convergence concepts and properties of the limits.
+\medskip
+
+\noindent
+Let $(f_k)_{k\in \mathbb{N}}$ be a sequence of functions $f_k:A \to \R$, with $A\subset \R$, and let $f:A \to \R$. (Usually, $A$ will be an interval.)
+
+\begin{definition}[Pointwise and uniform convergence for sequences]\label{pu-conv}
+  Let $(f_k)_{k\in \mathbb{N}}$ be a sequence of functions $f_k:A \to \R$, with $A\subset \R$, and let $f:A \to \R$. The sequence $(f_k)_k$ converges pointwise to $f$ on $A$ as $k\to \infty$ if the sequence $(f_k(x))_{k\in \N}$ converges to $f(x)$ for every $x\in A$; namely if for every $x\in A$ and every $\varepsilon>0$ there exists $N\in \mathbb{N}$ such that for every $k\geq N$ we have $|f_k (x) - f (x)| < \varepsilon$ .
+
+\medskip
+
+The sequence $(f_k)_k$ converges uniformly to $f$ on $A$ if
+$$
+\forall \,\varepsilon>0 \quad \exists\, N\in \mathbb{N} \quad \textrm{such that } \forall \,k\geq N, \forall\, x\in A: |f_k (x) - f (x)| < \varepsilon.
+$$
+\end{definition}
+
+
+\begin{remark}
+Note that $f_k$ converges to $f$ uniformly on $A$ if and only if
+$$
+\lim_{k\to \infty} \left(\sup_{x\in A} |f_k(x)-f(x)|\right)=0.
+$$
+\end{remark}
+
+Similarly, for series, we have the corresponding convergence concepts (in terms of convergence of their partial sums). %Note in particular that whate
+
+\begin{definition}[Pointwise and uniform convergence for series] Let $(f_k)_{k\in \mathbb{N}}$ be a sequence of functions $f_k:A \to \R$, with $A\subset \R$, and let $s_n:A\to \R$ denote the sequence of partial sums defined as
+$$
+s_n:= \sum_{k=1}^n f_k, \quad n\in \N.
+$$
+The series $\sum_{k=1}^\infty f_k$ converges pointwise to a function $f$ on $A$ if the sequence $(s_n)_n$ converges to $f$ pointwise on $A$.
+
+The series $\sum_{k=1}^\infty f_k$ converges uniformly to a function $f$ on $A$ if the sequence $(s_n)_n$ converges to $f$ uniformly on $A$.
+\end{definition}
+
+Uniform convergence implies pointwise convergence. The vice versa is not true in general, as shown in the following examples.
+
+\begin{example}\label{example:2}
+Let $f_k: [0,1] \to \R$ be defined as
+$$
+f_k(x)= \frac{kx}{1+k^2x^2}.
+$$
+Then clearly the sequence $(f_k)_{k\in \N}$ converges pointwise to the function $f:[0,1] \to \R$ defined as $f(x) = 0$ for every $x\in [0,1]$.
+The convergence is however not uniform. [Detailed explanation in the lecture.]
+\end{example}
+
+
+\begin{example}
+Let $f_k: [0,1] \to \R$ be defined as $f_k(x)=x^k$.
+
+Then clearly the sequence $(f_k)_{k\in \N}$ converges pointwise to the function $f:[0,1] \to \R$ defined as
+$$
+f(x) = \begin{cases}
+0 \quad &\textrm{if } x\neq 1,\\
+1 \quad &\textrm{if } x = 1.\\
+\end{cases}
+$$
+The convergence is however not uniform. This is due to the points $x$ close to the endpoint $1$, but $x\neq 1$. Assume for contradiction that $f_k$ converges to $f$ uniformly in $[0,1]$, and let $0<\varepsilon<1$ be
+fixed and arbitrary. By definition of uniform convergence, there exists $N\in \N$ such that whenever $k>N$ we have
+$$
+\sup_{x\in [0,1]} |f_k(x) - f(x)| <\varepsilon.
+$$
+This means in particular that
+$$
+x^{N+1} < \varepsilon \quad \forall x\in [0,1);
+$$
+but this means that $x<\varepsilon^{1/(N+1)}$ for every $x\in [0,1)$, which is clearly false since $0<\varepsilon^{1/(N+1)}<1$ is a fixed number, while $x$ can be chosen arbitrarily close to $1$.
+
+\medskip
+
+The convergence is however uniform in $[0,b]$ for every $0\leq b <1$ (by choosing $N \geq \frac{\log\varepsilon}{\log b}$).
+\end{example}
+
+\medskip
+
+A useful criterion for uniform convergence of sequences of functions (due to Cauchy) is as follows.
+
+\begin{theorem}\label{Cauchy:c}
+A sequence of functions $(f_k)_{k\in \mathbb{N}}$, $f_k:A\to \R$ converges uniformly on $A$ if and only if for every $\varepsilon>0$ there exists an integer $N$ such that if $j,m\geq N$ and $x\in A$, then
+$$
+|f_j(x) - f_m(x)| < \varepsilon.
+$$
+\end{theorem}
+
+\begin{proof}
+Assume that $f_k$ converges to $f$ uniformly on $A$. Then, by definition, for every $\varepsilon>0$ there exists $N\in \N$ such that for every $k>N$ we have
+$$
+|f_k(x) - f(x)|<\frac{\varepsilon}{2} \quad \forall \, x\in A.
+$$
+By the triangle inequality, for any $j,m>N$ we then have
+$$
+|f_j(x) - f_m(x)|\leq |f_j(x) - f(x)| + |f_m(x) - f(x)| <\varepsilon.
+$$
+
+\medskip
+Now, let us assume the Cauchy condition. Let then $\varepsilon>0$ be fixed: by assumption there exists $N\in \N$ such that for every $j,m>N$ we have $|f_j(x) - f_m(x)| <\varepsilon/2$ for every $x\in A$.
+
+\noindent
+First, note that this implies that for all $x\in A$ the real sequence $(f_k(x))_k$ is a Cauchy sequence in $\R$, so it converges by the completeness of $\R$. We set
+$$
+f(x):= \lim_{k\to \infty} f_k(x).
+$$
+Clearly $(f_k)_k$ converges pointwise to $f$ (by definition of $f$); hence, for every $x\in A$ we can choose $m>N(\varepsilon,x)>N$ such that
+$$
+|f_m(x) - f(x)|<\frac{\varepsilon}{2}.
+$$
+By the choice of $m$ and by the uniform Cauchy assumption we have that, for every $j>N$ and every $x\in A$,
+$$
+|f_j(x) - f(x)| \leq |f_j(x) - f_m(x)| + |f_m(x) - f(x)| <\varepsilon,
+$$
+implying uniform convergence.
+
+(Note: the fact that $m$ might depend on $x$ is not relevant here: $m$ is chosen as intermediate step of the proof, but the conclusion does not depend on $m$.)
+
+\end{proof}
+
+This result can be translated immediately into an analogous result for series:
+
+\begin{theorem}\label{Cauchy:s}
+Let $(f_k)_{k\in \mathbb{N}}$, $f_k:A\to \R$ be a sequence of functions on $A$. The series $\sum_{k=1}^\infty f_k$ converges uniformly on $A$ if and only if for every $\varepsilon>0$ there exists an integer $N$ such that if $j>m\geq N$ and $x\in A$, we have
+$$
+\left|\sum_{k=m+1}^jf_k(x)\right| < \varepsilon.
+$$
+\end{theorem}
+
+\begin{example}\label{Cauchy:gs}
+We use the Cauchy criterion to show that the geometric series $\sum_{k=0}^\infty x^k$ does not converge uniformly in $(-1,1)$. Assume that it does converge uniformly in $(-1,1)$; then for every
+$\varepsilon>0$ there exists $N\in \N$ such that $\forall\, j>m> N$:
+$$
+\left| \sup_{x\in (-1,1)} \sum_{k=m+1}^j x^k \right| <\varepsilon.
+$$
+This implies in particular that
+\begin{align*}
+\varepsilon > \sup_{x\in (0,1)} \sum_{k=m+1}^j x^k > \sup_{x\in (0,1)} \sum_{k=m+1}^j x^j = \sup_{x\in (0,1)} (j-m) x^j \geq \sup_{x\in (0,1)}x^j,
+\end{align*}
+since for $x\in (0,1)$ we have that $x^k \geq x^j$ for every $k\leq j$. Hence we have that
+$$
+x^{N+1} < \varepsilon \quad \forall\, x\in (0,1)
+$$
+which is false, since $\varepsilon^{1/(N+1)}\in (0,1)$ is a fixed number, while $x$ can get arbitrarily close to $1$.
+
+The convergence of the series is however uniform on $[-\rho,\rho]$ for every $0\leq \rho<1$.
+\end{example}
+
+
+For series there is a useful test for uniform convergence, due to Weierstrass. (The name comes from the letter traditionally used to denote the constants, or `majorants', that bound the terms in the series.)
+
+\begin{theorem}[Weierstrass $M$-test]
+Let $(f_k)_{k\in \mathbb{N}}$ be a sequence of functions, $f_k:A\to \R$, and suppose that for every $k\in \N$ there exists a constant $M_k>0$ such that
+$$
+|f_k(x)| \leq M_k \quad \textrm{for every } x\in A, \quad \sum_{k=1}^\infty M_k <\infty.
+$$
+Then the series $\sum_k f_k$ converges uniformly on $A$.
+\end{theorem}
+
+\begin{proof}
+Since $\sum_k M_k$ converges, the Cauchy criterion for real series (analogue of Theorem \ref{Cauchy:s} for real series) ensures that for any $\varepsilon>0$ there exists $N\in \N$ such that for $j>m>N$ one has
+$$
+\sum_{k=m+1}^j M_k < \varepsilon.
+$$
+Then, by the bound on $\sup_A|f_k|$ we immediately deduce that for $j>m>N$
+$$
+\Bigg| \sum_{k=m+1}^j f_k(x)\Bigg| \leq \sum_{k=m+1}^j M_k < \varepsilon \quad \forall\, x\in A.
+$$
+Then the claim follows directly from Theorem \ref{Cauchy:s}.
+\end{proof}
+
+This theorem shows the value of the Cauchy condition: We can prove uniform convergence of the series without having to know what its sum is.
+
+\begin{remark}[Absolute convergence]
+If uniform convergence of a series is proved by means of the Weierstrass $M$-test, then the series also converge absolutely, namely
+$$
+\sum_{k=1}^\infty |f_k(x)| <\infty \quad \forall \, x\in A.
+$$
+(Thus the Weierstrass $M$-test is not applicable to series that converge uniformly but not absolutely.)
+
+Note that uniform convergence does not imply absolute convergence: Consider the trivial example
+$$
+f_k:\R\to \R, \quad f_k(x) = \frac{(-1)^{k+1}}{k}.
+$$
+Then $\sum_k f_k$ converges on $\R$ to the constant function $f(x)=c=\log 2$, uniformly since the series does not depend on $x$, but the convergence is not absolute.
+\end{remark}
+
+
+\subsection{Uniform convergence and continuity, integration and differentiation}
+
+One of the main questions in relation to convergence of sequences and series is whether important properties of the functions $f_k$, like continuity, integrability and differentiability, are preserved in the limit process. Also, what is the relation between $f'_k$ and $f'$, or between the integral of $f_k$ and the integral of $f$?
+\medskip
+
+First of all, the uniform limit of continuous functions $f_k:[a,b]\to \R$ is continuous. On the other hand, pointwise convergence does not preserve continuity. (See Example \ref{example:2})
+
+
+\begin{theorem}\label{unif:cont}
+Let $(f_k)_{k\in \mathbb{N}}$ be a sequence of continuous functions $f_k:[a,b]\to \R$, and assume that $f_k\to f$ uniformly as $k \to \infty$, where $f: [a,b]\to \R$. Then $f$ is  continuous on $[a,b]$.
+\end{theorem}
+
+\begin{proof}
+Let $x_0\in [a,b]$ be an arbitrary point; we claim that $f$ is continuous at $x_0$, namely that for every $\varepsilon>0$ there exists $\delta>0$ such that
+$$
+\text{for every } x\in [a,b], \, |x-x_0| < \delta \quad \Rightarrow \quad |f(x)-f(x_0)|<\varepsilon.
+$$
+Since, by assumption, $f_k\to f$ uniformly as $k \to \infty$, for the $\varepsilon$ fixed above there exists $N\in \N$ such that for every $k\geq N$,
+\begin{equation}\label{infty:norm}
+\sup_{x\in [a,b]} \left|f_k(x)-f(x)\right| < \frac{\varepsilon}3.
+\end{equation}%%%% Check syntactic interpretation of verticals
+On the other hand, since by assumption $f_N$ is continuous, for the $\varepsilon$ fixed above there exists $\delta>0$ such that
+\begin{equation}\label{cont:N}
+\text{for every } x\in [a,b], \, |x-x_0| < \delta \quad \Rightarrow \quad |f_N(x)-f_N(x_0)|<\frac{\varepsilon}3.
+\end{equation}%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
+By combining \eqref{infty:norm} and \eqref{cont:N} we then conclude that, whenever $x\in [a,b]$ is such that $|x-x_0| < \delta$ we have
+\begin{align*}
+ |f(x)-f(x_0)| \leq  |f(x)-f_N(x)| +  |f_N(x)-f_N(x_0)| +  |f_N(x_0)-f(x_0)| \leq \varepsilon,
+\end{align*}%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
+which proves the claim.
+\end{proof}
+
+\begin{remark}
+The continuity of the limit can be phrased in a more suggestive way, in terms of `exchange of limits': for every $x\in [a,b]$:
+$$
+\lim_{t\to x} \lim_{k\to \infty} f_k(t) = \lim_{k\to \infty}\lim_{t\to x} f_k(t).
+$$
+We will see that this `commutativity' is common to many results related to uniform convergence.
+\end{remark}
+
+%We also have another continuity result, under the assumption of pointwise convergence and monotonicity:
+%
+%
+%\begin{theorem}\label{pointwisemonotone}
+%Let $(f_k)_{k\in \mathbb{N}}$ be a sequence of continuous functions $f_k:[a,b]\to \R$. Suppose that for every $x\in [a,b]$ the sequence $(f_k(x))_{k\in \N}$ is decreasing (namely $f_k(x)\geq f_{k+1}(x)$ for every $x$ and every $k$) and that $(f_k)_{k\in \N}$ converges pointwise to a continuous function $f:[a,b]\to \R$ as $k\to \infty$. Then $(f_k)_{k\in \N}$ converges to $f$ uniformly in $[a,b]$.
+%\end{theorem}
+%
+%\begin{remark}
+%In the theorem above, the fact that the functions are defined on a closed and bounded set (a compact of $\R$) is crucial. Indeed, the sequence
+%$$
+%f_k(x):= \frac{1}{kx+1}, \quad x\in (0,1), k\in \N,
+%$$
+%converges pointwise to $0$ in $(0,1)$ and is decreasing, but the convergence is not uniform.
+%\end{remark}
+
+
+We now address the question of integrability.
+
+
+\begin{theorem}\label{limit:integral}
+Let $(f_k)_{k\in \mathbb{N}}$ be a sequence of Riemann integrable functions on $[a,b]$ converging uniformly to a function $f : [a,b] \to \R$. Then $f$ is Riemann integrable and
+$$
+\int_a^b f_k(x)dx \to \int_a^b f(x)dx
+$$
+as $k \to \infty$.
+\end{theorem}
+
+
+\begin{proof}
+Let $\varepsilon > 0$ and fix a number $N \in \mathbb{N}$ such that for all $k \geq N$ and all $x \in [a, b]$, we have $|f_k (x) - f (x)| < \varepsilon$.
+By the definition of Riemann integrability, we find a subdivision $\Delta$ of $[a,b]$ such that $U(f_N,\Delta) - L(f_N,\Delta) < \varepsilon$. Let $I_1,...,I_M$ be the intervals of
+$\Delta$. Then for every $n = 1,...,M$, we have
+\begin{align*}
+\omega(f, I_n) &= \sup_{I_n} f - \inf_{I_n} f\\
+&\leq \sup_{I_n} f_N + \varepsilon - \inf_{I_n} f_N  + \varepsilon\\
+&= \omega(f_N , I_n) + 2\varepsilon.
+\end{align*}
+It follows that
+\begin{align*}
+U(f,\Delta) - L(f,\Delta) &= \sum_{n=1}^M \omega(f, I_n) |I_n| \leq \sum_{n=1}^M \omega(f_N, I_n) |I_n| + 2\varepsilon\sum_{n=1}^M |I_n| \\
+& = U(f_N,\Delta) - L(f_N,\Delta) + 2\varepsilon (b-a) < \varepsilon (1+ 2b - 2a).
+\end{align*}%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
+The right-hand side can be made arbitrarily small. Thus $f$ is Riemann integrable.
+Moreover, by the linearity and by the monotonicity of the integral we have
+\begin{align*}
+\left|\int_a^b f_k(x)dx - \int_a^b f(x)dx\right| &= \left|\int_a^b \Big(f_k(x) - f(x)\Big)dx \right|\\
+&\leq \int_a^b \Big|f_k(x) - f(x)\Big|dx\\
+&\leq(b-a) \sup_{x\in [a,b]} \Big|f_k(x) - f(x)\Big| \to 0\\
+\end{align*}
+as $k\to \infty$. Therefore, we have the desired convergence.
+\end{proof}
+
+
+\begin{remark}
+The conclusion of the theorem can be written in the form
+$$
+\lim_{k\to \infty}\int_a^b f_k(x)dx = \int_a^b \lim_{k\to \infty} f_k(x)dx.
+$$
+So we can summarise the theorem as follows: if we have uniform convergence,
+then we can `exchange' the integral with the limit.
+\end{remark}
+
+\begin{corollary}\label{series:i}
+If $\sum_{k=1}^\infty f_k$ is a uniformly convergent series of Riemann integrable functions $f_k : [a, b] \to \R$, then the sum of the series is Riemann integrable and
+$$
+\int_a^b\sum_{k=1}^\infty f_k(x) dx = \sum_{k=1}^\infty \int_a^b f_k(x) dx.
+$$
+\end{corollary}
+
+In other words, the series may be integrated term by term (or, equivalently, we can exchange the operations of integration and sum).
+
+
+
+\medskip
+
+Finally, we address the issue of differentiability. It is easy to see that uniform convergence of a sequence of functions $f_k:[a,b] \to \R$ implies nothing about the sequence
+$(f'_k)_{k\in \N}$.
+
+\begin{example}
+Let $f_k:[-1,1]\to \R$, $f_k(x) = \sqrt{\frac{1}{k^2}+x^2}$ for every $k\in \N$.
+
+The functions $f_k$ are differentiable for every $k$. Note that $f_k\to f$ uniformly as $k\to +\infty$, where $f(x)=|x|$; indeed
+$$
+|x|\leq f_k(x) \leq |x|+\frac1k \quad \forall \,k, \, \forall\, x\in [-1,1],
+$$
+hence
+$$
+\sup_{x\in [-1,1]} |f_k(x)-f(x)| \leq \frac1k,
+$$
+and the convergence is therefore uniform. The limit function $f$ is however not differentiable in $(-1,1)$.
+
+%(For another example see also Problem Sheet 1, Homework exercise 2.)
+\end{example}
+
+
+
+\begin{theorem}\label{uniform:differentiability}
+Let $(f_k)_{k\in \N}$ be a sequence of functions $f_k:[a,b]\to \R$ of class $C^1$ in $(a,b)$ (namely differentiable in $(a,b)$ and with continuous derivative in $(a,b)$). Suppose that
+\begin{itemize}
+\item[(i)] there exists a number $x_0 \in (a, b)$ such that the sequence $(f_k(x_0))_{k\in \mathbb{N}}$ is convergent, and
+\item[(ii)] $(f'_k)_{k\in \mathbb{N}}$ converges uniformly on $(a,b)$.
+\end{itemize}
+Then there exists a continuously differentiable function $f : (a, b) \to \R$ such that $f_k \to f$ uniformly and $f'_k \to f'$ uniformly as $k \to \infty$.
+\end{theorem}
+
+\begin{proof}
+Let $y_0:=\lim_{k\to\infty} f_k(x_0)$ and let $g : (a, b) \to \R$ be the uniform limit of $f'_k$. Then $g$ is continuous, being the uniform limit of continuous functions.
+Define
+$$
+f(x):= y_0 + \int_{x_0}^x g(t) dt, \quad x\in (a,b).
+$$
+Then, by the Fundamental Theorem of Calculus, $f'=g$. Moreover, for any $x\in (a,b)$,
+\begin{align*}
+\left|f_k(x) - f(x)\right|&= \left|f_k(x_0)+\int_{x_0}^x f'_k(t) dt - y_0 - \int_{x_0}^x g(t) dt\right|\\
+&\leq |f_k(x_0)-y_0|+ \left| \int_{x_0}^x \Big(f'_k(t) - g(t)\Big) dt \right|\\
+&\leq |f_k(x_0)-y_0|+  \int_{x_0}^x \Big|f'_k(t) - g(t)\Big| dt \\
+&\leq |f_k(x_0)-y_0|+  (b-a)\sup_{t\in (a,b)}\Big|f'_k(t) - g(t)\Big| \to 0.
+\end{align*}%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
+Hence $f_k \to f$ uniformly. We already know that $f'_k \to g = f'$ uniformly.
+\end{proof}
+
+\begin{remark}
+If, in Theorem \ref{uniform:differentiability}, one replaces (i) with the stronger condition that $f_k$ converges pointwise to a function $f$ on $(a,b)$, then the proof simplifies as follows.
+
+Fix some $x_0\in (a,b)$; the uniform convergence of $f'_k$ to $g$ implies that
+$$
+\int_{x_0}^x f'_k(t) dt \to \int_{x_0}^x g(t) dt \quad \textrm{as } k\to \infty,
+$$
+by Theorem \ref{limit:integral}. It then follows from the Fundamental Theorem of Calculus that
+$$
+f_k(x) - f_k(x_0) \to  \int_{x_0}^x g(t) dt \quad \textrm{as } k\to \infty.
+$$
+The pointwise convergence of $f_k$ to $f$ then gives
+$$
+f(x) - f(x_0) =  \int_{x_0}^x g(t) dt,
+$$
+which, again by the Fundamental Theorem of Calculus implies that $f$ is differentiable and $f'=g$.
+
+\end{remark}
+
+\begin{remark}
+There is another version of Theorem \ref{uniform:differentiability} under weaker assumptions (only differentiability of $f_k$, no continuity for $f'_k$, but still (i) and (ii)) that guarantees the convergence of the derivatives (but clearly $f'$ will not be continuous in general). The proof however requires more care, as the use of the fundamental theorem is not allowed.
+\end{remark}
+
+
+Similarly, for series, one can exchange the operations of derivative and sum, under the following assumptions.
+
+\begin{theorem}[Differentiation for series]\label{series:d}
+Let $(f_k)_{k\in \N}$ be a sequence of functions $f_k:[a,b]\to \R$ of class $C^1$ in $(a,b)$ and assume that the two series of functions
+$$
+\sum_{k=1}^\infty f_k \quad \textrm{and} \quad \sum_{k=1}^\infty f_k'
+$$
+converge uniformly to functions $f$ and $g$, respectively. Then $f$ is differentiable in $(a,b)$, its derivative is continuous in $(a,b)$ and
+$$
+f'=g.
+$$
+
+More in general, if the functions $f_k$ are $m$-times differentiable with continuity ($f_k\in C^m(a,b)$) and the series
+$$
+\sum_{k=1}^\infty f_k, \quad \sum_{k=1}^\infty f_k',  \dots , \textrm{and }  \, \sum_{k=1}^\infty f_k^{(m)}
+$$
+converge uniformly to functions $f$, $g_1$,..., and $g_m$, respectively, then $f$ is $m$-times differentiable with continuity in $(a,b)$ and
+$$
+f^{(i)}=g_i.
+$$
+\end{theorem}
+
+\begin{remark}
+Again, the conclusion of Theorem \ref{series:d} is valid under weaker assumptions. Indeed it is enough to have convergence of the series $\sum_{k=1}^\infty f_k(x_0)$ for some $x_0\in (a,b)$ and
+uniform convergence of the series of derivatives, in the spirit of Theorem \ref{uniform:differentiability}.
+\end{remark}
+
+%\begin{remark}
+%In {\color{red}MA20223} you will encounter a very special series of functions, the Fourier series, constructed in terms of trigonometric functions.
+%\end{remark}
+
+As a last result, we analyse the `exchange' of integration and differentiation. We first need some preparation.
+
+Let $f:[a,b]\times \R \to \R$, $(x,t)\mapsto f(x,t)$. The function $f$ depends on two variables. We can extend to such $f$ the concepts of continuity, uniform continuity and differentiability that we introduced for
+functions of one variable.
+
+\begin{definition}[Continuity]
+A function $f:[a,b]\times\R \to \R$ is said to be continuous at $(x_0,t_0) \in [a,b]\times\R$ if for very $\varepsilon>0$ there exists $\delta =\delta(\varepsilon,x_0,t_0)$ such that for every $(x,t)\in [a,b]\times \R$
+$$
+\|(x,t)-(x_0,t_0)\|<\delta \quad \Rightarrow \quad |f(x,t) - f(x_0,t_0)| < \varepsilon,
+$$
+where $\|(x,t)-(x_0,t_0)\| = \sqrt{(x-x_0)^2+(t-t_0)^2}$.
+
+\bigskip
+A function $f:[a,b]\times \R \to \R$ is said to be uniformly continuous if for every $\varepsilon>0$ there exists $\delta =\delta(\varepsilon)$ such that for every $(x,t), (y,s)\in [a,b]\times \R$:
+$$
+\|(x,t)-(y,s)\|<\delta \quad \Rightarrow \quad |f(x,t) - f(y,s)| < \varepsilon,
+$$
+where $\|(x,t)-(y,s)\| = \sqrt{(x-y)^2+(t-s)^2}$.
+
+\medskip
+In particular, a continuous function on a `compact' set $[a,b]\times [c,d]$ is uniformly continuous.
+\end{definition}
+
+
+
+\begin{definition}
+Let $f:[a,b]\times \R \to \R$ be a given function. We say that $f$ is partially differentiable in $t$ at the point $(x_0,t_0)\in (a,b)\times \R$ if the following limit exists:
+$$
+\lim_{h\to 0} \frac{f(x_0,t_0+h) - f(x_0,t_0)}{h};
+$$
+In this case we set
+$$
+\frac{\partial f}{\partial t} (x_0,t_0) = \lim_{h\to 0} \frac{f(x_0,t_0+h) - f(x_0,t_0)}{h},
+$$
+and we say that $\frac{\partial f}{\partial t} (x_0,t_0)$ is the partial derivative of $f$ with respect to $t$ at $(x_0,t_0)$.
+
+\end{definition}
+
+\begin{lemma}
+Let $f: [a,b]\times \R \to \R$, $(x,t)\mapsto f(x,t)\in \R$, be a continuous function. Then
+$$
+F:\R\to \R, \quad F(t):= \int_a^b f(x,t) dx
+$$
+is continuous.
+\end{lemma}
+
+\begin{proof}
+Let $t_0\in \R$ and $r>0$, and let $\varepsilon>0$. Since the function $f$ is uniformly continuous in $[a,b]\times [t_0-r, t_0+r]$, we have that there exists $\delta=\delta(\varepsilon,t_0)$ such that
+$$
+\|(x,t)-(y,s)\|<\delta \, \Rightarrow \, |f(x,t)-f(y,s)|<\varepsilon
+$$
+for every $(x,t),(y,s) \in [a,b]\times [t_0-r, t_0+r]$. Now let $h\in \R$, with $|h|<\min\{r,\delta\}$, and consider
+$$
+F(t_0+h) - F(t_0) = \int_a^b \big(f(x,t_0+h) - f(x,t_0)\big) dx.
+$$
+Since, clearly, $\|(x,t_0+h) - (x,t_0)\| \leq |h|$, by uniform continuity we have
+$$
+|f(x,t_0+h) - f(x,t_0)|<\varepsilon.
+$$
+This implies, in terms of $F$, that
+$$
+|F(t_0+h)-F(t_0)| \leq (b-a) \varepsilon,
+$$
+which gives the continuity of $F$ at $t_0$.
+\end{proof}
+
+\begin{theorem}
+Let $f: [a,b]\times \R \to \R$, $(x,t)\mapsto f(x,t)\in \R$, be a continuous function, and assume that the partial derivative
+$\frac{\partial f}{\partial t}$ is also continuous. Then the function
+$$
+F:\R\to \R, \quad F(t):= \int_a^b f(x,t) dx
+$$
+is differentiable, and
+$$
+F'(t) = \frac{d}{dt}  \int_a^b f(x,t) dx =  \int_a^b \frac{\partial f}{\partial t}(x,t) dx.
+$$
+\end{theorem}
+
+\begin{proof}
+Let $t_0\in \R$ and $r>0$, and let $\varepsilon>0$. Since the function $\frac{\partial f}{\partial t}$ is uniformly continuous in $[a,b]\times [t_0-r, t_0+r]$, we have that there exists $\delta=\delta(\varepsilon,t_0)$ such that
+$$
+\|(x,t)-(y,s)\|<\delta \, \Rightarrow \, \left|\frac{\partial f}{\partial t}(x,t)-\frac{\partial f}{\partial t}(y,s)\right|<\varepsilon
+$$
+for every $(x,t),(y,s) \in [a,b]\times [t_0-r, t_0+r]$. We claim that
+\begin{align*}
+\left|\frac{F(t_0+h) - F(t_0)}{h} - \int_a^b \frac{\partial f}{\partial t}(x,t_0) dx \right|<\varepsilon \quad \forall \, \left|h\right|<\min\{r,\delta\}.
+\end{align*}%%%% Check syntactic interpretation of verticals
+(Clearly this estimate implies the claim, by the definition of differential of $F$ at $t_0$.)
+
+Expanding the expression above we have that, whenever $|h|<\min\{r,\delta\}$,
+\begin{align*}
+\left|\frac{F(t_0+h) - F(t_0)}{h} - \int_a^b \frac{\partial f}{\partial t}(x,t_0) dx\right| \leq
+\int_a^b \left| \frac{f(x,t_0+h) - f(x,t_0)}{h} - \frac{\partial f}{\partial t}(x,t_0) \right| dx.
+\end{align*}
+By the Mean Value Theorem applied to the function $t\mapsto f(x,t)$ at fixed $x$ we have that there exists $\theta = \theta(h,x)$ such that
+$$
+\frac{f(x,t_0+h) - f(x,t_0)}{h} =  \frac{\partial f}{\partial t}(x,t_0+\theta), \quad \textrm{with }\, |\theta|<|h|.
+$$
+So we have
+\begin{align*}
+\left|\frac{F(t_0+h) - F(t_0)}{h} - \int_a^b \frac{\partial f}{\partial t}(x,t_0) dx\right| \leq
+\int_a^b \left| \frac{\partial f}{\partial t}(x,t_0+\theta)- \frac{\partial f}{\partial t}(x,t_0) \right| dx.
+\end{align*}
+Note that, since $\|(x,t_0+\theta) - (x,t_0)\|\leq |\theta|<|h|<\delta$, by uniform continuity
+$$
+\left| \frac{\partial f}{\partial t}(x,t_0+\theta)- \frac{\partial f}{\partial t}(x,t_0) \right| <\varepsilon,
+$$
+and hence
+\begin{align*}
+\left|\frac{F(t_0+h) - F(t_0)}{h} - \int_a^b \frac{\partial f}{\partial t}(x,t_0) dx\right| \leq (b-a)\varepsilon
+\end{align*}
+as claimed.
+\end{proof}
+
+%%%%%%%%%%%%%%%%
+
+\subsection{Power series}
+A special type of series of functions is given, for $y\in \R$, by the power series:
+\begin{equation}\label{powerx0}
+\sum_{k=0}^\infty a_k(y-y_0)^k, \quad a_k \in \R, y_0\in \R,
+\end{equation}
+or, with no loss of generality (e.g. by setting $x=y-y_0$),
+\begin{equation}\label{power0}
+\sum_{k=0}^\infty a_k x^k.
+\end{equation}
+Obviously the series \eqref{power0} converges at $x=0$. This could be the only point where the series converges, as for example in the case of the series
+$$
+\sum_{k=0}^\infty k^k x^k.
+$$
+
+\begin{theorem}\label{unifpt_ps}
+If the power series
+$$
+\sum_{k=0}^\infty a_k x^k
+$$
+converges at some point $y\in \R$, then it converges (pointwise) at every $x\in \R$ with $|x|< |y|$, and uniformly in $[-R,R]$, for every $R<|y|$.
+\end{theorem}
+
+\begin{proof}
+Assume that $y\neq 0$; since by assumption the (real) series
+$$
+\sum_{k=0}^\infty a_k y^k
+$$
+converges, we have that the (real) sequence $(a_k y^k)_k$ converges to zero as $k\to \infty$. In particular, the sequence $(a_k y^k)_k$ is bounded, namely there exists
+$M>0$ such that $|a_k y^k| \leq M$ for every $k\in \N$.
+
+Now, let $x\in \R$; since $y\neq 0$, we have
+\begin{align}\label{stima:ps}
+|a_k x^k| = \left| a_k x^k \, \frac{y^k}{y^k} \right| = |a_k y^k| \, \left| \frac{x}{y}\right|^k \leq M \, \left| \frac{x}{y}\right|^k;
+\end{align}%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
+hence, if $|x|<|y|$, by \eqref{stima:ps} we deduce the bound
+$$
+\sum_{k=0}^\infty a_k x^k \leq \sum_{k=0}^\infty |a_k x^k| \leq M \sum_{k=0}^\infty \left| \frac{x}{y}\right|^k,
+$$
+and the series at the right-hand side converges since $\left| \frac{x}{y}\right| <1$. By the comparison principle we have that
+$$
+\sum_{k=0}^\infty a_k x^k
+$$
+converges for every $x\in \R$ with $|x|<|y|$.
+
+To show uniform convergence, we will use the Weierstrass $M$-test. Let $R\geq 0$ be such that $R<|y|$; then by \eqref{stima:ps} we obtain the uniform bound
+$$
+\sup_{|x|\leq R}  |a_k x^k| \leq M \frac{R^k}{|y|^k} =:M_k
+$$
+where $M_k$ is independent of $x$, and $\sum_k M_k<\infty$; the convergence of the series is then uniform on $[-R,R]$.
+
+\end{proof}
+
+
+
+\begin{remark}
+Note that if the series \eqref{power0} does not converge at $y$, it will not converge for any $x$ with $|x|>|y|$. The set of points $x\in \R$ where the series converges is then an
+interval centred at $0$ (or centred at $y_0$ for the series \eqref{powerx0}).
+\end{remark}
+
+\begin{definition}
+We say that
+$$
+r = \sup \{|x|\geq 0: \eqref{power0} \, \textrm{converges}\}
+$$
+is the radius of convergence of the series. The interval of convergence is the open interval $(-r,r)$.
+\end{definition}
+
+\begin{example}
+The series
+$$
+\sum_{k=0}^\infty k^k x^k
+$$
+has radius of convergence $r=0$; the series
+$$
+\sum_{k=0}^\infty \frac{x^k}{k!}
+$$
+has radius of convergence $r=\infty$.
+The series
+$$
+\sum_{k=0}^\infty  x^k, \quad \sum_{k=0}^\infty  \frac{x^k}{(k+1)^2}, \quad \sum_{k=0}^\infty  \frac{x^k}{k+1}
+$$
+all have $r=1$. However, the first series does not converge at $x=\pm1$; the second one converges at both $x=-1$ and $x=1$; the third series converges at $x=-1$ and diverges at $x=1$.
+
+So the endpoints of the interval of convergence of the series have to be checked separately.
+\end{example}
+
+The following theorem gives a way of computing the convergence radius of a series:
+
+\begin{theorem}\label{thm:pointwisePS}
+Let
+$$
+\sum_{k=0}^\infty a_k x^k
+$$
+be a power series, and let
+$$
+L:= \limsup_{k\to \infty} (|a_k|)^{\frac1k}.
+$$
+Then the radius of convergence of the series is
+$$
+r =
+\begin{cases}
+0 \quad &\textrm{if } L=+\infty\\
++\infty \quad &\textrm{if } L=0\\
+\frac1L \quad &\textrm{if } 0<L<+\infty.
+\end{cases}
+$$
+\end{theorem}
+
+\begin{proof}
+Assume that $0<L<+\infty$, and let $x\in \R$ with $|x|<\frac1L$. By the definition of $L$ we have that, for every $\varepsilon>0$ there exists $N\in \N$ with the property that
+$$
+\forall\, k\in \N, \quad  k\geq N \quad \Rightarrow \quad (|a_k|)^{\frac1k} < L+\varepsilon.
+$$
+So, if we choose $\varepsilon>0$ such that $c:=|x|(L+\varepsilon)<1$, we have that there exists $N\in \N$ such that if $k\geq N$ then
+$$
+|a_k x^k| = |a_k| |x|^k < (L+\varepsilon)^k |x|^k = (|x|(L+\varepsilon))^k = c^k.
+$$
+Since $\sum_{k=0}^\infty c^k <\infty$, this proves that the series $\sum_{k=0}^\infty a_k x^k$ converges whenever $|x|< \frac1L$, and hence $r\geq \frac1L$. (Note that we proved that the tails of the power series are controlled by the tails of the
+geometric converging series. To conclude we just observe that each of the first $N$ terms is bounded by the constant $\max\{a_k r^k: k=1, \dots, N\} <\infty$.)
+
+To conclude the proof we need to show that the series does not converge for $|x|>\frac1L$. Let then $x\in \R$ be such that $|x|>\frac1L$; by the definition of $L$ we have that, for every $\varepsilon>0$
+there exist infinitely many $k\in \N$ such that
+$$
+(|a_k|)^{\frac1k} > L-\varepsilon.
+$$
+If we choose $\varepsilon>0$ such that $|x|(L-\varepsilon)> 1$ we then have that for infinitely many $k\in \N$
+$$
+|a_k x^k| = |a_k| |x|^k > (L-\varepsilon)^k |x|^k = (|x|(L -\varepsilon))^k >1.
+$$
+This proves that the series does not converge, since a necessary condition for convergence is that $a_k x^k \to 0$ as $k\to \infty$, while for infinitely many $k\in \N$ we have that  $|a_k x^k|>1$, which implies that at least a subsequence of $a_k x^k$ will not converge to zero.
+\smallskip
+
+(The cases $L=0$ and $L=+\infty$ are left as exercise.)
+\end{proof}
+
+\bigskip
+
+If the power series \eqref{power0} has radius of convergence $r>0$, then in the interval $(-r,r)$ the function
+$$
+f(x) = \sum_{k=0}^\infty a_k x^k
+$$
+enjoys lots of properties, as the following theorem shows.
+
+
+%More in general we have the following theorem.
+
+\begin{theorem}\label{power:deriv}
+Suppose that the power series
+\begin{equation}\label{l:ps}
+\sum_{k=0}^\infty a_k x^k
+\end{equation}
+has radius of convergence $0<r<\infty$. Then the function $f$ defined as
+$$
+f(x):=\sum_{k=0}^\infty a_k x^k, \quad |x|<r,
+$$
+is continuous and differentiable in $(-r,r)$, with
+$$
+f'(x) = \sum_{k=1}^\infty k a_k x^{k-1}, \quad |x|<r.
+$$
+\end{theorem}
+
+
+\begin{proof}
+Let $\varepsilon>0$ be arbitrary. By Theorem \ref{unifpt_ps} we know that the series converges uniformly on $[-r+\varepsilon,r-\varepsilon]$ and $f$ is therefore continuous in that interval, as the
+uniform limit of a continuous sequence (the partial sums of the power series). Moreover, by the arbitrariness of $\varepsilon$ the function $f$ is well-defined and continuous for $|x|<r$.
+
+Now, to prove differentiability, we first show that the series
+\begin{equation}\label{power:d}
+\sum_{k=1}^\infty k a_k x^{k-1}
+\end{equation}
+converges in the same interval, namely for $|x|<r$.
+
+To show this, let $0<|x|<r$, and let $x_0$ be such that $0<|x|<|x_0|<r$, so that $\big|\frac{x}{x_0}\big|=\rho<1$; since $\sum_{k=0}^\infty a_k x_0^k$ converges, we have that
+$a_k x_0^k\to 0$ as $k\to \infty$. This implies that there exists a constant $M$ such that $|a_kx_0^k|<M$ for every $k$. As a consequence, for every $k\in \N$
+\begin{align*}
+\left|k a_k x^{k-1}\right| & = \left| k a_k x^{k-1} \frac{x_0^k}{x_0^k}\right| = \left|\frac{k}{x_0} a_k x_0^k \frac{x^{k-1}}{x_0^{k-1}}\right|\leq \frac{k}{\left|x_0\right|}\, |a_kx_0^k| \rho^{k-1} \leq \frac{k}{|x_0|} M \rho^{k-1}.
+\end{align*}%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
+Note that the series
+$$
+\sum_{k=1}^\infty \frac{k}{|x_0|} M \rho^{k-1}
+$$
+converges, by the ratio test, since
+$$
+\frac{k+1}{|x_0|} M \rho^{k} \frac{|x_0| }{k M \rho^{k-1}} = \frac{k+1}{k} \rho \to \rho <1;
+$$
+hence, by comparison, the series \eqref{power:d} converges for $|x|<r$. This implies that, denoting with $r'$ the radius of convergence of \eqref{power:d}, $r'\geq r$.
+
+Suppose that $r'>r$ and choose $r<|x|<r'$. For this $x$ the series \eqref{power:d} converges, while the power series \eqref{l:ps} does not converge. But on the other hand
+$$
+|a_k x^k| = |k a_k x^{k-1}| \frac{|x|}k \leq |k a_k x^{k-1}| \quad \textrm{for } |x|<k.
+$$
+Note that $r'<k$ for $k$ large enough, which means that the original series can be bounded in terms of the series  \eqref{power:d} for $|x|<r'$.
+This means that the original series converges by comparison for this $x$, which is false. Hence $r'=r$.
+\medskip
+
+We then define
+$$
+g(x):= \sum_{k=1}^\infty k a_k x^{k-1}, \quad |x|<r.
+$$
+
+The fact that $g = f'$ for $|x|\leq r-\varepsilon$ is a direct consequence of Theorem \ref{series:d}. Since this is true for every $\varepsilon>0$ it follows that $f$ is differentiable in the whole interval $|x|<r$ and $f'=g$ (indeed, if $|x|<r$, then we
+can find $\varepsilon>0$ such that $|x|\leq r-\varepsilon$). %Continuity of $f$ follows from the existence of $f'$.
+\end{proof}
+
+
+\begin{remark}
+Assuming that the radius of convergence of the power series is finite we have deduced uniform convergence in any closed interval contained in the interior of the interval of convergence. If $r=\infty$ then the convergence is not
+necessarily uniform on the entire line, but it is uniform on any closed interval, using the same arguments as above.
+\end{remark}
+
+\begin{remark}
+Note that if a power series converges for $|x|<r$, then uniform convergence may fail to hold for $|x|<r$. Indeed, the geometric series
+$$
+\sum_{k=0}^\infty x^k
+$$
+has radius of convergence $r=1$, so it converges for $|x|<1$ to the function $1/(1-x)$ and does not converges for $|x|>1$. The series does not converge at the endpoints.
+
+The series converges uniformly on $[-\rho, \rho]$ for every $0\leq \rho<1$ but does not converge uniformly on $(-1,1)$, as shown in Example \ref{Cauchy:gs}.
+
+\medskip
+
+
+Also, the series $\sum_{k=0}^\infty \frac{x^k}{k}$ has radius of convergence $r=1$. At $x=1$ it diverges, while at $x=-1$ it converges, but not absolutely. The series does not converge uniformly on $(-1,1)$.
+
+
+
+\end{remark}
+
+
+Under the same assumptions as in the Theorem \ref{power:deriv}, we have the following result (which can be proved by induction).
+
+\begin{theorem}\label{inf:diff}
+Assume that the power series \eqref{power0} has radius of convergence $0<r<\infty$ and let
+\begin{equation}\label{sum:pseries}
+f(x):= \sum_{k=0}^\infty a_k x^k, \quad x\in (-r,r).
+\end{equation}
+Then $f$ is infinitely many times differentiable in $(-r,r)$ and for every $m\in \N$ and every $x\in (-r,r)$ we have
+\begin{equation}\label{Taylor}
+f^{(m)}(x) = \sum_{k=m}^\infty k(k-1)\dots(k-m+1)a_kx^{k-m}.
+\end{equation}
+(Here, $f^{(m)}$ is the $m$-th derivative of $f$.)
+\end{theorem}
+
+\begin{proof}
+We only need to show that the series
+$$
+\sum_{k=m}^\infty k(k-1)\dots(k-m+1)a_kx^{k-m}
+$$
+has radius of convergence $r$ for every $m$. Once this is proved, we simply apply Theorem  \ref{power:deriv} to deduce that the series equals the
+$m$-th derivative of $f$.
+
+To compute the radius of convergence, note that
+\begin{align*}
+\limsup_{k\to \infty} \left( k(k-1)\dots(k-m+1)\left|a_k\right|\right)^{\frac{1}k}  &= \lim_{k\to \infty}  k^{\frac{1}k} \, \lim_{k\to \infty}  (k-1)^{\frac{1}k} \dots \lim_{k\to \infty}  (k-m+1)^{\frac{1}k} \limsup_{k\to \infty} (\left|a_k\right|)^{\frac1k} \\
+&= \limsup_{k\to \infty} (\left|a_k\right|)^{\frac1k}  = \frac1r,
+\end{align*}%%%% Please add \left and \right to all verticals, this may be syntactically ambiguous and was abandoned due to bracketing depth
+which completes the proof.
+\end{proof}
+
+From Theorem \ref{inf:diff} we deduce that the sum of the series $f$ in \eqref{sum:pseries} is a well-defined and infinitely differentiable function in the interval of convergence of the series. Furthermore, we can get an expression for the coefficients $a_k$ in terms of $f$: The coefficients are simply the Taylor coefficients of $f$.
+
+
+\begin{theorem}\label{thm:Taylor}
+Assume that the power series \eqref{power0} has radius of convergence $0<r<\infty$ and let
+\begin{equation*}
+f(x):= \sum_{k=0}^\infty a_k x^k, \quad x\in (-r,r).
+\end{equation*}
+Then
+$$
+a_k = \frac{f^{(k)}(0)}{k!}.
+$$
+\end{theorem}
+\begin{proof}
+By setting $x=0$ we have that
+$$
+f^{(m)}(0) = m! a_m,
+$$
+namely if a power series converges to a function $f$, then $f$ is infinitely many times differentiable in its interval of convergence and the power series coincides with the Taylor series of $f$.
+\end{proof}
+
+\begin{remark}[Taylor series]
+It is however important to stress that a function $f$ may have derivatives of all orders, and at the same time the series $\sum_{k=0}^\infty a_k x^k$, with $f^{(k)}(0) = k! a_k$, may not converge to $f$ for
+$x\neq 0$.
+
+The typical example is the function $f:\R\to \R$ defined as
+$$
+f(x) = \begin{cases}
+e^{-1/x^2} \quad &\textrm{if } \, x\neq 0,\\
+0 \quad &\textrm{if } \, x= 0.
+\end{cases}
+$$
+The function $f$ has derivatives of all orders at $x=0$, and $f^{(m)}(0)=0$ for every $m\in \N$.
+\end{remark}
+
+\medskip
+
+An immediate consequence of Theorem \ref{thm:Taylor} is the following Proposition:
+
+\begin{proposition}
+Assume that the power series
+$$
+\sum_{k=0}^\infty a_k (x - x_0)^k \quad \textrm{ and } \sum_{k=0}^\infty b_k (x - x_0)^k
+$$
+have nonzero (possibly different) radii of convergence and assume that the series are equal on some neighbourhood of $x_0$. Then $a_k=b_k$ for every $k\in \N$.
+\end{proposition}
+
+\begin{proof}
+Let $(x_0-\delta, x_0 +\delta)$ be the neighbourhood of $x_0$ (open interval containing $x_0$) where the two series are equal. Note that $(x_0-\delta, x_0+\delta)$
+is contained in the (possibly different) intervals of convergence of the two series. We can then define $g: (x_0-\delta, x_0+\delta) \to \R$ as
+$$
+g(x):= \sum_{k=0}^\infty a_k (x - x_0)^k = \sum_{k=0}^\infty b_k (x - x_0)^k, \quad x\in (x_0-\delta, x_0+\delta).
+$$
+By Theorem \ref{thm:Taylor} applied to $g$ we have that $g$ is infinitely many times differentiable in $(x_0-\delta, x_0+\delta)$ and
+$$
+a_k = \frac{g^{(k)}(x_0)}{k!} = b_k,
+$$
+hence $a_k = b_k$ for every $k\in \N$.
+\end{proof}
+
+\bigskip
+
+Power series can be also integrated term by term, as a direct consequence of Corollary \ref{series:i}:
+
+\begin{corollary}
+Suppose that the power series
+$$
+\sum_{k=0}^\infty a_k x^k
+$$
+converges for $|x|<r$. Then, for every $-r<c<d<r$, we have
+$$
+\int_c^d \sum_{k=0}^\infty a_k x^k dx = \sum_{k=0}^\infty a_k \int_c^d x^k dx = \sum_{k=0}^\infty a_k \frac{d^{k+1}-c^{k+1}}{k+1}.
+$$
+\end{corollary}
+
+
+\subsection{Complex sequences and series}
+We can extend to complex numbers all the definitions and theorems in $\R$ that only rely on the `metric structure' of $\R$ (namely on the fact that we can compute
+distances among elements in $\R$, with the absolute value), since we have defined a modulus on complex numbers that mimics the absolute value in $\R$.
+\smallskip
+
+We will write $(\C, | \cdot|)$ to denote the set of complex numbers
+$$\C:= \{z = x+i y: x, y\in \R\},$$
+with the modulus defined as
+$$|z|:= \sqrt{z\bar z} =\sqrt{x^2+y^2}.$$
+Note however that we cannot extend to $\C$ the properties studied in $\R$ that rely on the `ordering' of $\R$, since there is no ordering in $\C$.
+
+\subsubsection{Convergence in $\C$.}
+We can immediately extend to $\C$ the concepts of sequences and convergence of sequences and series.
+
+\noindent
+If $(z_k)_{k\in \N}$ is a sequence in $\C$ and $z_0\in \C$, we say that $z_k\to z_0$ as $k\to \infty$ if
+$$
+\forall\, \varepsilon>0 \quad \exists\, N\in \N: \, k\geq N \Rightarrow |z_k-z_0|<\varepsilon.
+$$
+(Note that we only replaced $\R$ with $\C$ and the absolute value in $\R$ with the modulus in $\C$.)
+
+\smallskip
+
+We can also express convergence in $\C$ in terms of convergence in $\R$: Indeed, since a sequence $(z_k)_{k\in \N}$ in $\C$ corresponds to two real sequences $(x_k)_{k\in \N}$ and $(y_k)_{k\in \N}$ of its real and imaginary parts, we have that $z_k$ converges if and only if the sequences $(x_k)_k$ and $(y_k)_k$ converge.
+
+\medskip
+
+\noindent
+Concerning complex series, it is clear that $\sum_k z_k$ converges if and only if the real series $\sum_k x_k$ and $\sum_k y_k$ converge. Similarly, if $\sum_k z_k$ converges, then $z_k \to 0$, as in the real case. %{\color{red} Uniform!!}
+
+Moreover, if the real series $\sum_k |z_k|$ converges (namely, if $\sum_k z_k$ converges absolutely), then the series $\sum_k z_k$ converges as well. In addition, if a complex series converges absolutely, then every rearrangement of the series converges, and they all converge to the same sum.
+
+
+\begin{example}[Complex geometric series]
+The complex geometric series
+$$
+\sum_{k=0}^\infty z^k, \quad z\in \C
+$$
+converges if $|z|<1$ and does not converge if $|z|\geq 1$.
+
+This is clear, since for $|z|<1$ we have the bound (in terms of a real series)
+$$
+\sum_{k=0}^\infty |z^k| \leq \sum_{k=0}^\infty |z|^k,
+$$
+which ensures convergence by the comparison principle. On the other hand, if $|z|\geq 1$, then $|z^k|\geq 1$, and hence does not converge to zero, which is a necessary condition for the convergence of the series.
+\end{example}
+
+Notice that to prove convergence we generally try to bound a series which we
+know very little about by a geometric series, which we fully understand. This is a
+frequent technique in analysis!
+
+
+\bigskip
+
+More in general, the series
+$$
+\sum_{k=0}^\infty \alpha_k z^k, \quad \alpha_k, z\in \C
+$$
+converges at $z=0$, and if it converges at some $w\neq 0$, then it converges for every $z\in \C$, $|z|<|w|$.
+We can therefore define a radius of convergence as for the case of real power series. Note that in $\C$ the set of points
+where the series converges is a disc, and not an interval.
+
+\begin{theorem}
+Given the power series $\sum_{k=0}^\infty \alpha_k z^k$ with $\alpha_k, \,z\in \C$, set
+$$
+L:= \limsup_{k\to \infty} (|\alpha_k|)^{\frac1k}, \quad \textrm{and} \quad r=\frac1L.
+$$
+(If $L=0$, then $r=+\infty$; if $L=+\infty$, then $r=0$.) Then the series converges for $|z|<r$ and does not converge for $|z|>r$.
+\end{theorem}
+
+
+\medskip
+
+Concerning the differentiation of complex power series, similar results as in the real case apply. Namely, within a power series' radius of convergence, a power series is differentiable, and its derivative can be obtained by differentiating the individual terms of the power series term by term and has the same radius of convergence.
+
+\smallskip
+
+First of all we need to define the derivative of a complex function as preview of Analysis 2B.
+
+\begin{definition}
+Let $A\subset \C$ and let $z_0\in A$ and $R>0$ be such that $B_R(z_0)=\{z\in \C: |z-z_0|<R\}\subset A$. A function $f:A\to \C$ is said to be (complex-)differentiable at $z_0$ if the limit
+$$
+\lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}
+$$
+exists; in that case we set
+$$
+f'(z_0):= \lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0},
+$$
+and call it the derivative of $f$ at $z_0$.
+\end{definition}
+
+Now we can state the differentiability result for complex power series.
+
+\begin{theorem}
+Let $f(z)=\sum_{k=0}^\infty \alpha_k z^k$ be a power series with radius of convergence $r>0$. Then $f$ is complex-differentiable for $|z|<r$ (also called holomorphic) and its derivative is equal to the power series
+$f'(z) = \sum_{k=1}^\infty k \alpha_k z^{k-1}$ obtained by differentiating the series term by term. Also, $f'$ has the same radius of convergence as $f$.
+\end{theorem}
+
+\begin{corollary}
+A complex power series is infinitely (complex-)differentiable in its disc of convergence, and each of its $m$-th derivatives can be obtained by differentiating the series term-by-term $m$ times. The resulting power series has radius of convergence equal to the original power series.
+\end{corollary}
+
+\medskip
+
+\subsubsection{Important functions in $\C$.}
+
+As an illustration of some of the ideas in this subsection, we prove some basic properties of very important functions.
+
+\medskip
+
+
+\begin{example}[Complex exponential]
+The complex power series
+\begin{equation}\label{Tay:exp}
+\sum_{k=0}^\infty \frac{z^k}{k!}
+\end{equation}
+is convergent for every $z\in \C$. Indeed we have the bound in terms of
+$$
+\left|\frac{z^k}{k!}\right| \leq \frac{|z|^k}{k!},
+$$
+which defines a real and convergent series. (Alternatively: Since $\alpha_k = 1/k!$, and $\lim_k|\alpha_{k+1}|/|\alpha_k|=0$, this power series has radius of convergence $r=\infty$, so it converges for all $z$.)
+
+\smallskip
+
+\noindent
+Since on the real line the series \eqref{Tay:exp} is equal to the exponential function (by the convergence of the Taylor series of the exponential), we set
+\begin{equation}\label{complex:exp}
+e^z:= \sum_{k=0}^\infty \frac{z^k}{k!}
+\end{equation}
+to define the \textit{complex exponential function}.
+
+\medskip
+\noindent
+
+It is obvious that $e^0 =1$, by plugging in $z= 0$ into the power series expression for $e^z$.
+\smallskip
+
+It is easy to see that $(e^z)'=e^z$. Indeed, by differentiating the power series expression for $e^z$ term by term (allowed since the derivative series has the same radius of convergence of $e^z$, hence it converges for every $z\in \C$), we find
+$$
+(e^z)' = 1+ \frac{2z}{2!} + \frac{3z^2}{3!}+\dots = 1+ z+\frac{z^2}{2!} + \frac{z^3}{3!}+\dots = e^z.
+$$
+We moreover have the following property:
+\begin{equation}
+e^z e^w = e^{z+w}.
+\end{equation}
+To prove it, we need to recall the definition of multiplication of complex series. Given $\sum_k \alpha_k$ and $\sum_k \beta_k$, the product of the series is
+$$
+\sum_k c_k, \quad c_k = \sum_{m=0}^k \alpha_m \beta_{k-m}, \quad k=0,1,\dots.
+$$
+We also recall that the product of two convergent sequences converges to the product of their sums if at least one of the two converges absolutely.
+
+\medskip
+
+Hence, we can see that
+\begin{align*}
+e^z e^w &= \left(\sum_{k=0}^\infty \frac{z^k}{k!}\right)\left(\sum_{k=0}^\infty \frac{w^k}{k!} \right) = \sum_{k=0}^\infty \sum_{m=0}^k  \frac{z^m w^{k-m}}{m!(k-m)!}\\
+& = \sum_{k=0}^\infty \frac{1}{k!} \sum_{m=0}^k \binom{k}{m}z^m w^{k-m} = \sum_{k=0}^\infty \frac{1}{k!} (z+w)^k = e^{z+w}.
+\end{align*}
+
+
+Now note that if we write \eqref{complex:exp} for $z=iy$, with $y\in \R$, then we have
+\begin{align*}
+e^{iy} = \sum_{k=0}^\infty \frac{(iy)^k}{k!} = \sum_{m=0}^\infty (-1)^m\frac{y^{2m}}{(2m)!} + i \sum_{m=0}^\infty (-1)^m\frac{y^{2m+1}}{(2m+1)!}  = \cos y+ i\sin y.
+\end{align*}
+This is the famous Euler formula, a surprising relation between the exponential function and trigonometric functions:
+$$
+e^{iy} = \cos y + i \sin y.
+$$
+\end{example}
+
+
+\begin{example}[Complex trigonometric functions]
+We can define $\cos z$ and $\sin z$ by either using their respective power series, or by declaring
+$$
+\cos z= \frac{e^{iz} + e^{-iz}}{2}, \quad \sin z= \frac{e^{iz} - e^{-iz}}{2i},
+$$
+and using the power series expression of the complex exponential.
+\end{example}
+
+
+\begin{example}[Complex logarithm]
+We have that the complex logarithm is defined as
+
+$$
+\log(1+z) = \sum_{k=1}^{\infty} \frac{(-1)^{k+1}z^{k}}{k}, \quad |z|<1
+$$
+
+Heuristically (for now, it will be clear in MA20219) we can obtain the formula from the formula of the complex geometric series.
+We know that
+$$
+\sum_{k=0}^\infty z^k = \frac{1}{1-z}, \quad |z|\le1, z\neq -1.
+$$
+In particular we also have
+$$
+\frac{1}{1-z} = \sum_{k=0}^n z^k + \frac{z^{n+1}}{1-z}.
+$$
+Integrating the previous formula on the straight segment $L$ between $0$ and $z$ we have
+$$
+-\log(1-z) = \sum_{k=0}^n \frac{z^{k+1}}{k+1} + \int_L\frac{w^{n+1}}{1-w} dw.
+$$
+It is easy to show that the second term in the right-hand side is infinitesimal for $n\to \infty$, since
+$$
+\left|\int_L\frac{w^{n+1}}{1-w} dw\right|\leq \frac{|z|^{n+2}}{1-|z|}.
+$$
+In conclusion
+$$
+-\log(1-z) = \sum_{k=1}^{\infty} \frac{z^{k}}{k}, \quad |z|<1.
+$$
+\end{example}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+
+
+\section{Chapter 2: Metric spaces}
+
+%{\color{red} Bisogna accorciare aperti e chiusi.}
+
+%{\color{red} Equivalent norms?}
+
+Many mathematical problems involve a notion of distance. In this chapter we
+are going to develop a theory of `distance' from an abstract point of view. This relies
+on the notion of a metric, which is an abstraction of distance between two
+points of a given set.
+
+\begin{definition}
+Let $X$ be a set. A function $d : X \times X \to \R$ is called
+a \emph{metric} if it satisfies the following properties:
+\begin{enumerate}
+\item \label{def:non-negative} $d(x,y) \ge 0$ for all $x,y \in X$,
+\item \label{def:positive} $d(x,y) = 0$ if, and only if, $x = y$,
+\item \label{def:symmetry} $d(x,y) = d(y,x)$ for all $x,y \in X$ (symmetry),
+\item \label{def:triangle} $d(x,z) \le d(x,y) + d(y,z)$ for all $x,y,z \in X$ (triangle inequality).
+\end{enumerate}
+The pair $(X,d)$ is then called a \emph{metric space}.
+\end{definition}
+
+Sometimes $d$ is called `distance function' rather than `metric'. Often you can
+find statements such as `$X$ is a metric space'; but this makes only sense if
+it is clear what the corresponding metric is.
+%Some authors require that $X$ is non-empty in the definition of a metric space.
+
+\begin{example}[Euclidean space] \label{Eucl:d2}
+Let $n \in \N$; we define $d_2 : \R^n \times \R^n \to \R$ as
+\[
+d_2(x,y):= \left\|x - y\right\|_2 = \left(\sum_{i = 1}^n (x_i - y_i)^2\right)^{1/2}, \quad x,y \in \R^n.
+\]%%%% Please add \left and \right to all verticals, this may be syntactically ambiguous and was abandoned due to bracketing depth
+If $n=1$ we use the notation $d_2(x,y) = |x-y|$. We often omit the subscript $2$ from the Euclidean distance $\|x-y\|_2$.
+
+We prove that $d_2$ is a metric and thus $(\R^n,d_2)$ is a metric space. Axioms \eqref{def:non-negative}--\eqref{def:symmetry}
+are easy to verify. For the triangle inequality, we first need the \textbf{Cauchy-Schwarz inequality} (see 2A Algebra MA20216):
+\begin{equation}\label{CS}
+ \left|\sum_{i=1}^n u_i v_i \right| \leq \left(\sum_{i=1}^n u_i^2\right)^{\frac12} \left(\sum_{i=1}^n v_i^2\right)^{\frac12} \quad (=\|u\|\, \|v\|).
+\end{equation}%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
+To prove \eqref{CS} it is sufficient to prove the inequality for $u_i, v_i\geq 0$ and for $u\neq 0$ and $v\neq 0$ (otherwise it is trivial).
+For every $\alpha,\beta>0$, we have
+$$
+0\leq \sum_{i=1}^n (\alpha u_i - \beta v_i)^2 = \alpha^2 \sum_{i=1}^n u_i^2 + \beta^2 \sum_{i=1}^n v_i^2 - 2\alpha\beta \sum_{i=1}^n u_i v_i
+$$
+or equivalently, rearranging the terms,
+$$
+2\alpha\beta \sum_{i=1}^n u_i v_i  \leq \alpha^2 \sum_{i=1}^n u_i^2 + \beta^2 \sum_{i=1}^n v_i^2.
+$$
+The inequality \eqref{CS} follows by choosing $\alpha = \left(\sum_{i=1}^n v_i^2\right)^{\frac12}$ and $\beta = \left(\sum_{i=1}^n u_i^2\right)^{\frac12}$,
+and by dividing the resulting estimate by $2\alpha\beta$ (note that $2\alpha\beta> 0$).
+
+\medskip
+
+Now we are ready to prove the triangle inequality. By the definition of the Euclidean norm, proving \eqref{def:triangle} means to show that
+$$
+\|x-z\| \leq \|x-y\| + \|y-z\| \quad \textrm{for all } \, x,y,z\in \R^n.
+$$
+Let $u:=x-y$ and $v:=y-z$; then $u+v=x-z$. We are going to prove (equivalently) that $\|u+v\| \leq \|u\| + \|v\|$.
+
+To this end, note that by expanding the square and by using the Cauchy-Schwarz inequality, we have
+\begin{align*}
+\left\|u+v\right\|^2 = \sum_{i=1}^n  (u_i + v_i)^2 &= \sum_{i=1}^n  u_i^2 + \sum_{i=1}^n  v_i^2 + 2\sum_{i=1}^n u_i v_i \leq
+\|u\|^2 + \|v\|^2 + 2 \|u\|\, \|v\| = (\|u\|+\|v\|)^2,
+\end{align*}%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
+and the claim follows by taking the square root.
+\end{example}
+
+\begin{example}
+The following are also metrics on $\R^n$:
+\begin{align*}
+d_1(x,y):= \left\|x-y\right\|_1 = \sum_{i = 1}^n \left|x_i - y_i\right|,
+\end{align*}%%%% Check syntactic interpretation of verticals
+also called the $\ell^1$ metric (also referred to informally as the ``taxi-cab" metric, since it's the distance one would travel by taxi on a rectangular grid of streets);
+\begin{align*}
+d_\infty(x,y):= \left\|x-y\right\|_\infty = \max_{i \in \{1,\ldots,n\}} \left|x_i - y_i\right|,
+\end{align*}%%%% Please add \left and \right to all verticals, this may be syntactically ambiguous and was abandoned due to bracketing depth
+also called the $\ell^\infty$ metric, or the maximum metric.
+More generally, for $1 \le p < \infty$, we have a metric
+\[
+d_p(x,y):= \left\|x-y\right\|_p = \left(\sum_{i = 1}^n \left|x_i - y_i\right|^p\right)^{1/p}
+\]%%%% Please add \left and \right to all verticals, this may be syntactically ambiguous and was abandoned due to bracketing depth
+on $\R^n$, but this is more difficult to verify (the triangle inequality does not follow from the Cauchy-Schwarz inequality, but from the Minkowski inequality).
+For $p < 1$, $d_p$ does not define a metric since the triangle inequality fails! E.g., in $\R^2$, for $p=\frac12$, and $x=(1,0)$, $z=(0,-1)$, $y=(0,0)$, we have
+$$
+\|x-z\|_{\frac12} = \|(1,1)\|_{\frac12} = (1+1)^2 = 4; \quad \|x\|_{\frac12} + \|z\|_{\frac12} = 2.
+$$
+\end{example}
+
+\begin{example}[Discrete metric] \label{discrete-metric}
+Let $X \not= \emptyset$ be a set. Define
+$$
+d(x,y) = \begin{cases}
+0 & \text{if } x=y, \\
+1 & \text{if } x\neq y.
+\end{cases}
+$$
+Then \eqref{def:non-negative}--\eqref{def:symmetry} are clearly satisfied. To
+verify \eqref{def:triangle}, we just need to check four different cases, and it turns
+out that $d$ is a metric.
+\end{example}
+
+\begin{example}[Railway metric]\label{railway}
+Define $d : \R^n \times \R^n \to \R$ as follows: for $x,y \in \R^n$,
+\[
+d(x,y) = \begin{cases} \left\|x - y\right\| & \text{if $x,y,0$ are collinear}, \\ \|x\| + \|y\| & \text{otherwise}. \end{cases}
+\]%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
+E.g., for $n = 2$,
+\begin{align*}
+d((1,1),(2,2)) & = \sqrt{2}, \\
+d((1,1),(-2,2)) & = 3\sqrt{2}.
+\end{align*}
+(\textit{Curiosity:} It is called the Railway metric in Britain (and in France), because all the train lines radiate from London (and Paris), located at the origin. To take a train from town $x$ to town $y$, one has to take a train from $x$ to $0$ and then take a train from $0$ to $y$, unless $x$ and $y$ are on the same line, when one can take a direct train.)
+
+\medskip
+
+
+%We want to verify that $d$ is a metric. Axioms \eqref{def:non-negative} and \eqref{def:symmetry} are obvious.
+%
+%\eqref{def:positive} If $x = y$, then $x,y,0$ are collinear and $d(x,y) = \|x - y\| = 0$. If $d(x,y) = 0$, then
+%either
+%\begin{itemize}
+%\item $x$, $y$, and $0$ are collinear and $\|x - y\| = 0$, or
+%\item $\|x\| = 0$ and $\|y\| = 0$.
+%\end{itemize}
+%In the first case, we have $x = y$. In the second case, we have $x = 0 = y$.
+%
+%\eqref{def:triangle} Let $x,y,z \in \R^n$. We have to distinguish a number of cases in order to prove the triangle
+%inequality. If $x,y,z,0$ are all collinear, then
+%\[
+%d(x,z) = \|x - z\| \le \|x - y\| + \|y - z\| = d(x,y) + d(y,z).
+%\]
+%If $x,y,0$ are collinear and $y,z,0$ are not, then $x,z,0$ are not collinear. Hence
+%\[
+%d(x,z) = \|x\| + \|z\| \le \|x - y\| + \|y\| + \|z\| = d(x,y) + d(y,z).
+%\]
+%When the roles of $x$ and $z$ are reversed, the proof remains the same. Finally, if neither $x,y,0$ nor $y,z,0$ nor $x,z,0$ are
+%collinear, then
+%\[
+%d(x,z) \le \|x\| + \|z\| \le \|x\| + 2\|y\| + \|z\| = d(x,y) + d(y,z).
+%\]
+\end{example}
+
+
+
+\begin{example}\label{continuous_functions}
+Consider the space $C^0([0,1])$ of all continuous functions from $[0,1]$ to $\R$ (sometimes it is denoted with $C([0,1])$).
+Define
+\[
+d_\infty(f,g) = \max_{t \in [0,1]} \left|f(t) - g(t)\right|, \quad f,g \in C^0([0,1]).
+\]%%%% Please add \left and \right to all verticals, this may be syntactically ambiguous and was abandoned due to bracketing depth
+Then $(C^0([0,1]),d_\infty)$ is a metric space.
+
+\quad
+
+Another possible metric on $C^0([0,1])$ can be defined as
+$$
+d^\ast(f,g) = \int_0^1|f(t)-g(t)|dt.
+$$
+
+\end{example}
+
+
+In many of the examples above the distance can be defined in terms of a norm. This is the case for the Euclidean space, but not only.
+
+\subsection{Normed vector spaces}
+
+We start by recalling the definition of vector spaces.
+
+\begin{definition}
+A real vector space is a nonempty set $X$ on which two operations are defined, addition in $X$
+$$
++ : X\times X \to X
+$$
+and multiplication by an element in $\R$
+$$
+\cdot : \R\times X \to X
+$$
+satisfying the following axioms:
+\begin{itemize}
+\item The addition is associative and commutative, namely
+$$
+x+y = y+x, \quad (x+y)+z = x+y+z \quad \forall \, x,y,z \in X;
+$$
+\item There exists an element $0\in X$ such that $x+0=x$ for every $x\in X$;
+\item $0\cdot x = 0$ and $1\cdot x= x$ for every $x\in X$;
+\item Addition and multiplication are distributive, namely
+$$
+(\lambda+\mu)x = \lambda x+ \mu x, \quad \lambda(x+y) = \lambda x+ \lambda y \quad \forall \, x,y \in X, \lambda,\mu\in \R;
+$$
+\item For every $\lambda, \mu \in \R$ and every $x\in X$:
+$$
+\lambda(\mu x) = (\lambda \mu) x.
+$$
+\end{itemize}
+
+The vector space is called complex if the multiplication is defined with elements of $\C$.
+\end{definition}
+
+
+On vector spaces one can define a \textit{norm}, which is essentially a way to measure to magnitude of the elements in the vector space.
+
+
+\begin{definition}[Normed space]
+Let $X$ be a (real) vector space. An application $\|\cdot\|: X\to \R$ is called a norm on $X$ if it satisfies the following axioms:
+\begin{itemize}
+\item[(N1)] $\|x\|\geq0$ and $\|x\|=0$ if and only $x=0$;
+\item[(N2)] $\|\lambda x\| = |\lambda| \|x\|$ for every $x\in X$ and every $\lambda\in \R$;
+\item[(N3)] $\|x+y\|\leq \|x\| + \|y\|$.
+\end{itemize}
+The pair $(X,\|\cdot\|)$ is called a normed space.
+\end{definition}
+
+\begin{remark}
+The properties in the definition of the norm are natural ones to require of a length: The length of $x$ is $0$ if and only if $x$ is the $0$-vector; multiplying a vector by $\lambda$ multiplies its length by $|\lambda|$; and the length of the side $x + y$ (in a triangle) is less than or equal to the sum of the lengths of the sides $x$, $y$. Because of this last interpretation, property (N3) is referred to as the triangle inequality (as for the distance).
+\end{remark}
+
+\begin{example}[Norms in $\R^n$]
+$(\R,|\cdot|)$ is a normed space, where $|\cdot|$ denotes the absolute value. Also $(\R^n,\|\cdot\|)$ is a normed space, where $\|\cdot\|$ denotes
+$$
+\|x\|:= \sqrt{\langle x,x\rangle} = \sqrt{\sum_{i=1}^n x_i^2}.
+$$
+(We will often write $\|\cdot\|_2$ for the Euclidean norm.)
+
+\medskip
+
+The set $\R^n$ with any of the norms defined for $x = (x_1,\dots, x_n)$ by
+$$
+\|x\|_1 := \sum_{i=1}^n|x_i|, \quad \|x\|_{\infty} := \max_{i=1,\dots,n}\{ |x_i|\}
+$$
+is an $n$-dimensional normed vector space. The corresponding metrics are the ``taxi-cab'' metric and the maximum metric, respectively.
+
+\end{example}
+
+\begin{example}[Norms on spaces of functions]\label{continuous_functions-N}
+The distance in Example \ref{continuous_functions} can be defined via the norm given, for $f \in C^0([0,1])$, by
+$$
+\|f\|:= \max_{t \in [0,1]} |f(t)|.
+$$
+This norm is usually denoted with $\|f\|_{\infty}$ and referred to as the infinity-norm or sup-norm. (We will see a connection between this norm and uniform convergence.)
+\medskip
+
+\noindent
+In $C^0([0,1])$ one can also define $L^p$-norms, for $p\geq 1$, as
+$$
+\|f\|_p:= \left(\int_0^1|f(t)|^p dt\right)^{\frac1p},
+$$
+for $f\in C^0([0,1])$. Then $(C^0([0,1]), \|\cdot\|_p)$ is a normed space.
+
+\medskip
+
+Another example of a normed space is the space $C^1([0,1])$ of continuously differentiable functions in $[0,1]$\footnote{Usually differentiability is defined in an open interval. Here differentiable in the closed interval $[0,1]$ means that it is differentiable in $(0,1)$ and the derivative can be extended up to $[0,1]$ continuously.}, with norm defined as
+$$
+\|f\|_{C^1}:= \max_{t \in [0,1]} |f(t)| + \max_{t \in [0,1]} |f'(t)| = \|f\|_{\infty}+\|f'\|_{\infty}.
+$$
+
+\end{example}
+
+
+\begin{remark}
+A normed space $(X,\|\cdot\|)$ is a metric space, with the distance
+$$
+d(x,y):= \|x-y\|, \quad x,y\in X.
+$$
+(The triangle inequality comes from the axiom (N3) of the norm.)
+
+\medskip
+
+The vice versa is not true! A metric associated with a norm is special: It has the additional properties that for all $x, y, z \in X$ and $\lambda\in \R$
+$$d(x + z,y + z) = d(x,y), \quad d(\lambda x,\lambda y) = |\lambda| \, d(x,y),$$
+which are called translation invariance and homogeneity, respectively. These properties do not even make sense in a general metric space since we cannot add points or multiply them by scalars. If $X$ is a normed vector space, we always use the metric associated with its norm, unless stated specifically otherwise.
+\end{remark}
+
+
+
+\begin{example}[Metrics not associated to a norm]
+Consider the discrete metric in Example \ref{discrete-metric} and take $X=\R$ (or any vector space on $\R$ containing at least two distinct elements). Then, for any $\lambda\in \R$, with $\lambda\neq 0$ and $|\lambda|\neq 1$, and any $x,y \in \R$ with $x\neq y$, we have that
+$$
+d(\lambda x, \lambda y) =1,
+$$
+while
+$$
+|\lambda| d(x,y) = |\lambda| \neq 1.
+$$
+\medskip
+
+Also the railway metric in Example \ref{railway} is not derived from a norm (prove it!).
+
+\end{example}
+
+\subsection{Open and Closed Sets}
+
+We now extend to metric spaces the definitions of open and closed interval that we learnt in $\R$.
+
+
+
+\begin{definition} \label{def:ball}
+Let $(X,d)$ be a metric space. Let $x_0 \in X$ and $r > 0$. Then
+\[
+B_r(x_0) = \{x \in X: d(x_0,x) < r\}
+\]
+is called the \emph{open ball} of centre $x_0$ and radius $r$, whereas
+\[
+\overline{B}_r(x_0) = \{x \in X: d(x_0,x) \leq r\}
+\]
+is called the \emph{closed ball} of centre $x_0$ and radius $r$.
+\end{definition}
+
+\begin{example}
+In $(\R^n, d_2)$, namely in the Euclidean space, balls are the usual shapes. (Note that, for $n=1$, an open (resp. closed) ball is an open (resp. closed) interval centred at $x_0$ and with length $2r$.)
+\end{example}
+
+\begin{example}
+Consider $\R^2$ with the metric
+\[
+d_1(x,y) = |x_1 - y_1| + |x_2 - y_2|.
+\]%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
+Then $B_1(0)$ has the shape shown in Figure \ref{fig:ball1}.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.3\textwidth]{ball1.pdf}
+\caption{The unit ball $B_1(0)$ in the metric $d_1$ (or in the norm $\|\cdot\|_{1}$)}
+\label{fig:ball1}
+\end{center}
+\end{figure}
+\end{example}
+
+\begin{example}
+Consider $\R^2$ with the metric
+\[
+d_\infty(x,y) = \max\{|x_1 - y_1|,|x_2 - y_2|\}.
+\]%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
+Then $B_1(0)$ has the shape shown in Figure \ref{fig:ballinfty}.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.3\textwidth]{ballinfty.pdf}
+\caption{The unit ball $B_1(0)$ in the metric $d_\infty$ (or in the norm $\|\cdot\|_{\infty}$)}
+\label{fig:ballinfty}
+\end{center}
+\end{figure}
+\end{example}
+
+\begin{example}
+Consider $C^0([0,1])$ with the usual metric
+\[
+d_\infty(f,g) = \max_{t \in [0,1]} |f(t) - g(t)| \quad (=\|f-g\|_\infty)
+\]%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
+defined in Example \ref{continuous_functions}.
+
+Let $f_0 \in C^0([0,1])$. A graphical representation of the ball $B_r(f_0)$ is given in Figure \ref{fig:ballC0}.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{ballC0.pdf}
+\caption{The thick solid curve represents the graph of a function $f_0 \in C^0([0,1])$. The open ball $B_r(f_0)$ is given by all functions with graphs contained in the grey region (not including the upper and lower boundary).}
+\label{fig:ballC0}
+\end{center}
+\end{figure}
+\end{example}
+
+
+We can then define what it means for a set to be bounded.
+
+
+
+\begin{definition}[Bounded sets]
+Let $(X,d)$ be a metric space. A set $A\subseteq X$ is said to be \emph{bounded} if there exist $x_0\in X$ and $r>0$ such that
+$$
+A\subseteq B_r(x_0).
+$$
+
+We say that $(X,d)$ is a \emph{bounded metric space} if $X$ is bounded.
+\end{definition}
+
+
+\begin{remark}
+Alternatively, one can say that $A\subseteq X$ is bounded if
+\[
+\textrm{diam} (A) := \sup_{x ,y \in A} d(x,y) <\infty,
+\]
+and $\textrm{diam} (A)$ is called the diameter of $A$.
+
+\end{remark}
+
+\begin{example}
+The Euclidean space $\R^n$ is unbounded, but the open unit ball
+$\{x \in \R^n: \|x\| < 1\}$
+in $\R^n$ is bounded (by definition) with diameter $2$.
+\end{example}
+
+\begin{example}
+On $\R$, define
+\[
+d(x,y) = \left|\arctan x - \arctan y\right|.
+\]%%%% Check syntactic interpretation of verticals
+Then $(\R,d)$ is a metric space. As $|\arctan x| \le \frac{\pi}{2}$ for every
+$x \in \R$, it is bounded. In fact, we have $\textrm{diam} (\R) = \pi$ in this metric.
+\end{example}
+
+
+
+%\begin{definition}
+%Let $(X,d)$ be a metric space and $x_0 \in X$. A set $N \subseteq X$ is a
+%\emph{neighbourhood} of $x_0$ if there exists a radius $r > 0$ such that $B_r(x_0) \subseteq N$.
+%\end{definition}
+
+\begin{definition}[Open sets]
+Let $(X,d)$ be a metric space. A set $U \subseteq X$ is \emph{open} if
+\[
+\forall \, x \in U \quad \exists \, r > 0 : B_r(x) \subseteq U.
+\]
+\end{definition}
+
+\begin{lemma} \label{lemma:balls}
+Let $(X,d)$ be a metric space. Let $x_0 \in X$ and $r > 0$. Then $B_r(x_0)$ is open.
+\end{lemma}
+
+\begin{proof}
+Let $x \in B_r(x_0)$. Set $s = r - d(x,x_0)$. Then $s > 0$. Moreover, we have $B_s(x) \subseteq B_r(x_0)$. It follows that $B_r(x_0)$ is open.
+\end{proof}
+
+We now prove some properties for open sets.
+
+\begin{theorem} \label{thm:open}
+Let $(X,d)$ be a metric space. Then
+\begin{enumerate}
+\item \label{item1.2.1.i} $\emptyset$ and $X$ are open;
+\item \label{item1.2.1.ii} if $\{U_\lambda: \lambda \in \Lambda\}$ is any collection of open sets, then the union
+\[
+\bigcup_{\lambda \in \Lambda} U_\lambda
+\]
+is open;
+\item \label{item1.2.1.iii} if $\{U_1, \ldots, U_N\}$ is a finite collection of open sets, then the intersection
+\[
+\bigcap_{k = 1}^N U_k
+\]
+is open.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\eqref{item1.2.1.i} Clearly $\emptyset$ is open. Moreover, for every $x \in X$, we have
+$B_1(x)=\{y \in X: d(x,y) < 1\} \subseteq X$, so $X$ is open.
+\medskip
+
+\eqref{item1.2.1.ii} Let $x \in \bigcup_{\lambda \in \Lambda} U_\lambda$. Then there exists an $\lambda^\ast \in \Lambda$ such
+that $x \in U_{\lambda^\ast}$. As $U_{\lambda^\ast}$ is open, there exists an $r > 0$ such that $B_r(x) \subseteq U_{\lambda^\ast}$, and
+then
+\[
+B_r(x) \subseteq \bigcup_{\lambda \in \Lambda} U_\lambda.
+\]
+\medskip
+
+\eqref{item1.2.1.iii} Let $x \in \bigcap_{k = 1}^N U_k$. Since every $U_k$ is open, there exist
+$r_1,\ldots,r_N > 0$ with
+\[
+B_{r_1}(x) \subseteq U_1, \ldots, B_{r_N}(x) \subseteq U_N.
+\]
+Define $r = \min\{r_1,\ldots,r_N\}$. Then
+\[
+B_r(x) \subseteq B_{r_k}(x) \subseteq U_k, \quad k = 1,\ldots,N,
+\]
+and thus $B_r(x) \subseteq \bigcap_{k = 1}^N U_k$.
+\end{proof}
+
+\begin{definition}[Interior]
+Let $A$ be a subset of a metric space $(X,d)$. A point $x \in A$ is called \emph{interior point}
+of $A$ if there exists an $r > 0$ such that $B_r(x) \subseteq A$.
+The set of all interior points of $A$ is denoted by $A^\circ$ and called the
+\emph{interior} of $A$.
+\end{definition}
+
+\begin{example}
+Consider the set $[0,1] \subset \R$. Then $[0,1]^\circ = (0,1)$.
+\end{example}
+
+
+\begin{theorem} \label{thm:interior}
+Let $A$ be a subset of a metric space $(X,d)$. Then
+\begin{enumerate}
+\item \label{item1.2.2.i} $A^\circ$ is open, and
+\item \label{item1.2.2.ii} if $U \subseteq A$ is open, then $U \subseteq A^\circ$.
+\end{enumerate}
+\end{theorem}
+
+We can summarise this theorem as follows: the interior of $A$ is the largest
+open set contained in $A$.
+
+\begin{proof}
+\eqref{item1.2.2.ii} Let $U \subseteq A$ be open. If $x \in U$ is an
+arbitrary point, then there exists an $r > 0$ such that $B_r(x) \subseteq U \subseteq A$.
+So $x$ is an interior point, and hence $x \in A^\circ$.
+
+\eqref{item1.2.2.i} Let $x \in A^\circ$. Then there exists an $r > 0$ such that
+$B_r(x) \subseteq A$. By Lemma \ref{lemma:balls}, we know that $B_r(x)$ is open.
+By \eqref{item1.2.2.ii}, we have $B_r(x) \subseteq A^\circ$. Therefore $A^\circ$ is open.
+\end{proof}
+
+
+\begin{remark}
+Using this notation, we can reformulate the definition of open sets: a set
+$U \subseteq X$ is open if, and only if, each point of $U$ is an interior point.
+That is,
+\[
+U \mbox{ is open} \Leftrightarrow U = U^\circ.
+\]
+\end{remark}
+
+%%%%%%%%%
+%%%%%%%%%  Fin qui
+
+
+\bigskip
+
+
+
+\begin{definition}
+Let $(X,d)$ be a metric space and $A \subseteq X$. A point $x_0 \in X$ is
+called a \emph{cluster point} (or an `accumulation point', or a `limit point') of $A$, if for all
+$r > 0$,
+\[
+(B_r(x_0) \backslash \{x_0\}) \cap A \not= \emptyset.
+\]
+The set of all cluster points of $A$ is denoted by $A'$.
+
+\medskip
+
+A point $x_0 \in A$ is called an \emph{isolated point} of $A$, if $x\in A$ and there exists $r > 0$ such that
+\[
+(B_r(x_0) \backslash \{x_0\}) \cap A  = \emptyset.
+\]
+
+\end{definition}
+
+In other words, the point $x_0$ is a cluster point of $A$ if it has points
+of $A$ other than itself arbitrarily close. It is an isolated point if it is in $A$ but is not a cluster point of $A$.
+
+Note that a cluster point may be contained in $A$ or not, while an isolated point is contained in $A$.
+
+
+\begin{example}
+In $(\R, |\cdot|)$, consider the set $A = \left\{\frac{1}{k}: k \in \N\right\}$. Then $0 \in A'$ (even if $0\notin A$), whereas $1 \not\in A'$ (even if $1\in A$).
+\end{example}
+
+\begin{definition}[Closed sets]
+A subset of a metric space is called \emph{closed} if it contains
+all of its cluster points.
+\end{definition}
+
+\begin{example}
+The set $A$ from the previous example is not closed, as $0 \not\in A$.
+On the other hand, the set $F = \left\{\frac{1}{k}: k \in \N\right\} \cup \{0\}$ is closed in $\R$.
+There is only one cluster point, namely $0$. All the elements of $A$ are isolated points.
+\end{example}
+
+\begin{theorem} \label{thm:complement}
+Let $(X,d)$ be a metric space. A set $F \subseteq X$ is closed if, and only if, its complement
+$X \backslash F$ is open.
+\end{theorem}
+
+\begin{proof}
+Suppose that $F$ is closed. Let $x \in X \backslash F$. Then $x$ is not a cluster point of $F$.
+That is, there exists an $r > 0$ such that
+\[
+(B_r(x) \backslash \{x\}) \cap F = \emptyset.
+\]
+Since $x \not\in F$, this means $B_r(x) \subseteq X \backslash F$. It follows that
+$X \backslash F$ is open.
+
+Now suppose that $F$ is not closed. Then there exists a cluster point $x$ of $F$, with
+$x \in X \backslash F$. Then for any $r > 0$, we have $B_r(x) \cap F \not= \emptyset$,
+so $B_r(x) \not\subseteq X \backslash F$. This means that $x$ is not an interior point
+of $X \backslash F$, and $X \backslash F$ is not open.
+\end{proof}
+
+\begin{example}
+Let $a < b$. The interval $[a,b]$ is closed in $\R$ (because $(-\infty,a) \cup (b,\infty)$ is open),
+but $(a,b]$, $[a,b)$, and $(a,b)$ are not closed.
+\end{example}
+
+\begin{example}
+The closed ball $\overline{B}_r(x)$ is closed in any metric space $(X,d)$ for any $x \in X$ and any $r > 0$.
+\end{example}
+
+\begin{example}
+In any metric space $(X,d)$, the sets $\emptyset$ and $X$ are closed.
+\end{example}
+
+\begin{definition}[Closure]
+Let $A$ be a subset of a metric space $(X,d)$. The \emph{closure} of $A$
+is the set $\overline{A} = A \cup A'$.
+\end{definition}
+
+\begin{theorem} \label{thm:closure}
+Let $A$ be a subset of a metric space $(X,d)$. Then
+\begin{enumerate}
+\item \label{item1.3.2.i} $\overline{A}$ is closed, and
+\item \label{item1.3.2.ii} if $F \supseteq A$ is closed, then $F \supseteq \overline{A}$.
+\end{enumerate}
+\end{theorem}
+
+In other words, the closure $\overline{A}$ is the smallest closed set containing $A$, and
+$$
+A \mbox{ is closed} \Leftrightarrow A = \overline A.
+$$
+
+
+
+\begin{proof}
+\eqref{item1.3.2.ii} Suppose that $F \supseteq A$ is closed. Let
+$x \in \overline{A} = A \cup A'$. If $x \in A$, then it is
+clear that $x \in F$ as well. If $x \in A'$, then for every
+$r > 0$, we have
+\[
+\emptyset \not= (B_r(x) \backslash \{x\}) \cap A \subseteq (B_r(x) \backslash \{x\}) \cap F.
+\]
+Hence $x$ is a cluster point of $F$, too. Since $F$ is closed,
+this means that $x \in F$ and $\overline{A} \subseteq F$.
+
+\eqref{item1.3.2.i} We want to show that $X \backslash \overline{A}$ is open, and the
+claim then follows from Theorem \ref{thm:complement}.
+
+Let $x \in X \backslash \overline{A}$. As $x$ is not a cluster point of $A$,
+there exists a radius $r > 0$ such that $B_r(x) \subseteq X \backslash A$.
+We know that $B_r(x)$ is open (Lemma \ref{lemma:balls}); therefore  $X \backslash B_r(x)$
+is closed. By \eqref{item1.3.2.ii}, we have $\overline{A} \subseteq X \backslash B_r(x)$,
+i.e., $B_r(x) \subseteq X \backslash \overline{A}$. Therefore $X \backslash \overline{A}$
+is open, as required.
+\end{proof}
+
+
+
+\begin{theorem}
+Let $(X,d)$ be a metric space. Then
+\begin{itemize}
+\item $\emptyset$ and $X$ are closed;
+\item if $\{F_\lambda: \lambda \in \Lambda\}$ is any collection
+of closed sets, then
+\[
+\bigcap_{\lambda \in \Lambda} F_\lambda
+\]
+is closed; and
+\item if $F_1, \ldots, F_N$ is a finite collection of
+closed sets, then
+\[
+\bigcup_{k = 1}^N F_k
+\]
+is closed.
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+Again this is easily reduced to a theorem about open sets (Theorem \ref{thm:open}), using Theorem \ref{thm:complement}, since
+$$
+X\setminus \bigcap_{\lambda \in \Lambda} F_\lambda = \bigcup_{\lambda \in \Lambda} (X\setminus F_\lambda)
+$$
+and
+$$
+X\setminus \bigcup_{k = 1}^N F_k = \bigcap_{k = 1}^N (X\setminus F_k).
+$$
+\end{proof}
+
+\begin{remark}
+Open and closed are not opposites. There are sets
+which are both open and closed (e.g., the empty set in any metric space), and there
+are sets which are neither (e.g., the interval $[0,1)$ in $\R$). (Compare doors.)
+\end{remark}
+
+
+
+\begin{example}\label{C:set}
+Consider $\R$ with the usual metric. Let $I_0 = [0,1]$ and define
+\begin{align*}
+I_1 & = \textstyle [0,\frac{1}{3}] \cup [\frac{2}{3},1] \\
+I_2 & = \textstyle [0,\frac{1}{9}] \cup [\frac{2}{9},\frac{1}{3}] \cup [\frac{2}{3},\frac{7}{9}] \cup [\frac{8}{9},1], \\
+I_2 & = \textstyle [0,\frac{1}{27}] \cup [\frac{2}{27},\frac{1}{9}] \cup \ldots \cup  [\frac{8}{9},\frac{25}{27}] \cup [\frac{26}{27},1], \\
+& \hspace{6pt} \vdots
+\end{align*}
+(In each step, remove the middle third of every interval remaining, but keep the end points; see Figure \ref{fig:Cantor}.)
+Let
+\[
+C = \bigcap_{k = 0}^\infty I_k.
+\]
+This is called the Cantor set. \index{Cantor set} Every $I_k$ is a finite union of closed sets, and therefore closed.
+Hence $C$ is an (infinite) intersection of closed sets, which means that $C$ is closed.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{Cantor.pdf}
+\end{center}
+\caption{The sets $I_0,\ldots,I_5$ in the construction of the Cantor set}
+\label{fig:Cantor}
+\end{figure}
+\end{example}
+
+
+\begin{definition}[Boundary of a set]
+Let $(X,d)$ be a metric space. The \emph{boundary} $\partial A$ of a set $A \subseteq X$ is defined as
+$$
+\partial A:= \overline A\cap \overline{(X\setminus A)}.
+$$
+\end{definition}
+
+Namely the boundary of $A$ is the set of points $x\in X$ (not necessarily in $A$!!) such that every ball $B_r(x)$ contains points of $A$ and of $X\setminus A$.
+
+\begin{example}
+In $\R$, $\partial [a,b] = \partial (a,b) = \{a,b\}$, $\partial \mathbb{Q} = \R$. Moreover, $\partial C= C$, where $C$ is the Cantor set in Example \ref{C:set}.
+(Note that $C^\circ = \emptyset$.)
+
+\end{example}
+
+
+\begin{theorem}
+Let $(X,d)$ be a metric space, $A\subset X$, and let $x\in X$. Then
+$$
+x\in \partial A \quad \Leftrightarrow \quad \forall \, r>0 \,\, \textrm{we have } \,\, B_r(x)\cap A\neq \emptyset \quad \textrm{and} \quad B_r(x)\cap (X\setminus A)\neq \emptyset.
+$$
+\end{theorem}
+
+\begin{proof}
+``$\Rightarrow$": Let $x\in \partial A$. Either $x\in A$ or $x\in X\setminus A$. We assume that $x\in A$ and a similar argument works in the other case.
+
+Since $x\in A$, then $x\notin X\setminus A$; but
+$$
+x\in \partial A\subset \overline{X\setminus A} = (X\setminus A)\cup (X\setminus A)',
+$$
+hence $x\in (X\setminus A)'$. By definition, for every $r>0$, $(B_r(x)\setminus \{x\})\cap (X\setminus A)\neq \emptyset$; on the other hand, since
+$x\in A$, $B_r(x)\cap A\neq \emptyset$.
+
+In conclusion, we have the claim.
+\medskip
+
+``$\Leftarrow$": Let $x\in X$. Either $x\in A$ or $x\in X\setminus A$. We assume that $x\in A$ and a similar argument works in the other case.
+
+Since $x\in A\subseteq \overline A$, clearly $x\in \overline A$.
+
+On the other hand, $x\notin X\setminus A$, but for every $r>0$, $B_r(x) \cap (X\setminus A) \neq \emptyset$, which equivalently means that
+for every $r>0$, $(B_r(x)\setminus \{x\})\cap (X\setminus A)\neq \emptyset$, since $x\notin X\setminus A$. By definition, $x\in (X\setminus A)'$,
+and since $(X\setminus A)'\subseteq \overline{X\setminus A}$, we have the claim.
+
+\end{proof}
+
+\begin{definition}[Dense sets]
+Let $(X,d)$ be a metric space. A set $A \subseteq X$ is called \emph{dense} \index{dense}
+if $\overline{A} = X$.
+\end{definition}
+
+\begin{example}
+The set $\Q$ is dense in $\R$.
+\end{example}
+
+
+
+\begin{remark} A further generalisation beyond metric spaces are topological spaces, where a collection of open subsets -- satisfying Theorem
+\ref{thm:open} -- is defining the topology.
+\end{remark}
+
+
+%
+%%%%%%%%%%%%%%%%%%%   FIN QUI  %%%%%%%%%%%%
+%
+
+
+\bigskip
+
+
+
+
+\subsection{Sequences and Convergence}
+
+We extend the concept of convergence of sequences to metric spaces.
+
+\begin{definition}
+Let $(X,d)$ be a metric space, let $(x_k)_{k \in \N}$ be a sequence in $X$ and let $x_0\in X$. The point
+$x_0 \in X$ is said to be a \emph{limit} of the sequence if $d(x_k,x_0) \to 0$
+in $\R$ as $k \to \infty$, namely if
+$$
+\forall \, \varepsilon>0 \quad \exists \,N\in \N: k\geq N \Rightarrow d(x_k,x_0)<\varepsilon.
+$$
+If so, we say that the sequence \emph{converges} to
+$x_0$ and we write $x_0 = \lim_{k \to \infty} x_k$ or $x_k \to x_0$ (or $x_k \stackrel{d}{\to} x_0$).
+\end{definition}
+
+
+
+
+\begin{example}
+In $(\R, |\cdot|)$, consider the sequence $(x_k)_{k \in \N}$
+with $x_k = \frac{1}{k}$. Then $d(x_k,0) = \frac{1}{k}$, so $x_k$
+converges to $0$.
+\end{example}
+
+\begin{example}
+In $(X,|\cdot|)$, with $X = (0,1]$, let $x_k = \frac{1}{k}$. Then there is no point $x_0$ in $X$ such that
+$d(x_k,x_0) \to 0$ as $k \to \infty$. The sequence $(x_k)_{k \in \N}$
+is therefore not convergent in $X$.
+\end{example}
+
+\begin{example}
+Let $X \not= \emptyset$ be an arbitrary set with the discrete metric
+\[
+d(x,y) = \begin{cases} 0 & \text{if $x = y$,} \\ 1 & \text{if $x \not= y$.} \end{cases}
+\]
+Then $x_k \to x_0$ if, and only if, there exists an $N \in \N$ such that $x_k = x_0$ for all
+$k \ge N$.
+\end{example}
+
+\begin{example}
+Consider the space $C^0([0,1])$ with the usual metric
+\[
+d_\infty(f,g):= \left\|f-g\right\|_{\infty} = \max_{0 \le t \le 1} \left|f(t) - g(t)\right|
+\]%%%% Check syntactic interpretation of verticals
+defined in Example \ref{continuous_functions}. (Recall that this is a normed space, see Example \ref{continuous_functions-N}.)
+
+A sequence $(f_k)_{k \in \N}$ converges to $f_0$ with respect to the metric $d_\infty$ if, and only if,
+$$
+\max_{0 \le t \le 1} |f_k(t) - f_0(t)| \to 0 \quad \textrm{as } k\to \infty,
+$$
+namely if
+\[
+\forall \varepsilon > 0 \quad \exists \,N \in \N \quad\textrm{such that } \, \forall \, k \ge N \quad \textrm{and } \, \forall \, t \in [0,1] : \left|f_k(t) - f_0(t)\right| < \varepsilon.
+\]%%%% Check syntactic interpretation of verticals
+But this is exactly the definition of uniform convergence of $f_k$ to $f$ in Definition \ref{pu-conv}! For this reason the metric $d_\infty$ is often referred to as the \textit{uniform convergence metric}, since convergence in $d_\infty$ is equivalent to uniform convergence.
+\end{example}
+
+\begin{example}
+Consider the space $C^0([0,1])$ with the metric
+\[
+d_2(f,g) = \left\|f-g\right\|_{2} = \left(\int_0^1 |f(t) - g(t)|^2 dt\right)^\frac12.
+\]%%%% Please add \left and \right to all verticals, this may be syntactically ambiguous and was abandoned due to bracketing depth
+A sequence $(f_k)_{k \in \N}$ converges to $f_0$ with respect to the metric $d_2$ (commonly said in the $L^2$-norm) if, and only if,
+\[
+\left(\int_0^1 |f_k(t) - f_0(t)|^2 dt\right)^\frac12 \to 0 \quad \textrm{as } \, k\to \infty.
+\]%%%% Please add \left and \right to all verticals, this may be syntactically ambiguous and was abandoned due to bracketing depth
+\smallskip
+
+Note that this norm can be defined on all functions $f: [0,1] \to \R$ with $f^2$ Riemann-integrable (continuity is not needed).
+
+\end{example}
+
+
+\begin{theorem} \label{thm:uniqueness}
+Let  $(X,d)$ be a metric space, let $x_0\in X$, and let $(x_k)_{k \in \N}$ be a sequence converging to $x_0$.
+\begin{enumerate}
+\item \label{item2.1.1.i} If $x_k \to y_0$ in $(X,d)$, then $x_0 = y_0$ (i.e., limits are unique).
+\item \label{item2.1.1.iii} For every subsequence $(x_{k_j})_{j \in \N}$, the convergence
+$x_{k_j} \to x_0$ holds as well.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\eqref{item2.1.1.i} We have, by the triangle inequality,
+\[
+d(x_0,y_0) \le d(x_0,x_k) + d(y_0,x_k) \to 0
+\]
+as $k \to \infty$. Hence $d(x_0,y_0) = 0$, which means that $x_0 = y_0$.
+
+\eqref{item2.1.1.iii} Recall: when we say that $(x_{k_j})_{j \in \N}$ is a subsequence of $(x_k)_{k \in \N}$,
+this means that $(k_j)_{j\in \N}$ is a strictly increasing sequence of natural numbers. Let $\varepsilon > 0$.
+As $x_k \to x_0$ as $k \to \infty$, there exists an $N \in \N$ such that $d(x_k,x_0) < \varepsilon$ for $k \ge N$.
+Moreover, there is an $M \in \N$ such that $k_j \ge N$ for $j \ge M$. Therefore we also have $d(x_{k_j},x_0) < \varepsilon$
+for $j \ge M$, which proves the convergence $x_{k_j} \to x_0$ as $j \to \infty$.
+\end{proof}
+
+\begin{theorem} \label{thm:limit_closed}
+Let $(X,d)$ be a metric space and $A \subseteq X$.
+\begin{enumerate}
+\item \label{item2.1.2.i} A point $x_0 \in X$ belongs to $\overline{A}$ if,
+and only if, there exists a sequence in $A$ converging (in $d$) to $x_0$.
+\item \label{item2.1.2.ii} The set $A$ is closed if, and only if, for every sequence
+in $A$ that converges in $X$, the limit belongs to $A$.
+\item \label{item2.1.2.iii} The set $A$ is open if, and only if, for
+every sequence $(x_k)_{k \in \N}$  converging to a limit in $A$,
+there exists an $N \in \N$ such that $x_k \in A$ for all $k \ge N$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\eqref{item2.1.2.i} Suppose that $x_0 \in \overline{A}= A \cup A'$. If $x_0 \in A$, then consider the sequence $(x_k)_{k \in \N}$ with
+$x_k = x_0$ for every $k \in \N$. This is a sequence in $A$ converging to $x_0$. If $x_0 \in A'\setminus A$,
+then for every $k \in \N$, we have
+\[
+(B_{1/k}(x_0)\setminus\{x_0\}) \cap A \not= \emptyset \quad \Leftrightarrow \quad B_{1/k}(x_0) \cap A \not= \emptyset.
+\]
+Now choose $x_k \in B_{1/k}(x_0) \cap A$. Then $d(x_k,x_0) \le \frac{1}{k} \to 0$ as $k \to \infty$.
+Hence the sequence $(x_k)_{k \in \N}\subseteq A$ converges to $x_0$.
+
+Conversely, suppose that $x_0 \in X$ and that there exists a sequence $(x_k)_{k \in \N}$ in $A$
+with $x_k \to x_0$ as $k \to \infty$. If $x_0 \in A$, there is nothing to prove, since $A\subseteq \overline{A}$. Otherwise,
+fix $r > 0$. Then there exists an $N \in \N$ such that $d(x_k,x_0) < r$ for $k \ge N$.
+In particular, we have $x_N \in B_r(x_0) \cap A$. As $x_0 \not\in A$, this implies
+\[
+\left(B_r(x_0) \backslash \{x_0\}\right) \cap A \not= \emptyset.
+\]
+So in this case, we have $x_0 \in A' (\subseteq \overline A)$.
+
+\eqref{item2.1.2.ii} Suppose that $A$ is closed and let $(x_k)_{k \in \N}$ be a sequence
+in $A$ with limit $x_0 \in X$. By \eqref{item2.1.2.i}, we have that $x_0 \in \overline{A} = A$.
+
+Conversely, suppose that $A$ contains all limits of sequences in $A$. In order to show
+that $A$ is closed, it suffices to prove $\overline{A} \subseteq A$. So let $x_0 \in \overline{A}$.
+By \eqref{item2.1.2.i}, there exists a sequence $(x_k)_{k \in \N}$ in $A$ with $x_k \to x_0$
+as $k \to \infty$. But then the hypothesis implies that $x_0 \in A$.
+
+\eqref{item2.1.2.iii} Suppose that $A$ is open and let $(x_k)_{k \in \N}$ be a sequence in $X$
+with limit $x_0 \in A$. Since $A$ is open, there exists an $r > 0$ such that $B_r(x_0) \subseteq A$.
+Moreover, there exists a $N \in \N$ such that $d(x_k,x_0) < r$ for all $k \ge N$.
+Thus $x_k \in A$ for $k \ge N$.
+
+Conversely, suppose that $A$ is not open. Then $X \backslash A$ is not closed
+by Theorem \ref{thm:complement}. According to \eqref{item2.1.2.ii}, there exists
+a sequence $(x_k)_{k \in \N}$ in $X \backslash A$ that converges to an $x_0 \notin X\setminus A$, so $x_0\in A$.
+But for this sequence, we have $x_k \not\in A$ for all $k \in \N$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%
+%\newpage
+\input{concise3}
+\input{concise4}
+
+\end{document}

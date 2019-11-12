@@ -2,26 +2,35 @@
 \usepackage{amsmath}
 \begin{document}
 
-Simple maths: \(x\)
+Simple maths: $x$
 
-Dollar: \(\$ \)
+Dollar: $\$$
 
-Simple maths: \[x\]
+Simple maths: $$x$$
 
-One down: \(x \text{some text}\)
+One down: $x \text{some text}$
 
-One down maths: \(x \text{some text \(x\)}\)
+One down maths: $x \text{some text $x$}$
 
-One down: \[x \text{some text}\]
+One down: $$x \text{some text}$$
 
-One down maths: \[x \text{some text \(x\)}\]
+One down maths: $$x \text{some text $x$}$$
+
+\section{Here is some maths $x$ and some other maths \(x\)}
 
 \begin{verbatim}
-Some stuff
+Some stuff which has some maths $x$, \(x\), $$x$$, \[x\]
 \end{verbatim}
 
-\begin{theorem}[Here is some maths $x$]
+\subsection[Maths! $x$ and \(x\)]{No maths!}
+
+\begin{theorem}[Here is some maths $x$ and some other maths \(x\)]
   And some content \(x\).
 \end{theorem}
 
+\subsection[Maths! $x$ and \(x\)]{And some maths $$x$$ and some other maths \[x\], \(x\)}
+
+\begin{figure}
+\caption{Here is some displaymaths $$x$$ and some other displaymaths \[x\]}
+\end{figure}
 \end{document}
