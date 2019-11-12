@@ -206,7 +206,7 @@ A baseline of text which is a single line long in 12pt font with no indent appli
 
 %We want to allow tabular, longtable (maybe later tabular* and maybe tabularx)
 
-\begin{longtabu} to \textwidth{|X[l]*{2}
+\begin{longtabu*} to \textwidth{|X[l]*{2}
 {|c|}r|@{insert}|p{2cm}}
 %\begin{tabu} to 0.5\textwidth {|X*{2}{|X|}X|@{insert}|X}
 \hline
@@ -216,7 +216,7 @@ a & b & c & d & abcde\\
 \hline
 \(\frac{a}{e}\) & \(\frac{b}{e}\) & \(\frac{c}{e}\) & \(\frac{d}{e}\) & \(\alpha\beta\gamma\delta\epsilon\) \\
 \hline
-\end{longtabu}
+\end{longtabu*}
 
 Table caption: {This is a table}\addcontentsline{lot}{table}{This is a table\protect}
 
@@ -229,7 +229,7 @@ This is just below where the floating table \ref{table} was defined. It should a
 \begin{center}
 \renewcommand{\arraystretch}{2}
 %\begin{longtabu} to \textwidth {*{3}{|X|}}
-\begin{longtabu} to \textwidth{*{3}
+\begin{longtabu*} to \textwidth{*{3}
 {|l|}}
 \hline
 \textbf{First} & \textbf{Second} & \textbf{Third} \\
@@ -264,7 +264,7 @@ This is the eighth line & \(1 \times 2 \times 3 \times 4 \times 5 \times 6 \time
 \hline
 & The & End\\
 \hline
-\end{longtabu}
+\end{longtabu*}
 
 \end{center}
 
