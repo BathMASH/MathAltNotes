@@ -20,6 +20,7 @@ int frac = 0;
 int authorcount = 0;
 int begun = 0;
 int colorlst = 0;
+int colorishere = 0;
 %}
 
 whitespace (" "|\t|(\r?\n))
@@ -96,6 +97,8 @@ verbatim "\\begin"{lb}("verbatim"|"spverbatim"){rb}
 <CLASS>{lb} ECHO; yy_push_state(READCLASS);
 <CLASS>"a4paper" papersize=4; ECHO;
 <CLASS>"fleqn" fleqn=1; ECHO;
+<CLASS>"usenames" colorishere=1; ECHO;
+<CLASS>"dvipsnames" colorishere=1; ECHO;
 <READCLASS>(.*)/"}" ECHO; whatclass(); yy_pop_state(); yy_pop_state(); 
 
 {packages} yy_push_state(PACKAGES);
@@ -277,6 +280,7 @@ int choices(){
   FILE *unknown;
   FILE *fleqnout;
   FILE *beamerfix;
+  FILE *colorhere;
   output = fopen("choices.tex","w");
   typeout = fopen(".documentclass","w");
   alttype = fopen(".alternativeclass","w");
@@ -285,6 +289,7 @@ int choices(){
   unknown = fopen(".unknownclass","w");
   fleqnout = fopen(".fleqn","w");
   beamerfix = fopen(".beamerfix","w");
+  colorhere = fopen(".colorhere","w");
   if(output == NULL){
     fprintf(stderr, "Can't open choices file\n");
     exit(1);
@@ -314,9 +319,13 @@ int choices(){
     exit(1);
   }
   if(beamerfix == NULL){
-    fprintf(stderr, "Can't open beamefix class option output file\n");
+    fprintf(stderr, "Can't open beamerfix class option output file\n");
     exit(1);
   }
+  if(colorhere == NULL){
+   fprintf(stderr, "Can't open colorhere class option output file\n");
+    exit(1);
+  } 
   if(title == 1 && author == 1)
     fprintf(output,"\\toggletrue{frontmatter}");
   else
@@ -362,13 +371,15 @@ int choices(){
     fprintf(fleqnout," ");
   if(fleqn == 1)
     fprintf(fleqnout,"fleqn");
-  
+  if(colorishere == 1)
+    fprintf(colorhere,"usenames,dvipsnames");
   fclose(output);
   fclose(typeout);
   fclose(sizeout);
   fclose(paperout);
   fclose(unknown);
   fclose(fleqnout);
+  fclose(colorhere);
   return 0;
 }
 
