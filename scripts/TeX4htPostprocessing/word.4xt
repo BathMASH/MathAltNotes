@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE xtpipes SYSTEM "xtpipes.dtd" >
 <xtpipes preamble="yes" signature="empty.4xt">
-	 <sax content-handler="xtpipes.util.ScriptsManager,"
-       	 lexical-handler="xtpipes.util.ScriptsManagerLH" >
-  	 <script element="li" >
-      	 <set name="li" >
-	 <![CDATA[<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	 	 <xsl:output omit-xml-declaration = "yes" />
+  <sax content-handler="xtpipes.util.ScriptsManager,"
+       lexical-handler="xtpipes.util.ScriptsManagerLH" >
+    <script element="li" >
+      <set name="li" >
+	<![CDATA[<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+		 <xsl:output omit-xml-declaration = "yes" />
 		 <xsl:template match="li">
 		 <li>
 		 <xsl:copy-of select="node()"/>
@@ -16,7 +16,28 @@
 	]]>
       </set>
       <xslt name="." xml="." xsl="li" />      
-      </script>
+    </script>
+    <script element="tr">
+      <set name="tr">
+	<![CDATA[<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+		 <xsl:output omit-xml-declaration = "yes" />
+		 <xsl:strip-space elements="*"/>
+		 <xsl:template match="tr[@class='hline']" />
+		 <xsl:template match="*[ancestor-or-self::tr][not(string())]"/>
+		 <xsl:template match="tr">
+		 <xsl:choose>
+		 <xsl:when test=".//*[@colspan]">
+		 </xsl:when>
+		 <xsl:otherwise>
+		 <xsl:copy-of select="."/>
+		 </xsl:otherwise>
+		 </xsl:choose>
+		 </xsl:template>
+		 </xsl:stylesheet>
+	]]>
+      </set>
+      <xslt name="." xml="." xsl="tr" />
+    </script>
   </sax>
 </xtpipes>
 
