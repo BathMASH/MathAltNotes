@@ -106,8 +106,8 @@ verbatim "\\begin"{lb}("verbatim"|"spverbatim"){rb}
 <PACKAGES>(("[")(.*)("]"))*{lb}"xr"{rb} printf("\\ifpdf\\usepackage{xr,xr-hyper}\\else\\fi"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}{danger}{rb} printf("\\ifboolexpr{togl {web} or togl{clearprint}}{}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}{notlarge}{rb} printf("\\ifboolexpr{togl {web} or togl{large}}{}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
-<PACKAGES>(("[")(.*)("]"))*{lb}"booktabs"{rb} printf("\\iftoggle{word}{\\renewcommand{\\hline}{}\\newcommand{\\toprule}{}\\newcommand{\\midrule}{}\\newcommand{\\bottomrule}{}}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
-<PACKAGES>"[table]"{lb}"xcolor"{rb} printf("\\iftoggle{word}{\\usepackage{xcolor}\\newcommand{\\rowcolors}[3]{}\\newcommand{\\rowcolor}[1]{}}{\\usepackage[table]{xcolor}}"); yy_pop_state();
+<PACKAGES>(("[")(.*)("]"))*{lb}"booktabs"{rb} printf("\\ifboolexpr{togl {web} or togl {word}}{\\renewcommand{\\hline}{}\\newcommand{\\toprule}{}\\newcommand{\\midrule}{}\\newcommand{\\bottomrule}{}}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
+<PACKAGES>"[table]"{lb}"xcolor"{rb} printf("\\ifboolexpr{togl {web} or togl {word}}{\\usepackage{xcolor}\\newcommand{\\rowcolors}[3]{}\\newcommand{\\rowcolor}[1]{}\\AtBeginDocument{\\let\\hiderowcolors\\undefined\\newcommand{\\hiderowcolors}{}\\let\\showrowcolors\\undefined\\newcommand{\\showrowcolors}{}}}{\\usepackage[table]{xcolor}}"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}"tikz"{rb} if(beamer==0) printf("\\usepackage[dvipsnames]{xcolor}\\usepackage"); else printf("\\PassOptionsToPackage{dvipsnames}{xcolor}\\usepackage"); ECHO; yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb} printf("\\usepackage"); ECHO; 
 <PACKAGES>","(" ")* printf(",");
