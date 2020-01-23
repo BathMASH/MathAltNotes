@@ -10,7 +10,7 @@ may be useful to students using devices with small screens.
 This is a work in progress and is likely to be unstable. It is not
 intended for use with complex LaTeX documents such as books or 
 articles for publication. Help and support is available from 
-ma-largeprintnotes@bath.ac.uk but only if you are trying to 
+mash-access@bath.ac.uk but only if you are trying to 
 create alternative formats for student use. 
 
 ## The alternative formats
@@ -31,7 +31,7 @@ technology they have they may require one or the other. These formats
 are not interchangeable. 
 
 If you would like to know more about how these formats can be
-used please email ma-largeprintnotes@bath.ac.uk
+used please email mash-access@bath.ac.uk
 
 # Instructions
 
@@ -164,7 +164,7 @@ help too) try:
 
 This is a work in progress and is unstable!
  
-If you have problems email ma-largeprintnotes@bath.ac.uk and 
+If you have problems email mash-access@bath.ac.uk and 
 attach a zip of your time-stamped directory if possible. 
 
 Every problem reported will help make the system more stable.
@@ -249,4 +249,4 @@ student view you should no longer be able to see the topic at all. If in student
 view you can still see the topic but greyed out then you MUST change this
 otherwise students can see who has access to the topic. 
 
-Any problems, mail us: ma-largeprintnotes@bath.ac.uk 
+Any problems, mail us: mash-access@bath.ac.uk 
