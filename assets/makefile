@@ -171,7 +171,7 @@ web: clean $(name)-cont-web-clean.tex
 	cp $(HOME)/../../fonts/* .
 	cp $(HOME)/../../assets/mathml.4ht .
 	cp $(HOME)/../../assets/listings.4ht .
-#	cp $(HOME)/../../assets/longtable.4ht .
+#	cp $(HOME)/../../assets/longtable.4ht . Do not use this, use, I removed the old-longtable from here (see makefile-fb) as I am not yet sure what we want to do about this in general.
 	cp $(HOME)/../../assets/unicode.4hf .
 	cp $(HOME)/../../assets/mathjaxMMLWord.cfg .
 #Make any pdf_tex figures
@@ -210,8 +210,8 @@ endif
 ifeq ($(TYPE),beamer)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
 endif
-	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
-	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #Change the endings from interim to svg - this should not be doing anything any more after fix via .env
 #	sed -i "s/x.interim.png/x.svg/" *.html
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
@@ -293,8 +293,8 @@ endif
 ifeq ($(TYPE),beamer)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
 endif
-	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
-	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #Change the endings from interim to svg - this should not be doing anything any more after fix via .env
 #	sed -i "s/x.interim.png/x.svg/" *.html
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
@@ -377,8 +377,8 @@ endif
 ifeq ($(TYPE),beamer)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\emphasis{standard}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web-standard.tex
 endif
-	$(HTLATEX)  $(name)-web-standard.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
-	$(HTLATEX)  $(name)-web-standard.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web-standard.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web-standard.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #Change the endings from interim to svg - this should not be doing anything any more after fix via .env
 #	sed -i "s/x.interim.png/x.svg/" *.html
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
@@ -471,8 +471,8 @@ endif
 #Note that we are not breaking into sections for the Word transform
 #fn-in stops us from losing the footnotes in the Word format: https://tex.stackexchange.com/questions/195551/how-to-add-footnotes-in-htlatex-via-fn-in
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
-	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
-	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
+	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #Change the endings from interim to svg - this should not be doing anything any more after fix via .env
 #	sed -i "s/x.interim.png/x.svg/" *.html
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
@@ -515,8 +515,8 @@ endif
 ifeq ($(TYPE),beamer)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
 endif
-	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
-	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
+	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
 	$(HOME)/../TeX4htPostprocessing/postprocessWord.sh ./
 #Tidy up a bit
 	@rm mathml.4ht
@@ -579,8 +579,8 @@ endif
 #Note that we are not breaking into sections for the Word transform
 #fn-in stops us from losing the footnotes in the Word format: https://tex.stackexchange.com/questions/195551/how-to-add-footnotes-in-htlatex-via-fn-in
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
-	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
-	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
+	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #Change the endings from interim to svg - this should not be doing anything any more after fix via .env
 #	sed -i "s/x.interim.png/x.svg/" *.html
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
