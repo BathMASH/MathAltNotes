@@ -128,9 +128,12 @@ if cmp -s $1/input-word.html.tmp2 $2/output/input-word.html.tmp2; then
 else
     echo -e "\e[91mFAILED\e[0m: input-word.html.tmp2"
 fi
-if cmp -s $1/input-word.css $2/output/input-word.css; then
-    echo "PASSED: input-word.css"
-else
-    echo -e "\e[91mFAILED\e[0m: input-word.css"
+if cmp -s $1/input-word.css $2/output/input-word-2017.css; then
+    echo "PASSED (2017): input-word.css"
+else if cmp -s $1/input-word.css $2/output/input-word-2019.css; then
+	 echo "PASSED (2019): input-word.css"
+     else
+	 echo -e "\e[91mFAILED (2017 and 2019) \e[0m: input-word.css"
+     fi
 fi
 echo "============================="
