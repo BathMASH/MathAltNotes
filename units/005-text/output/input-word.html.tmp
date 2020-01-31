@@ -59,8 +59,7 @@ class="phvr8t-x-x-144">Emma Cliffe</span></div>
       separate it visually from the the normal text.</p></div>
 <!--l. 21--><p class="noindent" >A baseline of text to show the height change in the above and below environments. This line
 was indented though to show off the next environment. The quotations are from “A Guide to
-<span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
-class="E">E</span>X</span></span>” <span class="cite">[<a 
+LaTeX” <span class="cite">[<a 
 href="#XKopkaDaly">1</a>]</span>
          </p><div class="quotation">
       <!--l. 24--><p class="indent" >     In   the   quotation   environment,   paragraphs   are   marked   by   extra
@@ -542,8 +541,7 @@ href="#x1-1000" id="x1-1000">References</a></h3>
      </p><div class="thebibliography">
      <p class="bibitem" ><span class="biblabel">
   [1]<span class="bibsp">   </span></span><a 
- id="XKopkaDaly"></a>Kopka, H. and Daly, P., <b>A Guide to <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
-class="E">E</span>X</span></span></b>. Pearson Education Ltd., 1999</p></div>
+ id="XKopkaDaly"></a>Kopka, H. and Daly, P., <b>A Guide to LaTeX</b>. Pearson Education Ltd., 1999</p></div>
                                                                                        
                                                                                        
 <div class="footnotes"><!--l. 262--><p class="noindent" ><span class="footnote-mark"><a 

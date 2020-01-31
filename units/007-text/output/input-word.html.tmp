@@ -52,13 +52,10 @@ class="phvr8t-x-x-144">Emma Cliffe</span></div>
                                                                                        
                                                                                        
 <!--l. 14--><p class="noindent" >This section looks only at graphics available without the graphics packages, that is, internal to
-vanilla <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
-class="E">E</span>X</span></span>. Kopka and Daly <span class="cite">[<a 
-href="#XKopkaDaly">1</a>]</span> explain that “Standard <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
-class="E">E</span>X</span></span>does actually contain the
+vanilla LaTeX. Kopka and Daly <span class="cite">[<a 
+href="#XKopkaDaly">1</a>]</span> explain that “Standard LaTeXdoes actually contain the
 means to make primative drawings on its own” and they consider only the facets of picture
-that are in standard <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
-class="E">E</span>X</span></span>, not those that require additional packages. This is what we test
+that are in standard LaTeX, not those that require additional packages. This is what we test
 as a basic starting point in the vanilla stress test.
 </p><!--l. 25--><p class="noindent" ><img 
 src="input-word0x.svg" alt="PICT"  />
@@ -71,8 +68,7 @@ href="#x1-1000" id="x1-1000">References</a></h3>
      </p><div class="thebibliography">
      <p class="bibitem" ><span class="biblabel">
   [1]<span class="bibsp">   </span></span><a 
- id="XKopkaDaly"></a>Kopka, H. and Daly, P., <b>A Guide to <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
-class="E">E</span>X</span></span></b>. Pearson Education Ltd., 1999</p></div>
+ id="XKopkaDaly"></a>Kopka, H. and Daly, P., <b>A Guide to LaTeX</b>. Pearson Education Ltd., 1999</p></div>
  
 </body> 
 </html>

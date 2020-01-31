@@ -1,4 +1,4 @@
-\contentsline {section}{\numberline {1}Standard mathematical symbols}{2}
-\contentsline {section}{\numberline {2}Standard mathematical structures}{4}
-\contentsline {subsection}{\numberline {2.1}Testing line breaking}{6}
-\contentsline {subsection}{\numberline {2.2}Testing new commands}{7}
+\contentsline {section}{\numberline {1}Standard mathematical symbols}{2}%
+\contentsline {section}{\numberline {2}Standard mathematical structures}{4}%
+\contentsline {subsection}{\numberline {2.1}Testing line breaking}{6}%
+\contentsline {subsection}{\numberline {2.2}Testing new commands}{7}%

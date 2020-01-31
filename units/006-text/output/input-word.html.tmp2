@@ -1050,15 +1050,12 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><td
 > <a
  id="x1-4018r18"></a>
-<!--l. 118
+<!--l. 119
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
-                             <mo
+                              <mo
  class="MathClass-rel">&#x2194;</mo><mo
- class="MathClass-rel">&#x21D4;</mo><mspace
- width="0.3em" class="thinspace"></mspace><mo
- class="MathClass-rel">&#x21D4;</mo><mspace
- width="0.3em" class="thinspace"></mspace><mo
+ class="MathClass-rel">&#x21D4;</mo><mo
  class="MathClass-rel">&#x21A6;</mo><mo
  class="MathClass-rel">&#x21AA;</mo> <mo
  class="MathClass-rel">&#x21C0;</mo><mo
@@ -1075,14 +1072,14 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="MathClass-rel">&#x2196;</mo>
 </math></td><td
  class="eq-no">(18)</td></tr></table>
-<!--l. 122
+<!--l. 123
 --><p
  class="noindent">Other: </p><table
  class="equation"><tr
 ><td
 > <a
  id="x1-4019r19"></a>
-<!--l. 123
+<!--l. 124
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
                     <mi
@@ -1122,17 +1119,17 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="eq-no">(19)</td></tr></table>
                                                                                        
                                                                                        
-<!--l. 127
+<!--l. 128
 --><p
  class="noindent">Symbols with two sizes: </p>
 <div
  class="center">
-<!--l. 128
+<!--l. 129
 --><p
  class="noindent">
-</p><!--l. 129
+</p><!--l. 130
 --><p
- class="noindent"><!--l. 129
+ class="noindent"><!--l. 130
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <mo
@@ -1184,7 +1181,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><td
 > <a
  id="x1-4020r20"></a>
-<!--l. 131
+<!--l. 132
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
                         <mo
@@ -1220,14 +1217,14 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  mathsize="normal">&#x2A04;</mo>
 </math></td><td
  class="eq-no">(20)</td></tr></table>
-<!--l. 135
+<!--l. 136
 --><p
  class="noindent">Function names: </p><table
  class="equation"><tr
 ><td
 > <a
  id="x1-4021r21"></a>
-<!--l. 136
+<!--l. 137
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
                    <mo
@@ -1262,7 +1259,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  id="x1-4022r22"></a>
                                                                                        
                                                                                        
-<!--l. 139
+<!--l. 140
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
                     <mo
@@ -1292,7 +1289,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><td
 > <a
  id="x1-4023r23"></a>
-<!--l. 142
+<!--l. 143
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
                           <mo
@@ -1312,14 +1309,14 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 -->
 </math></td><td
  class="eq-no">(23)</td></tr></table>
-<!--l. 146
+<!--l. 147
 --><p
  class="noindent">Those with under-subscript available: </p><table
  class="equation"><tr
 ><td
 > <a
  id="x1-4024r24"></a>
-<!--l. 147
+<!--l. 148
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
                 <msub
@@ -1376,14 +1373,14 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 >a</mi></mrow></munder>
 </math></td><td
  class="eq-no">(24)</td></tr></table>
-<!--l. 151
+<!--l. 152
 --><p
  class="noindent">Modulus: </p><table
  class="equation"><tr
 ><td
 > <a
  id="x1-4025r25"></a>
-<!--l. 152
+<!--l. 153
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
                                    <mi
@@ -1406,14 +1403,14 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="eq-no">(25)</td></tr></table>
                                                                                        
                                                                                        
-<!--l. 156
+<!--l. 157
 --><p
  class="noindent">Accents and under/over: </p><table
  class="equation"><tr
 ><td
 > <a
  id="x1-4026r26"></a>
-<!--l. 157
+<!--l. 158
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
                <mi
@@ -1469,14 +1466,14 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 >&#x23DF;</mo></munder>
 </math></td><td
  class="eq-no">(26)</td></tr></table>
-<!--l. 161
+<!--l. 162
 --><p
  class="noindent">Symbols left and right can be applied to: </p><table
  class="equation"><tr
 ><td
 > <a
  id="x1-4027r27"></a>
-<!--l. 162
+<!--l. 163
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
                                   <mfenced
@@ -1530,14 +1527,14 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><mn>2</mn></mrow></mfrac></mrow></mfenced>
 </math></td><td
  class="eq-no">(27)</td></tr></table>
-<!--l. 168
+<!--l. 169
 --><p
  class="noindent">Manual sizing: </p><table
  class="equation"><tr
 ><td
 > <a
  id="x1-4028r28"></a>
-<!--l. 169
+<!--l. 170
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
                                            <mstyle
@@ -1616,7 +1613,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  id="x1-4029r29"></a>
                                                                                        
                                                                                        
-<!--l. 173
+<!--l. 174
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
                                            <mstyle
@@ -1693,7 +1690,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><td
 > <a
  id="x1-4030r30"></a>
-<!--l. 177
+<!--l. 178
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
                                            <mstyle
@@ -1770,7 +1767,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><td
 > <a
  id="x1-4031r31"></a>
-<!--l. 181
+<!--l. 182
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
                                            <mstyle
@@ -1842,7 +1839,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ></mrow></mfenced></mstyle>
 </math></td><td
  class="eq-no">(31)</td></tr></table>
-<!--l. 186
+<!--l. 187
 --><p
  class="noindent">Dots: </p><table
  class="equation"><tr
@@ -1851,7 +1848,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  id="x1-4032r32"></a>
                                                                                        
                                                                                        
-<!--l. 187
+<!--l. 188
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
                                     <mi
@@ -1872,14 +1869,14 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 >a</mi>
 </math></td><td
  class="eq-no">(32)</td></tr></table>
-<!--l. 191
+<!--l. 192
 --><p
  class="noindent">Horizontal spacing: </p><table
  class="equation"><tr
 ><td
 > <a
  id="x1-4033r33"></a>
-<!--l. 192
+<!--l. 194
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
                                          <mo
@@ -1889,15 +1886,13 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  width="0.3em" class="thinspace"></mspace><mo
  class="MathClass-rel">|</mo><mo
  class="MathClass-rel">|</mo><mspace
- width="0.3em" class="thinspace"></mspace><mo
- class="MathClass-rel">|</mo><mspace
  width="1em" class="quad"></mspace><mo
  class="MathClass-rel">|</mo><mspace
  width="2em" class="qquad"></mspace><mo
  class="MathClass-rel">|</mo>
 </math></td><td
  class="eq-no">(33)</td></tr></table>
-<!--l. 196
+<!--l. 198
 --><p
  class="noindent">
 </p>
@@ -1905,9 +1900,9 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="sectionHead"><span
  class="titlemark">2    </span> <a
  href="#QQ2-1-5" id="x1-50002">Standard mathematical structures</a></h3>
-<!--l. 198
+<!--l. 200
 --><p
- class="noindent">Three different ways to inline  <!--l. 198
+ class="noindent">Three different ways to inline  <!--l. 200
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"> <msubsup
 ><mrow
@@ -1922,7 +1917,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><mn>2</mn></mrow><mrow
 ><mi
 >n</mi></mrow></msup></mrow></msubsup> </math>
-<!--l. 198
+<!--l. 200
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <msubsup
@@ -1938,7 +1933,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><mn>2</mn></mrow><mrow
 ><mi
 >n</mi></mrow></msup></mrow></msubsup> </mrow></math>
-<!--l. 198
+<!--l. 200
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <msubsup
@@ -1954,14 +1949,14 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><mn>2</mn></mrow><mrow
 ><mi
 >n</mi></mrow></msup></mrow></msubsup> </mrow></math>
-</p><!--l. 200
+</p><!--l. 202
 --><p
  class="noindent">Four different ways to displaymath.  </p><table
  class="equation"><tr
 ><td
 > <a
  id="x1-5001r100"></a>
-<!--l. 202
+<!--l. 204
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
 <munderover
@@ -2090,7 +2085,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
                                                                                        
                                                                                        
 <div
- class="par-math-block" custom-style="Normal"><!--l. 206
+ class="par-math-block" custom-style="Normal"><!--l. 208
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 ><msubsup
@@ -2200,7 +2195,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><mn>2</mn></mrow></msubsup>
 </mrow></math></div>
 <div
- class="par-math-block" custom-style="Normal"><!--l. 210
+ class="par-math-block" custom-style="Normal"><!--l. 212
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -2342,7 +2337,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  width="1em" class="nbsp"></mspace>
 </mrow></math></div>
 <div
- class="par-math-block" custom-style="Normal"><!--l. 214
+ class="par-math-block" custom-style="Normal"><!--l. 216
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -2468,7 +2463,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 <mn>15</mn></mrow><mrow
 ><mn>2</mn></mrow></msubsup>
 </mrow></math></div>
-<!--l. 218
+<!--l. 220
 --><p
  class="noindent">One of the forms is numbered equation <a
  href="#x1-5001r100">100<!--tex4ht:ref: equation 
@@ -2477,7 +2472,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
                                                                                        
                                                                                        
 <div
- class="math-block" custom-style="Normal"><!--l. 219
+ class="math-block" custom-style="Normal"><!--l. 221
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -2581,7 +2576,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 >  <mn>2</mn></mrow></msubsup></mrow></msqrt>
 </mrow></math></div>
 <div
- class="par-math-block" custom-style="Normal"><!--l. 223
+ class="par-math-block" custom-style="Normal"><!--l. 225
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -2703,11 +2698,11 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 <mrow
 ><mn>2</mn></mrow></mfrac> </mrow></msup>
 </mrow></math></div>
-<!--l. 227
+<!--l. 229
 --><p
  class="noindent">Now for an equation array: </p>
 <!--tex4ht:inline
---><!--l. 228
+--><!--l. 230
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 <mtable
@@ -2816,15 +2811,15 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 </math>
                                                                                        
                                                                                        
-<!--l. 232
+<!--l. 234
 --><p
  class="nopar">
 </p>
-<!--l. 234
+<!--l. 236
 --><p
  class="noindent">
 <!--tex4ht:inline
---></p><!--l. 234
+--></p><!--l. 236
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 <mtable
@@ -2932,12 +2927,12 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd></mtr></mtable>
 </math>
-<!--l. 238
+<!--l. 240
 --><p
  class="nopar">
 </p>
 <div
- class="par-math-block" custom-style="Normal"><!--l. 240
+ class="par-math-block" custom-style="Normal"><!--l. 242
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -2974,7 +2969,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
                                                                                        
                                                                                        
 <div
- class="par-math-block" custom-style="Normal"><!--l. 244
+ class="par-math-block" custom-style="Normal"><!--l. 246
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -3101,11 +3096,11 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 <!--*{10}{c}
 --></mtable>                                                                                       </mrow></mfenced>
 </mrow></math></div>
-<!--l. 259
+<!--l. 261
 --><p
  class="noindent">
 <!--tex4ht:inline
---></p><!--l. 259
+--></p><!--l. 261
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 <mtable
@@ -3152,14 +3147,14 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd></mtr></mtable>
 </math>
-<!--l. 262
+<!--l. 264
 --><p
  class="nopar">
 </p>
                                                                                        
                                                                                        
 <div
- class="par-math-block" custom-style="Normal"><!--l. 264
+ class="par-math-block" custom-style="Normal"><!--l. 266
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -3185,7 +3180,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 >f</mi></mrow></msqrt>
 </mrow></math></div>
 <div
- class="par-math-block" custom-style="Normal"><!--l. 268
+ class="par-math-block" custom-style="Normal"><!--l. 270
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -3219,7 +3214,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  accent="true">&#xAF;</mo></mover>
 </mrow></math></div>
 <div
- class="par-math-block" custom-style="Normal"><!--l. 272
+ class="par-math-block" custom-style="Normal"><!--l. 274
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -3251,7 +3246,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
                                                                                        
                                                                                        
 <div
- class="par-math-block" custom-style="Normal"><!--l. 276
+ class="par-math-block" custom-style="Normal"><!--l. 278
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -3264,7 +3259,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 >a</mi></mrow></mrow></mover>
 </mrow></math></div>
 <div
- class="par-math-block" custom-style="Normal"><!--l. 281
+ class="par-math-block" custom-style="Normal"><!--l. 283
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -3282,7 +3277,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 --></mtable>                                                                                       </mrow></mfenced>
 </mrow></math></div>
 <div
- class="par-math-block" custom-style="Normal"><!--l. 285
+ class="par-math-block" custom-style="Normal"><!--l. 287
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -3376,7 +3371,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 </mrow></math></div>
                                                                                        
                                                                                        
-<!--l. 289
+<!--l. 291
 --><p
  class="noindent">
 </p>
@@ -3384,11 +3379,11 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="subsectionHead"><span
  class="titlemark">2.1    </span> <a
  href="#QQ2-1-6" id="x1-60002.1">Testing line breaking</a></h4>
-<!--l. 291
+<!--l. 293
 --><p
  class="noindent">
 <!--tex4ht:inline
---></p><!--l. 291
+--></p><!--l. 293
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 <mtable
@@ -3933,10 +3928,10 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd></mtr></mtable>
 </math>
-<!--l. 303
+<!--l. 305
 --><p
  class="nopar">
-</p><!--l. 305
+</p><!--l. 307
 --><p
  class="noindent">
 </p>
@@ -3947,7 +3942,7 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="titlemark">2.2    </span> <a
  href="#QQ2-1-7" id="x1-70002.2">Testing new commands</a></h4>
 <div
- class="par-math-block" custom-style="Normal"><!--l. 306
+ class="par-math-block" custom-style="Normal"><!--l. 308
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >

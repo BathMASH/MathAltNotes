@@ -113,8 +113,9 @@ Arrows:
 \begin{equation}
 \leftarrow \gets \Leftarrow \rightarrow \to \Rightarrow \leftrightarrow \Leftrightarrow \mapsto \hookleftarrow \leftharpoonup \leftharpoondown \rightleftharpoons \longleftarrow \Longleftarrow \longrightarrow \Longrightarrow 
 \end{equation}
+%We can't test \iff in a unit test at the moment because it produces different amounts of spacing in HTML ONLY (so, TeX4ht) in 2017 and 2019 hence it has been remove for now
 \begin{equation}
-\longleftrightarrow \Longleftrightarrow \iff \longmapsto \hookrightarrow \rightharpoonup \rightharpoondown \uparrow \Uparrow \downarrow \Downarrow \updownarrow \Updownarrow \nearrow \searrow \swarrow \nwarrow
+\longleftrightarrow \Longleftrightarrow \longmapsto \hookrightarrow \rightharpoonup \rightharpoondown \uparrow \Uparrow \downarrow \Downarrow \updownarrow \Updownarrow \nearrow \searrow \swarrow \nwarrow
 \end{equation}
 
 Other:
@@ -187,8 +188,9 @@ a \ldots a \quad a \vdots a \quad  a \cdots a \quad  a \ddots a
 \end{equation}
 
 Horizontal spacing:
+%We can't test \; here as the output is different between 2017 and 2019 and it is dodgy anyway from past experience
 \begin{equation}
-|~|\,|\:|\;|\quad | \qquad |
+|~|\,|\:|\quad | \qquad |
 \end{equation}%%%% Please add \left and \right to all verticals, this is probably a syntactically ambiguous case
 
 \section{Standard mathematical structures}
