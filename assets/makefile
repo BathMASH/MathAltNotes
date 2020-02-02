@@ -6,6 +6,7 @@ level=$(shell cat .level)
 LATEX=timeout 1m pdflatex -interaction=nonstopmode -halt-on-error
 HOME=$(shell cat .home)
 HTLATEX=timeout 2m $(HOME)/../../scripts/htlatex
+BIBTEX=timeout 1m bibtex
 # Original class
 TYPE=$(shell cat .documentclass 2> /dev/null)
 # Alternative class
@@ -64,6 +65,7 @@ standard: clean $(name)-cont-clean.tex
 	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\emphasis{standard}\\\\def\\\\papersize{$(PAPER)}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{$(BEAMERFIX)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-standard.tex
 #https://tex.stackexchange.com/questions/611/setting-class-options-after-documentclass/617
 	$(LATEX) --shell-escape $(name)-standard.tex
+	$(BIBTEX) $(name)-standard
 	$(LATEX) --shell-escape $(name)-standard.tex
 	$(LATEX) --shell-escape $(name)-standard.tex
 #We can't change the jobname to get different filenames that way as this does not work with some packages
@@ -90,6 +92,7 @@ ifeq ($(TYPE),beamer)
 	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerhandout{handout}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{$(BEAMERFIX)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
 endif
 	$(LATEX) --shell-escape $(name)-clear.tex
+	$(BIBTEX) $(name)-clear
 	$(LATEX) --shell-escape $(name)-clear.tex
 	$(LATEX) --shell-escape $(name)-clear.tex
 	mv $(name)-clear.pdf built/
@@ -135,6 +138,7 @@ ifeq ($(TYPE),beamer)
 	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerhandout{handout}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{$(BEAMERFIX)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-large.tex
 endif
 	$(LATEX) --shell-escape $(name)-large.tex
+	$(BIBTEX) $(name)-large
 	$(LATEX) --shell-escape $(name)-large.tex
 	$(LATEX) --shell-escape $(name)-large.tex
 	mv $(name)-large.pdf built/
@@ -600,7 +604,7 @@ endif
 
 
 clean:
-	@rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot *x.interim.png *x.svg *.4ht *-lp1 *-lp0 bbmone.* fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* *.tmp2 *.nav *.snm colorfix.sty fontfix.sty parfix.sty beamerfix.sty *-pics*.pdf tuftefix.sty *.htf algorithmicfix.*
+	@rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot *x.interim.png *x.svg *.4ht *-lp1 *-lp0 bbmone.* fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* *.tmp2 *.nav *.snm colorfix.sty fontfix.sty parfix.sty beamerfix.sty *-pics*.pdf tuftefix.sty *.htf algorithmicfix.* *.bbl
 
 cleaner:
 	@rm -f *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp*.tex *-figures.tex *_tex-lp macros.tex demacro-private.sty *-cont* *-co *.pre zz*-web* *.pdf_tex.tex *.pdf_tex-clean.tex *.web.tex *-web-standard.tex

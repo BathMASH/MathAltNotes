@@ -10,7 +10,7 @@ rb ([[:blank:]])*"}"
 rs ([[:blank:]])*"]"
 verbstart "\\begin"{lb}("verbatim"|"spverbatim"){rb}
 verbend "\\end"{lb}("verbatim"|"spverbatim"){rb}
-lstlistingstart "\\begin"{lb}("lstlisting"){rb}{ls}[^\[\]]*{rs}
+lstlistingstart "\\begin"{lb}("lstlisting"){rb}({ls}[^\[\]]*{rs})?
 lstlistingend "\\end"{lb}("lstlisting"){rb}
 dropmath ("\\text"{lb}|"\\intertext"{lb})
 toc ("\\chapter"|"\\section"|"\\subsection"|"\\subsubsection"|"\\caption")
