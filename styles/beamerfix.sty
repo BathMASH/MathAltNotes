@@ -7,7 +7,8 @@
 \newcommand{\fixincludegraphics}[2][]{\includegraphics[#1]{#2}}
 %The below HAS TO BE ON one line, if not then we get spaces at the start and end of the filename. Web is fine with this. PANDOC isn't.
 \makeatletter
-\newcommand{\actualfile}[1]{\filename@parse{#1}./figures/\filename@ext/\filename@base\ifdefstring{\filename@ext}{pdf}{.svg}{.png}}
+%\newcommand{\actualfile}[1]{\filename@parse{#1}./figures/\filename@ext/\filename@base\ifdefstring{\filename@ext}{pdf}{.svg}{.png}}
+\newcommand{\actualfile}[1]{\filename@parse{#1}\ifdefstring{\filename@ext}{pdf}{./figures/\filename@ext/\filename@base.svg}{\ifdefstring{\filename@ext}{eps}{./figures/\filename@ext/\filename@base.svg}{./figures/\filename@ext/\filename@base.png}}}
 \makeatother
 
 \newcommand{\maxsize}{\the\linewidth}

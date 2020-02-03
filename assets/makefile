@@ -65,7 +65,7 @@ standard: clean $(name)-cont-clean.tex
 	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\emphasis{standard}\\\\def\\\\papersize{$(PAPER)}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{$(BEAMERFIX)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-standard.tex
 #https://tex.stackexchange.com/questions/611/setting-class-options-after-documentclass/617
 	$(LATEX) --shell-escape $(name)-standard.tex
-	$(BIBTEX) $(name)-standard
+	$(BIBTEX) $(name)-standard || true
 	$(LATEX) --shell-escape $(name)-standard.tex
 	$(LATEX) --shell-escape $(name)-standard.tex
 #We can't change the jobname to get different filenames that way as this does not work with some packages
@@ -92,7 +92,7 @@ ifeq ($(TYPE),beamer)
 	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerhandout{handout}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{$(BEAMERFIX)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-clear.tex
 endif
 	$(LATEX) --shell-escape $(name)-clear.tex
-	$(BIBTEX) $(name)-clear
+	$(BIBTEX) $(name)-clear || true
 	$(LATEX) --shell-escape $(name)-clear.tex
 	$(LATEX) --shell-escape $(name)-clear.tex
 	mv $(name)-clear.pdf built/
@@ -138,7 +138,7 @@ ifeq ($(TYPE),beamer)
 	echo "\\\\def\\\\pointsize{$(SIZE)pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\beamerhandout{handout}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{$(BEAMERFIX)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-large.tex
 endif
 	$(LATEX) --shell-escape $(name)-large.tex
-	$(BIBTEX) $(name)-large
+	$(BIBTEX) $(name)-large || true
 	$(LATEX) --shell-escape $(name)-large.tex
 	$(LATEX) --shell-escape $(name)-large.tex
 	mv $(name)-large.pdf built/
@@ -215,6 +215,7 @@ ifeq ($(TYPE),beamer)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
 endif
 	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(BIBTEX) $(name)-web || true
 	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #Change the endings from interim to svg - this should not be doing anything any more after fix via .env
 #	sed -i "s/x.interim.png/x.svg/" *.html

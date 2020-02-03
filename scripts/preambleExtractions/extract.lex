@@ -42,9 +42,9 @@ tableofcontents "\\tableofcontents"
 packages ("\\usepackage")
 newcommand ("\\newcommand"|"\\renewcommand")
 newenvironment "\\newenvironment"
-danger ("babel"|"fontenc"|"lmodern"|"graphicx"|"geometry"|"spverbatim"|"listings"|"amsmath"|"amssymb"|"amsfonts"|"amsthm"|"hyperref"|"DejaVuSansMono"|"etoolbox"|"epsfig"|"mathdesign")
+danger ("babel"|"fontenc"|"lmodern"|"graphicx"|"geometry"|"spverbatim"|"listings"|"amsmath"|"amssymb"|"amsfonts"|"amsthm"|"hyperref"|"DejaVuSansMono"|"etoolbox"|"epsfig"|"mathdesign"|"pdfpages")
 notlarge ("cleveref")
-standardonly ("\\newpage"|"\\clearpage") 
+standardonly ("\\newpage"|"\\clearpage"|"\\pagebreak") 
 bracedcolor "{"(([^"}""{"])*)"\\color{"(([^"}""{"])*)"}"
 picturestart "\\begin"{lb}"picture"{rb}
 pictureend "\\end"{lb}"picture"{rb}
@@ -108,6 +108,7 @@ verbatim "\\begin"{lb}("verbatim"|"spverbatim"){rb}
 <PACKAGES>(("[")(.*)("]"))*{lb}{notlarge}{rb} printf("\\ifboolexpr{togl {web} or togl{large}}{}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}"booktabs"{rb} printf("\\ifboolexpr{togl {web} or togl {word}}{\\renewcommand{\\hline}{}\\newcommand{\\toprule}{}\\newcommand{\\midrule}{}\\newcommand{\\bottomrule}{}}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
 <PACKAGES>"[table]"{lb}"xcolor"{rb} printf("\\ifboolexpr{togl {web} or togl {word}}{\\usepackage{xcolor}\\newcommand{\\rowcolors}[3]{}\\newcommand{\\rowcolor}[1]{}\\AtBeginDocument{\\let\\hiderowcolors\\undefined\\newcommand{\\hiderowcolors}{}\\let\\showrowcolors\\undefined\\newcommand{\\showrowcolors}{}}}{\\usepackage[table]{xcolor}}"); yy_pop_state();
+<PACKAGES>(("[")(.*)("]"))*{lb}"xcolor"{rb} printf("\\usepackage[dvipsnames]{xcolor}"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}"tikz"{rb} if(beamer==0) printf("\\usepackage[dvipsnames]{xcolor}\\usepackage"); else printf("\\PassOptionsToPackage{dvipsnames}{xcolor}\\usepackage"); ECHO; yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb} printf("\\usepackage"); ECHO; 
 <PACKAGES>","(" ")* printf(",");
