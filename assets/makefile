@@ -477,6 +477,7 @@ endif
 #fn-in stops us from losing the footnotes in the Word format: https://tex.stackexchange.com/questions/195551/how-to-add-footnotes-in-htlatex-via-fn-in
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
 	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(BIBTEX) $(name)-word || true
 	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
 #Change the endings from interim to svg - this should not be doing anything any more after fix via .env
 #	sed -i "s/x.interim.png/x.svg/" *.html
