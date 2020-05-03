@@ -13,9 +13,9 @@ verbend "\\end"{lb}("verbatim"|"spverbatim"){rb}
 lstlistingstart "\\begin"{lb}("lstlisting"){rb}({ls}[^\[\]]*{rs})?
 lstlistingend "\\end"{lb}("lstlisting"){rb}
 dropmath ("\\text"{lb}|"\\intertext"{lb})
-toc ("\\chapter"|"\\section"|"\\subsection"|"\\subsubsection"|"\\caption")
-figstart "\\begin"{lb}("figure"){rb}
-figend "\\end"{lb}("figure"){rb}
+toc ("\\chapter"|"\\section"|"\\subsection"|"\\subsubsection"|"\\caption"|"\\chapter*"|"\\section*"|"\\subsection*"|"\\subsubsection*")
+figstart "\\begin"{lb}("figure"|"picture"){rb}
+figend "\\end"{lb}("figure"|"picture"){rb}
 decthm "\\declaretheorem"{ls}
 
 %x COMMENT VERBATIM SINGLEDOLLAR DOUBLEDOLLAR DROPMATH TOC FIG DECTHM OPTIONS LISTING
@@ -37,6 +37,8 @@ decthm "\\declaretheorem"{ls}
 
 "\\begin"{lb}(([^"}""{""["])*){rb}{ls} ECHO; yy_push_state(OPTIONS);
 <OPTIONS>{rs} ECHO; yy_pop_state();
+
+"\\begin"{lb}"frame"{rb}{lb} ECHO; brackets = 1; yy_push_state(TOC);
 
  /* We need to leave the $ in these alone {toc}(("[")(.*)("]"))*{lb} ECHO; brackets = 1; yy_push_state(TOC); */
 {toc}{lb} ECHO; brackets = 1; yy_push_state(TOC);
