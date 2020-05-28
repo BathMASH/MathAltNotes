@@ -214,15 +214,15 @@ endif
 ifeq ($(TYPE),beamer)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web.tex
 endif
-	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
 	$(BIBTEX) $(name)-web || true
-	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX)  $(name)-web.tex "mathjaxMMLWord.cfg,$(level),sections+,fonts-,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
 #Change the endings from interim to svg - this should not be doing anything any more after fix via .env
 #	sed -i "s/x.interim.png/x.svg/" *.html
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
 #html output. Such things as unmatched brackets can cause problems. If you can't locate the error and can put
 #up with digits instead of numbers then comment out the next line as the web browser and mathjax are less fussy.
-	$(HOME)/../TeX4htPostprocessing/postprocess.sh ./
+	$(HOME)/../TeX4htPostprocessing/postprocessFB.sh ./
 #Creating a zip for ease of upload or sending
 	[ ! -d built/$(name)-web/ ] || rm -r built/$(name)-web/
 	mkdir built/$(name)-web/
@@ -476,15 +476,15 @@ endif
 #Note that we are not breaking into sections for the Word transform
 #fn-in stops us from losing the footnotes in the Word format: https://tex.stackexchange.com/questions/195551/how-to-add-footnotes-in-htlatex-via-fn-in
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
-	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
 	$(BIBTEX) $(name)-word || true
-	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
 #Change the endings from interim to svg - this should not be doing anything any more after fix via .env
 #	sed -i "s/x.interim.png/x.svg/" *.html
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
 #html output. Such things as unmatched brackets can cause problems. If you can't locate the error or the 
 #Word document does not come out as expected then please report to Emma Cliffe
-	$(HOME)/../TeX4htPostprocessing/postprocessWord.sh ./
+	$(HOME)/../TeX4htPostprocessing/postprocessWordFB.sh ./
 #To get styled theorems we are going to need to do something like http://pandoc.org/MANUAL.html#custom-styles-in-docx-output but this will require us to do some nasty poking.
 	pandoc -s -f html -t docx $(name)-word.html -o $(name)-word.docx --reference-doc=$(HOME)/../../assets/reference.docx
 	mv $(name)-word.docx built/
@@ -521,9 +521,9 @@ endif
 ifeq ($(TYPE),beamer)
 	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
 endif
-	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
-	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
-	$(HOME)/../TeX4htPostprocessing/postprocessWord.sh ./
+	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
+	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
+	$(HOME)/../TeX4htPostprocessing/postprocessWordFB.sh ./
 #Tidy up a bit
 	@rm mathml.4ht
 	@rm unicode.4hf
@@ -585,14 +585,14 @@ endif
 #Note that we are not breaking into sections for the Word transform
 #fn-in stops us from losing the footnotes in the Word format: https://tex.stackexchange.com/questions/195551/how-to-add-footnotes-in-htlatex-via-fn-in
 #We need to use early_ and early^ so that the author doesn't need to do anything special for macros
-	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
-	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8" " -cunihtf -utf8"
+	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
+	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
 #Change the endings from interim to svg - this should not be doing anything any more after fix via .env
 #	sed -i "s/x.interim.png/x.svg/" *.html
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
 #html output. Such things as unmatched brackets can cause problems. If you can't locate the error or the 
 #Word document does not come out as expected then please report to Emma Cliffe
-#	$(HOME)/../TeX4htPostprocessing/postprocessWord.sh ./
+#	$(HOME)/../TeX4htPostprocessing/postprocessWordFB.sh ./
 #To get styled theorems we are going to need to do something like http://pandoc.org/MANUAL.html#custom-styles-in-docx-output but this will require us to do some nasty poking.
 	pandoc -s -f html -t docx $(name)-word.html -o $(name)-word.docx --reference-doc=$(HOME)/../../assets/reference.docx
 	mv $(name)-word.docx built/

@@ -125,6 +125,10 @@
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  \usepackage[a4paper,margin=2.5cm]{geometry}
  \usepackage{spverbatim}
+ \iftoggle{word}{
+   %We need to stop unbreaking space in the verb macro.
+   \pretocmd{\verb}{\def\xobeysp{\mbox{}\space}}{}{}
+ }{}
  \usepackage{listings}
  
  \lstloadlanguages{Matlab} %Other languages are available, see manual, you should select the correct language

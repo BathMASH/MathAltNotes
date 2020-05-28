@@ -28,6 +28,7 @@ arrayend "\\end"{lb}("array"|"matrix"|"pmatrix"|"bmatrix"|"Bmatrix"|"vmatrix"|"V
 <MATHS,RESIZE>{arraystart} ECHO; yy_push_state(ARRAY); //protect arrays
 <MATHS,RESIZE>("%")[^\n]* //yy_push_state(COMMENT);
 <MATHS>("\\\\")+(\r?\n)*{mathsend} printf("REMOVEMATHENDLINE"); ECHO; yy_pop_state();
+<MATHS,RESIZE>("\\\\["(.*)"]")+(\r?\n)* printf("\\\\\n"); 
 <MATHS,RESIZE>("\\\\")+(\r?\n)* printf("\\\\\n"); 
 <MATHS,RESIZE>(\r?\n) printf(" ");
 <MATHS>{mathsend} ECHO; yy_pop_state();

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE xtpipes SYSTEM "xtpipes.dtd" >
+<!DOCTYPE xtpipes SYSTEM "xtpipes.dtd">
 <xtpipes preamble="yes" signature="empty.4xt">
 	 <sax content-handler="xtpipes.util.ScriptsManager, tex4ht.GroupMn"
        	 lexical-handler="xtpipes.util.ScriptsManagerLH" >

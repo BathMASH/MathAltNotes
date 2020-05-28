@@ -40,6 +40,8 @@ decthm "\\declaretheorem"{ls}
 
 "\\begin"{lb}"frame"{rb}{lb} ECHO; brackets = 1; yy_push_state(TOC);
 
+"\\captionof"{lb}(([^"}""{""["])*){rb}{lb} ECHO; brackets = 1; yy_push_state(TOC);
+
  /* We need to leave the $ in these alone {toc}(("[")(.*)("]"))*{lb} ECHO; brackets = 1; yy_push_state(TOC); */
 {toc}{lb} ECHO; brackets = 1; yy_push_state(TOC);
 {toc}{ls} ECHO; brackets = 0; yy_push_state(TOC); yy_push_state(OPTIONS);

@@ -107,6 +107,7 @@ verbatim "\\begin"{lb}("verbatim"|"spverbatim"){rb}
 <PACKAGES>(("[")(.*)("]"))*{lb}{danger}{rb} printf("\\ifboolexpr{togl {web} or togl{clearprint}}{}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}{notlarge}{rb} printf("\\ifboolexpr{togl {web} or togl{large}}{}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}"booktabs"{rb} printf("\\ifboolexpr{togl {web} or togl {word}}{\\renewcommand{\\hline}{}\\newcommand{\\toprule}{}\\newcommand{\\midrule}{}\\newcommand{\\bottomrule}{}}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
+<PACKAGES>(("[")(.*)("]"))*{lb}"centernot"{rb} printf("\\ifboolexpr{togl {web} or togl {large}}{\\newcommand{\\centernot}{\\not}}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
 <PACKAGES>"[table]"{lb}"xcolor"{rb} printf("\\ifboolexpr{togl {web} or togl {word}}{\\usepackage{xcolor}\\newcommand{\\rowcolors}[3]{}\\newcommand{\\rowcolor}[1]{}\\AtBeginDocument{\\let\\hiderowcolors\\undefined\\newcommand{\\hiderowcolors}{}\\let\\showrowcolors\\undefined\\newcommand{\\showrowcolors}{}}}{\\usepackage[table]{xcolor}}"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}"xcolor"{rb} printf("\\usepackage[dvipsnames]{xcolor}"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}"tikz"{rb} if(beamer==0) printf("\\usepackage[dvipsnames]{xcolor}\\usepackage"); else printf("\\PassOptionsToPackage{dvipsnames}{xcolor}\\usepackage"); ECHO; yy_pop_state();
@@ -346,7 +347,7 @@ int choices(){
   }else if(strcmp(class,"report")==0 || strcmp(class,"extreport")==0){
     fprintf(alttype,"report");
     fprintf(unknown,"false");
-  }else if(strcmp(class,"book")==0 || strcmp(class,"extbook")==0 || strcmp(class,"tufte-book")==0){
+  }else if(strcmp(class,"book")==0 || strcmp(class,"extbook")==0 || strcmp(class,"tufte-book")==0 ){
     fprintf(alttype,"book");
     fprintf(unknown,"false");
   }else if(strcmp(class,"amsart") == 0){
@@ -490,3 +491,5 @@ int macrosoutput(){
 
   return 0;
 }
+
+
