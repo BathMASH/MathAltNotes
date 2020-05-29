@@ -23,6 +23,7 @@ int colorlst = 0;
 int colorishere = 0;
 %}
 
+whitehspace (" "|\t)
 whitespace (" "|\t|(\r?\n))
 lb ([[:blank:]])*"{"([[:blank:]])*
 rb ([[:blank:]])*"}"
@@ -168,6 +169,15 @@ verbatim "\\begin"{lb}("verbatim"|"spverbatim"){rb}
 <INPUTPDFLATEX>"/"
 <INPUTPDFLATEX>{rb} ECHO; yy_pop_state();
 <FIGURE>{figureend} ECHO; yy_pop_state();
+
+{lb}{whitehspace}*"\\bf " if(begun==1) {printf(" \\textbf{");} else ECHO;
+{lb}{whitehspace}*"\\it " if(begun==1) {printf(" \\textit{");} else ECHO;
+{lb}{whitehspace}*"\\sl " if(begun==1) {printf(" \\textsl{");} else ECHO;
+{lb}{whitehspace}*"\\em " if(begun==1) {printf(" \\emph{");} else ECHO;
+{lb}{whitehspace}*"\\sc " if(begun==1) {printf(" \\textsc{");} else ECHO;
+{lb}{whitehspace}*"\\rm " if(begun==1) {printf(" \\textrm{");} else ECHO;
+{lb}{whitehspace}*"\\tt " if(begun==1) {printf(" \\texttt{");} else ECHO;
+{lb}{whitehspace}*"\\sf " if(begun==1) {printf(" \\textsf{");} else ECHO; 
 
 {bracedcolor} if(begun==1) {printf(" \\textcolor{"); getcolor();} else ECHO;
 

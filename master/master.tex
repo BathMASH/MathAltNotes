@@ -164,7 +164,7 @@
  %% In web standard format we are in clearprint with standard emphasis
  %% but we need to redefine em to be it in that case so it is <i> not
  %% a particular font
- \ifdefstring{\emphasis}{clear}{\renewcommand{\em}{\bf}\renewcommand{\textit}{\textbf}\renewcommand{\emph}{\textbf}\renewcommand{\it}{\bf }\renewcommand{\itshape}{\bf}}{\renewcommand{\em}{\it}\renewcommand{\emph}{\textit}}
+ \ifdefstring{\emphasis}{clear}{\renewcommand{\em}{\bf}\renewcommand{\textit}{\textbf}\renewcommand{\textsl}{\textbf}\renewcommand{\sl}{\bf }\renewcommand{\emph}{\textbf}\renewcommand{\it}{\bf }\renewcommand{\itshape}{\bf}}{\renewcommand{\em}{\it}\renewcommand{\emph}{\textit}}
  %%Not sure about the last one, if it is a problem generally
  %%stick it in tuftefix for now 
  

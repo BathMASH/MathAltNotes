@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html> 
+<html lang="en"> 
 <head> <title></title> 
 <meta charset="UTF-8" /> 
 <meta name="viewport" content="target-densitydpi=device-dpi; width=device-width; initial-scale=1.0; minimum-scale=1.0; user-scalable=yes;" /> 
@@ -35,8 +35,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-
 <style type="text/css"> 
 ".MathJax_MathML" {text-indent: 0;} 
 </style> 
-</head><body 
->
+</head><body><main role="main">
 <!--l. 5--><p class="noindent" >A baseline of text which is one line long in 12pt font with no indent applied.
 </p>
 <div class="center" 
@@ -59,7 +58,7 @@ class="phvr8t-x-x-207">LARGE text. </span><span
 class="phvr8t-x-x-248">huge text. Huge</span>
 <span 
 class="phvr8t-x-x-248">text.</span>
-</p><!--l. 22--><p class="noindent" >Standard text. <b>Emphasized text</b>. <span 
+</p><!--l. 22--><p class="noindent" >Standard text. <strong>Emphasized text</strong>. <span 
 class="ec-lmr-12">Roman text. Roman inline. </span><span 
 class="phvrc8t-x-x-120">S<span 
 class="small-caps">M</span><span 
@@ -73,13 +72,13 @@ class="small-caps">S</span> <span
 class="small-caps">T</span><span 
 class="small-caps">E</span><span 
 class="small-caps">X</span><span 
-class="small-caps">T</span>.</span>
-<span 
-class="phvrc8t-x-x-120">S<span 
+class="small-caps">T</span>. S<span 
 class="small-caps">M</span><span 
 class="small-caps">A</span><span 
 class="small-caps">L</span><span 
-class="small-caps">L</span> <span 
+class="small-caps">L</span></span>
+<span 
+class="phvrc8t-x-x-120"><span 
 class="small-caps">C</span><span 
 class="small-caps">A</span><span 
 class="small-caps">P</span><span 
@@ -90,17 +89,12 @@ class="small-caps">L</span><span
 class="small-caps">I</span><span 
 class="small-caps">N</span><span 
 class="small-caps">E</span> </span><span 
-class="ec-lmtt-12">Typewriter text. Typewriter inline. </span><b>Italics text.</b> <span 
-class="phvb8t-x-x-120">Italics</span>
+class="ec-lmtt-12">Typewriter text. Typewriter inline. </span><strong>Italics text.</strong> <strong>Italics inline.</strong>
 <span 
-class="phvb8t-x-x-120">inline. </span><span 
-class="ec-lmss-12">Sans serif text. San serif inline. </span><span 
-class="phvro8t-x-x-120">Slant text. Slant inline. </span><b>Bold text.</b> <span 
-class="phvb8t-x-x-120">Bold inline. </span><b>A
-combination of bold and <b>italic text.</b></b> <span 
-class="phvb8t-x-x-120">A combination inline of bold and inline italics.</span>
+class="ec-lmss-12">Sans serif text. San serif inline. </span><strong>Slant text.</strong> <strong>Slant inline.</strong> <strong>Bold text.</strong> <strong>Bold inline.</strong> <strong>A
+combination of bold and <strong>italic text.</strong></strong> <strong>A combination inline of bold <strong>and inline italics</strong>.</strong>
 </p> 
-</body> 
+</main></body> 
 </html>
                                                                                        
 
