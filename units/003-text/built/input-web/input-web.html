@@ -1,5 +1,6 @@
 <!DOCTYPE html> 
 
+
 <html
 > 
 <head
@@ -21,6 +22,7 @@
  type="text/x-mathjax-config"> 
 MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
 explorer:{ subtitle: true }, 
+displayAlign: "center",  
 MatchWebFonts: { 
 matchFor: { "HTML-CSS": true, NativeMML: false, SVG: false }, 
 fontCheckDelay: 2000, 
@@ -30,13 +32,13 @@ fontCheckTimeout: 30 * 1000
 preferredFont: "STIX",  
 availableFonts: ["STIX","TeX"],  
 webFont: "STIX-Web",  
-linebreaks: { automatic: false, width: "90% container" } 
+linebreaks: { automatic: true, width: "90% container" } 
 }, 
 SVG: {  
 font: "STIX-Web", 
 linebreaks: { automatic: false, width: "90% container" } 
 }, 
-menuSettings: { collapsible: true, autocollapse: true, explorer: false } 
+menuSettings: { collapsible: false, autocollapse: false, explorer: false } 
 }); 
 </script> 
 <script
@@ -48,30 +50,36 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
 </head><body
 >
 <!--l. 5
+
 --><p
  class="noindent">A baseline of text which is one line long in 12pt font with no indent applied.
 </p>
 <div
  class="center">
 <!--l. 8
+
 --><p
  class="noindent">
 </p><!--l. 9
+
 --><p
  class="noindent">Centered text.</p></div>
 <div
  class="flushleft">
 <!--l. 12
+
 --><p
  class="noindent">
  Flush left text.</p></div>
                                                                                        <div
  class="flushright">
 <!--l. 16
+
 --><p
  class="noindent">
  Flush right text.</p></div>
 <!--l. 20
+
 --><p
  class="noindent">Standard text.  Tiny text.  Scriptsize text.  Footnotesize text.  Small text. Normalsize text.
 <span
@@ -82,10 +90,10 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
 <span
  class="phvr8t-x-x-248">text.</span>
 </p><!--l. 22
+
 --><p
  class="noindent">Standard text. <b
-><span
- class="phvb8t-x-x-120">Emphasized text</span></b>. <span
+>Emphasized text</b>. <span
  class="ec-lmr-12">Roman text. Roman inline. </span><span
  class="phvrc8t-x-x-120">S<span
  class="small-caps">M</span><span
@@ -117,22 +125,17 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  class="small-caps">N</span><span
  class="small-caps">E</span> </span><span
  class="ec-lmtt-12">Typewriter text. Typewriter inline. </span><b
-><span
- class="phvb8t-x-x-120">Italics text.</span></b> <span
+>Italics text.</b> <span
  class="phvb8t-x-x-120">Italics</span>
 <span
  class="phvb8t-x-x-120">inline. </span><span
  class="ec-lmss-12">Sans serif text. San serif inline. </span><span
  class="phvro8t-x-x-120">Slant text. Slant inline. </span><b
-><span
- class="phvb8t-x-x-120">Bold text.</span></b> <span
+>Bold text.</b> <span
  class="phvb8t-x-x-120">Bold inline. </span><b
-><span
- class="phvb8t-x-x-120">A</span>
-<span
- class="phvb8t-x-x-120">combination of bold and </span><b
-><span
- class="phvb8t-x-x-120">italic text.</span></b></b> <span
+>A
+combination of bold and <b
+>italic text.</b></b> <span
  class="phvb8t-x-x-120">A combination inline of bold and inline italics.</span>
 </p> 
 </body> 

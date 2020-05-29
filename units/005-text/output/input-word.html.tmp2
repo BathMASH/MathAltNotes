@@ -518,10 +518,8 @@ this page or the page after this.
  class="noindent">
 <a
  id="x1-28r2"></a></p>
-<!--l. 217
---><div
- class="longtable"> <table
- id="TBL-3" class="longtable" cellspacing="0" cellpadding="0" rules="groups"><colgroup
+<table
+ id="TBL-3" class="tabular" cellspacing="0" cellpadding="0" rules="groups"><colgroup
  id="TBL-3-1g"><col
  id="TBL-3-1"></col></colgroup><colgroup
  id="TBL-3-2g"><col
@@ -771,7 +769,7 @@ this page or the page after this.
  style="vertical-align:baseline;" id="TBL-3-12-"><td
  style="text-align:left; white-space:nowrap;" id="TBL-3-12-1" class="td11"></td>
 </tr>
-</table></div>
+</table>
 </div>
                                                                                        
                                                                                        

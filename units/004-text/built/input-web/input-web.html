@@ -1,5 +1,6 @@
 <!DOCTYPE html> 
 
+
 <html
 > 
 <head
@@ -21,6 +22,7 @@
  type="text/x-mathjax-config"> 
 MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
 explorer:{ subtitle: true }, 
+displayAlign: "center",  
 MatchWebFonts: { 
 matchFor: { "HTML-CSS": true, NativeMML: false, SVG: false }, 
 fontCheckDelay: 2000, 
@@ -30,13 +32,13 @@ fontCheckTimeout: 30 * 1000
 preferredFont: "STIX",  
 availableFonts: ["STIX","TeX"],  
 webFont: "STIX-Web",  
-linebreaks: { automatic: false, width: "90% container" } 
+linebreaks: { automatic: true, width: "90% container" } 
 }, 
 SVG: {  
 font: "STIX-Web", 
 linebreaks: { automatic: false, width: "90% container" } 
 }, 
-menuSettings: { collapsible: true, autocollapse: true, explorer: false } 
+menuSettings: { collapsible: false, autocollapse: false, explorer: false } 
 }); 
 </script> 
 <script
@@ -48,12 +50,15 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
 </head><body
 >
 <!--l. 6
+
 --><p
  class="noindent">Special characters: $ % _ } &#x26; # {
 </p><!--l. 9
+
 --><p
  class="noindent">Textmode characters:
 </p><!--l. 11
+
 --><p
  class="noindent">^&#x3C;~<sup
  class="textsuperscript"><span
@@ -66,10 +71,11 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  class="cmsy-10x-x-120">&#x2219;</span>&#x201D;<span
  class="cmsy-10x-x-120">&#xA9;</span>&#x2018;<span
  class="cmsy-10x-x-120">&#x2020;</span>&#x2019;<span
- class="cmsy-10x-x-120">&#x2021;</span>&#xAE;;$&#xA7;&#x2026;&#xA3;&#x2014;<sup
+ class="cmsy-10x-x-120">&#x2021;</span>&#xAE;$&#xA7;&#x2026;&#xA3;&#x2014;<sup
  class="textsuperscript"><span
  class="phvr8t-x-x-109">TM</span></sup>&#x2013;_&#xA1;&#x2423;&#x3E;
 </p><!--l. 14
+
 --><p
  class="noindent">Mathmode and textmode: $ _ <span
  class="cmsy-10x-x-120">&#x2021;</span>{ <span
@@ -77,10 +83,12 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  class="cmsy-10x-x-120">&#xA9;</span>&#x2026;} &#xA7;<span
  class="cmsy-10x-x-120">&#x2020;</span>&#xA3;
 </p><!--l. 17
+
 --><p
  class="noindent">Accents: &#xE4; &#xE1; &#x227; &#x101; &#xE2; &#xE0; &#xE3; a&#x327; &#x1EA1; a&#x30B; &#x105; &#xE5; a&#x361; &#x103; &#x1CE; <img
  src="input-web0x.svg" alt="a&#x25CB;" class="oalign"></img>
 </p><!--l. 20
+
 --><p
  class="noindent">There are not always symbols for these in all fonts: &#x131;&#x237;&#xEF;
 </p>
