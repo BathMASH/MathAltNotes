@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html> 
+<html lang="en"> 
 <head> <title></title> 
 <meta charset="UTF-8" /> 
 <meta name="viewport" content="target-densitydpi=device-dpi; width=device-width; initial-scale=1.0; minimum-scale=1.0; user-scalable=yes;" /> 
@@ -35,10 +35,9 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-
 <style type="text/css"> 
 ".MathJax_MathML" {text-indent: 0;} 
 </style> 
-</head><body 
->
+</head><body><main role="main">
 <!--l. 3--><p class="noindent" >Test of basic text. </p> 
-</body> 
+</main></body> 
 </html>
                                                                                        
 

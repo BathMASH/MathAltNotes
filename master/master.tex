@@ -224,7 +224,7 @@
  \title{Please set a title for these notes or toggle frontmatter off if a title is inappropriate}
  \author{Please set an author for these notes or toggle frontmatter off if a title is inappropriate}
  \date{Please set a date for these notes or toggle frontmatter off if a title is inappropriate}
- }{}
+ }{\iftoggle{web}{\title{Content}\author{}\date{}\iftoggle{word}{}{\toggletrue{frontmatter}}}{}}
  \ifdefstring{\beamerslides}{true}{\date{}}{}
  \AfterEndPreamble{
   \iftoggle{frontmatter}{\renewcommand{\baselinestretch}{1.0}\selectfont\maketitle\renewcommand{\baselinestretch}{1.25}\selectfont\inputdisclaimer}{}
