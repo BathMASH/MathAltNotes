@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 
 <html
-> 
+ lang="en"> 
 <head
 > <title
 ></title> 
@@ -47,7 +47,8 @@ menuSettings: { collapsible: false, autocollapse: false, explorer: false }
 ".MathJax_MathML" {text-indent: 0;} 
 </style> 
 </head><body
->
+><main
+ role="main">
 <!--l. 6
 --><p
  class="noindent">Special characters: $ % _ } &#x26; # {
@@ -86,5 +87,5 @@ menuSettings: { collapsible: false, autocollapse: false, explorer: false }
  class="noindent">There are not always symbols for these in all fonts: &#x131;&#x237;&#xEF;
 </p>
  
-</body> 
+</main></body> 
 </html>

@@ -13,6 +13,7 @@
 		 <xsl:template match="tr">
 		 <xsl:choose>
 		 <xsl:when test=".//*[@colspan]">
+		 <tr><td><strong>!!WARNING: inaccessible row REMOVED from table!!</strong></td></tr>
 		 </xsl:when>
 		 <xsl:otherwise>
 		 <xsl:copy-of select="."/>

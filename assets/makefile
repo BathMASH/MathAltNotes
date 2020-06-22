@@ -222,7 +222,7 @@ endif
 #The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
 #html output. Such things as unmatched brackets can cause problems. If you can't locate the error and can put
 #up with digits instead of numbers then comment out the next line as the web browser and mathjax are less fussy.
-	$(HOME)/../TeX4htPostprocessing/postprocessFB.sh ./
+	$(HOME)/../TeX4htPostprocessing/postprocess.sh ./
 #Creating a zip for ease of upload or sending
 	[ ! -d built/$(name)-web/ ] || rm -r built/$(name)-web/
 	mkdir built/$(name)-web/

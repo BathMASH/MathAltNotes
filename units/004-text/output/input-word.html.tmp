@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html> 
+<html lang="en"> 
 <head> <title></title> 
 <meta charset="UTF-8" /> 
 <meta name="viewport" content="target-densitydpi=device-dpi; width=device-width; initial-scale=1.0; minimum-scale=1.0; user-scalable=yes;" /> 
@@ -35,8 +35,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-
 <style type="text/css"> 
 ".MathJax_MathML" {text-indent: 0;} 
 </style> 
-</head><body 
->
+</head><body><main role="main">
 <!--l. 6--><p class="noindent" >Special characters: $ % _ } &#x0026; # {
 </p><!--l. 9--><p class="noindent" >Textmode characters:
 </p><!--l. 11--><p class="noindent" >^&#x003C;~<sup class="textsuperscript"><span 
@@ -60,7 +59,7 @@ src="input-word0x.svg" alt="a○"  class="oalign"  />
 </p><!--l. 20--><p class="noindent" >There are not always symbols for these in all fonts: ıȷï
 </p>
  
-</body> 
+</main></body> 
 </html>
                                                                                        
 
