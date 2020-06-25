@@ -604,6 +604,79 @@ endif
 	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 	@rm *.htf
 
+#This is an experiment
+#To transform to markdown we need to use the web transform but without breaking into sections and then use Pandoc 19+
+markdown: clean $(name)-cont-web-clean.tex
+	mkdir -p built 
+#Copy some files to where we need them
+	cp $(HOME)/../../styles/* . 
+	cp $(HOME)/../../fonts/* .
+ifeq ($(FLEQN),fleqn)
+	cp $(HOME)/../../assets/mathml-fleqn.4ht ./mathml.4ht
+else
+	cp $(HOME)/../../assets/mathml.4ht .
+endif
+	cp $(HOME)/../../assets/listings.4ht .
+	cp $(HOME)/../../assets/unicode.4hf .
+	cp $(HOME)/../../assets/mathjaxMMLWord.cfg .
+	cp $(HOME)/../../assets/additional.css .
+#Make any pdf_tex figures
+#	$(HOME)/../graphicx/buildfigure.sh ./
+#Make any tikz figures etc.
+	[ ! -f toggle.tex ] || rm -f toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}\\\\toggletrue{word}" > toggle.tex
+	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
+ifeq ($(UNKN),false)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
+else
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
+endif
+ifeq ($(TYPE),beamer)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-word.tex
+endif
+	$(LATEX) -shell-escape $(name)-word.tex
+#Fix any figures that were produced in png incorrectly
+#	$(HOME)/../graphicx/svg-fix.sh ./
+	cd figures/eps/; $(HOME)/../graphicx/eps-converted2svg.sh ./; cd ../..
+	cd figures/pdf/; $(HOME)/../graphicx/pdftosvg.sh ./; cd ../..
+	rm $(name)-word.*
+#Set up for the word version
+	[ ! -f toggle.tex ] || rm -f toggle.tex
+	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}\\\\toggletrue{word}" > toggle.tex
+	[ ! -f $(name)-word.tex ] || rm -f $(name)-word.tex
+ifeq ($(UNKN),false)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
+else
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
+endif
+ifeq ($(TYPE),beamer)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-word.tex
+endif
+#htlatex needs to run twice to prevent disruption to the sectioning tree caused by e.g. footnotes
+#Note, yes this does run latex 6 times! It is a reported bug: https://puszcza.gnu.org.ua/bugs/index.php?197
+#Note that we are not breaking into sections for the Word transform
+#fn-in stops us from losing the footnotes in the Word format: https://tex.stackexchange.com/questions/195551/how-to-add-footnotes-in-htlatex-via-fn-in
+#We need to use early_ and early^ so that the author doesn't need to do anything special for macros
+	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
+	$(BIBTEX) $(name)-word || true
+	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
+#Change the endings from interim to svg - this should not be doing anything any more after fix via .env
+#	sed -i "s/x.interim.png/x.svg/" *.html
+#The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
+#html output. Such things as unmatched brackets can cause problems. If you can't locate the error or the 
+#Word document does not come out as expected then please report to Emma Cliffe
+	$(HOME)/../TeX4htPostprocessing/postprocessWordFB.sh ./
+#To get styled theorems we are going to need to do something like http://pandoc.org/MANUAL.html#custom-styles-in-docx-output but this will require us to do some nasty poking.
+	pandoc -s -f html -t docx $(name)-word.html -o $(name)-word.md 
+	mv $(name)-word.md built/
+#Tidy up a bit
+	@rm mathml.4ht
+	@rm unicode.4hf
+	@rm mathjaxMMLWord.cfg
+	@rm additional.css
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
+	@rm *.htf
+
 
 clean:
 	@rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot *x.interim.png *x.svg *.4ht *-lp1 *-lp0 bbmone.* fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* *.tmp2 *.nav *.snm colorfix.sty fontfix.sty parfix.sty beamerfix.sty *-pics*.pdf tuftefix.sty *.htf algorithmicfix.* *.bbl
