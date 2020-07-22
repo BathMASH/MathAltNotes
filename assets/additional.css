@@ -26,4 +26,7 @@ td {
     white-space: Normal;
 }
 
+table.equation tr {background-color: transparent; }
+table.equation-star tr {background-color: transparent; }
+
 tr:nth-child(odd) {background-color: #E3E4FA;}
