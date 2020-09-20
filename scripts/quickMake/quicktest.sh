@@ -128,9 +128,15 @@ if cmp -s $1/input-word.html.tmp2 $2/output/input-word.html.tmp2; then
 else
     echo -e "\e[91mFAILED\e[0m: input-word.html.tmp2"
 fi
-if cmp -s $1/input-word.css $2/output/input-word.css; then
-    echo "PASSED: input-word.css"
-else
-    echo -e "\e[91mFAILED\e[0m: input-word.css"
+if cmp -s $1/input-word.css $2/output/input-word-2017.css; then
+    echo "PASSED (2017): input-word.css"
+else if cmp -s $1/input-word.css $2/output/input-word-2019.css; then
+	 echo "PASSED (2019): input-word.css"
+     else if [ "$(whoami)" == "cspehj" ]; then
+	      echo -e "\e[93mCSS does not match Ubuntu 18.04 (2017) or Native TeXLive (2019 as of 29/01/20) output.  \e[0m: input-word.css"
+	  else
+	      echo "\e[93mCSS unmatched\e[0m: input-word.css"
+	  fi
+     fi
 fi
 echo "============================="

@@ -1,0 +1,127 @@
+<!DOCTYPE html> 
+
+
+<html
+ lang="en"> 
+<head
+> <title
+></title> 
+<meta
+ charset="UTF-8"></meta> 
+<meta
+ name="viewport" content="target-densitydpi=device-dpi; width=device-width; initial-scale=1.0; minimum-scale=1.0; user-scalable=yes;"></meta> 
+<meta
+ name="HandheldFriendly" content="True"></meta> 
+<meta
+ name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"></meta> 
+<link
+ rel="stylesheet" type="text/css" href="input-word.css"></link> 
+<link
+ rel="stylesheet" type="text/css" href="additional.css"></link> 
+<script
+ type="text/x-mathjax-config"> 
+MathJax.Hub.Config({ mml2jax: { preview: ["[maths rendering]"]}, 
+"fast-preview": {disabled: true}, 
+explorer:{ subtitle: true }, 
+displayAlign: "center",  
+MatchWebFonts: { 
+matchFor: { "HTML-CSS": true, NativeMML: false, SVG: false }, 
+fontCheckDelay: 2000, 
+fontCheckTimeout: 30 * 1000 
+}, 
+"HTML-CSS": { 
+preferredFont: "STIX",  
+availableFonts: ["STIX","TeX"],  
+webFont: "STIX-Web",  
+linebreaks: { automatic: true, width: "90% container" } 
+}, 
+SVG: {  
+font: "STIX-Web", 
+linebreaks: { automatic: false, width: "90% container" } 
+}, 
+menuSettings: { collapsible: false, autocollapse: false, explorer: false } 
+}); 
+</script> 
+<script
+ type="text/x-mathjax-config"> 
+MathJax.Hub.Register.MessageHook("End Math", function (msg) { 
+var nodes = Array.from(msg[1].querySelectorAll('.MJX_Assistive_MathML [id]')); 
+while (nodes.length) { 
+nodes.shift().removeAttribute('id'); 
+} 
+}, 20); 
+</script> 
+<script
+ type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script> 
+<style
+ type="text/css"> 
+".MathJax_MathML" {text-indent: 0;} 
+</style> 
+</head><body
+>
+<!--l. 5
+
+--><p
+ class="noindent">A baseline of text which is one line long in 12pt font with no indent applied.
+</p>
+<div
+ class="center">
+<!--l. 8
+
+--><p
+ class="noindent">
+</p><!--l. 9
+
+--><p
+ class="noindent">Centered text.</p></div>
+<div
+ class="flushleft">
+<!--l. 12
+
+--><p
+ class="noindent">
+ Flush left text.</p></div>
+                                                                                       <div
+ class="flushright">
+<!--l. 16
+
+--><p
+ class="noindent">
+ Flush right text.</p></div>
+<!--l. 20
+
+--><p
+ class="noindent">Standard text.  Tiny text.  Scriptsize text.  Footnotesize text.  Small text. Normalsize text.
+<span
+ class="phvr8t-x-x-144">large text. </span><span
+ class="phvr8t-x-x-172">Large text. </span><span
+ class="phvr8t-x-x-207">LARGE text. </span><span
+ class="phvr8t-x-x-248">huge text. Huge</span>
+<span
+ class="phvr8t-x-x-248">text.</span>
+</p><!--l. 22
+
+--><p
+ class="noindent">Standard text. <strong
+>Emphasized text</strong>. <span
+ class="ec-lmr-12">Roman text. Roman inline. </span><span
+ class="sc">SMALL CAPS TEXT.</span> <span
+ class="sc">SMALL
+CAPS INLINE</span> <span
+ class="ec-lmtt-12">Typewriter text. Typewriter inline. </span><strong
+>Italics text.</strong> <strong
+>Italics inline.</strong>
+<span
+ class="ec-lmss-12">Sans serif text. San serif inline. </span><strong
+>Slant text.</strong> <strong
+>Slant inline.</strong> <strong
+>Bold text.</strong> <strong
+>Bold inline.</strong> <strong
+>A
+combination of bold and <strong
+>italic text.</strong></strong> <strong
+>A combination inline of bold <strong
+>and inline italics</strong>.</strong>
+</p> 
+</body> 
+</html>

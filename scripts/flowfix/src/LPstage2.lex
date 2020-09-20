@@ -47,7 +47,7 @@ newenvironment ("\\newenvironment"|"\\substack")
 protectstart ("\\begin{picture}"|"\\makeatletter")
 protectend ("\\end{picture}"|"\\makeatother")
 
-%x COMMENT PROTECT INPUT CLASS DMATH DMATHFAKESTAR DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS TABULARX CAPTION NEWENVIR TABBING CASES FINDBRACE 
+%x COMMENT PROTECT INPUT CLASS DMATH DMATHFAKESTAR DMATHSTAR DGROUPSTAR DGROUP DSERIES DSERIESSTAR PACKAGES VERBATIM TABU ARRAY SPLIT TAG LABEL INTERTEXT CHECKSTAR GRAPHICS TABULARX CAPTION NEWENVIR TABBING CASES FINDBRACE PROTECTMARKING
 %s REMOVE KEEP TABLE SUBSTACK
 %%
 
@@ -169,6 +169,12 @@ protectend ("\\end{picture}"|"\\makeatother")
  /* Working on the assumption that if you used tabularx it was because you have a hideous wide table */
  /* We can't allow the table construct as longtabu doesn't do its job then */
  /* I have changed this to longtabu* as this allows verbatim content. However, it throws away some functionality (what?) to do that so this may need to be reverted */
+ /* This still doesn't work with lstlisting though so we have to stop it being use then for now */
+
+ /*{tabustart}(.|(\r?\n))*"\\begin{lstlisting}"(.|(\r?\n))*"\\end{lstlisting}"(.|(\r?\n))*{tabuend} ECHO;*/
+
+"%%%%PROTECT"{whitespace}{tabustart} ECHO; yy_push_state(PROTECTMARKING);
+<PROTECTMARKING>"%%%%PROTECT"{whitespace}{tabustart} ECHO; yy_push_state(PROTECTMARKING);
 {tablestart} yy_push_state(TABLE);
 {tabularxstart} printf("\\newpage\\begin{landscape}\n\\begin{longtabu*} to \\linewidth"); yy_push_state(TABULARX); yy_push_state(TABU);
 {tabustart}(\r?\n)* printf("\\begin{longtabu*} to \\textwidth"); yy_push_state(TABU);
@@ -183,6 +189,7 @@ protectend ("\\end{picture}"|"\\makeatother")
 <KEEP>"}" ECHO; yy_pop_state();
 <REMOVE>"}" yy_pop_state();
 
+<PROTECTMARKING>{tabuend} ECHO; yy_pop_state();
 {tabuend} printf("\\end{longtabu*}\n"); /*if (YY_START != TABLE) printf("\\end{longtabu*}\n");*/
 <TABLE>"\\caption" printf("Table caption: "); yy_push_state(CAPTION);/*<TABLE>"\\caption"{lb}(.*){rb} ECHO;*/ 
 <CAPTION>("{"(.*))/"}" ECHO; printf("}\\addcontentsline{lot}{table}"); ECHO; printf("\\protect"); yy_pop_state();

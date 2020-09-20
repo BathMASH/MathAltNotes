@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html> 
+<html lang="en"> 
 <head> <title></title> 
 <meta charset="UTF-8" /> 
 <meta name="viewport" content="target-densitydpi=device-dpi; width=device-width; initial-scale=1.0; minimum-scale=1.0; user-scalable=yes;" /> 
@@ -8,7 +8,8 @@
 <link rel="stylesheet" type="text/css" href="input-word.css" /> 
 <link rel="stylesheet" type="text/css" href="additional.css" /> 
 <script type="text/x-mathjax-config"> 
-MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
+MathJax.Hub.Config({ mml2jax: { preview: ["[maths rendering]"]}, 
+"fast-preview": {disabled: true}, 
 explorer:{ subtitle: true }, 
 displayAlign: "center",  
 MatchWebFonts: { 
@@ -28,6 +29,14 @@ linebreaks: { automatic: false, width: "90% container" }
 }, 
 menuSettings: { collapsible: false, autocollapse: false, explorer: false } 
 }); 
+</script> 
+<script type="text/x-mathjax-config"> 
+MathJax.Hub.Register.MessageHook("End Math", function (msg) { 
+var nodes = Array.from(msg[1].querySelectorAll('.MJX_Assistive_MathML [id]')); 
+while (nodes.length) { 
+nodes.shift().removeAttribute('id'); 
+} 
+}, 20); 
 </script> 
 <script type="text/javascript" 
 src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full" 

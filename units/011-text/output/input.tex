@@ -1,0 +1,104 @@
+\documentclass[12pt,a4paper,onecolumn]{article}
+\usepackage[T1]{fontenc} 
+\usepackage[a4paper]{geometry} 
+\usepackage[english]{babel} 
+\usepackage{amsmath}
+\usepackage{amssymb} 
+\usepackage{amsfonts} 
+\usepackage[mathscr]{eucal}
+\usepackage{eufrak} 
+\usepackage{amsthm} 
+\usepackage{longtable} 
+\usepackage{graphicx} 
+\usepackage{verbatim} 
+\usepackage{url} 
+\newtheorem{theorem}{Theorem}[section]
+\title{AMS mathematical structures}
+\author{Emma Cliffe}
+\date{}
+\pagestyle{headings}
+\begin{document}
+\maketitle
+
+\noindent
+Fraction commands: display style in text style --- \(\dfrac{1}{2}\)
+\begin{equation}
+\binom{n}{k} \quad \tbinom{n}{k} 
+\end{equation}
+\begin{equation}
+\tfrac{1}{2} \quad %\testfrac{1}{2} \quad  
+a + \cfrac{1}{b + \cfrac{1}{c + \cfrac{1}{d + \cfrac{1}{e + \cfrac{1}{f + \cfrac{1}{g + \cfrac{1}{h}}}}}}}
+\end{equation}
+
+\noindent
+Matrices can be displayed in text \(\left(\begin{smallmatrix} a & b & c \\ d & e & f\end{smallmatrix}\right)\) or in display with 6 different commands
+%You HAVE to put in the ampersands to stop the problems in oolatex as it will always transform an eqnarray to a matrix with 3 columns and if the columns aren't all present they are empty and this causes the problem
+\begin{eqnarray*}
+&&\begin{matrix} r & s & t \\ u & v & w \\ x & y & x\end{matrix}\quad
+\begin{pmatrix} r & s & t \\ u & v & w \\ x & y & x\end{pmatrix}\quad
+\begin{bmatrix} r & s & t \\ u & v & w \\ x & y & x\end{bmatrix}\\
+&&\begin{Bmatrix} r & s & t \\ u & v & w \\ x & y & x\end{Bmatrix}\quad
+\begin{vmatrix} r & s & t \\ u & v & w \\ x & y & x\end{vmatrix}\quad
+\begin{Vmatrix} r & s & t \\ u & v & w \\ x & y & x\end{Vmatrix}\quad
+\end{eqnarray*}
+
+\noindent
+Vertical bars
+\begin{equation}
+\left\lvert \frac{1}{2}\right\rvert \left\lVert \frac{1}{2}\right\rVert
+\end{equation}
+
+
+
+\section[Split]{Split}
+
+Meant for single equations which do not fit on one line but allows alignment between lines. Split is used when already in mathmode and any numbering from the external mode will apply to the entire split as one line.
+\begin{equation}\begin{split}\label{split}
+\sum_{i=1}^{15} x_i^2 =& x_1^2 + x_2^2 + x_3^2 + x_4^2 + x_5^2 \\
+&+ x_6^2 + x_7^2 + x_8^2 + x_9^2 + x_{10}^2+ x_{11}^2 + x_{12}^2 + x_{13}^2 + x_{14}^2 + x_{15}^2
+\end{split}\end{equation}
+
+\section[Gather]{Gather}
+
+%Actually, I don't think we can use \tag and \notag with plastex+mathjax (or even, dare I say, plastex alone because it doesn't seem to understand these and hence gets the numbering wrong anyway. Does it do something sensible with \nonumber? 
+
+%Intertext does not work in the gather environment and should not be used
+%\intertext{if $x=2$ then}
+%LP - don't put comments into mathsmode as currently this results in an empty line
+Switches to mathmode and centers each line without alignment.
+\begin{gather}
+\label{gathereq} \sum_{i=1}^{15} x^i = x^1 + x^2 + x^3 + x^4 + x^5 + x^6 + x^7 + x^8 + x^9 + x^{10} + x^{11} + x^{12} + x^{13} + x^{14} + x^{15}\\%\tag{*}\\
+2^1 + 2^2 + 2^3 + 2^4 + 2^5 + 2^6 + 2^7 + 2^8 + 2^9 + 2^{10} + 2^{11} + 2^{12} + 2^{13} + 2^{14} + 2^{15}\nonumber %\notag
+\end{gather}
+
+%plastex can't do eqref
+
+\section[Align]{Align}
+
+Because of the problems with MathJax and eqnarray (unstarred) and because so many people use the align environment I think that we should say, yes, it is available for ``basic'' use (i.e. equivalent use to eqnarray effectively) and that any use beyond that is the unknown. 
+
+For use with multiple equations with horizontal alignment (usually on the equals sign or equivalent). Each line is split into aligned columns with the odd numbered columns being right justified and the even numbered left justified \{rl rl rl...\}. There is an unnumbered variant (use *). 
+
+% %LP cannot reflow text in text env and hence these elements must be short or broken into pieces
+% %plastex/mathjax does not do intertext, it also upsets oolatex
+% %oolatex can't cope even with the adjustments to add even more text elements
+\begin{align}
+\label{alignlab} \sum_{i=1}^{13} 2^i &= 2^1 + 2^2 + 2^3 + 2^4 + 2^5 + 2^6 + 2^7 + 2^8 + 2^9 + 2^{10} + 2^{11} + 2^{12} + 2^{13}\\%\tag{*}\\
+&\quad \text{some calculator use later:}\nonumber\\
+&=2 + 4 + 8 + 16 + 32 + 64 + 128 + 256 + 512 + 1024 + 2048 + 4096 + 8192 \nonumber\\%\notag\\
+&=16382 \qquad\text{text in formulas does not break} %\tag{$\dagger$}
+\end{align}
+% %\intertext{some calculator use later:}
+
+
+\section[Cases]{Cases}
+
+Easier way to produce equations with cases. Used when already in mathmode. 
+\begin{equation*}
+f(x) = \begin{cases} x^2 & \text{ if } x\geq0\\
+-x & \text{ if } x<0 \end{cases}
+\end{equation*}
+
+We can reference the equations: (\ref{split}), (\ref{gathereq}), (\ref{alignlab}). 
+
+\end{document}

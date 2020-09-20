@@ -1,52 +1,65 @@
    1 |            | \documentclass{article}
-   2 |            | \usepackage{lipsum}
-   3 |            | 
-   4 |            | \title{Test for sectioning}
-   5 |            | \author{}
-   6 |            | \date{}
-   7 |            | 
-   8 |            | \begin{document}
-   9 |            | \maketitle
-  10 |            | \tableofcontents
-  11 |            | 
-  12 |            | \newpage
-  13 |            | 
-  14 |            | \lipsum[1-1]
-  15 |            | 
-  16 |            | \section{Section 1}
-  17 |            | 
-  18 |            | \lipsum[2-3]
-  19 |            | 
-  20 |            | \section{Section 2}
-  21 |            | 
-  22 |            | \subsection{Subsection 2.1}
-  23 |            | 
-  24 |            | \lipsum[4-6]
-  25 |            | 
-  26 |            | \subsection{Subsection 2.2}
-  27 |            | 
-  28 |            | \lipsum[7-9]
-  29 |            | 
-  30 |            | \section{Section 3}
-  31 |            | 
-  32 |            | \lipsum[10-12]
-  33 |            | 
-  34 |            | \subsection{Subsection 3.1}
-  35 |            | 
-  36 |            | \subsubsection{Subsubsection 3.1.1}
-  37 |            | 
-  38 |            | \lipsum[13-15]
-  39 |            | 
-  40 |            | \subsection{Subsection 3.2}
-  41 |            | 
-  42 |            | \lipsum[16-18]
-  43 |            | 
-  44 |            | \subsubsection{Subsubsection 3.2.1}
-  45 |            | 
-  46 |            | \lipsum[19-21]
-  47 |            | 
-  48 |            | \subsubsection{Subsubsection 3.2.2}
-  49 |            | 
-  50 |            | \lipsum[22-23]
-  51 |            | 
-  52 |            | \end{document}
+   2 | )          | %\usepackage{lipsum} We cannot use lipsum because it was substantially rewritten between 2017 and 2019 and an inputlineno error was introduced which stops the tests working in one or the other. Not my problem :)
+   3 | )          | %You need to load Babel or you get lipsum in non-processed versions and English in processed versions and you start to believe that you are going mad.
+   4 | )          | \usepackage[english,shorthands=off]{babel}
+   5 | )          | \usepackage{blindtext}
+   6 | )          | 
+   7 | )          | \title{Test for sectioning}
+   8 | )          | \author{}
+   9 | )          | \date{}
+  10 | )          | 
+  11 | )          | \begin{document}
+  12 | )          | \maketitle
+  13 | )          | \tableofcontents
+  14 | )          | 
+  15 | )          | \newpage
+  16 | )          | 
+  17 | )          | %\lipsum[1-1]
+  18 | )          | \blindtext
+  19 | )          | 
+  20 | )          | \section{Section 1}
+  21 | )          | 
+  22 | )          | %\lipsum[2-3]
+  23 | )          | \blindtext
+  24 | )          | 
+  25 | )          | \section{Section 2}
+  26 | )          | 
+  27 | )          | \subsection{Subsection 2.1}
+  28 | )          | 
+  29 | )          | %\lipsum[4-6]
+  30 | )          | \blindtext
+  31 | )          | 
+  32 | )          | \subsection{Subsection 2.2}
+  33 | )          | 
+  34 | )          | %\lipsum[7-9]
+  35 | )          | \blindtext
+  36 | )          | 
+  37 | )          | \section{Section 3}
+  38 | )          | 
+  39 | )          | %\lipsum[10-12]
+  40 | )          | \blindtext
+  41 | )          | 
+  42 | )          | \subsection{Subsection 3.1}
+  43 | )          | 
+  44 | )          | \subsubsection{Subsubsection 3.1.1}
+  45 | )          | 
+  46 | )          | %\lipsum[13-15]
+  47 | )          | \blindtext
+  48 | )          | 
+  49 | )          | \subsection{Subsection 3.2}
+  50 | )          | 
+  51 | )          | %\lipsum[16-18]
+  52 | )          | \blindtext
+  53 | )          | 
+  54 | )          | \subsubsection{Subsubsection 3.2.1}
+  55 | )          | 
+  56 | )          | %\lipsum[19-21]
+  57 | )          | \blindtext
+  58 | )          | 
+  59 | )          | \subsubsection{Subsubsection 3.2.2}
+  60 | )          | 
+  61 | )          | %\lipsum[22-23]
+  62 | )          | \blindtext
+  63 | )          | 
+  64 | )          | \end{document}
+

@@ -1,0 +1,7 @@
+PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
+
+https://www.tug.org/texlive/quickinstall.html
+https://www.tug.org/texlive/acquire-netinstall.html
+https://www.tug.org/texlive/pkginstall.html
+
+"By the way, native TeX Live, which is typically installed under /usr/local, can happily coexist with a TeX from your operating system, each with their own completely independent trees and programs. (Do not try to merge them!) So you can install native TeX Live if your vendor is not keeping up. "

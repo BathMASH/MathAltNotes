@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Scroll down for copyright notice but please heed this
 %% warning.
 %%
@@ -114,19 +114,21 @@ vanilla}
 \LinkCommand\mtxt:link{\a:mathml mtext,%
    xlink:type="simple"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   xlink:href,
+   xlink:href, 
    id, \mml:class="label",,}
+%\LinkCommand\mtxtehc:link{a,href,id,,,} 
 \LinkCommand\msp:link{\a:mathml mstyle,%
    xlink:type="simple"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   xlink:href,
+   xlink:href, 
    id, \mml:class="label",,}
 \let\M:Link\Link
 \def\Link{\ifmathml
      \ifmtext \ht:special{t4ht@,}%
 \HCode{</\a:mathml mtext>}%
               \expandafter\expandafter\expandafter\mtxt:link
-     \else    \expandafter\expandafter\expandafter\msp:link\fi
+%	       \expandafter\expandafter\expandafter\mtxtehc:link
+\else    \expandafter\expandafter\expandafter\msp:link\fi
    \else \expandafter\M:Link\fi}
 \let\M:EndLink\EndLink
 \edef\:temp{\catcode`\#=\the\catcode`\#}
@@ -134,7 +136,9 @@ vanilla}
    \def\EndLink{\ifmathml
       \ifmtext    \ht:special{t4ht@,}%
 %
-          \Endmtxt:link \HCode{<\a:mathml mtext\Hnewline
+          \Endmtxt:link
+%	   \Endmtxtehc:link
+	  \HCode{<\a:mathml mtext\Hnewline
                   \mml:class="endlabel">}\ht:special{t4ht@,&#x00A0;}%
 %
            \else  \HCode{</\a:mathml mstyle><!--endlabel-->}\fi

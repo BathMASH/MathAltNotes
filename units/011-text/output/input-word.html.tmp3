@@ -1,0 +1,1348 @@
+<!DOCTYPE html> 
+
+
+<html
+ lang="en"> 
+<head
+> <title
+>AMS mathematical structures</title> 
+<meta
+ charset="UTF-8"></meta> 
+<meta
+ name="viewport" content="target-densitydpi=device-dpi; width=device-width; initial-scale=1.0; minimum-scale=1.0; user-scalable=yes;"></meta> 
+<meta
+ name="HandheldFriendly" content="True"></meta> 
+<meta
+ name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"></meta> 
+<link
+ rel="stylesheet" type="text/css" href="input-word.css"></link> 
+<link
+ rel="stylesheet" type="text/css" href="additional.css"></link> 
+<script
+ type="text/x-mathjax-config"> 
+MathJax.Hub.Config({ mml2jax: { preview: ["[maths rendering]"]}, 
+"fast-preview": {disabled: true}, 
+explorer:{ subtitle: true }, 
+displayAlign: "center",  
+MatchWebFonts: { 
+matchFor: { "HTML-CSS": true, NativeMML: false, SVG: false }, 
+fontCheckDelay: 2000, 
+fontCheckTimeout: 30 * 1000 
+}, 
+"HTML-CSS": { 
+preferredFont: "STIX",  
+availableFonts: ["STIX","TeX"],  
+webFont: "STIX-Web",  
+linebreaks: { automatic: true, width: "90% container" } 
+}, 
+SVG: {  
+font: "STIX-Web", 
+linebreaks: { automatic: false, width: "90% container" } 
+}, 
+menuSettings: { collapsible: false, autocollapse: false, explorer: false } 
+}); 
+</script> 
+<script
+ type="text/x-mathjax-config"> 
+MathJax.Hub.Register.MessageHook("End Math", function (msg) { 
+var nodes = Array.from(msg[1].querySelectorAll('.MJX_Assistive_MathML [id]')); 
+while (nodes.length) { 
+nodes.shift().removeAttribute('id'); 
+} 
+}, 20); 
+</script> 
+<script
+ type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script> 
+<style
+ type="text/css"> 
+".MathJax_MathML" {text-indent: 0;} 
+</style> 
+</head><body
+>
+<div
+ class="maketitle">
+                                                                                       
+                                                                                       
+                                                                                       
+                                                                                       
+
+<h2
+ class="titleHead">AMS mathematical structures</h2>
+<div
+ class="author"><span
+ class="phvr8t-x-x-144">Emma Cliffe</span></div>
+<br
+></br>
+<div
+ class="date"></div>
+</div>
+<h3
+ class="likesectionHead"><a
+ href="#x1-1000" id="x1-1000">Contents</a></h3>
+<div
+ class="tableofcontents">
+<span
+ class="sectionToc">1 <a
+ href="#x1-40001" id="QQ2-1-4">Split</a></span>
+<br
+></br><span
+ class="sectionToc">2 <a
+ href="#x1-50002" id="QQ2-1-5">Gather</a></span>
+<br
+></br><span
+ class="sectionToc">3 <a
+ href="#x1-60003" id="QQ2-1-6">Align</a></span>
+<br
+></br><span
+ class="sectionToc">4 <a
+ href="#x1-70004" id="QQ2-1-7">Cases</a></span>
+</div>
+                                                                                       
+                                                                                       
+<h3
+ class="likesectionHead"><a
+ href="#x1-2000" id="x1-2000">List of Figures</a></h3>
+<div
+ class="tableofcontents">
+</div>
+<h3
+ class="likesectionHead"><a
+ href="#x1-3000" id="x1-3000">List of Tables</a></h3>
+<div
+ class="tableofcontents">
+</div>
+                                                                                       
+                                                                                       
+<!--l. 23
+
+--><p
+ class="noindent">Fraction commands: display style in text style &#x2014;
+<!--l. 24
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
+><mfrac
+><mrow
+>  <mn
+>1</mn>
+</mrow>
+<mrow
+><mn
+>2</mn>
+</mrow></mfrac> </mrow></math> </p><table
+ class="equation"><tr
+><td
+>
+<a
+ id="x1-3001r1"></a>
+<!--l. 25
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+<mfenced
+ separators="" open="(" close=")"><mrow
+> <mtable
+ align="axis" style="" equalrows="false" columnlines="" equalcolumns="false" class="array"> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>n</mi></mtd></mtr><mtr
+><mtd
+ class="array" columnalign="center"><mi
+>k</mi></mtd></mtr>
+<!--c
+
+--></mtable>                                                                                       </mrow></mfenced><mspace
+ width="1em" class="quad"></mspace><mfenced
+ separators="" open="(" close=")"><mfrac
+ linethickness="0.0pt"><mrow
+><mi
+>n</mi></mrow>
+<mrow
+><mi
+>k</mi></mrow></mfrac></mfenced>
+</math></td><td
+ class="eq-no">(1)</td></tr></table>
+<table
+ class="equation"><tr
+><td
+> <a
+ id="x1-3002r2"></a>
+<!--l. 28
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation"><mfrac
+><mrow
+>
+                            <mn
+>1</mn>
+</mrow>
+<mrow
+><mn
+>2</mn>
+</mrow></mfrac><mspace
+ width="1em" class="quad"></mspace><mi
+>a</mi> <mo
+ class="MathClass-bin">+</mo>                  <mfrac
+><mrow
+><mn
+>1</mn>
+</mrow> 
+<mrow
+><mi
+>b</mi> <mo
+ class="MathClass-bin">+</mo>               <mfrac
+><mrow
+><mn
+>1</mn>
+</mrow> 
+<mrow
+><mi
+>c</mi> <mo
+ class="MathClass-bin">+</mo>            <mfrac
+><mrow
+><mn
+>1</mn>
+</mrow> 
+<mrow
+><mi
+>d</mi> <mo
+ class="MathClass-bin">+</mo>         <mfrac
+><mrow
+><mn
+>1</mn>
+</mrow> 
+<mrow
+><mi
+>e</mi> <mo
+ class="MathClass-bin">+</mo>       <mfrac
+><mrow
+><mn
+>1</mn>
+</mrow> 
+<mrow
+><mi
+>f</mi> <mo
+ class="MathClass-bin">+</mo>    <mfrac
+><mrow
+><mn
+>1</mn>
+</mrow> 
+<mrow
+><mi
+>g</mi> <mo
+ class="MathClass-bin">+</mo> <mfrac
+><mrow
+><mn
+>1</mn>
+</mrow> 
+<mrow
+><mi
+>h</mi></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac>
+</math></td><td
+ class="eq-no">(2)</td></tr></table>
+<!--l. 33
+
+--><p
+ class="noindent">Matrices can be displayed in text <!--l. 34
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
+>   <mfenced
+ separators="" open="(" close=")"><mrow
+><mtable
+ displaystyle="true"><mtr
+ class="smallmatrix"> 
+<mtd
+><mi
+>a</mi></mtd> 
+<mtd
+><mi
+>b</mi></mtd> 
+<mtd
+><mi
+>c</mi></mtd>
+</mtr><mtr
+ class="smallmatrix"> 
+<mtd
+><mi
+>d</mi></mtd> 
+<mtd
+><mi
+>e</mi></mtd> 
+<mtd
+><mi
+>f</mi></mtd>
+</mtr>                                                                                                                                        </mtable></mrow></mfenced> </mrow></math>
+or in display with 6 different commands
+                                                                                       
+                                                                                       
+<!--tex4ht:inline
+
+--></p><!--l. 36
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+<mtable
+ class="eqnarray-star" columnalign="right center left" displaystyle="true">
+<mtr
+><mtd
+ class="eqnarray-1"> </mtd><mtd
+ class="eqnarray-2">      </mtd><mtd
+ class="eqnarray-3">    <mtable
+ align="axis" style="" equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array"> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>r</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>s</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>t</mi></mtd></mtr><mtr
+><mtd
+ class="array" columnalign="center"><mi
+>u</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>v</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>w</mi></mtd>
+          </mtr>  <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>x</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>y</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>x</mi></mtd></mtr>
+          <!--*\c@MaxMatrixCols c
+
+--></mtable>                                                                                    <mspace
+ width="1em" class="quad"></mspace> <mfenced
+ separators="" open="(" close=")"><mrow
+><mtable
+ align="axis" style="" equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array"> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>r</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>s</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>t</mi></mtd></mtr> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>u</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>v</mi></mtd> <mtd
+ class="array" columnalign="center"><mi
+>w</mi></mtd>
+</mtr> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>x</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>y</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>x</mi></mtd></mtr>
+<!--*\c@MaxMatrixCols c
+
+--></mtable>                                                                                            </mrow></mfenced><mspace
+ width="1em" class="quad"></mspace> <mfenced
+ separators="" open="[" close="]"><mrow
+><mtable
+ align="axis" style="" equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array"> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>r</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>s</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>t</mi></mtd></mtr> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>u</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>v</mi></mtd> <mtd
+ class="array" columnalign="center"><mi
+>w</mi></mtd>
+</mtr> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>x</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>y</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>x</mi></mtd></mtr>
+<!--*\c@MaxMatrixCols c
+
+--></mtable>                                                                                            </mrow></mfenced>  </mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd>
+</mtr><mtr
+><mtd
+ class="eqnarray-1"> </mtd><mtd
+ class="eqnarray-2">      </mtd><mtd
+ class="eqnarray-3">       <mfenced
+ separators="" open="{" close="}"><mrow
+><mtable
+ align="axis" style="" equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array"> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>r</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>s</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>t</mi></mtd></mtr> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>u</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>v</mi></mtd> <mtd
+ class="array" columnalign="center"><mi
+>w</mi></mtd>
+</mtr> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>x</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>y</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>x</mi></mtd></mtr>
+<!--*\c@MaxMatrixCols c
+
+--></mtable>                                                                                            </mrow></mfenced><mspace
+ width="1em" class="quad"></mspace> <mfenced
+ separators="" open="|" close="|"><mrow
+><mtable
+ align="axis" style="" equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array"> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>r</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>s</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>t</mi></mtd></mtr> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>u</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>v</mi></mtd> <mtd
+ class="array" columnalign="center"><mi
+>w</mi></mtd>
+</mtr> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>x</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>y</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>x</mi></mtd></mtr>
+<!--*\c@MaxMatrixCols c
+
+--></mtable>                                                                                            </mrow></mfenced><mspace
+ width="1em" class="quad"></mspace> <mfenced
+ separators="" open="&#x2016;" close="&#x2016;"><mrow
+><mtable
+ align="axis" style="" equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array"> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>r</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>s</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>t</mi></mtd></mtr> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>u</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>v</mi></mtd> <mtd
+ class="array" columnalign="center"><mi
+>w</mi></mtd>
+</mtr> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>x</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>y</mi></mtd><mtd
+ class="array" columnalign="center"><mi
+>x</mi></mtd></mtr>
+<!--*\c@MaxMatrixCols c
+
+--></mtable>                                                                                            </mrow></mfenced><mspace
+ width="1em" class="quad"></mspace></mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd></mtr></mtable>
+</math>
+<!--l. 43
+
+--><p
+ class="nopar">
+</p><!--l. 45
+
+--><p
+ class="noindent">Vertical bars </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-3004r3"></a>
+<!--l. 47
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                                         <mfenced
+ separators="" open="|" close="|"><mrow
+><mfrac
+><mrow
+><mn
+>1</mn>
+</mrow>
+<mrow
+><mn
+>2</mn>
+</mrow></mfrac></mrow></mfenced> <mfenced
+ separators="" open="&#x2016;" close="&#x2016;"><mrow
+><mfrac
+><mrow
+><mn
+>1</mn>
+</mrow>
+<mrow
+><mn
+>2</mn>
+</mrow></mfrac></mrow></mfenced>
+</math></td><td
+ class="eq-no">(3)</td></tr></table>
+<h3
+ class="sectionHead"><span
+ class="titlemark">1    </span> <a
+ href="#QQ2-1-4" id="x1-40001">Split</a></h3>
+<!--l. 55
+
+--><p
+ class="noindent">Meant for single equations which do not fit on one line but allows alignment between lines.
+Split is used when already in mathmode and any numbering from the external mode will
+apply to the entire split as one line. </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4001r4"></a>
+                                                                                       
+                                                                                       
+<!--l. 56
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+<mtable
+ class="equation"><mtr
+><mtd
+>
+<mtable
+ displaystyle="true" columnalign="right left" class="split">
+<mtr
+ class="split-mtr"><mtd
+ class="split-mtd"> <munderover
+ accentunder="false" accent="false"><mrow
+><mo
+ mathsize="normal"> &#x2211;</mo>
+   </mrow><mrow
+><mi
+>i</mi><mo
+ class="MathClass-rel">=</mo><mn
+>1</mn>
+</mrow><mrow
+><mn
+>15</mn>
+</mrow></munderover><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mi
+>i</mi></mrow><mrow
+><mn
+>2</mn>
+</mrow></msubsup> <mo
+ class="MathClass-rel">=</mo></mtd><mtd
+ class="split-mtd"><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>1</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>2</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>3</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>4</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>5</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msubsup></mtd>
+</mtr><mtr
+ class="split-mtr"><mtd
+ class="split-mtd">              </mtd><mtd
+ class="split-mtd"> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>6</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>7</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>8</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>9</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>10</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>11</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>12</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>13</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>14</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>15</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msubsup></mtd>
+</mtr></mtable>                                                                                       </mtd><mtd
+>
+</mtd></mtr></mtable>
+</math></td><td
+ class="eq-no">(4)</td></tr></table>
+<!--l. 61
+
+--><p
+ class="noindent">
+</p>
+<h3
+ class="sectionHead"><span
+ class="titlemark">2    </span> <a
+ href="#QQ2-1-5" id="x1-50002">Gather</a></h3>
+<!--l. 68
+
+--><p
+ class="noindent">Switches to mathmode and centers each line without alignment.
+                                                                                       
+                                                                                       
+<!--tex4ht:inline
+
+--></p><!--l. 69
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+<mtable
+ displaystyle="true" class="gather">
+<mtr
+> 
+<mtd
+><munderover
+ accentunder="false" accent="false"><mrow
+><mo
+ mathsize="normal"> &#x2211;</mo>
+   </mrow><mrow
+><mi
+>i</mi><mo
+ class="MathClass-rel">=</mo><mn
+>1</mn>
+</mrow><mrow
+><mn
+>15</mn>
+</mrow></munderover><msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mi
+>i</mi></mrow></msup> <mo
+ class="MathClass-rel">=</mo> <msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>1</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>2</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>3</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>4</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>5</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>6</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>7</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>8</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>9</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>10</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>11</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>12</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>13</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>14</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>15</mn>
+</mrow></msup></mtd> 
+<mtd
+><mstyle
+ id="x1-5001r5" class="label"></mstyle><!--endlabel
+
+--><mstyle
+ class="maketag"><mtext
+>(5)</mtext></mstyle></mtd>
+</mtr><mtr
+> 
+<mtd
+><msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>1</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>3</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>4</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>5</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>6</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>7</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>8</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>9</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>10</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>11</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>12</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>13</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>14</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>15</mn>
+</mrow></msup></mtd>                
+<mtd
+></mtd>   </mtr></mtable>
+</math>
+<!--l. 72
+
+--><p
+ class="nopar">
+</p><!--l. 76
+
+--><p
+ class="noindent">
+</p>
+<h3
+ class="sectionHead"><span
+ class="titlemark">3    </span> <a
+ href="#QQ2-1-6" id="x1-60003">Align</a></h3>
+<!--l. 78
+
+--><p
+ class="noindent">Because of the problems with MathJax and eqnarray (unstarred) and because so many
+people use the align environment I think that we should say, yes, it is available for &#x201C;basic&#x201D; use
+(i.e. equivalent use to eqnarray effectively) and that any use beyond that is the
+unknown.
+</p><!--l. 80
+
+--><p
+ class="noindent">For use with multiple equations with horizontal alignment (usually on the equals sign or
+equivalent). Each line is split into aligned columns with the odd numbered columns being
+right justified and the even numbered left justified {rl rl rl...}. There is an unnumbered variant
+(use *).
+</p><!--l. 85
+
+--><p
+ class="noindent">
+                                                                                       
+                                                                                       
+</p><!--tex4ht:inline
+
+--><!--l. 90
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable
+ displaystyle="true" columnalign="left" class="align">
+    <mtr
+><mtd
+ columnalign="right" class="align-odd"><munderover
+ accentunder="false" accent="false"><mrow
+><mo
+ mathsize="normal"> &#x2211;</mo>
+  </mrow><mrow
+><mi
+>i</mi><mo
+ class="MathClass-rel">=</mo><mn
+>1</mn>
+</mrow><mrow
+><mn
+>13</mn>
+</mrow></munderover><msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mi
+>i</mi></mrow></msup></mtd>    <mtd
+ class="align-even"> <mo
+ class="MathClass-rel">=</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>1</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>2</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>3</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>4</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>5</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>6</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>7</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>8</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>9</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>10</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>11</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>12</mn>
+</mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn>
+</mrow><mrow
+><mn
+>13</mn>
+</mrow></msup><mspace
+ width="2em"></mspace></mtd>                <mtd
+ columnalign="right" class="align-label"><mstyle
+ id="x1-6001r6" class="label"></mstyle><!--endlabel
+
+--><mstyle
+ class="maketag"><mtext
+>(6)</mtext></mstyle>
+    </mtd></mtr><mtr
+><mtd
+ columnalign="right" class="align-odd"></mtd>              <mtd
+ class="align-even"><mspace
+ width="1em" class="quad"></mspace><mstyle
+ class="text"><mtext
+>some&#xA0;calculator&#xA0;use&#xA0;later:</mtext></mstyle><mspace
+ width="2em"></mspace></mtd>                                                    <mtd
+ columnalign="right" class="align-label"></mtd>    <mtd
+ class="align-label">
+    <mspace
+ width="2em"></mspace></mtd></mtr><mtr
+><mtd
+ columnalign="right" class="align-odd"></mtd>              <mtd
+ class="align-even"> <mo
+ class="MathClass-rel">=</mo> <mn
+>2</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn
+>4</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn
+>8</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn
+>16</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn
+>32</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn
+>64</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn
+>128</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn
+>256</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn
+>512</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn
+>1024</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn
+>2048</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn
+>4096</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn
+>8192</mn>
+<mspace
+ width="2em"></mspace></mtd>    <mtd
+ columnalign="right" class="align-label"></mtd>    <mtd
+ class="align-label">
+    <mspace
+ width="2em"></mspace></mtd></mtr><mtr
+><mtd
+ columnalign="right" class="align-odd"></mtd>              <mtd
+ class="align-even"> <mo
+ class="MathClass-rel">=</mo> <mn
+>16382</mn>
+<mspace
+ width="2em" class="qquad"></mspace><mstyle
+ class="text"><mtext
+>text&#xA0;in&#xA0;formulas&#xA0;does&#xA0;not&#xA0;break</mtext></mstyle><mspace
+ width="2em"></mspace></mtd>                                          <mtd
+ columnalign="right" class="align-label"><mstyle
+ id="x1-6002r7" class="label"></mstyle><!--endlabel
+
+--><mstyle
+ class="maketag"><mtext
+>(7)</mtext></mstyle>
+</mtd></mtr></mtable></math>
+<!--l. 94
+
+--><p
+ class="noindent">
+</p>
+<h3
+ class="sectionHead"><span
+ class="titlemark">4    </span> <a
+ href="#QQ2-1-7" id="x1-70004">Cases</a></h3>
+<!--l. 96
+
+--><p
+ class="noindent">Easier way to produce equations with cases. Used when already in mathmode.
+</p><table
+ class="equation-star"><tr
+><td
+>
+<!--l. 97
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+<mi
+>f</mi><mrow
+><mo
+ class="MathClass-open">(</mo><mrow
+><mi
+>x</mi></mrow><mo
+ class="MathClass-close">)</mo></mrow> <mo
+ class="MathClass-rel">=</mo>  <mfenced
+ separators="" open="{" close=""><mrow
+> <mtable
+ align="axis" style="" equalrows="false" columnlines="none" equalcolumns="false" class="array"> <mtr
+><mtd
+ class="array" columnalign="left"><msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>2</mn>
+</mrow></msup>  <mspace
+ width="1em" class="quad"></mspace></mtd><mtd
+ class="array" columnalign="left"><mstyle
+ class="text"><mtext
+>&#xA0;if&#xA0;</mtext></mstyle><mi
+>x</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mn
+>0</mn>
+</mtd>
+</mtr>  <mtr
+><mtd
+ class="array" columnalign="left"><mo
+ class="MathClass-bin">&#x2212;</mo><mi
+>x</mi><mspace
+ width="1em" class="quad"></mspace></mtd><mtd
+ class="array" columnalign="left"><mstyle
+ class="text"><mtext
+>&#xA0;if&#xA0;</mtext></mstyle><mi
+>x</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mn
+>0</mn>
+</mtd></mtr>
+<!--@{}l@{\quad }l@{}
+
+--></mtable>                                                                                                                    </mrow></mfenced>
+</math></td></tr></table>
+<!--l. 102
+
+--><p
+ class="noindent">We can reference the equations: (<a
+ href="#x1-4001r4">4<!--tex4ht:ref: split 
+
+--></a>), (<a
+ href="#x1-5001r5">5<!--tex4ht:ref: gathereq 
+
+--></a>), (<a
+ href="#x1-6001r6">6<!--tex4ht:ref: alignlab 
+
+--></a>).
+</p>
+ 
+</body> 
+</html>

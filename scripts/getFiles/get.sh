@@ -38,6 +38,9 @@ dir=$(dirname "$1")
 cd $dir
 mkjobtexmf --jobname $name --destdir=files --copy --exclude-ext aux,log,toc --texopt="--shell-escape"
 mv $name.fls $home/../../$tmpname/
+for i in `find . -name "*.bib" -type f`; do
+    cp $i $home/../../$tmpname/
+done
 if [ -d files ]; then
     cd files
     rm -r texmf

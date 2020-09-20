@@ -7,5 +7,8 @@ cd $1
 for i in $(ls *.html); do
 cp $i $i.tmp
 java -classpath $jarloc/tex4ht.jar xtpipes -i $xtpipeloc -s $home/groupmn.4xt -o $i $i.tmp
+tidy -m -q -xml -w --preserve-entities yes -ashtml -access 3 -i $i
+#sed -i '/^$/d' $i
+sed -i '/^[[:space:]]*$/d' $i
 #rm $i.tmp
 done 

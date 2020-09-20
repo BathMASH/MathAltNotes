@@ -1,0 +1,160 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> <title>AMS theorems and newenvironment</title> 
+<meta charset="UTF-8" /> 
+<meta name="viewport" content="target-densitydpi=device-dpi; width=device-width; initial-scale=1.0; minimum-scale=1.0; user-scalable=yes;" /> 
+<meta name="HandheldFriendly" content="True" /> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)" /> 
+<link rel="stylesheet" type="text/css" href="input-word.css" /> 
+<link rel="stylesheet" type="text/css" href="additional.css" /> 
+<script type="text/x-mathjax-config"> 
+MathJax.Hub.Config({ mml2jax: { preview: ["[maths rendering]"]}, 
+"fast-preview": {disabled: true}, 
+explorer:{ subtitle: true }, 
+displayAlign: "center",  
+MatchWebFonts: { 
+matchFor: { "HTML-CSS": true, NativeMML: false, SVG: false }, 
+fontCheckDelay: 2000, 
+fontCheckTimeout: 30 * 1000 
+}, 
+"HTML-CSS": { 
+preferredFont: "STIX",  
+availableFonts: ["STIX","TeX"],  
+webFont: "STIX-Web",  
+linebreaks: { automatic: true, width: "90% container" } 
+}, 
+SVG: {  
+font: "STIX-Web", 
+linebreaks: { automatic: false, width: "90% container" } 
+}, 
+menuSettings: { collapsible: false, autocollapse: false, explorer: false } 
+}); 
+</script> 
+<script type="text/x-mathjax-config"> 
+MathJax.Hub.Register.MessageHook("End Math", function (msg) { 
+var nodes = Array.from(msg[1].querySelectorAll('.MJX_Assistive_MathML [id]')); 
+while (nodes.length) { 
+nodes.shift().removeAttribute('id'); 
+} 
+}, 20); 
+</script> 
+<script type="text/javascript" 
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full" 
+></script> 
+<style type="text/css"> 
+".MathJax_MathML" {text-indent: 0;} 
+</style> 
+</head><body 
+>
+<div class="maketitle">
+                                                                                       
+                                                                                       
+                                                                                       
+                                                                                       
+
+<h2 class="titleHead">AMS theorems and newenvironment</h2>
+<div class="author" ><span 
+class="phvr8t-x-x-144">Emma Cliffe</span></div>
+<br />
+<div class="date" ></div>
+</div>
+<h3 class="likesectionHead"><a 
+href="#x1-1000" id="x1-1000">Contents</a></h3>
+<div class="tableofcontents">
+<span class="sectionToc" >1 <a 
+href="#x1-40001" id="QQ2-1-4">Some theorem and a new environment</a></span>
+<br /> <span class="subsectionToc" >1.1 <a 
+href="#x1-50001.1" id="QQ2-1-5">Built-in and self-defined proof environments</a></span>
+<br /><span class="sectionToc" >2 <a 
+href="#x1-60002" id="QQ2-1-6">Second section for numbering demo</a></span>
+</div>
+<h3 class="likesectionHead"><a 
+href="#x1-2000" id="x1-2000">List of Figures</a></h3>
+                                                                                       
+                                                                                       
+<div class="tableofcontents">
+</div>
+<h3 class="likesectionHead"><a 
+href="#x1-3000" id="x1-3000">List of Tables</a></h3>
+<div class="tableofcontents">
+</div>
+                                                                                       
+                                                                                       
+<h3 class="sectionHead"><span class="titlemark">1    </span> <a 
+href="#QQ2-1-4" id="x1-40001">Some theorem and a new environment</a></h3>
+<div class="newtheorem">
+<!--l. 32--><p class="noindent" ><span class="head" custom-style="Theorem">
+<a 
+ id="x1-4001r1"></a>
+<span 
+class="phvb8t-x-x-120">Theorem 1.1.</span><br 
+class="newline" />   </span>This is a numbered theorem (within the section) in the standard style
+and hence this text is in italics.
+</p>
+</div>
+<div class="newtheorem">
+<!--l. 36--><p class="noindent" ><span class="head" custom-style="Theorem">
+<a 
+ id="x1-4002r2"></a>
+<span 
+class="phvb8t-x-x-120">Corollary 1.2.</span><br 
+class="newline" />   </span>This is a numbered corollary (numbered with theorems) also in the
+standard style.
+</p>
+</div>
+<!--l. 40--><p class="noindent" >
+</p>
+<h4 class="subsectionHead"><span class="titlemark">1.1    </span> <a 
+href="#QQ2-1-5" id="x1-50001.1">Built-in and self-defined proof environments</a></h4>
+<!--l. 42--><p class="noindent" >
+</p>
+                                                                                       
+                                                                                       
+<div class="proof">
+<!--l. 43--><p class="noindent" ><span class="head">
+<span 
+class="phvb8t-x-x-120">Proof.</span>     </span>This is the built-in proof environment.                                                            □
+</p>
+</div>
+<!--l. 46--><p class="noindent" ><span 
+class="phvb8t-x-x-120">Proof.</span>      This a self-made proof environment.                                                            □
+</p>
+<div class="newtheorem">
+<!--l. 50--><p class="noindent" ><span class="head" custom-style="Theorem">
+<a 
+ id="x1-5001r1"></a>
+<span 
+class="phvb8t-x-x-120">Definition 1.1.</span><br 
+class="newline" />   </span>This is a numbered definition (numbered within section but not with
+theorems) and in the “definition” style. The title and number should be bold but the rest
+of the text should be normal font.
+</p>
+</div>
+<div class="newtheorem">
+<!--l. 54--><p class="noindent" ><span class="head" custom-style="Theorem">
+<span 
+class="phvb8t-x-x-120">Note.</span><br 
+class="newline" />   </span>This is an unnumbered note and is in the “remark” style.
+</p>
+</div>
+                                                                                       
+                                                                                       
+<!--l. 58--><p class="noindent" >
+</p>
+<h3 class="sectionHead"><span class="titlemark">2    </span> <a 
+href="#QQ2-1-6" id="x1-60002">Second section for numbering demo</a></h3>
+<div class="newtheorem">
+<!--l. 60--><p class="noindent" ><span class="head" custom-style="Theorem">
+<a 
+ id="x1-6001r1"></a>
+<span 
+class="phvb8t-x-x-120">Theorem 2.1.</span><br 
+class="newline" />   </span>And so we see that the numbering works out as expected.
+</p>
+</div>
+ 
+</body> 
+</html>
+                                                                                       
+
+

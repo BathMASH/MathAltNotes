@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html> 
+<html lang="en"> 
 <head> <title>Basic mathematical symbols and structures</title> 
 <meta charset="UTF-8" /> 
 <meta name="viewport" content="target-densitydpi=device-dpi; width=device-width; initial-scale=1.0; minimum-scale=1.0; user-scalable=yes;" /> 
@@ -8,7 +8,8 @@
 <link rel="stylesheet" type="text/css" href="input-word.css" /> 
 <link rel="stylesheet" type="text/css" href="additional.css" /> 
 <script type="text/x-mathjax-config"> 
-MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
+MathJax.Hub.Config({ mml2jax: { preview: ["[maths rendering]"]}, 
+"fast-preview": {disabled: true}, 
 explorer:{ subtitle: true }, 
 displayAlign: "center",  
 MatchWebFonts: { 
@@ -28,6 +29,14 @@ linebreaks: { automatic: false, width: "90% container" }
 }, 
 menuSettings: { collapsible: false, autocollapse: false, explorer: false } 
 }); 
+</script> 
+<script type="text/x-mathjax-config"> 
+MathJax.Hub.Register.MessageHook("End Math", function (msg) { 
+var nodes = Array.from(msg[1].querySelectorAll('.MJX_Assistive_MathML [id]')); 
+while (nodes.length) { 
+nodes.shift().removeAttribute('id'); 
+} 
+}, 20); 
 </script> 
 <script type="text/javascript" 
 src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full" 
@@ -688,13 +697,12 @@ class="MathClass-rel">⇒</mo>
 </math></td><td class="eq-no">(17)</td></tr></table>
 <table class="equation"><tr><td> <a 
  id="x1-4018r18"></a>
-<!--l. 118--><math 
+<!--l. 119--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
-                             <mo 
+                              <mo 
 class="MathClass-rel">↔</mo><mo 
-class="MathClass-rel">⇔</mo><mspace width="0.3em" class="thinspace"/><mo 
-class="MathClass-rel">⇔</mo><mspace width="0.3em" class="thinspace"/><mo 
+class="MathClass-rel">⇔</mo><mo 
 class="MathClass-rel">↦</mo><mo 
 class="MathClass-rel">↪</mo> <mo 
 class="MathClass-rel">⇀</mo><mo 
@@ -710,9 +718,9 @@ class="MathClass-rel">↘</mo><mo
 class="MathClass-rel">↙</mo><mo 
 class="MathClass-rel">↖</mo>
 </math></td><td class="eq-no">(18)</td></tr></table>
-<!--l. 122--><p class="noindent" >Other: </p><table class="equation"><tr><td> <a 
+<!--l. 123--><p class="noindent" >Other: </p><table class="equation"><tr><td> <a 
  id="x1-4019r19"></a>
-<!--l. 123--><math 
+<!--l. 124--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                     <mi 
@@ -751,11 +759,11 @@ class="MathClass-op">♠</mo><mi
 </math></td><td class="eq-no">(19)</td></tr></table>
                                                                                        
                                                                                        
-<!--l. 127--><p class="noindent" >Symbols with two sizes: </p>
+<!--l. 128--><p class="noindent" >Symbols with two sizes: </p>
 <div class="center" 
 >
-<!--l. 128--><p class="noindent" >
-</p><!--l. 129--><p class="noindent" ><!--l. 129--><math 
+<!--l. 129--><p class="noindent" >
+</p><!--l. 130--><p class="noindent" ><!--l. 130--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 > <mo 
@@ -789,7 +797,7 @@ class="MathClass-op">&#x2A04;</mo>
  <!--nolimits--></mrow></math></p></div>
 <table class="equation"><tr><td> <a 
  id="x1-4020r20"></a>
-<!--l. 131--><math 
+<!--l. 132--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                         <mo mathsize="normal" 
@@ -820,9 +828,9 @@ display="block" class="equation">
 <mo mathsize="normal" 
 >&#x2A04;</mo>
 </math></td><td class="eq-no">(20)</td></tr></table>
-<!--l. 135--><p class="noindent" >Function names: </p><table class="equation"><tr><td> <a 
+<!--l. 136--><p class="noindent" >Function names: </p><table class="equation"><tr><td> <a 
  id="x1-4021r21"></a>
-<!--l. 136--><math 
+<!--l. 137--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                    <mo class="qopname">arccos</mo><!--nolimits--><mo class="qopname"> arcsin</mo><!--nolimits--><mo class="qopname"> arctan</mo><!--nolimits--><mo class="qopname"> arg</mo><!--nolimits--><mo class="qopname"> cos</mo><!--nolimits--><mo class="qopname"> cosh</mo><!--nolimits--><mo class="qopname"> cot</mo><!--nolimits--><mo class="qopname"> coth</mo><!--nolimits--><mo class="qopname"> csc</mo><!--nolimits--><mo class="qopname"> deg</mo><!--nolimits--><mo class="qopname"> det<!--nolimits--></mo>
@@ -831,21 +839,21 @@ display="block" class="equation">
  id="x1-4022r22"></a>
                                                                                        
                                                                                        
-<!--l. 139--><math 
+<!--l. 140--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                     <mo class="qopname">dim</mo><!--nolimits--><mo class="qopname"> exp</mo><!--nolimits--><mo class="qopname"> gcd</mo><mo class="qopname"> hom</mo><!--nolimits--><mo class="qopname"> inf</mo><mo class="qopname"> ker</mo><!--nolimits--><mo class="qopname"> lg</mo><!--nolimits--><mo class="qopname"> lim</mo><mo class="qopname"> liminf</mo><mo class="qopname"> limsup</mo><mo class="qopname"> ln</mo><!--nolimits--><mo class="qopname"> log</mo><!--nolimits-->
 </math></td><td class="eq-no">(22)</td></tr></table>
 <table class="equation"><tr><td> <a 
  id="x1-4023r23"></a>
-<!--l. 142--><math 
+<!--l. 143--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                           <mo class="qopname">max</mo><mo class="qopname"> min</mo><mo class="qopname"> Pr</mo><mo class="qopname"> sec</mo><!--nolimits--><mo class="qopname"> sin</mo><!--nolimits--><mo class="qopname"> sinh</mo><!--nolimits--><mo class="qopname"> sup</mo><mo class="qopname"> tan</mo><!--nolimits--><mo class="qopname"> tanh</mo><!--nolimits-->
 </math></td><td class="eq-no">(23)</td></tr></table>
-<!--l. 146--><p class="noindent" >Those with under-subscript available: </p><table class="equation"><tr><td> <a 
+<!--l. 147--><p class="noindent" >Those with under-subscript available: </p><table class="equation"><tr><td> <a 
  id="x1-4024r24"></a>
-<!--l. 147--><math 
+<!--l. 148--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                 <msub><mrow 
@@ -891,9 +899,9 @@ class="MathClass-op">det<!--nolimits--></mo> </mrow><mrow
 >a</mi></mrow></munder 
 >
 </math></td><td class="eq-no">(24)</td></tr></table>
-<!--l. 151--><p class="noindent" >Modulus: </p><table class="equation"><tr><td> <a 
+<!--l. 152--><p class="noindent" >Modulus: </p><table class="equation"><tr><td> <a 
  id="x1-4025r25"></a>
-<!--l. 152--><math 
+<!--l. 153--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                    <mi 
@@ -908,9 +916,9 @@ class="MathClass-close">)</mo></mrow>
 </math></td><td class="eq-no">(25)</td></tr></table>
                                                                                        
                                                                                        
-<!--l. 156--><p class="noindent" >Accents and under/over: </p><table class="equation"><tr><td> <a 
+<!--l. 157--><p class="noindent" >Accents and under/over: </p><table class="equation"><tr><td> <a 
  id="x1-4026r26"></a>
-<!--l. 157--><math 
+<!--l. 158--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                <mi 
@@ -957,9 +965,9 @@ accent="true">̲</mo></munder><mover accent="false"><mrow> <mi
 >a</mi><mi 
 >a</mi></mrow><mo>&#x23DF;</mo></munder>
 </math></td><td class="eq-no">(26)</td></tr></table>
-<!--l. 161--><p class="noindent" >Symbols left and right can be applied to: </p><table class="equation"><tr><td> <a 
+<!--l. 162--><p class="noindent" >Symbols left and right can be applied to: </p><table class="equation"><tr><td> <a 
  id="x1-4027r27"></a>
-<!--l. 162--><math 
+<!--l. 163--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                   <mfenced separators="" 
@@ -996,9 +1004,9 @@ open="⟨"  close="⟩" ><mrow><mfrac><mrow
 <mrow 
 ><mn>2</mn></mrow></mfrac></mrow></mfenced>
 </math></td><td class="eq-no">(27)</td></tr></table>
-<!--l. 168--><p class="noindent" >Manual sizing: </p><table class="equation"><tr><td> <a 
+<!--l. 169--><p class="noindent" >Manual sizing: </p><table class="equation"><tr><td> <a 
  id="x1-4028r28"></a>
-<!--l. 169--><math 
+<!--l. 170--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                            <mstyle mathsize="1.19em"><mfenced separators="" 
@@ -1029,7 +1037,7 @@ open="⇕"  close="" ><mrow></mrow></mfenced></mstyle>
  id="x1-4029r29"></a>
                                                                                        
                                                                                        
-<!--l. 173--><math 
+<!--l. 174--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                            <mstyle mathsize="1.61em"><mfenced separators="" 
@@ -1058,7 +1066,7 @@ open="⇕"  close="" ><mrow></mrow></mfenced></mstyle>
 </math></td><td class="eq-no">(29)</td></tr></table>
 <table class="equation"><tr><td> <a 
  id="x1-4030r30"></a>
-<!--l. 177--><math 
+<!--l. 178--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                            <mstyle mathsize="2.03em"><mfenced separators="" 
@@ -1087,7 +1095,7 @@ open="⇕"  close="" ><mrow></mrow></mfenced></mstyle>
 </math></td><td class="eq-no">(30)</td></tr></table>
 <table class="equation"><tr><td> <a 
  id="x1-4031r31"></a>
-<!--l. 181--><math 
+<!--l. 182--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                            <mstyle mathsize="2.45em"><mfenced separators="" 
@@ -1114,11 +1122,11 @@ open="⇓"  close="" ><mrow></mrow></mfenced></mstyle><mstyle mathsize="2.03em">
 open="↕"  close="" ><mrow></mrow></mfenced></mstyle><mstyle mathsize="2.03em"><mfenced separators="" 
 open="⇕"  close="" ><mrow></mrow></mfenced></mstyle>
 </math></td><td class="eq-no">(31)</td></tr></table>
-<!--l. 186--><p class="noindent" >Dots: </p><table class="equation"><tr><td> <a 
+<!--l. 187--><p class="noindent" >Dots: </p><table class="equation"><tr><td> <a 
  id="x1-4032r32"></a>
                                                                                        
                                                                                        
-<!--l. 187--><math 
+<!--l. 188--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                     <mi 
@@ -1135,25 +1143,24 @@ class="MathClass-rel">⋯</mo><mi
 class="MathClass-rel">⋱</mo><mi 
 >a</mi>
 </math></td><td class="eq-no">(32)</td></tr></table>
-<!--l. 191--><p class="noindent" >Horizontal spacing: </p><table class="equation"><tr><td> <a 
+<!--l. 192--><p class="noindent" >Horizontal spacing: </p><table class="equation"><tr><td> <a 
  id="x1-4033r33"></a>
-<!--l. 192--><math 
+<!--l. 194--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                          <mo 
 class="MathClass-rel">|</mo><mspace width="1em" class="nbsp" /><mo 
 class="MathClass-rel">|</mo><mspace width="0.3em" class="thinspace"/><mo 
 class="MathClass-rel">|</mo><mo 
-class="MathClass-rel">|</mo><mspace width="0.3em" class="thinspace"/><mo 
 class="MathClass-rel">|</mo><mspace width="1em" class="quad"/><mo 
 class="MathClass-rel">|</mo><mspace width="2em" class="qquad"/><mo 
 class="MathClass-rel">|</mo>
 </math></td><td class="eq-no">(33)</td></tr></table>
-<!--l. 196--><p class="noindent" >
+<!--l. 198--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">2    </span> <a 
 href="#QQ2-1-5" id="x1-50002">Standard mathematical structures</a></h3>
-<!--l. 198--><p class="noindent" >Three different ways to inline  <!--l. 198--><math 
+<!--l. 200--><p class="noindent" >Three different ways to inline  <!--l. 200--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" > <msubsup><mrow 
 ><mi 
@@ -1170,7 +1177,7 @@ class="MathClass-punc">,</mo><mi
 >n</mi></mrow></msup 
 ></mrow></msubsup 
 > </math>
-<!--l. 198--><math 
+<!--l. 200--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 > <msubsup><mrow 
@@ -1188,7 +1195,7 @@ class="MathClass-punc">,</mo><mi
 >n</mi></mrow></msup 
 ></mrow></msubsup 
 > </mrow></math>
-<!--l. 198--><math 
+<!--l. 200--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 > <msubsup><mrow 
@@ -1206,9 +1213,9 @@ class="MathClass-punc">,</mo><mi
 >n</mi></mrow></msup 
 ></mrow></msubsup 
 > </mrow></math>
-</p><!--l. 200--><p class="noindent" >Four different ways to displaymath.  </p><table class="equation"><tr><td> <a 
+</p><!--l. 202--><p class="noindent" >Four different ways to displaymath.  </p><table class="equation"><tr><td> <a 
  id="x1-5001r100"></a>
-<!--l. 202--><math 
+<!--l. 204--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
 <munderover accentunder="false" accent="false"><mrow  
@@ -1335,7 +1342,7 @@ class="MathClass-bin">+</mo><msubsup><mrow
 </math></td><td class="eq-no">(100)</td></tr></table>
                                                                                        
                                                                                        
-<div class="par-math-block" custom-style="Normal"><!--l. 206--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 208--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 ><msubsup><mrow 
@@ -1444,7 +1451,7 @@ class="MathClass-rel">=</mo> <msubsup><mrow
 ><mn>2</mn></mrow></msubsup 
 >
 </mrow></math></div>
-<div class="par-math-block" custom-style="Normal"><!--l. 210--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 212--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -1556,7 +1563,7 @@ class="MathClass-rel">=</mo> <msubsup><mrow
 ><mn>2</mn></mrow></msubsup 
 ><mspace width="1em" class="nbsp" />
 </mrow></math></div>
-<div class="par-math-block" custom-style="Normal"><!--l. 214--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 216--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -1682,12 +1689,12 @@ class="MathClass-bin">⋅</mo> <msubsup><mrow
 ><mn>2</mn></mrow></msubsup 
 >
 </mrow></math></div>
-<!--l. 218--><p class="noindent" >One of the forms is numbered equation <a 
+<!--l. 220--><p class="noindent" >One of the forms is numbered equation <a 
 href="#x1-5001r100">100<!--tex4ht:ref: equation --></a>.
 </p>
                                                                                        
                                                                                        
-<div class="math-block" custom-style="Normal"><!--l. 219--><math 
+<div class="math-block" custom-style="Normal"><!--l. 221--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -1786,7 +1793,7 @@ class="MathClass-bin">+</mo> <msubsup><mrow
 >  <mn>2</mn></mrow></msubsup 
 ></mrow></msqrt>
 </mrow></math></div>
-<div class="par-math-block" custom-style="Normal"><!--l. 223--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 225--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -1904,8 +1911,8 @@ class="MathClass-bin">+</mo> <msubsup><mrow
 ><mn>2</mn></mrow></mfrac> </mrow></msup 
 >
 </mrow></math></div>
-<!--l. 227--><p class="noindent" >Now for an equation array: </p>
-<!--tex4ht:inline--><!--l. 228--><math 
+<!--l. 229--><p class="noindent" >Now for an equation array: </p>
+<!--tex4ht:inline--><!--l. 230--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" >
 <mtable 
@@ -2008,10 +2015,10 @@ class="endlabel"></mtext></mtd></mtr></mtable>
 </math>
                                                                                        
                                                                                        
-<!--l. 232--><p class="nopar" >
+<!--l. 234--><p class="nopar" >
 </p>
-<!--l. 234--><p class="noindent" >
-<!--tex4ht:inline--></p><!--l. 234--><math 
+<!--l. 236--><p class="noindent" >
+<!--tex4ht:inline--></p><!--l. 236--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" >
 <mtable 
@@ -2111,9 +2118,9 @@ class="eqnarray-3">      <mn>1</mn><mn>6</mn><mn>3</mn><mn>8</mn><mn>2</mn><mspa
 class="mbox"><mtext  >here is some text in the formula to fill up the line at 12pt font</mtext></mstyle>     </mtd><mtd 
 class="eqnarray-4"> <mtext class="eqnarray"></mtext></mtd></mtr></mtable>
 </math>
-<!--l. 238--><p class="nopar" >
+<!--l. 240--><p class="nopar" >
 </p>
-<div class="par-math-block" custom-style="Normal"><!--l. 240--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 242--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -2145,7 +2152,7 @@ class="array"  columnalign="center"><msub><mrow
 </mrow></math></div>
                                                                                        
                                                                                        
-<div class="par-math-block" custom-style="Normal"><!--l. 244--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 246--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -2259,8 +2266,8 @@ class="array"  columnalign="center"><mn>1</mn></mtd></mtr><mtr><mtd
 class="array"  columnalign="center"></mtd></mtr>
 <!--*{10}{c}--></mtable>                                                                                       </mrow></mfenced>
 </mrow></math></div>
-<!--l. 259--><p class="noindent" >
-<!--tex4ht:inline--></p><!--l. 259--><math 
+<!--l. 261--><p class="noindent" >
+<!--tex4ht:inline--></p><!--l. 261--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" >
 <mtable 
@@ -2295,11 +2302,11 @@ class="MathClass-rel">=</mo> <mo
 class="MathClass-bin">−</mo><mn>2</mn>     </mtd><mtd 
 class="eqnarray-4"> <mtext class="eqnarray"></mtext></mtd></mtr></mtable>
 </math>
-<!--l. 262--><p class="nopar" >
+<!--l. 264--><p class="nopar" >
 </p>
                                                                                        
                                                                                        
-<div class="par-math-block" custom-style="Normal"><!--l. 264--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 266--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -2319,7 +2326,7 @@ class="MathClass-bin">+</mo> <mi
 class="MathClass-bin">+</mo> <mi 
 >f</mi></mrow></msqrt>
 </mrow></math></div>
-<div class="par-math-block" custom-style="Normal"><!--l. 268--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 270--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -2346,7 +2353,7 @@ accent="true">¯</mo></mover> </mrow><mo
 accent="true">¯</mo></mover> </mrow><mo 
 accent="true">¯</mo></mover>
 </mrow></math></div>
-<div class="par-math-block" custom-style="Normal"><!--l. 272--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 274--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -2370,7 +2377,7 @@ class="mbox"><mtext  >text</mtext></mstyle></mrow></munder
 </mrow></math></div>
                                                                                        
                                                                                        
-<div class="par-math-block" custom-style="Normal"><!--l. 276--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 278--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -2381,7 +2388,7 @@ class="MathClass-rel">→</mo></mrow><mrow
 ><mrow><mi 
 >a</mi></mrow></mrow></mover>
 </mrow></math></div>
-<div class="par-math-block" custom-style="Normal"><!--l. 281--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 283--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -2394,7 +2401,7 @@ class="array"  columnalign="center"><mi
 >b</mi></mtd></mtr>
 <!--c--></mtable>                                                                                       </mrow></mfenced>
 </mrow></math></div>
-<div class="par-math-block" custom-style="Normal"><!--l. 285--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 287--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -2473,12 +2480,12 @@ class="MathClass-bin">+</mo> <mfrac><mrow
 </mrow></math></div>
                                                                                        
                                                                                        
-<!--l. 289--><p class="noindent" >
+<!--l. 291--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">2.1    </span> <a 
 href="#QQ2-1-6" id="x1-60002.1">Testing line breaking</a></h4>
-<!--l. 291--><p class="noindent" >
-<!--tex4ht:inline--></p><!--l. 291--><math 
+<!--l. 293--><p class="noindent" >
+<!--tex4ht:inline--></p><!--l. 293--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" >
 <mtable 
@@ -3038,14 +3045,14 @@ class="MathClass-punc">,</mo><mi
 >l</mi> </mtd><mtd 
 class="eqnarray-4"> <mtext class="eqnarray"></mtext></mtd></mtr></mtable>
 </math>
-<!--l. 303--><p class="nopar" >
-</p><!--l. 305--><p class="noindent" >
+<!--l. 305--><p class="nopar" >
+</p><!--l. 307--><p class="noindent" >
 </p>
                                                                                        
                                                                                        
 <h4 class="subsectionHead"><span class="titlemark">2.2    </span> <a 
 href="#QQ2-1-7" id="x1-70002.2">Testing new commands</a></h4>
-<div class="par-math-block" custom-style="Normal"><!--l. 306--><math 
+<div class="par-math-block" custom-style="Normal"><!--l. 308--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >

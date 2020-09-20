@@ -25,6 +25,11 @@
 .lmmi-6{font-size:50%;}
 .lmsy8-{font-size:66%;}
 .lmsy6-{font-size:50%;}
+.phvr8t-x-x-207{font-size:172%; font-family: sans-serif;}
+.phvr8t-x-x-207{ font-family: sans-serif;}
+.phvr8t-x-x-207{ font-family: sans-serif;}
+.phvr8t-x-x-207{ font-family: sans-serif;}
+.phvr8t-x-x-207{ font-family: sans-serif;}
 .phvr8t-x-x-144{font-size:120%; font-family: sans-serif;}
 .phvr8t-x-x-144{ font-family: sans-serif;}
 .phvr8t-x-x-144{ font-family: sans-serif;}
@@ -35,11 +40,6 @@
 .phvr8t-x-x-172{ font-family: sans-serif;}
 .phvr8t-x-x-172{ font-family: sans-serif;}
 .phvr8t-x-x-172{ font-family: sans-serif;}
-.phvr8t-x-x-207{font-size:172%; font-family: sans-serif;}
-.phvr8t-x-x-207{ font-family: sans-serif;}
-.phvr8t-x-x-207{ font-family: sans-serif;}
-.phvr8t-x-x-207{ font-family: sans-serif;}
-.phvr8t-x-x-207{ font-family: sans-serif;}
 .phvr8t-x-x-248{font-size:206%; font-family: sans-serif;}
 .phvr8t-x-x-248{ font-family: sans-serif;}
 .phvr8t-x-x-248{ font-family: sans-serif;}
@@ -53,7 +53,6 @@
 .ec-lmss-12{ font-family: sans-serif;}
 .ec-lmss-12{ font-family: sans-serif;}
 .ec-lmss-12{ font-family: sans-serif;}
-.phvro8t-x-x-120{ font-family: sans-serif;    font-style: oblique;}
 .small-caps{font-variant: small-caps; }
 p.noindent { text-indent: 0em }
 td p.noindent { text-indent: 0em; margin-top:0em; }
@@ -176,6 +175,8 @@ div.lstlisting{font-family: monospace; white-space: nowrap; margin-top:0.5em; ma
 div.lstinputlisting{ font-family: monospace; white-space: nowrap; }
 .lstinputlisting .label{margin-right:0.5em;}
 div.shaded { background-color: AliceBlue; } 
+div.framed { background-color: Gainsboro; } 
+div.framed { background-color: Gainsboro; } 
 div.framed { background-color: Gainsboro; } 
 span.head { font-weight:bold; }
 /* end css.sty */

@@ -1,0 +1,104 @@
+   1 |            | \documentclass[12pt,a4paper,onecolumn]{article}
+   2 |            | \usepackage[T1]{fontenc} 
+   3 |            | \usepackage[a4paper]{geometry} 
+   4 |            | \usepackage[english]{babel} 
+   5 |            | \usepackage{amsmath}
+   6 |            | \usepackage{amssymb} 
+   7 |            | \usepackage{amsfonts} 
+   8 |            | \usepackage[mathscr]{eucal}
+   9 |            | \usepackage{eufrak} 
+  10 |            | \usepackage{amsthm} 
+  11 |            | \usepackage{longtable} 
+  12 |            | \usepackage{graphicx} 
+  13 |            | \usepackage{verbatim} 
+  14 |            | \usepackage{url} 
+  15 |            | \newtheorem{theorem}{Theorem}[section]
+  16 |            | \title{AMS mathematical structures}
+  17 |            | \author{Emma Cliffe}
+  18 |            | \date{}
+  19 |            | \pagestyle{headings}
+  20 |            | \begin{document}
+  21 |            | \maketitle
+  22 |            | 
+  23 |            | \noindent
+  24 |            | Fraction commands: display style in text style --- \(\dfrac{1}{2}\)
+  25 |            | \begin{equation}
+  26 |            | \binom{n}{k} \quad \tbinom{n}{k} 
+  27 |            | \end{equation}
+  28 |            | \begin{equation}
+  29 |            | \tfrac{1}{2} \quad %\testfrac{1}{2} \quad  
+  30 |            | a + \cfrac{1}{b + \cfrac{1}{c + \cfrac{1}{d + \cfrac{1}{e + \cfrac{1}{f + \cfrac{1}{g + \cfrac{1}{h}}}}}}}
+  31 |            | \end{equation}
+  32 |            | 
+  33 |            | \noindent
+  34 |            | Matrices can be displayed in text \(\left(\begin{smallmatrix} a & b & c \\ d & e & f\end{smallmatrix}\right)\) or in display with 6 different commands
+  35 |            | %You HAVE to put in the ampersands to stop the problems in oolatex as it will always transform an eqnarray to a matrix with 3 columns and if the columns aren't all present they are empty and this causes the problem
+  36 |            | \begin{eqnarray*}
+  37 |            | &&\begin{matrix} r & s & t \\ u & v & w \\ x & y & x\end{matrix}\quad
+  38 |            | \begin{pmatrix} r & s & t \\ u & v & w \\ x & y & x\end{pmatrix}\quad
+  39 |            | \begin{bmatrix} r & s & t \\ u & v & w \\ x & y & x\end{bmatrix}\\
+  40 |            | &&\begin{Bmatrix} r & s & t \\ u & v & w \\ x & y & x\end{Bmatrix}\quad
+  41 |            | \begin{vmatrix} r & s & t \\ u & v & w \\ x & y & x\end{vmatrix}\quad
+  42 |            | \begin{Vmatrix} r & s & t \\ u & v & w \\ x & y & x\end{Vmatrix}\quad
+  43 |            | \end{eqnarray*}
+  44 |            | 
+  45 |            | \noindent
+  46 |            | Vertical bars
+  47 |            | \begin{equation}
+  48 |            | \left\lvert \frac{1}{2}\right\rvert \left\lVert \frac{1}{2}\right\rVert
+  49 |            | \end{equation}
+  50 |            | 
+  51 |            | 
+  52 |            | 
+  53 |            | \section[Split]{Split}
+  54 |            | 
+  55 |            | Meant for single equations which do not fit on one line but allows alignment between lines. Split is used when already in mathmode and any numbering from the external mode will apply to the entire split as one line.
+  56 |            | \begin{equation}\begin{split}\label{split}
+  57 |            | \sum_{i=1}^{15} x_i^2 =& x_1^2 + x_2^2 + x_3^2 + x_4^2 + x_5^2 \\
+  58 |            | &+ x_6^2 + x_7^2 + x_8^2 + x_9^2 + x_{10}^2+ x_{11}^2 + x_{12}^2 + x_{13}^2 + x_{14}^2 + x_{15}^2
+  59 |            | \end{split}\end{equation}
+  60 |            | 
+  61 |            | \section[Gather]{Gather}
+  62 |            | 
+  63 | (          | %Actually, I don't think we can use \tag and \notag with plastex+mathjax (or even, dare I say, plastex alone because it doesn't seem to understand these and hence gets the numbering wrong anyway. Does it do something sensible with \nonumber? 
+  64 | (          | 
+  65 | (          | %Intertext does not work in the gather environment and should not be used
+  66 | (          | %\intertext{if $x=2$ then}
+  67 | (          | %LP - don't put comments into mathsmode as currently this results in an empty line
+  68 | (          | Switches to mathmode and centers each line without alignment.
+  69 | (          | \begin{gather}
+  70 | (          | \label{gathereq} \sum_{i=1}^{15} x^i = x^1 + x^2 + x^3 + x^4 + x^5 + x^6 + x^7 + x^8 + x^9 + x^{10} + x^{11} + x^{12} + x^{13} + x^{14} + x^{15}\\%\tag{*}\\
+  71 | (          | 2^1 + 2^2 + 2^3 + 2^4 + 2^5 + 2^6 + 2^7 + 2^8 + 2^9 + 2^{10} + 2^{11} + 2^{12} + 2^{13} + 2^{14} + 2^{15}\nonumber %\notag
+  72 | (          | \end{gather}
+  73 | (          | 
+  74 | (          | %plastex can't do eqref
+  75 | (          | 
+  76 | (          | \section[Align]{Align}
+  77 | (          | 
+  78 | (          | Because of the problems with MathJax and eqnarray (unstarred) and because so many people use the align environment I think that we should say, yes, it is available for “basic” use (i.e. equivalent use to eqnarray effectively) and that any use beyond that is the unknown. 
+  79 | (          | 
+  80 | (          | For use with multiple equations with horizontal alignment (usually on the equals sign or equivalent). Each line is split into aligned columns with the odd numbered columns being right justified and the even numbered left justified \{rl rl rl...\}. There is an unnumbered variant (use *). 
+  81 | (          | 
+  82 | (          | % %LP cannot reflow text in text env and hence these elements must be short or broken into pieces
+  83 | (          | % %plastex/mathjax does not do intertext, it also upsets oolatex
+  84 | (          | % %oolatex can't cope even with the adjustments to add even more text elements
+  85 | (          | \begin{align}
+  86 | (          | \label{alignlab} \sum_{i=1}^{13} 2^i &= 2^1 + 2^2 + 2^3 + 2^4 + 2^5 + 2^6 + 2^7 + 2^8 + 2^9 + 2^{10} + 2^{11} + 2^{12} + 2^{13}\\%\tag{*}\\
+  87 | (          | &\quad \text{some calculator use later:}\nonumber\\
+  88 | (          | &=2 + 4 + 8 + 16 + 32 + 64 + 128 + 256 + 512 + 1024 + 2048 + 4096 + 8192 \nonumber\\%\notag\\
+  89 | (          | &=16382 \qquad\text{text in formulas does not break} %\tag{$\dagger$}
+  90 | (          | \end{align}
+  91 | (          | % %\intertext{some calculator use later:}
+  92 | (          | 
+  93 | (          | 
+  94 | (          | \section[Cases]{Cases}
+  95 | (          | 
+  96 | (          | Easier way to produce equations with cases. Used when already in mathmode. 
+  97 | (          | \begin{equation*}
+  98 | (          | f(x) = \begin{cases} x^2 & \text{ if } x\geq0\\
+  99 | (          | -x & \text{ if } x<0 \end{cases}
+ 100 | (          | \end{equation*}
+ 101 | (          | 
+ 102 | (          | We can reference the equations: (\ref{split}), (\ref{gathereq}), (\ref{alignlab}). 
+ 103 | (          | 
+ 104 | (          | \end{document}

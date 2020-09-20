@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 
 <html
-> 
+ lang="en"> 
 <head
 > <title
 >Basic graphics</title> 
@@ -19,7 +19,8 @@
  rel="stylesheet" type="text/css" href="additional.css"></link> 
 <script
  type="text/x-mathjax-config"> 
-MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
+MathJax.Hub.Config({ mml2jax: { preview: ["[maths rendering]"]}, 
+"fast-preview": {disabled: true}, 
 explorer:{ subtitle: true }, 
 displayAlign: "center",  
 MatchWebFonts: { 
@@ -39,6 +40,15 @@ linebreaks: { automatic: false, width: "90% container" }
 }, 
 menuSettings: { collapsible: false, autocollapse: false, explorer: false } 
 }); 
+</script> 
+<script
+ type="text/x-mathjax-config"> 
+MathJax.Hub.Register.MessageHook("End Math", function (msg) { 
+var nodes = Array.from(msg[1].querySelectorAll('.MJX_Assistive_MathML [id]')); 
+while (nodes.length) { 
+nodes.shift().removeAttribute('id'); 
+} 
+}, 20); 
 </script> 
 <script
  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script> 
@@ -70,23 +80,11 @@ menuSettings: { collapsible: false, autocollapse: false, explorer: false }
 <!--l. 14
 --><p
  class="noindent">This section looks only at graphics available without the graphics packages, that is, internal to
-vanilla <span
- class="LATEX">L<span
- class="A">A</span><span
- class="TEX">T<span
- class="E">E</span>X</span></span>. Kopka and Daly <span
+vanilla LaTeX. Kopka and Daly <span
  class="cite">[<a
- href="#XKopkaDaly">1</a>]</span> explain that &#x201C;Standard <span
- class="LATEX">L<span
- class="A">A</span><span
- class="TEX">T<span
- class="E">E</span>X</span></span>does actually contain the
+ href="#XKopkaDaly">1</a>]</span> explain that &#x201C;Standard LaTeXdoes actually contain the
 means to make primative drawings on its own&#x201D; and they consider only the facets of picture
-that are in standard <span
- class="LATEX">L<span
- class="A">A</span><span
- class="TEX">T<span
- class="E">E</span>X</span></span>, not those that require additional packages. This is what we test
+that are in standard LaTeX, not those that require additional packages. This is what we test
 as a basic starting point in the vanilla stress test.
 </p><!--l. 25
 --><p
@@ -110,12 +108,8 @@ as a basic starting point in the vanilla stress test.
  class="biblabel">
   [1]<span
  class="bibsp">&#xA0;&#xA0;&#xA0;</span></span><a
- id="XKopkaDaly"></a>Kopka, H. and Daly, P., <b
->A Guide to <span
- class="LATEX">L<span
- class="A">A</span><span
- class="TEX">T<span
- class="E">E</span>X</span></span></b>. Pearson Education Ltd., 1999</p></div>
+ id="XKopkaDaly"></a>Kopka, H. and Daly, P., <strong
+>A Guide to LaTeX</strong>. Pearson Education Ltd., 1999</p></div>
  
 </body> 
 </html>

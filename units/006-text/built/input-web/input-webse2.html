@@ -1,5 +1,6 @@
 <!DOCTYPE html> 
 
+
 <html
 > 
 <head
@@ -21,6 +22,7 @@
  type="text/x-mathjax-config"> 
 MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
 explorer:{ subtitle: true }, 
+displayAlign: "center",  
 MatchWebFonts: { 
 matchFor: { "HTML-CSS": true, NativeMML: false, SVG: false }, 
 fontCheckDelay: 2000, 
@@ -30,13 +32,13 @@ fontCheckTimeout: 30 * 1000
 preferredFont: "STIX",  
 availableFonts: ["STIX","TeX"],  
 webFont: "STIX-Web",  
-linebreaks: { automatic: false, width: "90% container" } 
+linebreaks: { automatic: true, width: "90% container" } 
 }, 
 SVG: {  
 font: "STIX-Web", 
 linebreaks: { automatic: false, width: "90% container" } 
 }, 
-menuSettings: { collapsible: true, autocollapse: true, explorer: false } 
+menuSettings: { collapsible: false, autocollapse: false, explorer: false } 
 }); 
 </script> 
 <script
@@ -47,7 +49,8 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
 </style> 
 </head><body
 >
-<!--l. 196
+<!--l. 198
+
 --><div
  class="crosslinks"><p
  class="noindent">[<a
@@ -59,190 +62,78 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  class="sectionHead"><span
  class="titlemark">2    </span> <a
  href="input-web.html#QQ2-6-5" id="x6-50002">Standard mathematical structures</a></h3>
-<!--l. 198
+<!--l. 200
+
 --><p
- class="noindent">Three different ways to inline  <!--l. 198
+ class="noindent">Three different ways to inline  <!--l. 200
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"> <msubsup
 ><mrow
 ><mi
 >A</mi></mrow><mrow
 ><mi
->i</mi><mo class="MathClass-punc">,</mo><mi
->j</mi><mo class="MathClass-punc">,</mo><mi
+>i</mi><mo
+ class="MathClass-punc">,</mo><mi
+>j</mi><mo
+ class="MathClass-punc">,</mo><mi
 >k</mi></mrow><mrow
 ><msup
 ><mrow
-><mn>2</mn></mrow><mrow
+><mn
+>2</mn></mrow><mrow
 ><mi
 >n</mi></mrow></msup></mrow></msubsup> </math>
-<!--l. 198
+<!--l. 200
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
 > <msubsup
 ><mrow
 ><mi
 >A</mi></mrow><mrow
-><mi
->i</mi><mo class="MathClass-punc">,</mo><mi
->j</mi><mo class="MathClass-punc">,</mo><mi
->k</mi></mrow><mrow
-><msup
-><mrow
-><mn>2</mn></mrow><mrow
-><mi
->n</mi></mrow></msup></mrow></msubsup> </mrow></math>
-<!--l. 198
---><math
- xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
-> <msubsup
-><mrow
-><mi
->A</mi></mrow><mrow
-><mi
->i</mi><mo class="MathClass-punc">,</mo><mi
->j</mi><mo class="MathClass-punc">,</mo><mi
->k</mi></mrow><mrow
-><msup
-><mrow
-><mn>2</mn></mrow><mrow
-><mi
->n</mi></mrow></msup></mrow></msubsup> </mrow></math>
-</p><!--l. 200
---><p
- class="noindent">Four different ways to displaymath.  </p><table
- class="equation"><tr
-><td
-> <a
- id="x6-5001r100"></a>
-<!--l. 202
---><math
- xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
-<munderover
- accentunder="false" accent="false"><mrow
-><mo
- mathsize="normal">&#x2211;</mo>
-   </mrow><mrow
 ><mi
 >i</mi><mo
- class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
-><mn>15</mn></mrow></munderover><msubsup
+ class="MathClass-punc">,</mo><mi
+>j</mi><mo
+ class="MathClass-punc">,</mo><mi
+>k</mi></mrow><mrow
+><msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mi
+>n</mi></mrow></msup></mrow></msubsup> </mrow></math>
+<!--l. 200
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
+> <msubsup
 ><mrow
 ><mi
->x</mi></mrow><mrow
->
-<mi
->i</mi></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
- class="MathClass-rel">=</mo> <msubsup
-><mrow
+>A</mi></mrow><mrow
 ><mi
->x</mi></mrow><mrow
->
-<mn>1</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
- class="MathClass-bin">+</mo><msubsup
+>i</mi><mo
+ class="MathClass-punc">,</mo><mi
+>j</mi><mo
+ class="MathClass-punc">,</mo><mi
+>k</mi></mrow><mrow
+><msup
 ><mrow
+><mn
+>2</mn></mrow><mrow
 ><mi
->x</mi></mrow><mrow
->
-<mn>2</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
- class="MathClass-bin">+</mo><msubsup
-><mrow
-><mi
->x</mi></mrow><mrow
->
-<mn>3</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
- class="MathClass-bin">+</mo><msubsup
-><mrow
-><mi
->x</mi></mrow><mrow
->
-<mn>4</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
- class="MathClass-bin">+</mo><msubsup
-><mrow
-><mi
->x</mi></mrow><mrow
->
-<mn>5</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
- class="MathClass-bin">+</mo><msubsup
-><mrow
-><mi
->x</mi></mrow><mrow
->
-<mn>6</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
- class="MathClass-bin">+</mo><msubsup
-><mrow
-><mi
->x</mi></mrow><mrow
->
-<mn>7</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
- class="MathClass-bin">+</mo><msubsup
-><mrow
-><mi
->x</mi></mrow><mrow
->
-<mn>8</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
- class="MathClass-bin">+</mo><msubsup
-><mrow
-><mi
->x</mi></mrow><mrow
->
-<mn>9</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
- class="MathClass-bin">+</mo><msubsup
-><mrow
-><mi
->x</mi></mrow><mrow
->
-<mn>10</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
- class="MathClass-bin">+</mo><msubsup
-><mrow
-><mi
->x</mi></mrow><mrow
->
-<mn>11</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
- class="MathClass-bin">+</mo><msubsup
-><mrow
-><mi
->x</mi></mrow><mrow
->
-<mn>12</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
- class="MathClass-bin">+</mo><msubsup
-><mrow
-><mi
->x</mi></mrow><mrow
->
-<mn>13</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
- class="MathClass-bin">+</mo><msubsup
-><mrow
-><mi
->x</mi></mrow><mrow
->
-<mn>14</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
- class="MathClass-bin">+</mo><msubsup
-><mrow
-><mi
->x</mi></mrow><mrow
->
-<mn>15</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup>
-</math></td><td
- class="eq-no">(100)</td></tr></table>
+>n</mi></mrow></msup></mrow></msubsup> </mrow></math>
+</p><!--l. 202
+
+--><p
+ class="noindent">Four different ways to displaymath.  </p><table
+ class="equation"><tr><td><a id="x6-5001r100"/><!--l. 204
+
+--><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation"><munderover accentunder="false" accent="false"><mrow><mo mathsize="normal">&#x2211;</mo></mrow><mrow><mi>i</mi><mo class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow><mn>15</mn></mrow></munderover><msubsup><mrow><mi>x</mi></mrow><mrow><mi>i</mi></mrow><mrow><mn>2</mn></mrow></msubsup><mo class="MathClass-rel">=</mo><msubsup><mrow><mi>x</mi></mrow><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></msubsup><mo class="MathClass-bin">+</mo><msubsup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow><mrow><mn>2</mn></mrow></msubsup><mo class="MathClass-bin">+</mo><msubsup><mrow><mi>x</mi></mrow><mrow><mn>3</mn></mrow><mrow><mn>2</mn></mrow></msubsup><mo class="MathClass-bin">+</mo><msubsup><mrow><mi>x</mi></mrow><mrow><mn>4</mn></mrow><mrow><mn>2</mn></mrow></msubsup><mo class="MathClass-bin">+</mo><msubsup><mrow><mi>x</mi></mrow><mrow><mn>5</mn></mrow><mrow><mn>2</mn></mrow></msubsup><mo class="MathClass-bin">+</mo><msubsup><mrow><mi>x</mi></mrow><mrow><mn>6</mn></mrow><mrow><mn>2</mn></mrow></msubsup><mo class="MathClass-bin">+</mo><msubsup><mrow><mi>x</mi></mrow><mrow><mn>7</mn></mrow><mrow><mn>2</mn></mrow></msubsup><mo class="MathClass-bin">+</mo><msubsup><mrow><mi>x</mi></mrow><mrow><mn>8</mn></mrow><mrow><mn>2</mn></mrow></msubsup><mo class="MathClass-bin">+</mo><msubsup><mrow><mi>x</mi></mrow><mrow><mn>9</mn></mrow><mrow><mn>2</mn></mrow></msubsup><mo class="MathClass-bin">+</mo><msubsup><mrow><mi>x</mi></mrow><mrow><mn>10</mn></mrow><mrow><mn>2</mn></mrow></msubsup><mo class="MathClass-bin">+</mo><msubsup><mrow><mi>x</mi></mrow><mrow><mn>11</mn></mrow><mrow><mn>2</mn></mrow></msubsup><mo class="MathClass-bin">+</mo><msubsup><mrow><mi>x</mi></mrow><mrow><mn>12</mn></mrow><mrow><mn>2</mn></mrow></msubsup><mo class="MathClass-bin">+</mo><msubsup><mrow><mi>x</mi></mrow><mrow><mn>13</mn></mrow><mrow><mn>2</mn></mrow></msubsup><mo class="MathClass-bin">+</mo><msubsup><mrow><mi>x</mi></mrow><mrow><mn>14</mn></mrow><mrow><mn>2</mn></mrow></msubsup><mo class="MathClass-bin">+</mo><msubsup><mrow><mi>x</mi></mrow><mrow><mn>15</mn></mrow><mrow><mn>2</mn></mrow></msubsup></math></td><td class="eq-no">(100)</td></tr></table>
 <div
- class="par-math-display"><!--l. 206
+ class="par-math-block" custom-style="Normal"><!--l. 208
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 ><msubsup
@@ -250,115 +141,142 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
 >
 <mi
 >x</mi></mrow><mrow
-><mn>1</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+><mn
+>1</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>2</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>2</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>3</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>3</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>4</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>4</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>5</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>5</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>6</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>6</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>7</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>7</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>8</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>8</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>9</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>9</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>10</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>10</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>11</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>11</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>12</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>12</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>13</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>13</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>14</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>14</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>15</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup>
+<mn
+>15</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup>
 </mrow></math></div>
-<!--l. 208
---><p
- class="nopar">
                                                                                        
                                                                                        
-</p>
 <div
- class="par-math-display"><!--l. 210
+ class="par-math-block" custom-style="Normal"><!--l. 212
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -369,142 +287,172 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
   </mrow><mrow
 ><mi
 >i</mi><mo
- class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
-><mn>15</mn></mrow></munderover><msubsup
+ class="MathClass-rel">=</mo><mn
+>1</mn></mrow><mrow
+><mn
+>15</mn></mrow></munderover><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
 <mi
 >i</mi></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>1</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn
+>1</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>2</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn
+>2</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>3</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn
+>3</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>4</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn
+>4</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>5</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn
+>5</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>6</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn
+>6</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>7</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn
+>7</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>8</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn
+>8</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>9</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn
+>9</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>10</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn
+>10</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>11</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn
+>11</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>12</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn
+>12</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>13</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn
+>13</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>14</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn
+>14</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>15</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn
+>15</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace>
 </mrow></math></div>
-<!--l. 212
---><p
- class="nopar">
-</p>
 <div
- class="par-math-display"><!--l. 214
+ class="par-math-block" custom-style="Normal"><!--l. 216
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -515,134 +463,165 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
   </mrow><mrow
 ><mi
 >i</mi><mo
- class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
-><mn>15</mn></mrow></munderover><msubsup
+ class="MathClass-rel">=</mo><mn
+>1</mn></mrow><mrow
+><mn
+>15</mn></mrow></munderover><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
 <mi
 >i</mi></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>1</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>1</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>2</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>2</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>3</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>3</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>4</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>4</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>5</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>5</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>6</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>6</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>7</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>7</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>8</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>8</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>9</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>9</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>10</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>10</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>11</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>11</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>12</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>12</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>13</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>13</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>14</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>14</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>15</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup>
+<mn
+>15</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup>
 </mrow></math></div>
-<!--l. 216
---><p
- class="nopar">
-</p><!--l. 218
+<!--l. 220
+
 --><p
  class="noindent">One of the forms is numbered equation <a
  href="#x6-5001r100">100<!--tex4ht:ref: equation 
+
 --></a>.
 </p>
-                                                                                       
-                                                                                       
 <div
- class="math-display"><!--l. 219
+ class="math-block" custom-style="Normal"><!--l. 221
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -656,101 +635,129 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
   </mrow><mrow
 ><mi
 >i</mi><mo
- class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
-><mn>13</mn></mrow></munderover><msubsup
+ class="MathClass-rel">=</mo><mn
+>1</mn></mrow><mrow
+><mn
+>13</mn></mrow></munderover><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 ><mi
 >i</mi></mrow><mrow
-><mn>2</mn></mrow></msubsup></mrow></msqrt> <mo
+><mn
+>2</mn></mrow></msubsup></mrow></msqrt> <mo
  class="MathClass-rel">=</mo> <msqrt
 ><mrow
 ><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>1</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn
+>1</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>2</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn
+>2</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>3</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn
+>3</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>4</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn
+>4</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>5</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn
+>5</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>6</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn
+>6</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>7</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn
+>7</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>8</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn
+>8</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>9</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn
+>9</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>10</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn
+>10</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>11</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn
+>11</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>12</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn
+>12</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>13</mn> </mrow> <mrow
->  <mn>2</mn></mrow></msubsup></mrow></msqrt>
+><mn
+>13</mn> </mrow> <mrow
+>  <mn
+>2</mn></mrow></msubsup></mrow></msqrt>
 </mrow></math></div>
-<!--l. 221
---><p
- class="nopar">
-</p>
+                                                                                       
+                                                                                       
 <div
- class="par-math-display"><!--l. 223
+ class="par-math-block" custom-style="Normal"><!--l. 225
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -764,14 +771,17 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
   </mrow><mrow
 ><mi
 >i</mi><mo
- class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
-><mn>13</mn></mrow></munderover><msubsup
+ class="MathClass-rel">=</mo><mn
+>1</mn></mrow><mrow
+><mn
+>13</mn></mrow></munderover><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 ><mi
 >i</mi></mrow><mrow
-><mn>2</mn></mrow></msubsup></mrow></msqrt> <mo
+><mn
+>2</mn></mrow></msubsup></mrow></msqrt> <mo
  class="MathClass-rel">=</mo><msup
 ><mrow
 > <mfenced
@@ -780,108 +790,134 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>1</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+><mn
+>1</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>2</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>2</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>3</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>3</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>4</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>4</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>5</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>5</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>6</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>6</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>7</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>7</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>8</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>8</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>9</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>9</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>10</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>10</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>11</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>11</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>12</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn
+>12</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>13</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup></mrow></mfenced> </mrow><mrow
+<mn
+>13</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup></mrow></mfenced> </mrow><mrow
 ><mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn
+>1</mn></mrow>
 <mrow
-><mn>2</mn></mrow></mfrac> </mrow></msup>
+><mn
+>2</mn></mrow></mfrac> </mrow></msup>
 </mrow></math></div>
-<!--l. 225
---><p
- class="nopar">
-</p><!--l. 227
+<!--l. 229
+
 --><p
  class="noindent">Now for an equation array: </p>
-                                                                                       
-                                                                                       
 <!--tex4ht:inline
---><!--l. 228
+
+--><!--l. 230
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 <mtable
@@ -895,66 +931,95 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
   </mrow><mrow
 ><mi
 >i</mi><mo
- class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
-><mn>13</mn></mrow></munderover><msup
+ class="MathClass-rel">=</mo><mn
+>1</mn></mrow><mrow
+><mn
+>13</mn></mrow></munderover><msup
 ><mrow
-><mn>2</mn></mrow><mrow
+><mn
+>2</mn></mrow><mrow
 ><mi
 >i</mi></mrow></msup></mtd><mtd
  class="eqnarray-2">      <mo
  class="MathClass-rel">=</mo></mtd><mtd
  class="eqnarray-3">      <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>1</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>1</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>2</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>2</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>3</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>3</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>4</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>4</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>5</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>5</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>6</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>6</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>7</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>7</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>8</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>8</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>9</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>9</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>10</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>10</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>11</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>11</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>12</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>12</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>13</mn></mrow></msup>         </mtd><mtd
+><mn
+>2</mn></mrow><mrow
+><mn
+>13</mn></mrow></msup>         </mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd>
 </mtr><mtr
@@ -962,19 +1027,32 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  class="eqnarray-1">          </mtd><mtd
  class="eqnarray-2">      <mo
  class="MathClass-rel">=</mo></mtd><mtd
- class="eqnarray-3">      <mn>2</mn> <mo
- class="MathClass-bin">+</mo> <mn>4</mn> <mo
- class="MathClass-bin">+</mo> <mn>8</mn> <mo
- class="MathClass-bin">+</mo> <mn>16</mn> <mo
- class="MathClass-bin">+</mo> <mn>32</mn> <mo
- class="MathClass-bin">+</mo> <mn>64</mn> <mo
- class="MathClass-bin">+</mo> <mn>128</mn> <mo
- class="MathClass-bin">+</mo> <mn>256</mn> <mo
- class="MathClass-bin">+</mo> <mn>512</mn> <mo
- class="MathClass-bin">+</mo> <mn>1024</mn> <mo
- class="MathClass-bin">+</mo> <mn>2048</mn> <mo
- class="MathClass-bin">+</mo> <mn>4096</mn> <mo
- class="MathClass-bin">+</mo> <mn>8192</mn></mtd><mtd
+ class="eqnarray-3">      <mn
+>2</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>4</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>8</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>16</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>32</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>64</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>128</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>256</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>512</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>1024</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>2048</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>4096</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>8192</mn></mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd>
 </mtr><mtr
@@ -982,21 +1060,28 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  class="eqnarray-1">          </mtd><mtd
  class="eqnarray-2">      <mo
  class="MathClass-rel">=</mo></mtd><mtd
- class="eqnarray-3">      <mn>16382</mn>                                                                  </mtd><mtd
+ class="eqnarray-3">      <mn
+>16382</mn>                                                                  </mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray">(101)</mtext><mtext
  id="x6-5002r101" class="label"></mtext><mtext
  class="endlabel"></mtext></mtd></mtr></mtable>
 </math>
-<!--l. 232
+<!--l. 234
+
 --><p
  class="nopar">
 </p>
-<!--l. 234
+<!--l. 236
+
 --><p
  class="noindent">
+                                                                                       
+                                                                                       
 <!--tex4ht:inline
---></p><!--l. 234
+
+--></p><!--l. 236
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 <mtable
@@ -1010,66 +1095,95 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
   </mrow><mrow
 ><mi
 >i</mi><mo
- class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
-><mn>13</mn></mrow></munderover><msup
+ class="MathClass-rel">=</mo><mn
+>1</mn></mrow><mrow
+><mn
+>13</mn></mrow></munderover><msup
 ><mrow
-><mn>2</mn></mrow><mrow
+><mn
+>2</mn></mrow><mrow
 ><mi
 >i</mi></mrow></msup></mtd><mtd
  class="eqnarray-2">      <mo
  class="MathClass-rel">=</mo></mtd><mtd
  class="eqnarray-3">      <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>1</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>1</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>2</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>2</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>3</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>3</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>4</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>4</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>5</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>5</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>6</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>6</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>7</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>7</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>8</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>8</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>9</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>9</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>10</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>10</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>11</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>11</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>12</mn></mrow></msup> <mo
+><mn
+>2</mn></mrow><mrow
+><mn
+>12</mn></mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>13</mn></mrow></msup>         </mtd><mtd
+><mn
+>2</mn></mrow><mrow
+><mn
+>13</mn></mrow></msup>         </mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd>
 </mtr><mtr
@@ -1077,19 +1191,32 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  class="eqnarray-1">          </mtd><mtd
  class="eqnarray-2">      <mo
  class="MathClass-rel">=</mo></mtd><mtd
- class="eqnarray-3">      <mn>2</mn> <mo
- class="MathClass-bin">+</mo> <mn>4</mn> <mo
- class="MathClass-bin">+</mo> <mn>8</mn> <mo
- class="MathClass-bin">+</mo> <mn>16</mn> <mo
- class="MathClass-bin">+</mo> <mn>32</mn> <mo
- class="MathClass-bin">+</mo> <mn>64</mn> <mo
- class="MathClass-bin">+</mo> <mn>128</mn> <mo
- class="MathClass-bin">+</mo> <mn>256</mn> <mo
- class="MathClass-bin">+</mo> <mn>512</mn> <mo
- class="MathClass-bin">+</mo> <mn>1024</mn> <mo
- class="MathClass-bin">+</mo> <mn>2048</mn> <mo
- class="MathClass-bin">+</mo> <mn>4096</mn> <mo
- class="MathClass-bin">+</mo> <mn>8192</mn></mtd><mtd
+ class="eqnarray-3">      <mn
+>2</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>4</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>8</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>16</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>32</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>64</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>128</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>256</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>512</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>1024</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>2048</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>4096</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>8192</mn></mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd>
 </mtr><mtr
@@ -1097,196 +1224,300 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  class="eqnarray-1">          </mtd><mtd
  class="eqnarray-2">      <mo
  class="MathClass-rel">=</mo></mtd><mtd
- class="eqnarray-3">      <mn>16382</mn><mspace
+ class="eqnarray-3">      <mn
+>16382</mn><mspace
  width="2em" class="qquad"></mspace><mstyle
  class="mbox"><mtext
 >here&#xA0;is&#xA0;some&#xA0;text&#xA0;in&#xA0;the&#xA0;formula&#xA0;to&#xA0;fill&#xA0;up&#xA0;the&#xA0;line&#xA0;at&#xA0;12pt&#xA0;font</mtext></mstyle>     </mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd></mtr></mtable>
 </math>
-<!--l. 238
+<!--l. 240
+
 --><p
  class="nopar">
 </p>
-                                                                                       
-                                                                                       
 <div
- class="par-math-display"><!--l. 240
+ class="par-math-block" custom-style="Normal"><!--l. 242
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
 <mfenced
  separators="" open="[" close="]"><mrow
 > <mtable
- style="text-align:axis;" equalrows="false" columnlines="none" equalcolumns="false" class="array"><mtr
+ align="axis" style="" equalrows="false" columnlines="none" equalcolumns="false" class="array"> <mtr
 ><mtd
  class="array" columnalign="center"><msub
 ><mrow
 ><mi
 >a</mi></mrow><mrow
-><mn>11</mn></mrow></msub></mtd><mtd
+><mn
+>11</mn></mrow></msub></mtd><mtd
  class="array" columnalign="center"><msub
 ><mrow
 ><mi
 >a</mi></mrow><mrow
-><mn>12</mn></mrow></msub></mtd>
-</mtr><mtr
+><mn
+>12</mn></mrow></msub></mtd>
+</mtr>  <mtr
 ><mtd
- class="array" columnalign="center"> <msub
-><mrow
-><mi
->a</mi></mrow><mrow
-><mn>21</mn></mrow></msub> </mtd><mtd
  class="array" columnalign="center"><msub
 ><mrow
 ><mi
 >a</mi></mrow><mrow
-><mn>22</mn></mrow></msub></mtd></mtr>
+><mn
+>21</mn></mrow></msub></mtd><mtd
+ class="array" columnalign="center"><msub
+><mrow
+><mi
+>a</mi></mrow><mrow
+><mn
+>22</mn></mrow></msub></mtd></mtr>
 <!--cc
+
 --></mtable>                                                                                       </mrow></mfenced>
 </mrow></math></div>
-<!--l. 242
---><p
- class="nopar">
-</p>
 <div
- class="par-math-display"><!--l. 244
+ class="par-math-block" custom-style="Normal"><!--l. 246
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
 <mfenced
  separators="" open="[" close="]"><mrow
 > <mtable
- style="text-align:axis;" equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array"><mtr
+ align="axis" style="" equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array"> <mtr
 ><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd></mtr><mtr
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd></mtr><mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn> </mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd>
-</mtr><mtr
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd>
+</mtr>  <mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd></mtr><mtr
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd></mtr><mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn> </mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd>
-</mtr><mtr
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd>
+</mtr>  <mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd></mtr><mtr
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd></mtr><mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn> </mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd>
-</mtr><mtr
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd>
+</mtr>  <mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd></mtr><mtr
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd></mtr><mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn> </mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd>
-</mtr><mtr
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd>
+</mtr>  <mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd></mtr><mtr
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd></mtr><mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn> </mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd></mtr><mtr
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd></mtr><mtr
 ><mtd
  class="array" columnalign="center"></mtd></mtr>
 <!--*{10}{c}
+
 --></mtable>                                                                                       </mrow></mfenced>
 </mrow></math></div>
-<!--l. 257
---><p
- class="nopar">
-</p><!--l. 259
+                                                                                       
+                                                                                       
+<!--l. 261
+
 --><p
  class="noindent">
-                                                                                       
-                                                                                       
 <!--tex4ht:inline
---></p><!--l. 259
+
+--></p><!--l. 261
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 <mtable
@@ -1296,28 +1527,37 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  class="eqnarray-1"> <mfenced
  separators="" open="|" close="|"><mrow
 > <mtable
- style="text-align:axis;" equalrows="false" columnlines="none" equalcolumns="false" class="array"><mtr
+ align="axis" style="" equalrows="false" columnlines="none" equalcolumns="false" class="array"> <mtr
 ><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>2</mn></mtd></mtr><mtr
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>2</mn></mtd></mtr>  <mtr
 ><mtd
- class="array" columnalign="center">  <mn>3</mn> </mtd> <mtd
- class="array" columnalign="center"><mn>4</mn></mtd></mtr>
+ class="array" columnalign="center"><mn
+>3</mn></mtd> <mtd
+ class="array" columnalign="center"><mn
+>4</mn></mtd></mtr>
 <!--cc
+
 --></mtable>                                                                                                                    </mrow></mfenced></mtd><mtd
  class="eqnarray-2">      <mo
  class="MathClass-rel">=</mo></mtd><mtd
  class="eqnarray-3">      <mrow
 ><mo
  class="MathClass-open">(</mo><mrow
-><mn>1</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>4</mn></mrow><mo
+><mn
+>1</mn> <mo
+ class="MathClass-bin">&#xD7;</mo> <mn
+>4</mn></mrow><mo
  class="MathClass-close">)</mo></mrow> <mo
  class="MathClass-bin">&#x2212;</mo> <mrow
 ><mo
  class="MathClass-open">(</mo><mrow
-><mn>2</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>3</mn></mrow><mo
+><mn
+>2</mn> <mo
+ class="MathClass-bin">&#xD7;</mo> <mn
+>3</mn></mrow><mo
  class="MathClass-close">)</mo></mrow></mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd>
@@ -1326,19 +1566,24 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  class="eqnarray-1">                                                                                        </mtd><mtd
  class="eqnarray-2">      <mo
  class="MathClass-rel">=</mo></mtd><mtd
- class="eqnarray-3">      <mn>4</mn> <mo
- class="MathClass-bin">&#x2212;</mo> <mn>6</mn> <mo
+ class="eqnarray-3">      <mn
+>4</mn> <mo
+ class="MathClass-bin">&#x2212;</mo> <mn
+>6</mn> <mo
  class="MathClass-rel">=</mo> <mo
- class="MathClass-bin">&#x2212;</mo><mn>2</mn>     </mtd><mtd
+ class="MathClass-bin">&#x2212;</mo><mn
+>2</mn>     </mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd></mtr></mtable>
 </math>
-<!--l. 262
+<!--l. 264
+
 --><p
  class="nopar">
 </p>
 <div
- class="par-math-display"><!--l. 264
+ class="par-math-block" custom-style="Normal"><!--l. 266
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -1363,12 +1608,11 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  class="MathClass-bin">+</mo> <mi
 >f</mi></mrow></msqrt>
 </mrow></math></div>
-<!--l. 266
---><p
- class="nopar">
-</p>
+                                                                                       
+                                                                                       
 <div
- class="par-math-display"><!--l. 268
+ class="par-math-block" custom-style="Normal"><!--l. 270
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -1401,14 +1645,9 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  accent="true">&#xAF;</mo></mover> </mrow><mo
  accent="true">&#xAF;</mo></mover>
 </mrow></math></div>
-                                                                                       
-                                                                                       
-<!--l. 270
---><p
- class="nopar">
-</p>
 <div
- class="par-math-display"><!--l. 272
+ class="par-math-block" custom-style="Normal"><!--l. 274
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -1428,7 +1667,8 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
 >c</mi></mrow><mo
 >&#x23DE;</mo></mover> </mrow><mrow
 ><mo
- class="MathClass-rel">=</mo><mn>0</mn></mrow></mover> <mo
+ class="MathClass-rel">=</mo><mn
+>0</mn></mrow></mover> <mo
  class="MathClass-bin">+</mo> <mi
 >d</mi></mrow><mo
 >&#x23DF;</mo></munder> </mrow><mrow
@@ -1437,12 +1677,9 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  class="mbox"><mtext
 >text</mtext></mstyle></mrow></munder>
 </mrow></math></div>
-<!--l. 274
---><p
- class="nopar">
-</p>
 <div
- class="par-math-display"><!--l. 276
+ class="par-math-block" custom-style="Normal"><!--l. 278
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -1454,19 +1691,18 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
 ><mi
 >a</mi></mrow></mrow></mover>
 </mrow></math></div>
-<!--l. 278
---><p
- class="nopar">
-</p>
+                                                                                       
+                                                                                       
 <div
- class="par-math-display"><!--l. 281
+ class="par-math-block" custom-style="Normal"><!--l. 283
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
 <mfenced
  separators="" open="(" close=")"><mrow
 > <mtable
- style="text-align:axis;" equalrows="false" columnlines="" equalcolumns="false" class="array"><mtr
+ align="axis" style="" equalrows="false" columnlines="" equalcolumns="false" class="array"> <mtr
 ><mtd
  class="array" columnalign="center"><mi
 >a</mi></mtd></mtr><mtr
@@ -1474,16 +1710,12 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  class="array" columnalign="center"><mi
 >b</mi></mtd></mtr>
 <!--c
+
 --></mtable>                                                                                       </mrow></mfenced>
 </mrow></math></div>
-                                                                                       
-                                                                                       
-<!--l. 283
---><p
- class="nopar">
-</p>
 <div
- class="par-math-display"><!--l. 285
+ class="par-math-block" custom-style="Normal"><!--l. 287
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -1491,94 +1723,106 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
 >a</mi> <mo
  class="MathClass-bin">+</mo>           <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn
+>1</mn></mrow> 
 <mrow
 ><mi
 >b</mi> <mo
  class="MathClass-bin">+</mo>         <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn
+>1</mn></mrow> 
 <mrow
 ><mi
 >c</mi><mo
  class="MathClass-bin">+</mo>         <mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn
+>1</mn></mrow>
 <mrow
 ><mi
 >d</mi><mo
  class="MathClass-bin">+</mo>        <mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn
+>1</mn></mrow>
 <mrow
 ><mi
 >e</mi><mo
  class="MathClass-bin">+</mo>     <mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn
+>1</mn></mrow>
 <mrow
 ><mi
 >f</mi><mo
  class="MathClass-bin">+</mo>   <mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn
+>1</mn></mrow>
 <mrow
 ><mi
 >g</mi><mo
  class="MathClass-bin">+</mo> <mfrac
 ><mrow
-><mn>1</mn></mrow><mrow
+><mn
+>1</mn></mrow><mrow
 ><mi
 >h</mi></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac><mspace
  width="2em" class="qquad"></mspace><mi
 >a</mi> <mo
  class="MathClass-bin">+</mo>                  <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn
+>1</mn></mrow> 
 <mrow
 ><mi
 >b</mi> <mo
  class="MathClass-bin">+</mo>                <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn
+>1</mn></mrow> 
 <mrow
 ><mi
 >c</mi> <mo
  class="MathClass-bin">+</mo>             <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn
+>1</mn></mrow> 
 <mrow
 ><mi
 >d</mi> <mo
  class="MathClass-bin">+</mo>          <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn
+>1</mn></mrow> 
 <mrow
 ><mi
 >e</mi> <mo
  class="MathClass-bin">+</mo>       <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn
+>1</mn></mrow> 
 <mrow
 ><mi
 >f</mi> <mo
  class="MathClass-bin">+</mo>    <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn
+>1</mn></mrow> 
 <mrow
 ><mi
 >g</mi> <mo
  class="MathClass-bin">+</mo> <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn
+>1</mn></mrow> 
 <mrow
 ><mi
 >h</mi></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac>
 </mrow></math></div>
-<!--l. 287
---><p
- class="nopar">
-</p><!--l. 289
+<!--l. 291
+
 --><p
  class="noindent">
 </p>
@@ -1586,13 +1830,16 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  class="subsectionHead"><span
  class="titlemark">2.1    </span> <a
  href="input-web.html#QQ2-6-6" id="x6-60002.1">Testing line breaking</a></h4>
-<!--l. 291
+<!--l. 293
+
 --><p
  class="noindent">
                                                                                        
                                                                                        
 <!--tex4ht:inline
---></p><!--l. 291
+
+--></p><!--l. 293
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 <mtable
@@ -2096,51 +2343,90 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  class="eqnarray-1"> </mtd><mtd
  class="eqnarray-2">      </mtd><mtd
  class="eqnarray-3">      <mi
->a</mi><mo class="MathClass-punc">,</mo><mi
->b</mi><mo class="MathClass-punc">,</mo><mi
->c</mi><mo class="MathClass-punc">,</mo><mi
->d</mi><mo class="MathClass-punc">,</mo><mi
->e</mi><mo class="MathClass-punc">,</mo><mi
->f</mi><mo class="MathClass-punc">,</mo><mi
->g</mi><mo class="MathClass-punc">,</mo><mi
->h</mi><mo class="MathClass-punc">,</mo><mi
->i</mi><mo class="MathClass-punc">,</mo><mi
->j</mi><mo class="MathClass-punc">,</mo><mi
->k</mi><mo class="MathClass-punc">,</mo><mi
->l</mi><mo class="MathClass-punc">,</mo><mi
->m</mi><mo class="MathClass-punc">,</mo><mi
->n</mi><mo class="MathClass-punc">,</mo><mi
->o</mi><mo class="MathClass-punc">,</mo><mi
->p</mi><mo class="MathClass-punc">,</mo><mi
->q</mi><mo class="MathClass-punc">,</mo><mi
->r</mi><mo class="MathClass-punc">,</mo><mi
->s</mi><mo class="MathClass-punc">,</mo><mi
->t</mi><mo class="MathClass-punc">,</mo><mi
->u</mi><mo class="MathClass-punc">,</mo><mi
->v</mi><mo class="MathClass-punc">,</mo><mi
->w</mi><mo class="MathClass-punc">,</mo><mi
->x</mi><mo class="MathClass-punc">,</mo><mi
->y</mi><mo class="MathClass-punc">,</mo><mi
->z</mi><mo class="MathClass-punc">,</mo><mi
->a</mi><mo class="MathClass-punc">,</mo><mi
->b</mi><mo class="MathClass-punc">,</mo><mi
->c</mi><mo class="MathClass-punc">,</mo><mi
->d</mi><mo class="MathClass-punc">,</mo><mi
->e</mi><mo class="MathClass-punc">,</mo><mi
->f</mi><mo class="MathClass-punc">,</mo><mi
->g</mi><mo class="MathClass-punc">,</mo><mi
->h</mi><mo class="MathClass-punc">,</mo><mi
->i</mi><mo class="MathClass-punc">,</mo><mi
->j</mi><mo class="MathClass-punc">,</mo><mi
->k</mi><mo class="MathClass-punc">,</mo><mi
+>a</mi><mo
+ class="MathClass-punc">,</mo><mi
+>b</mi><mo
+ class="MathClass-punc">,</mo><mi
+>c</mi><mo
+ class="MathClass-punc">,</mo><mi
+>d</mi><mo
+ class="MathClass-punc">,</mo><mi
+>e</mi><mo
+ class="MathClass-punc">,</mo><mi
+>f</mi><mo
+ class="MathClass-punc">,</mo><mi
+>g</mi><mo
+ class="MathClass-punc">,</mo><mi
+>h</mi><mo
+ class="MathClass-punc">,</mo><mi
+>i</mi><mo
+ class="MathClass-punc">,</mo><mi
+>j</mi><mo
+ class="MathClass-punc">,</mo><mi
+>k</mi><mo
+ class="MathClass-punc">,</mo><mi
+>l</mi><mo
+ class="MathClass-punc">,</mo><mi
+>m</mi><mo
+ class="MathClass-punc">,</mo><mi
+>n</mi><mo
+ class="MathClass-punc">,</mo><mi
+>o</mi><mo
+ class="MathClass-punc">,</mo><mi
+>p</mi><mo
+ class="MathClass-punc">,</mo><mi
+>q</mi><mo
+ class="MathClass-punc">,</mo><mi
+>r</mi><mo
+ class="MathClass-punc">,</mo><mi
+>s</mi><mo
+ class="MathClass-punc">,</mo><mi
+>t</mi><mo
+ class="MathClass-punc">,</mo><mi
+>u</mi><mo
+ class="MathClass-punc">,</mo><mi
+>v</mi><mo
+ class="MathClass-punc">,</mo><mi
+>w</mi><mo
+ class="MathClass-punc">,</mo><mi
+>x</mi><mo
+ class="MathClass-punc">,</mo><mi
+>y</mi><mo
+ class="MathClass-punc">,</mo><mi
+>z</mi><mo
+ class="MathClass-punc">,</mo><mi
+>a</mi><mo
+ class="MathClass-punc">,</mo><mi
+>b</mi><mo
+ class="MathClass-punc">,</mo><mi
+>c</mi><mo
+ class="MathClass-punc">,</mo><mi
+>d</mi><mo
+ class="MathClass-punc">,</mo><mi
+>e</mi><mo
+ class="MathClass-punc">,</mo><mi
+>f</mi><mo
+ class="MathClass-punc">,</mo><mi
+>g</mi><mo
+ class="MathClass-punc">,</mo><mi
+>h</mi><mo
+ class="MathClass-punc">,</mo><mi
+>i</mi><mo
+ class="MathClass-punc">,</mo><mi
+>j</mi><mo
+ class="MathClass-punc">,</mo><mi
+>k</mi><mo
+ class="MathClass-punc">,</mo><mi
 >l</mi> </mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd></mtr></mtable>
 </math>
-<!--l. 303
+<!--l. 305
+
 --><p
  class="nopar">
-</p><!--l. 305
+</p><!--l. 307
+
 --><p
  class="noindent">
 </p>
@@ -2151,7 +2437,8 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
                                                                                        
                                                                                        
 <div
- class="par-math-display"><!--l. 306
+ class="par-math-block" custom-style="Normal"><!--l. 308
+
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
 >
@@ -2159,24 +2446,24 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>1</mn></mrow></msub><msup
+><mn
+>1</mn></mrow></msub><msup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>2</mn></mrow></msup><msub
+><mn
+>2</mn></mrow></msup><msub
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>2</mn></mrow></msub>
+<mn
+>2</mn></mrow></msub>
 </mrow></math></div>
-<!--l. 308
---><p
- class="nopar">
                                                                                        
                                                                                        
-</p>
-<!--l. 309
+<!--l. 311
+
 --><div
  class="crosslinks"><p
  class="noindent">[<a
@@ -2184,7 +2471,8 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
  href="input-webse1.html#tailinput-webse1.html">prev-tail</a>] [<a
  href="input-webse2.html">front</a>] [<a
  href="input-web.html#input-webse2.html">up</a>] </p></div>
-<!--l. 309
+<!--l. 311
+
 --><p
  class="noindent"><a
  id="tailinput-webse2.html"></a> </p> 

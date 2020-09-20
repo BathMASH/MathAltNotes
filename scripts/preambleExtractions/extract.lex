@@ -20,8 +20,10 @@ int frac = 0;
 int authorcount = 0;
 int begun = 0;
 int colorlst = 0;
+int colorishere = 0;
 %}
 
+whitehspace (" "|\t)
 whitespace (" "|\t|(\r?\n))
 lb ([[:blank:]])*"{"([[:blank:]])*
 rb ([[:blank:]])*"}"
@@ -41,9 +43,9 @@ tableofcontents "\\tableofcontents"
 packages ("\\usepackage")
 newcommand ("\\newcommand"|"\\renewcommand")
 newenvironment "\\newenvironment"
-danger ("babel"|"fontenc"|"lmodern"|"graphicx"|"geometry"|"spverbatim"|"listings"|"amsmath"|"amssymb"|"amsfonts"|"amsthm"|"hyperref"|"DejaVuSansMono"|"etoolbox"|"epsfig"|"mathdesign")
+danger ("babel"|"fontenc"|"lmodern"|"graphicx"|"geometry"|"spverbatim"|"listings"|"amsmath"|"amssymb"|"amsfonts"|"amsthm"|"hyperref"|"DejaVuSansMono"|"etoolbox"|"epsfig"|"mathdesign"|"pdfpages")
 notlarge ("cleveref")
-standardonly ("\\newpage"|"\\clearpage") 
+standardonly ("\\newpage"|"\\clearpage"|"\\pagebreak") 
 bracedcolor "{"(([^"}""{"])*)"\\color{"(([^"}""{"])*)"}"
 picturestart "\\begin"{lb}"picture"{rb}
 pictureend "\\end"{lb}"picture"{rb}
@@ -96,6 +98,8 @@ verbatim "\\begin"{lb}("verbatim"|"spverbatim"){rb}
 <CLASS>{lb} ECHO; yy_push_state(READCLASS);
 <CLASS>"a4paper" papersize=4; ECHO;
 <CLASS>"fleqn" fleqn=1; ECHO;
+<CLASS>"usenames" colorishere=1; ECHO;
+<CLASS>"dvipsnames" colorishere=1; ECHO;
 <READCLASS>(.*)/"}" ECHO; whatclass(); yy_pop_state(); yy_pop_state(); 
 
 {packages} yy_push_state(PACKAGES);
@@ -103,6 +107,10 @@ verbatim "\\begin"{lb}("verbatim"|"spverbatim"){rb}
 <PACKAGES>(("[")(.*)("]"))*{lb}"xr"{rb} printf("\\ifpdf\\usepackage{xr,xr-hyper}\\else\\fi"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}{danger}{rb} printf("\\ifboolexpr{togl {web} or togl{clearprint}}{}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}{notlarge}{rb} printf("\\ifboolexpr{togl {web} or togl{large}}{}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
+<PACKAGES>(("[")(.*)("]"))*{lb}"booktabs"{rb} printf("\\ifboolexpr{togl {web} or togl {word}}{\\renewcommand{\\hline}{}\\newcommand{\\toprule}{}\\newcommand{\\midrule}{}\\newcommand{\\bottomrule}{}}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
+<PACKAGES>(("[")(.*)("]"))*{lb}"centernot"{rb} printf("\\ifboolexpr{togl {web} or togl {large}}{\\newcommand{\\centernot}{\\not}}{\\usepackage"); ECHO; printf("}"); yy_pop_state();
+<PACKAGES>"[table]"{lb}"xcolor"{rb} printf("\\ifboolexpr{togl {web} or togl {word}}{\\usepackage{xcolor}\\newcommand{\\rowcolors}[3]{}\\newcommand{\\rowcolor}[1]{}\\AtBeginDocument{\\let\\hiderowcolors\\undefined\\newcommand{\\hiderowcolors}{}\\let\\showrowcolors\\undefined\\newcommand{\\showrowcolors}{}}}{\\usepackage[table]{xcolor}}"); yy_pop_state();
+<PACKAGES>(("[")(.*)("]"))*{lb}"xcolor"{rb} printf("\\usepackage[dvipsnames]{xcolor}"); yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb}"tikz"{rb} if(beamer==0) printf("\\usepackage[dvipsnames]{xcolor}\\usepackage"); else printf("\\PassOptionsToPackage{dvipsnames}{xcolor}\\usepackage"); ECHO; yy_pop_state();
 <PACKAGES>(("[")(.*)("]"))*{lb} printf("\\usepackage"); ECHO; 
 <PACKAGES>","(" ")* printf(",");
@@ -161,6 +169,15 @@ verbatim "\\begin"{lb}("verbatim"|"spverbatim"){rb}
 <INPUTPDFLATEX>"/"
 <INPUTPDFLATEX>{rb} ECHO; yy_pop_state();
 <FIGURE>{figureend} ECHO; yy_pop_state();
+
+{lb}{whitehspace}*"\\bf " if(begun==1) {printf(" \\textbf{");} else ECHO;
+{lb}{whitehspace}*"\\it " if(begun==1) {printf(" \\textit{");} else ECHO;
+{lb}{whitehspace}*"\\sl " if(begun==1) {printf(" \\textsl{");} else ECHO;
+{lb}{whitehspace}*"\\em " if(begun==1) {printf(" \\emph{");} else ECHO;
+{lb}{whitehspace}*"\\sc " if(begun==1) {printf(" \\textsc{");} else ECHO;
+{lb}{whitehspace}*"\\rm " if(begun==1) {printf(" \\textrm{");} else ECHO;
+{lb}{whitehspace}*"\\tt " if(begun==1) {printf(" \\texttt{");} else ECHO;
+{lb}{whitehspace}*"\\sf " if(begun==1) {printf(" \\textsf{");} else ECHO; 
 
 {bracedcolor} if(begun==1) {printf(" \\textcolor{"); getcolor();} else ECHO;
 
@@ -277,6 +294,7 @@ int choices(){
   FILE *unknown;
   FILE *fleqnout;
   FILE *beamerfix;
+  FILE *colorhere;
   output = fopen("choices.tex","w");
   typeout = fopen(".documentclass","w");
   alttype = fopen(".alternativeclass","w");
@@ -285,6 +303,7 @@ int choices(){
   unknown = fopen(".unknownclass","w");
   fleqnout = fopen(".fleqn","w");
   beamerfix = fopen(".beamerfix","w");
+  colorhere = fopen(".colorhere","w");
   if(output == NULL){
     fprintf(stderr, "Can't open choices file\n");
     exit(1);
@@ -314,9 +333,13 @@ int choices(){
     exit(1);
   }
   if(beamerfix == NULL){
-    fprintf(stderr, "Can't open beamefix class option output file\n");
+    fprintf(stderr, "Can't open beamerfix class option output file\n");
     exit(1);
   }
+  if(colorhere == NULL){
+   fprintf(stderr, "Can't open colorhere class option output file\n");
+    exit(1);
+  } 
   if(title == 1 && author == 1)
     fprintf(output,"\\toggletrue{frontmatter}");
   else
@@ -334,7 +357,7 @@ int choices(){
   }else if(strcmp(class,"report")==0 || strcmp(class,"extreport")==0){
     fprintf(alttype,"report");
     fprintf(unknown,"false");
-  }else if(strcmp(class,"book")==0 || strcmp(class,"extbook")==0 || strcmp(class,"tufte-book")==0){
+  }else if(strcmp(class,"book")==0 || strcmp(class,"extbook")==0 || strcmp(class,"tufte-book")==0 ){
     fprintf(alttype,"book");
     fprintf(unknown,"false");
   }else if(strcmp(class,"amsart") == 0){
@@ -362,13 +385,15 @@ int choices(){
     fprintf(fleqnout," ");
   if(fleqn == 1)
     fprintf(fleqnout,"fleqn");
-  
+  if(colorishere == 1)
+    fprintf(colorhere,"usenames,dvipsnames");
   fclose(output);
   fclose(typeout);
   fclose(sizeout);
   fclose(paperout);
   fclose(unknown);
   fclose(fleqnout);
+  fclose(colorhere);
   return 0;
 }
 
@@ -476,3 +501,5 @@ int macrosoutput(){
 
   return 0;
 }
+
+

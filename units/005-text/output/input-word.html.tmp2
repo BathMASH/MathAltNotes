@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 
 <html
-> 
+ lang="en"> 
 <head
 > <title
 >Basic structures</title> 
@@ -19,7 +19,8 @@
  rel="stylesheet" type="text/css" href="additional.css"></link> 
 <script
  type="text/x-mathjax-config"> 
-MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
+MathJax.Hub.Config({ mml2jax: { preview: ["[maths rendering]"]}, 
+"fast-preview": {disabled: true}, 
 explorer:{ subtitle: true }, 
 displayAlign: "center",  
 MatchWebFonts: { 
@@ -39,6 +40,15 @@ linebreaks: { automatic: false, width: "90% container" }
 }, 
 menuSettings: { collapsible: false, autocollapse: false, explorer: false } 
 }); 
+</script> 
+<script
+ type="text/x-mathjax-config"> 
+MathJax.Hub.Register.MessageHook("End Math", function (msg) { 
+var nodes = Array.from(msg[1].querySelectorAll('.MJX_Assistive_MathML [id]')); 
+while (nodes.length) { 
+nodes.shift().removeAttribute('id'); 
+} 
+}, 20); 
 </script> 
 <script
  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script> 
@@ -84,11 +94,7 @@ menuSettings: { collapsible: false, autocollapse: false, explorer: false }
 --><p
  class="noindent">A baseline of text to show the height change in the above and below environments. This line
 was indented though to show off the next environment. The quotations are from &#x201C;A Guide to
-<span
- class="LATEX">L<span
- class="A">A</span><span
- class="TEX">T<span
- class="E">E</span>X</span></span>&#x201D; <span
+LaTeX&#x201D; <span
  class="cite">[<a
  href="#XKopkaDaly">1</a>]</span>
          </p><div
@@ -368,8 +374,6 @@ over here...
  class="float">
                                                                                        
                                                                                        
-<a
- id="x1-1doc"></a>
 <div
  class="tabular"> <table
  id="TBL-2" class="tabular" cellspacing="0" cellpadding="0" rules="groups"><colgroup
@@ -508,24 +512,22 @@ over here...
 </div><hr
  class="endfloat"></hr>
 </div>
-<!--l. 207
+<!--l. 208
 --><p
  class="noindent">This is just below where the floating table <a
- href="#x1-1doc"><!--tex4ht:ref: table 
+ href="#x1-271">1<!--tex4ht:ref: table 
 --></a> was defined. It should appear at the top of either
 this page or the page after this.
 </p>
 <div
  class="center">
-<!--l. 212
+<!--l. 213
 --><p
  class="noindent">
 <a
  id="x1-28r2"></a></p>
-<!--l. 217
---><div
- class="longtable"> <table
- id="TBL-3" class="longtable" cellspacing="0" cellpadding="0" rules="groups"><colgroup
+<table
+ id="TBL-3" class="tabular" cellspacing="0" cellpadding="0" rules="groups"><colgroup
  id="TBL-3-1g"><col
  id="TBL-3-1"></col></colgroup><colgroup
  id="TBL-3-2g"><col
@@ -541,12 +543,12 @@ this page or the page after this.
 ><hr
 ></hr></td></tr><tr
  style="vertical-align:baseline;" id="TBL-3-1-"><td
- style="text-align:left; white-space:nowrap;" id="TBL-3-1-1" class="td11"><b
->First</b></td><td
- style="text-align:left; white-space:nowrap;" id="TBL-3-1-2" class="td11"><b
->Second</b></td><td
- style="text-align:left; white-space:nowrap;" id="TBL-3-1-3" class="td11"><b
->Third</b></td>
+ style="text-align:left; white-space:nowrap;" id="TBL-3-1-1" class="td11"><strong
+>First</strong></td><td
+ style="text-align:left; white-space:nowrap;" id="TBL-3-1-2" class="td11"><strong
+>Second</strong></td><td
+ style="text-align:left; white-space:nowrap;" id="TBL-3-1-3" class="td11"><strong
+>Third</strong></td>
 </tr><tr
  class="hline"><td
 ><hr
@@ -585,11 +587,13 @@ this page or the page after this.
 ></hr></td></tr><tr
  style="vertical-align:baseline;" id="TBL-3-14-"><td
  style="text-align:left; white-space:nowrap;" id="TBL-3-14-1" class="td11">This is the second line </td><td
- style="text-align:left; white-space:nowrap;" id="TBL-3-14-2" class="td11"><!--l. 233
+ style="text-align:left; white-space:nowrap;" id="TBL-3-14-2" class="td11"><!--l. 234
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
-><mn>1</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>2</mn></mrow></math></td><td
+><mn>1</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>2</mn>
+</mrow></math></td><td
  style="text-align:left; white-space:nowrap;" id="TBL-3-14-3" class="td11">                                                                          </td>
 </tr><tr
  class="hline"><td
@@ -601,16 +605,20 @@ this page or the page after this.
 ></hr></td></tr><tr
  style="vertical-align:baseline;" id="TBL-3-15-"><td
  style="text-align:left; white-space:nowrap;" id="TBL-3-15-1" class="td11">This is the third line     </td><td
- style="text-align:left; white-space:nowrap;" id="TBL-3-15-2" class="td11"><!--l. 235
+ style="text-align:left; white-space:nowrap;" id="TBL-3-15-2" class="td11"><!--l. 236
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
-><mn>1</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>2</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>3</mn></mrow></math></td><td
- style="text-align:left; white-space:nowrap;" id="TBL-3-15-3" class="td11"><!--l. 235
+><mn>1</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>2</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>3</mn>
+</mrow></math></td><td
+ style="text-align:left; white-space:nowrap;" id="TBL-3-15-3" class="td11"><!--l. 236
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
-><mn>6</mn></mrow></math></td>
+><mn>6</mn>
+</mrow></math></td>
 </tr><tr
  class="hline"><td
 ><hr
@@ -621,17 +629,22 @@ this page or the page after this.
 ></hr></td></tr><tr
  style="vertical-align:baseline;" id="TBL-3-16-"><td
  style="text-align:left; white-space:nowrap;" id="TBL-3-16-1" class="td11">This is the fourth line   </td><td
- style="text-align:left; white-space:nowrap;" id="TBL-3-16-2" class="td11"><!--l. 237
+ style="text-align:left; white-space:nowrap;" id="TBL-3-16-2" class="td11"><!--l. 238
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
-><mn>1</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>2</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>3</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>4</mn></mrow></math></td><td
- style="text-align:left; white-space:nowrap;" id="TBL-3-16-3" class="td11"><!--l. 237
+><mn>1</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>2</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>3</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>4</mn>
+</mrow></math></td><td
+ style="text-align:left; white-space:nowrap;" id="TBL-3-16-3" class="td11"><!--l. 238
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
-><mn>24</mn></mrow></math></td>
+><mn>24</mn>
+</mrow></math></td>
 </tr><tr
  class="hline"><td
 ><hr
@@ -642,18 +655,24 @@ this page or the page after this.
 ></hr></td></tr><tr
  style="vertical-align:baseline;" id="TBL-3-17-"><td
  style="text-align:left; white-space:nowrap;" id="TBL-3-17-1" class="td11">This is the fifth line       </td><td
- style="text-align:left; white-space:nowrap;" id="TBL-3-17-2" class="td11"><!--l. 239
+ style="text-align:left; white-space:nowrap;" id="TBL-3-17-2" class="td11"><!--l. 240
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
-><mn>1</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>2</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>3</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>4</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>5</mn></mrow></math></td><td
- style="text-align:left; white-space:nowrap;" id="TBL-3-17-3" class="td11"><!--l. 239
+><mn>1</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>2</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>3</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>4</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>5</mn>
+</mrow></math></td><td
+ style="text-align:left; white-space:nowrap;" id="TBL-3-17-3" class="td11"><!--l. 240
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
-><mn>120</mn></mrow></math></td>
+><mn>120</mn>
+</mrow></math></td>
 </tr><tr
  class="hline"><td
 ><hr
@@ -664,19 +683,26 @@ this page or the page after this.
 ></hr></td></tr><tr
  style="vertical-align:baseline;" id="TBL-3-18-"><td
  style="text-align:left; white-space:nowrap;" id="TBL-3-18-1" class="td11">This is the sixth line     </td><td
- style="text-align:left; white-space:nowrap;" id="TBL-3-18-2" class="td11"><!--l. 241
+ style="text-align:left; white-space:nowrap;" id="TBL-3-18-2" class="td11"><!--l. 242
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
-><mn>1</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>2</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>3</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>4</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>5</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>6</mn></mrow></math></td><td
- style="text-align:left; white-space:nowrap;" id="TBL-3-18-3" class="td11"><!--l. 241
+><mn>1</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>2</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>3</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>4</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>5</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>6</mn>
+</mrow></math></td><td
+ style="text-align:left; white-space:nowrap;" id="TBL-3-18-3" class="td11"><!--l. 242
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
-><mn>720</mn></mrow></math></td>
+><mn>720</mn>
+</mrow></math></td>
 </tr><tr
  class="hline"><td
 ><hr
@@ -687,20 +713,28 @@ this page or the page after this.
 ></hr></td></tr><tr
  style="vertical-align:baseline;" id="TBL-3-19-"><td
  style="text-align:left; white-space:nowrap;" id="TBL-3-19-1" class="td11">This is the seventh line</td><td
- style="text-align:left; white-space:nowrap;" id="TBL-3-19-2" class="td11"><!--l. 243
+ style="text-align:left; white-space:nowrap;" id="TBL-3-19-2" class="td11"><!--l. 244
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
-><mn>1</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>2</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>3</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>4</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>5</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>6</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>7</mn></mrow></math></td><td
- style="text-align:left; white-space:nowrap;" id="TBL-3-19-3" class="td11"><!--l. 243
+><mn>1</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>2</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>3</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>4</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>5</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>6</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>7</mn>
+</mrow></math></td><td
+ style="text-align:left; white-space:nowrap;" id="TBL-3-19-3" class="td11"><!--l. 244
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
-><mn>5040</mn></mrow></math></td>
+><mn>5040</mn>
+</mrow></math></td>
 </tr><tr
  class="hline"><td
 ><hr
@@ -711,21 +745,30 @@ this page or the page after this.
 ></hr></td></tr><tr
  style="vertical-align:baseline;" id="TBL-3-20-"><td
  style="text-align:left; white-space:nowrap;" id="TBL-3-20-1" class="td11">This is the eighth line   </td><td
- style="text-align:left; white-space:nowrap;" id="TBL-3-20-2" class="td11"><!--l. 245
+ style="text-align:left; white-space:nowrap;" id="TBL-3-20-2" class="td11"><!--l. 246
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
-><mn>1</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>2</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>3</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>4</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>5</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>6</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>7</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>8</mn></mrow></math></td><td
- style="text-align:left; white-space:nowrap;" id="TBL-3-20-3" class="td11"><!--l. 245
+><mn>1</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>2</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>3</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>4</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>5</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>6</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>7</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>8</mn>
+</mrow></math></td><td
+ style="text-align:left; white-space:nowrap;" id="TBL-3-20-3" class="td11"><!--l. 246
 --><math
  xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
-><mn>40320</mn></mrow></math></td>
+><mn>40320</mn>
+</mrow></math></td>
 </tr><tr
  class="hline"><td
 ><hr
@@ -775,7 +818,7 @@ this page or the page after this.
  style="vertical-align:baseline;" id="TBL-3-12-"><td
  style="text-align:left; white-space:nowrap;" id="TBL-3-12-1" class="td11"></td>
 </tr>
-</table></div>
+</table>
 </div>
                                                                                        
                                                                                        
@@ -787,10 +830,10 @@ This&#xA0;text&#xA0;should&#xA0;be&#xA0;printed&#xA0;verbatim&#xA0;with&#xA0;a&#
 &#xA0;<br
 ></br>&#x3E;&#xA0;this&#xA0;line&#xA0;has&#xA0;a&#xA0;prompt&#xA0;at&#xA0;the&#xA0;start&#xA0;and&#xA0;now&#xA0;some&#xA0;braces&#xA0;{}
 </div>
-<!--l. 258
+<!--l. 259
 --><p
  class="nopar">
-</p><!--l. 262
+</p><!--l. 263
 --><p
  class="noindent">This  next  <span
  class="obeylines-h"><span
@@ -801,7 +844,7 @@ shown<span
  href="#fn1x0" id="fn1x0-bk"><sup
  class="textsuperscript">1</sup></a></span><a
  id="x1-29f1"></a>.
-</p><!--l. 265
+</p><!--l. 266
 --><p
  class="noindent">A piece <span
  class="obeylines-h"><span
@@ -817,13 +860,13 @@ shown<span
  class="ec-lmtt-12">&#xA0;test</span><span
  class="ec-lmtt-12">&#xA0;line</span><span
  class="ec-lmtt-12">&#xA0;breaking</span></span></span>.
-</p><!--l. 276
+</p><!--l. 277
 --><p
  class="nopar">A baseline of text which is a single line long in 12pt font with no indent applied.<span
  class="marginpar">Note<br
  class="newline"></br>in the<br
  class="newline"></br>margin.</span>
-</p><!--l. 281
+</p><!--l. 282
 --><p
  class="nopar">A baseline of text which is a single line long in 12pt font with no indent applied.<span
  class="marginpar">_</span>
@@ -831,7 +874,7 @@ shown<span
 <h3
  class="likesectionHead"><a
  href="#x1-1000" id="x1-1000">References</a></h3>
-<!--l. 285
+<!--l. 286
 --><p
  class="nopar">
      </p><div
@@ -841,16 +884,12 @@ shown<span
  class="biblabel">
   [1]<span
  class="bibsp">&#xA0;&#xA0;&#xA0;</span></span><a
- id="XKopkaDaly"></a>Kopka, H. and Daly, P., <b
->A Guide to <span
- class="LATEX">L<span
- class="A">A</span><span
- class="TEX">T<span
- class="E">E</span>X</span></span></b>. Pearson Education Ltd., 1999</p></div>
+ id="XKopkaDaly"></a>Kopka, H. and Daly, P., <strong
+>A Guide to LaTeX</strong>. Pearson Education Ltd., 1999</p></div>
                                                                                        
                                                                                        
 <div
- class="footnotes"><!--l. 262
+ class="footnotes"><!--l. 263
 --><p
  class="noindent"><span
  class="footnote-mark"><a

@@ -1,0 +1,4604 @@
+<!DOCTYPE html> 
+
+
+<html
+> 
+<head
+> <title
+>Basic mathematical symbols and structures</title> 
+<meta
+ charset="UTF-8"></meta> 
+<meta
+ name="viewport" content="target-densitydpi=device-dpi; width=device-width; initial-scale=1.0; minimum-scale=1.0; user-scalable=yes;"></meta> 
+<meta
+ name="HandheldFriendly" content="True"></meta> 
+<meta
+ name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"></meta> 
+<link
+ rel="stylesheet" type="text/css" href="input-word.css"></link> 
+<link
+ rel="stylesheet" type="text/css" href="additional.css"></link> 
+<script
+ type="text/x-mathjax-config"> 
+MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
+explorer:{ subtitle: true }, 
+displayAlign: "center",  
+MatchWebFonts: { 
+matchFor: { "HTML-CSS": true, NativeMML: false, SVG: false }, 
+fontCheckDelay: 2000, 
+fontCheckTimeout: 30 * 1000 
+}, 
+"HTML-CSS": { 
+preferredFont: "STIX",  
+availableFonts: ["STIX","TeX"],  
+webFont: "STIX-Web",  
+linebreaks: { automatic: true, width: "90% container" } 
+}, 
+SVG: {  
+font: "STIX-Web", 
+linebreaks: { automatic: false, width: "90% container" } 
+}, 
+menuSettings: { collapsible: false, autocollapse: false, explorer: false } 
+}); 
+</script> 
+<script
+ type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script> 
+<style
+ type="text/css"> 
+".MathJax_MathML" {text-indent: 0;} 
+</style> 
+</head><body
+>
+<div
+ class="maketitle">
+                                                                                       
+                                                                                       
+                                                                                       
+                                                                                       
+
+<h2
+ class="titleHead">Basic mathematical symbols and structures</h2>
+<div
+ class="author"><span
+ class="phvr8t-x-x-144">Emma Cliffe</span></div>
+<br
+></br>
+<div
+ class="date"></div>
+</div>
+<h3
+ class="likesectionHead"><a
+ href="#x1-1000" id="x1-1000">Contents</a></h3>
+<div
+ class="tableofcontents">
+<span
+ class="sectionToc">1 <a
+ href="#x1-40001" id="QQ2-1-4">Standard mathematical symbols</a></span>
+<br
+></br><span
+ class="sectionToc">2 <a
+ href="#x1-50002" id="QQ2-1-5">Standard mathematical structures</a></span>
+<br
+></br>&#xA0;<span
+ class="subsectionToc">2.1 <a
+ href="#x1-60002.1" id="QQ2-1-6">Testing line breaking</a></span>
+<br
+></br>&#xA0;<span
+ class="subsectionToc">2.2 <a
+ href="#x1-70002.2" id="QQ2-1-7">Testing new commands</a></span>
+</div>
+                                                                                       
+                                                                                       
+<h3
+ class="likesectionHead"><a
+ href="#x1-2000" id="x1-2000">List of Figures</a></h3>
+<div
+ class="tableofcontents">
+</div>
+<h3
+ class="likesectionHead"><a
+ href="#x1-3000" id="x1-3000">List of Tables</a></h3>
+<div
+ class="tableofcontents">
+</div>
+                                                                                       
+                                                                                       
+<!--l. 15
+
+--><p
+ class="noindent">
+                                                                                       
+                                                                                       
+</p>
+<h3
+ class="sectionHead"><span
+ class="titlemark">1    </span> <a
+ href="#QQ2-1-4" id="x1-40001">Standard mathematical symbols</a></h3>
+<!--l. 19
+
+--><p
+ class="noindent">We will use the robust single dollar environment for these
+</p><!--l. 21
+
+--><p
+ class="noindent">Math versions of text symbols: <!--l. 21
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
+>  <mi
+>$</mi><mstyle
+ class="mbox"><mtext
+>_</mtext></mstyle><mo
+ class="MathClass-bin">&#x2021;</mo><mrow
+><mo
+ class="MathClass-open">{</mo><mrow
+><mo
+ class="MathClass-op">&#xB6;</mo><mo
+ class="MathClass-op">&#x2026;</mo><mspace
+ width="0.3em" class="thinspace"></mspace></mrow><mo
+ class="MathClass-close">}</mo></mrow><mo
+ class="MathClass-op">&#xA7;</mo><mo
+ class="MathClass-bin">&#x2020;</mo><mstyle
+ mathvariant="italic"><mi
+>&#xA3;</mi></mstyle><mstyle
+ class="text"><mtext
+>&#xA9;</mtext></mstyle></mrow></math>
+</p><!--l. 23
+
+--><p
+ class="noindent">Keyboard symbols: <!--l. 23
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
+>  <mo
+ class="MathClass-bin">+</mo><mo
+ class="MathClass-bin">&#x2212;</mo> <mo
+ class="MathClass-rel">=</mo><mo
+ class="MathClass-rel">&#x3C;</mo><mo
+ class="MathClass-rel">&#x3E;</mo> <mo
+ class="MathClass-bin">&#x2215;</mo> <mo
+ class="MathClass-punc">:</mo><msup
+><mrow
+><mo
+ class="MathClass-punc">!</mo></mrow><mrow
+><mi
+>&#x2032;</mi></mrow></msup><mo
+ class="MathClass-rel">|</mo><mrow
+><mo
+ class="MathClass-open">[</mo><mrow
+></mrow><mo
+ class="MathClass-close">]</mo></mrow><mrow
+><mo
+ class="MathClass-open">(</mo><mrow
+></mrow><mo
+ class="MathClass-close">)</mo></mrow> </mrow></math>
+</p><!--l. 25
+
+--><p
+ class="noindent">But for longer tests we will use the equation environment so that we don&#x2019;t overrun the line if
+we increase the font size. We&#x2019;ll do a basic macro test in section <a
+ href="#x1-70002.2">2.2<!--tex4ht:ref: test 
+
+--></a>.
+</p><!--l. 28
+
+--><p
+ class="noindent">Greek: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4001r1"></a>
+<!--l. 29
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                         <mi
+>&#x3B1;</mi><mi
+>&#x3B2;</mi><mi
+>&#x3B3;</mi><mi
+>&#x3B4;</mi><mi
+>&#x3F5;</mi><mi
+>&#x3B5;</mi><mi
+>&#x3B6;</mi><mi
+>&#x3B7;</mi><mi
+>&#x3B8;</mi><mi
+>&#x3D1;</mi><mi
+>&#x3B9;</mi><mi
+>&#x3BA;</mi><mi
+>&#x3BB;</mi><mi
+>&#x3BC;</mi><mi
+>&#x3BD;</mi><mi
+>&#x3BE;</mi><mi
+>o</mi><mi
+>&#x3C0;</mi><mi
+>&#x3D6;</mi><mi
+>&#x3C1;</mi><mi
+>&#x3F1;</mi><mi
+>&#x3C3;</mi><mi
+>&#x3C2;</mi><mi
+>&#x3C4;</mi><mi
+>&#x3C5;</mi><mi
+>&#x3D5;</mi><mi
+>&#x3C6;</mi><mi
+>&#x3C7;</mi><mi
+>&#x3C8;</mi><mi
+>&#x3C9;</mi>
+</math></td><td
+ class="eq-no">(1)</td></tr></table>
+<!--l. 33
+
+--><p
+ class="noindent">Upper case Greek: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4002r2"></a>
+<!--l. 34
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                                  <mi
+>&#x393;</mi><mi
+>&#x394;</mi><mi
+>&#x398;</mi><mi
+>&#x39B;</mi><mi
+>&#x39E;</mi><mi
+>&#x3A0;</mi><mi
+>&#x3A3;</mi><mi
+>&#x3A5;</mi><mi
+>&#x3A6;</mi><mi
+>&#x3A8;</mi><mi
+>&#x3A9;</mi>
+</math></td><td
+ class="eq-no">(2)</td></tr></table>
+<!--l. 38
+
+--><p
+ class="noindent">Normal, lower case: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4003r3"></a>
+                                                                                       
+                                                                                       
+<!--l. 39
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                            <mi
+>a</mi><mi
+>b</mi><mi
+>c</mi><mi
+>d</mi><mi
+>e</mi><mi
+>f</mi><mi
+>g</mi><mi
+>h</mi><mi
+>i</mi><mi
+>j</mi><mi
+>k</mi><mi
+>l</mi><mi
+>m</mi><mi
+>n</mi><mi
+>o</mi><mi
+>p</mi><mi
+>q</mi><mi
+>r</mi><mi
+>s</mi><mi
+>t</mi><mi
+>u</mi><mi
+>v</mi><mi
+>w</mi><mi
+>x</mi><mi
+>y</mi><mi
+>z</mi>
+</math></td><td
+ class="eq-no">(3)</td></tr></table>
+<!--l. 43
+
+--><p
+ class="noindent">Normal, upper case: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4004r4"></a>
+<!--l. 44
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                    <mi
+>A</mi><mi
+>B</mi><mi
+>C</mi><mi
+>D</mi><mi
+>E</mi><mi
+>F</mi><mi
+>G</mi><mi
+>H</mi><mi
+>I</mi><mi
+>J</mi><mi
+>K</mi><mi
+>L</mi><mi
+>M</mi><mi
+>N</mi><mi
+>O</mi><mi
+>P</mi><mi
+>Q</mi><mi
+>R</mi><mi
+>S</mi><mi
+>T</mi><mi
+>U</mi><mi
+>V</mi> <mi
+>W</mi><mi
+>X</mi><mi
+>Y</mi> <mi
+>Z</mi>
+</math></td><td
+ class="eq-no">(4)</td></tr></table>
+<!--l. 48
+
+--><p
+ class="noindent">Bold using boldmath, lower case:</p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4005r5"></a>
+<!--l. 49
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                         <mi
+>a</mi><mi
+>b</mi><mi
+>c</mi><mi
+>d</mi><mi
+>e</mi><mi
+>f</mi><mi
+>g</mi><mi
+>h</mi><mi
+>i</mi><mi
+>j</mi><mi
+>k</mi><mi
+>l</mi><mi
+>m</mi><mi
+>n</mi><mi
+>o</mi><mi
+>p</mi><mi
+>q</mi><mi
+>r</mi><mi
+>s</mi><mi
+>t</mi><mi
+>u</mi><mi
+>v</mi><mi
+>w</mi><mi
+>x</mi><mi
+>y</mi><mi
+>z</mi>
+</math></td><td
+ class="eq-no">(5)</td></tr></table>
+<!--l. 53
+
+--><p
+ class="noindent">Bold using boldmath, upper case:</p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4006r6"></a>
+                                                                                       
+                                                                                       
+<!--l. 54
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                <mi
+>A</mi><mi
+>B</mi><mi
+>C</mi><mi
+>D</mi><mi
+>E</mi><mi
+>F</mi><mi
+>G</mi><mi
+>H</mi><mi
+>I</mi><mi
+>J</mi><mi
+>K</mi><mi
+>L</mi><mi
+>M</mi><mi
+>N</mi><mi
+>O</mi><mi
+>P</mi><mi
+>Q</mi><mi
+>R</mi><mi
+>S</mi><mi
+>T</mi><mi
+>U</mi><mi
+>V</mi> <mi
+>W</mi><mi
+>X</mi><mi
+>Y</mi> <mi
+>Z</mi>
+</math></td><td
+ class="eq-no">(6)</td></tr></table>
+<!--l. 59
+
+--><p
+ class="noindent">Italic, lower case: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4007r7"></a>
+<!--l. 60
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                            <mstyle
+ mathvariant="italic"><mi
+>a</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>b</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>c</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>d</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>e</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>f</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>g</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>h</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>i</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>j</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>k</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>l</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>m</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>n</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>o</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>p</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>q</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>r</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>s</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>t</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>u</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>v</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>w</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>x</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>y</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>z</mi></mstyle>
+</math></td><td
+ class="eq-no">(7)</td></tr></table>
+<!--l. 64
+
+--><p
+ class="noindent">Italic, upper case: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4008r8"></a>
+<!--l. 65
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                    <mstyle
+ mathvariant="italic"><mi
+>A</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>B</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>C</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>D</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>E</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>F</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>G</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>H</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>I</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>J</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>K</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>L</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>M</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>N</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>O</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>P</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>Q</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>R</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>S</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>T</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>U</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>V</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>W</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>X</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>Y</mi></mstyle><mspace
+ width="1em" class="nbsp"></mspace><mstyle
+ mathvariant="italic"><mi
+>Z</mi></mstyle>
+</math></td><td
+ class="eq-no">(8)</td></tr></table>
+<!--l. 69
+
+--><p
+ class="noindent">Roman, lower case: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4009r9"></a>
+<!--l. 70
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                             <mstyle
+ mathvariant="normal"><mi
+>a</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>b</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>c</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>d</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>e</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>f</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>g</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>h</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>i</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>j</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>k</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>l</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>m</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>n</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>o</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>p</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>q</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>r</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>s</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>t</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>u</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>v</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>w</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>x</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>y</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>z</mi></mstyle>
+</math></td><td
+ class="eq-no">(9)</td></tr></table>
+                                                                                       
+                                                                                       
+<!--l. 74
+
+--><p
+ class="noindent">Roman, upper case: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4010r10"></a>
+<!--l. 75
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                      <mstyle
+ mathvariant="normal"><mi
+>A</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>B</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>C</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>D</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>E</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>F</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>G</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>H</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>I</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>J</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>K</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>L</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>M</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>N</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>O</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>P</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>Q</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>R</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>S</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>T</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>U</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>V</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>W</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>X</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>Y</mi></mstyle><mstyle
+ mathvariant="normal"><mi
+>Z</mi></mstyle>
+</math></td><td
+ class="eq-no">(10)</td></tr></table>
+<!--l. 79
+
+--><p
+ class="noindent">Bold using bf, lower case: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4011r11"></a>
+<!--l. 80
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                           <mstyle
+ mathvariant="bold"><mi
+>a</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>b</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>c</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>d</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>e</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>f</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>g</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>h</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>i</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>j</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>k</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>l</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>m</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>n</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>o</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>p</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>q</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>r</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>s</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>t</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>u</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>v</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>w</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>x</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>y</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>z</mi></mstyle>
+</math></td><td
+ class="eq-no">(11)</td></tr></table>
+<!--l. 84
+
+--><p
+ class="noindent">Bold using bf, upper case: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4012r12"></a>
+<!--l. 85
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                   <mstyle
+ mathvariant="bold"><mi
+>A</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>B</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>C</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>D</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>E</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>F</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>G</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>H</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>I</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>J</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>K</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>L</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>M</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>N</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>O</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>P</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>Q</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>R</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>S</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>T</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>U</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>V</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>W</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>X</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>Y</mi></mstyle><mstyle
+ mathvariant="bold"><mi
+>Z</mi></mstyle>
+</math></td><td
+ class="eq-no">(12)</td></tr></table>
+<!--l. 89
+
+--><p
+ class="noindent">Calligraphic (upper case only): </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4013r13"></a>
+                                                                                       
+                                                                                       
+<!--l. 90
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                    <mi
+ mathvariant="bold-script">A</mi><mi
+ mathvariant="bold-script">B</mi><mi
+ mathvariant="bold-script">C</mi><mi
+ mathvariant="bold-script">D</mi><mi
+ mathvariant="bold-script">E</mi><mi
+ mathvariant="bold-script">F</mi><mi
+ mathvariant="bold-script">G</mi><mi
+ mathvariant="bold-script">H</mi><mi
+ mathvariant="bold-script">I</mi><mi
+ mathvariant="bold-script">J</mi><mi
+ mathvariant="bold-script">K</mi><mi
+ mathvariant="bold-script">L</mi><mi
+ mathvariant="bold-script">M</mi><mi
+ mathvariant="bold-script">N</mi><mi
+ mathvariant="bold-script">O</mi><mi
+ mathvariant="bold-script">P</mi><mi
+ mathvariant="bold-script">Q</mi><mi
+ mathvariant="bold-script">R</mi><mi
+ mathvariant="bold-script">S</mi><mi
+ mathvariant="bold-script">T</mi><mi
+ mathvariant="bold-script">U</mi><mi
+ mathvariant="bold-script">V</mi><mi
+ mathvariant="bold-script">W</mi><mi
+ mathvariant="bold-script">X</mi><mi
+ mathvariant="bold-script">Y</mi><mi
+ mathvariant="bold-script">Z</mi>
+</math></td><td
+ class="eq-no">(13)</td></tr></table>
+<!--l. 94
+
+--><p
+ class="noindent">Binary operators: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4014r14"></a>
+<!--l. 95
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+            <mo
+ class="MathClass-bin">&#xB1;</mo><mo
+ class="MathClass-bin">&#x2213;</mo><mo
+ class="MathClass-bin">&#xD7;</mo><mo
+ class="MathClass-bin">&#xF7;</mo><mo
+ class="MathClass-bin">&#x22C5;</mo><mo
+ class="MathClass-bin">&#x2217;</mo> <mo
+ class="MathClass-bin">&#x22C6;</mo> <mo
+ class="MathClass-bin">&#x2020;</mo><mo
+ class="MathClass-bin">&#x2021;</mo><mo
+ class="MathClass-bin">&#x2210;</mo><mo
+ class="MathClass-bin">&#x2229;</mo><mo
+ class="MathClass-bin">&#x222A;</mo><mo
+ class="MathClass-bin">&#x2A04;</mo><mo
+ class="MathClass-bin">&#x2293;</mo><mo
+ class="MathClass-bin">&#x2A06;</mo><mo
+ class="MathClass-bin">&#x22C1;</mo><mo
+ class="MathClass-bin">&#x22C0;</mo><mo
+ class="MathClass-bin">&#x2A01;</mo><mo
+ class="MathClass-bin">&#x2296;</mo><mo
+ class="MathClass-bin">&#x2A02;</mo><mo
+ class="MathClass-bin">&#x2218;</mo><mo
+ class="MathClass-bin">&#x2219;</mo><mo
+ class="MathClass-bin">&#x25C7;</mo><mo
+ class="MathClass-bin">&#x2298;</mo><mo
+ class="MathClass-bin">&#x2A00;</mo><mo
+ class="MathClass-bin">&#x25CB;</mo><mo
+ class="MathClass-bin">&#x25B3;</mo><mo
+ class="MathClass-bin">&#x25BD;</mo> <mo
+ class="MathClass-bin">&#x22B2;</mo> <mo
+ class="MathClass-bin">&#x22B3;</mo> <mo
+ class="MathClass-bin">&#x2216;</mo><mo
+ class="MathClass-bin">&#x2240;</mo>
+</math></td><td
+ class="eq-no">(14)</td></tr></table>
+<!--l. 99
+
+--><p
+ class="noindent">Relations: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4015r15"></a>
+<!--l. 100
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+         <mo
+ class="MathClass-rel">&#x2264;</mo><mo
+ class="MathClass-rel">&#x2264;</mo><mo
+ class="MathClass-rel">&#xAB;</mo><mo
+ class="MathClass-rel">&#x2282;</mo><mo
+ class="MathClass-rel">&#x2286;</mo><mo
+ class="MathClass-rel">&#x2291;</mo><mo
+ class="MathClass-rel">&#x2208;</mo><mo
+ class="MathClass-rel">&#x22A2;</mo><mo
+ class="MathClass-rel">&#x22A7;</mo> <mo
+ class="MathClass-rel">&#x2265;</mo><mo
+ class="MathClass-rel">&#x2265;</mo><mo
+ class="MathClass-rel">&#xBB;</mo><mo
+ class="MathClass-rel">&#x2283;</mo><mo
+ class="MathClass-rel">&#x2287;</mo><mo
+ class="MathClass-rel">&#x2291;</mo><mo
+ class="MathClass-rel">&#x220B;</mo><mo
+ class="MathClass-rel">&#x22A3;</mo><mo
+ class="MathClass-rel">&#x22A5;</mo><mo
+ class="MathClass-rel">&#x2260;</mo><mo
+ class="MathClass-op">&#x2250;</mo><!--nolimits
+
+--> <mo
+ class="MathClass-rel">&#x2248;</mo><mo
+ class="MathClass-op">&#x2245;</mo> <mo
+ class="MathClass-rel">&#x2261;</mo><mo
+ class="MathClass-rel">&#x221D;</mo><mo
+ class="MathClass-rel">&#x227A;</mo><mo
+ class="MathClass-rel">&#x227C;</mo><mo
+ class="MathClass-rel">&#x2225;</mo><mo
+ class="MathClass-rel">&#x2225;</mo><mo
+ class="MathClass-rel">&#x223C;</mo><mo
+ class="MathClass-rel">&#x2243;</mo><mo
+ class="MathClass-rel">&#x224D;</mo><mo
+ class="MathClass-rel">&#x2323;</mo><mo
+ class="MathClass-rel">&#x2322;</mo> <mo
+ class="MathClass-rel">&#x22C8;</mo> <mo
+ class="MathClass-rel">&#x227B;</mo><mo
+ class="MathClass-rel">&#x227D;</mo><mo
+ class="MathClass-rel">&#x2223;</mo>
+</math></td><td
+ class="eq-no">(15)</td></tr></table>
+<!--l. 104
+
+--><p
+ class="noindent">Negated which do not stop conversion but may not be displayed in Word: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4016r16"></a>
+                                                                                       
+                                                                                       
+<!--l. 105
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                       <mo
+ class="MathClass-rel">&#x226E;</mo><mo
+ class="MathClass-rel">&#x2270;</mo><mo
+ class="MathClass-rel">&#x2284;</mo><mo
+ class="MathClass-rel">&#x2288;</mo><mo
+ class="MathClass-rel">&#x22E2;</mo><mo
+ class="MathClass-rel">&#x2209;</mo><mo
+ class="MathClass-rel">&#x2209;</mo><mo
+ class="MathClass-rel">&#x22AC;</mo><mo
+ class="MathClass-rel">&#x22AD;</mo><mo
+ class="MathClass-rel">&#x226F;</mo><mo
+ class="MathClass-rel">&#x2271;</mo><mo
+ class="MathClass-rel">&#x2285;</mo><mo
+ class="MathClass-rel">&#x2289;</mo><mo
+ class="MathClass-rel">&#x22E2;</mo><mo
+ class="MathClass-rel">&#x220C;</mo><mo
+ class="MathClass-rel">&#x2260;</mo><mo
+ class="MathClass-rel">&#x2249;</mo><mo
+ class="MathClass-rel">&#x2247;</mo><mo
+ class="MathClass-rel">&#x2262;</mo><mo
+ class="MathClass-rel">&#x2280;</mo><mo
+ class="MathClass-rel">&#x2241;</mo><mo
+ class="MathClass-rel">&#x2244;</mo><mo
+ class="MathClass-rel">&#x226D;</mo><mo
+ class="MathClass-rel">&#x2281;</mo>
+</math></td><td
+ class="eq-no">(16)</td></tr></table>
+<!--l. 114
+
+--><p
+ class="noindent">Arrows: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4017r17"></a>
+<!--l. 115
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                        <mo
+ class="MathClass-rel">&#x2190;</mo><mo
+ class="MathClass-rel">&#x2190;</mo><mo
+ class="MathClass-rel">&#x21D0;</mo><mo
+ class="MathClass-rel">&#x2192;</mo><mo
+ class="MathClass-rel">&#x2192;</mo><mo
+ class="MathClass-rel">&#x21D2;</mo><mo
+ class="MathClass-rel">&#x2194;</mo><mo
+ class="MathClass-rel">&#x21D4;</mo><mo
+ class="MathClass-rel">&#x21A6;</mo><mo
+ class="MathClass-rel">&#x21A9;</mo> <mo
+ class="MathClass-rel">&#x21BC;</mo><mo
+ class="MathClass-rel">&#x21BD;</mo><mi
+>&#x21CC;</mi><mo
+ class="MathClass-rel">&#x2190;</mo> <mo
+ class="MathClass-rel">&#x21D0;</mo><mo
+ class="MathClass-rel">=</mo> <mo
+ class="MathClass-rel">&#x2192;</mo><mo
+ class="MathClass-rel">&#x21D2;</mo>
+</math></td><td
+ class="eq-no">(17)</td></tr></table>
+<table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4018r18"></a>
+<!--l. 118
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+
+  <mo class="MathClass-rel">&#x2194;</mo>
+  <mo class="MathClass-rel">&#x21D4;</mo>
+  <mspace width="0.3em" class="thinspace"></mspace>
+  <mo class="MathClass-rel">&#x21D4;</mo>
+  <mspace
+ width="0.3em" class="thinspace"></mspace><mo
+ class="MathClass-rel">&#x21A6;</mo><mo
+ class="MathClass-rel">&#x21AA;</mo> <mo
+ class="MathClass-rel">&#x21C0;</mo><mo
+ class="MathClass-rel">&#x21C1;</mo><mi
+>&#x2191;</mi><mi
+>&#x21D1;</mi><mi
+>&#x2193;</mi><mi
+>&#x21D3;</mi><mi
+>&#x2195;</mi><mi
+>&#x21D5;</mi><mo
+ class="MathClass-rel">&#x2197;</mo><mo
+ class="MathClass-rel">&#x2198;</mo><mo
+ class="MathClass-rel">&#x2199;</mo><mo
+ class="MathClass-rel">&#x2196;</mo>
+</math></td><td
+ class="eq-no">(18)</td></tr></table>
+<!--l. 122
+
+--><p
+ class="noindent">Other: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4019r19"></a>
+<!--l. 123
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                    <mi
+>&#x2135;</mi><mi
+>&#x210F;</mi><mi
+>&#x131;</mi><mi
+>&#x237;</mi><mi
+>&#x2113;</mi><mi
+>&#x2118;</mi><mi
+>&#x211C;</mi><mi
+>&#x2111;</mi><mi
+>&#x2032;</mi><mi
+>&#x2205;</mi><mo
+ class="MathClass-op">&#x2207;</mo><mi
+>&#x221A;</mi><mi
+>&#x2202;</mi><mo
+ class="MathClass-op">&#x22A4;</mo><mo
+ class="MathClass-rel">&#x22A5;</mo><mo
+ class="MathClass-rel">&#x22A2;</mo><mo
+ class="MathClass-rel">&#x22A3;</mo><mo
+ class="MathClass-op">&#x2200;</mo><mo
+ class="MathClass-op">&#x2203;</mo><mo
+ class="MathClass-rel">&#x2260;</mo><mi
+>&#x266D;</mi><mi
+>&#x266E;</mi><mi
+>&#x266F;</mi><mo
+ class="MathClass-rel">&#x2225;</mo><mi
+>&#x2220;</mi><mo
+ class="MathClass-bin">&#x2216;</mo><mo
+ class="MathClass-bin">&#x25B3;</mo><mo
+ class="MathClass-op">&#x2663;</mo><mo
+ class="MathClass-op">&#x2662;</mo><mo
+ class="MathClass-op">&#x2661;</mo><mo
+ class="MathClass-op">&#x2660;</mo><mi
+>&#x221E;</mi>
+</math></td><td
+ class="eq-no">(19)</td></tr></table>
+                                                                                       
+                                                                                       
+<!--l. 127
+
+--><p
+ class="noindent">Symbols with two sizes: </p>
+<div
+ class="center">
+<!--l. 128
+
+--><p
+ class="noindent">
+</p><!--l. 129
+
+--><p
+ class="noindent"><!--l. 129
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
+> <mo
+ class="MathClass-op">&#x2211;</mo>
+  <!--nolimits
+
+--><mo
+ class="MathClass-op">&#x222B;
+ <!--nolimits
+
+--></mo><!--nolimits
+
+--><mo
+ class="MathClass-op">&#x222E;</mo>
+<!--nolimits
+
+--><mo
+ class="MathClass-op">&#x220F;</mo>
+  <!--nolimits
+
+--><mo
+ class="MathClass-op">&#x2210;</mo>
+<!--nolimits
+
+--><mo
+ class="MathClass-op">&#x22C2;</mo>
+ <!--nolimits
+
+--><mo
+ class="MathClass-op">&#x22C3;</mo>
+<!--nolimits
+
+--><mo
+ class="MathClass-op">&#x2A06;</mo>
+<!--nolimits
+
+--><mo
+ class="MathClass-op">&#x22C1;</mo>
+<!--nolimits
+
+--><mo
+ class="MathClass-op">&#x22C0;</mo>
+<!--nolimits
+
+--><mo
+ class="MathClass-op">&#x2A00;</mo>
+  <!--nolimits
+
+--><mo
+ class="MathClass-op">&#x2A02;</mo>
+<!--nolimits
+
+--><mo
+ class="MathClass-op">&#x2A01;</mo>
+<!--nolimits
+
+--><mo
+ class="MathClass-op">&#x2A04;</mo>
+ <!--nolimits
+
+--></mrow></math></p></div>
+<table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4020r20"></a>
+<!--l. 131
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                        <mo
+ mathsize="normal">&#x2211;</mo>
+  <mo
+>&#x222B;
+ <!--nolimits
+
+--></mo><!--nolimits
+
+--><mo
+ mathsize="normal">&#x222E;</mo> 
+<!--nolimits
+
+--><mo
+ mathsize="normal">&#x220F;</mo>
+  <mo
+ mathsize="normal">&#x2210;</mo>
+<mo
+ mathsize="normal">&#x22C2;</mo>
+  <mo
+ mathsize="normal">&#x22C3;</mo>
+<mo
+ mathsize="normal">&#x2A06;</mo>
+<mo
+ mathsize="normal">&#x22C1;</mo>
+<mo
+ mathsize="normal">&#x22C0;</mo>
+<mo
+ mathsize="normal">&#x2A00;</mo>
+  <mo
+ mathsize="normal">&#x2A02;</mo>
+<mo
+ mathsize="normal">&#x2A01;</mo>
+<mo
+ mathsize="normal">&#x2A04;</mo>
+</math></td><td
+ class="eq-no">(20)</td></tr></table>
+<!--l. 135
+
+--><p
+ class="noindent">Function names: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4021r21"></a>
+<!--l. 136
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                   <mo
+ class="qopname">arccos</mo><!--nolimits
+
+--><mo
+ class="qopname"> arcsin</mo><!--nolimits
+
+--><mo
+ class="qopname"> arctan</mo><!--nolimits
+
+--><mo
+ class="qopname"> arg</mo><!--nolimits
+
+--><mo
+ class="qopname"> cos</mo><!--nolimits
+
+--><mo
+ class="qopname"> cosh</mo><!--nolimits
+
+--><mo
+ class="qopname"> cot</mo><!--nolimits
+
+--><mo
+ class="qopname"> coth</mo><!--nolimits
+
+--><mo
+ class="qopname"> csc</mo><!--nolimits
+
+--><mo
+ class="qopname"> deg</mo><!--nolimits
+
+--><mo
+ class="qopname"> det<!--nolimits
+
+--></mo>
+</math></td><td
+ class="eq-no">(21)</td></tr></table>
+<table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4022r22"></a>
+                                                                                       
+                                                                                       
+<!--l. 139
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                    <mo
+ class="qopname">dim</mo><!--nolimits
+
+--><mo
+ class="qopname"> exp</mo><!--nolimits
+
+--><mo
+ class="qopname"> gcd</mo><mo
+ class="qopname"> hom</mo><!--nolimits
+
+--><mo
+ class="qopname"> inf</mo><mo
+ class="qopname"> ker</mo><!--nolimits
+
+--><mo
+ class="qopname"> lg</mo><!--nolimits
+
+--><mo
+ class="qopname"> lim</mo><mo
+ class="qopname"> liminf</mo><mo
+ class="qopname"> limsup</mo><mo
+ class="qopname"> ln</mo><!--nolimits
+
+--><mo
+ class="qopname"> log</mo><!--nolimits
+
+-->
+</math></td><td
+ class="eq-no">(22)</td></tr></table>
+<table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4023r23"></a>
+<!--l. 142
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                          <mo
+ class="qopname">max</mo><mo
+ class="qopname"> min</mo><mo
+ class="qopname"> Pr</mo><mo
+ class="qopname"> sec</mo><!--nolimits
+
+--><mo
+ class="qopname"> sin</mo><!--nolimits
+
+--><mo
+ class="qopname"> sinh</mo><!--nolimits
+
+--><mo
+ class="qopname"> sup</mo><mo
+ class="qopname"> tan</mo><!--nolimits
+
+--><mo
+ class="qopname"> tanh</mo><!--nolimits
+
+-->
+</math></td><td
+ class="eq-no">(23)</td></tr></table>
+<!--l. 146
+
+--><p
+ class="noindent">Those with under-subscript available: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4024r24"></a>
+<!--l. 147
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                <msub
+><mrow
+><mo
+ class="MathClass-op">det<!--nolimits
+
+--></mo> </mrow><mrow
+><mi
+>a</mi></mrow></msub><munder
+ class="msub"><mrow
+><mo
+ class="qopname"> gcd</mo> </mrow><mrow
+><mi
+>a</mi></mrow></munder><munder
+ class="msub"><mrow
+><mo
+ class="qopname"> inf</mo> </mrow><mrow
+><mi
+>a</mi></mrow></munder><munder
+ class="msub"><mrow
+><mo
+ class="qopname"> lim</mo> </mrow><mrow
+><mi
+>a</mi></mrow></munder><msub
+><mrow
+><mo
+ class="qopname"> liminf</mo> </mrow><mrow
+><mi
+>a</mi></mrow></msub><msub
+><mrow
+><mo
+ class="qopname"> limsup</mo> </mrow><mrow
+><mi
+>a</mi></mrow></msub><munder
+ class="msub"><mrow
+><mo
+ class="qopname"> max</mo> </mrow><mrow
+><mi
+>a</mi></mrow></munder><munder
+ class="msub"><mrow
+><mo
+ class="qopname"> min</mo> </mrow><mrow
+><mi
+>a</mi></mrow></munder><munder
+ class="msub"><mrow
+><mo
+ class="qopname"> Pr</mo> </mrow><mrow
+><mi
+>a</mi></mrow></munder><munder
+ class="msub"><mrow
+><mo
+ class="qopname"> sup</mo> </mrow><mrow
+><mi
+>a</mi></mrow></munder>
+</math></td><td
+ class="eq-no">(24)</td></tr></table>
+<!--l. 151
+
+--><p
+ class="noindent">Modulus: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4025r25"></a>
+<!--l. 152
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                                   <mi
+>a</mi><mspace
+ width="0.2em"></mspace><mo
+ class="MathClass-bin"> mod</mo><mspace
+ width="0.2em"></mspace> <mi
+>b</mi><mspace
+ width="2em" class="qquad"></mspace><mi
+>a</mi><mspace
+ width="0.3em"></mspace><mrow
+><mo
+ class="MathClass-open">(</mo><mrow
+><mo
+ class="MathClass-op">mod</mo><mspace
+ width="0.3em"></mspace><mi
+>b</mi></mrow><mo
+ class="MathClass-close">)</mo></mrow>
+</math></td><td
+ class="eq-no">(25)</td></tr></table>
+                                                                                       
+                                                                                       
+<!--l. 156
+
+--><p
+ class="noindent">Accents and under/over: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4026r26"></a>
+<!--l. 157
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+               <mi
+>&#xE2;</mi><mi
+>&#x1CE;</mi><mi
+>&#x227;</mi><mi
+>&#x103;</mi><mi
+>&#xE1;</mi><mi
+>&#xE4;</mi><mi
+>&#xE0;</mi><mi
+>&#xE3;</mi><mi
+>&#xE5;</mi><mi
+>&#x101;</mi><mover
+ accent="true"><mrow
+><mi
+>a</mi></mrow><mo
+ class="MathClass-op">&#x2192;</mo></mover><mover
+ accent="false"><mrow
+><mi
+>a</mi><mi
+>a</mi><mi
+>a</mi></mrow><mo
+ class="MathClass-op">&#x302;</mo></mover><mover
+ accent="false"><mrow
+><mi
+>a</mi><mi
+>a</mi><mi
+>a</mi></mrow><mo
+ class="MathClass-op">&#x303;</mo></mover><mover
+ accent="false" class="mml-overline"><mrow
+> <mi
+>a</mi><mi
+>a</mi><mi
+>a</mi> </mrow><mo
+ accent="true">&#xAF;</mo></mover><munder
+ accentunder="false" class="mml-underline"><mrow
+><mi
+>a</mi><mi
+>a</mi><mi
+>a</mi></mrow><mo
+ accent="true">&#x332;</mo></munder><mover
+ accent="false"><mrow
+> <mi
+>a</mi><mi
+>a</mi><mi
+>a</mi></mrow><mo
+>&#x23DE;</mo></mover> <munder
+ accentunder="false"><mrow
+> <mi
+>a</mi><mi
+>a</mi><mi
+>a</mi></mrow><mo
+>&#x23DF;</mo></munder>
+</math></td><td
+ class="eq-no">(26)</td></tr></table>
+<!--l. 161
+
+--><p
+ class="noindent">Symbols left and right can be applied to: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4027r27"></a>
+<!--l. 162
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                                  <mfenced
+ separators="" open="(" close=")"><mrow
+><mfrac
+><mrow
+><mn
+>1</mn></mrow>
+<mrow
+><mn
+>2</mn></mrow></mfrac></mrow></mfenced> <mfenced
+ separators="" open="[" close="]"><mrow
+><mfrac
+><mrow
+><mn
+>1</mn></mrow>
+<mrow
+><mn
+>2</mn></mrow></mfrac></mrow></mfenced> <mfenced
+ separators="" open="{" close="}"><mrow
+><mfrac
+><mrow
+><mn
+>1</mn></mrow>
+<mrow
+><mn
+>2</mn></mrow></mfrac></mrow></mfenced> <mfenced
+ separators="" open="|" close="|"><mrow
+><mfrac
+><mrow
+><mn
+>1</mn></mrow>
+<mrow
+><mn
+>2</mn></mrow></mfrac></mrow></mfenced> <mfenced
+ separators="" open="/" close="&#x2216;"><mrow
+><mfrac
+><mrow
+><mn
+>1</mn></mrow>
+<mrow
+><mn
+>2</mn></mrow></mfrac></mrow></mfenced> <mfenced
+ separators="" open="&#x230A;" close="&#x230B;"><mrow
+><mfrac
+><mrow
+><mn
+>1</mn></mrow>
+<mrow
+><mn
+>2</mn></mrow></mfrac></mrow></mfenced> <mfenced
+ separators="" open="&#x2308;" close="&#x2309;"><mrow
+><mfrac
+><mrow
+><mn
+>1</mn></mrow>
+<mrow
+><mn
+>2</mn></mrow></mfrac></mrow></mfenced> <mfenced
+ separators="" open="&#x27E8;" close="&#x27E9;"><mrow
+><mfrac
+><mrow
+><mn
+>1</mn></mrow>
+<mrow
+><mn
+>2</mn></mrow></mfrac></mrow></mfenced>
+</math></td><td
+ class="eq-no">(27)</td></tr></table>
+<!--l. 168
+
+--><p
+ class="noindent">Manual sizing: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4028r28"></a>
+<!--l. 169
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                                           <mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="(" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open=")" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="[" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="]" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="{" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="}" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="&#x230A;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="&#x230B;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="&#x2308;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="&#x2309;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="&#x27E8;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="&#x27E9;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="/" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="&#x2216;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="|" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="&#x2225;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="&#x2191;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="&#x21D1;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="&#x2193;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="&#x21D3;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="&#x2195;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.19em"><mfenced
+ separators="" open="&#x21D5;" close=""><mrow
+></mrow></mfenced></mstyle>
+</math></td><td
+ class="eq-no">(28)</td></tr></table>
+<table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4029r29"></a>
+                                                                                       
+                                                                                       
+<!--l. 173
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                                           <mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="(" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open=")" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="[" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="]" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="{" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="}" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="&#x230A;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="&#x230B;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="&#x2308;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="&#x2309;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="&#x27E8;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="&#x27E9;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="/" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="&#x2216;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="|" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="&#x2225;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="&#x2191;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="&#x21D1;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="&#x2193;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="&#x21D3;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="&#x2195;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="1.61em"><mfenced
+ separators="" open="&#x21D5;" close=""><mrow
+></mrow></mfenced></mstyle>
+</math></td><td
+ class="eq-no">(29)</td></tr></table>
+<table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4030r30"></a>
+<!--l. 177
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                                           <mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="(" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open=")" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="[" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="]" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="{" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="}" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x230A;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x230B;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x2308;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x2309;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x27E8;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x27E9;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="/" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x2216;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="|" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x2225;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x2191;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x21D1;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x2193;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x21D3;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x2195;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x21D5;" close=""><mrow
+></mrow></mfenced></mstyle>
+</math></td><td
+ class="eq-no">(30)</td></tr></table>
+<table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4031r31"></a>
+<!--l. 181
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                                           <mstyle
+ mathsize="2.45em"><mfenced
+ separators="" open="(" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.45em"><mfenced
+ separators="" open=")" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.45em"><mfenced
+ separators="" open="[" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.45em"><mfenced
+ separators="" open="]" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.45em"><mfenced
+ separators="" open="{" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.45em"><mfenced
+ separators="" open="}" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.45em"><mfenced
+ separators="" open="&#x230A;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.45em"><mfenced
+ separators="" open="&#x230B;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.45em"><mfenced
+ separators="" open="&#x2308;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.45em"><mfenced
+ separators="" open="&#x2309;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.45em"><mfenced
+ separators="" open="&#x27E8;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.45em"><mfenced
+ separators="" open="&#x27E9;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="/" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x2216;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="|" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x2225;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x2191;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x21D1;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x2193;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x21D3;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x2195;" close=""><mrow
+></mrow></mfenced></mstyle><mstyle
+ mathsize="2.03em"><mfenced
+ separators="" open="&#x21D5;" close=""><mrow
+></mrow></mfenced></mstyle>
+</math></td><td
+ class="eq-no">(31)</td></tr></table>
+<!--l. 186
+
+--><p
+ class="noindent">Dots: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4032r32"></a>
+                                                                                       
+                                                                                       
+<!--l. 187
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                                    <mi
+>a</mi><mo
+ class="MathClass-op">&#x2026;</mo><mi
+>a</mi><mspace
+ width="1em" class="quad"></mspace><mi
+>a</mi><mo
+ class="MathClass-op">&#x22EE;</mo><mi
+>a</mi><mspace
+ width="1em" class="quad"></mspace><mi
+>a</mi><mo
+ class="MathClass-rel">&#x22EF;</mo><mi
+>a</mi><mspace
+ width="1em" class="quad"></mspace><mi
+>a</mi><mo
+ class="MathClass-rel">&#x22F1;</mo><mi
+>a</mi>
+</math></td><td
+ class="eq-no">(32)</td></tr></table>
+<!--l. 191
+
+--><p
+ class="noindent">Horizontal spacing: </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-4033r33"></a>
+<!--l. 192
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+                                         <mo
+ class="MathClass-rel">|</mo><mspace
+ width="1em" class="nbsp"></mspace><mo
+ class="MathClass-rel">|</mo><mspace
+ width="0.3em" class="thinspace"></mspace><mo
+ class="MathClass-rel">|</mo><mo
+ class="MathClass-rel">|</mo><mspace
+ width="0.3em" class="thinspace"></mspace><mo
+ class="MathClass-rel">|</mo><mspace
+ width="1em" class="quad"></mspace><mo
+ class="MathClass-rel">|</mo><mspace
+ width="2em" class="qquad"></mspace><mo
+ class="MathClass-rel">|</mo>
+</math></td><td
+ class="eq-no">(33)</td></tr></table>
+<!--l. 196
+
+--><p
+ class="noindent">
+</p>
+<h3
+ class="sectionHead"><span
+ class="titlemark">2    </span> <a
+ href="#QQ2-1-5" id="x1-50002">Standard mathematical structures</a></h3>
+<!--l. 198
+
+--><p
+ class="noindent">Three different ways to inline  <!--l. 198
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="inline"> <msubsup
+><mrow
+><mi
+>A</mi></mrow><mrow
+><mi
+>i</mi><mo
+ class="MathClass-punc">,</mo><mi
+>j</mi><mo
+ class="MathClass-punc">,</mo><mi
+>k</mi></mrow><mrow
+><msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mi
+>n</mi></mrow></msup></mrow></msubsup> </math>
+<!--l. 198
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
+> <msubsup
+><mrow
+><mi
+>A</mi></mrow><mrow
+><mi
+>i</mi><mo
+ class="MathClass-punc">,</mo><mi
+>j</mi><mo
+ class="MathClass-punc">,</mo><mi
+>k</mi></mrow><mrow
+><msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mi
+>n</mi></mrow></msup></mrow></msubsup> </mrow></math>
+<!--l. 198
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow
+> <msubsup
+><mrow
+><mi
+>A</mi></mrow><mrow
+><mi
+>i</mi><mo
+ class="MathClass-punc">,</mo><mi
+>j</mi><mo
+ class="MathClass-punc">,</mo><mi
+>k</mi></mrow><mrow
+><msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mi
+>n</mi></mrow></msup></mrow></msubsup> </mrow></math>
+</p><!--l. 200
+
+--><p
+ class="noindent">Four different ways to displaymath.  </p><table
+ class="equation"><tr
+><td
+> <a
+ id="x1-5001r100"></a>
+<!--l. 202
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="equation">
+<munderover
+ accentunder="false" accent="false"><mrow
+><mo
+ mathsize="normal">&#x2211;</mo>
+   </mrow><mrow
+><mi
+>i</mi><mo
+ class="MathClass-rel">=</mo><mn
+>1</mn></mrow><mrow
+><mn
+>15</mn></mrow></munderover><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mi
+>i</mi></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>1</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mo
+ class="MathClass-bin">+</mo><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>2</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mo
+ class="MathClass-bin">+</mo><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>3</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mo
+ class="MathClass-bin">+</mo><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>4</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mo
+ class="MathClass-bin">+</mo><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>5</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mo
+ class="MathClass-bin">+</mo><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>6</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mo
+ class="MathClass-bin">+</mo><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>7</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mo
+ class="MathClass-bin">+</mo><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>8</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mo
+ class="MathClass-bin">+</mo><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>9</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mo
+ class="MathClass-bin">+</mo><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>10</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mo
+ class="MathClass-bin">+</mo><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>11</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mo
+ class="MathClass-bin">+</mo><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>12</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mo
+ class="MathClass-bin">+</mo><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>13</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mo
+ class="MathClass-bin">+</mo><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>14</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mo
+ class="MathClass-bin">+</mo><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>15</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup>
+</math></td><td
+ class="eq-no">(100)</td></tr></table>
+                                                                                       
+                                                                                       
+<div
+ class="par-math-block" custom-style="Normal"><!--l. 206
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
+><msubsup
+><mrow
+>
+<mi
+>x</mi></mrow><mrow
+><mn
+>1</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>2</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>3</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>4</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>5</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>6</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>7</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>8</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>9</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>10</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>11</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>12</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>13</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>14</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>15</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup>
+</mrow></math></div>
+<div
+ class="par-math-block" custom-style="Normal"><!--l. 210
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
+>
+           <munderover
+ accentunder="false" accent="false"><mrow
+><mo
+ mathsize="normal">&#x220F;</mo>
+  </mrow><mrow
+><mi
+>i</mi><mo
+ class="MathClass-rel">=</mo><mn
+>1</mn></mrow><mrow
+><mn
+>15</mn></mrow></munderover><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mi
+>i</mi></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>1</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
+ width="1em" class="nbsp"></mspace><mspace
+ width="1em" class="nbsp"></mspace><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>2</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
+ width="1em" class="nbsp"></mspace><mspace
+ width="1em" class="nbsp"></mspace><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>3</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
+ width="1em" class="nbsp"></mspace><mspace
+ width="1em" class="nbsp"></mspace><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>4</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
+ width="1em" class="nbsp"></mspace><mspace
+ width="1em" class="nbsp"></mspace><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>5</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
+ width="1em" class="nbsp"></mspace><mspace
+ width="1em" class="nbsp"></mspace><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>6</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
+ width="1em" class="nbsp"></mspace><mspace
+ width="1em" class="nbsp"></mspace><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>7</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
+ width="1em" class="nbsp"></mspace><mspace
+ width="1em" class="nbsp"></mspace><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>8</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
+ width="1em" class="nbsp"></mspace><mspace
+ width="1em" class="nbsp"></mspace><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>9</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
+ width="1em" class="nbsp"></mspace><mspace
+ width="1em" class="nbsp"></mspace><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>10</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
+ width="1em" class="nbsp"></mspace><mspace
+ width="1em" class="nbsp"></mspace><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>11</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
+ width="1em" class="nbsp"></mspace><mspace
+ width="1em" class="nbsp"></mspace><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>12</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
+ width="1em" class="nbsp"></mspace><mspace
+ width="1em" class="nbsp"></mspace><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>13</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
+ width="1em" class="nbsp"></mspace><mspace
+ width="1em" class="nbsp"></mspace><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>14</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
+ width="1em" class="nbsp"></mspace><mspace
+ width="1em" class="nbsp"></mspace><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>15</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup><mspace
+ width="1em" class="nbsp"></mspace>
+</mrow></math></div>
+<div
+ class="par-math-block" custom-style="Normal"><!--l. 214
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
+>
+<munderover
+ accentunder="false" accent="false"><mrow
+><mo
+ mathsize="normal">&#x220F;</mo>
+  </mrow><mrow
+><mi
+>i</mi><mo
+ class="MathClass-rel">=</mo><mn
+>1</mn></mrow><mrow
+><mn
+>15</mn></mrow></munderover><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mi
+>i</mi></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-rel">=</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>1</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">&#x22C5;</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>2</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">&#x22C5;</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>3</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">&#x22C5;</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>4</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">&#x22C5;</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>5</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">&#x22C5;</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>6</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">&#x22C5;</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>7</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">&#x22C5;</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>8</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">&#x22C5;</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>9</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">&#x22C5;</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>10</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">&#x22C5;</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>11</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">&#x22C5;</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>12</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">&#x22C5;</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>13</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">&#x22C5;</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>14</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">&#x22C5;</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>15</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup>
+</mrow></math></div>
+<!--l. 218
+
+--><p
+ class="noindent">One of the forms is numbered equation <a
+ href="#x1-5001r100">100<!--tex4ht:ref: equation 
+
+--></a>.
+</p>
+                                                                                       
+                                                                                       
+<div
+ class="math-block" custom-style="Normal"><!--l. 219
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
+>
+<msqrt
+><mrow
+>
+<munderover
+ accentunder="false" accent="false"><mrow
+><mo
+ mathsize="normal">&#x2211;</mo>
+  </mrow><mrow
+><mi
+>i</mi><mo
+ class="MathClass-rel">=</mo><mn
+>1</mn></mrow><mrow
+><mn
+>13</mn></mrow></munderover><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mi
+>i</mi></mrow><mrow
+><mn
+>2</mn></mrow></msubsup></mrow></msqrt> <mo
+ class="MathClass-rel">=</mo> <msqrt
+><mrow
+><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>1</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>2</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>3</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>4</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>5</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>6</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>7</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>8</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>9</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>10</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>11</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>12</mn> </mrow> <mrow
+>  <mn
+>2</mn> </mrow> </msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>13</mn> </mrow> <mrow
+>  <mn
+>2</mn></mrow></msubsup></mrow></msqrt>
+</mrow></math></div>
+<div
+ class="par-math-block" custom-style="Normal"><!--l. 223
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
+>
+<msqrt
+><mrow
+>
+<munderover
+ accentunder="false" accent="false"><mrow
+><mo
+ mathsize="normal">&#x2211;</mo>
+  </mrow><mrow
+><mi
+>i</mi><mo
+ class="MathClass-rel">=</mo><mn
+>1</mn></mrow><mrow
+><mn
+>13</mn></mrow></munderover><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mi
+>i</mi></mrow><mrow
+><mn
+>2</mn></mrow></msubsup></mrow></msqrt> <mo
+ class="MathClass-rel">=</mo><msup
+><mrow
+> <mfenced
+ separators="" open="(" close=")"><mrow
+><msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>1</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>2</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>3</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>4</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>5</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>6</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>7</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>8</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>9</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>10</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>11</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>12</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup> <mo
+ class="MathClass-bin">+</mo> <msubsup
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>13</mn></mrow><mrow
+><mn
+>2</mn></mrow></msubsup></mrow></mfenced> </mrow><mrow
+><mfrac
+><mrow
+><mn
+>1</mn></mrow>
+<mrow
+><mn
+>2</mn></mrow></mfrac> </mrow></msup>
+</mrow></math></div>
+<!--l. 227
+
+--><p
+ class="noindent">Now for an equation array: </p>
+<!--tex4ht:inline
+
+--><!--l. 228
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+<mtable
+ class="eqnarray" columnalign="right center left" displaystyle="true">
+<mtr
+><mtd
+ class="eqnarray-1"> <munderover
+ accentunder="false" accent="false"><mrow
+><mo
+ mathsize="normal">&#x2211;</mo>
+  </mrow><mrow
+><mi
+>i</mi><mo
+ class="MathClass-rel">=</mo><mn
+>1</mn></mrow><mrow
+><mn
+>13</mn></mrow></munderover><msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mi
+>i</mi></mrow></msup></mtd><mtd
+ class="eqnarray-2">      <mo
+ class="MathClass-rel">=</mo></mtd><mtd
+ class="eqnarray-3">      <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>1</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>2</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>3</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>4</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>5</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>6</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>7</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>8</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>9</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>10</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>11</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>12</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>13</mn></mrow></msup>         </mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd>
+</mtr><mtr
+><mtd
+ class="eqnarray-1">          </mtd><mtd
+ class="eqnarray-2">      <mo
+ class="MathClass-rel">=</mo></mtd><mtd
+ class="eqnarray-3">      <mn
+>2</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>4</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>8</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>16</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>32</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>64</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>128</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>256</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>512</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>1024</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>2048</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>4096</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>8192</mn></mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd>
+</mtr><mtr
+><mtd
+ class="eqnarray-1">          </mtd><mtd
+ class="eqnarray-2">      <mo
+ class="MathClass-rel">=</mo></mtd><mtd
+ class="eqnarray-3">      <mn
+>16382</mn>                                                                  </mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray">(101)</mtext><mtext
+ id="x1-5002r101" class="label"></mtext><mtext
+ class="endlabel"></mtext></mtd></mtr></mtable>
+</math>
+                                                                                       
+                                                                                       
+<!--l. 232
+
+--><p
+ class="nopar">
+</p>
+<!--l. 234
+
+--><p
+ class="noindent">
+<!--tex4ht:inline
+
+--></p><!--l. 234
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+<mtable
+ class="eqnarray-star" columnalign="right center left" displaystyle="true">
+<mtr
+><mtd
+ class="eqnarray-1"> <munderover
+ accentunder="false" accent="false"><mrow
+><mo
+ mathsize="normal">&#x2211;</mo>
+  </mrow><mrow
+><mi
+>i</mi><mo
+ class="MathClass-rel">=</mo><mn
+>1</mn></mrow><mrow
+><mn
+>13</mn></mrow></munderover><msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mi
+>i</mi></mrow></msup></mtd><mtd
+ class="eqnarray-2">      <mo
+ class="MathClass-rel">=</mo></mtd><mtd
+ class="eqnarray-3">      <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>1</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>2</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>3</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>4</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>5</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>6</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>7</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>8</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>9</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>10</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>11</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>12</mn></mrow></msup> <mo
+ class="MathClass-bin">+</mo> <msup
+><mrow
+><mn
+>2</mn></mrow><mrow
+><mn
+>13</mn></mrow></msup>         </mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd>
+</mtr><mtr
+><mtd
+ class="eqnarray-1">          </mtd><mtd
+ class="eqnarray-2">      <mo
+ class="MathClass-rel">=</mo></mtd><mtd
+ class="eqnarray-3">      <mn
+>2</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>4</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>8</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>16</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>32</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>64</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>128</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>256</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>512</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>1024</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>2048</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>4096</mn> <mo
+ class="MathClass-bin">+</mo> <mn
+>8192</mn></mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd>
+</mtr><mtr
+><mtd
+ class="eqnarray-1">          </mtd><mtd
+ class="eqnarray-2">      <mo
+ class="MathClass-rel">=</mo></mtd><mtd
+ class="eqnarray-3">      <mn
+>16382</mn><mspace
+ width="2em" class="qquad"></mspace><mstyle
+ class="mbox"><mtext
+>here&#xA0;is&#xA0;some&#xA0;text&#xA0;in&#xA0;the&#xA0;formula&#xA0;to&#xA0;fill&#xA0;up&#xA0;the&#xA0;line&#xA0;at&#xA0;12pt&#xA0;font</mtext></mstyle>     </mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd></mtr></mtable>
+</math>
+<!--l. 238
+
+--><p
+ class="nopar">
+</p>
+<div
+ class="par-math-block" custom-style="Normal"><!--l. 240
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
+>
+<mfenced
+ separators="" open="[" close="]"><mrow
+> <mtable
+ align="axis" style="" equalrows="false" columnlines="none" equalcolumns="false" class="array"> <mtr
+><mtd
+ class="array" columnalign="center"><msub
+><mrow
+><mi
+>a</mi></mrow><mrow
+><mn
+>11</mn></mrow></msub></mtd><mtd
+ class="array" columnalign="center"><msub
+><mrow
+><mi
+>a</mi></mrow><mrow
+><mn
+>12</mn></mrow></msub></mtd>
+</mtr>  <mtr
+><mtd
+ class="array" columnalign="center"><msub
+><mrow
+><mi
+>a</mi></mrow><mrow
+><mn
+>21</mn></mrow></msub></mtd><mtd
+ class="array" columnalign="center"><msub
+><mrow
+><mi
+>a</mi></mrow><mrow
+><mn
+>22</mn></mrow></msub></mtd></mtr>
+<!--cc
+
+--></mtable>                                                                                       </mrow></mfenced>
+</mrow></math></div>
+                                                                                       
+                                                                                       
+<div
+ class="par-math-block" custom-style="Normal"><!--l. 244
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
+>
+<mfenced
+ separators="" open="[" close="]"><mrow
+> <mtable
+ align="axis" style="" equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array"> <mtr
+><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd></mtr><mtr
+><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd>
+</mtr>  <mtr
+><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd></mtr><mtr
+><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd>
+</mtr>  <mtr
+><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd></mtr><mtr
+><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd>
+</mtr>  <mtr
+><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd></mtr><mtr
+><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd>
+</mtr>  <mtr
+><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd></mtr><mtr
+><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>0</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd></mtr><mtr
+><mtd
+ class="array" columnalign="center"></mtd></mtr>
+<!--*{10}{c}
+
+--></mtable>                                                                                       </mrow></mfenced>
+</mrow></math></div>
+<!--l. 259
+
+--><p
+ class="noindent">
+<!--tex4ht:inline
+
+--></p><!--l. 259
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+<mtable
+ class="eqnarray-star" columnalign="right center left" displaystyle="true">
+<mtr
+><mtd
+ class="eqnarray-1"> <mfenced
+ separators="" open="|" close="|"><mrow
+> <mtable
+ align="axis" style="" equalrows="false" columnlines="none" equalcolumns="false" class="array"> <mtr
+><mtd
+ class="array" columnalign="center"><mn
+>1</mn></mtd><mtd
+ class="array" columnalign="center"><mn
+>2</mn></mtd></mtr>  <mtr
+><mtd
+ class="array" columnalign="center"><mn
+>3</mn></mtd> <mtd
+ class="array" columnalign="center"><mn
+>4</mn></mtd></mtr>
+<!--cc
+
+--></mtable>                                                                                                                    </mrow></mfenced></mtd><mtd
+ class="eqnarray-2">      <mo
+ class="MathClass-rel">=</mo></mtd><mtd
+ class="eqnarray-3">      <mrow
+><mo
+ class="MathClass-open">(</mo><mrow
+><mn
+>1</mn> <mo
+ class="MathClass-bin">&#xD7;</mo> <mn
+>4</mn></mrow><mo
+ class="MathClass-close">)</mo></mrow> <mo
+ class="MathClass-bin">&#x2212;</mo> <mrow
+><mo
+ class="MathClass-open">(</mo><mrow
+><mn
+>2</mn> <mo
+ class="MathClass-bin">&#xD7;</mo> <mn
+>3</mn></mrow><mo
+ class="MathClass-close">)</mo></mrow></mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd>
+</mtr><mtr
+><mtd
+ class="eqnarray-1">                                                                                        </mtd><mtd
+ class="eqnarray-2">      <mo
+ class="MathClass-rel">=</mo></mtd><mtd
+ class="eqnarray-3">      <mn
+>4</mn> <mo
+ class="MathClass-bin">&#x2212;</mo> <mn
+>6</mn> <mo
+ class="MathClass-rel">=</mo> <mo
+ class="MathClass-bin">&#x2212;</mo><mn
+>2</mn>     </mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd></mtr></mtable>
+</math>
+<!--l. 262
+
+--><p
+ class="nopar">
+</p>
+                                                                                       
+                                                                                       
+<div
+ class="par-math-block" custom-style="Normal"><!--l. 264
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
+>
+                                 <msqrt
+><mrow
+>
+<mi
+>a</mi> <mo
+ class="MathClass-bin">+</mo> <msqrt
+><mrow
+><mfrac
+><mrow
+><mi
+>b</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>c</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>d</mi></mrow>
+    <mrow
+><mi
+>e</mi></mrow></mfrac></mrow></msqrt>     <mo
+ class="MathClass-bin">+</mo> <mi
+>f</mi></mrow></msqrt>
+</mrow></math></div>
+<div
+ class="par-math-block" custom-style="Normal"><!--l. 268
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
+>
+                                 <mover
+ accent="false" class="mml-overline"><mrow
+> <munder
+ accentunder="false" class="mml-underline"><mrow
+><mi
+>a</mi></mrow><mo
+ accent="true">&#x332;</mo></munder> <mo
+ class="MathClass-bin">+</mo> <mover
+ accent="false" class="mml-overline"><mrow
+> <mi
+>b</mi> <mo
+ class="MathClass-bin">+</mo> <munder
+ accentunder="false" class="mml-underline"><mrow
+><mi
+>c</mi></mrow><mo
+ accent="true">&#x332;</mo></munder> <mo
+ class="MathClass-bin">+</mo> <mi
+>d</mi> </mrow><mo
+ accent="true">&#xAF;</mo></mover> <mo
+ class="MathClass-bin">+</mo> <mover
+ accent="false" class="mml-overline"><mrow
+> <mover
+ accent="false" class="mml-overline"><mrow
+> <mi
+>e</mi> </mrow><mo
+ accent="true">&#xAF;</mo></mover> </mrow><mo
+ accent="true">&#xAF;</mo></mover> </mrow><mo
+ accent="true">&#xAF;</mo></mover>
+</mrow></math></div>
+<div
+ class="par-math-block" custom-style="Normal"><!--l. 272
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
+>
+                                 <munder
+ class="msub"><mrow
+><munder
+ accentunder="false"><mrow
+> <mi
+>a</mi> <mo
+ class="MathClass-bin">+</mo><mover
+ class="msup"><mrow
+><mover
+ accent="false"><mrow
+> <mi
+>b</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>c</mi></mrow><mo
+>&#x23DE;</mo></mover> </mrow><mrow
+><mo
+ class="MathClass-rel">=</mo><mn
+>0</mn></mrow></mover> <mo
+ class="MathClass-bin">+</mo> <mi
+>d</mi></mrow><mo
+>&#x23DF;</mo></munder> </mrow><mrow
+>
+<mstyle
+ class="mbox"><mtext
+>text</mtext></mstyle></mrow></munder>
+</mrow></math></div>
+                                                                                       
+                                                                                       
+<div
+ class="par-math-block" custom-style="Normal"><!--l. 276
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
+>
+                                          <mover
+ class="stackrel"><mrow
+><mo
+ class="MathClass-rel">&#x2192;</mo></mrow><mrow
+><mrow
+><mi
+>a</mi></mrow></mrow></mover>
+</mrow></math></div>
+<div
+ class="par-math-block" custom-style="Normal"><!--l. 281
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
+>
+<mfenced
+ separators="" open="(" close=")"><mrow
+> <mtable
+ align="axis" style="" equalrows="false" columnlines="" equalcolumns="false" class="array"> <mtr
+><mtd
+ class="array" columnalign="center"><mi
+>a</mi></mtd></mtr><mtr
+><mtd
+ class="array" columnalign="center"><mi
+>b</mi></mtd></mtr>
+<!--c
+
+--></mtable>                                                                                       </mrow></mfenced>
+</mrow></math></div>
+<div
+ class="par-math-block" custom-style="Normal"><!--l. 285
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
+>
+                 <mi
+>a</mi> <mo
+ class="MathClass-bin">+</mo>           <mfrac
+><mrow
+><mn
+>1</mn></mrow> 
+<mrow
+><mi
+>b</mi> <mo
+ class="MathClass-bin">+</mo>         <mfrac
+><mrow
+><mn
+>1</mn></mrow> 
+<mrow
+><mi
+>c</mi><mo
+ class="MathClass-bin">+</mo>         <mfrac
+><mrow
+><mn
+>1</mn></mrow>
+<mrow
+><mi
+>d</mi><mo
+ class="MathClass-bin">+</mo>        <mfrac
+><mrow
+><mn
+>1</mn></mrow>
+<mrow
+><mi
+>e</mi><mo
+ class="MathClass-bin">+</mo>     <mfrac
+><mrow
+><mn
+>1</mn></mrow>
+<mrow
+><mi
+>f</mi><mo
+ class="MathClass-bin">+</mo>   <mfrac
+><mrow
+><mn
+>1</mn></mrow>
+<mrow
+><mi
+>g</mi><mo
+ class="MathClass-bin">+</mo> <mfrac
+><mrow
+><mn
+>1</mn></mrow><mrow
+><mi
+>h</mi></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac><mspace
+ width="2em" class="qquad"></mspace><mi
+>a</mi> <mo
+ class="MathClass-bin">+</mo>                  <mfrac
+><mrow
+><mn
+>1</mn></mrow> 
+<mrow
+><mi
+>b</mi> <mo
+ class="MathClass-bin">+</mo>                <mfrac
+><mrow
+><mn
+>1</mn></mrow> 
+<mrow
+><mi
+>c</mi> <mo
+ class="MathClass-bin">+</mo>             <mfrac
+><mrow
+><mn
+>1</mn></mrow> 
+<mrow
+><mi
+>d</mi> <mo
+ class="MathClass-bin">+</mo>          <mfrac
+><mrow
+><mn
+>1</mn></mrow> 
+<mrow
+><mi
+>e</mi> <mo
+ class="MathClass-bin">+</mo>       <mfrac
+><mrow
+><mn
+>1</mn></mrow> 
+<mrow
+><mi
+>f</mi> <mo
+ class="MathClass-bin">+</mo>    <mfrac
+><mrow
+><mn
+>1</mn></mrow> 
+<mrow
+><mi
+>g</mi> <mo
+ class="MathClass-bin">+</mo> <mfrac
+><mrow
+><mn
+>1</mn></mrow> 
+<mrow
+><mi
+>h</mi></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac>
+</mrow></math></div>
+                                                                                       
+                                                                                       
+<!--l. 289
+
+--><p
+ class="noindent">
+</p>
+<h4
+ class="subsectionHead"><span
+ class="titlemark">2.1    </span> <a
+ href="#QQ2-1-6" id="x1-60002.1">Testing line breaking</a></h4>
+<!--l. 291
+
+--><p
+ class="noindent">
+<!--tex4ht:inline
+
+--></p><!--l. 291
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+<mtable
+ class="eqnarray-star" columnalign="right center left" displaystyle="true">
+<mtr
+><mtd
+ class="eqnarray-1"> </mtd><mtd
+ class="eqnarray-2">      </mtd><mtd
+ class="eqnarray-3">      <mi
+>a</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>b</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>c</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>d</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>e</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>f</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>g</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>h</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>i</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>j</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>k</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>l</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>m</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>n</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>o</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>p</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>q</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>r</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>s</mi> <mo
+ class="MathClass-rel">=</mo> <mi
+>t</mi> </mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd>
+</mtr><mtr
+><mtd
+ class="eqnarray-1"> </mtd><mtd
+ class="eqnarray-2">      </mtd><mtd
+ class="eqnarray-3">      <mi
+>a</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>b</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>c</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>d</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>e</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>f</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>g</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>h</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>i</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>j</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>k</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>l</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>m</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>n</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>o</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>p</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>q</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>r</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>s</mi> <mo
+ class="MathClass-rel">&#x3C;</mo> <mi
+>t</mi> </mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd>
+</mtr><mtr
+><mtd
+ class="eqnarray-1"> </mtd><mtd
+ class="eqnarray-2">      </mtd><mtd
+ class="eqnarray-3">      <mi
+>a</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>b</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>c</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>d</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>e</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>f</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>g</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>h</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>i</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>j</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>k</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>l</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>m</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>n</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>o</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>p</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>q</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>r</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>s</mi> <mo
+ class="MathClass-rel">&#x3E;</mo> <mi
+>t</mi> </mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd>
+</mtr><mtr
+><mtd
+ class="eqnarray-1"> </mtd><mtd
+ class="eqnarray-2">      </mtd><mtd
+ class="eqnarray-3">      <mi
+>a</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>b</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>c</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>d</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>e</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>f</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>g</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>h</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>i</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>j</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>k</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>l</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>m</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>n</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>o</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>p</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>q</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>r</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>s</mi> <mo
+ class="MathClass-rel">&#x2264;</mo> <mi
+>t</mi> </mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd>
+</mtr><mtr
+><mtd
+ class="eqnarray-1"> </mtd><mtd
+ class="eqnarray-2">      </mtd><mtd
+ class="eqnarray-3">      <mi
+>a</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>b</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>c</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>d</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>e</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>f</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>g</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>h</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>i</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>j</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>k</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>l</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>m</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>n</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>o</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>p</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>q</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>r</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>s</mi> <mo
+ class="MathClass-rel">&#x2265;</mo> <mi
+>t</mi> </mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd>
+</mtr><mtr
+><mtd
+ class="eqnarray-1"> </mtd><mtd
+ class="eqnarray-2">      </mtd><mtd
+ class="eqnarray-3">      <mi
+>a</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>b</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>c</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>d</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>e</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>f</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>g</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>h</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>i</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>j</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>k</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>l</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>m</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>n</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>o</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>p</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>q</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>r</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>s</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>t</mi> <mo
+ class="MathClass-bin">+</mo> <mi
+>u</mi>  </mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd>
+</mtr><mtr
+><mtd
+ class="eqnarray-1"> </mtd><mtd
+ class="eqnarray-2">      </mtd><mtd
+ class="eqnarray-3">      <mi
+>a</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>b</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>c</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>d</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>e</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>f</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>g</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>h</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>i</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>j</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>k</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>l</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>m</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>n</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>o</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>p</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>q</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>r</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>s</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>t</mi> <mo
+ class="MathClass-bin">&#x2212;</mo> <mi
+>u</mi> </mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd>
+</mtr><mtr
+><mtd
+ class="eqnarray-1"> </mtd><mtd
+ class="eqnarray-2">      </mtd><mtd
+ class="eqnarray-3">      <mi
+>a</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>b</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>c</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>d</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>e</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>f</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>g</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>h</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>i</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>j</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>k</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>l</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>m</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>n</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>o</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>p</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>q</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>r</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>s</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>t</mi> <mo
+ class="MathClass-bin">&#xD7;</mo> <mi
+>u</mi> </mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd>
+</mtr><mtr
+><mtd
+ class="eqnarray-1"> </mtd><mtd
+ class="eqnarray-2">      </mtd><mtd
+ class="eqnarray-3">      <mi
+>a</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>b</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>c</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>d</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>e</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>f</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>g</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>h</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>i</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>j</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>k</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>l</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>m</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>n</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>o</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>p</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>q</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>r</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>s</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>t</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>u</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>v</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>w</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>x</mi> <mo
+ class="MathClass-bin">&#x2217;</mo> <mi
+>y</mi></mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd>
+</mtr><mtr
+><mtd
+ class="eqnarray-1"> </mtd><mtd
+ class="eqnarray-2">      </mtd><mtd
+ class="eqnarray-3">      <mi
+>a</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>b</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>c</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>d</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>e</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>f</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>g</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>h</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>i</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>j</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>k</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>l</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>m</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>n</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>o</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>p</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>q</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>r</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>s</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>t</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>u</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>v</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>w</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>x</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>y</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>z</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>a</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>b</mi> <mo
+ class="MathClass-bin">&#x22C5;</mo> <mi
+>c</mi> </mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd>
+</mtr><mtr
+><mtd
+ class="eqnarray-1"> </mtd><mtd
+ class="eqnarray-2">      </mtd><mtd
+ class="eqnarray-3">      <mi
+>a</mi><mo
+ class="MathClass-punc">,</mo><mi
+>b</mi><mo
+ class="MathClass-punc">,</mo><mi
+>c</mi><mo
+ class="MathClass-punc">,</mo><mi
+>d</mi><mo
+ class="MathClass-punc">,</mo><mi
+>e</mi><mo
+ class="MathClass-punc">,</mo><mi
+>f</mi><mo
+ class="MathClass-punc">,</mo><mi
+>g</mi><mo
+ class="MathClass-punc">,</mo><mi
+>h</mi><mo
+ class="MathClass-punc">,</mo><mi
+>i</mi><mo
+ class="MathClass-punc">,</mo><mi
+>j</mi><mo
+ class="MathClass-punc">,</mo><mi
+>k</mi><mo
+ class="MathClass-punc">,</mo><mi
+>l</mi><mo
+ class="MathClass-punc">,</mo><mi
+>m</mi><mo
+ class="MathClass-punc">,</mo><mi
+>n</mi><mo
+ class="MathClass-punc">,</mo><mi
+>o</mi><mo
+ class="MathClass-punc">,</mo><mi
+>p</mi><mo
+ class="MathClass-punc">,</mo><mi
+>q</mi><mo
+ class="MathClass-punc">,</mo><mi
+>r</mi><mo
+ class="MathClass-punc">,</mo><mi
+>s</mi><mo
+ class="MathClass-punc">,</mo><mi
+>t</mi><mo
+ class="MathClass-punc">,</mo><mi
+>u</mi><mo
+ class="MathClass-punc">,</mo><mi
+>v</mi><mo
+ class="MathClass-punc">,</mo><mi
+>w</mi><mo
+ class="MathClass-punc">,</mo><mi
+>x</mi><mo
+ class="MathClass-punc">,</mo><mi
+>y</mi><mo
+ class="MathClass-punc">,</mo><mi
+>z</mi><mo
+ class="MathClass-punc">,</mo><mi
+>a</mi><mo
+ class="MathClass-punc">,</mo><mi
+>b</mi><mo
+ class="MathClass-punc">,</mo><mi
+>c</mi><mo
+ class="MathClass-punc">,</mo><mi
+>d</mi><mo
+ class="MathClass-punc">,</mo><mi
+>e</mi><mo
+ class="MathClass-punc">,</mo><mi
+>f</mi><mo
+ class="MathClass-punc">,</mo><mi
+>g</mi><mo
+ class="MathClass-punc">,</mo><mi
+>h</mi><mo
+ class="MathClass-punc">,</mo><mi
+>i</mi><mo
+ class="MathClass-punc">,</mo><mi
+>j</mi><mo
+ class="MathClass-punc">,</mo><mi
+>k</mi><mo
+ class="MathClass-punc">,</mo><mi
+>l</mi> </mtd><mtd
+ class="eqnarray-4"> <mtext
+ class="eqnarray"></mtext></mtd></mtr></mtable>
+</math>
+<!--l. 303
+
+--><p
+ class="nopar">
+</p><!--l. 305
+
+--><p
+ class="noindent">
+</p>
+                                                                                       
+                                                                                       
+<h4
+ class="subsectionHead"><span
+ class="titlemark">2.2    </span> <a
+ href="#QQ2-1-7" id="x1-70002.2">Testing new commands</a></h4>
+<div
+ class="par-math-block" custom-style="Normal"><!--l. 306
+
+--><math
+ xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow
+>
+                                        <msub
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>1</mn></mrow></msub><msup
+><mrow
+><mi
+>x</mi></mrow><mrow
+><mn
+>2</mn></mrow></msup><msub
+><mrow
+><mi
+>x</mi></mrow><mrow
+>
+<mn
+>2</mn></mrow></msub>
+</mrow></math></div>
+ 
+</body> 
+</html>

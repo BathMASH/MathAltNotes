@@ -1,5 +1,6 @@
 <!DOCTYPE html> 
 
+
 <html
 > 
 <head
@@ -21,6 +22,7 @@
  type="text/x-mathjax-config"> 
 MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
 explorer:{ subtitle: true }, 
+displayAlign: "center",  
 MatchWebFonts: { 
 matchFor: { "HTML-CSS": true, NativeMML: false, SVG: false }, 
 fontCheckDelay: 2000, 
@@ -30,13 +32,13 @@ fontCheckTimeout: 30 * 1000
 preferredFont: "STIX",  
 availableFonts: ["STIX","TeX"],  
 webFont: "STIX-Web",  
-linebreaks: { automatic: false, width: "90% container" } 
+linebreaks: { automatic: true, width: "90% container" } 
 }, 
 SVG: {  
 font: "STIX-Web", 
 linebreaks: { automatic: false, width: "90% container" } 
 }, 
-menuSettings: { collapsible: true, autocollapse: true, explorer: false } 
+menuSettings: { collapsible: false, autocollapse: false, explorer: false } 
 }); 
 </script> 
 <script
@@ -67,31 +69,22 @@ menuSettings: { collapsible: true, autocollapse: true, explorer: false }
                                                                                        
                                                                                        
 <!--l. 14
+
 --><p
  class="noindent">This section looks only at graphics available without the graphics packages, that is, internal to
-vanilla <span
- class="LATEX">L<span
- class="A">A</span><span
- class="TEX">T<span
- class="E">E</span>X</span></span>. Kopka and Daly <span
+vanilla LaTeX. Kopka and Daly <span
  class="cite">[<a
- href="input-webli1.html#XKopkaDaly">1</a>]</span> explain that &#x201C;Standard <span
- class="LATEX">L<span
- class="A">A</span><span
- class="TEX">T<span
- class="E">E</span>X</span></span>does actually contain the
+ href="input-webli1.html#XKopkaDaly">1</a>]</span> explain that &#x201C;Standard LaTeXdoes actually contain the
 means to make primative drawings on its own&#x201D; and they consider only the facets of picture
-that are in standard <span
- class="LATEX">L<span
- class="A">A</span><span
- class="TEX">T<span
- class="E">E</span>X</span></span>, not those that require additional packages. This is what we test
+that are in standard LaTeX, not those that require additional packages. This is what we test
 as a basic starting point in the vanilla stress test.
 </p><!--l. 25
+
 --><p
  class="noindent"><img
  src="input-web0x.svg" alt="PICT"></img>
 </p><!--l. 32
+
 --><p
  class="noindent"><img
  src="input-web1x.svg" alt="PICT"></img>

@@ -11,3 +11,19 @@ body {
     line-height: 0.75;
 }
 
+table.tabular {
+    margin-left: inherit;
+    margin-right: auto;
+}
+
+td.td11 {
+    padding-left: 10pt;
+    padding-right: 10pt;
+    line-height: 2.5;
+}
+
+td {
+    white-space: Normal;
+}
+
+tr:nth-child(odd) {background-color: #E3E4FA;}

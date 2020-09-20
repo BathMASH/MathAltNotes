@@ -14,8 +14,8 @@ It is intended to be used on lecture notes and problem sheets written
 by authors who are not very adventurous in their use of LaTeX!
 It is not intended for use with complex LaTeX documents such as books or 
 articles for publication. Help and support is available from 
-ma-largeprintnotes@bath.ac.uk but only if you are trying to 
-create alternative formats for student use at the University of Bath.
+mash-access@bath.ac.uk but only if you are trying to 
+create alternative formats for student use at the University of Bath. 
 
 ## The alternative formats
 
@@ -35,7 +35,7 @@ technology they have they may require one or the other. These formats
 are not interchangeable. 
 
 If you would like to know more about how these formats can be
-used please email ma-largeprintnotes@bath.ac.uk
+used please email mash-access@bath.ac.uk
 
 # Instructions
 
@@ -155,7 +155,7 @@ This is a work in progress and is unstable! Regardless of how good we
 get it will never be possible for us to process general LaTeX. Before
 contacting us try to minimise your use of packages and fonts. 
  
-If you have problems email ma-largeprintnotes@bath.ac.uk to report them.
+If you have problems email mash-access@bath.ac.uk to report them.
 We may eventually solve the problem, if it is possible to solve it,
 but make no promises!
 
