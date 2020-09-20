@@ -148,5 +148,6 @@ div.framed { background-color: Gainsboro; }
 div.framed { background-color: Gainsboro; } 
 div.framed { background-color: Gainsboro; } 
 span.head { font-weight:bold; }
+.sc{ font-variant: small-caps;}
 /* end css.sty */
 

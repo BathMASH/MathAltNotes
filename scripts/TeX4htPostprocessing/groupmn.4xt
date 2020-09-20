@@ -7,7 +7,8 @@
       	 <dom name="." xml="." method="mnGroup" class="tex4ht.HtJsml" />
       	 <set name="merge" >
 	 <![CDATA[<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	 	 <xsl:output omit-xml-declaration = "yes" />
+	 	 <xsl:output omit-xml-declaration = "yes" method="html" indent="yes"/>
+		 <xsl:strip-space elements="*"/>
 		 <xsl:template match="mn-group" >
 		 <xsl:choose>
 		 <xsl:when test=" not(child::mn) ">

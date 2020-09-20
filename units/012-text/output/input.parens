@@ -1,0 +1,64 @@
+   1 |            | \documentclass[12pt,a4paper,onecolumn]{article}
+   2 |            | \usepackage[T1]{fontenc} 
+   3 |            | \usepackage[a4paper]{geometry} 
+   4 |            | \usepackage[english]{babel} 
+   5 |            | \usepackage{amsmath}
+   6 |            | \usepackage{amssymb} 
+   7 |            | \usepackage{amsfonts} 
+   8 |            | \usepackage[mathscr]{eucal}
+   9 |            | \usepackage{eufrak} 
+  10 |            | \usepackage{amsthm} 
+  11 |            | \usepackage{longtable} 
+  12 |            | \usepackage{graphicx} 
+  13 |            | \usepackage{verbatim} 
+  14 |            | \usepackage{url} 
+  15 |            | \newtheorem{theorem}{Theorem}[section]
+  16 |            | \newtheorem{corollary}[theorem]{Corollary}
+  17 |            | \theoremstyle{definition}
+  18 |            | \newtheorem{definition}{Definition}[section]
+  19 |            | \theoremstyle{remark}
+  20 |            | \newtheorem*{note}{Note}
+  21 |            | \newenvironment{Proof}{\noindent{\bf Proof.}\hspace*{1em}}{\qed\par}
+  22 |            | 
+  23 |            | \title{AMS theorems and newenvironment}
+  24 |            | \author{Emma Cliffe}
+  25 |            | \date{}
+  26 |            | \pagestyle{headings}
+  27 |            | \begin{document}
+  28 |            | \maketitle
+  29 |            | 
+  30 |            | \section{Some theorem and a new environment}
+  31 |            | 
+  32 |            | \begin{theorem}
+  33 |            | This is a numbered theorem (within the section) in the standard style and hence this text is in italics. 
+  34 |            | \end{theorem}
+  35 |            | 
+  36 |            | \begin{corollary}
+  37 |            | This is a numbered corollary (numbered with theorems) also in the standard style.
+  38 |            | \end{corollary}
+  39 |            | 
+  40 |            | \subsection{Built-in and self-defined proof environments}
+  41 |            | 
+  42 |            | \begin{proof}
+  43 |            | This is the built-in proof environment.
+  44 |            | \end{proof}
+  45 |            | 
+  46 |            | \begin{Proof}
+  47 |            | This a self-made proof environment.
+  48 |            | \end{Proof}
+  49 |            | 
+  50 |            | \begin{definition}
+  51 |            | This is a numbered definition (numbered within section but not with theorems) and in the “definition” style. The title and number should be bold but the rest of the text should be normal font.
+  52 |            | \end{definition}
+  53 |            | 
+  54 |            | \begin{note}
+  55 |            | This is an unnumbered note and is in the “remark” style.
+  56 |            | \end{note}
+  57 |            | 
+  58 |            | \section{Second section for numbering demo}
+  59 |            | 
+  60 |            | \begin{theorem}
+  61 |            | And so we see that the numbering works out as expected.
+  62 |            | \end{theorem}
+  63 |            | 
+  64 |            | \end{document}

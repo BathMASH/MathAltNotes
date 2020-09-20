@@ -1,0 +1,64 @@
+\documentclass[12pt,a4paper,onecolumn]{article}
+\usepackage[T1]{fontenc} 
+\usepackage[a4paper]{geometry} 
+\usepackage[english]{babel} 
+\usepackage{amsmath}
+\usepackage{amssymb} 
+\usepackage{amsfonts} 
+\usepackage[mathscr]{eucal}
+\usepackage{eufrak} 
+\usepackage{amsthm} 
+\usepackage{longtable} 
+\usepackage{graphicx} 
+\usepackage{verbatim} 
+\usepackage{url} 
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{remark}
+\newtheorem*{note}{Note}
+\newenvironment{Proof}{\noindent{\bf Proof.}\hspace*{1em}}{\qed\par}
+
+\title{AMS theorems and newenvironment}
+\author{Emma Cliffe}
+\date{}
+\pagestyle{headings}
+\begin{document}
+\maketitle
+
+\section{Some theorem and a new environment}
+
+\begin{theorem}
+This is a numbered theorem (within the section) in the standard style and hence this text is in italics. 
+\end{theorem}
+
+\begin{corollary}
+This is a numbered corollary (numbered with theorems) also in the standard style.
+\end{corollary}
+
+\subsection{Built-in and self-defined proof environments}
+
+\begin{proof}
+This is the built-in proof environment.
+\end{proof}
+
+\begin{Proof}
+This a self-made proof environment.
+\end{Proof}
+
+\begin{definition}
+This is a numbered definition (numbered within section but not with theorems) and in the ``definition'' style. The title and number should be bold but the rest of the text should be normal font.
+\end{definition}
+
+\begin{note}
+This is an unnumbered note and is in the ``remark'' style.
+\end{note}
+
+\section{Second section for numbering demo}
+
+\begin{theorem}
+And so we see that the numbering works out as expected.
+\end{theorem}
+
+\end{document}

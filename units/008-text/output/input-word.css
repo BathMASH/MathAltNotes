@@ -155,5 +155,6 @@ div.framed { background-color: Gainsboro; }
 div.framed { background-color: Gainsboro; } 
 div.verbatiminput {font-family: monospace; white-space: nowrap; }
 span.head { font-weight:bold; }
+.sc{ font-variant: small-caps;}
 /* end css.sty */
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE xtpipes SYSTEM "xtpipes.dtd" >
+<xtpipes preamble="yes" signature="empty.4xt">
+  <sax content-handler="xtpipes.util.ScriptsManager,"
+       lexical-handler="xtpipes.util.ScriptsManagerLH" >
+    <script element="hr">
+      <set name="hr">
+	<![CDATA[<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+		 <xsl:output omit-xml-declaration = "yes"/>
+		 <xsl:strip-space elements="*"/>
+		 <xsl:template match="tr">
+		 <p>---</p>
+		 </xsl:template>
+		 </xsl:stylesheet>
+	]]>
+      </set>
+      <xslt name="." xml="." xsl="hr" />
+    </script>
+  </sax>
+</xtpipes>

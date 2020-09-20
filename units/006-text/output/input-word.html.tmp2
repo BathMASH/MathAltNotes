@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 
 <html
-> 
+ lang="en"> 
 <head
 > <title
 >Basic mathematical symbols and structures</title> 
@@ -19,7 +19,8 @@
  rel="stylesheet" type="text/css" href="additional.css"></link> 
 <script
  type="text/x-mathjax-config"> 
-MathJax.Hub.Config({ "fast-preview": {disabled: true}, 
+MathJax.Hub.Config({ mml2jax: { preview: ["[maths rendering]"]}, 
+"fast-preview": {disabled: true}, 
 explorer:{ subtitle: true }, 
 displayAlign: "center",  
 MatchWebFonts: { 
@@ -39,6 +40,15 @@ linebreaks: { automatic: false, width: "90% container" }
 }, 
 menuSettings: { collapsible: false, autocollapse: false, explorer: false } 
 }); 
+</script> 
+<script
+ type="text/x-mathjax-config"> 
+MathJax.Hub.Register.MessageHook("End Math", function (msg) { 
+var nodes = Array.from(msg[1].querySelectorAll('.MJX_Assistive_MathML [id]')); 
+while (nodes.length) { 
+nodes.shift().removeAttribute('id'); 
+} 
+}, 20); 
 </script> 
 <script
  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script> 
@@ -149,9 +159,11 @@ menuSettings: { collapsible: false, autocollapse: false, explorer: false }
  class="MathClass-rel">=</mo><mo
  class="MathClass-rel">&#x3C;</mo><mo
  class="MathClass-rel">&#x3E;</mo> <mo
- class="MathClass-bin">&#x2215;</mo> <mo class="MathClass-punc">:</mo><msup
+ class="MathClass-bin">&#x2215;</mo> <mo class="MathClass-punc">:</mo>
+<msup
 ><mrow
-><mo class="MathClass-punc">!</mo></mrow><mrow
+><mo class="MathClass-punc">!</mo>
+</mrow><mrow
 ><mi
 >&#x2032;</mi></mrow></msup><mo
  class="MathClass-rel">|</mo><mrow
@@ -1480,51 +1492,67 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  separators="" open="(" close=")"><mrow
 ><mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn>1</mn>
+</mrow>
 <mrow
-><mn>2</mn></mrow></mfrac></mrow></mfenced> <mfenced
+><mn>2</mn>
+</mrow></mfrac></mrow></mfenced> <mfenced
  separators="" open="[" close="]"><mrow
 ><mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn>1</mn>
+</mrow>
 <mrow
-><mn>2</mn></mrow></mfrac></mrow></mfenced> <mfenced
+><mn>2</mn>
+</mrow></mfrac></mrow></mfenced> <mfenced
  separators="" open="{" close="}"><mrow
 ><mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn>1</mn>
+</mrow>
 <mrow
-><mn>2</mn></mrow></mfrac></mrow></mfenced> <mfenced
+><mn>2</mn>
+</mrow></mfrac></mrow></mfenced> <mfenced
  separators="" open="|" close="|"><mrow
 ><mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn>1</mn>
+</mrow>
 <mrow
-><mn>2</mn></mrow></mfrac></mrow></mfenced> <mfenced
+><mn>2</mn>
+</mrow></mfrac></mrow></mfenced> <mfenced
  separators="" open="/" close="&#x2216;"><mrow
 ><mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn>1</mn>
+</mrow>
 <mrow
-><mn>2</mn></mrow></mfrac></mrow></mfenced> <mfenced
+><mn>2</mn>
+</mrow></mfrac></mrow></mfenced> <mfenced
  separators="" open="&#x230A;" close="&#x230B;"><mrow
 ><mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn>1</mn>
+</mrow>
 <mrow
-><mn>2</mn></mrow></mfrac></mrow></mfenced> <mfenced
+><mn>2</mn>
+</mrow></mfrac></mrow></mfenced> <mfenced
  separators="" open="&#x2308;" close="&#x2309;"><mrow
 ><mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn>1</mn>
+</mrow>
 <mrow
-><mn>2</mn></mrow></mfrac></mrow></mfenced> <mfenced
+><mn>2</mn>
+</mrow></mfrac></mrow></mfenced> <mfenced
  separators="" open="&#x27E8;" close="&#x27E9;"><mrow
 ><mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn>1</mn>
+</mrow>
 <mrow
-><mn>2</mn></mrow></mfrac></mrow></mfenced>
+><mn>2</mn>
+</mrow></mfrac></mrow></mfenced>
 </math></td><td
  class="eq-no">(27)</td></tr></table>
 <!--l. 169
@@ -1909,12 +1937,15 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><mi
 >A</mi></mrow><mrow
 ><mi
->i</mi><mo class="MathClass-punc">,</mo><mi
->j</mi><mo class="MathClass-punc">,</mo><mi
+>i</mi><mo class="MathClass-punc">,</mo>
+<mi
+>j</mi><mo class="MathClass-punc">,</mo>
+<mi
 >k</mi></mrow><mrow
 ><msup
 ><mrow
-><mn>2</mn></mrow><mrow
+><mn>2</mn>
+</mrow><mrow
 ><mi
 >n</mi></mrow></msup></mrow></msubsup> </math>
 <!--l. 200
@@ -1925,12 +1956,15 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><mi
 >A</mi></mrow><mrow
 ><mi
->i</mi><mo class="MathClass-punc">,</mo><mi
->j</mi><mo class="MathClass-punc">,</mo><mi
+>i</mi><mo class="MathClass-punc">,</mo>
+<mi
+>j</mi><mo class="MathClass-punc">,</mo>
+<mi
 >k</mi></mrow><mrow
 ><msup
 ><mrow
-><mn>2</mn></mrow><mrow
+><mn>2</mn>
+</mrow><mrow
 ><mi
 >n</mi></mrow></msup></mrow></msubsup> </mrow></math>
 <!--l. 200
@@ -1941,12 +1975,15 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><mi
 >A</mi></mrow><mrow
 ><mi
->i</mi><mo class="MathClass-punc">,</mo><mi
->j</mi><mo class="MathClass-punc">,</mo><mi
+>i</mi><mo class="MathClass-punc">,</mo>
+<mi
+>j</mi><mo class="MathClass-punc">,</mo>
+<mi
 >k</mi></mrow><mrow
 ><msup
 ><mrow
-><mn>2</mn></mrow><mrow
+><mn>2</mn>
+</mrow><mrow
 ><mi
 >n</mi></mrow></msup></mrow></msubsup> </mrow></math>
 </p><!--l. 202
@@ -1966,120 +2003,153 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
    </mrow><mrow
 ><mi
 >i</mi><mo
- class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
-><mn>15</mn></mrow></munderover><msubsup
+ class="MathClass-rel">=</mo><mn>1</mn>
+</mrow><mrow
+><mn>15</mn>
+</mrow></munderover><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
 <mi
 >i</mi></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>1</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
+<mn>1</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mo
  class="MathClass-bin">+</mo><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>2</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
+<mn>2</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mo
  class="MathClass-bin">+</mo><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>3</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
+<mn>3</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mo
  class="MathClass-bin">+</mo><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>4</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
+<mn>4</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mo
  class="MathClass-bin">+</mo><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>5</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
+<mn>5</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mo
  class="MathClass-bin">+</mo><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>6</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
+<mn>6</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mo
  class="MathClass-bin">+</mo><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>7</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
+<mn>7</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mo
  class="MathClass-bin">+</mo><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>8</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
+<mn>8</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mo
  class="MathClass-bin">+</mo><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>9</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
+<mn>9</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mo
  class="MathClass-bin">+</mo><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>10</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
+<mn>10</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mo
  class="MathClass-bin">+</mo><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>11</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
+<mn>11</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mo
  class="MathClass-bin">+</mo><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>12</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
+<mn>12</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mo
  class="MathClass-bin">+</mo><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>13</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
+<mn>13</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mo
  class="MathClass-bin">+</mo><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>14</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mo
+<mn>14</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mo
  class="MathClass-bin">+</mo><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>15</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup>
+<mn>15</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup>
 </math></td><td
  class="eq-no">(100)</td></tr></table>
                                                                                        
@@ -2093,106 +2163,136 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 >
 <mi
 >x</mi></mrow><mrow
-><mn>1</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+><mn>1</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>2</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>2</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>3</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>3</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>4</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>4</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>5</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>5</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>6</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>6</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>7</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>7</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>8</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>8</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>9</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>9</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>10</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>10</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>11</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>11</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>12</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>12</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>13</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>13</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>14</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>14</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>15</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup>
+<mn>15</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup>
 </mrow></math></div>
 <div
  class="par-math-block" custom-style="Normal"><!--l. 212
@@ -2206,134 +2306,167 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
   </mrow><mrow
 ><mi
 >i</mi><mo
- class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
-><mn>15</mn></mrow></munderover><msubsup
+ class="MathClass-rel">=</mo><mn>1</mn>
+</mrow><mrow
+><mn>15</mn>
+</mrow></munderover><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
 <mi
 >i</mi></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>1</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn>1</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>2</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn>2</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>3</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn>3</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>4</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn>4</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>5</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn>5</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>6</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn>6</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>7</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn>7</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>8</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn>8</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>9</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn>9</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>10</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn>10</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>11</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn>11</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>12</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn>12</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>13</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn>13</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>14</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn>14</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace><mspace
  width="1em" class="nbsp"></mspace><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>15</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup><mspace
+<mn>15</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup><mspace
  width="1em" class="nbsp"></mspace>
 </mrow></math></div>
 <div
@@ -2348,120 +2481,153 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
   </mrow><mrow
 ><mi
 >i</mi><mo
- class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
-><mn>15</mn></mrow></munderover><msubsup
+ class="MathClass-rel">=</mo><mn>1</mn>
+</mrow><mrow
+><mn>15</mn>
+</mrow></munderover><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
 <mi
 >i</mi></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-rel">=</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>1</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>1</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>2</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>2</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>3</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>3</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>4</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>4</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>5</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>5</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>6</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>6</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>7</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>7</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>8</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>8</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>9</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>9</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>10</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>10</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>11</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>11</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>12</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>12</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>13</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>13</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>14</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>14</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">&#x22C5;</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>15</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup>
+<mn>15</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup>
 </mrow></math></div>
 <!--l. 220
 --><p
@@ -2486,94 +2652,123 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
   </mrow><mrow
 ><mi
 >i</mi><mo
- class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
-><mn>13</mn></mrow></munderover><msubsup
+ class="MathClass-rel">=</mo><mn>1</mn>
+</mrow><mrow
+><mn>13</mn>
+</mrow></munderover><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 ><mi
 >i</mi></mrow><mrow
-><mn>2</mn></mrow></msubsup></mrow></msqrt> <mo
+><mn>2</mn>
+</mrow></msubsup></mrow></msqrt> <mo
  class="MathClass-rel">=</mo> <msqrt
 ><mrow
 ><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>1</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn>1</mn>
+</mrow> <mrow
+>  <mn>2</mn>
+</mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>2</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn>2</mn>
+</mrow> <mrow
+>  <mn>2</mn>
+</mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>3</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn>3</mn>
+</mrow> <mrow
+>  <mn>2</mn>
+</mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>4</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn>4</mn>
+</mrow> <mrow
+>  <mn>2</mn>
+</mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>5</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn>5</mn>
+</mrow> <mrow
+>  <mn>2</mn>
+</mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>6</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn>6</mn>
+</mrow> <mrow
+>  <mn>2</mn>
+</mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>7</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn>7</mn>
+</mrow> <mrow
+>  <mn>2</mn>
+</mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>8</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn>8</mn>
+</mrow> <mrow
+>  <mn>2</mn>
+</mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>9</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn>9</mn>
+</mrow> <mrow
+>  <mn>2</mn>
+</mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>10</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn>10</mn>
+</mrow> <mrow
+>  <mn>2</mn>
+</mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>11</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn>11</mn>
+</mrow> <mrow
+>  <mn>2</mn>
+</mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>12</mn> </mrow> <mrow
->  <mn>2</mn> </mrow> </msubsup> <mo
+><mn>12</mn>
+</mrow> <mrow
+>  <mn>2</mn>
+</mrow> </msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>13</mn> </mrow> <mrow
->  <mn>2</mn></mrow></msubsup></mrow></msqrt>
+><mn>13</mn>
+</mrow> <mrow
+>  <mn>2</mn>
+</mrow></msubsup></mrow></msqrt>
 </mrow></math></div>
 <div
  class="par-math-block" custom-style="Normal"><!--l. 225
@@ -2590,14 +2785,17 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
   </mrow><mrow
 ><mi
 >i</mi><mo
- class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
-><mn>13</mn></mrow></munderover><msubsup
+ class="MathClass-rel">=</mo><mn>1</mn>
+</mrow><mrow
+><mn>13</mn>
+</mrow></munderover><msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 ><mi
 >i</mi></mrow><mrow
-><mn>2</mn></mrow></msubsup></mrow></msqrt> <mo
+><mn>2</mn>
+</mrow></msubsup></mrow></msqrt> <mo
  class="MathClass-rel">=</mo><msup
 ><mrow
 > <mfenced
@@ -2606,97 +2804,125 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>1</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+><mn>1</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>2</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>2</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>3</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>3</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>4</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>4</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>5</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>5</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>6</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>6</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>7</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>7</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>8</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>8</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>9</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>9</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>10</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>10</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>11</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>11</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>12</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup> <mo
+<mn>12</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup> <mo
  class="MathClass-bin">+</mo> <msubsup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>13</mn></mrow><mrow
-><mn>2</mn></mrow></msubsup></mrow></mfenced> </mrow><mrow
+<mn>13</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msubsup></mrow></mfenced> </mrow><mrow
 ><mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn>1</mn>
+</mrow>
 <mrow
-><mn>2</mn></mrow></mfrac> </mrow></msup>
+><mn>2</mn>
+</mrow></mfrac> </mrow></msup>
 </mrow></math></div>
 <!--l. 229
 --><p
@@ -2716,66 +2942,95 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
   </mrow><mrow
 ><mi
 >i</mi><mo
- class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
-><mn>13</mn></mrow></munderover><msup
+ class="MathClass-rel">=</mo><mn>1</mn>
+</mrow><mrow
+><mn>13</mn>
+</mrow></munderover><msup
 ><mrow
-><mn>2</mn></mrow><mrow
+><mn>2</mn>
+</mrow><mrow
 ><mi
 >i</mi></mrow></msup></mtd><mtd
  class="eqnarray-2">      <mo
  class="MathClass-rel">=</mo></mtd><mtd
  class="eqnarray-3">      <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>1</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>1</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>2</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>3</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>3</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>4</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>4</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>5</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>5</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>6</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>6</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>7</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>7</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>8</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>8</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>9</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>9</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>10</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>10</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>11</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>11</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>12</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>12</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>13</mn></mrow></msup>         </mtd><mtd
+><mn>2</mn>
+</mrow><mrow
+><mn>13</mn>
+</mrow></msup>         </mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd>
 </mtr><mtr
@@ -2783,19 +3038,32 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="eqnarray-1">          </mtd><mtd
  class="eqnarray-2">      <mo
  class="MathClass-rel">=</mo></mtd><mtd
- class="eqnarray-3">      <mn>2</mn> <mo
- class="MathClass-bin">+</mo> <mn>4</mn> <mo
- class="MathClass-bin">+</mo> <mn>8</mn> <mo
- class="MathClass-bin">+</mo> <mn>16</mn> <mo
- class="MathClass-bin">+</mo> <mn>32</mn> <mo
- class="MathClass-bin">+</mo> <mn>64</mn> <mo
- class="MathClass-bin">+</mo> <mn>128</mn> <mo
- class="MathClass-bin">+</mo> <mn>256</mn> <mo
- class="MathClass-bin">+</mo> <mn>512</mn> <mo
- class="MathClass-bin">+</mo> <mn>1024</mn> <mo
- class="MathClass-bin">+</mo> <mn>2048</mn> <mo
- class="MathClass-bin">+</mo> <mn>4096</mn> <mo
- class="MathClass-bin">+</mo> <mn>8192</mn></mtd><mtd
+ class="eqnarray-3">      <mn>2</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>4</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>8</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>16</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>32</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>64</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>128</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>256</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>512</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>1024</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>2048</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>4096</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>8192</mn>
+</mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd>
 </mtr><mtr
@@ -2803,7 +3071,8 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="eqnarray-1">          </mtd><mtd
  class="eqnarray-2">      <mo
  class="MathClass-rel">=</mo></mtd><mtd
- class="eqnarray-3">      <mn>16382</mn>                                                                  </mtd><mtd
+ class="eqnarray-3">      <mn>16382</mn>
+</mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray">(101)</mtext><mtext
  id="x1-5002r101" class="label"></mtext><mtext
@@ -2833,66 +3102,95 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
   </mrow><mrow
 ><mi
 >i</mi><mo
- class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
-><mn>13</mn></mrow></munderover><msup
+ class="MathClass-rel">=</mo><mn>1</mn>
+</mrow><mrow
+><mn>13</mn>
+</mrow></munderover><msup
 ><mrow
-><mn>2</mn></mrow><mrow
+><mn>2</mn>
+</mrow><mrow
 ><mi
 >i</mi></mrow></msup></mtd><mtd
  class="eqnarray-2">      <mo
  class="MathClass-rel">=</mo></mtd><mtd
  class="eqnarray-3">      <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>1</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>1</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>2</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>2</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>3</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>3</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>4</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>4</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>5</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>5</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>6</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>6</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>7</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>7</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>8</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>8</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>9</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>9</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>10</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>10</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>11</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>11</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>12</mn></mrow></msup> <mo
+><mn>2</mn>
+</mrow><mrow
+><mn>12</mn>
+</mrow></msup> <mo
  class="MathClass-bin">+</mo> <msup
 ><mrow
-><mn>2</mn></mrow><mrow
-><mn>13</mn></mrow></msup>         </mtd><mtd
+><mn>2</mn>
+</mrow><mrow
+><mn>13</mn>
+</mrow></msup>         </mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd>
 </mtr><mtr
@@ -2900,19 +3198,32 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="eqnarray-1">          </mtd><mtd
  class="eqnarray-2">      <mo
  class="MathClass-rel">=</mo></mtd><mtd
- class="eqnarray-3">      <mn>2</mn> <mo
- class="MathClass-bin">+</mo> <mn>4</mn> <mo
- class="MathClass-bin">+</mo> <mn>8</mn> <mo
- class="MathClass-bin">+</mo> <mn>16</mn> <mo
- class="MathClass-bin">+</mo> <mn>32</mn> <mo
- class="MathClass-bin">+</mo> <mn>64</mn> <mo
- class="MathClass-bin">+</mo> <mn>128</mn> <mo
- class="MathClass-bin">+</mo> <mn>256</mn> <mo
- class="MathClass-bin">+</mo> <mn>512</mn> <mo
- class="MathClass-bin">+</mo> <mn>1024</mn> <mo
- class="MathClass-bin">+</mo> <mn>2048</mn> <mo
- class="MathClass-bin">+</mo> <mn>4096</mn> <mo
- class="MathClass-bin">+</mo> <mn>8192</mn></mtd><mtd
+ class="eqnarray-3">      <mn>2</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>4</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>8</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>16</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>32</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>64</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>128</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>256</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>512</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>1024</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>2048</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>4096</mn>
+<mo
+ class="MathClass-bin">+</mo> <mn>8192</mn>
+</mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd>
 </mtr><mtr
@@ -2920,7 +3231,8 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="eqnarray-1">          </mtd><mtd
  class="eqnarray-2">      <mo
  class="MathClass-rel">=</mo></mtd><mtd
- class="eqnarray-3">      <mn>16382</mn><mspace
+ class="eqnarray-3">      <mn>16382</mn>
+<mspace
  width="2em" class="qquad"></mspace><mstyle
  class="mbox"><mtext
 >here&#xA0;is&#xA0;some&#xA0;text&#xA0;in&#xA0;the&#xA0;formula&#xA0;to&#xA0;fill&#xA0;up&#xA0;the&#xA0;line&#xA0;at&#xA0;12pt&#xA0;font</mtext></mstyle>     </mtd><mtd
@@ -2945,24 +3257,28 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><mrow
 ><mi
 >a</mi></mrow><mrow
-><mn>11</mn></mrow></msub></mtd><mtd
+><mn>11</mn>
+</mrow></msub></mtd><mtd
  class="array" columnalign="center"><msub
 ><mrow
 ><mi
 >a</mi></mrow><mrow
-><mn>12</mn></mrow></msub></mtd>
+><mn>12</mn>
+</mrow></msub></mtd>
 </mtr>  <mtr
 ><mtd
  class="array" columnalign="center"><msub
 ><mrow
 ><mi
 >a</mi></mrow><mrow
-><mn>21</mn></mrow></msub></mtd><mtd
+><mn>21</mn>
+</mrow></msub></mtd><mtd
  class="array" columnalign="center"><msub
 ><mrow
 ><mi
 >a</mi></mrow><mrow
-><mn>22</mn></mrow></msub></mtd></mtr>
+><mn>22</mn>
+</mrow></msub></mtd></mtr>
 <!--cc
 --></mtable>                                                                                       </mrow></mfenced>
 </mrow></math></div>
@@ -2978,119 +3294,219 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 > <mtable
  align="axis" style="" equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array"> <mtr
 ><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd></mtr><mtr
+ class="array" columnalign="center"><mn>1</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd></mtr><mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd>
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>1</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd>
 </mtr>  <mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd></mtr><mtr
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>1</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd></mtr><mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd>
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>1</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd>
 </mtr>  <mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd></mtr><mtr
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>1</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd></mtr><mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd>
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>1</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd>
 </mtr>  <mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd></mtr><mtr
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>1</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd></mtr><mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd>
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>1</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd>
 </mtr>  <mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd></mtr><mtr
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>1</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd></mtr><mtr
 ><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>0</mn></mtd><mtd
- class="array" columnalign="center"><mn>1</mn></mtd></mtr><mtr
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>0</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>1</mn>
+</mtd></mtr><mtr
 ><mtd
  class="array" columnalign="center"></mtd></mtr>
 <!--*{10}{c}
@@ -3112,11 +3528,15 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 > <mtable
  align="axis" style="" equalrows="false" columnlines="none" equalcolumns="false" class="array"> <mtr
 ><mtd
- class="array" columnalign="center"><mn>1</mn></mtd><mtd
- class="array" columnalign="center"><mn>2</mn></mtd></mtr>  <mtr
+ class="array" columnalign="center"><mn>1</mn>
+</mtd><mtd
+ class="array" columnalign="center"><mn>2</mn>
+</mtd></mtr>  <mtr
 ><mtd
- class="array" columnalign="center"><mn>3</mn></mtd> <mtd
- class="array" columnalign="center"><mn>4</mn></mtd></mtr>
+ class="array" columnalign="center"><mn>3</mn>
+</mtd> <mtd
+ class="array" columnalign="center"><mn>4</mn>
+</mtd></mtr>
 <!--cc
 --></mtable>                                                                                                                    </mrow></mfenced></mtd><mtd
  class="eqnarray-2">      <mo
@@ -3124,14 +3544,18 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="eqnarray-3">      <mrow
 ><mo
  class="MathClass-open">(</mo><mrow
-><mn>1</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>4</mn></mrow><mo
+><mn>1</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>4</mn>
+</mrow><mo
  class="MathClass-close">)</mo></mrow> <mo
  class="MathClass-bin">&#x2212;</mo> <mrow
 ><mo
  class="MathClass-open">(</mo><mrow
-><mn>2</mn> <mo
- class="MathClass-bin">&#xD7;</mo> <mn>3</mn></mrow><mo
+><mn>2</mn>
+<mo
+ class="MathClass-bin">&#xD7;</mo> <mn>3</mn>
+</mrow><mo
  class="MathClass-close">)</mo></mrow></mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd>
@@ -3140,10 +3564,13 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="eqnarray-1">                                                                                        </mtd><mtd
  class="eqnarray-2">      <mo
  class="MathClass-rel">=</mo></mtd><mtd
- class="eqnarray-3">      <mn>4</mn> <mo
- class="MathClass-bin">&#x2212;</mo> <mn>6</mn> <mo
+ class="eqnarray-3">      <mn>4</mn>
+<mo
+ class="MathClass-bin">&#x2212;</mo> <mn>6</mn>
+<mo
  class="MathClass-rel">=</mo> <mo
- class="MathClass-bin">&#x2212;</mo><mn>2</mn>     </mtd><mtd
+ class="MathClass-bin">&#x2212;</mo><mn>2</mn>
+</mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd></mtr></mtable>
 </math>
@@ -3234,7 +3661,8 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 >c</mi></mrow><mo
 >&#x23DE;</mo></mover> </mrow><mrow
 ><mo
- class="MathClass-rel">=</mo><mn>0</mn></mrow></mover> <mo
+ class="MathClass-rel">=</mo><mn>0</mn>
+</mrow></mover> <mo
  class="MathClass-bin">+</mo> <mi
 >d</mi></mrow><mo
 >&#x23DF;</mo></munder> </mrow><mrow
@@ -3285,86 +3713,100 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 >a</mi> <mo
  class="MathClass-bin">+</mo>           <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn>1</mn>
+</mrow> 
 <mrow
 ><mi
 >b</mi> <mo
  class="MathClass-bin">+</mo>         <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn>1</mn>
+</mrow> 
 <mrow
 ><mi
 >c</mi><mo
  class="MathClass-bin">+</mo>         <mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn>1</mn>
+</mrow>
 <mrow
 ><mi
 >d</mi><mo
  class="MathClass-bin">+</mo>        <mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn>1</mn>
+</mrow>
 <mrow
 ><mi
 >e</mi><mo
  class="MathClass-bin">+</mo>     <mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn>1</mn>
+</mrow>
 <mrow
 ><mi
 >f</mi><mo
  class="MathClass-bin">+</mo>   <mfrac
 ><mrow
-><mn>1</mn></mrow>
+><mn>1</mn>
+</mrow>
 <mrow
 ><mi
 >g</mi><mo
  class="MathClass-bin">+</mo> <mfrac
 ><mrow
-><mn>1</mn></mrow><mrow
+><mn>1</mn>
+</mrow><mrow
 ><mi
 >h</mi></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac><mspace
  width="2em" class="qquad"></mspace><mi
 >a</mi> <mo
  class="MathClass-bin">+</mo>                  <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn>1</mn>
+</mrow> 
 <mrow
 ><mi
 >b</mi> <mo
  class="MathClass-bin">+</mo>                <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn>1</mn>
+</mrow> 
 <mrow
 ><mi
 >c</mi> <mo
  class="MathClass-bin">+</mo>             <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn>1</mn>
+</mrow> 
 <mrow
 ><mi
 >d</mi> <mo
  class="MathClass-bin">+</mo>          <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn>1</mn>
+</mrow> 
 <mrow
 ><mi
 >e</mi> <mo
  class="MathClass-bin">+</mo>       <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn>1</mn>
+</mrow> 
 <mrow
 ><mi
 >f</mi> <mo
  class="MathClass-bin">+</mo>    <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn>1</mn>
+</mrow> 
 <mrow
 ><mi
 >g</mi> <mo
  class="MathClass-bin">+</mo> <mfrac
 ><mrow
-><mn>1</mn></mrow> 
+><mn>1</mn>
+</mrow> 
 <mrow
 ><mi
 >h</mi></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac></mrow></mfrac>
@@ -3887,43 +4329,80 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
  class="eqnarray-1"> </mtd><mtd
  class="eqnarray-2">      </mtd><mtd
  class="eqnarray-3">      <mi
->a</mi><mo class="MathClass-punc">,</mo><mi
->b</mi><mo class="MathClass-punc">,</mo><mi
->c</mi><mo class="MathClass-punc">,</mo><mi
->d</mi><mo class="MathClass-punc">,</mo><mi
->e</mi><mo class="MathClass-punc">,</mo><mi
->f</mi><mo class="MathClass-punc">,</mo><mi
->g</mi><mo class="MathClass-punc">,</mo><mi
->h</mi><mo class="MathClass-punc">,</mo><mi
->i</mi><mo class="MathClass-punc">,</mo><mi
->j</mi><mo class="MathClass-punc">,</mo><mi
->k</mi><mo class="MathClass-punc">,</mo><mi
->l</mi><mo class="MathClass-punc">,</mo><mi
->m</mi><mo class="MathClass-punc">,</mo><mi
->n</mi><mo class="MathClass-punc">,</mo><mi
->o</mi><mo class="MathClass-punc">,</mo><mi
->p</mi><mo class="MathClass-punc">,</mo><mi
->q</mi><mo class="MathClass-punc">,</mo><mi
->r</mi><mo class="MathClass-punc">,</mo><mi
->s</mi><mo class="MathClass-punc">,</mo><mi
->t</mi><mo class="MathClass-punc">,</mo><mi
->u</mi><mo class="MathClass-punc">,</mo><mi
->v</mi><mo class="MathClass-punc">,</mo><mi
->w</mi><mo class="MathClass-punc">,</mo><mi
->x</mi><mo class="MathClass-punc">,</mo><mi
->y</mi><mo class="MathClass-punc">,</mo><mi
->z</mi><mo class="MathClass-punc">,</mo><mi
->a</mi><mo class="MathClass-punc">,</mo><mi
->b</mi><mo class="MathClass-punc">,</mo><mi
->c</mi><mo class="MathClass-punc">,</mo><mi
->d</mi><mo class="MathClass-punc">,</mo><mi
->e</mi><mo class="MathClass-punc">,</mo><mi
->f</mi><mo class="MathClass-punc">,</mo><mi
->g</mi><mo class="MathClass-punc">,</mo><mi
->h</mi><mo class="MathClass-punc">,</mo><mi
->i</mi><mo class="MathClass-punc">,</mo><mi
->j</mi><mo class="MathClass-punc">,</mo><mi
->k</mi><mo class="MathClass-punc">,</mo><mi
+>a</mi><mo class="MathClass-punc">,</mo>
+<mi
+>b</mi><mo class="MathClass-punc">,</mo>
+<mi
+>c</mi><mo class="MathClass-punc">,</mo>
+<mi
+>d</mi><mo class="MathClass-punc">,</mo>
+<mi
+>e</mi><mo class="MathClass-punc">,</mo>
+<mi
+>f</mi><mo class="MathClass-punc">,</mo>
+<mi
+>g</mi><mo class="MathClass-punc">,</mo>
+<mi
+>h</mi><mo class="MathClass-punc">,</mo>
+<mi
+>i</mi><mo class="MathClass-punc">,</mo>
+<mi
+>j</mi><mo class="MathClass-punc">,</mo>
+<mi
+>k</mi><mo class="MathClass-punc">,</mo>
+<mi
+>l</mi><mo class="MathClass-punc">,</mo>
+<mi
+>m</mi><mo class="MathClass-punc">,</mo>
+<mi
+>n</mi><mo class="MathClass-punc">,</mo>
+<mi
+>o</mi><mo class="MathClass-punc">,</mo>
+<mi
+>p</mi><mo class="MathClass-punc">,</mo>
+<mi
+>q</mi><mo class="MathClass-punc">,</mo>
+<mi
+>r</mi><mo class="MathClass-punc">,</mo>
+<mi
+>s</mi><mo class="MathClass-punc">,</mo>
+<mi
+>t</mi><mo class="MathClass-punc">,</mo>
+<mi
+>u</mi><mo class="MathClass-punc">,</mo>
+<mi
+>v</mi><mo class="MathClass-punc">,</mo>
+<mi
+>w</mi><mo class="MathClass-punc">,</mo>
+<mi
+>x</mi><mo class="MathClass-punc">,</mo>
+<mi
+>y</mi><mo class="MathClass-punc">,</mo>
+<mi
+>z</mi><mo class="MathClass-punc">,</mo>
+<mi
+>a</mi><mo class="MathClass-punc">,</mo>
+<mi
+>b</mi><mo class="MathClass-punc">,</mo>
+<mi
+>c</mi><mo class="MathClass-punc">,</mo>
+<mi
+>d</mi><mo class="MathClass-punc">,</mo>
+<mi
+>e</mi><mo class="MathClass-punc">,</mo>
+<mi
+>f</mi><mo class="MathClass-punc">,</mo>
+<mi
+>g</mi><mo class="MathClass-punc">,</mo>
+<mi
+>h</mi><mo class="MathClass-punc">,</mo>
+<mi
+>i</mi><mo class="MathClass-punc">,</mo>
+<mi
+>j</mi><mo class="MathClass-punc">,</mo>
+<mi
+>k</mi><mo class="MathClass-punc">,</mo>
+<mi
 >l</mi> </mtd><mtd
  class="eqnarray-4"> <mtext
  class="eqnarray"></mtext></mtd></mtr></mtable>
@@ -3950,16 +4429,19 @@ we increase the font size. We&#x2019;ll do a basic macro test in section <a
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>1</mn></mrow></msub><msup
+><mn>1</mn>
+</mrow></msub><msup
 ><mrow
 ><mi
 >x</mi></mrow><mrow
-><mn>2</mn></mrow></msup><msub
+><mn>2</mn>
+</mrow></msup><msub
 ><mrow
 ><mi
 >x</mi></mrow><mrow
 >
-<mn>2</mn></mrow></msub>
+<mn>2</mn>
+</mrow></msub>
 </mrow></math></div>
  
 </body> 

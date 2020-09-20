@@ -13,7 +13,7 @@ verbend "\\end"{lb}("verbatim"|"spverbatim"){rb}
 lstlistingstart "\\begin"{lb}("lstlisting"){rb}({ls}[^\[\]]*{rs})?
 lstlistingend "\\end"{lb}("lstlisting"){rb}
 dropmath ("\\text"{lb}|"\\intertext"{lb})
-toc ("\\chapter"|"\\section"|"\\subsection"|"\\subsubsection"|"\\caption"|"\\chapter*"|"\\section*"|"\\subsection*"|"\\subsubsection*")
+toc ("\\chapter"|"\\section"|"\\subsection"|"\\subsubsection"|"\\caption"|"\\chapter*"|"\\section*"|"\\subsection*"|"\\subsubsection*"|"\\subhead"|"\\subsubhead")
 figstart "\\begin"{lb}("figure"|"picture"){rb}
 figend "\\end"{lb}("figure"|"picture"){rb}
 decthm "\\declaretheorem"{ls}

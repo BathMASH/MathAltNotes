@@ -679,7 +679,7 @@ endif
 
 
 clean:
-	@rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp *.xref *.lg *.lof *.lot *x.interim.png *x.svg *.4ht *-lp1 *-lp0 bbmone.* fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* *.tmp2 *.nav *.snm colorfix.sty fontfix.sty parfix.sty beamerfix.sty *-pics*.pdf tuftefix.sty *.htf algorithmicfix.* *.bbl
+	@rm -f  *.css *.aux *.log *.toc *~ *.out *.html *.4ct *.4tc *.dvi *.idv *.tmp* *.xref *.lg *.lof *.lot *x.interim.png *x.svg *.4ht *-lp1 *-lp0 bbmone.* fakeframed.sty figurefix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* *.nav *.snm colorfix.sty fontfix.sty parfix.sty beamerfix.sty *-pics*.pdf tuftefix.sty *.htf algorithmicfix.* *.bbl
 
 cleaner:
 	@rm -f *-cont.tex *-standard.tex *-clear.tex *-large.tex *-web.tex *-word.tex toggle.tex choices.tex *-lp*.tex *-figures.tex *_tex-lp macros.tex demacro-private.sty *-cont* *-co *.pre zz*-web* *.pdf_tex.tex *.pdf_tex-clean.tex *.web.tex *-web-standard.tex

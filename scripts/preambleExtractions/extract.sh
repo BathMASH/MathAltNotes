@@ -19,3 +19,8 @@ for i in `find . -maxdepth 1 -name "*.pdf_tex" -type f`; do
     echo "Processing $i"
 done
 
+for i in `find . -maxdepth 1 -name "*.sty" -type f`; do
+    cp $i $i-origin
+    $home/extract-sty < $i-origin > $i
+    echo "Processing $i"
+done
