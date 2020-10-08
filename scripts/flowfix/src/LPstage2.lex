@@ -111,8 +111,8 @@ protectend ("\\end{picture}"|"\\makeatother")
 <DGROUP>("\\intertextend")/({whitespace}*("\\tag"|"\\label")) printf("\\begin{dmath}[");
 <DSERIESSTAR,DSERIES,DGROUPSTAR,DGROUP>("\\intertextend") if (YY_START == DGROUP) printf("\\begin{dmath}");
 
-<DMATH,DMATHSTAR,DSERIES,DSERIESSTAR,DGROUP,CHECKSTAR,DGROUPSTAR>("\\begin"{lb}("split"){rb}) yy_push_state(SPLIT);
-<SPLIT>("\\end"{lb}("split"){rb}) yy_pop_state();
+<DMATH,DMATHSTAR,DSERIES,DSERIESSTAR,DGROUP,CHECKSTAR,DGROUPSTAR>("\\begin"{lb}("split"){rb}{whitespace}?) yy_push_state(SPLIT);
+<SPLIT>("\\end"{lb}("split"){rb}{whitespace}?) yy_pop_state();
 
  /* Unnumbered */
 

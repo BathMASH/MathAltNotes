@@ -62,6 +62,8 @@ decthm "\\declaretheorem"{ls}
 <COMMENT>("%") ECHO;
 <COMMENT>(\r?\n) ECHO; yy_pop_state();
 
+<INITIAL,DROPMATH>("$$"|"\\["){whitespace}*"\\begin{split}" printf("\\begin{equation*}\n\\begin{split}");
+<INITIAL,DROPMATH>"\\end{split}"{whitespace}*("$$"|"\\]") printf("\\end{split}\n\\end{equation*}");
 <INITIAL,DROPMATH>"$$" printf("\\["); yy_push_state(DOUBLEDOLLAR);
 <INITIAL,DROPMATH>"$" printf("\\("); yy_push_state(SINGLEDOLLAR);
 
