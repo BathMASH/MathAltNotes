@@ -77,13 +77,13 @@ tables ("\\begin"{lb}("tabular"){rb}{ls}[^\]]{rs})
 
 int commentcheck(int newline){
   if(check == 1)
-    printf("%%%%%%%% Check syntactic interpretation of verticals");
+    printf(" %%%%%%%% Check syntactic interpretation of verticals");
   if(check == 2)
-    printf("%%%%%%%% Please add \\left and \\right to all verticals, this is probably a syntactically ambiguous case");
+    printf(" %%%%%%%% Please add \\left and \\right to all verticals, this is probably a syntactically ambiguous case");
   if(check == 3)
-    printf("%%%%%%%% Please add \\left and \\right to all verticals, this is syntactically ambiguous due to linebreaks");
+    printf(" %%%%%%%% Please add \\left and \\right to all verticals, this is syntactically ambiguous due to linebreaks");
   if(check == 4)
-    printf("%%%%%%%% Please add \\left and \\right to all verticals, this may be syntactically ambiguous and was abandoned due to bracketing depth");
+    printf(" %%%%%%%% Please add \\left and \\right to all verticals, this may be syntactically ambiguous and was abandoned due to bracketing depth");
   if(newline == 1 && check != 0)
     printf("\n");
   check = 0;

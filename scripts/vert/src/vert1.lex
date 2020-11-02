@@ -23,9 +23,10 @@ protect ("\\left"|"\\right"|"\\big"|"\\Big"|"\\bigg"|"\\Bigg"|"\\bigr"|"\\bigl"|
 <VERBATIM>{verbend} ECHO; yy_pop_state();
 
  /* We need to remove comments that WE HAVE ADDED in a previous run of vert */
-"%%%% Check syntactic interpretation of verticals"
-"%%%% Please add \\left and \\right to all verticals, this is probably a syntactically ambiguous case"
-"%%%% Please add \\left and \\right to all verticals, this is syntactically ambiguous due to linebreaks"
+" %%%% Check syntactic interpretation of verticals"
+" %%%% Please add \\left and \\right to all verticals, this is probably a syntactically ambiguous case"
+" %%%% Please add \\left and \\right to all verticals, this is syntactically ambiguous due to linebreaks"
+" %%%%%%%% Please add \\left and \\right to all verticals, this may be syntactically ambiguous and was abandoned due to bracketing depth"
 
  /*We need to ensure that comments WE HAVE NOT ADDED are not processed */
 ("%")* ECHO; yy_push_state(COMMENT);
