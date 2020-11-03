@@ -16,8 +16,9 @@ mathstart ("\\("|"\\["|"\\begin"{lb}("equation"|"equation*"|"displaymath"|"multl
 mathsend ("\\)"|"\\]"|"\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|"multline"|"gather"|"eqnarray*"|"align*"|"eqnarray"|"align"){rb})
 protect ("\\left"|"\\right"|"\\big"|"\\Big"|"\\bigg"|"\\Bigg"|"\\bigr"|"\\bigl"|"\\Bigl"|"\\Bigr"|"\\biggl"|"\\biggr"|"\\Biggl"|"\\Biggr")("|"|"\\|"|"\\vert"|"\\Vert")
 tables ("\\begin"{lb}("tabular"){rb}{ls}[^\]]{rs})
+arrayswith ("\\begin"{lb}("array"){rb}{lb})
 
-%x COMMENT VERBATIM MATHS BAR BARBAR MATCH TOOMANY BAIL PAREN SQUARE BRACE TABLES
+%x COMMENT VERBATIM MATHS BAR BARBAR MATCH TOOMANY BAIL PAREN SQUARE BRACE TABLES FINDBRACE
 %%
 
 "\\\\[" ECHO;
@@ -38,6 +39,7 @@ tables ("\\begin"{lb}("tabular"){rb}{ls}[^\]]{rs})
 <MATHS,PAREN,SQUARE,BRACE>{tables} ECHO; BEGIN(INITIAL); /* Some people put tables in maths... */
 <MATHS,PAREN,SQUARE,BRACE>("%")[^\n]* ECHO;
 <MATHS,PAREN,SQUARE,BRACE>{protect} ECHO;
+<MATHS,PAREN,SQUARE,BRACE>{arrayswith} if(debug) printf("ArrayDanger"); ECHO; yy_push_state(FINDBRACE);
 <MATHS>"\\|"[^&\n]*"\\|"[^&\n]*"\\|"[^\\&]* if(debug) printf("TBB"); ECHO; check = 2; yy_push_state(TOOMANY);
 <MATHS>"|"[^&\n]*"|"[^&\n]*"|"[^\\&]* if(debug) printf("TB"); ECHO; check = 2; yy_push_state(TOOMANY);
 <MATHS>"|"[^|\n]*{mathsend}[^|\n]*/"|" if(debug) printf("BAIL"); ECHO; if(check != 2) check = 1; yy_push_state(BAIL);
@@ -49,6 +51,8 @@ tables ("\\begin"{lb}("tabular"){rb}{ls}[^\]]{rs})
 <MATHS>"|"[^|\n]*\n ECHO; if(debug) printf("NEW"); if(check == 1) check = 3;
 <MATHS>{mathsend}/(" ")*{newline} ECHO; if(debug) printf("ME"); commentcheck(0); yy_pop_state();
 <MATHS>{mathsend} ECHO; if(debug) printf("ME"); commentcheck(1); yy_pop_state();
+
+<FINDBRACE>[^\}]*{rb} ECHO; yy_pop_state();
 
  /* In maths, brackets don't have to 'match' e.g. semiopen interval, will this breack things? */
 <PAREN,SQUARE>")" if(debug) printf("C"); ECHO; yy_pop_state();
