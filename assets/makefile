@@ -765,16 +765,16 @@ endif
 
 deliver: 
 #Creating a zip for ease of upload or sending
-	[ ! -d built/$(name)-notes/ ] || rm -r built/$(name)-notes/
-	cp -r built/$(name)-web/ built/$(name)-notes/
-	cp -r built/$(name)-web-single/ built/$(name)-notes/
-	cp built/$(name)-standard.pdf built/$(name)-notes/
-	cp built/$(name)-clear.pdf built/$(name)-notes/
-	cp built/$(name)-large.pdf built/$(name)-notes/
-	cp built/$(name)-word.docx built/$(name)-notes/
-	cp $(HOME)/../../assets/index.html built/$(name)-notes/
-	sed -i "s/NOTESNAME/$(name)/" built/$(name)-notes/index.html
-	cd built; [ ! -f $(name)-notes.zip ] || rm -f $(name)-notes.zip; zip -r $(name)-notes.zip $(name)-notes; cd ..
+	[ ! -d built/$(name)-all/ ] || rm -r built/$(name)-all/
+	cp -r built/$(name)-web/ built/$(name)-all/
+	cp -r built/$(name)-web-single/ built/$(name)-all/
+	cp built/$(name)-standard.pdf built/$(name)-all/
+	cp built/$(name)-clear.pdf built/$(name)-all/
+	cp built/$(name)-large.pdf built/$(name)-all/
+	cp built/$(name)-word.docx built/$(name)-all/
+	cp $(HOME)/../../assets/index.html built/$(name)-all/
+	sed -i "s/NOTESNAME/$(name)/" built/$(name)-all/index.html
+	cd built; [ ! -f $(name)-all.zip ] || rm -f $(name)-all.zip; zip -r $(name)-all.zip $(name)-all; cd ..
 
 deliverhandout: 
 #Creating a zip for ease of upload or sending
