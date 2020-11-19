@@ -778,15 +778,15 @@ deliver:
 
 deliverhandout: 
 #Creating a zip for ease of upload or sending
-	[ ! -d built/$(name)-handout/ ] || rm -r built/$(name)-handout/
-	cp -r built/$(name)-web/ built/$(name)-handout/
-	cp built/$(name)-standard.pdf built/$(name)-handout/
-	cp built/$(name)-clear.pdf built/$(name)-handout/
-	cp built/$(name)-large.pdf built/$(name)-handout/
-	cp built/$(name)-word.docx built/$(name)-handout/
-	cp $(HOME)/../../assets/index-handout.html built/$(name)-handout/index.html
-	sed -i "s/NOTESNAME/$(name)/" built/$(name)-handout/index.html
-	cd built; [ ! -f $(name)-handout.zip ] || rm -f $(name)-handout.zip; zip -r $(name)-handout.zip $(name)-handout; cd ..
+	[ ! -d built/$(name)-all/ ] || rm -r built/$(name)-all/
+	cp -r built/$(name)-web/ built/$(name)-all/
+	cp built/$(name)-standard.pdf built/$(name)-all/
+	cp built/$(name)-clear.pdf built/$(name)-all/
+	cp built/$(name)-large.pdf built/$(name)-all/
+	cp built/$(name)-word.docx built/$(name)-all/
+	cp $(HOME)/../../assets/index-handout.html built/$(name)-all/index.html
+	sed -i "s/NOTESNAME/$(name)/" built/$(name)-all/index.html
+	cd built; [ ! -f $(name)-all.zip ] || rm -f $(name)-all.zip; zip -r $(name)-all.zip $(name)-all; cd ..
 
 
 clean:
