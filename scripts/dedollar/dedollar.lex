@@ -13,7 +13,7 @@ verbend "\\end"{lb}("verbatim"|"spverbatim"){rb}
 lstlistingstart "\\begin"{lb}("lstlisting"){rb}({ls}[^\[\]]*{rs})?
 lstlistingend "\\end"{lb}("lstlisting"){rb}
 dropmath ("\\text"{lb}|"\\intertext"{lb})
-toc ("\\chapter"|"\\section"|"\\subsection"|"\\subsubsection"|"\\caption"|"\\chapter*"|"\\section*"|"\\subsection*"|"\\subsubsection*"|"\\subhead"|"\\subsubhead")
+toc ("\\chapter"|"\\section"|"\\subsection"|"\\subsubsection"|"\\caption"|"\\chapter*"|"\\section*"|"\\subsection*"|"\\subsubsection*"|"\\subhead"|"\\subsubhead"|"\\nextalt")
 figstart "\\begin"{lb}("figure"|"picture"){rb}
 figend "\\end"{lb}("figure"|"picture"){rb}
 decthm "\\declaretheorem"{ls}
@@ -62,6 +62,8 @@ decthm "\\declaretheorem"{ls}
 <COMMENT>("%") ECHO;
 <COMMENT>(\r?\n) ECHO; yy_pop_state();
 
+<INITIAL,DROPMATH>("$$"|"\\["){whitespace}*"\\begin{split}" printf("\\begin{equation*}\n\\begin{split}");
+<INITIAL,DROPMATH>"\\end{split}"{whitespace}*("$$"|"\\]") printf("\\end{split}\n\\end{equation*}");
 <INITIAL,DROPMATH>"$$" printf("\\["); yy_push_state(DOUBLEDOLLAR);
 <INITIAL,DROPMATH>"$" printf("\\("); yy_push_state(SINGLEDOLLAR);
 

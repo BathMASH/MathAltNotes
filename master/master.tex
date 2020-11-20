@@ -205,21 +205,11 @@
  }{}
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- %% Commands used to provide alternative text for 
- %% diagrams for a screenreader user.
- %% DO NOT remove the macros from the preamble even if
- %% you are not using them as the web compilation 
- %% expects them to be defined.
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- \newcommand{\nextalt}[1]{} 
- \newcommand{\PICalt}[1]{{#1}} 
-
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %% Ensure front matter and table of contents are 
  %% page numbered separately from the body
  %% Use headings style so that each page has a label
  \pagestyle{headings}
- \pagenumbering{roman}
+ \ifdefstring{\class}{exam}{\pagenumbering{arabic}}{\pagenumbering{roman}}
  \iftoggle{frontmatter}{
  \title{Please set a title for these notes or toggle frontmatter off if a title is inappropriate}
  \author{Please set an author for these notes or toggle frontmatter off if a title is inappropriate}
@@ -227,7 +217,7 @@
  }{\iftoggle{web}{\title{Content}\author{}\date{}\iftoggle{word}{}{\toggletrue{frontmatter}}}{}}
  \ifdefstring{\beamerslides}{true}{\date{}}{}
  \AfterEndPreamble{
-  \iftoggle{frontmatter}{\renewcommand{\baselinestretch}{1.0}\selectfont\maketitle\renewcommand{\baselinestretch}{1.25}\selectfont\inputdisclaimer}{}
+   \iftoggle{frontmatter}{\renewcommand{\baselinestretch}{1.0}\selectfont\maketitle\renewcommand{\baselinestretch}{1.25}\selectfont\inputdisclaimer}{}
   \iftoggle{contents}{\tableofcontents\listoffigures\listoftables  \iftoggle{web}{\ifdefstring{\beamerslides}{true}{\section*{Start of slides}}{}}{}\renewcommand{\tableofcontents}{}\renewcommand{\listoffigures}{}\renewcommand{\listoftables}{}\newpage}{\iftoggle{frontmatter}{\newpage}{}}
   \pagenumbering{arabic}        
   \setcounter{page}{1}

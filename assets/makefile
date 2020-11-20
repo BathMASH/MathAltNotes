@@ -253,6 +253,92 @@ endif
 	@rm *.htf
 
 #We require some additional files for everything to work. 
+websingle: clean $(name)-cont-web-clean.tex
+	mkdir -p built
+#Copy required files to where they are needed
+	cp $(HOME)/../../styles/* . 
+	cp $(HOME)/../../fonts/* .
+	cp $(HOME)/../../assets/mathml.4ht .
+	cp $(HOME)/../../assets/listings.4ht .
+#	cp $(HOME)/../../assets/longtable.4ht . Do not use this, use, I removed the old-longtable from here (see makefile-fb) as I am not yet sure what we want to do about this in general.
+	cp $(HOME)/../../assets/unicode.4hf .
+	cp $(HOME)/../../assets/mathjaxMMLWord.cfg .
+#Make any pdf_tex figures
+#	$(HOME)/../graphicx/buildfigure.sh ./
+#Make any tikz figures etc.
+	[ ! -f toggle.tex ] || rm -f toggle.tex
+	echo "\\\\toggletrue{clearprint}\\\\togglefalse{web}\\\\toggletrue{figures}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
+	[ ! -f $(name)-web-single.tex ] || rm -f $(name)-web-single.tex
+ifeq ($(UNKN),false)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web-single.tex
+else
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web-single.tex
+endif
+ifeq ($(TYPE),beamer)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-clean}" > $(name)-web-single.tex
+endif
+	$(LATEX) -shell-escape $(name)-web-single.tex
+#Fix any figures that were produced in png incorrectly
+#	$(HOME)/../graphicx/svg-fix.sh ./
+#Convert the rest of the figures
+	cd figures/eps/; $(HOME)/../graphicx/eps-converted2svg.sh ./; cd ../..
+	cd figures/pdf/; $(HOME)/../graphicx/pdftosvg.sh ./; cd ../..
+	rm $(name)-web-single.*
+#Set up for the web version
+	[ ! -f toggle.tex ] || rm -f toggle.tex
+	echo "\\\\togglefalse{clearprint}\\\\toggletrue{web}\\\\togglefalse{large}\\\\togglefalse{word}" > toggle.tex
+#htlatex needs to run twice to prevent disruption to the sectioning tree caused by e.g. footnotes
+#Note, yes this does run latex 6 times! It is a reported bug: https://puszcza.gnu.org.ua/bugs/index.php?197
+#We need to use early_ and early^ so that the author doesn't need to do anything special for macros
+	[ ! -f $(name)-web-single.tex ] || rm -f $(name)-web-single.tex
+ifeq ($(UNKN),false)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web-single.tex
+else
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(TYPE)}\\\\def\\\\unknownclass{$(UNKN)}\\\\def\\\\originalclass{$(TYPE)}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web-single.tex
+endif
+ifeq ($(TYPE),beamer)
+	echo "\\\\def\\\\pointsize{12pt}\\\\def\\\\class{$(ALTT)}\\\\def\\\\beamerslides{true}\\\\def\\\\fleqn{$(FLEQN)}\\\\def\\\\colorhere{$(COLORHERE)}\\\\def\\\\beamerfix{unknownkeysallowed}\\\\input{master}\\\\usepackage{$(DIS)}\\\\input{$(name)-cont-web-clean}" > $(name)-web-single.tex
+endif
+	$(HTLATEX)  $(name)-web-single.tex "mathjaxMMLWord.cfg,1,sections+,fonts-,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
+	$(BIBTEX) $(name)-web-single || true
+	$(HTLATEX)  $(name)-web-single.tex "mathjaxMMLWord.cfg,1,sections+,fonts-,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
+#Change the endings from interim to svg - this should not be doing anything any more after fix via .env
+#	sed -i "s/x.interim.png/x.svg/" *.html
+#The postprocess is slow, required to produce numbers rather than digits when spoken aloud but requires correct
+#html output. Such things as unmatched brackets can cause problems. If you can't locate the error and can put
+#up with digits instead of numbers then comment out the next line as the web browser and mathjax are less fussy.
+	$(HOME)/../TeX4htPostprocessing/postprocess.sh ./
+#Creating a zip for ease of upload or sending
+	[ ! -d built/$(name)-web-single/ ] || rm -r built/$(name)-web-single/
+	mkdir built/$(name)-web-single/
+	mkdir built/$(name)-web-single/figures/
+	mkdir built/$(name)-web-single/figures/eps/
+	mkdir built/$(name)-web-single/figures/latexpdfsvg/
+	mkdir built/$(name)-web-single/figures/pdf/
+	mkdir built/$(name)-web-single/figures/png/
+	mkdir built/$(name)-web-single/figures/jpg/
+	mkdir built/$(name)-web-single/figures/svg/
+	mv *.html built/$(name)-web-single/
+	cp $(HOME)/../../assets/additional.css built/$(name)-web-single/
+	mv *.css built/$(name)-web-single/
+	if ls ./figures/eps/*.svg 1> /dev/null 2>&1; then cp ./figures/eps/*.svg built/$(name)-web-single/figures/eps/; fi
+	if ls ./figures/latexpdfsvg/*.svg 1> /dev/null 2>&1; then cp ./figures/latexpdfsvg/*.svg built/$(name)-web-single/figures/latexpdfsvg/; fi
+	if ls ./figures/pdf/*.svg 1> /dev/null 2>&1; then cp ./figures/pdf/*.svg built/$(name)-web-single/figures/pdf/; fi
+	if ls ./figures/png/*.png 1> /dev/null 2>&1; then cp ./figures/png/*.png built/$(name)-web-single/figures/png/; fi
+	if ls ./figures/jpg/*.jpg 1> /dev/null 2>&1; then cp ./figures/jpg/*.jpg built/$(name)-web-single/figures/jpg/; fi
+	if ls ./figures/svg/*.svg 1> /dev/null 2>&1; then cp ./figures/svg/*.svg built/$(name)-web-single/figures/svg/; fi
+#	[ ! -e ./$(name)-web0x.interim.png ] || mv $(name)-web*.png built/$(name)-web/
+	[ ! -e ./$(name)*svg ] || mv $(name)*svg built/$(name)-web-single/
+	cd built; [ ! -f $(name)-web-single.zip ] || rm -f $(name)-web-single.zip; zip -r $(name)-web-single.zip $(name)-web-single; cd ..
+#Tidy up a bit
+	@rm mathml.4ht
+	@rm unicode.4hf
+	@rm mathjaxMMLWord.cfg
+	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
+	@rm *.htf
+
+
+#We require some additional files for everything to work. 
 websloppy: clean $(name)-cont-web-clean.tex 
 	mkdir -p built
 #Copy required files to where they are needed
@@ -676,6 +762,31 @@ endif
 	@rm additional.css
 	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 	@rm *.htf
+
+deliver: 
+#Creating a zip for ease of upload or sending
+	[ ! -d built/$(name)-all/ ] || rm -r built/$(name)-all/
+	cp -r built/$(name)-web/ built/$(name)-all/
+	cp -r built/$(name)-web-single/ built/$(name)-all/
+	cp built/$(name)-standard.pdf built/$(name)-all/
+	cp built/$(name)-clear.pdf built/$(name)-all/
+	cp built/$(name)-large.pdf built/$(name)-all/
+	cp built/$(name)-word.docx built/$(name)-all/
+	cp $(HOME)/../../assets/index.html built/$(name)-all/
+	sed -i "s/NOTESNAME/$(name)/" built/$(name)-all/index.html
+	cd built; [ ! -f $(name)-all.zip ] || rm -f $(name)-all.zip; zip -r $(name)-all.zip $(name)-all; cd ..
+
+deliverhandout: 
+#Creating a zip for ease of upload or sending
+	[ ! -d built/$(name)-all/ ] || rm -r built/$(name)-all/
+	cp -r built/$(name)-web/ built/$(name)-all/
+	cp built/$(name)-standard.pdf built/$(name)-all/
+	cp built/$(name)-clear.pdf built/$(name)-all/
+	cp built/$(name)-large.pdf built/$(name)-all/
+	cp built/$(name)-word.docx built/$(name)-all/
+	cp $(HOME)/../../assets/index-handout.html built/$(name)-all/index.html
+	sed -i "s/NOTESNAME/$(name)/" built/$(name)-all/index.html
+	cd built; [ ! -f $(name)-all.zip ] || rm -f $(name)-all.zip; zip -r $(name)-all.zip $(name)-all; cd ..
 
 
 clean:

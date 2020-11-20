@@ -58,7 +58,7 @@ mathsend "\\end"{lb}("equation"|"equation*"|"displaymath"|"multline*"|"gather*"|
 begindocument "\\begin"{lb}"document"{rb}
 pmatrix "\\pmatrix"
 frac "\\frac"
-toosmall ("\\tiny"|"\\scriptsize"|"\\footnotesize"|"\\small")
+toosmall ("\\tiny "|"\\scriptsize "|"\\footnotesize "|"\\small ")
 lstset "\\lstset"{lb}
 externaldoc "\\externaldocument"(("[")(.*)("]"))*{lb}[^"{""}"]*
 verbatim "\\begin"{lb}("verbatim"|"spverbatim"){rb}
@@ -84,7 +84,7 @@ verbatim "\\begin"{lb}("verbatim"|"spverbatim"){rb}
 
 {standardonly} printf("\\ifboolexpr{togl {clearprint} or togl {large}}{}{"); ECHO; printf("}\n");
 ("\\hypersetup"){lb}(.*){whitespace}* printf("\\ifboolexpr{togl {clearprint} or togl {large} or togl {web}}{}{"); ECHO; printf("}\n");
-
+("\\newcommand{\\nextalt}[1]"){lb}(.*){rb} printf("\\ifboolexpr{togl {web} or togl {word}}{}{"); ECHO; printf("}\n");
 
 {docclass} printf("%%"); ECHO; macrossetup(0); macrossetup(1); donesetup=1; yy_push_state(CLASS);
 <CLASS>"8pt" fontsize=8; ECHO;
@@ -139,7 +139,7 @@ verbatim "\\begin"{lb}("verbatim"|"spverbatim"){rb}
 "\\medskip" ECHO;
 "\\bigskip" ECHO;
 
-{toosmall} printf("\\ifboolexpr{togl {web} or togl {clearprint}}{\\normalsize}{"); ECHO; printf("}");
+{toosmall} printf("\\ifboolexpr{togl {web} or togl {clearprint}}{\\normalsize}{"); ECHO; printf("} ");
 
 {begindocument} begun=1; if(beginendlength > 0) printf("\\usepackage{demacro-private}\n"); ECHO; 
 
