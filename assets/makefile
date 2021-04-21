@@ -71,7 +71,7 @@ standard: clean $(name)-cont-clean.tex
 #We can't change the jobname to get different filenames that way as this does not work with some packages
 #we will need to use for graphics in this set up. 
 	mv $(name)-standard.pdf built/
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
+	@rm -f bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 
 standardtest: clean $(name)-cont-clean.tex
 
@@ -96,7 +96,7 @@ endif
 	$(LATEX) --shell-escape $(name)-clear.tex
 	$(LATEX) --shell-escape $(name)-clear.tex
 	mv $(name)-clear.pdf built/
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
+	@rm -f bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 
 cleartest: clean $(name)-cont-clean.tex
 
@@ -114,7 +114,7 @@ ifeq ($(TYPE),beamer)
 	$(LATEX) $(name)-clear.tex
 	$(LATEX) $(name)-clear.tex
 	mv $(name)-clear.pdf built/
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
+	@rm -f bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 else
 	@echo "---------------------------------------------------";
 	@echo "You cannot make clear beamer article format for documents which are not beamer slides.";
@@ -142,7 +142,7 @@ endif
 	$(LATEX) --shell-escape $(name)-large.tex
 	$(LATEX) --shell-escape $(name)-large.tex
 	mv $(name)-large.pdf built/
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
+	@rm -f bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 
 largetest: clean $(name)-cont-clean-lp.tex
 
@@ -160,7 +160,7 @@ ifeq ($(TYPE),beamer)
 	$(LATEX) $(name)-large.tex
 	$(LATEX) $(name)-large.tex
 	mv $(name)-large.pdf built/
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
+	@rm -f bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
 else
 	@echo "---------------------------------------------------";
 	@echo "You cannot make large beamer article format for documents which are not beamer slides.";
@@ -246,11 +246,11 @@ endif
 	[ ! -e ./$(name)*svg ] || mv $(name)*svg built/$(name)-web/
 	cd built; [ ! -f $(name)-web.zip ] || rm -f $(name)-web.zip; zip -r $(name)-web.zip $(name)-web; cd ..
 #Tidy up a bit
-	@rm mathml.4ht
-	@rm unicode.4hf
-	@rm mathjaxMMLWord.cfg
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
-	@rm *.htf
+	@rm -f mathml.4ht
+	@rm -f unicode.4hf
+	@rm -f mathjaxMMLWord.cfg
+	@rm -f bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
+	@rm -f *.htf
 
 #We require some additional files for everything to work. 
 websingle: clean $(name)-cont-web-clean.tex
@@ -331,11 +331,11 @@ endif
 	[ ! -e ./$(name)*svg ] || mv $(name)*svg built/$(name)-web-single/
 	cd built; [ ! -f $(name)-web-single.zip ] || rm -f $(name)-web-single.zip; zip -r $(name)-web-single.zip $(name)-web-single; cd ..
 #Tidy up a bit
-	@rm mathml.4ht
-	@rm unicode.4hf
-	@rm mathjaxMMLWord.cfg
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
-	@rm *.htf
+	@rm -f mathml.4ht
+	@rm -f unicode.4hf
+	@rm -f mathjaxMMLWord.cfg
+	@rm -f bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
+	@rm -f *.htf
 
 
 #We require some additional files for everything to work. 
@@ -416,11 +416,11 @@ endif
 	[ ! -e ./$(name)*svg ] || mv $(name)*svg built/$(name)-web/
 	cd built; [ ! -f $(name)-web.zip ] || rm -f $(name)-web.zip; zip -r $(name)-web.zip $(name)-web; cd ..
 #Tidy up a bit
-	@rm mathml.4ht
-	@rm unicode.4hf
-	@rm mathjaxMMLWord.cfg
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
-	@rm *.htf
+	@rm -f mathml.4ht
+	@rm -f unicode.4hf
+	@rm -f mathjaxMMLWord.cfg
+	@rm -f bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
+	@rm -f *.htf
 
 #We require some additional files for everything to work. 
 webstandard: clean $(name)-cont-web-clean.tex 
@@ -503,11 +503,11 @@ endif
 	[ ! -e ./$(name)*svg ] || mv $(name)*svg built/$(name)-web-standard/
 	cd built; [ ! -f $(name)-web-standard.zip ] || rm -f $(name)-web-standard.zip; zip -r $(name)-web-standard.zip $(name)-web-standard; cd ..
 #Tidy up a bit
-	@rm mathml.4ht
-	@rm unicode.4hf
-	@rm mathjaxMMLWord.cfg
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
-	@rm *.htf
+	@rm -f mathml.4ht
+	@rm -f unicode.4hf
+	@rm -f mathjaxMMLWord.cfg
+	@rm -f bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
+	@rm -f *.htf
 
 
 #To transform to Word we need to use the web transform but without breaking into sections and then use Pandoc 19+
@@ -575,12 +575,12 @@ endif
 	pandoc -s -f html -t docx $(name)-word.html -o $(name)-word.docx --reference-doc=$(HOME)/../../assets/reference.docx
 	mv $(name)-word.docx built/
 #Tidy up a bit
-	@rm mathml.4ht
-	@rm unicode.4hf
-	@rm mathjaxMMLWord.cfg
-	@rm additional.css
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
-	@rm *.htf
+	@rm -f mathml.4ht
+	@rm -f unicode.4hf
+	@rm -f mathjaxMMLWord.cfg
+	@rm -f additional.css
+	@rm -f bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
+	@rm -f *.htf
 
 wordtest: clean $(name)-cont-web-clean.tex
 #Copy some files to where we need them
@@ -611,12 +611,12 @@ endif
 	$(HTLATEX) $(name)-word.tex "mathjaxMMLWord.cfg,sections+,fonts-,fn-in,early_,early^,charset=utf-8,old-longtable" " -cunihtf -utf8"
 	$(HOME)/../TeX4htPostprocessing/postprocessWordFB.sh ./
 #Tidy up a bit
-	@rm mathml.4ht
-	@rm unicode.4hf
-	@rm mathjaxMMLWord.cfg
-	@rm additional.css
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
-	@rm *.htf
+	@rm -f mathml.4ht
+	@rm -f unicode.4hf
+	@rm -f mathjaxMMLWord.cfg
+	@rm -f additional.css
+	@rm -f bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
+	@rm -f *.htf
 
 #To transform to Word we need to use the web transform but without breaking into sections and then use Pandoc 19+
 wordsloppy: clean $(name)-cont-web-clean.tex
@@ -683,12 +683,12 @@ endif
 	pandoc -s -f html -t docx $(name)-word.html -o $(name)-word.docx --reference-doc=$(HOME)/../../assets/reference.docx
 	mv $(name)-word.docx built/
 #Tidy up a bit
-	@rm mathml.4ht
-	@rm unicode.4hf
-	@rm mathjaxMMLWord.cfg
-	@rm additional.css
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
-	@rm *.htf
+	@rm -f mathml.4ht
+	@rm -f unicode.4hf
+	@rm -f mathjaxMMLWord.cfg
+	@rm -f additional.css
+	@rm -f bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
+	@rm -f *.htf
 
 #This is an experiment
 #To transform to markdown we need to use the web transform but without breaking into sections and then use Pandoc 19+
@@ -756,12 +756,12 @@ endif
 	pandoc -s -f html -t docx $(name)-word.html -o $(name)-word.md 
 	mv $(name)-word.md built/
 #Tidy up a bit
-	@rm mathml.4ht
-	@rm unicode.4hf
-	@rm mathjaxMMLWord.cfg
-	@rm additional.css
-	@rm bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
-	@rm *.htf
+	@rm -f mathml.4ht
+	@rm -f unicode.4hf
+	@rm -f mathjaxMMLWord.cfg
+	@rm -f additional.css
+	@rm -f bbmone.* fakeframed.* figurefix.sty fontfix.sty largeprevent.sty MnArrowsWeb.* notsoclever.sty notitlesec.sty webfix.* webprevent.sty displayoperators.* parfix.* stmaryrd.4ht beamerfix.* colorfix.* tuftefix.sty *disclaimer.sty algorithmicfix.*
+	@rm -f *.htf
 
 deliver: 
 #Creating a zip for ease of upload or sending
