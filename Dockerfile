@@ -1,4 +1,4 @@
-FROM bathmash/base-mathaltnotes-docker-build:v18.04-pandoc2.7.3
+FROM bathmash/base-mathaltnotes-docker-build:unstable
 RUN mkdir /home/mathaltuser
 RUN mkdir /home/mathaltuser/MathAltNotes
 COPY ./ /home/mathaltuser/MathAltNotes/
